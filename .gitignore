@@ -1,0 +1,14 @@
+.idea/
+/app/config/parameters.yml
+/build/
+/bin/*
+!bin/console
+!bin/symfony_requirements
+/composer.phar
+/var/bootstrap.php.cache
+/var/cache/*
+/var/logs/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+/vendor/
+/web/bundles/

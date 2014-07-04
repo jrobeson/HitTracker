@@ -1,0 +1,29 @@
+language: php
+
+php:
+    - 5.5
+    - 5.6
+#    - hhvm
+    - hhvm-nightly
+
+
+matrix:
+    fast_finish: true
+    allow_failures:
+#        - php: hhvm
+        - php: hhvm-nightly
+
+addons:
+    postgresql: '9.3'
+
+before_script:
+    - composer install --no-interaction
+    - cp app/config/parameters.travis.yml app/config/parameters.yml
+    - php bin/console doctrine:database:create --env=test
+    - php bin/console doctrine:schema:create --env=test
+#    - php bin/console doctrine:fixtures:load -n --env=test
+
+#script: phpunit --coverage-clover=coverage.clover
+#after_script: # for usage with scrutinizer
+#    - wget https://scrutinizer-ci.com/ocular.phar
+#    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
