@@ -3,6 +3,7 @@
     "license": "AGPL-3.0",
     "type": "project",
     "description": "",
+    "prefer-stable":true,
     "autoload": {
         "psr-4": { "": "src/", "SymfonyStandard\\": "app/" }
     },
