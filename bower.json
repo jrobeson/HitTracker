@@ -1,9 +1,10 @@
 {
-    "name": "HitTracker",
-    "dependencies": {
-        "bootstrap-sass-official": "~3.2.0",
-        "fontawesome": "latest",
-        "jquery": "~1.11",
-        "jquery-color": "~2.1"
-    }
+  "name": "HitTracker",
+  "dependencies": {
+    "bootstrap-sass-official": "~3.2.0",
+    "fontawesome": "latest",
+    "jquery": "~1.11",
+    "jquery-color": "~2.1",
+    "jquery.countdown": "~2.0.4"
+  }
 }
