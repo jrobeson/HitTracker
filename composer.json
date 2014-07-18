@@ -25,7 +25,8 @@
         "igorw/get-in": "~1.0",
         "nikic/iter": "~1.1",
         "friendsofsymfony/rest-bundle": "~1.4",
-        "jms/serializer-bundle": "0.12.*"
+        "jms/serializer-bundle": "0.12.*",
+        "elnur/bootstrap-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
