@@ -16,6 +16,9 @@ matrix:
 addons:
     postgresql: '9.3'
 
+services:
+  - redis-server
+
 before_script:
     - gem install sass
     - composer install --no-interaction
