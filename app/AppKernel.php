@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new HitTracker\GameBundle\HitTrackerGameBundle(),
             new HitTracker\CommonBundle\CommonBundle(),
+            new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

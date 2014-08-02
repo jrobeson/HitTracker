@@ -67,3 +67,7 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+c33s_static_page_content:
+    content_bundle: HitTrackerGameBundle
+    content_dir: Pages

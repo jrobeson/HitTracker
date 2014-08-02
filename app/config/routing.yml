@@ -1,0 +1,4 @@
+page:
+    path:  /pages/{name}
+    defaults:
+        _controller: "C33sStaticPageContentBundle:BaseStaticPage:show"
