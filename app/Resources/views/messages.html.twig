@@ -1,0 +1,18 @@
+<div id="flashes">
+{% if app.session.flashbag.keys is not empty %}
+    <div class="row">
+        <div class="col-md-12">
+            {% for type, message in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-dismissable alert-{{ type }}">
+                        {{ message|trans }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+</div>

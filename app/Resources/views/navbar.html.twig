@@ -1,0 +1,54 @@
+<nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{# url('home') #}">
+                Hit Tracker
+            </a>
+        </div>
+        <div class="navbar-collapse collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                   <a href="{# url('home') #}">
+                      {{ 'Home'|trans }}
+                   </a>
+                </li>
+                <li>
+                    <a href="{# url('') #}">
+                        {# link_to 'New Game', new_game_path #}
+                        {{ 'New Game'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{# url() #}">
+                        {# link_to 'List Games', games_path #}
+                        {{ 'List Games'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{# url() #}">
+                        {# = link_to 'Vests', vests_path #}
+                        {{ 'Vests'|trans }}
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{# url() #}" target="_blank">
+                        {# link_to 'Scoreboard', scoreboard_games_path #}
+                        {{ 'Scoreboard'|trans }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('page', {name: 'help'}) }}">
+                        {{ 'Help'|trans }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
