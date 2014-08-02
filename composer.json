@@ -26,6 +26,7 @@
         "nikic/iter": "~1.1",
         "friendsofsymfony/rest-bundle": "~1.4",
         "jms/serializer-bundle": "0.12.*",
+        "jms/di-extra-bundle": "~1.4",
         "elnur/bootstrap-bundle": "dev-master"
     },
     "require-dev": {
