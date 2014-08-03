@@ -13,4 +13,3 @@ parameters:
     secret: ff3464e484bb524fb4234e893f9cee58
     debug_toolbar: true
     debug_redirects: false
-    sass_bin: ~
