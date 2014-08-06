@@ -1,0 +1,7 @@
+{% extends baseTemplate ?: 'C33sStaticPageContentBundle::empty.html.twig' %}
+{# @fixme: remove this page_title block and template once C33sStaticPageContentBundle
+has a way to handle titles #}
+{% block page_title contentLocation|split(':')[2]|split('.')[0]|humanize %}
+{% block content %}
+    {{ include(contentLocation, sandboxed = isSandboxed) }}
+{% endblock %}
