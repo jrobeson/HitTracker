@@ -29,12 +29,14 @@ class AppKernel extends Kernel
             $bundles[] = new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
         return $bundles;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
@@ -55,5 +57,4 @@ class AppKernel extends Kernel
     {
         return dirname($this->rootDir).'/var/logs';
     }
-
 }
