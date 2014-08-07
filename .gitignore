@@ -1,3 +1,4 @@
+/app/config/local_*
 /app/config/parameters.yml
 /build/
 /bin/*
