@@ -2,12 +2,13 @@
 {% if app.session.flashbag.keys is not empty %}
     <div class="row">
         <div class="col-md-12">
-            {% for type, message in app.session.flashbag.all() %}
+            {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
-                    <div class="alert alert-dismissable alert-{{ type }}">
+                    <div class="alert fade in alert-{{ type }}" role="alert">
                         {{ message|trans }}
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                            &times;
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
                         </button>
                     </div>
                 {% endfor %}
