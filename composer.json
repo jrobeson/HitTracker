@@ -12,6 +12,7 @@
     },
     "require": {
         "php": ">=5.5",
+        "ext-pdo_pgsql": "*",
         "symfony/symfony": "2.5.*",
         "doctrine/orm": "~2.5@dev",
         "doctrine/dbal": "~2.5@dev",
