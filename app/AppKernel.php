@@ -20,8 +20,8 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new HitTracker\GameBundle\HitTrackerGameBundle(),
             new HitTracker\CommonBundle\CommonBundle(),
+            new HitTracker\GameBundle\HitTrackerGameBundle(),
             new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
         ];
 
