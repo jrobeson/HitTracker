@@ -30,7 +30,8 @@
         "jms/di-extra-bundle": "~1.4",
         "elnur/bootstrap-bundle": "dev-master",
         "sylius/resource-bundle": "~0.1",
-        "c33s/static-page-content-bundle": "dev-master"
+        "c33s/static-page-content-bundle": "dev-master",
+        "kunstmaan/live-reload-bundle": "~2.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
