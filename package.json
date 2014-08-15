@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "devDependencies": {
+    "bower": "^1.3.8",
+    "broccoli": "^0.12.0",
+    "broccoli-env": "^0.0.1",
+    "broccoli-static-compiler": "^0.1.4",
+    "broccoli-uglify-js": "^0.1.0",
+    "broccoli-es6-concatenator": "^0.1.7",
+    "broccoli-template": "^0.1.0",
+    "broccoli-coffee": "^0.1.0",
+    "broccoli-sass": "^0.2.0",
+    "broccoli-ruby-sass": "git://github.com/jrobeson/broccoli-ruby-sass#combined-changes",
+    "broccoli-merge-trees": "^0.1.3",
+    "broccoli-bower": "^0.2.0",
+    "broccoli-asset-rev": "~0.0.17",
+    "broccoli-autoprefixer": "~0.2.0",
+    "broccoli-clean-css": "~0.2.0",
+    "broccoli-concat": "0.0.7",
+    "ember-cli": "0.0.*"
+  }
+}
