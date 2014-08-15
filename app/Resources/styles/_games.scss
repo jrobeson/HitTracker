@@ -1,0 +1,20 @@
+.scores {
+  @extend .table;
+  @extend .table-bordered;
+  @extend .table-striped;
+  th, td {
+    text-align: center;
+    font-style: bold;
+  }
+}
+
+#hit-simulator {
+  select[name="esn"] {
+    padding-left: 1em;
+    width: 18em;
+  }
+  select[name="zone"] {
+    padding-left: 1em;
+    width: 5em;
+  }
+}

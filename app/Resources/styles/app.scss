@@ -1,0 +1,9 @@
+$navbar-padding: 60px;
+$footer-height: 60px;
+
+$fa-font-path: '/assets/fonts' !default;
+@import 'common';
+
+table {
+  @extend .table;
+}
