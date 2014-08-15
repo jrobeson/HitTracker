@@ -3,7 +3,8 @@
     "license": "AGPL-3.0",
     "type": "project",
     "description": "",
-    "prefer-stable":true,
+    "prefer-stable": true,
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "HitTracker\\": "src/",
