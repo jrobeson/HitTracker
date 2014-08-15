@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fd57ada039141dba2ea9402d87c3393",
+    "hash": "0f65a0e6515488b37c6a38b0ec91d2ea",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -719,12 +719,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "723529ffff4880ab97499d03b23f90911db2e0b3"
+                "reference": "ebc70d1bafc2cdf9d4e8b45903e66a5e6b6de4c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/723529ffff4880ab97499d03b23f90911db2e0b3",
-                "reference": "723529ffff4880ab97499d03b23f90911db2e0b3",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/ebc70d1bafc2cdf9d4e8b45903e66a5e6b6de4c6",
+                "reference": "ebc70d1bafc2cdf9d4e8b45903e66a5e6b6de4c6",
                 "shasum": ""
             },
             "require": {
@@ -785,7 +785,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-08-04 14:17:11"
+            "time": "2014-08-15 00:16:34"
         },
         {
             "name": "elnur/bootstrap-bundle",
@@ -915,6 +915,86 @@
                 "rest"
             ],
             "time": "2014-07-11 21:09:03"
+        },
+        {
+            "name": "gedmo/doctrine-extensions",
+            "version": "v2.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
+                "reference": "35adcaae1a3f50d0d5b73aa50ed8fd28ee35ce54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/35adcaae1a3f50d0d5b73aa50ed8fd28ee35ce54",
+                "reference": "35adcaae1a3f50d0d5b73aa50ed8fd28ee35ce54",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": ">=2.2,<2.5-dev",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/common": ">=2.4.0-RC3",
+                "doctrine/dbal": ">=2.4.0-RC1",
+                "doctrine/mongodb": ">=1.0.3",
+                "doctrine/mongodb-odm": ">=1.0.0-BETA9",
+                "doctrine/orm": ">=2.4.0-RC1",
+                "symfony/yaml": "2.3.1"
+            },
+            "suggest": {
+                "doctrine/dbal": ">=2.3.2",
+                "doctrine/mongodb": ">=1.0.1",
+                "doctrine/mongodb-odm": ">=1.0.0-BETA7",
+                "doctrine/orm": ">=2.3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Gedmo\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Buchmann",
+                    "email": "david@liip.ch"
+                },
+                {
+                    "name": "Gediminas Morkevicius",
+                    "email": "gediminas.morkevicius@gmail.com"
+                },
+                {
+                    "name": "Gustavo Falco",
+                    "email": "comfortablynumb84@gmail.com"
+                }
+            ],
+            "description": "Doctrine2 behavioral extensions",
+            "homepage": "http://gediminasm.org/",
+            "keywords": [
+                "Blameable",
+                "behaviors",
+                "doctrine2",
+                "extensions",
+                "gedmo",
+                "loggable",
+                "nestedset",
+                "sluggable",
+                "sortable",
+                "timestampable",
+                "translatable",
+                "tree",
+                "uploadable"
+            ],
+            "time": "2014-01-12 16:34:06"
         },
         {
             "name": "igorw/get-in",
@@ -1449,6 +1529,55 @@
             "time": "2013-07-29 12:36:36"
         },
         {
+            "name": "kunstmaan/live-reload-bundle",
+            "version": "v2.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kunstmaan/KunstmaanLiveReloadBundle.git",
+                "reference": "c7bd68b47683f69b42f5cd8c68bc9c2be690b88e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kunstmaan/KunstmaanLiveReloadBundle/zipball/c7bd68b47683f69b42f5cd8c68bc9c2be690b88e",
+                "reference": "c7bd68b47683f69b42f5cd8c68bc9c2be690b88e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/symfony": "~2.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kunstmaan\\LiveReloadBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kunstmaan Team",
+                    "email": "support@kunstmaan.be",
+                    "homepage": "http://www.kunstmaan.be/"
+                }
+            ],
+            "description": "The KunstmaanLiveReloadBundle injects the livereload script from grunt-contrib-watch into your html page.",
+            "homepage": "https://github.com/Kunstmaan/KunstmaanLiveReloadBundle",
+            "keywords": [
+                "cms",
+                "kunstmaan",
+                "livereload"
+            ],
+            "time": "2014-08-13 20:38:51"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.10.0",
             "source": {
@@ -1917,6 +2046,68 @@
             "time": "2014-07-19 10:52:35"
         },
         {
+            "name": "stof/doctrine-extensions-bundle",
+            "version": "v1.1.0",
+            "target-dir": "Stof/DoctrineExtensionsBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
+                "reference": "0aa21137bcae43241ffa047946bbdd46b91a2b0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/0aa21137bcae43241ffa047946bbdd46b91a2b0a",
+                "reference": "0aa21137bcae43241ffa047946bbdd46b91a2b0a",
+                "shasum": ""
+            },
+            "require": {
+                "gedmo/doctrine-extensions": "2.3.*",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.1"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "to use the ORM extensions",
+                "doctrine/mongodb-odm-bundle": "to use the MongoDB ODM extensions"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Stof\\DoctrineExtensionsBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                }
+            ],
+            "description": "Integration of the gedmo/doctrine-extensions with Symfony2",
+            "homepage": "https://github.com/stof/StofDoctrineExtensionsBundle",
+            "keywords": [
+                "behaviors",
+                "doctrine2",
+                "extensions",
+                "gedmo",
+                "loggable",
+                "nestedset",
+                "sluggable",
+                "sortable",
+                "timestampable",
+                "translatable",
+                "tree"
+            ],
+            "time": "2013-06-23 16:53:41"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.2.1",
             "source": {
@@ -2111,6 +2302,80 @@
                 "sylius"
             ],
             "time": "2014-06-21 12:43:02"
+        },
+        {
+            "name": "sylius/settings-bundle",
+            "version": "dev-combined-fixes",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jrobeson/SyliusSettingsBundle.git",
+                "reference": "ffa08f2e57e450f2ef1ad5496f76bec2ac2dc081"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/ffa08f2e57e450f2ef1ad5496f76bec2ac2dc081",
+                "reference": "ffa08f2e57e450f2ef1ad5496f76bec2ac2dc081",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-cache-bundle": "~1.0",
+                "php": ">=5.3.3",
+                "stof/doctrine-extensions-bundle": "1.1.*",
+                "sylius/resource-bundle": "0.10.*@dev",
+                "symfony/framework-bundle": "~2.3"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0",
+                "symfony/form": "~2.3",
+                "symfony/validator": "~2.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sylius\\Bundle\\SettingsBundle\\": ""
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Sylius\\Bundle\\SettingsBundle\\spec\\": "spec/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "http://pjedrzejewski.com"
+                },
+                {
+                    "name": "Sylius project",
+                    "homepage": "http://sylius.org"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "http://github.com/Sylius/Sylius/contributors"
+                }
+            ],
+            "description": "Settings system for Symfony2 applications, editable via web user interface.",
+            "homepage": "http://sylius.org",
+            "keywords": [
+                "config",
+                "configuration",
+                "ecommerce",
+                "settings",
+                "shop",
+                "webshop"
+            ],
+            "support": {
+                "source": "https://github.com/jrobeson/SyliusSettingsBundle/tree/combined-fixes"
+            },
+            "time": "2014-08-15 10:48:00"
         },
         {
             "name": "symfony/icu",
@@ -2837,12 +3102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "b887dadf216cc780c95536e6bdbb50011b638e88"
+                "reference": "d4d1bc2bc10ced37aaa635ec0e342cfda23864f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/b887dadf216cc780c95536e6bdbb50011b638e88",
-                "reference": "b887dadf216cc780c95536e6bdbb50011b638e88",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/d4d1bc2bc10ced37aaa635ec0e342cfda23864f8",
+                "reference": "d4d1bc2bc10ced37aaa635ec0e342cfda23864f8",
                 "shasum": ""
             },
             "require": {
@@ -2884,7 +3149,7 @@
                 "testing",
                 "web"
             ],
-            "time": "2014-07-13 10:06:32"
+            "time": "2014-08-13 21:41:21"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -2892,12 +3157,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkBrowserKitDriver.git",
-                "reference": "a305d463f99bf8beb228e5fb05063ba2455d0324"
+                "reference": "357a67afdb15660af98420719f157095e80762de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/a305d463f99bf8beb228e5fb05063ba2455d0324",
-                "reference": "a305d463f99bf8beb228e5fb05063ba2455d0324",
+                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/357a67afdb15660af98420719f157095e80762de",
+                "reference": "357a67afdb15660af98420719f157095e80762de",
                 "shasum": ""
             },
             "require": {
@@ -2939,7 +3204,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2014-07-13 09:59:22"
+            "time": "2014-08-13 21:47:29"
         },
         {
             "name": "behat/mink-extension",
@@ -3006,12 +3271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkSelenium2Driver.git",
-                "reference": "fef36e8cc6793d072deb9645935c800a58923b92"
+                "reference": "c2d36feb081057c3137e828fda4a9458e6ab1c76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/fef36e8cc6793d072deb9645935c800a58923b92",
-                "reference": "fef36e8cc6793d072deb9645935c800a58923b92",
+                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/c2d36feb081057c3137e828fda4a9458e6ab1c76",
+                "reference": "c2d36feb081057c3137e828fda4a9458e6ab1c76",
                 "shasum": ""
             },
             "require": {
@@ -3056,7 +3321,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2014-07-13 09:59:06"
+            "time": "2014-08-13 23:29:15"
         },
         {
             "name": "behat/symfony2-extension",
@@ -4675,13 +4940,13 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "doctrine/orm": 20,
-        "doctrine/dbal": 20,
         "doctrine/doctrine-bundle": 20,
         "elnur/bootstrap-bundle": 20,
         "c33s/static-page-content-bundle": 20,
+        "sylius/settings-bundle": 20,
         "behat/symfony2-extension": 20,
         "behat/mink-browserkit-driver": 20,
         "behat/mink-selenium2-driver": 20,

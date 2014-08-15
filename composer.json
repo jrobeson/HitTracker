@@ -31,7 +31,8 @@
         "elnur/bootstrap-bundle": "dev-master",
         "sylius/resource-bundle": "~0.1",
         "c33s/static-page-content-bundle": "dev-master",
-        "kunstmaan/live-reload-bundle": "~2.3"
+        "kunstmaan/live-reload-bundle": "~2.3",
+        "sylius/settings-bundle": "dev-combined-fixes"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
@@ -86,5 +87,11 @@
         "branch-alias": {
             "dev-master": "2.5-dev"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jrobeson/SyliusSettingsBundle"
+        }
+    ]
 }
