@@ -14,6 +14,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Elnur\Bundle\BootstrapBundle\ElnurBootstrapBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
@@ -23,6 +26,7 @@ class AppKernel extends Kernel
             new HitTracker\CommonBundle\CommonBundle(),
             new HitTracker\GameBundle\HitTrackerGameBundle(),
             new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
