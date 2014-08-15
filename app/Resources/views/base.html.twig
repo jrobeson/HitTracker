@@ -16,7 +16,7 @@
     <body>
         <div id="content-wrapper">
             {{ include('::navbar.html.twig') }}
-            <main role="main" class="container-fluid">
+            <main role="main" class="container">
                 <div class="row">
                     <div class="col-md-12">
                         {{ include('::messages.html.twig') }}
@@ -24,12 +24,12 @@
                     </div>
                 </div>
             </main>
-            <footer class="row">
-                <div class="col-md-12">
-                    {{ include('::footer.html.twig') }}
-                </div>
-            </footer>
         </div>
+        <footer class="container">
+            <div class="col-md-12">
+                {{ include('::footer.html.twig') }}
+            </div>
+        </footer>
         {% block javascripts %}
             <script src="{{ asset('assets/js/app.js') }}"></script>
         {% endblock %}
