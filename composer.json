@@ -16,7 +16,6 @@
         "ext-pdo_pgsql": "*",
         "symfony/symfony": "2.5.*",
         "doctrine/orm": "~2.5@dev",
-        "doctrine/dbal": "~2.5@dev",
         "doctrine/doctrine-bundle": "~1.3@dev",
         "twig/extensions": "~1.0",
         "symfony/swiftmailer-bundle": "~2.3",
