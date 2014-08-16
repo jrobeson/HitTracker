@@ -5,6 +5,7 @@
 
     <parameters>
         <parameter key="twig.intl.extension.class">Twig_Extensions_Extension_Intl</parameter>
+        <parameter key="hittracker_common.form.positive_integer.type.class">HitTracker\CommonBundle\Form\Type\PositiveIntegerType</parameter>
         <parameter key="knp_rad.twig.link_attributes_extension.class">HitTracker\CommonBundle\Twig\LinkAttributesExtension</parameter>
         <parameter key="knp_rad.csrf.listener.class">HitTracker\CommonBundle\EventListener\CsrfListener</parameter>
         <parameter key="knp_rad.csrf_link.intention">link</parameter>
@@ -13,6 +14,9 @@
     <services>
         <service id="twig.extension.intl" class="%twig.intl.extension.class%">
             <tag name="twig.extension"/>
+        </service>
+        <service id="hittracker_common.form.type.positive_integer" class="%hittracker_common.form.positive_integer.type.class%">
+            <tag name="form.type" alias="hittracker_common_positive_integer"/>
         </service>
         <service id="knp_rad.twig.link_attributes_extension" class="%knp_rad.twig.link_attributes_extension.class%">
             <argument type="service" id="form.csrf_provider"/>
