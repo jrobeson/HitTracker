@@ -19,10 +19,13 @@ addons:
 services:
   - redis-server
 
+before_install:
+    - composer self-update
+install:
+    - composer install --prefer-source --no-interaction
+
 before_script:
     - gem install sass
-    - composer self-update
-    - composer install --no-interaction
     - cp app/config/parameters.travis.yml app/config/parameters.yml
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
