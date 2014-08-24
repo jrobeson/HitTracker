@@ -18,28 +18,25 @@
                    </a>
                 </li>
                 <li>
-                    <a href="{# url('') #}">
-                        {# link_to 'New Game', new_game_path #}
+                    <a href="{{ path('hittracker_game_create') }}">
                         {{ 'New Game'|trans }}
                     </a>
                 </li>
                 <li>
-                    <a href="{# url() #}">
+                    <a href="{{ path('hittracker_game_index') }}">
                         {# link_to 'List Games', games_path #}
                         {{ 'List Games'|trans }}
                     </a>
                 </li>
                 <li>
-                    <a href="{# url() #}">
-                        {# = link_to 'Vests', vests_path #}
+                    <a href="{{ path('hittracker_vest_index') }}">
                         {{ 'Vests'|trans }}
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{# url() #}" target="_blank">
-                        {# link_to 'Scoreboard', scoreboard_games_path #}
+                    <a href="{{ path('hittracker_game_scoreboard') }}" target="_blank">
                         {{ 'Scoreboard'|trans }}
                     </a>
                 </li>
