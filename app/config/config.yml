@@ -58,3 +58,11 @@ swiftmailer:
 c33s_static_page_content:
     content_bundle: HitTrackerGameBundle
     content_dir: Pages
+
+sylius_settings:
+    driver: doctrine/orm
+
+doctrine_cache:
+    providers:
+        sylius_settings:
+            type: file_system
