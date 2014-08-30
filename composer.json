@@ -32,7 +32,8 @@
         "sylius/resource-bundle": "~0.1",
         "c33s/static-page-content-bundle": "dev-master",
         "kunstmaan/live-reload-bundle": "~2.3",
-        "sylius/settings-bundle": "dev-combined-fixes"
+        "sylius/settings-bundle": "dev-combined-fixes",
+        "guzzlehttp/guzzle": "~4.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
