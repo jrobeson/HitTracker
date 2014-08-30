@@ -74,3 +74,22 @@ doctrine_cache:
     providers:
         sylius_settings:
             type: file_system
+
+sylius_resource:
+    resources:
+        hittracker.vest:
+            driver: doctrine/orm
+            templates: HitTrackerGameBundle:Vest
+            classes:
+                model: HitTracker\GameBundle\Entity\Vest
+                #interface: App\Entity\UserInterface
+                controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+                repository: HitTracker\GameBundle\Entity\VestRepository
+        hittracker.game:
+            driver: doctrine/orm
+            templates: HitTrackerGameBundle:Game
+            classes:
+                model: HitTracker\GameBundle\Entity\Game
+                #interface: App\Entity\UserInterface
+                controller: HitTracker\GameBundle\Controller\GameController
+                repository: HitTracker\GameBundle\Entity\GameRepository
