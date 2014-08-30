@@ -3,6 +3,7 @@
 /build/
 /bin/*
 !bin/console
+!bin/hit_reader
 !bin/symfony_requirements
 /composer.phar
 /node_modules

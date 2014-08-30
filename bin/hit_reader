@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+require 'json'
+require 'net/http'
+require 'optparse'
+require 'serialport'
+
+# Noop Logger
+class Logger
+
+  def debug(message)
+    write message
+  end
+
+  def error(message)
+    write message
+  end
+
+  def info(message)
+    write message
+  end
+
+  def write(message)
+  end
+end
+
+class ConsoleLogger < Logger
+  def write(message)
+    puts message
+  end
+end
+
+class HitReader
+  BAUD_RATE = 9600 # this is required by the device
+  # Any of the other button presses are not valid zones
+  BUTTON_TO_ZONE_MAP = {
+    16 => 1,
+    32 => 2,
+    64 => 3,
+  }
+
+  attr_reader :host_url, :logger
+
+  def initialize(logger)
+    @logger = logger
+  end
+
+  def setup(device_path, host_url = nil)
+    @dongle = init_dongle device_path
+    @logger.info "Initialized Port: #{device_path}"
+    @host_url = host_url
+    @logger.info "Hit Target Url: #{host_url}"
+  end
+
+  def run
+    last_hit = nil
+    loop do
+      IO.select([@dongle])
+      button, esn = @dongle.read(5).unpack('CH8')
+
+      next unless BUTTON_TO_ZONE_MAP.include? button
+
+      hit = build button, esn
+
+      next if hit.eql? last_hit # avoid "hold" presses counting as multiple hits
+
+      @logger.debug JSON.dump hit
+      send hit
+      last_hit = hit
+    end
+  end
+
+  def init_dongle(path)
+    SerialPort.new path, BAUD_RATE
+  rescue Errno::ENOENT => e
+    @logger.error e.message
+    exit false
+  end
+
+  def send(hit)
+    uri = URI(@host_url)
+    res = Net::HTTP.post_form(uri, hit)
+    @logger.debug res.body
+  end
+
+  # TODO: use milliseconds for hit time for finer resolution
+  def build(button, esn)
+    { esn: esn,
+      zone: BUTTON_TO_ZONE_MAP[button],
+      time: Time.now.to_i
+    }
+  end
+end
+
+logger = ConsoleLogger.new
+hr = HitReader.new logger
+hr.setup '/dev/ttyUSB0', 'http://localhost/games/hit'
+hr.run
