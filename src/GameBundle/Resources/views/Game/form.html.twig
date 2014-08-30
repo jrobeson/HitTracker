@@ -1,0 +1,63 @@
+{% set game_settings = sylius_settings_all('game') %}
+{{ form_start(form, {'action': path('hittracker_game_create'),
+'layout': 'horizontal',
+'attr': {'role': 'form', 'novalidate': 'novalidate'}}) }}
+{{  form_errors(form) }}
+
+<div class="row">
+    <div class="col-md-3">
+    {{ form_row(form.game_length) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.playerLifeCredits) }}
+    </div>
+    <div class="col-md-3">
+        {{ form_row(form.lifeCreditsDeducted) }}
+    </div>
+</div>
+<div class="row players" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
+        {% set team_count = form.players.count / 2 %}
+    {% for team in form.players|batch(team_count)%}
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="form-control-static col-lg-2">
+                    {{ 'Team'|trans }} {{ loop.index }}
+                </div>
+                <div class="form-control-static col-lg-5">
+                    {{ 'Name'|trans }}
+                </div>
+                <div class="form-control-static col-lg-2">
+                    {{ 'Vest'|trans }}
+                </div>
+                <div class="form-control-static col-lg-3">
+                    {{ 'Life Credits'|trans }}
+                </div>
+            </div>
+            {% for player in team %}
+                <div class="row">
+                    {{ form_row(player.team, {'value': 'Team ' ~ loop.parent.loop.index, 'labels_to_placeholders': true}) }}
+                    <div class="col-lg-2">
+                        {{ '%02d'|format(loop.index) }}
+                    </div>
+                    <div class="col-lg-5">
+                        {{ form_row(player.name, {'labels_to_placeholders': true}) }}
+                    </div>
+                    <div class="col-lg-2">
+                        {{ form_row(player.vest, {'labels_to_placeholders': true}) }}
+                    </div>
+                    <div class="col-lg-2">
+                        {{ form_row(player.lifeCredits, {'labels_to_placeholders': true}) }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {{ 'There are not enough vests to start a game.'|trans }}
+    {% endfor %}
+</div>
+<br />
+<div class="row">
+    {{ form_row(form.start, {'attr': {class: 'btn btn-primary'}}) }}
+    {{ form_row(form.reset, {'attr': {class: 'btn btn-danger'}}) }}
+</div>
+{{ form_end(form) }}

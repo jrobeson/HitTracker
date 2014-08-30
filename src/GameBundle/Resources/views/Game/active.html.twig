@@ -1,0 +1,22 @@
+{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% block content %}
+{% if game %}
+    <div class="hidden-print">
+        <strong class="text-center">
+            <a href="#" id="print-scores" class="btn btn-primary">
+                {{ 'Print Scores'|trans }}
+            </a>
+            {# link_to 'Stop Game', stop_game_path(@game), class: 'btn btn-danger', method: :post, remote: true, data: { confirm: 'Are you sure?' } #}
+            {# include('HitTrackerGameBundle:Game:hit_simulator.html.twig') #}
+        </strong>
+    </div>
+    {{ include('HitTrackerGameBundle:Game:scores.html.twig') }}
+{% else %}
+    <h1 class="text-center">{{ 'There is no active game'|trans }}</h1>
+    <div>
+        <a href="{{ path('hittracker_game_create') }}" class="btn btn-primary">
+            {{ 'New Game'|trans }}
+        </a>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% block content %}
+    {% from 'CommonBundle:Macros:misc.html.twig' import pagination %}
+    <h1>Games</h1>
+
+    {{ pagination(games) }}
+    <table class="table-striped">
+        <thead>
+        <tr>
+            <th>{{ 'ID'|trans }}</th>
+            <th>{{ 'Game Started'|trans }}</th>
+            <th>{{ 'Game Length'|trans }}</th>
+            <th>{{ 'Total Score'|trans }}</th>
+            <th>{{ 'Players'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+            <tr>
+                <td class="col-lg-1">
+                    <a href="{{ path('hittracker_game_show', {id: game.id}) }}">
+                        {{ game.id }}
+                    </a>
+                </td>
+                <td class="col-lg-2">
+                    {{ game.createdAt|localizeddate('short', 'short') }}
+                </td>
+                <td class="col-lg-2">
+                    {{ '%d:%02d'|format(game.gameLength['minutes'], game.gameLength['seconds']) }}
+                </td>
+                <td class="col-lg-2">{{ game.totalScore }}</td>
+                <td class="col-lg-2">{{ game.players.count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br/>
+    <a href="{{ path('hittracker_game_create') }}" class="btn btn-primary">
+        {{ 'New game'|trans }}
+    </a>
+{% endblock %}

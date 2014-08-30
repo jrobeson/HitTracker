@@ -1,0 +1,82 @@
+hittracker_vest_index:
+    path: /vests
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.vest:indexAction
+        _sylius:
+            paginate: 20
+hittracker_vest_create:
+    path: /vests/new
+    methods: [GET, POST]
+    defaults:
+        _controller: hittracker.controller.vest:createAction
+        _sylius:
+            redirect: hittracker_vest_index
+hittracker_vest_update:
+    path: /vests/{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: hittracker.controller.vest:updateAction
+        _sylius:
+            redirect: hittracker_vest_index
+hittracker_vest_delete:
+    path: /vests/{id}
+    methods: [DELETE]
+    defaults:
+        _controller: hittracker.controller.vest:deleteAction
+
+hittracker_game_index:
+    path: /games
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:indexAction
+        _sylius:
+            paginate: 20
+hittracker_game_create:
+    path: /games/new
+    methods: [GET, POST]
+    defaults:
+        _controller: hittracker.controller.game:createAction
+        _sylius:
+            redirect: hittracker_game_active
+hittracker_game_update:
+    path: /game/{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: hittracker.controller.game:updateAction
+hittracker_game_active:
+    path: /games/active/{arena}
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:activeAction
+        arena : 1
+        _sylius:
+            template: 'HitTrackerGameBundle:Game:active.html.twig'
+hittracker_game_scoreboard:
+    path: /games/scoreboard/{arena}
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:scoreBoardAction
+        arena : 1
+        _sylius:
+            template: 'HitTrackerGameBundle:Game:scoreboard.html.twig'
+hittracker_game_show:
+    path: /games/{id}
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:showAction
+hittracker_game_delete:
+    path: /games/{id}
+    methods: [DELETE]
+    defaults:
+        _controller: hittracker.controller.game:deleteAction
+hittracker_game_hit:
+    path: /games/hit
+    methods: [POST]
+    defaults:
+        _controller: hittracker.controller.game:hitAction
+hittracker_game_stop:
+    path: /games/stop
+    methods: [PATCH]
+    defaults:
+        _controller: hittracker.controller.game:stopAction

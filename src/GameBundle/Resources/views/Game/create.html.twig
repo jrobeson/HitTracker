@@ -1,0 +1,6 @@
+{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% block content %}
+    <h1>{{ 'Game Setup'|trans }}</h1>
+
+    {{ include('HitTrackerGameBundle:Game:form.html.twig') }}
+{% endblock %}

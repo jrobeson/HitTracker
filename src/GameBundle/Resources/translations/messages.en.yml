@@ -1,0 +1,35 @@
+'Print Scores': 'Print Scores'
+'There is no active game': 'There is no active game'
+'New Game': 'New Game'
+'Game Setup': 'Game Setup'
+'Game Length (in minutes)': 'Game Length (in minutes)'
+Team: Team
+'There are not enough vests to start a game.': 'There are not enough vests to start a game.'
+'Start Game': 'Start Game'
+'How Many Players?': 'How Many Players?'
+Name: Name
+Vest: Vest
+'Life  Credits': 'Life  Credits'
+ID: ID
+'Game Ended': 'Game Ended'
+'Total Score': 'Total Score'
+'New game': 'New game'
+'Game Length': 'Game Length'
+Minutes: Minutes
+'Time Left': 'Time Left'
+'Player No': 'Player #'
+Zone: Zone
+'Life Credits': 'Life Credits'
+'Team Total': 'Team Total'
+Back: Back
+'Update Game': 'Update Game'
+'Create Vest': 'Create Vest'
+ESN: ESN
+'Active?': 'Active?'
+'Date Added': 'Date Added'
+Options: Options
+Edit: Edit
+Delete: Delete
+'New vest': 'New vest'
+'Update Vest': 'Update Vest'
+hittracker_game.game.player_no: 'Player #'

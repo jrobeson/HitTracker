@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/style/scoreboard.css') }}" type="text/css"/>
+{% endblock %}
+{% block nav %}{% endblock %}
+{% block messages %}{% endblock %}
+{% block content %}
+    <div class="col-md-12 logo">
+        <img class="center-block img-responsive" src="{{ asset('bundles/hittrackergame/images/scoreboard/logo.jpg') }}" />
+    </div>
+    {% if game %}
+        {{ include('HitTrackerGameBundle:Game:scores.html.twig') }}
+    {% else %}
+      <h1 class="text-center">{{ 'There is no active game'|trans }}</h1>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+    <div class="col-md-6">
+        <img class="center-block img-responsive" src="{{ asset('bundles/hittrackergame/images/scoreboard/banner-left.jpg') }}"/>
+    </div>
+    <div class="col-md-6">
+        <img class="center-block img-responsive" src="{{ asset('bundles/hittrackergame/images/scoreboard/banner-right.jpg') }}"/>
+    </div>
+{% endblock %}

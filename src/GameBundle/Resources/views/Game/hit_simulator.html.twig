@@ -1,0 +1,11 @@
+<fieldset>
+    <legend>{{ 'Hit Simulator'|trans }}</legend>
+</fieldset>
+%fieldset
+  = form_tag(hit_games_path, method: 'post', remote: true, id: 'hit-simulator', class: 'form-inline') do |f|
+    - players = @game.game_players.map { |player| [player.name, player.esn] }
+    = hidden_field_tag(:zone, '')
+    .form-group
+      = label_tag(:esn, 'Player')
+      = select_tag(:esn, options_for_select(players), class: 'form-control')
+
