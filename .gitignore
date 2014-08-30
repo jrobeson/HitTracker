@@ -12,6 +12,7 @@
 /var/logs/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
+/tmp
 /vendor/
 /web/bundles/
 /web/assets/
