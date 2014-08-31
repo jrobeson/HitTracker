@@ -96,7 +96,7 @@ class GameController extends ResourceController
     {
 
         $client = new Client();
-        $response = $client->post('http://hittracker.local.lan/publish/game', [
+        $response = $client->post('http://localhost/publish/game', [
             'headers' => ['Event-Type' => $event],
             'json'    => $data,
         ]);
