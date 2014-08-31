@@ -63,12 +63,6 @@ class Game
     private $createdAt;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
-     */
-    private $updatedAt;
-
-    /**
      * @var Collection
      *
      * @Assert\Valid()
@@ -201,26 +195,6 @@ class Game
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-    /**
-     * Set the date the game was updated
-     *
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * Get the date the game was updated
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**
@@ -382,13 +356,5 @@ class Game
     public function setCreatedAtValue()
     {
         $this->createdAt = new \DateTime();
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        $this->updatedAt = new \DateTime();
     }
 }
