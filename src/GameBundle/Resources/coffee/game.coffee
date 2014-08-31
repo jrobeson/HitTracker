@@ -23,9 +23,6 @@ $ ->
     $(window).on 'unload', (source) ->
       source.close
 
-    $('#hit-simulator select[name="esn"]').change ->
-      $(this).trigger 'focusout'
-
     countdown_ref = $('#countdown')
     game_end = new Date(countdown_ref.data('gameEndTime'))
     countdown_ref.countdown(game_end)
@@ -40,6 +37,9 @@ $ ->
 $('#print-scores').click ->
   copies = $('tr[id^="player-"]').length
   printScores copies
+
+$('#hit-simulator select[name="esn"]').change ->
+  $(this).trigger 'focusout'
 
 pushHit = (selector, zone) ->
   value = parseInt($(selector).text()) + 1
