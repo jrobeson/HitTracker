@@ -5,6 +5,8 @@ hittracker_vest_index:
         _controller: hittracker.controller.vest:indexAction
         _sylius:
             paginate: 20
+            sorting:
+                id: asc
 hittracker_vest_create:
     path: /vests/new
     methods: [GET, POST]
