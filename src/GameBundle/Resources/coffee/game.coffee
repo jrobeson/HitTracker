@@ -5,8 +5,6 @@ $ ->
     if $('body').hasClass('hittracker-game-scoreboard')
       source.addEventListener 'game.start', (e) ->
         window.location.reload(true)
-      source.addEventListener 'game.end', (e) ->
-        window.location.reload(true)
 
     source.addEventListener 'game.hit', (e) ->
       event_data = $.parseJSON e.data
@@ -37,9 +35,6 @@ $ ->
           format = '%-H:' + format
 
         $(this).text(event.strftime(format))
-      ).on('finish.countdown', ->
-        if $('body').hasClass('hittracker-game-scoreboard')
-          window.location.reload(true)
       )
 
 $('#print-scores').click ->
