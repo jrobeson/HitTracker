@@ -28,10 +28,6 @@
                     <a href="{{ path('hittracker_vest_update', {id: vest.id}) }}">
                         {{ 'Edit'|trans }}
                     </a>
-                    |
-                    <a href="{{ path('hittracker_vest_delete', {id: vest.id}) }}" {{ link_attr('delete') }}>
-                        {{ 'Delete'|trans }}
-                    </a>
                 </td>
             </tr>
             {% endfor %}
