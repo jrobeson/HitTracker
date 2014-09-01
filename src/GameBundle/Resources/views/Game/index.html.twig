@@ -26,7 +26,7 @@
                     {{ game.createdAt|localizeddate('short', 'short') }}
                 </td>
                 <td class="col-lg-2">
-                    {{ '%d:%02d'|format(game.gameLength['minutes'], game.gameLength['seconds']) }}
+                    {{ '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) }}
                 </td>
                 <td class="col-lg-2">{{ game.totalScore }}</td>
                 <td class="col-lg-2">{{ game.players.count }}</td>
