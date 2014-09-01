@@ -23,7 +23,7 @@ $ ->
     $(window).on 'unload', (source) ->
       source.close
 
-    countdown_ref = $('#countdown')
+    countdown_ref = $('#game-time-countdown')
     game_end = countdown_ref.data('gameEndTime')
     countdown_ref.countdown(game_end)
       .on('update.countdown', (event) ->
