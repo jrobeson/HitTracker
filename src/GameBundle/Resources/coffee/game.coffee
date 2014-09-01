@@ -30,7 +30,11 @@ $ ->
         format = '%M:%S'
         if event.offset.hours > 0
           format = '%-H:' + format
-
+        $(this).text(event.strftime(format))
+      ).on('finish.countdown', (event) ->
+        format = '%M:%S'
+        if event.offset.hours > 0
+          format = '%-H:' + format
         $(this).text(event.strftime(format))
       )
 
