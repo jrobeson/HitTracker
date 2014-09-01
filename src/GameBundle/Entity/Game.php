@@ -13,7 +13,6 @@ use HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
  * Game
  *
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="games")
  */
 class Game
@@ -200,13 +199,17 @@ class Game
     /**
      * Set the length of a game in minutes
      *
-     * @param integer $time time in minutes
+     * @param integer $minutes time in minutes
      */
-    public function setGameLength($time)
+    public function setGameLength($minutes)
     {
-        $this->gameLength = $time;
-        $dateTime = new \DateTime('+' . $time . ' minutes');
-        $this->setEndsAt($dateTime);
+        $this->gameLength = (int)$minutes;
+
+        $start = new \DateTime();
+        $this->setCreatedAt($start);
+        $end = clone $start;
+        $end->add(new \DateInterval('PT'.$this->gameLength.'M'));
+        $this->setEndsAt($end);
     }
 
     /**
@@ -348,13 +351,5 @@ class Game
         })->toArray());
 
         return $score;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        $this->createdAt = new \DateTime();
     }
 }
