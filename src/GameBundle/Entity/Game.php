@@ -218,7 +218,7 @@ class Game
         if (empty($this->gameLength) && !empty($this->createdAt)) {
             $parts = $this->timeTotal();
             return [
-                'minutes' => ($parts->h * 60) + $parts->m,
+                'minutes' => ($parts->h * 60) + $parts->i,
                 'seconds' => $parts->s
             ];
         }
