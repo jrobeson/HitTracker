@@ -24,7 +24,7 @@ $ ->
       source.close
 
     countdown_ref = $('#countdown')
-    game_end = new Date(countdown_ref.data('gameEndTime'))
+    game_end = countdown_ref.data('gameEndTime')
     countdown_ref.countdown(game_end)
       .on('update.countdown', (event) ->
         format = '%M:%S'
