@@ -34,6 +34,9 @@ hittracker_game_index:
         _controller: hittracker.controller.game:indexAction
         _sylius:
             paginate: 20
+            sorting:
+                id: asc
+
 hittracker_game_create:
     path: /games/new
     methods: [GET, POST]
