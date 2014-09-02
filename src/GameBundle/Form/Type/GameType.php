@@ -3,22 +3,24 @@
 namespace HitTracker\GameBundle\Form\Type;
 
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class GameType extends AbstractType
 {
     private $settingsManager;
+    private $eventSubscriber;
 
     /**
      * @param SettingsManagerInterface $settingsManager
+     * @param EventSubscriberInterface $eventSubscriber
      */
-    public function __construct(SettingsManagerInterface $settingsManager)
+    public function __construct(SettingsManagerInterface $settingsManager, EventSubscriberInterface $eventSubscriber)
     {
         $this->settingsManager = $settingsManager;
+        $this->eventSubscriber = $eventSubscriber;
     }
 
     /**
@@ -55,47 +57,8 @@ class GameType extends AbstractType
                 'label' => 'Start Game',
             ])
             ->add('reset', 'reset')
+            ->addEventSubscriber($this->eventSubscriber)
         ;
-
-        $builder->addEventListener(
-            FormEvents::PRE_SUBMIT,
-            function (FormEvent $event) {
-                $game = $event->getData();
-
-                foreach ($game['players'] as $k => $v) {
-                    if (empty($v['lifeCredits'])) {
-                        $game['players'][$k]['lifeCredits'] = $game['playerLifeCredits'];
-                    }
-                    /*if (0 == $player['name']) {
-                       $game['players']['lifeCredits'] = '';
-                    }*/
-                    //$game['players'][$k]['lifeCredits'] = 500;
-                    if (empty($v['name'])) {
-                        unset($game['players'][$k]);
-                    }
-                }
-                $event->setData($game);
-            });
-
-        /*$builder->addEventListener(
-            FormEvents::SUBMIT,
-            function (FormEvent $event) {
-                $game = $event->getData();
-
-                foreach ($game->getPlayers() as $player) {
-                    if (empty($player->getLifeCredits())) {
-                        $player->setLifeCredits($lifeCredits);
-                    }
-                    //$game['players'][$k]['lifeCredits'] = 500;
-                    /*if (empty($v['name'])) {
-                        $game['players'][$k]['team'] = '';
-                        $game['players'][$k]['vest'] = '';
-                        $game['players'][$k]['life_credits'] = '';
-                    }*/
-                /*}
-                $event->setData($game);
-            });*/
-
     }
 
     /**
@@ -105,9 +68,6 @@ class GameType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'HitTracker\GameBundle\Entity\Game',
-            'error_mapping' => [
-                '.' => 'city',
-            ],
         ]);
     }
 

@@ -9,7 +9,7 @@
         <parameter key="hittracker_game.settings_schema.game.class">HitTracker\GameBundle\Settings\GameSettingsSchema</parameter>
         <parameter key="hittracker_game.manager.game.class">HitTracker\GameBundle\GameManager</parameter>
         <parameter key="hittracker_game.form.game.type.class">HitTracker\GameBundle\Form\Type\GameType</parameter>
-        <parameter key="hittracker_game.event_listener.game.class">HitTracker\GameBundle\EventListener\GameListener</parameter>
+        <parameter key="hittracker_game.form.game.event_subscriber.class">HitTracker\GameBundle\EventListener\GameFormSubscriber</parameter>
         <!-- player -->
         <parameter key="hittracker_game.form.player_collection.type.class">HitTracker\GameBundle\Form\Type\PlayerCollectionType</parameter>
         <parameter key="hittracker_game.form.player.type.class">HitTracker\GameBundle\Form\Type\PlayerType</parameter>
@@ -29,12 +29,12 @@
         </service>
         <service id="hittracker_game.form.type.game" class="%hittracker_game.form.game.type.class%">
             <argument type="service" id="sylius.settings.manager" />
+            <argument type="service" id="hittracker_game.form.event_subscriber.game"/>
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game"/>
         </service>
-        <service id="hittracker_game.event_listener.game" class="%hittracker_game.event_listener.game.class%">
+        <service id="hittracker_game.form.event_subscriber.game" class="%hittracker_game.form.game.event_subscriber.class%">
             <argument type="service" id="hittracker.repository.game" />
-            <tag name="kernel.event_listener" event="hittracker.game.pre_create" method="arenaOpenCheck"/>
         </service>
         <!-- player -->
         <service id="hittracker_game.form.type.player" class="%hittracker_game.form.player.type.class%">
