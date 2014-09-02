@@ -13342,6 +13342,9 @@ $(function() {
       source.addEventListener('game.start', function(e) {
         return window.location.reload(true);
       });
+      source.addEventListener('game.end', function(e) {
+        return window.location.reload(true);
+      });
     }
     source.addEventListener('game.hit', function(e) {
       var event_data, hit;
@@ -13361,8 +13364,11 @@ $(function() {
     $(window).on('unload', function(source) {
       return source.close;
     });
-    countdown_ref = $('#game-time-countdown');
-    game_end = countdown_ref.data('game-end-time');
+    $('#hit-simulator select[name="esn"]').change(function() {
+      return $(this).trigger('focusout');
+    });
+    countdown_ref = $('#countdown');
+    game_end = new Date(countdown_ref.data('gameEndTime'));
     return countdown_ref.countdown(game_end).on('update.countdown', function(event) {
       var format;
       format = '%M:%S';
@@ -13370,13 +13376,10 @@ $(function() {
         format = '%-H:' + format;
       }
       return $(this).text(event.strftime(format));
-    }).on('finish.countdown', function(event) {
-      var format;
-      format = '%M:%S';
-      if (event.offset.hours > 0) {
-        format = '%-H:' + format;
+    }).on('finish.countdown', function() {
+      if ($('body').hasClass('hittracker-game-scoreboard')) {
+        return window.location.reload(true);
       }
-      return $(this).text(event.strftime(format));
     });
   }
 });
@@ -13385,10 +13388,6 @@ $('#print-scores').click(function() {
   var copies;
   copies = $('tr[id^="player-"]').length;
   return printScores(copies);
-});
-
-$('#hit-simulator select[name="esn"]').change(function() {
-  return $(this).trigger('focusout');
 });
 
 pushHit = function(selector, zone) {
@@ -13407,24 +13406,3 @@ printScores = function(copies) {
   window.jsPrintSetup.setOption('numCopies', copies);
   return window.jsPrintSetup.print();
 };
-
-var alertDismiss;
-
-alertDismiss = function() {
-  var target, timeout;
-  target = $('.alert');
-  timeout = target.data('auto-dismiss');
-  if (!timeout) {
-    return;
-  }
-  timeout = parseInt(timeout) * 1000;
-  return setTimeout(function() {
-    return target.fadeTo(500, 0).slideUp(500, function() {
-      return $(this).remove();
-    });
-  }, timeout);
-};
-
-$(document).ready(function() {
-  return alertDismiss();
-});
