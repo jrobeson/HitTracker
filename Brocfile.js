@@ -68,7 +68,7 @@ filesMap[bowerRoot + '/bootstrap-sass-official/assets/javascripts'] = ['bootstra
 filesMap[bowerRoot + '/jquery-color'] = ['jquery.color.js'];
 filesMap[bowerRoot + '/jquery.countdown/dist'] = ['jquery.countdown.js'];
 filesMap[__dirname + '/web/bundles/common/js'] = ['jquery-ujs.js'];
-filesMap[__dirname + '/src/GameBundle/Resources/coffee'] = ['game.coffee'];
+filesMap[__dirname + '/src/GameBundle/Resources/coffee'] = ['game.coffee', 'common.coffee'];
 
 var jsTrees = [];
 for(var dir in filesMap) {
@@ -91,7 +91,8 @@ appJs = concat(appJs, {
         'js/jquery.color.js',
         'js/jquery.countdown.js',
         'js/jquery-ujs.js',
-        'js/game.js'
+        'js/game.js',
+        'js/common.js'
     ],
     outputFile: '/js/app.js'
 });
