@@ -15,12 +15,17 @@ class GameFormSubscriber implements EventSubscriberInterface
 {
     private $repository;
 
+    /**
+     * @param GameRepository $repository
+     */
     public function __construct(GameRepository $repository)
     {
         $this->repository = $repository;
     }
 
     /**
+     * Check if the game arena is open for playing
+     *
      * @param FormEvent $event
      * @todo translations
      */
@@ -35,6 +40,11 @@ class GameFormSubscriber implements EventSubscriberInterface
         );
     }
 
+    /**
+     * Remove players that that were filled out
+     *
+     * @param FormEvent $event
+     */
     public function removeUnusedPlayers(FormEvent $event)
     {
         $game = $event->getData();
@@ -45,6 +55,13 @@ class GameFormSubscriber implements EventSubscriberInterface
         }
         $event->setData($game);
     }
+
+    /**
+     * Use the game default life credits if none were
+     * specified for the player
+     *
+     * @param FormEvent $event
+     */
     public function addLifeCredits(FormEvent $event)
     {
         $game = $event->getData();
@@ -57,6 +74,9 @@ class GameFormSubscriber implements EventSubscriberInterface
         $event->setData($game);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getSubscribedEvents()
     {
         return [
