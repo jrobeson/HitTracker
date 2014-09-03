@@ -101,29 +101,28 @@ class GameController extends ResourceController
             'json'    => $data,
         ]);
 
-        echo $response->getBody();
+        //echo $response->getBody();
     }
 
     public function stopAction(Request $request)
     {
-        $game = $this->getRepository()->getActiveGame(1);
+        $arena = $request->request->get('arena');
+        $game = $this->getRepository()->getActiveGame($arena);
 
-        if (!$game) {
-            return new JsonResponse(['error' => 'no such game'], 404);
+        if ($game) {
+            $game->stop();
+            $this->getDoctrine()->getManager()->persist($game);
+            $this->getDoctrine()->getManager()->flush();
+
+            $data = [
+                'arena'      => $game->getArena(),
+                'created_at' => $game->getCreatedAt()->getTimestamp(),
+                'ends_at'    => $game->getEndsAt()->getTimestamp(),
+            ];
+            $this->publish('game.end', $data);
         }
 
-        $game->stop();
-        $this->getDoctrine()->getManager()->persist($game);
-        $this->getDoctrine()->getManager()->flush();
-
-        $data = [
-            'arena' => $game->getArena(),
-            'created_at' => $game->getCreatedAt()->getTimestamp(),
-            'ends_at' => $game->getEndsAt()->getTimestamp(),
-        ];
-        $this->publish('game.end', $data);
-
-        return new JsonResponse([], 200);
+        return $this->redirect($this->generateUrl('hittracker_game_create'));
     }
 
     /**
