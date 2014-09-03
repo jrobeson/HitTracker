@@ -48,11 +48,11 @@ class GameFormSubscriber implements EventSubscriberInterface
     public function removeUnusedPlayers(FormEvent $event)
     {
         $game = $event->getData();
-        foreach ($game['players'] as $k => $v) {
-            if (empty($v['name'])) {
-                unset($game['players'][$k]);
-            }
-        }
+        $game['players'] = array_filter($game['players'],
+            function($player) {
+                return !empty($player['name']);
+        });
+
         $event->setData($game);
     }
 
