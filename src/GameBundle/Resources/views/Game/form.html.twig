@@ -1,4 +1,5 @@
 {% set game_settings = sylius_settings_all('game') %}
+{% if form.players is not empty %}
 {{ form_start(form, {'action': path('hittracker_game_create'),
 'layout': 'horizontal',
 'attr': {'role': 'form', 'novalidate': 'novalidate'}}) }}
@@ -16,7 +17,7 @@
     </div>
 </div>
 <div class="row players" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
-        {% set team_count = form.players.count / 2 %}
+    {% set team_count = form.players.count / 2 %}
     {% for team in form.players|batch(team_count)%}
         <div class="col-lg-6">
             <div class="row">
@@ -51,8 +52,6 @@
                 </div>
             {% endfor %}
         </div>
-    {% else %}
-        {{ 'There are not enough vests to start a game.'|trans }}
     {% endfor %}
 </div>
 <br />
@@ -61,3 +60,6 @@
     {{ form_row(form.reset, {'attr': {class: 'btn btn-danger'}}) }}
 </div>
 {{ form_end(form) }}
+{% else %}
+    <span class="text-danger">{{ 'There are not enough vests to start a game.'|trans }}</span>
+{% endif %}
