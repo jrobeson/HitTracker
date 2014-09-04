@@ -1,20 +1,22 @@
-<div class="col-md-6 col-sm-12">
-    <h2 class="text-center">
-        {{ 'Game Length'|trans }}:
-        {{ '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) }}
-        {{ 'Minutes'|trans }}
-    </h2>
-</div>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <h2 class="text-center">
+            {{ 'Game Length'|trans }}:
+            {{ '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) }}
+            {{ 'Minutes'|trans }}
+        </h2>
+    </div>
 
-<div class="col-md-6 col-sm-12">
-    {% if game.active %}
-    <h2 class="text-center">
-        {{ 'Time Left'|trans }}:
-        <span id="game-time-countdown" data-game-end-time="{{ game.endsAt.timeStamp * 1000 }}">
+    <div class="col-md-6 col-sm-12">
+        {% if game.active %}
+        <h2 class="text-center">
+            {{ 'Time Left'|trans }}:
+            <span id="game-time-countdown" data-game-end-time="{{ game.endsAt.timeStamp * 1000 }}">
 
-        </span>
-    </h2>
-    {% endif %}
+            </span>
+        </h2>
+        {% endif %}
+    </div>
 </div>
 <div class="col-lg-12">
     {% for team in game.teams %}
@@ -29,7 +31,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>{{ 'hittracker_game.game.player_no'|trans }}</th>
+                        <th>{{ '#' }}</th>
                         <th>{{ 'Name'|trans }}</th>
                         {% for zone in 1..3 %}
                             <th>
@@ -60,8 +62,8 @@
                     {% endfor %}
                 </tbody>
                 <tfoot>
-                    <td colspan="4"></td>
-                    <td>{{ 'Team Total'|trans }}</td>
+                    <td colspan="3"></td>
+                    <td colspan="2"><p class="text-right">{{ 'Team Total'|trans }}</p></td>
                     <td class="team-total">
                         {{ game.teamScore(team) }}
                     </td>
