@@ -16,8 +16,10 @@ class GameController extends ResourceController
     {
         $resource = $this->createNew();
 
-        foreach (\iter\range(0, 19) as $v) {
-            $player = new \HitTracker\GameBundle\Entity\Player();
+        $vests = $this->get('hittracker.repository.vest')->findActiveVests();
+
+        foreach ($vests as $vest) {
+            $player = new \HitTracker\GameBundle\Entity\Player('', $vest);
             $resource->addPlayer($player);
         }
 
