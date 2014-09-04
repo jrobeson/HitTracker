@@ -13429,8 +13429,16 @@ pushHit = function(selector, zone) {
 };
 
 printScores = function(copies) {
-  window.jsPrintSetup.setOption('numCopies', copies);
-  return window.jsPrintSetup.print();
+  jsPrintSetup.clearSilentPrint();
+  jsPrintSetup.setOption('numCopies', copies);
+  jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
+  jsPrintSetup.setOption('headerStrLeft', '');
+  jsPrintSetup.setOption('headerStrCenter', '');
+  jsPrintSetup.setOption('headerStrRight', '');
+  jsPrintSetup.setOption('footerStrLeft', '');
+  jsPrintSetup.setOption('footerStrCenter', '');
+  jsPrintSetup.setOption('footerStrRight', '');
+  return jsPrintSetup.print();
 };
 
 var alertDismiss;
