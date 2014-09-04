@@ -1,0 +1,28 @@
+$body-bg: #fff;
+$text-color: #000;
+
+$navbar-height: 0;
+$footer-height: 0;
+
+$table-bg: #fff;
+$table-bg-accent: #e6e6e6;
+
+@import 'common';
+
+.scores {
+  @extend .table;
+  color: #000;
+}
+
+.logo {
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+.banners {
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+.banners img {
+  margin: 0 auto;
+}

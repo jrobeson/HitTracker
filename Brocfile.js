@@ -37,6 +37,7 @@ function getEnv () {
 var bowerRoot = 'vendor/bower';
 var appCssFile = 'style/app.css';
 var scoreBoardCssFile = 'style/scoreboard.css';
+var scoreCardCssFile = 'style/scorecard.css';
 
 var sassSources = [
     bowerRoot + '/bootstrap-sass-official/assets/stylesheets',
@@ -53,6 +54,7 @@ var sassOptions = {
 var env = getEnv();
 var appCss;
 var scoreBoardCss;
+var scoreCardCss;
 var appJs;
 var appFonts;
 var appAssets;
@@ -60,7 +62,9 @@ var appAssets;
 appCss = compileSass(sassSources, 'app.scss', appCssFile, sassOptions);
 appCss = autoPrefixer(appCss);
 scoreBoardCss = compileSass(sassSources, 'scoreboard.scss', scoreBoardCssFile, sassOptions);
-scoreboardCss = autoPrefixer(scoreBoardCss);
+scoreBoardCss = autoPrefixer(scoreBoardCss);
+scoreCardCss = compileSass(sassSources, 'scorecard.scss', scoreCardCssFile, sassOptions);
+scoreCardCss = autoPrefixer(scoreCardCss);
 
 var filesMap = {};
 filesMap[bowerRoot + '/jquery/dist'] = ['jquery.js'];
@@ -111,6 +115,7 @@ if ('production' == env) {
     */
     appCss = cleanCss(appCss);
     scoreBoardCss = cleanCss(scoreBoardCss);
+    scoreCardCss = cleanCss(scoreCardCss);
 }
 
 appFonts = pickFiles(bowerRoot + '/fontawesome/fonts', {
@@ -118,7 +123,7 @@ appFonts = pickFiles(bowerRoot + '/fontawesome/fonts', {
     destDir: '/fonts'
 });
 
-appAssets = mergeTrees([appCss, scoreBoardCss, appJs, appFonts]);
+appAssets = mergeTrees([appCss, scoreBoardCss, scoreCardCss, appJs, appFonts]);
 /*if ('production' == env) {
     appAssets = assetRev(appAssets, {
         extensions: ['js', 'css', 'png', 'jpg', 'gif'],
