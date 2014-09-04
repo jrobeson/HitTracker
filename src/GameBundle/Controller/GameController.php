@@ -91,6 +91,24 @@ class GameController extends ResourceController
     }
 
     /**
+     * Show a printable score card
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function scoreCardAction(Request $request)
+    {
+        $view = $this
+            ->view()
+            ->setTemplate($this->config->getTemplate('scorecard.html'))
+            ->setTemplateVar($this->config->getResourceName())
+            ->setData($this->findOr404($request))
+        ;
+
+        return $this->handleView($view);
+    }
+
+    /**
      * @param       $event
      * @param array $data
      */

@@ -65,6 +65,11 @@ hittracker_game_scoreboard:
         arena : 1
         _sylius:
             template: 'HitTrackerGameBundle:Game:scoreboard.html.twig'
+hittracker_game_scorecard:
+    path: /games/scorecard/{id}
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:scoreCardAction
 hittracker_game_show:
     path: /games/{id}
     methods: [GET]
