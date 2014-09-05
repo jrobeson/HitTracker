@@ -38,9 +38,11 @@ $ ->
         $(this).text(event.strftime(format))
       )
 
-$('#print-scores').click ->
+$('#print-scores').click (event) ->
+  e.preventDefault()
+  url = $(this).attr('href')
   copies = $('tr[id^="player-"]').length
-  printScores copies
+  printScores url, copies
 
 $('#hit-simulator select[name="esn"]').change ->
   $(this).trigger 'focusout'
@@ -51,14 +53,35 @@ pushHit = (selector, zone) ->
     $(this).text value
   .animate {color: '#000'}, 500
 
-printScores = (copies) ->
-  jsPrintSetup.clearSilentPrint()
-  jsPrintSetup.setOption 'numCopies', copies
-  jsPrintSetup.setOption 'orientation', jsPrintSetup.kLandscapeOrientation
-  jsPrintSetup.setOption 'headerStrLeft', ''
-  jsPrintSetup.setOption 'headerStrCenter', ''
-  jsPrintSetup.setOption 'headerStrRight', ''
-  jsPrintSetup.setOption 'footerStrLeft', ''
-  jsPrintSetup.setOption 'footerStrCenter', ''
-  jsPrintSetup.setOption 'footerStrRight', ''
-  jsPrintSetup.print()
+printScores = (url, copies) ->
+
+  frame = document.createElement('iframe')
+  frame.setAttribute('id', 'print-frame')
+  frame.setAttribute('name', 'print-frame')
+  frame.setAttribute('type', 'content')
+  frame.setAttribute('collapsed', 'true')
+  document.documentElement.appendChild(frame)
+
+  frame.addEventListener 'load', (event) ->
+    doc = event.originalTarget
+    #if (doc.defaultView.frameElement)
+    #  return
+
+    jsPrintSetup.clearSilentPrint()
+    jsPrintSetup.setOption 'numCopies', copies
+    jsPrintSetup.setOption 'orientation', jsPrintSetup.kLandscapeOrientation
+    jsPrintSetup.setOption 'headerStrLeft', ''
+    jsPrintSetup.setOption 'headerStrCenter', ''
+    jsPrintSetup.setOption 'headerStrRight', ''
+    jsPrintSetup.setOption 'footerStrLeft', ''
+    jsPrintSetup.setOption 'footerStrCenter', ''
+    jsPrintSetup.setOption 'footerStrRight', ''
+    jsPrintSetup.printWindow(frame.contentWindow)
+    setTimeout ->
+      frame = document.getElementById('print-frame')
+      frame.destroy()
+    , 10
+  , true
+
+  frame.contentDocument.location.href = url
+

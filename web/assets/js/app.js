@@ -13406,10 +13406,12 @@ $(function() {
   }
 });
 
-$('#print-scores').click(function() {
-  var copies;
+$('#print-scores').click(function(event) {
+  var copies, url;
+  e.preventDefault();
+  url = $(this).attr('href');
   copies = $('tr[id^="player-"]').length;
-  return printScores(copies);
+  return printScores(url, copies);
 });
 
 $('#hit-simulator select[name="esn"]').change(function() {
@@ -13428,17 +13430,33 @@ pushHit = function(selector, zone) {
   }, 500);
 };
 
-printScores = function(copies) {
-  jsPrintSetup.clearSilentPrint();
-  jsPrintSetup.setOption('numCopies', copies);
-  jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
-  jsPrintSetup.setOption('headerStrLeft', '');
-  jsPrintSetup.setOption('headerStrCenter', '');
-  jsPrintSetup.setOption('headerStrRight', '');
-  jsPrintSetup.setOption('footerStrLeft', '');
-  jsPrintSetup.setOption('footerStrCenter', '');
-  jsPrintSetup.setOption('footerStrRight', '');
-  return jsPrintSetup.print();
+printScores = function(url, copies) {
+  var frame;
+  frame = document.createElement('iframe');
+  frame.setAttribute('id', 'print-frame');
+  frame.setAttribute('name', 'print-frame');
+  frame.setAttribute('type', 'content');
+  frame.setAttribute('collapsed', 'true');
+  document.documentElement.appendChild(frame);
+  frame.addEventListener('load', function(event) {
+    var doc;
+    doc = event.originalTarget;
+    jsPrintSetup.clearSilentPrint();
+    jsPrintSetup.setOption('numCopies', copies);
+    jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
+    jsPrintSetup.setOption('headerStrLeft', '');
+    jsPrintSetup.setOption('headerStrCenter', '');
+    jsPrintSetup.setOption('headerStrRight', '');
+    jsPrintSetup.setOption('footerStrLeft', '');
+    jsPrintSetup.setOption('footerStrCenter', '');
+    jsPrintSetup.setOption('footerStrRight', '');
+    jsPrintSetup.printWindow(frame.contentWindow);
+    return setTimeout(function() {
+      frame = document.getElementById('print-frame');
+      return frame.destroy();
+    }, 10);
+  }, true);
+  return frame.contentDocument.location.href = url;
 };
 
 var alertDismiss;
