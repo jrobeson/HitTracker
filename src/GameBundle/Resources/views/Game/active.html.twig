@@ -3,9 +3,7 @@
 {% if game %}
     <div class="row hidden-print">
         <strong class="text-center">
-            <a href="#" id="print-scores" class="btn btn-primary">
-                {{ 'Print Scores'|trans }}
-            </a>
+            {{ include 'HitTrackerGameBundle:Game:print_scores.html.twig' }}
         </strong>
         <a class="btn btn-danger" href="{{ path('hittracker_game_stop') }}" {{ link_attr('PATCH') }} data-params="arena={{ game.arena }}">
             {{ 'Stop Game'|trans }}

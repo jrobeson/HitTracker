@@ -1,15 +1,13 @@
 {% extends 'HitTrackerGameBundle::layout.html.twig' %}
 {% block content %}
-    <div class="hidden-print">
+    <div class="row">
         <div class="text-center">
-            <a id="print-scores" class="btn btn-primary" href="#">
-                {{ 'Print Scores'|trans }}
-            </a>
+            {{ include('HitTrackerGameBundle:Game:print_scores.html.twig') }}
         </div>
     </div>
-
     {{ include('HitTrackerGameBundle:Game:scores.html.twig') }}
-
-    <a href="{{ path('hittracker_game_index') }}">{{ 'Back'|trans}}</a>
+    <div class="row">
+        <a href="{{ path('hittracker_game_index') }}">{{ 'Back'|trans}}</a>
+    </div>
 {% endblock %}
 
