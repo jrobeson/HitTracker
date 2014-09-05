@@ -39,7 +39,8 @@ $ ->
       )
 
 $('#print-scores').click (event) ->
-  e.preventDefault()
+  event.preventDefault()
+
   url = $(this).attr('href')
   copies = $('tr[id^="player-"]').length
   printScores url, copies
