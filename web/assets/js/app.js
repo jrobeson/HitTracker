@@ -13408,7 +13408,7 @@ $(function() {
 
 $('#print-scores').click(function(event) {
   var copies, url;
-  e.preventDefault();
+  event.preventDefault();
   url = $(this).attr('href');
   copies = $('tr[id^="player-"]').length;
   return printScores(url, copies);
