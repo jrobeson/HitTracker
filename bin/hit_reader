@@ -63,9 +63,9 @@ class HitReader
 
       next if hit.eql? last_hit # avoid "hold" presses counting as multiple hits
 
+      last_hit = hit.clone
       @logger.debug JSON.dump hit
       send hit
-      last_hit = hit
     end
   end
 
