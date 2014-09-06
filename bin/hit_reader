@@ -78,15 +78,19 @@ class HitReader
 
   def send(hit)
     uri = URI(@host_url)
+    hit.delete('hit_matcher')
+    hit['time'] = Time.now
     res = Net::HTTP.post_form(uri, hit)
     @logger.debug res.body
   end
 
-  # TODO: use milliseconds for hit time for finer resolution
   def build(button, esn)
+    # quarter: (Time.now.to_f / 0.25).round * 0.25
+    r = (Time.now.to_f * 2).round / 2.0
+    hit_matcher = r == r ? r.to_i : r
     { esn: esn,
       zone: BUTTON_TO_ZONE_MAP[button],
-      time: Time.now.to_i
+      hit_matcher: hit_matcher
     }
   end
 end
