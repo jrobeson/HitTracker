@@ -1,7 +1,8 @@
 {% extends 'HitTrackerGameBundle::layout.html.twig' %}
 {% block content %}
 {% if game %}
-    <div class="row hidden-print">
+    <div class="row">
+        <br />
         <strong class="text-center">
             {{ include('HitTrackerGameBundle:Game:print_scores.html.twig') }}
         </strong>
