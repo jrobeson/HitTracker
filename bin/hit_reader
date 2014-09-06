@@ -52,7 +52,7 @@ class HitReader
   end
 
   def run
-    last_hit = nil
+    last_hit = {esn: '', zone: 0, hit_matcher: 0}
     loop do
       IO.select([@dongle])
       button, esn = @dongle.read(5).unpack('CH8')
