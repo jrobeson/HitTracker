@@ -1,8 +1,8 @@
 hittracker_game:
     resource: "@HitTrackerGameBundle/Resources/config/routing.yml"
 
-sylius_settings:
-    path: /settings
+hittracker_game_settings:
+    path: /settings/games
     defaults:
         _controller: sylius.controller.settings:updateAction
         template: SyliusSettingsBundle:Settings:update.html.twig

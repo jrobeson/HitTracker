@@ -1,0 +1,11 @@
+{% import 'SyliusResourceBundle:Macros:actions.html.twig' as actions %}
+
+<h1>Settings <small>Use this form to update settings</small></h1>
+<hr />
+
+{% set ns = app.request.attributes.get('namespace') %}
+<form action="{{ path('hittracker_' ~ ns ~ '_settings') }}" method="post" class="form-horizontal">
+    {{ form_widget(form) }}
+    <input type="hidden" name="namespace" value="" />
+    {{ actions.update() }}
+</form>
