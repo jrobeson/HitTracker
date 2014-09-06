@@ -23,7 +23,6 @@ class GameSettingsSchema implements SchemaInterface
                 'team_player_count' => 10,
                 'player_life_credits' => 500,
                 'life_credits_deducted' => 10,
-                'arenas'       => 1,
             ])
             ->setAllowedTypes([
                 'game_length'  => ['int'],
@@ -31,7 +30,6 @@ class GameSettingsSchema implements SchemaInterface
                 'team_player_count' => ['int'],
                 'player_life_credits' => ['int'],
                 'life_credits_deducted' => ['int'],
-                'arenas' => ['int'],
             ]);
     }
 
@@ -63,9 +61,6 @@ class GameSettingsSchema implements SchemaInterface
             ])
             ->add('life_credits_deducted', 'hittracker_common_positive_integer', [
                 'label' => 'Life Credits Deducted Per Hit'
-            ])
-            ->add('arenas', 'hittracker_common_positive_integer', [
-                'label' => 'Arenas'
             ])
         ;
     }

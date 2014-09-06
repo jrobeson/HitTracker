@@ -5,6 +5,7 @@
 
     <parameters>
         <!-- classes -->
+        <parameter key="hittracker_game.settings_schema.site.class">HitTracker\GameBundle\Settings\SiteSettingsSchema</parameter>
         <!-- game -->
         <parameter key="hittracker_game.settings_schema.game.class">HitTracker\GameBundle\Settings\GameSettingsSchema</parameter>
         <parameter key="hittracker_game.manager.game.class">HitTracker\GameBundle\GameManager</parameter>
@@ -23,6 +24,9 @@
         <!-- game -->
         <service id="hittracker_game.settings_schema.game" class="%hittracker_game.settings_schema.game.class%">
             <tag name="sylius.settings_schema" namespace="game" />
+        </service>
+        <service id="hittracker_game.settings_schema.site" class="%hittracker_game.settings_schema.site.class%">
+            <tag name="sylius.settings_schema" namespace="site" />
         </service>
         <service id="hittracker_game.manager.game" class="%hittracker_game.manager.game.class%">
             <argument type="service" id="hittracker.repository.game" />

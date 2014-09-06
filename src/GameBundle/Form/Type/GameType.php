@@ -29,8 +29,9 @@ class GameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $gameSettings = $this->settingsManager->loadSettings('game');
+        $siteSettings = $this->settingsManager->loadSettings('siteh');
 
-        $arenas = $gameSettings->get('arenas');
+        $arenas = $siteSettings->get('arenas');
         $arenaFieldType = ($arenas > 1) ? 'choice' : 'hidden';
 
         $builder
