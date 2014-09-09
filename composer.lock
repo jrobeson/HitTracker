@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d60c0328d1818e43b21349865f1395e9",
+    "hash": "d549e673bdd0fb44fad084fdab9588d8",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -1052,16 +1052,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "47ca212e985d962b3cbd67675eec54bb72d66062"
+                "reference": "9c4fbbf6457768f5036fbd88f1229f3fca812a5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/47ca212e985d962b3cbd67675eec54bb72d66062",
-                "reference": "47ca212e985d962b3cbd67675eec54bb72d66062",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9c4fbbf6457768f5036fbd88f1229f3fca812a5d",
+                "reference": "9c4fbbf6457768f5036fbd88f1229f3fca812a5d",
                 "shasum": ""
             },
             "require": {
@@ -1113,7 +1113,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2014-08-20 05:30:12"
+            "time": "2014-09-08 22:11:58"
         },
         {
             "name": "guzzlehttp/streams",
@@ -3494,16 +3494,16 @@
         },
         {
             "name": "behat/symfony2-extension",
-            "version": "dev-master",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Symfony2Extension.git",
-                "reference": "ad22eb652a5f866ea03ea2b53b38ce99ed61570c"
+                "reference": "815ec1f6764fca0882cd744731c48edb82dea204"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/ad22eb652a5f866ea03ea2b53b38ce99ed61570c",
-                "reference": "ad22eb652a5f866ea03ea2b53b38ce99ed61570c",
+                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/815ec1f6764fca0882cd744731c48edb82dea204",
+                "reference": "815ec1f6764fca0882cd744731c48edb82dea204",
                 "shasum": ""
             },
             "require": {
@@ -3540,8 +3540,7 @@
                 },
                 {
                     "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com",
-                    "homepage": "http://everzet.com"
+                    "email": "ever.zet@gmail.com"
                 }
             ],
             "description": "Symfony2 framework extension for Behat",
@@ -3551,7 +3550,7 @@
                 "framework",
                 "symfony"
             ],
-            "time": "2014-05-09 01:46:47"
+            "time": "2014-09-04 22:10:45"
         },
         {
             "name": "behat/transliterator",
@@ -5118,7 +5117,6 @@
         "elnur/bootstrap-bundle": 20,
         "c33s/static-page-content-bundle": 20,
         "sylius/settings-bundle": 20,
-        "behat/symfony2-extension": 20,
         "behat/mink-browserkit-driver": 20,
         "behat/mink-selenium2-driver": 20,
         "behat/mink": 20
