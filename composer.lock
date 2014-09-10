@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d549e673bdd0fb44fad084fdab9588d8",
+    "hash": "bf100b56dfe55dd04ef77c75dab5b943",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -773,12 +773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "d9b43dc6492b163fc46f40c0555e2a7015ef5b68"
+                "reference": "b249aa9f652efdd36992ea542ccbd8e82f1b75be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d9b43dc6492b163fc46f40c0555e2a7015ef5b68",
-                "reference": "d9b43dc6492b163fc46f40c0555e2a7015ef5b68",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/b249aa9f652efdd36992ea542ccbd8e82f1b75be",
+                "reference": "b249aa9f652efdd36992ea542ccbd8e82f1b75be",
                 "shasum": ""
             },
             "require": {
@@ -840,7 +840,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-08-30 02:22:47"
+            "time": "2014-09-10 16:27:51"
         },
         {
             "name": "elnur/bootstrap-bundle",
