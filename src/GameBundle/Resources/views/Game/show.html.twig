@@ -1,11 +1,11 @@
-{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
     <div class="row">
         <div class="text-center">
-            {{ include('HitTrackerGameBundle:Game:print_scores.html.twig') }}
+            {{ include('@HitTrackerGame/Game/print_scores.html.twig') }}
         </div>
     </div>
-    {{ include('HitTrackerGameBundle:Game:scores.html.twig') }}
+    {{ include('@HitTrackerGame/Game/scores.html.twig') }}
     <div class="row">
         <a href="{{ path('hittracker_game_index') }}">{{ 'Back'|trans}}</a>
     </div>

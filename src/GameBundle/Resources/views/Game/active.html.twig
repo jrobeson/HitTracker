@@ -1,18 +1,18 @@
-{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
 {% if game %}
     <div class="row">
         <br />
         <strong class="text-center">
-            {{ include('HitTrackerGameBundle:Game:print_scores.html.twig') }}
+            {{ include('@HitTrackerGame/Game/print_scores.html.twig') }}
         </strong>
         <a class="btn btn-danger" href="{{ path('hittracker_game_stop') }}" {{ link_attr('PATCH') }} data-params="arena={{ game.arena }}">
             {{ 'Stop Game'|trans }}
         </a>
-        {# include('HitTrackerGameBundle:Game:hit_simulator.html.twig') #}
+        {# include('@HitTrackerGame/Game/hit_simulator.html.twig') #}
     </div>
     <div class="row">
-        {{ include('HitTrackerGameBundle:Game:scores.html.twig') }}
+        {{ include('@HitTrackerGame/Game/scores.html.twig') }}
     </div>
 {% else %}
     <div class="row">

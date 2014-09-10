@@ -1,4 +1,4 @@
-{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
     <h1>{{ 'Create Vest'|trans }}</h1>
     {{ form(form, {action: path('hittracker_vest_create'), layout: 'horizontal', }) }}

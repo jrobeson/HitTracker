@@ -1,6 +1,6 @@
-{% extends 'HitTrackerGameBundle::layout.html.twig' %}
+{% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
-    {% from 'CommonBundle:Macros:misc.html.twig' import pagination %}
+    {% from '@Common/Macros/misc.html.twig' import pagination %}
     <h1>Games</h1>
 
     {{ pagination(games) }}

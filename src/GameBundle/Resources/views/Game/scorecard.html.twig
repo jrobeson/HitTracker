@@ -14,7 +14,7 @@
                 <div class="col-md-12">
                     {% block content %}
                     {% if game %}
-                        {{ include('HitTrackerGameBundle:Game:scores.html.twig') }}
+                        {{ include('@HitTrackerGame/Game/scores.html.twig') }}
                     {% else %}
                         <h1 class="text-center">{{ 'There is no active game'|trans }}</h1>
                     {% endif %}

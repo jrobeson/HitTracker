@@ -16,12 +16,12 @@
     <body class="{{ app.request.get('_route')|replace({'_': '-'}) }}">
         <div id="content-wrapper">
             {% block nav %}
-                {{ include('::navbar.html.twig') }}
+                {{ include('navbar.html.twig') }}
             {% endblock %}
             <main role="main" class="container">
                 <div class="col-md-12">
                     {% block messages %}
-                        {{ include('::messages.html.twig') }}
+                        {{ include('messages.html.twig') }}
                     {% endblock %}
                     {% block content %}{% endblock %}
                 </div>
@@ -30,7 +30,7 @@
         <footer class="container">
             {% block footer %}
                 <div class="col-md-12">
-                    {{ include('::footer.html.twig') }}
+                    {{ include('footer.html.twig') }}
                 </div>
             {% endblock %}
         </footer>
