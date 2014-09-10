@@ -86,9 +86,6 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "dist-file": "app/config/parameters.dist.yml"
-        },
-        "branch-alias": {
-            "dev-master": "2.5-dev"
         }
     },
     "repositories": [
