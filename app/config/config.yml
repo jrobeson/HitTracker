@@ -14,7 +14,6 @@ framework:
     form:            ~
     csrf_protection: ~
     validation:
-        enabled: true
         enable_annotations: true
         api: 2.5-bc
     templating:
