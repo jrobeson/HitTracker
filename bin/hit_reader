@@ -32,7 +32,7 @@ end
 class HitReader
   BAUD_RATE = 9600 # this is required by the device
   # Any of the other button presses are not valid zones
-  BUTTON_TO_ZONE_MAP = {
+  BUTTON_ZONE_MAP = {
     16 => 1,
     32 => 2,
     64 => 3,
@@ -57,7 +57,9 @@ class HitReader
       IO.select([@dongle])
       button, esn = @dongle.read(5).unpack('CH8')
 
-      next unless BUTTON_TO_ZONE_MAP.include? button
+      # the keyfob includes alternate button states
+      # we do not use, so ignore them.
+      next unless BUTTON_ZONE_MAP.include? button
 
       hit = build button, esn
 
@@ -91,6 +93,7 @@ class HitReader
     { esn: esn,
       zone: BUTTON_TO_ZONE_MAP[button],
       hit_matcher: hit_matcher
+      zone: BUTTON_ZONE_MAP[button],
     }
   end
 end
