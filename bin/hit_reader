@@ -97,7 +97,7 @@ class HitReader
 
     uri = URI(@host_url)
     hit.delete('hit_matcher')
-    hit['time'] = Time.now
+    hit[:time] = Time.now
     res = Net::HTTP.post_form(uri, hit)
     @logger.debug res.body
   end
