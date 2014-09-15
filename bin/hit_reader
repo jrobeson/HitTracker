@@ -48,7 +48,9 @@ class HitReader
     @dongle = init_dongle device_path
     @logger.info "Initialized Port: #{device_path}"
     @host_url = host_url
-    @logger.info "Hit Target Url: #{host_url}"
+    if @host_url == ''
+      @logger.info "Hit Target Url: #{host_url}"
+    end
   end
 
   def run
@@ -79,6 +81,8 @@ class HitReader
   end
 
   def send(hit)
+    return nil if @host_url == ''
+
     uri = URI(@host_url)
     hit.delete('hit_matcher')
     hit['time'] = Time.now
@@ -100,5 +104,5 @@ end
 
 logger = ConsoleLogger.new
 hr = HitReader.new logger
-hr.setup '/dev/ttyUSB0', 'http://localhost/games/hit'
+hr.setup ARGV[0], ARGV[1]
 hr.run
