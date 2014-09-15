@@ -57,7 +57,7 @@ class HitReader
     last_hit = {esn: '', zone: 0, hit_matcher: 0}
     loop do
       IO.select([@dongle])
-      button, esn = @dongle.read(5).unpack('CH8')
+      button, esn = get_message(@dongle, 5)
 
       # the keyfob includes alternate button states
       # we do not use, so ignore them.
@@ -78,6 +78,18 @@ class HitReader
   rescue Errno::ENOENT => e
     @logger.error e.message
     exit false
+  end
+
+  def get_message(io_dev, size)
+    message = ''
+    len = message.length
+    while len < size
+      chunk = io_dev.read(size - len)
+      # error checking on chunk value
+      message += chunk
+      len = message.length
+    end
+    return message.unpack('CH8')
   end
 
   def send(hit)
