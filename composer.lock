@@ -365,16 +365,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.0-RC1",
+            "version": "v2.5.0-RC2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "22069a07a4127360ef3205eeafb51e366864489d"
+                "reference": "f7dbc5dfdefa1a2b536ee4c0bc3e98dab37e8b53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/22069a07a4127360ef3205eeafb51e366864489d",
-                "reference": "22069a07a4127360ef3205eeafb51e366864489d",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/f7dbc5dfdefa1a2b536ee4c0bc3e98dab37e8b53",
+                "reference": "f7dbc5dfdefa1a2b536ee4c0bc3e98dab37e8b53",
                 "shasum": ""
             },
             "require": {
@@ -432,7 +432,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-09-01 10:28:36"
+            "time": "2014-09-11 21:07:20"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -773,12 +773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "b249aa9f652efdd36992ea542ccbd8e82f1b75be"
+                "reference": "15a00ea80746e1b93a5964807a2a6f63143758d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/b249aa9f652efdd36992ea542ccbd8e82f1b75be",
-                "reference": "b249aa9f652efdd36992ea542ccbd8e82f1b75be",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/15a00ea80746e1b93a5964807a2a6f63143758d3",
+                "reference": "15a00ea80746e1b93a5964807a2a6f63143758d3",
                 "shasum": ""
             },
             "require": {
@@ -840,7 +840,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-09-10 16:27:51"
+            "time": "2014-09-14 15:30:47"
         },
         {
             "name": "elnur/bootstrap-bundle",
