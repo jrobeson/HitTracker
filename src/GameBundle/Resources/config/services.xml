@@ -3,57 +3,40 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <!-- classes -->
-        <parameter key="hittracker_game.settings_schema.site.class">HitTracker\GameBundle\Settings\SiteSettingsSchema</parameter>
-        <!-- game -->
-        <parameter key="hittracker_game.settings_schema.game.class">HitTracker\GameBundle\Settings\GameSettingsSchema</parameter>
-        <parameter key="hittracker_game.manager.game.class">HitTracker\GameBundle\GameManager</parameter>
-        <parameter key="hittracker_game.form.game.type.class">HitTracker\GameBundle\Form\Type\GameType</parameter>
-        <parameter key="hittracker_game.form.game.event_subscriber.class">HitTracker\GameBundle\EventListener\GameFormSubscriber</parameter>
-        <!-- player -->
-        <parameter key="hittracker_game.form.player_collection.type.class">HitTracker\GameBundle\Form\Type\PlayerCollectionType</parameter>
-        <parameter key="hittracker_game.form.player.type.class">HitTracker\GameBundle\Form\Type\PlayerType</parameter>
-        <!-- vest -->
-        <parameter key="hittracker_game.form.vest.type.class">HitTracker\GameBundle\Form\Type\VestType</parameter>
-
-        <!-- configuration -->
-    </parameters>
-
     <services>
         <!-- game -->
-        <service id="hittracker_game.settings_schema.game" class="%hittracker_game.settings_schema.game.class%">
+        <service id="hittracker_game.settings_schema.game" class="HitTracker\GameBundle\Settings\GameSettingsSchema">
             <tag name="sylius.settings_schema" namespace="game" />
         </service>
-        <service id="hittracker_game.settings_schema.site" class="%hittracker_game.settings_schema.site.class%">
+        <service id="hittracker_game.settings_schema.site" class="HitTracker\GameBundle\Settings\SiteSettingsSchema">
             <tag name="sylius.settings_schema" namespace="site" />
         </service>
-        <service id="hittracker_game.manager.game" class="%hittracker_game.manager.game.class%">
+        <service id="hittracker_game.manager.game" class="HitTracker\GameBundle\GameManager">
             <argument type="service" id="hittracker.repository.game" />
         </service>
-        <service id="hittracker_game.form.type.game" class="%hittracker_game.form.game.type.class%">
+        <service id="hittracker_game.form.type.game" class="HitTracker\GameBundle\Form\Type\GameType">
             <argument type="service" id="sylius.settings.manager" />
             <argument type="service" id="hittracker_game.form.event_subscriber.game"/>
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game"/>
         </service>
-        <service id="hittracker_game.form.event_subscriber.game" class="%hittracker_game.form.game.event_subscriber.class%">
+        <service id="hittracker_game.form.event_subscriber.game" class="HitTracker\GameBundle\EventListener\GameFormSubscriber">
             <argument type="service" id="hittracker.repository.game" />
         </service>
         <!-- player -->
-        <service id="hittracker_game.form.type.player" class="%hittracker_game.form.player.type.class%">
+        <service id="hittracker_game.form.type.player" class="HitTracker\GameBundle\Form\Type\PlayerType">
             <argument type="service" id="sylius.settings.manager" />
             <argument type="service" id="hittracker.repository.vest" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player"/>
         </service>
-        <service id="hittracker_game.form.type.player_collection" class="%hittracker_game.form.player_collection.type.class%">
+        <service id="hittracker_game.form.type.player_collection" class="HitTracker\GameBundle\Form\Type\PlayerCollectionType">
             <argument type="service" id="sylius.settings.manager" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player_collection"/>
         </service>
         <!-- vest -->
-        <service id="hittracker_game.form.type.vest" class="%hittracker_game.form.vest.type.class%">
+        <service id="hittracker_game.form.type.vest" class="HitTracker\GameBundle\Form\Type\VestType">
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_vest"/>
         </service>
