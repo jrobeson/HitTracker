@@ -38,6 +38,8 @@ class HitReader
     64 => 3,
   }
 
+  DEBOUNCE_DELAY = 200
+
   attr_reader :host_url, :logger
 
   def initialize(logger)
@@ -48,12 +50,13 @@ class HitReader
     @dongle = init_dongle device_path
     @logger.info "Initialized Port: #{device_path}"
     @host_url = host_url
-    if @host_url == ''
+    if @host_url
       @logger.info "Hit Target Url: #{host_url}"
     end
   end
 
   def run
+    last_debounce_time = 0
     last_hit = {esn: '', zone: 0, hit_matcher: 0}
     loop do
       IO.select([@dongle])
@@ -65,13 +68,20 @@ class HitReader
 
       hit = build button, esn
 
-      next if hit.eql? last_hit # avoid "hold" presses counting as multiple hits
+      # avoid "hold" presses counting as multiple hits
+      next if hit.eql?(last_hit) && !debounced?(last_debounce_time)
+
+      last_debounce_time = millis
 
       last_hit = hit.clone
       @logger.debug JSON.dump hit
 
       publish hit
     end
+  end
+
+  def debounced?(last_debounce_time)
+    (millis - last_debounce_time) > DEBOUNCE_DELAY
   end
 
   def init_dongle(path)
@@ -94,24 +104,22 @@ class HitReader
   end
 
   def publish(hit)
-    return nil if @host_url == ''
+    return nil unless @host_url
 
     uri = URI(@host_url)
-    hit.delete('hit_matcher')
     hit[:time] = Time.now
     res = Net::HTTP.post_form(uri, hit)
     @logger.debug res.body
   end
 
   def build(button, esn)
-    # quarter: (Time.now.to_f / 0.25).round * 0.25
-    r = (Time.now.to_f * 2).round / 2.0
-    hit_matcher = r == r ? r.to_i : r
     { esn: esn,
-      zone: BUTTON_TO_ZONE_MAP[button],
-      hit_matcher: hit_matcher
       zone: BUTTON_ZONE_MAP[button],
     }
+  end
+
+  def millis
+    (Time.now.to_f * 1000.0).to_i
   end
 end
 
