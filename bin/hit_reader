@@ -69,7 +69,8 @@ class HitReader
 
       last_hit = hit.clone
       @logger.debug JSON.dump hit
-      send hit
+
+      publish hit
     end
   end
 
@@ -92,7 +93,7 @@ class HitReader
     return message.unpack('CH8')
   end
 
-  def send(hit)
+  def publish(hit)
     return nil if @host_url == ''
 
     uri = URI(@host_url)
