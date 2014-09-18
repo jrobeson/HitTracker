@@ -7,8 +7,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "HitTracker\\": "src/",
-            "SymfonyStandard\\": "app/"
+            "HitTracker\\": "src/"
         }
     },
     "require": {
@@ -36,7 +35,6 @@
         "guzzlehttp/guzzle": "~4.2"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3",
         "phpunit/phpunit": "4.1.*",
         "phpunit/php-invoker": "~1.1",
         "raulfraile/ladybug-bundle": "~1.0",
@@ -51,16 +49,12 @@
         "phpspec/phpspec": "~2.0"
     },
     "scripts": {
-        "post-root-package-install": [
-            "SymfonyStandard\\Composer::hookRootPackageInstall"
-        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
              "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
         ],
         "post-update-cmd": [
@@ -69,7 +63,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
              "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
         ]
     },
