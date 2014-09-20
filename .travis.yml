@@ -15,9 +15,6 @@ matrix:
 addons:
     postgresql: '9.3'
 
-services:
-  - redis-server
-
 before_install:
     - composer self-update
 install:
