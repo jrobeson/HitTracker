@@ -32,7 +32,8 @@
         "c33s/static-page-content-bundle": "dev-master",
         "kunstmaan/live-reload-bundle": "~2.3",
         "sylius/settings-bundle": "dev-combined-fixes",
-        "guzzlehttp/guzzle": "~4.2"
+        "guzzlehttp/guzzle": "~4.2",
+        "umpirsky/composer-permissions-handler": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*",
@@ -55,7 +56,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-             "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
+             "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal",
+            "Umpirsky\\PermissionsHandler\\ScriptHandler::setPermissions"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -76,6 +78,7 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
+        "writable-dirs": ["var/cache", "var/logs"],
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "dist-file": "app/config/parameters.dist.yml"
