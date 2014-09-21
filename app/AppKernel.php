@@ -55,6 +55,14 @@ class AppKernel extends Kernel
     }
 
     /**
+     * @param bool $enabled
+     */
+    public function enableClassCache($enabled = false)
+    {
+        if ($enabled) $this->loadClassCache();
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getCacheDir()
