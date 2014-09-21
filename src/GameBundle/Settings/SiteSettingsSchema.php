@@ -31,7 +31,7 @@ class SiteSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
-            ->add('arenas', 'hittracker_common_positive_integer', [
+            ->add('arenas', 'positive_integer', [
                 'label' => 'Arenas'
             ])
         ;

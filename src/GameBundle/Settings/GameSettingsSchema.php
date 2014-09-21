@@ -41,25 +41,25 @@ class GameSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
-            ->add('game_length', 'hittracker_common_positive_integer', [
+            ->add('game_length', 'positive_integer', [
                 'label' => 'Game Length'
             ])
-            ->add('player_count', 'hittracker_common_positive_integer', [
+            ->add('player_count', 'positive_integer', [
                 'label' => 'Players Per Game',
                 'attr' => [
                     'help' => 'This setting still requires you to have enough active vests.'
                     ]
             ])
-            ->add('team_player_count', 'hittracker_common_positive_integer', [
+            ->add('team_player_count', 'positive_integer', [
                 'label' => 'Players Per Team',
                 'attr' => [
                     'help' => 'This setting still requires you to have enough players.'
                     ]
             ])
-            ->add('player_life_credits', 'hittracker_common_positive_integer', [
+            ->add('player_life_credits', 'positive_integer', [
                 'label' => 'Player Life Credits'
             ])
-            ->add('life_credits_deducted', 'hittracker_common_positive_integer', [
+            ->add('life_credits_deducted', 'positive_integer', [
                 'label' => 'Life Credits Deducted Per Hit'
             ])
         ;

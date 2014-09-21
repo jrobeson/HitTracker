@@ -12,7 +12,7 @@
             <tag name="twig.extension"/>
         </service>
         <service id="hittracker_common.form.type.positive_integer" class="HitTracker\CommonBundle\Form\Type\PositiveIntegerType">
-            <tag name="form.type" alias="hittracker_common_positive_integer"/>
+            <tag name="form.type" alias="positive_integer"/>
         </service>
         <service id="knp_rad.twig.link_attributes_extension" class="HitTracker\CommonBundle\Twig\LinkAttributesExtension">
             <argument type="service" id="form.csrf_provider"/>

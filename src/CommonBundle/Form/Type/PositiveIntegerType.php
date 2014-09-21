@@ -37,6 +37,6 @@ class PositiveIntegerType extends AbstractType
      */
     public function getName()
     {
-        return 'hittracker_common_positive_integer';
+        return 'positive_integer';
     }
 }

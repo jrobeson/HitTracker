@@ -35,21 +35,21 @@ class GameType extends AbstractType
         $arenaFieldType = ($arenas > 1) ? 'choice' : 'hidden';
 
         $builder
-            ->add('game_length', 'hittracker_common_positive_integer', [
+            ->add('game_length', 'positive_integer', [
                 'label' => 'Game Length (in minutes)',
                 'data' => $gameSettings->get('game_length'),
             ])
             ->add('arena', $arenaFieldType, [
                 'data' => 1
             ])
-            ->add('playerLifeCredits', 'hittracker_common_positive_integer', [
+            ->add('playerLifeCredits', 'positive_integer', [
                 'label' => 'Life Credits Per Player',
                 'data' => $gameSettings->get('player_life_credits'),
                 'attr' => [
                     'step' => $gameSettings->get('life_credits_deducted')
                  ]
             ])
-            ->add('lifeCreditsDeducted', 'hittracker_common_positive_integer', [
+            ->add('lifeCreditsDeducted', 'positive_integer', [
                 'label' => 'Credits Deducted Per Hit',
                 'data' => $gameSettings->get('life_credits_deducted'),
             ])
