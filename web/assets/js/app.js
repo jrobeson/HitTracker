@@ -13360,7 +13360,7 @@ colors = jQuery.Color.names = {
 var printScores, pushHit;
 
 $(function() {
-  var countdown_ref, game_end, source;
+  var client_time, countdown_ref, game_end, offset, server_time, source;
   if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
     source = new EventSource('/events/game');
     if ($('body').hasClass('hittracker-game-scoreboard')) {
@@ -13388,6 +13388,10 @@ $(function() {
     });
     countdown_ref = $('#game-time-countdown');
     game_end = countdown_ref.data('game-end-time');
+    client_time = (new Date()).getTime();
+    server_time = new Date(parseInt(countdown_ref.data('server-time'))).getTime();
+    offset = server_time - client_time;
+    game_end = game_end - offset;
     return countdown_ref.countdown(game_end).on('update.countdown', function(event) {
       var format;
       format = '%M:%S';

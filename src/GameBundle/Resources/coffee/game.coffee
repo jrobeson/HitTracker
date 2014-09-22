@@ -25,6 +25,10 @@ $ ->
 
     countdown_ref = $('#game-time-countdown')
     game_end = countdown_ref.data('game-end-time')
+    client_time = (new Date()).getTime()
+    server_time = new Date(parseInt(countdown_ref.data('server-time'))).getTime()
+    offset = server_time - client_time
+    game_end = game_end - offset
     countdown_ref.countdown(game_end)
       .on('update.countdown', (event) ->
         format = '%M:%S'

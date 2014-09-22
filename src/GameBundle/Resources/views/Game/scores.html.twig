@@ -11,7 +11,7 @@
         {% if game.active %}
         <h2 class="text-center">
             {{ 'Time Left'|trans }}:
-            <span id="game-time-countdown" data-game-end-time="{{ game.endsAt.timeStamp * 1000 }}">
+            <span id="game-time-countdown" data-server-time="{{ 'now'|date('U', 'UTC') * 1000 }}" data-game-end-time="{{ game.endsAt.timeStamp * 1000 }}">
 
             </span>
         </h2>
