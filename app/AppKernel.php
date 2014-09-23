@@ -5,6 +5,24 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($environment, $debug)
+    {
+        $isProd = 'prod' == $environment;
+        if (!$isProd && $debug) {
+            Symfony\Component\Debug\Debug::enable();
+        }
+
+        parent::__construct($environment, $debug);
+
+        $this->enableClassCache($isProd);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function registerBundles()
     {
         $bundles = [
