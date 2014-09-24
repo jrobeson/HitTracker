@@ -33,7 +33,8 @@
         "kunstmaan/live-reload-bundle": "~2.3",
         "sylius/settings-bundle": "dev-combined-fixes",
         "guzzlehttp/guzzle": "~4.2",
-        "umpirsky/composer-permissions-handler": "~1.0"
+        "umpirsky/composer-permissions-handler": "~1.0",
+        "nesbot/Carbon": "~1.12"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*",
