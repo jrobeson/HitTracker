@@ -72,16 +72,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "d9b1a37e9351ddde1f19f09a02e3d6ee92e82efd"
+                "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/d9b1a37e9351ddde1f19f09a02e3d6ee92e82efd",
-                "reference": "d9b1a37e9351ddde1f19f09a02e3d6ee92e82efd",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/6a6bec0670bb6e71a263b08bc1b98ea242928633",
+                "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633",
                 "shasum": ""
             },
             "require": {
@@ -109,17 +109,6 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/",
-                    "role": "Creator"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
@@ -128,10 +117,16 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
                     "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Docblock Annotations Parser",
@@ -141,7 +136,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2014-07-06 15:52:21"
+            "time": "2014-09-25 16:45:30"
         },
         {
             "name": "doctrine/cache",
@@ -768,12 +763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "3f8865c6fb52558b23963add95affed6a1cf77bb"
+                "reference": "05045d9544dcdaf18a7d9ce69f3ffe709703898a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/3f8865c6fb52558b23963add95affed6a1cf77bb",
-                "reference": "3f8865c6fb52558b23963add95affed6a1cf77bb",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/05045d9544dcdaf18a7d9ce69f3ffe709703898a",
+                "reference": "05045d9544dcdaf18a7d9ce69f3ffe709703898a",
                 "shasum": ""
             },
             "require": {
@@ -835,7 +830,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-09-22 22:30:30"
+            "time": "2014-09-27 16:19:53"
         },
         {
             "name": "elnur/bootstrap-bundle",
@@ -1813,16 +1808,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "cde7a00d1410a17fb6d61b993cb017a78be1137c"
+                "reference": "5cb6e71055f7b0b57956b73d324cc4de31278f42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cde7a00d1410a17fb6d61b993cb017a78be1137c",
-                "reference": "cde7a00d1410a17fb6d61b993cb017a78be1137c",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5cb6e71055f7b0b57956b73d324cc4de31278f42",
+                "reference": "5cb6e71055f7b0b57956b73d324cc4de31278f42",
                 "shasum": ""
             },
             "require": {
@@ -1855,7 +1850,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2014-09-10 03:26:33"
+            "time": "2014-09-26 02:52:02"
         },
         {
             "name": "nikic/iter",
@@ -2104,17 +2099,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "ad10123f2532f6e311e583cce203ef368eedc469"
+                "reference": "e20461e4f8e1afd68f36cf90bdccc06f7aa6a6c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ad10123f2532f6e311e583cce203ef368eedc469",
-                "reference": "ad10123f2532f6e311e583cce203ef368eedc469",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/e20461e4f8e1afd68f36cf90bdccc06f7aa6a6c2",
+                "reference": "e20461e4f8e1afd68f36cf90bdccc06f7aa6a6c2",
                 "shasum": ""
             },
             "require": {
@@ -2153,7 +2148,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-08-26 13:14:47"
+            "time": "2014-09-24 14:47:46"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3350,16 +3345,16 @@
         },
         {
             "name": "behat/mink",
-            "version": "dev-master",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Mink.git",
-                "reference": "f78e49dfb0d16e1ae9044c21bb60767484abe9c8"
+                "reference": "090900a0049c441f1e072bbd837db4079b2250c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Mink/zipball/f78e49dfb0d16e1ae9044c21bb60767484abe9c8",
-                "reference": "f78e49dfb0d16e1ae9044c21bb60767484abe9c8",
+                "url": "https://api.github.com/repos/Behat/Mink/zipball/090900a0049c441f1e072bbd837db4079b2250c5",
+                "reference": "090900a0049c441f1e072bbd837db4079b2250c5",
                 "shasum": ""
             },
             "require": {
@@ -3401,20 +3396,20 @@
                 "testing",
                 "web"
             ],
-            "time": "2014-09-18 09:20:21"
+            "time": "2014-09-26 09:25:05"
         },
         {
             "name": "behat/mink-browserkit-driver",
-            "version": "dev-master",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkBrowserKitDriver.git",
-                "reference": "8e9415eaf4cc7de39df3c9d9d5f7f9ec28495edd"
+                "reference": "aed8f4a596b79014a75254c3e337511c33e38cbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/8e9415eaf4cc7de39df3c9d9d5f7f9ec28495edd",
-                "reference": "8e9415eaf4cc7de39df3c9d9d5f7f9ec28495edd",
+                "url": "https://api.github.com/repos/Behat/MinkBrowserKitDriver/zipball/aed8f4a596b79014a75254c3e337511c33e38cbd",
+                "reference": "aed8f4a596b79014a75254c3e337511c33e38cbd",
                 "shasum": ""
             },
             "require": {
@@ -3456,7 +3451,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2014-09-18 09:40:40"
+            "time": "2014-09-26 11:35:19"
         },
         {
             "name": "behat/mink-extension",
@@ -3523,12 +3518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/MinkSelenium2Driver.git",
-                "reference": "c2d36feb081057c3137e828fda4a9458e6ab1c76"
+                "reference": "b7bba8aa4d3bc39b7dfad26072f764a8e37a056d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/c2d36feb081057c3137e828fda4a9458e6ab1c76",
-                "reference": "c2d36feb081057c3137e828fda4a9458e6ab1c76",
+                "url": "https://api.github.com/repos/Behat/MinkSelenium2Driver/zipball/b7bba8aa4d3bc39b7dfad26072f764a8e37a056d",
+                "reference": "b7bba8aa4d3bc39b7dfad26072f764a8e37a056d",
                 "shasum": ""
             },
             "require": {
@@ -3573,7 +3568,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2014-08-13 23:29:15"
+            "time": "2014-09-26 12:56:14"
         },
         {
             "name": "behat/symfony2-extension",
