@@ -1,6 +1,6 @@
 parameters:
     database_name:     ht_prod
-    database_user:     root
+    database_user:     ht
     database_password: ~
 
     mailer_transport:  smtp
