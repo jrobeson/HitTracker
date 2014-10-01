@@ -17,6 +17,7 @@
     "broccoli-autoprefixer": "~0.2.0",
     "broccoli-clean-css": "~0.2.0",
     "broccoli-concat": "0.0.7",
-    "ember-cli": "0.0.*"
+    "ember-cli": "0.0.*",
+    "coffee-script": "~1.8.0"
   }
 }
