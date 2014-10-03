@@ -7472,7 +7472,7 @@ button.close {
   text-align: center;
   font-style: bold; }
 
-#hit-simulator select[name="esn"] {
+#hit-simulator select[name="radioId"] {
   padding-left: 1em;
   width: 18em; }
 #hit-simulator select[name="zone"] {

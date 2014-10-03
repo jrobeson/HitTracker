@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th class="col-lg-1">{{ 'ID'|trans }}</th>
-                <th class="col-lg-1">{{ 'ESN'|trans }}</th>
+                <th class="col-lg-1">{{ 'Radio Id'|trans }}</th>
                 <th class="col-lg-1">{{ 'Active?'|trans }}</th>
                 <th class="col-lg-1">{{ 'Date Added'|trans }}</th>
                 <th class="col-lg-1">{{ 'Options'|trans }}</th>
@@ -19,7 +19,7 @@
             {% for vest in vests %}
             <tr>
                 <td class="col-lg-1">{{ vest.id }}</td>
-                <td class="col-lg-1">{{ vest.esn }}</td>
+                <td class="col-lg-1">{{ vest.radioId }}</td>
                 <td class="col-lg-1">{{ vest.active }}</td>
                 <td class="col-lg-1">
                     {{ vest.createdAt|localizeddate(date_format='short', format='MM/dd/y') }}

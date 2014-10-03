@@ -13418,7 +13418,7 @@ $('#print-scores').click(function(event) {
   return printScores(url, copies);
 });
 
-$('#hit-simulator select[name="esn"]').change(function() {
+$('#hit-simulator select[name="radioId"]').change(function() {
   return $(this).trigger('focusout');
 });
 

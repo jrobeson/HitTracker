@@ -24,12 +24,12 @@ Zone: Zone
 Back: Back
 'Update Game': 'Update Game'
 'Create Vest': 'Create Vest'
-ESN: ESN
+'Radio Id': Radio Id
 'Active?': 'Active?'
 'Date Added': 'Date Added'
 Options: Options
 Edit: Edit
 Delete: Delete
-'New vest': 'New vest'
+'New Vest': 'New Vest'
 'Update Vest': 'Update Vest'
 hittracker_game.game.player_no: 'Player #'

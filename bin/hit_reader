@@ -57,16 +57,16 @@ class HitReader
 
   def run
     last_debounce_time = 0
-    last_hit = {esn: '', zone: 0, hit_matcher: 0}
+    last_hit = {radioId: '', zone: 0, hit_matcher: 0}
     loop do
       IO.select([@dongle])
-      button, esn = get_message(@dongle, 5)
+      button, radio_id = get_message(@dongle, 5)
 
       # the keyfob includes alternate button states
       # we do not use, so ignore them.
       next unless BUTTON_ZONE_MAP.include? button
 
-      hit = build button, esn
+      hit = build button, radio_id
 
       # avoid "hold" presses counting as multiple hits
       next if hit.eql?(last_hit) && !debounced?(last_debounce_time)
@@ -112,8 +112,8 @@ class HitReader
     @logger.debug res.body
   end
 
-  def build(button, esn)
-    { esn: esn,
+  def build(button, radio_id)
+    { radioId: radio_id,
       zone: BUTTON_ZONE_MAP[button],
     }
   end

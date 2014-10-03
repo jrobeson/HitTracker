@@ -304,10 +304,10 @@ class Game
    /**
      * @return Collection
      */
-    public function getPlayerByEsn($esn)
+    public function getPlayerByRadioId($radioId)
     {
-        $players = $this->getPlayers()->filter(function ($player) use ($esn) {
-            return $player->getVest()->getEsn() == $esn;
+        $players = $this->getPlayers()->filter(function ($player) use ($radioId) {
+            return $player->getVest()->getRadioId() == $radioId;
         });
         return $players->first();
     }

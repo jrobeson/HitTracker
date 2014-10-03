@@ -24,13 +24,13 @@ class Vest
 
     /**
      * @var string
-     * @ORM\Column(name="esn", type="string", length=8, unique=true)
+     * @ORM\Column(name="radio_id", type="string", length=8, unique=true)
      * @Assert\Length(min="8", max="8")
      * @Assert\Type(type="xdigit",
-     *              message="The ESN is not formatted correctly"
+     *              message="The Radio Id is not formatted correctly"
      * )
      */
-    private $esn;
+    private $radioId;
 
     /**
      * @var bool
@@ -61,23 +61,23 @@ class Vest
     }
 
     /**
-     * Set ESN
+     * Set Radio Id
      *
-     * @param string $esn
+     * @param string $radioId
      */
-    public function setEsn($esn)
+    public function setRadioId($radioId)
     {
-        $this->esn = strtolower($esn);
+        $this->radioId = strtolower($radioId);
     }
 
     /**
-     * Get ESN
+     * Get Radio Id
      *
      * @return string
      */
-    public function getEsn()
+    public function getRadioId()
     {
-        return $this->esn;
+        return $this->radioId;
     }
 
     /**

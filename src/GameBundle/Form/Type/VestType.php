@@ -14,7 +14,7 @@ class VestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('esn', 'text', ['label' => 'ESN (8 character vest ID)'])
+            ->add('radioId', 'text', ['label' => 'Radio Id (8 character radio ID)'])
             ->add('active', 'checkbox', [
                     'label' => 'Active?',
                     'required' => false,

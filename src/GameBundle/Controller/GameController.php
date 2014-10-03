@@ -160,14 +160,13 @@ class GameController extends ResourceController
             return new JsonResponse(['error' => 'no such game'], 404);
         }
 
-        $esn = $request->request->get('esn');
+        $radioId = $request->request->get('radioId');
         $zone = (int)$request->request->get('zone');
 
-        $player = $game->getPlayerByEsn($esn);
-
+        $player = $game->getPlayerByRadioId($radioId);
 
         $hit = [
-            'esn' => $esn,
+            'radioId' => $radioId,
             'player_id' => $player->getId(),
             'zone' => $zone
         ];

@@ -49,7 +49,7 @@ $('#print-scores').click (event) ->
   copies = $('tr[id^="player-"]').length
   printScores url, copies
 
-$('#hit-simulator select[name="esn"]').change ->
+$('#hit-simulator select[name="radioId"]').change ->
   $(this).trigger 'focusout'
 
 pushHit = (selector, zone) ->

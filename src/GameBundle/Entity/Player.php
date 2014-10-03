@@ -304,11 +304,11 @@ class Player
     }
 
     /**
-     * Get Vest ESN
+     * Get Vest Radio Id
      */
-    public function getEsn()
+    public function getRadioId()
     {
-        $this->getVest()->getEsn();
+        $this->getVest()->getRadioId();
     }
 
     /**
