@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @UniqueEntity("esn")
+ * @UniqueEntity("radioId")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="vests")
  */
