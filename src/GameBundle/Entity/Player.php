@@ -188,33 +188,15 @@ class Player
     }
 
     /**
-     * Get hits on zone 1
+     * Get hits in zone
      *
+     * @param integer $zone
      * @return integer
      */
-    public function getZone1()
+    public function hitsInZone($zone)
     {
-        return $this->zone1;
-    }
-
-    /**
-     * Get hits on zone 2
-     *
-     * @return integer
-     */
-    public function getZone2()
-    {
-        return $this->zone2;
-    }
-
-    /**
-     * Get hits on zone 3
-     *
-     * @return integer
-     */
-    public function getZone3()
-    {
-        return $this->zone3;
+        $property = 'zone' . $zone;
+        return $this->{$property};
     }
 
     /**
