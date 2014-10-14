@@ -1,11 +1,11 @@
 HitTracker
 ========================
 
-[![Build Status](https://travis-ci.org/jrobeson/HitTracker.svg?branch=master)](https://travis-ci.org/jrobeson/HitTracker)
+[![Build Status](https://travis-ci.org/lazerball/HitTracker.svg?branch=master)](https://travis-ci.org/lazerball/HitTracker)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c98aecd9-b933-486b-b586-26387eca5474/mini.png)](https://insight.sensiolabs.com/projects/c98aecd9-b933-486b-b586-26387eca5474)
 
-[![Dependency Status](https://www.versioneye.com/user/projects/53ba3e02609ff0a377000002/badge.svg?style=flat)](https://www.versioneye.com/user/projects/53ba3e02609ff0a377000002)
+[![Dependency Status](https://www.versioneye.com/user/projects/543ce42464e43a3d9500003b/badge.svg?style=flat)](https://www.versioneye.com/user/projects/543ce42464e43a3d9500003b)
 
 
 This document contains information on how to download, install, and start
@@ -43,7 +43,7 @@ To run this program you will need:
 
  * Web application
 
-    1) `php composer.phar create-project jrobeson/hit-tracker path/to/install`
+    1) `php composer.phar create-project lazerball/hit-tracker path/to/install`
     2) `bin/symfony_requirements`
     3) <answer questions>
     4) `cd /path/to/install`
