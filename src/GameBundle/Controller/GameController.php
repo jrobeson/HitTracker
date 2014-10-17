@@ -150,6 +150,7 @@ class GameController extends ResourceController
      *
      * @param Request $request
      * @todo move to separate API controller
+     * @todo does not work with more than one arena
      * @return JsonResponse
      */
     public function hitAction(Request $request)
