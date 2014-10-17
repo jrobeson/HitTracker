@@ -135,6 +135,7 @@ class GameController extends ResourceController
             $this->getDoctrine()->getManager()->flush();
 
             $data = [
+                'id'         => $game->getId(),
                 'arena'      => $game->getArena(),
                 'created_at' => $game->getCreatedAt()->getTimestamp(),
                 'ends_at'    => $game->getEndsAt()->getTimestamp(),
