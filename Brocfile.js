@@ -39,11 +39,11 @@ var appCssFile = 'style/app.css';
 var scoreBoardCssFile = 'style/scoreboard.css';
 var scoreCardCssFile = 'style/scorecard.css';
 
-var sassSources = [
+var sassSources = mergeTrees([
     bowerRoot + '/bootstrap-sass-official/assets/stylesheets',
     bowerRoot + '/fontawesome/scss',
     'app/Resources/styles',
-];
+]);
 
 var sassOptions = {
     unixNewlines: true,
