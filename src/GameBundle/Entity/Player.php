@@ -117,11 +117,6 @@ class Player
         $this->zone3 = 0;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
@@ -147,49 +142,29 @@ class Player
         return $this->team;
     }
 
-    /**
-     * Set player name
-     *
-     * @param string $name
-     */
     public function setName($name)
     {
         $this->name = $name;
     }
 
-    /**
-     * Get player name
-     *
-     * @return string
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * Set amount of life credits
-     *
-     * @param integer $lifeCredits
-     */
+    /** @param integer $lifeCredits */
     public function setLifeCredits($lifeCredits)
     {
         $this->lifeCredits = $lifeCredits;
     }
 
-    /**
-     * Get amount of life credits
-     *
-     * @return integer
-     */
+    /** @return integer */
     public function getLifeCredits()
     {
         return $this->lifeCredits;
     }
 
     /**
-     * Get hits in zone
-     *
      * @param integer $zone
      * @return integer
      */
@@ -199,87 +174,51 @@ class Player
         return $this->{$property};
     }
 
-    /**
-     * Set date player was created
-     *
-     * @param \DateTime $createdAt
-     */
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
 
-    /**
-     * Get date player was created
-     *
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    /**
-     * Set date player was updated
-     *
-     * @param \DateTime $updatedAt
-     */
     public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }
 
-    /**
-     * Get date player was updated
-     *
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
 
-    /**
-     * Set Game
-     *
-     * @param Game $game
-     */
     public function setGame(Game $game)
     {
         $this->game = $game;
     }
 
-    /**
-     * Set vest
-     *
-     * @param Vest $vest
-     */
     public function setVest(Vest $vest)
     {
         $this->vest = $vest;
     }
 
-    /**
-     * Get vest
-     *
-     * @return Vest
-     */
+    /** @return Vest */
     public function getVest()
     {
         return $this->vest;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
+    /** @ORM\PrePersist */
     public function setCreatedAtValue()
     {
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @ORM\PreUpdate
-     */
+    /** @ORM\PreUpdate */
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime();
@@ -287,6 +226,8 @@ class Player
 
     /**
      * Get Vest Radio Id
+     *
+     * @return int
      */
     public function getRadioId()
     {

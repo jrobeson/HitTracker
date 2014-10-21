@@ -10,11 +10,19 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class GameRepository extends EntityRepository
 {
+    /**
+     * @param integer $arena
+     * @return bool
+     */
     public function isArenaOpen($arena)
     {
         return !$this->getActiveGame($arena);
     }
 
+    /**
+     * @param integer $arena
+     * @return Game
+     */
     public function getActiveGame($arena)
     {
         $criteria = new Criteria();

@@ -50,106 +50,64 @@ class Vest
      */
     private $updatedAt;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set Radio Id
-     *
-     * @param string $radioId
-     */
+    /** @param string $radioId */
     public function setRadioId($radioId)
     {
         $this->radioId = strtolower($radioId);
     }
 
-    /**
-     * Get Radio Id
-     *
-     * @return string
-     */
+    /** @return string */
     public function getRadioId()
     {
         return $this->radioId;
     }
 
-    /**
-     * Set if the vest is active or not
-     *
-     * @param bool $active
-     */
+    /** @param bool $active */
     public function setActive($active = true)
     {
         $this->active = $active;
     }
 
-    /**
-     * Check whether the vest is active or not
-     * @return bool
-     */
+    /** @return bool */
     public function isActive()
     {
         return $this->active;
     }
 
-    /**
-     * Set date the vest was created
-     *
-     * @param \DateTime $createdAt
-     */
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
 
-    /**
-     * Get date the vest was created
-     *
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    /**
-     * Set date the vest was updated
-     *
-     * @param \DateTime $updatedAt
-     */
     public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }
 
-    /**
-     * Get date the vest was updated
-     *
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
+    /** @ORM\PrePersist */
     public function setCreatedAtValue()
     {
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @ORM\PreUpdate
-     */
+    /** @ORM\PreUpdate */
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime();
