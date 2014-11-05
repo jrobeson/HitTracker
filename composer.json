@@ -29,7 +29,7 @@
         "jms/di-extra-bundle": "~1.4",
         "elnur/bootstrap-bundle": "dev-master",
         "sylius/resource-bundle": "~0.1",
-        "c33s/static-page-content-bundle": "dev-master",
+        "c33s/static-page-content-bundle": "~2.0",
         "kunstmaan/live-reload-bundle": "~2.3",
         "sylius/settings-bundle": "dev-combined-fixes",
         "guzzlehttp/guzzle": "~4.2",
