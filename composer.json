@@ -27,7 +27,7 @@
         "friendsofsymfony/rest-bundle": "~1.4",
         "jms/serializer-bundle": "0.12.*",
         "jms/di-extra-bundle": "~1.4",
-        "elnur/bootstrap-bundle": "dev-master",
+        "elnur/bootstrap-bundle": "~0.1",
         "sylius/resource-bundle": "~0.1",
         "c33s/static-page-content-bundle": "~2.0",
         "kunstmaan/live-reload-bundle": "~2.3",
