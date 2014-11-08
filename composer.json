@@ -31,7 +31,7 @@
         "sylius/resource-bundle": "~0.1",
         "c33s/static-page-content-bundle": "~2.0",
         "kunstmaan/live-reload-bundle": "~2.3",
-        "sylius/settings-bundle": "dev-combined-fixes",
+        "sylius/settings-bundle": "~0.11",
         "guzzlehttp/guzzle": "~4.2",
         "umpirsky/composer-permissions-handler": "~1.0",
         "nesbot/Carbon": "~1.12"
@@ -84,11 +84,5 @@
             "file": "app/config/parameters.yml",
             "dist-file": "app/config/parameters.dist.yml"
         }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jrobeson/SyliusSettingsBundle"
-        }
-    ]
+    }
 }
