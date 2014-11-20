@@ -44,9 +44,9 @@ To run this program you will need:
  * Web application
 
     1) `php composer.phar create-project lazerball/hit-tracker path/to/install`
-    2) `bin/symfony_requirements`
-    3) <answer questions>
-    4) `cd /path/to/install`
+    2) `cd /path/to/install`
+    3) `bin/symfony_requirements`
+    4) copy parameters.dist.yml to app/config/parameters.yml and fill in
     5) `bin/console doctrine:database:create`
     6) `bin/console doctrine:schema:create`
     7) `bin/console cache:clear`

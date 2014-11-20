@@ -21,7 +21,6 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0",
         "igorw/get-in": "~1.0",
         "nikic/iter": "~1.1",
         "friendsofsymfony/rest-bundle": "~1.4",
@@ -52,7 +51,6 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -61,7 +59,6 @@
             "Umpirsky\\PermissionsHandler\\ScriptHandler::setPermissions"
         ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -79,10 +76,6 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
-        "writable-dirs": ["var/cache", "var/logs"],
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml",
-            "dist-file": "app/config/parameters.dist.yml"
-        }
+        "writable-dirs": ["var/cache", "var/logs"]
     }
 }
