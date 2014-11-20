@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "ab62914f8774af0a2f1222f9f31d77d009e36358"
+                "reference": "e7be0c4dc98715ab1154a11bafd1a3967ce6970c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/ab62914f8774af0a2f1222f9f31d77d009e36358",
-                "reference": "ab62914f8774af0a2f1222f9f31d77d009e36358",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e7be0c4dc98715ab1154a11bafd1a3967ce6970c",
+                "reference": "e7be0c4dc98715ab1154a11bafd1a3967ce6970c",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-11 15:22:51"
+            "time": "2014-11-12 09:31:52"
         },
         {
             "name": "elnur/bootstrap-bundle",
@@ -2545,12 +2545,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "ad74db991610fb6a43e4058cf80a715aace35144"
+                "reference": "d55abb334bb332ef8a40c7e4a249c93173953f31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/ad74db991610fb6a43e4058cf80a715aace35144",
-                "reference": "ad74db991610fb6a43e4058cf80a715aace35144",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/d55abb334bb332ef8a40c7e4a249c93173953f31",
+                "reference": "d55abb334bb332ef8a40c7e4a249c93173953f31",
                 "shasum": ""
             },
             "require": {
@@ -2653,7 +2653,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-09 07:50:20"
+            "time": "2014-11-18 11:25:36"
         },
         {
             "name": "twig/extensions",
@@ -3966,16 +3966,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.2.1",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "ed9c0bcffe4639a5b0ff83e399eeb28e7fcc68f0"
+                "reference": "9ca52329bcdd1500de24427542577ebf3fc2f1c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/ed9c0bcffe4639a5b0ff83e399eeb28e7fcc68f0",
-                "reference": "ed9c0bcffe4639a5b0ff83e399eeb28e7fcc68f0",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/9ca52329bcdd1500de24427542577ebf3fc2f1c9",
+                "reference": "9ca52329bcdd1500de24427542577ebf3fc2f1c9",
                 "shasum": ""
             },
             "require": {
@@ -4021,7 +4021,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2014-09-23 10:52:18"
+            "time": "2014-11-17 16:23:49"
         },
         {
             "name": "phpunit/php-code-coverage",
