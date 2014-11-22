@@ -1,6 +1,8 @@
 $ ->
   if $('body').hasClass('hittracker-game-active') or $('body').hasClass('hittracker-game-scoreboard')
     source = new EventSource '/events/game'
+    $(window).on 'unload', (source) ->
+      source.close
 
     if $('body').hasClass('hittracker-game-scoreboard')
       source.addEventListener 'game.start', (e) ->
@@ -20,8 +22,6 @@ $ ->
 
         $(this).find('.team-total').text team_total
 
-    $(window).on 'unload', (source) ->
-      source.close
 
     countdown_ref = $('#game-time-countdown')
     game_end = countdown_ref.data('game-end-time')

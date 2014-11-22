@@ -13560,6 +13560,9 @@ $(function() {
   var client_time, countdown_ref, game_end, offset, server_time, source;
   if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
     source = new EventSource('/events/game');
+    $(window).on('unload', function(source) {
+      return source.close;
+    });
     if ($('body').hasClass('hittracker-game-scoreboard')) {
       source.addEventListener('game.start', function(e) {
         return window.location.reload(true);
@@ -13579,9 +13582,6 @@ $(function() {
         });
         return $(this).find('.team-total').text(team_total);
       });
-    });
-    $(window).on('unload', function(source) {
-      return source.close;
     });
     countdown_ref = $('#game-time-countdown');
     game_end = countdown_ref.data('game-end-time');
