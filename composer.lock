@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "e7be0c4dc98715ab1154a11bafd1a3967ce6970c"
+                "reference": "88ce68e733a02b84eb229c8447409b2ed5cf71ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e7be0c4dc98715ab1154a11bafd1a3967ce6970c",
-                "reference": "e7be0c4dc98715ab1154a11bafd1a3967ce6970c",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/88ce68e733a02b84eb229c8447409b2ed5cf71ac",
+                "reference": "88ce68e733a02b84eb229c8447409b2ed5cf71ac",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-12 09:31:52"
+            "time": "2014-11-21 20:54:00"
         },
         {
             "name": "elnur/bootstrap-bundle",
@@ -1958,17 +1958,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.8",
+            "version": "v3.0.9",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5"
+                "reference": "82d85b032db66163568ad988e630e5ad74138c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/bc5e96bb4faf6bee7121085951d11b89488952f5",
-                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/82d85b032db66163568ad988e630e5ad74138c72",
+                "reference": "82d85b032db66163568ad988e630e5ad74138c72",
                 "shasum": ""
             },
             "require": {
@@ -2007,7 +2007,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-11-03 21:16:34"
+            "time": "2014-11-21 15:36:24"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2493,12 +2493,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "d55abb334bb332ef8a40c7e4a249c93173953f31"
+                "reference": "31792b01f1d3d2e66b9606476120d2cc1926fe92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d55abb334bb332ef8a40c7e4a249c93173953f31",
-                "reference": "d55abb334bb332ef8a40c7e4a249c93173953f31",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/31792b01f1d3d2e66b9606476120d2cc1926fe92",
+                "reference": "31792b01f1d3d2e66b9606476120d2cc1926fe92",
                 "shasum": ""
             },
             "require": {
@@ -2562,7 +2562,7 @@
                 "ircmaxell/password-compat": "1.0.*",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": ">=0.3.1,<0.6-dev",
-                "propel/propel1": "1.6.*"
+                "propel/propel1": "~1.6"
             },
             "type": "library",
             "extra": {
@@ -2601,7 +2601,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-18 11:25:36"
+            "time": "2014-11-21 16:08:03"
         },
         {
             "name": "twig/extensions",
