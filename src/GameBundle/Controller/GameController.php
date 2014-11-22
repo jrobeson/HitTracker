@@ -124,10 +124,15 @@ class GameController extends ResourceController
         //echo $response->getBody();
     }
 
-    public function stopAction(Request $request)
+    /**
+     * Stop the game
+     * @param $id
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function stopAction($id)
     {
-        $arena = $request->request->get('arena');
-        $game = $this->getRepository()->getActiveGame($arena);
+        $game = $this->getRepository()->find($id);
 
         if ($game) {
             $game->stop();

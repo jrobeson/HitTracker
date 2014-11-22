@@ -6,7 +6,7 @@
         <strong class="text-center">
             {{ include('@HitTrackerGame/Game/print_scores.html.twig') }}
         </strong>
-        <a class="btn btn-danger" href="{{ path('hittracker_game_stop') }}" {{ link_attr('PATCH') }} data-params="arena={{ game.arena }}">
+        <a class="btn btn-danger" href="{{ path('hittracker_game_stop', {'id': game.id }) }}" {{ link_attr('PATCH') }}">
             {{ 'Stop Game'|trans }}
         </a>
         {# include('@HitTrackerGame/Game/hit_simulator.html.twig') #}

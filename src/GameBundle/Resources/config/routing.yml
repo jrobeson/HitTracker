@@ -86,7 +86,7 @@ hittracker_game_delete:
     defaults:
         _controller: hittracker.controller.game:deleteAction
 hittracker_game_stop:
-    path: /games/stop
+    path: /games/{id}/stop
     methods: [PATCH]
     defaults:
         _controller: hittracker.controller.game:stopAction
