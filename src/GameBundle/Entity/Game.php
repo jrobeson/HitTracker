@@ -270,11 +270,6 @@ class Game
         return $this->endsAt->diff($this->createdAt);
     }
 
-    /**
-     * Add a player to the game
-     *
-     * @param Player $player
-     */
     public function addPlayer(Player $player)
     {
         $this->players->add($player);
@@ -292,8 +287,6 @@ class Game
     }
 
     /**
-     * Get players
-     *
      * @return Collection of all Players
      */
     public function getPlayers()
