@@ -98,99 +98,66 @@ class Game
         $this->players = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
+    /** @return int */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param int $arena
-     */
+    /** @param int $arena */
     public function setArena($arena)
     {
         $this->arena = $arena;
     }
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getArena()
     {
         return $this->arena;
     }
 
-    /**
-     * @param int $playerLifeCredits
-     */
+    /** @param int $playerLifeCredits */
     public function setPlayerLifeCredits($playerLifeCredits)
     {
         $this->playerLifeCredits = $playerLifeCredits;
     }
 
-    /**
-     * @return int
-     */
+    /** @return int */
     public function getPlayerLifeCredits()
     {
         return $this->playerLifeCredits;
     }
 
-    /**
-     * @param int $lifeCreditsDeducted
-     */
+    /** @param int $lifeCreditsDeducted */
     public function setLifeCreditsDeducted($lifeCreditsDeducted)
     {
         $this->lifeCreditsDeducted = $lifeCreditsDeducted;
     }
 
-    /**
-     * @return int
-     */
+    /** @return number */
     public function getLifeCreditsDeducted()
     {
         return $this->lifeCreditsDeducted;
     }
 
-    /**
-     * Set the time the game ends
-     *
-     * @param \DateTime $endsAt
-     */
+    /** @param \DateTime $endsAt */
     public function setEndsAt(\DateTime $endsAt)
     {
         $this->endsAt = $endsAt;
     }
 
-    /**
-     * Get the time the game ends
-     *
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getEndsAt()
     {
         return $this->endsAt;
     }
 
-    /**
-     * Set the time the game was created
-     *
-     * @param \DateTime $createdAt
-     */
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
 
-    /**
-     * Get the date the game was created
-     *
-     * @return \DateTime
-     */
+    /** @return \DateTime */
     public function getCreatedAt()
     {
         return $this->createdAt;
@@ -212,10 +179,7 @@ class Game
         $this->setEndsAt($end);
     }
 
-    /**
-     * @return array the length of the game in minutes and seconds
-     *
-     */
+    /** @return array the length of the game in minutes and seconds */
     public function getGameLength()
     {
         if (empty($this->gameLength) && !empty($this->createdAt)) {
@@ -229,11 +193,7 @@ class Game
         return $this->gameLength;
     }
 
-    /**
-     * Is the Game currently active?
-     *
-     * @return bool
-     */
+    /** @return bool */
     public function isActive()
     {
         return $this->endsAt > new \DateTime();
@@ -249,22 +209,14 @@ class Game
         $this->endsAt = new \DateTime();
     }
 
-    /**
-     * Get how much time is left in the game
-     *
-     * @return \DateInterval
-     */
+    /** @return \DateInterval */
     public function timeLeft()
     {
         $now = new \DateTime();
         return $now->diff($this->endsAt);
     }
 
-    /**
-     * Get the total time of the game
-     *
-     * @return \DateInterval
-     */
+    /** @return \DateInterval */
     public function timeTotal()
     {
         return $this->endsAt->diff($this->createdAt);
@@ -276,27 +228,19 @@ class Game
         $player->setGame($this);
     }
 
-    /**
-     * Set players
-     *
-     * @param Collection $players
-     */
+    /** @param Collection $players */
     public function setPlayers(Collection $players)
     {
         $this->players = $players;
     }
 
-    /**
-     * @return Collection of all Players
-     */
+    /** @return Collection */
     public function getPlayers()
     {
         return $this->players;
     }
 
-   /**
-     * @return Collection
-     */
+   /** @return Player */
     public function getPlayerByRadioId($radioId)
     {
         $players = $this->getPlayers()->filter(function ($player) use ($radioId) {
@@ -306,7 +250,7 @@ class Game
     }
 
     /**
-     * @param $team
+     * @param string $team
      *
      * @return Collection
      */
@@ -317,6 +261,7 @@ class Game
         return $this->getPlayers()->matching($criteria);
     }
 
+    /** @return array */
     public function getTeams()
     {
         $teams = array_unique(
@@ -327,6 +272,10 @@ class Game
         return $teams;
     }
 
+    /**
+     * @param $team
+     * @return number
+     */
     public function getTeamScore($team)
     {
         $team = $this->getPlayersByTeam($team);
@@ -337,6 +286,7 @@ class Game
         return $score;
     }
 
+    /** @return number */
     public function getTotalScore()
     {
         $score = array_sum($this->getPlayers()->map(function($player) {
