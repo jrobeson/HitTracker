@@ -43,6 +43,3 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
-
-raul_fraile_ladybug:
-    object_max_nesting_level: 5
