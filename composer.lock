@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8341beda94031ed268959e72d4d8d4cd",
+    "hash": "fbb603ec459fc8995629779b2829d4c3",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -413,16 +413,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "v1.3.0-beta2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "12a9b24987890469a4534eac464cdcea1c5bcb94"
+                "reference": "3beb3a780485ab01f86941f4892cd23ef8c39c6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/12a9b24987890469a4534eac464cdcea1c5bcb94",
-                "reference": "12a9b24987890469a4534eac464cdcea1c5bcb94",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/3beb3a780485ab01f86941f4892cd23ef8c39c6b",
+                "reference": "3beb3a780485ab01f86941f4892cd23ef8c39c6b",
                 "shasum": ""
             },
             "require": {
@@ -488,7 +488,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2014-07-09 09:07:46"
+            "time": "2014-11-28 08:32:03"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "88ce68e733a02b84eb229c8447409b2ed5cf71ac"
+                "reference": "ee13405a138882eeb1b88cf36cd60541fd5c4688"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/88ce68e733a02b84eb229c8447409b2ed5cf71ac",
-                "reference": "88ce68e733a02b84eb229c8447409b2ed5cf71ac",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/ee13405a138882eeb1b88cf36cd60541fd5c4688",
+                "reference": "ee13405a138882eeb1b88cf36cd60541fd5c4688",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-21 20:54:00"
+            "time": "2014-11-27 18:16:00"
         },
         {
             "name": "elnur/bootstrap-bundle",
@@ -2491,12 +2491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "4a1a0ed6868bceb60d6a67035fb8499d8aa85e10"
+                "reference": "c4902d83421f31bbc0178396760825ae4daad059"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/4a1a0ed6868bceb60d6a67035fb8499d8aa85e10",
-                "reference": "4a1a0ed6868bceb60d6a67035fb8499d8aa85e10",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/c4902d83421f31bbc0178396760825ae4daad059",
+                "reference": "c4902d83421f31bbc0178396760825ae4daad059",
                 "shasum": ""
             },
             "require": {
@@ -2599,7 +2599,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-24 07:41:00"
+            "time": "2014-11-28 09:16:35"
         },
         {
             "name": "twig/extensions",
@@ -3016,16 +3016,16 @@
         },
         {
             "name": "winzou/state-machine",
-            "version": "0.1.1",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/winzou/state-machine.git",
-                "reference": "3a17ce7f816e5cfc876b49cca4484f2695b8b0ae"
+                "reference": "cfc791b8f1dbb68e0aebbe279b680664d525b8c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/winzou/state-machine/zipball/3a17ce7f816e5cfc876b49cca4484f2695b8b0ae",
-                "reference": "3a17ce7f816e5cfc876b49cca4484f2695b8b0ae",
+                "url": "https://api.github.com/repos/winzou/state-machine/zipball/cfc791b8f1dbb68e0aebbe279b680664d525b8c5",
+                "reference": "cfc791b8f1dbb68e0aebbe279b680664d525b8c5",
                 "shasum": ""
             },
             "require": {
@@ -3062,7 +3062,7 @@
                 "state",
                 "statemachine"
             ],
-            "time": "2014-07-31 03:35:50"
+            "time": "2014-11-27 07:10:26"
         }
     ],
     "packages-dev": [
@@ -4664,8 +4664,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "symfony/symfony": 20,
-        "doctrine/orm": 20,
-        "doctrine/doctrine-bundle": 20
+        "doctrine/orm": 20
     },
     "prefer-stable": true,
     "platform": {
