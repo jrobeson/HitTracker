@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbb603ec459fc8995629779b2829d4c3",
+    "hash": "7857a4a1b7757891d1acf9d7571a49fd",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -492,17 +492,17 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.0.0",
+            "version": "v1.0.1",
             "target-dir": "Doctrine/Bundle/DoctrineCacheBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
-                "reference": "49a9d2d9a35863201e5e608d1194db28946c4552"
+                "reference": "e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/49a9d2d9a35863201e5e608d1194db28946c4552",
-                "reference": "49a9d2d9a35863201e5e608d1194db28946c4552",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d",
+                "reference": "e4b6f810aa047f9cbfe41c3d6a3d7e83d7477a9d",
                 "shasum": ""
             },
             "require": {
@@ -520,6 +520,8 @@
                 "phpunit/phpunit": "~3.7",
                 "satooshi/php-coveralls": "~0.6.1",
                 "squizlabs/php_codesniffer": "dev-master",
+                "symfony/console": "~2.2",
+                "symfony/finder": "~2.2",
                 "symfony/validator": "~2.2",
                 "symfony/yaml": "~2.2"
             },
@@ -540,12 +542,6 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
                 },
@@ -564,6 +560,10 @@
                 {
                     "name": "Doctrine Project",
                     "homepage": "http://www.doctrine-project.org/"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony2 Bundle for Doctrine Cache",
@@ -572,7 +572,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2014-03-04 19:18:55"
+            "time": "2014-11-28 09:43:36"
         },
         {
             "name": "doctrine/inflector",
@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "ee13405a138882eeb1b88cf36cd60541fd5c4688"
+                "reference": "c2ad33870746b4ae5fb11b4a67329c485e3f970c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/ee13405a138882eeb1b88cf36cd60541fd5c4688",
-                "reference": "ee13405a138882eeb1b88cf36cd60541fd5c4688",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c2ad33870746b4ae5fb11b4a67329c485e3f970c",
+                "reference": "c2ad33870746b4ae5fb11b4a67329c485e3f970c",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-27 18:16:00"
+            "time": "2014-11-28 11:23:23"
         },
         {
             "name": "elnur/bootstrap-bundle",
@@ -2487,16 +2487,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "2.6.x-dev",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c4902d83421f31bbc0178396760825ae4daad059"
+                "reference": "645bb3248db50d653d18929eb0c92b131b4f35ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c4902d83421f31bbc0178396760825ae4daad059",
-                "reference": "c4902d83421f31bbc0178396760825ae4daad059",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/645bb3248db50d653d18929eb0c92b131b4f35ad",
+                "reference": "645bb3248db50d653d18929eb0c92b131b4f35ad",
                 "shasum": ""
             },
             "require": {
@@ -2599,7 +2599,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-28 09:16:35"
+            "time": "2014-11-28 15:59:01"
         },
         {
             "name": "twig/extensions",
@@ -4663,7 +4663,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/symfony": 20,
         "doctrine/orm": 20
     },
     "prefer-stable": true,
