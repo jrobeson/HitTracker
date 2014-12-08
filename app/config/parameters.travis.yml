@@ -6,5 +6,3 @@ parameters:
     mailer_user: ~
     mailer_password: ~
     secret: ff3464e484bb524fb4234e893f9cee58
-    debug_toolbar: false
-    debug_redirects: false
