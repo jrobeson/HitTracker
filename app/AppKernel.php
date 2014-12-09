@@ -69,6 +69,11 @@ class AppKernel extends Kernel
         if (is_file($localFile)) {
             $loader->load($localFile);
         }
+
+        $envParameters = $this->getEnvParameters();
+        $loader->load(function($container) use($envParameters) {
+            $container->getParameterBag()->add($envParameters);
+        });
     }
 
     /**

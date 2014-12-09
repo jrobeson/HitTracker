@@ -33,7 +33,8 @@
         "sylius/settings-bundle": "~0.11",
         "guzzlehttp/guzzle": "~4.2",
         "umpirsky/composer-permissions-handler": "~1.0",
-        "nesbot/Carbon": "~1.12"
+        "nesbot/Carbon": "~1.12",
+        "vlucas/phpdotenv": "~1.0@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*",
@@ -54,7 +55,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-             "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal",
+            "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal",
             "Umpirsky\\PermissionsHandler\\ScriptHandler::setPermissions"
         ],
         "post-update-cmd": [
@@ -62,7 +63,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-             "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
+            "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
         ]
     },
     "config": {
@@ -75,6 +76,9 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
-        "writable-dirs": ["var/cache", "var/logs"]
+        "writable-dirs": [
+            "var/cache",
+            "var/logs"
+        ]
     }
 }

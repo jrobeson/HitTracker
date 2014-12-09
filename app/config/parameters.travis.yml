@@ -1,8 +1,0 @@
-parameters:
-    database_name: ht_test
-    database_user: postgres
-    mailer_transport: ~
-    mailer_host: 127.0.0.1
-    mailer_user: ~
-    mailer_password: ~
-    secret: ff3464e484bb524fb4234e893f9cee58

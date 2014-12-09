@@ -1,5 +1,4 @@
 /app/config/local_*
-/app/config/parameters.yml
 /build/
 /bin/*
 !bin/console
@@ -14,3 +13,4 @@
 /vendor/
 /web/bundles/
 /composer.phar
+/.env

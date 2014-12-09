@@ -2,16 +2,17 @@
 <?php
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Debug\Debug;
 
 set_time_limit(0);
 
 require_once __DIR__.'/../var/bootstrap.php.cache';
 require_once __DIR__.'/../app/AppKernel.php';
 
+Dotenv::load(__DIR__ . '/../');
+
 $input = new ArgvInput();
-$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
-$debug = getenv('SYMFONY_DEBUG') !== '0'
+$env = $input->getParameterOption(array('--env', '-e'), $_SERVER['SYMFONY_ENV'] ?: 'dev');
+$debug = (bool)$_SERVER['SYMFONY_DEBUG']
     && !$input->hasParameterOption(array('--no-debug', ''))
     && $env !== 'prod';
 
