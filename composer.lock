@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "1cc42d6a630b81768864a7bb219b6a78f9c35fb4"
+                "reference": "5a6bbbd6241d803b686a13a0c373e0febe656987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/1cc42d6a630b81768864a7bb219b6a78f9c35fb4",
-                "reference": "1cc42d6a630b81768864a7bb219b6a78f9c35fb4",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/5a6bbbd6241d803b686a13a0c373e0febe656987",
+                "reference": "5a6bbbd6241d803b686a13a0c373e0febe656987",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-12-08 00:35:11"
+            "time": "2014-12-10 00:33:23"
         },
         {
             "name": "elnur/bootstrap-bundle",
