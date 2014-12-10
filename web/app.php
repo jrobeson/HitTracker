@@ -8,7 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 require_once __DIR__.'/../app/autoload.php';
 
-Dotenv::load(__DIR__.'/../');
+if (file_exists(__DIR__.'/.env')) {
+    Dotenv::load(__DIR__.'/../');
+}
 $env = $_SERVER['SYMFONY_ENV'];
 $debug = (bool)$_SERVER['SYMFONY_DEBUG'];
 
