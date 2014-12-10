@@ -7,6 +7,8 @@ php:
 
 env:
     global:
+        - SYMFONY_DEBUG=1
+        - SYMFONY_ENV=dev
         - SYMFONY__DATABASE_NAME=ht
         - SYMFONY__DATABASE_USER=postgres
         - SYMFONY_SECRET=ff3464e484bb524fb4234e893f9cee58
