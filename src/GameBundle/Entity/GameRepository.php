@@ -20,6 +20,17 @@ class GameRepository extends EntityRepository
     }
 
     /**
+     * @param int $howMany
+     * @return array
+     */
+    public function getRecentGames($howMany)
+    {
+        return $this->_em->createQuery('SELECT g from HitTrackerGameBundle:Game g')
+            ->setMaxResults($howMany)
+            ->getResult();
+    }
+
+    /**
      * @param integer $arena
      * @return Game
      */
