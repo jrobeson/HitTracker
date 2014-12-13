@@ -25,7 +25,6 @@
         "nikic/iter": "~1.1",
         "friendsofsymfony/rest-bundle": "~1.4",
         "jms/serializer-bundle": "0.13.*",
-        "jms/di-extra-bundle": "~1.4",
         "elnur/bootstrap-bundle": "~0.1",
         "sylius/resource-bundle": "~0.12",
         "c33s/static-page-content-bundle": "~2.0",
