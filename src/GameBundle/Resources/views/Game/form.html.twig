@@ -19,10 +19,12 @@
 <div class="row players" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
     {% set team_count = form.players.count / 2 %}
     {% for team in form.players|batch(team_count)%}
-        <div class="col-lg-6">
+        <div class="col-lg-6 new-game-teams">
             <div class="row">
-                <div class="form-control-static col-lg-2">
-                    {{ 'Team'|trans }} {{ loop.index }}
+                <div class="col-lg-2">
+                    <div class="form-group team-no">
+                        {{  form_widget(attribute(form, 'team' ~ loop.index)) }}
+                    </div>
                 </div>
                 <div class="form-control-static col-lg-5">
                     {{ 'Name'|trans }}
