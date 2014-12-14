@@ -57,9 +57,43 @@ sensio_framework_extra:
     request:
         converters: true
     view:
-        annotations: true
+        annotations: false
     router:
         annotations: true
+
+
+fos_rest:
+    #disable_csrf_role: ROLE_API
+    param_fetcher_listener: true
+    view:
+        mime_types:
+            json:
+                - 'application/json'
+                - 'application/json;version=1.0'
+        view_response_listener: 'force'
+        formats:
+            xml: true
+            json: true
+        templating_formats:
+            html: true
+    format_listener:
+        rules:
+            - path: ^/,
+              priorities: [ html, json, xml ]
+              fallback_format: ~
+              prefer_extension: true
+        media_type:
+            version_regex: '/(v|version)=(?P<version>[0-9\.]+)/'
+    exception:
+        codes:
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
+            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
+        messages:
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
+    allowed_methods_listener: true
+    access_denied_listener:
+        json: true
+    body_listener: true
 
 c33s_static_page_content:
     content_bundle: HitTrackerGameBundle
