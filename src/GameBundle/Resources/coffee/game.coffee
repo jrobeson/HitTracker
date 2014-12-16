@@ -1,4 +1,33 @@
 $ ->
+  $('select[name="hittracker_game[reload_players]"]').change ->
+    game_id = $(this).val()
+    text = $(this).children(':selected').text()
+    teams = text.replace(' vs. ', '|').split('|')
+    request = $.ajax({
+      url: 'http://hittracker.local.lan/games/' + game_id,
+      headers: {
+        Accept: "application/json",
+      }
+    })
+    request.done (game) ->
+      team_players = []
+      for player in game.players
+        pt = player.team
+        team_players[pt] = [] if not team_players[pt]?
+        team_players[pt].push(player.name)
+      $('.new-game-teams').each ->
+        team = teams.shift()
+        $(this).find('.team-no input').val(team)
+        players = team_players[team]
+        $(this).find('input[id$="_name"]').each ->
+          $(this).val(players.shift())
+
+  $('form[name="hittracker_game"]').submit ->
+    $('.new-game-teams').each ->
+      team = $(this).find('.team-no input').val().trim()
+      $(this).find('input[id$="_team"]').each ->
+        $(this).val(team)
+
   if $('body').hasClass('hittracker-game-active') or $('body').hasClass('hittracker-game-scoreboard')
     source = new EventSource '/events/game'
     $(window).on 'unload', (source) ->
