@@ -12,15 +12,18 @@ class GameType extends AbstractType
 {
     private $settingsManager;
     private $eventSubscriber;
+    private $gameRepository;
 
     /**
+     * @param $gameRepository
      * @param SettingsManagerInterface $settingsManager
      * @param EventSubscriberInterface $eventSubscriber
      */
-    public function __construct(SettingsManagerInterface $settingsManager, EventSubscriberInterface $eventSubscriber)
+    public function __construct($gameRepository, /*$settings*/SettingsManagerInterface $settingsManager, EventSubscriberInterface $eventSubscriber)
     {
         $this->settingsManager = $settingsManager;
         $this->eventSubscriber = $eventSubscriber;
+        $this->gameRepository = $gameRepository;
     }
 
     /**
@@ -33,6 +36,13 @@ class GameType extends AbstractType
 
         $arenas = $siteSettings->get('arenas');
         $arenaFieldType = ($arenas > 1) ? 'choice' : 'hidden';
+
+        $recentGames = $this->gameRepository->getRecentGames(10);
+        $gameList = [];
+        foreach ($recentGames as $recentGame) {
+            $teams = join(' vs. ', $recentGame->getTeams());
+            $gameList[$recentGame->getId()] = $teams;
+        }
 
         $builder
             ->add('game_length', 'positive_integer', [
@@ -52,6 +62,20 @@ class GameType extends AbstractType
             ->add('lifeCreditsDeducted', 'positive_integer', [
                 'label' => 'Credits Deducted Per Hit',
                 'data' => $gameSettings->get('life_credits_deducted'),
+            ])
+            ->add('team1', 'text', [
+                'label' => '',
+                'mapped' => false,
+                'data' => 'Team 1'
+            ])
+            ->add('team2', 'text', [
+                'label' => '',
+                'mapped' => false,
+                'data' => 'Team 2'
+            ])
+            ->add('reload_players', 'choice' ,[
+                'choices' => $gameList,
+                'mapped' => false,
             ])
             ->add('players', 'hittracker_player_collection')
             ->add('start', 'submit', [

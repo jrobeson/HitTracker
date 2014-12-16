@@ -15,6 +15,7 @@
             <argument type="service" id="hittracker.repository.game" />
         </service>
         <service id="hittracker_game.form.type.game" class="HitTracker\GameBundle\Form\Type\GameType">
+            <argument type="service" id="hittracker.repository.game" />
             <argument type="service" id="sylius.settings.manager" />
             <argument type="service" id="hittracker_game.form.event_subscriber.game"/>
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->

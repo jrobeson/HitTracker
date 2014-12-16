@@ -13558,6 +13558,49 @@ var printScores, pushHit;
 
 $(function() {
   var client_time, countdown_ref, game_end, offset, server_time, source;
+  $('select[name="hittracker_game[reload_players]"]').change(function() {
+    var game_id, request, teams, text;
+    game_id = $(this).val();
+    text = $(this).children(':selected').text();
+    teams = text.replace(' vs. ', '|').split('|');
+    request = $.ajax({
+      url: 'http://hittracker.local.lan/games/' + game_id,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+    return request.done(function(game) {
+      var player, pt, team_players, _i, _len, _ref;
+      team_players = [];
+      _ref = game.players;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        player = _ref[_i];
+        pt = player.team;
+        if (team_players[pt] == null) {
+          team_players[pt] = [];
+        }
+        team_players[pt].push(player.name);
+      }
+      return $('.new-game-teams').each(function() {
+        var players, team;
+        team = teams.shift();
+        $(this).find('.team-no input').val(team);
+        players = team_players[team];
+        return $(this).find('input[id$="_name"]').each(function() {
+          return $(this).val(players.shift());
+        });
+      });
+    });
+  });
+  $('form[name="hittracker_game"]').submit(function() {
+    return $('.new-game-teams').each(function() {
+      var team;
+      team = $(this).find('.team-no input').val().trim();
+      return $(this).find('input[id$="_team"]').each(function() {
+        return $(this).val(team);
+      });
+    });
+  });
   if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
     source = new EventSource('/events/game');
     $(window).on('unload', function(source) {

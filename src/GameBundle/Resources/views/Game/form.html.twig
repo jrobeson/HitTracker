@@ -16,6 +16,11 @@
         {{ form_row(form.lifeCreditsDeducted) }}
     </div>
 </div>
+<div class="row">
+    <div class="col-md-3">
+    {{ form_row(form.reload_players) }}
+    </div>
+</div>
 <div class="row players" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
     {% set team_count = form.players.count / 2 %}
     {% for team in form.players|batch(team_count)%}
