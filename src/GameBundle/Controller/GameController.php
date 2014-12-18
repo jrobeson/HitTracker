@@ -155,7 +155,7 @@ class GameController extends ResourceController
      * Register a hit
      *
      * @param Request $request
-     * @todo move to separate API controller
+     * @todo make it a real API
      * @todo does not work with more than one arena
      * @return JsonResponse
      */
@@ -163,12 +163,14 @@ class GameController extends ResourceController
     {
         $game = $this->getRepository()->getActiveGame(1);
 
+
         if (!$game) {
             return new JsonResponse(['error' => 'no such game'], 404);
         }
 
-        $radioId = $request->request->get('radioId');
-        $zone = (int)$request->request->get('zone');
+        $data = json_decode($request->getContent(), true);
+        $radioId = $data['hit']['radioId'];
+        $zone = (int)$data['hit']['zone'];
 
         $player = $game->getPlayerByRadioId($radioId);
 
