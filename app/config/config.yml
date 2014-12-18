@@ -72,14 +72,13 @@ fos_rest:
                 - 'application/json;version=1.0'
         view_response_listener: 'force'
         formats:
-            xml: true
             json: true
         templating_formats:
             html: true
     format_listener:
         rules:
             - path: ^/
-              priorities: [ html, json, xml ]
+              priorities: [html, json]
               fallback_format: ~
               prefer_extension: true
         media_type:
