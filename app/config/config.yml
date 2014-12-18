@@ -78,7 +78,7 @@ fos_rest:
             html: true
     format_listener:
         rules:
-            - path: ^/,
+            - path: ^/
               priorities: [ html, json, xml ]
               fallback_format: ~
               prefer_extension: true
