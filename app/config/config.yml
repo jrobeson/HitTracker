@@ -69,7 +69,7 @@ fos_rest:
         mime_types:
             json:
                 - 'application/json'
-                - 'application/json;version=1.0'
+                - 'application/json;version=0.1'
         view_response_listener: 'force'
         formats:
             json: true
