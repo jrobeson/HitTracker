@@ -19,7 +19,7 @@ security:
             logout:
                 invalidate_session: true
         dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(error|profiler|wdt)|css|images|js)/
             security: false
 
     access_control:
