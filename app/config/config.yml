@@ -29,6 +29,8 @@ framework:
 
 # Twig Configuration
 twig:
+    #form_themes:
+    #    - bootstrap_3_horizontal_layout.html.twig
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
@@ -79,8 +81,7 @@ fos_rest:
         rules:
             - path: ^/
               priorities: [html, json]
-              fallback_format: ~
-              prefer_extension: true
+              fallback_format: html
         media_type:
             version_regex: '/(v|version)=(?P<version>[0-9\.]+)/'
     exception:
