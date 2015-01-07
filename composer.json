@@ -28,7 +28,7 @@
         "elnur/bootstrap-bundle": "~0.1",
         "sylius/resource-bundle": "~0.12",
         "c33s/static-page-content-bundle": "~2.0",
-        "kunstmaan/live-reload-bundle": "~2.3",
+        "kunstmaan/live-reload-bundle": "~3.0",
         "sylius/settings-bundle": "~0.12",
         "guzzlehttp/guzzle": "~4.2",
         "umpirsky/composer-permissions-handler": "~1.0",
