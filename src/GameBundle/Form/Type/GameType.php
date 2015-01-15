@@ -40,7 +40,8 @@ class GameType extends AbstractType
         $recentGames = $this->gameRepository->getRecentGames(10);
         $gameList = [];
         foreach ($recentGames as $recentGame) {
-            $teams = join(' vs. ', $recentGame->getTeams());
+            $gameIdFormat = sprintf(' (Game #: %d)', $recentGame->getId());
+            $teams = join(' vs. ', $recentGame->getTeams()) . $gameIdFormat;
             $gameList[$recentGame->getId()] = $teams;
         }
 
@@ -74,6 +75,7 @@ class GameType extends AbstractType
                 'data' => 'Team 2'
             ])
             ->add('reload_players', 'choice' ,[
+                'label' => 'Load Players From Previous Games',
                 'choices' => $gameList,
                 'mapped' => false,
             ])
