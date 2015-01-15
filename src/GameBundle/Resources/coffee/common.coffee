@@ -1,3 +1,10 @@
+if !window.location.origin
+  scheme_host = window.location.protocol + '//' + window.location.hostname
+  port = ''
+  if window.location.port
+    port = ':' + window.location.port
+  window.location.origin = scheme_host + port
+
 alertDismiss = ->
   target = $('.alert')
   timeout = target.data('auto-dismiss')

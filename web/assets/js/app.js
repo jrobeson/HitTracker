@@ -13741,7 +13741,16 @@ printScores = function(url, copies) {
   return frame.contentDocument.location.href = url;
 };
 
-var alertDismiss;
+var alertDismiss, port, scheme_host;
+
+if (!window.location.origin) {
+  scheme_host = window.location.protocol + '//' + window.location.hostname;
+  port = '';
+  if (window.location.port) {
+    port = ':' + window.location.port;
+  }
+  window.location.origin = scheme_host + port;
+}
 
 alertDismiss = function() {
   var target, timeout;
