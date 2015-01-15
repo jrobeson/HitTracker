@@ -69,6 +69,11 @@ class AppKernel extends Kernel
         }
 
         $envParameters = $this->getEnvParameters();
+
+        // set password to null for travis
+        if (!isset($envParameters['database_password'])) {
+            $envParameters['database_password'] = null;
+        }
         $loader->load(function($container) use($envParameters) {
             $container->getParameterBag()->add($envParameters);
         });
