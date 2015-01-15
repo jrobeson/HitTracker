@@ -8,7 +8,7 @@ php:
 env:
     global:
         - SYMFONY_DEBUG=1
-        - SYMFONY_ENV=dev
+        - SYMFONY_ENV=test
         - SYMFONY__DATABASE_NAME=ht
         - SYMFONY__DATABASE_USER=postgres
         - SYMFONY_SECRET=ff3464e484bb524fb4234e893f9cee58
@@ -34,7 +34,8 @@ install:
     - composer install --prefer-source --no-interaction
 
 before_script:
-    - php bin/console doctrine:database:create --env=test
+    - psql -c 'create databaseh ht;' -U postgres
+#    - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
 #    - php bin/console doctrine:fixtures:load -n --env=test
     - php bin/console cache:warmup --env=test
