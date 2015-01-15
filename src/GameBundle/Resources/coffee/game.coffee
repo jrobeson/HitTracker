@@ -2,6 +2,7 @@ $ ->
   $('select[name="hittracker_game[reload_players]"]').change ->
     game_id = $(this).val()
     text = $(this).children(':selected').text()
+    text = text.replace(/[ ]\(Game #: .+?\)/, '')
     teams = text.replace(' vs. ', '|').split('|')
     request = $.ajax({
       url: window.location.origin + '/games/' + game_id,
