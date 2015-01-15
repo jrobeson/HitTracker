@@ -19,10 +19,16 @@ matrix:
         - php: hhvm
         - php: hhvm-nightly
 
-addons:
-    postgresql: '9.3'
+# TODO: go back to addons when travis supports pg 9.4
+# https://github.com/travis-ci/travis-ci/issues/2983
+#addons:
+#    postgresql: '9.3'
 
 before_install:
+    - sudo apt-get update
+    - sudo apt-get purge postgresql-9.1 postgresql-9.2 postgresql-9.3
+    - sudo apt-get install postgresql-client-common postgresql-9.4
+    - sudo service postgresql start
     - composer self-update
 install:
     - composer install --prefer-source --no-interaction
