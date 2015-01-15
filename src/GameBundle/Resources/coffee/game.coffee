@@ -4,7 +4,7 @@ $ ->
     text = $(this).children(':selected').text()
     teams = text.replace(' vs. ', '|').split('|')
     request = $.ajax({
-      url: 'http://hittracker.local.lan/games/' + game_id,
+      url: window.location.origin + '/games/' + game_id,
       headers: {
         Accept: "application/json",
       }
