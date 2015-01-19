@@ -21,7 +21,7 @@ framework:
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
-        handler_id:  ~
+        handler_id:  session.handler.pdo
         cookie_httponly: true
         #cookie_secure: true
     fragments:       ~
