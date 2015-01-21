@@ -38,7 +38,9 @@
                     {{ 'Vest'|trans }}
                 </div>
                 <div class="form-control-static col-lg-3">
+                    {% if not 'hidden' == team|first.children.lifeCredits.vars.attr.class %}
                     {{ 'Life Credits'|trans }}
+                    {% endif %}
                 </div>
             </div>
             {% for player in team %}

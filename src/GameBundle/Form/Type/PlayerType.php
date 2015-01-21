@@ -37,7 +37,8 @@ class PlayerType extends AbstractType
             ->add('lifeCredits', 'positive_integer', [
                   'empty_data' => '',
                   'attr' => [
-                    'step' => $gameSettings->get('life_credits_deducted')
+                    'step' => $gameSettings->get('life_credits_deducted'),
+                    'class' => 'hidden'
                   ]
             ])
         ;
