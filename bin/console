@@ -9,7 +9,8 @@ require_once __DIR__.'/../var/bootstrap.php.cache';
 require_once __DIR__.'/../app/AppKernel.php';
 
 if (file_exists(__DIR__.'/../.env')) {
-    Dotenv::load(__DIR__.'/../');
+    $dotEnv = new \Dotenv\Dotenv();
+    $dotEnv->load(__DIR__.'/../');
 }
 
 $input = new ArgvInput();
