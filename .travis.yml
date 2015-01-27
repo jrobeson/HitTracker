@@ -11,7 +11,7 @@ env:
         - SYMFONY_ENV=test
         - SYMFONY__DATABASE_NAME=ht
         - SYMFONY__DATABASE_USER=postgres
-        - SYMFONY_SECRET=ff3464e484bb524fb4234e893f9cee58
+        - SYMFONY__SECRET=ff3464e484bb524fb4234e893f9cee58
 
 matrix:
     fast_finish: true
