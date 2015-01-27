@@ -1,6 +1,5 @@
 parameters:
     locale: en
-    secret: ~
 
     database_host: 127.0.0.1
     database_port: ~
@@ -13,3 +12,4 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
+    session_cookie_secure: false
