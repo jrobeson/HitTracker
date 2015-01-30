@@ -29,7 +29,7 @@
         "c33s/static-page-content-bundle": "~2.0",
         "kunstmaan/live-reload-bundle": "~3.0",
         "sylius/settings-bundle": "~0.12",
-        "guzzlehttp/guzzle": "~4.2",
+        "guzzlehttp/guzzle": "~5.0",
         "umpirsky/composer-permissions-handler": "~1.0",
         "nesbot/Carbon": "~1.12",
         "vlucas/phpdotenv": "2.*@dev",
