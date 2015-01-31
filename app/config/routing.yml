@@ -1,3 +1,8 @@
+nelmio_csp_reporter:
+    path: /csp/report
+    defaults:
+        _controller: nelmio_security.csp_reporter_controller:indexAction
+    methods:  [POST]
 hittracker_game:
     resource: "@HitTrackerGameBundle/Resources/config/routing.yml"
 
