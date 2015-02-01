@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "479c0eeac85d5388d64b35c88e0ff7c1",
+    "hash": "aa080b737d2faa4df5ab74b589eb0b4b",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -1646,16 +1646,16 @@
         },
         {
             "name": "nelmio/security-bundle",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioSecurityBundle.git",
-                "reference": "b8847d6a66744fb8c3df60381939e7a1cbfed7e3"
+                "reference": "a3ee5be287b8586e46f082504044b62343a6a3c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioSecurityBundle/zipball/b8847d6a66744fb8c3df60381939e7a1cbfed7e3",
-                "reference": "b8847d6a66744fb8c3df60381939e7a1cbfed7e3",
+                "url": "https://api.github.com/repos/nelmio/NelmioSecurityBundle/zipball/a3ee5be287b8586e46f082504044b62343a6a3c0",
+                "reference": "a3ee5be287b8586e46f082504044b62343a6a3c0",
                 "shasum": ""
             },
             "require": {
@@ -1691,7 +1691,7 @@
             "keywords": [
                 "security"
             ],
-            "time": "2015-01-01 20:49:20"
+            "time": "2015-02-01 11:00:05"
         },
         {
             "name": "nesbot/carbon",
@@ -2030,17 +2030,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.15",
+            "version": "v3.0.16",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c"
+                "reference": "aa30f8cd3ee68144e043ca30713aa7d7df35c5fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c",
-                "reference": "0692cd6a8fcf645abce8ea45f7cbbd1942e2b23c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/aa30f8cd3ee68144e043ca30713aa7d7df35c5fa",
+                "reference": "aa30f8cd3ee68144e043ca30713aa7d7df35c5fa",
                 "shasum": ""
             },
             "require": {
@@ -2079,7 +2079,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-01-07 07:13:43"
+            "time": "2015-02-01 05:42:21"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2892,12 +2892,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "dc3e901376c27d04e786a8ae66af78393e23ef3d"
+                "reference": "c4368fda432d002a4e40029072421fbaeac67714"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/dc3e901376c27d04e786a8ae66af78393e23ef3d",
-                "reference": "dc3e901376c27d04e786a8ae66af78393e23ef3d",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/c4368fda432d002a4e40029072421fbaeac67714",
+                "reference": "c4368fda432d002a4e40029072421fbaeac67714",
                 "shasum": ""
             },
             "require": {
@@ -2938,7 +2938,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2015-01-17 03:05:58"
+            "time": "2015-01-30 16:15:21"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -3925,6 +3925,53 @@
                 "webtest"
             ],
             "time": "2014-05-12 21:03:05"
+        },
+        {
+            "name": "matthiasnoback/symfony-config-test",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthiasnoback/SymfonyConfigTest.git",
+                "reference": "8d3a62aa4ba4e9f2c4d3e8a635a047cd74e6c102"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthiasnoback/SymfonyConfigTest/zipball/8d3a62aa4ba4e9f2c4d3e8a635a047cd74e6c102",
+                "reference": "8d3a62aa4ba4e9f2c4d3e8a635a047cd74e6c102",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/config": "2.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7",
+                "sebastian/exporter": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matthias\\SymfonyConfigTest\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Noback",
+                    "email": "matthiasnoback@gmail.com",
+                    "homepage": "http://php-and-symfony.matthiasnoback.nl"
+                }
+            ],
+            "description": "Library for testing user classes related to the Symfony Config Component",
+            "homepage": "https://github.com/matthiasnoback/SymfonyConfigTest",
+            "keywords": [
+                "config",
+                "phpunit",
+                "symfony"
+            ],
+            "time": "2014-10-12 20:31:08"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
