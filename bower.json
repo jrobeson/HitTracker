@@ -1,9 +1,9 @@
 {
   "name": "HitTracker",
   "dependencies": {
-    "bootstrap-sass-official": "~3.3",
+    "bootstrap-sass-official": "^3.3",
     "fontawesome": "latest",
-    "jquery": "~1.11",
+    "jquery": "^2.0",
     "jquery-color": "~2.1",
     "jquery.countdown": "~2.0"
   }
