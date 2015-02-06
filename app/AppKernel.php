@@ -62,12 +62,6 @@ class AppKernel extends Kernel
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
 
-        $localFile = __DIR__.'/config/local_'.$this->getEnvironment().'.yml';
-
-        if (is_file($localFile)) {
-            $loader->load($localFile);
-        }
-
         $envParameters = $this->getEnvParameters();
 
         $loader->load(function($container) use($envParameters) {
