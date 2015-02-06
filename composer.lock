@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aa080b737d2faa4df5ab74b589eb0b4b",
+    "hash": "f182e57d59d8a3f48b701574d2292ce7",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -1524,22 +1524,25 @@
         },
         {
             "name": "kunstmaan/live-reload-bundle",
-            "version": "3.0.1",
+            "version": "dev-devel",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Kunstmaan/KunstmaanLiveReloadBundle.git",
-                "reference": "5766e0af10e2ddda031c9fe19073ef7dfe5dbd79"
+                "url": "https://github.com/jrobeson/KunstmaanLiveReloadBundle.git",
+                "reference": "3a5ead4715a796d4035b4485ca2f5d45f76c4737"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kunstmaan/KunstmaanLiveReloadBundle/zipball/5766e0af10e2ddda031c9fe19073ef7dfe5dbd79",
-                "reference": "5766e0af10e2ddda031c9fe19073ef7dfe5dbd79",
+                "url": "https://api.github.com/repos/jrobeson/KunstmaanLiveReloadBundle/zipball/3a5ead4715a796d4035b4485ca2f5d45f76c4737",
+                "reference": "3a5ead4715a796d4035b4485ca2f5d45f76c4737",
                 "shasum": ""
             },
             "require": {
                 "guzzle/guzzle": "3.8.*",
                 "php": ">=5.3.3",
                 "symfony/symfony": "~2.3"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-config-test": "0.*"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1552,15 +1555,14 @@
                     "Kunstmaan\\LiveReloadBundle\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Kunstmaan Team",
-                    "email": "support@kunstmaan.be",
-                    "homepage": "http://www.kunstmaan.be/"
+                    "homepage": "http://www.kunstmaan.be/",
+                    "email": "support@kunstmaan.be"
                 }
             ],
             "description": "The KunstmaanLiveReloadBundle injects the livereload script from grunt-contrib-watch into your html page.",
@@ -1570,7 +1572,10 @@
                 "kunstmaan",
                 "livereload"
             ],
-            "time": "2015-01-19 12:53:20"
+            "support": {
+                "source": "https://github.com/jrobeson/KunstmaanLiveReloadBundle/tree/devel"
+            },
+            "time": "2015-02-05 04:45:43"
         },
         {
             "name": "monolog/monolog",
@@ -2619,16 +2624,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c34ef418015793a4653f2670afb69dd167ebf578"
+                "reference": "23b647f1e4eeb24a457d3c47f5f5046377d5a3bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c34ef418015793a4653f2670afb69dd167ebf578",
-                "reference": "c34ef418015793a4653f2670afb69dd167ebf578",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/23b647f1e4eeb24a457d3c47f5f5046377d5a3bf",
+                "reference": "23b647f1e4eeb24a457d3c47f5f5046377d5a3bf",
                 "shasum": ""
             },
             "require": {
@@ -2731,7 +2736,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-07 14:47:29"
+            "time": "2015-02-02 18:02:30"
         },
         {
             "name": "twig/extensions",
@@ -3393,16 +3398,16 @@
         },
         {
             "name": "behat/mink",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minkphp/Mink.git",
-                "reference": "090900a0049c441f1e072bbd837db4079b2250c5"
+                "reference": "8b68523a339ec991bcd638b39dc8f04f808da88a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minkphp/Mink/zipball/090900a0049c441f1e072bbd837db4079b2250c5",
-                "reference": "090900a0049c441f1e072bbd837db4079b2250c5",
+                "url": "https://api.github.com/repos/minkphp/Mink/zipball/8b68523a339ec991bcd638b39dc8f04f808da88a",
+                "reference": "8b68523a339ec991bcd638b39dc8f04f808da88a",
                 "shasum": ""
             },
             "require": {
@@ -3422,8 +3427,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Behat\\Mink": "src/"
+                "psr-4": {
+                    "Behat\\Mink\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3437,14 +3442,14 @@
                     "homepage": "http://everzet.com"
                 }
             ],
-            "description": "Web acceptance testing framework for PHP 5.3",
+            "description": "Browser controller/emulator abstraction for PHP",
             "homepage": "http://mink.behat.org/",
             "keywords": [
                 "browser",
                 "testing",
                 "web"
             ],
-            "time": "2014-09-26 09:25:05"
+            "time": "2015-02-04 17:02:06"
         },
         {
             "name": "behat/mink-browserkit-driver",
@@ -3975,27 +3980,27 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "38743b677965c48a637097b2746a281264ae2347"
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/38743b677965c48a637097b2746a281264ae2347",
-                "reference": "38743b677965c48a637097b2746a281264ae2347",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d68dbdc53dc358a816f00b300704702b2eaff7b8",
+                "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*@stable"
+                "phpunit/phpunit": "~4.0"
             },
             "suggest": {
-                "dflydev/markdown": "1.0.*",
-                "erusev/parsedown": "~0.7"
+                "dflydev/markdown": "~1.0",
+                "erusev/parsedown": "~1.0"
             },
             "type": "library",
             "extra": {
@@ -4020,7 +4025,7 @@
                     "email": "mike.vanriel@naenius.com"
                 }
             ],
-            "time": "2014-08-09 10:27:07"
+            "time": "2015-02-03 12:10:50"
         },
         {
             "name": "phpspec/php-diff",
@@ -4937,6 +4942,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "doctrine/orm": 20,
+        "kunstmaan/live-reload-bundle": 20,
         "vlucas/phpdotenv": 20,
         "nelmio/security-bundle": 20
     },
