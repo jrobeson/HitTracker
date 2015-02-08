@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f182e57d59d8a3f48b701574d2292ce7",
+    "hash": "988c0c8fe3d1971c6a1fcab7b0934d35",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -1528,12 +1528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrobeson/KunstmaanLiveReloadBundle.git",
-                "reference": "3a5ead4715a796d4035b4485ca2f5d45f76c4737"
+                "reference": "34732a3769277be4fb19488f81aed637a95f0b32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/KunstmaanLiveReloadBundle/zipball/3a5ead4715a796d4035b4485ca2f5d45f76c4737",
-                "reference": "3a5ead4715a796d4035b4485ca2f5d45f76c4737",
+                "url": "https://api.github.com/repos/jrobeson/KunstmaanLiveReloadBundle/zipball/34732a3769277be4fb19488f81aed637a95f0b32",
+                "reference": "34732a3769277be4fb19488f81aed637a95f0b32",
                 "shasum": ""
             },
             "require": {
@@ -1575,7 +1575,7 @@
             "support": {
                 "source": "https://github.com/jrobeson/KunstmaanLiveReloadBundle/tree/devel"
             },
-            "time": "2015-02-05 04:45:43"
+            "time": "2015-02-06 05:36:59"
         },
         {
             "name": "monolog/monolog",
@@ -1700,16 +1700,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "5cb6e71055f7b0b57956b73d324cc4de31278f42"
+                "reference": "bb87460c995d97fe55b39e65f6ffb7f64b0a941e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5cb6e71055f7b0b57956b73d324cc4de31278f42",
-                "reference": "5cb6e71055f7b0b57956b73d324cc4de31278f42",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bb87460c995d97fe55b39e65f6ffb7f64b0a941e",
+                "reference": "bb87460c995d97fe55b39e65f6ffb7f64b0a941e",
                 "shasum": ""
             },
             "require": {
@@ -1742,7 +1742,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2014-09-26 02:52:02"
+            "time": "2015-02-06 05:07:29"
         },
         {
             "name": "nikic/iter",
