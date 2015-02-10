@@ -25,7 +25,7 @@ class GameRepository extends EntityRepository
      */
     public function getRecentGames($howMany)
     {
-        return $this->_em->createQuery('SELECT g from HitTrackerGameBundle:Game g')
+        return $this->_em->createQuery('SELECT g from HitTrackerGameBundle:Game g ORDER BY g.id DESC')
             ->setMaxResults($howMany)
             ->getResult();
     }
