@@ -127,3 +127,7 @@ sylius_resource:
                 #interface: App\Entity\UserInterface
                 controller: HitTracker\GameBundle\Controller\GameController
                 repository: HitTracker\GameBundle\Entity\GameRepository
+
+kunstmaan_live_reload:
+    server_url: 'https://ht.local.dev/livereload.js?port=443'
+    check_server_presence: false
