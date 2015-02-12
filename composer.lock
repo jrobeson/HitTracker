@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "988c0c8fe3d1971c6a1fcab7b0934d35",
+    "hash": "108d17aa8b15ec75ef9c705f3944ee04",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -874,17 +874,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.0",
+            "version": "1.5.2",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799"
+                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/a9377f6a05fb516423d6adf9079c6e5fb41e4799",
-                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d72f3a41409997ebd91ca34561075c615d2ddcc0",
+                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0",
                 "shasum": ""
             },
             "require": {
@@ -948,7 +948,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-01-27 09:39:58"
+            "time": "2015-02-09 12:22:33"
         },
         {
             "name": "guzzle/guzzle",
@@ -1528,18 +1528,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrobeson/KunstmaanLiveReloadBundle.git",
-                "reference": "34732a3769277be4fb19488f81aed637a95f0b32"
+                "reference": "57ed4a7f0e67004ede5275dc95ba73eba674c1d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/KunstmaanLiveReloadBundle/zipball/34732a3769277be4fb19488f81aed637a95f0b32",
-                "reference": "34732a3769277be4fb19488f81aed637a95f0b32",
+                "url": "https://api.github.com/repos/jrobeson/KunstmaanLiveReloadBundle/zipball/57ed4a7f0e67004ede5275dc95ba73eba674c1d3",
+                "reference": "57ed4a7f0e67004ede5275dc95ba73eba674c1d3",
                 "shasum": ""
             },
             "require": {
                 "guzzle/guzzle": "3.8.*",
                 "php": ">=5.3.3",
-                "symfony/symfony": "~2.3"
+                "symfony/framework-bundle": "~2.3"
             },
             "require-dev": {
                 "matthiasnoback/symfony-config-test": "0.*"
@@ -1575,7 +1575,7 @@
             "support": {
                 "source": "https://github.com/jrobeson/KunstmaanLiveReloadBundle/tree/devel"
             },
-            "time": "2015-02-06 05:36:59"
+            "time": "2015-02-08 10:25:27"
         },
         {
             "name": "monolog/monolog",
