@@ -43,6 +43,7 @@ class AppKernel extends Kernel
             new HitTracker\GameBundle\HitTrackerGameBundle(),
             new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
             new Elnur\Bundle\BootstrapBundle\ElnurBootstrapBundle(),
+            new Nelmio\SecurityBundle\NelmioSecurityBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
