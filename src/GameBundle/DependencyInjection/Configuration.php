@@ -17,6 +17,19 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('hittracker_game');
+        $rootNode
+            ->children()
+                ->arrayNode('event_handlers')
+                    ->children()
+                        ->arrayNode('nginx_push_stream')
+                            ->children()
+                                ->scalarNode('url')->defaultValue('http://localhost/publish/game')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
