@@ -146,9 +146,6 @@ nelmio_security:
         abort: true
         log: true
     csp:
-        whitelist:
-            - '^/_wdt'
-            - '^/_profiler'
         report_logger_service: monolog.logger.security
         report:
             report-uri: [/csp/report]
