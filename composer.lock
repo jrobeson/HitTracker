@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "108d17aa8b15ec75ef9c705f3944ee04",
+    "hash": "7f0b1d576fcf9a70165e172498a5d85a",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -269,12 +269,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "56360cc13bfd13893731c6c4d1d82005a61d7694"
+                "reference": "f1004b8b336465fafd498ee6539cc2502d16f98f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/56360cc13bfd13893731c6c4d1d82005a61d7694",
-                "reference": "56360cc13bfd13893731c6c4d1d82005a61d7694",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/f1004b8b336465fafd498ee6539cc2502d16f98f",
+                "reference": "f1004b8b336465fafd498ee6539cc2502d16f98f",
                 "shasum": ""
             },
             "require": {
@@ -334,7 +334,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2015-01-23 18:43:22"
+            "time": "2015-02-16 02:14:17"
         },
         {
             "name": "doctrine/dbal",
@@ -874,17 +874,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0"
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d72f3a41409997ebd91ca34561075c615d2ddcc0",
-                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
                 "shasum": ""
             },
             "require": {
@@ -948,7 +948,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-02-09 12:22:33"
+            "time": "2015-02-16 15:26:12"
         },
         {
             "name": "guzzle/guzzle",
@@ -1651,16 +1651,16 @@
         },
         {
             "name": "nelmio/security-bundle",
-            "version": "1.6.0",
+            "version": "dev-force-wdt-profiler-whitelist",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nelmio/NelmioSecurityBundle.git",
-                "reference": "a3ee5be287b8586e46f082504044b62343a6a3c0"
+                "url": "https://github.com/jrobeson/NelmioSecurityBundle.git",
+                "reference": "e7c4d02801cf0aacb8af81fb734ab86bc0e7e80d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioSecurityBundle/zipball/a3ee5be287b8586e46f082504044b62343a6a3c0",
-                "reference": "a3ee5be287b8586e46f082504044b62343a6a3c0",
+                "url": "https://api.github.com/repos/jrobeson/NelmioSecurityBundle/zipball/e7c4d02801cf0aacb8af81fb734ab86bc0e7e80d",
+                "reference": "e7c4d02801cf0aacb8af81fb734ab86bc0e7e80d",
                 "shasum": ""
             },
             "require": {
@@ -1670,7 +1670,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -1678,7 +1678,6 @@
                     "Nelmio\\SecurityBundle\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1696,7 +1695,10 @@
             "keywords": [
                 "security"
             ],
-            "time": "2015-02-01 11:00:05"
+            "support": {
+                "source": "https://github.com/jrobeson/NelmioSecurityBundle/tree/force-wdt-profiler-whitelist"
+            },
+            "time": "2015-02-19 08:31:19"
         },
         {
             "name": "nesbot/carbon",
