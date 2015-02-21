@@ -10,8 +10,15 @@ class AppKernel extends Kernel
      */
     public function __construct($environment, $debug)
     {
+        if ('' === $this->getBuildType()) {
+            $kernelList = join(',', array_values(AppKernelFactory::BUILD_TYPE_CLASSES));
+            throw new \InvalidValueException(
+                sprintf('AppKernel must be instantiated as one of: %s', $kernelList)
+            );
+        }
+
         $isProd = 'prod' == $environment;
-        if (!$isProd && $debug) {
+        if (!$isProd && $debug) { /** @todo check this */
             Symfony\Component\Debug\Debug::enable();
         }
 
@@ -64,7 +71,6 @@ class AppKernel extends Kernel
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
 
         $envParameters = $this->getEnvParameters();
-
         $loader->load(function($container) use($envParameters) {
             $container->getParameterBag()->add($envParameters);
         });
@@ -83,7 +89,12 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
-        return dirname($this->rootDir).'/var/cache/'.$this->environment;
+        return join('/', [
+            dirname($this->rootDir),
+            '/var/cache',
+            $this->getBuildType(),
+            $this->environment
+        ]);
     }
 
     /**
@@ -91,6 +102,57 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
-        return dirname($this->rootDir).'/var/logs';
+        return join('/', [
+            dirname($this->rootDir),
+            '/var/logs',
+            $this->getBuildType()
+        ]);
+    }
+
+    /** @return string */
+    private function getBuildType()
+    {
+        return strtolower(str_replace('AppKernel', '', get_class($this)));
+    }
+}
+
+class AppKernelFactory
+{
+    const BUILD_TYPE_CLASSES = [
+        'hosted' => 'HostedAppKernel',
+        'standalone' => 'StandaloneAppKernel',
+    ];
+
+    private function __construct()
+    {
+    }
+
+    /**
+     * Build an AppKernel from self::BUILD_TYPE_CLASSES
+     *
+     * @param string $buildType
+     * @param string $environment
+     * @param bool   $debug
+     * @see AppKernel::__construct for argument explanations
+     */
+    public static function get($buildType, $environment, $debug = false)
+    {
+        if (!self::has($buildType)) {
+            throw new \InvalidArgumentException('No such buildType exists.');
+        }
+        $kernel = self::BUILD_TYPE_CLASSES[$buildType];
+        $kernelFile = $kernel.'.php';
+        if (!file_exists(__DIR__.'/'.$kernelFile)) {
+            throw new \RuntimeException(sprintf('Kernel "%s" does not exist', $kernelFile));
+        }
+        require_once __DIR__.'/'.$kernel.'.php';
+
+        return new $kernel($environment, $debug);
+    }
+
+    /** @param string $buildType */
+    public static function has($buildType)
+    {
+        return in_array($buildType, array_keys(self::BUILD_TYPE_CLASSES));
     }
 }

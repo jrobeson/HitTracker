@@ -2,6 +2,7 @@
 <?php
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Input\InputOption;
 
 set_time_limit(0);
 
@@ -19,6 +20,13 @@ $debug = (bool)$_SERVER['SYMFONY_DEBUG']
     && !$input->hasParameterOption(['--no-debug', ''])
     && $env !== 'prod';
 
-$kernel = new AppKernel($env, $debug);
+$defaultBuildType = isset($_SERVER['SYMFONY__BUILD_TYPE'])
+    ? $_SERVER['SYMFONY__BUILD_TYPE'] : null;
+$buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
+
+$kernel = AppKernelFactory::get($buildType, $env, $debug);
 $application = new Application($kernel);
+$application->getDefinition()->addOptions([
+    new InputOption('--build-type', '-b', InputOption::VALUE_REQUIRED, 'Build Type.'),
+]);
 $application->run($input);

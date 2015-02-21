@@ -20,7 +20,7 @@ if ('prod' == $env) {
 }
 require_once __DIR__.'/../app/AppKernel.php';
 
-$kernel = new AppKernel($env, $debug);
+$kernel = AppKernelFactory::get($buildType, $env, $debug)
 
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
