@@ -63,17 +63,40 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
+    private function getConfigFiles($environment, $buildType)
+    {
+        $configFiles = [
+            'config.yml',
+            'config_'.$this->getBuildType().'.yml',
+            'config_'.$environment.'.yml',
+            'config_'.$this->getBuildType().'_'.$environment.'.yml',
+        ];
+        if ('test' == $environment) { // test requires dev files first
+            array_splice($configFiles, 2, 0, [
+                'config_dev.yml',
+                'config_'.$this->getBuildType().'_dev.yml',
+            ]);
+        }
+
+        $configFiles = array_map(function ($fileName) {
+            return __DIR__. '/config/'.$fileName;
+        }, $configFiles);
+
+        return $configFiles;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        $configFiles = $this->getConfigFiles($this->getEnvironment(), $this->getBuildType());
 
-        $envParameters = $this->getEnvParameters();
-        $loader->load(function($container) use($envParameters) {
-            $container->getParameterBag()->add($envParameters);
-        });
+        foreach ($configFiles as $configFile) {
+            if (file_exists($configFile)) {
+                $loader->load($configFile);
+            }
+        }
     }
 
     /**
