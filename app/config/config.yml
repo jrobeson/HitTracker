@@ -23,7 +23,7 @@ framework:
     session:
         handler_id:  session.handler.pdo
         cookie_httponly: true
-        cookie_secure: "%session_cookie_secure%"
+        cookie_secure: true
     fragments:       ~
     http_method_override: true
 
@@ -64,7 +64,6 @@ sensio_framework_extra:
         annotations: false
     router:
         annotations: true
-
 
 fos_rest:
     #disable_csrf_role: ROLE_API
@@ -128,10 +127,6 @@ sylius_resource:
                 controller: HitTracker\GameBundle\Controller\GameController
                 repository: HitTracker\GameBundle\Entity\GameRepository
 
-kunstmaan_live_reload:
-    server_url: 'https://ht.local.dev/livereload.js?port=443'
-    check_server_presence: false
-
 nelmio_security:
     signed_cookie:
         names: ['*']
@@ -150,9 +145,6 @@ nelmio_security:
         report:
             report-uri: [/csp/report]
             default-src: [ 'self' ]
-            connect-src:
-                - 'wss://ht.local.dev'
-                - 'self'
             img-src:
                 - 'data:'
                 - 'self'
@@ -168,6 +160,12 @@ nelmio_security:
     content_type:
         nosniff: true
     forced_ssl:
+        enabled: true
         hsts_max_age: 10886400
         hsts_subdomains: false
         hsts_preload: true
+
+hittracker_game:
+    event_handlers:
+        nginx_push_stream:
+            url: "https://ht.local.dev/publish/game"

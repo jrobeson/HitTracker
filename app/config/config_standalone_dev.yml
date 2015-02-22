@@ -1,0 +1,3 @@
+kunstmaan_live_reload:
+    server_url: "http://localhost/livereload.js"
+    check_server_presence: false
