@@ -114,9 +114,9 @@ class GameController extends ResourceController
      */
     public function publish($event, array $data)
     {
-
+        $url = $this->container->getParameter('hittracker_game.event_handlers.nginx_push_stream.url');
         $client = new Client();
-        $response = $client->post('http://localhost/publish/game', [
+        $response = $client->post($url, [
             'headers' => ['Event-Type' => $event],
             'json'    => $data,
         ]);
