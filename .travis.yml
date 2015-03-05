@@ -12,6 +12,9 @@ env:
         - SYMFONY__DATABASE_NAME=ht
         - SYMFONY__DATABASE_USER=postgres
         - SYMFONY__SECRET=ff3464e484bb524fb4234e893f9cee58
+    matrix:
+        - SYMFONY__BUILD_TYPE=hosted
+        - SYMFONY__BUILD_TYPE=standalone
 
 matrix:
     fast_finish: true
