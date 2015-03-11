@@ -67,19 +67,19 @@ class AppKernel extends Kernel
     {
         $configFiles = [
             'config.yml',
-            'config_'.$this->getBuildType().'.yml',
-            'config_'.$environment.'.yml',
-            'config_'.$this->getBuildType().'_'.$environment.'.yml',
+            sprintf('config_%s.yml', $buildType),
+            sprintf('config_%s.yml', $environment),
+            sprintf('config_%s_%s.yml', $buildType, $environment),
         ];
         if ('test' == $environment) { // test requires dev files first
             array_splice($configFiles, 2, 0, [
                 'config_dev.yml',
-                'config_'.$this->getBuildType().'_dev.yml',
+                sprintf('config_%s_dev.yml', $buildType),
             ]);
         }
 
         $configFiles = array_map(function ($fileName) {
-            return __DIR__. '/config/'.$fileName;
+            return sprintf('%s/config/%s', __DIR__, $fileName);
         }, $configFiles);
 
         return $configFiles;
