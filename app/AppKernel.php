@@ -98,6 +98,11 @@ class AppKernel extends Kernel
                 $loader->load($configFile);
             }
         }
+
+        $envParameters = $this->getEnvParameters();
+        $loader->load(function($container) use($envParameters) {
+            $container->getParameterBag()->add($envParameters);
+        });
     }
 
     /**
