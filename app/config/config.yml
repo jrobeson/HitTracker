@@ -1,5 +1,4 @@
-imports:
-    - { resource: parameters_default.yml }
+#imports:
 #    - { resource: security.yml }
 
 framework:

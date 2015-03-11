@@ -66,6 +66,7 @@ class AppKernel extends Kernel
     private function getConfigFiles($environment, $buildType)
     {
         $configFiles = [
+            'parameters_default.yml',
             'config.yml',
             sprintf('config_%s.yml', $buildType),
             sprintf('config_%s.yml', $environment),
