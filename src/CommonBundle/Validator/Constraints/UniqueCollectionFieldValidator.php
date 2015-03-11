@@ -3,7 +3,7 @@
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
 
-namespace HitTracker\CommonBundle\Validator\Constraints;
+namespace LazerBall\HitTracker\CommonBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;

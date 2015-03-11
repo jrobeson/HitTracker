@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\GameBundle\DependencyInjection;
+namespace LazerBall\HitTracker\GameBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

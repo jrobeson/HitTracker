@@ -1,9 +1,9 @@
 <?php
 
-namespace HitTracker\GameBundle\Tests\DependencyInjection;
+namespace LazerBall\HitTracker\GameBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyConfigTest\PhpUnit\AbstractConfigurationTestCase;
-use HitTracker\GameBundle\DependencyInjection\Configuration;
+use LazerBall\HitTracker\GameBundle\DependencyInjection\Configuration;
 
 class ConfigurationTest extends AbstractConfigurationTestCase
 {

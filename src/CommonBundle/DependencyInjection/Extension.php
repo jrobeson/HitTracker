@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\CommonBundle\DependencyInjection;
+namespace LazerBall\HitTracker\CommonBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;

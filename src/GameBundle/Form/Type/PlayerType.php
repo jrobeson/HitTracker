@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\GameBundle\Form\Type;
+namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
@@ -30,7 +30,7 @@ class PlayerType extends AbstractType
             ->add('name', 'text')
             ->add('team', 'hidden')
             ->add('vest', 'entity', [
-                  'class' => 'HitTracker\GameBundle\Entity\Vest',
+                  'class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
                   'choices' => $this->vestRepository->findActiveVests(),
                   'property' => 'id',
             ])
@@ -50,7 +50,7 @@ class PlayerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'HitTracker\GameBundle\Entity\Player',
+            'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Player',
         ]);
     }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace HitTracker\GameBundle;
+namespace LazerBall\HitTracker\GameBundle;
 
-use HitTracker\GameBundle\DependencyInjection\Extension;
+use LazerBall\HitTracker\GameBundle\DependencyInjection\Extension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class HitTrackerGameBundle extends Bundle

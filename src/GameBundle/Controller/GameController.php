@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\GameBundle\Controller;
+namespace LazerBall\HitTracker\GameBundle\Controller;
 
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,7 @@ class GameController extends ResourceController
         $vests = $this->get('hittracker.repository.vest')->findActiveVests();
 
         foreach ($vests as $vest) {
-            $player = new \HitTracker\GameBundle\Entity\Player('', $vest);
+            $player = new \LazerBall\HitTracker\GameBundle\Entity\Player('', $vest);
             $resource->addPlayer($player);
         }
 

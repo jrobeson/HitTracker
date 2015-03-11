@@ -5,7 +5,7 @@
  * @see https://github.com/KnpLabs/KnpRadBundle/
  */
 
-namespace HitTracker\CommonBundle\EventListener;
+namespace LazerBall\HitTracker\CommonBundle\EventListener;
 
 use Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfProviderInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;

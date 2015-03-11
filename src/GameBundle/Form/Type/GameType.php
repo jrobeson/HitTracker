@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\GameBundle\Form\Type;
+namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -94,7 +94,7 @@ class GameType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'HitTracker\GameBundle\Entity\Game',
+            'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Game',
         ]);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\GameBundle\Form\Type;
+namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,7 +31,7 @@ class VestType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'HitTracker\GameBundle\Entity\Vest',
+            'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
         ]);
     }
 

@@ -29,16 +29,16 @@
         <service id="twig.extension.intl" class="Twig_Extensions_Extension_Intl">
             <tag name="twig.extension"/>
         </service>
-        <service id="hittracker_common.form.type.positive_integer" class="HitTracker\CommonBundle\Form\Type\PositiveIntegerType">
+        <service id="hittracker_common.form.type.positive_integer" class="LazerBall\HitTracker\CommonBundle\Form\Type\PositiveIntegerType">
             <tag name="form.type" alias="positive_integer"/>
         </service>
-        <service id="knp_rad.twig.link_attributes_extension" class="HitTracker\CommonBundle\Twig\LinkAttributesExtension">
+        <service id="knp_rad.twig.link_attributes_extension" class="LazerBall\HitTracker\CommonBundle\Twig\LinkAttributesExtension">
             <argument type="service" id="form.csrf_provider"/>
             <argument type="string">%knp_rad.csrf_link.intention%</argument>
             <tag name="twig.extension"/>
             <tag name="remove-when-missing" service="form.csrf_provider"/>
         </service>
-        <service id="knp_rad.csrf.listener" class="HitTracker\CommonBundle\EventListener\CsrfListener">
+        <service id="knp_rad.csrf.listener" class="LazerBall\HitTracker\CommonBundle\EventListener\CsrfListener">
             <argument type="service" id="form.csrf_provider"/>
             <argument type="string">%knp_rad.csrf_link.intention%</argument>
             <tag name="kernel.event_listener" event="kernel.request"/>

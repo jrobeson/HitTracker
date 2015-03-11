@@ -1,6 +1,6 @@
 <?php
 
-namespace HitTracker\CommonBundle\Entity;
+namespace LazerBall\HitTracker\CommonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

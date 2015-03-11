@@ -5,7 +5,7 @@
  * @see https://github.com/KnpLabs/KnpRadBundle/
  */
 
-namespace HitTracker\CommonBundle\Twig;
+namespace LazerBall\HitTracker\CommonBundle\Twig;
 
 use Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfProviderInterface;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace HitTracker\GameBundle\Entity;
+namespace LazerBall\HitTracker\GameBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
+use LazerBall\HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
 
 /**
  * Game

@@ -3,7 +3,7 @@
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
 
-namespace HitTracker\GameBundle;
+namespace LazerBall\HitTracker\GameBundle;
 
 use Doctrine\ORM\EntityRepository;
 

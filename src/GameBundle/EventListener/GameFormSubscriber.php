@@ -3,9 +3,9 @@
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
 
-namespace HitTracker\GameBundle\EventListener;
+namespace LazerBall\HitTracker\GameBundle\EventListener;
 
-use HitTracker\GameBundle\Entity\GameRepository;
+use LazerBall\HitTracker\GameBundle\Entity\GameRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;

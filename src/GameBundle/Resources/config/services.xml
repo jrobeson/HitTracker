@@ -5,39 +5,39 @@
 
     <services>
         <!-- game -->
-        <service id="hittracker_game.settings_schema.game" class="HitTracker\GameBundle\Settings\GameSettingsSchema">
+        <service id="hittracker_game.settings_schema.game" class="LazerBall\HitTracker\GameBundle\Settings\GameSettingsSchema">
             <tag name="sylius.settings_schema" namespace="game" />
         </service>
-        <service id="hittracker_game.settings_schema.site" class="HitTracker\GameBundle\Settings\SiteSettingsSchema">
+        <service id="hittracker_game.settings_schema.site" class="LazerBall\HitTracker\GameBundle\Settings\SiteSettingsSchema">
             <tag name="sylius.settings_schema" namespace="site" />
         </service>
-        <service id="hittracker_game.manager.game" class="HitTracker\GameBundle\GameManager">
+        <service id="hittracker_game.manager.game" class="LazerBall\HitTracker\GameBundle\GameManager">
             <argument type="service" id="hittracker.repository.game" />
         </service>
-        <service id="hittracker_game.form.type.game" class="HitTracker\GameBundle\Form\Type\GameType">
+        <service id="hittracker_game.form.type.game" class="LazerBall\HitTracker\GameBundle\Form\Type\GameType">
             <argument type="service" id="hittracker.repository.game" />
             <argument type="service" id="sylius.settings.manager" />
             <argument type="service" id="hittracker_game.form.event_subscriber.game"/>
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game"/>
         </service>
-        <service id="hittracker_game.form.event_subscriber.game" class="HitTracker\GameBundle\EventListener\GameFormSubscriber">
+        <service id="hittracker_game.form.event_subscriber.game" class="LazerBall\HitTracker\GameBundle\EventListener\GameFormSubscriber">
             <argument type="service" id="hittracker.repository.game" />
         </service>
         <!-- player -->
-        <service id="hittracker_game.form.type.player" class="HitTracker\GameBundle\Form\Type\PlayerType">
+        <service id="hittracker_game.form.type.player" class="LazerBall\HitTracker\GameBundle\Form\Type\PlayerType">
             <argument type="service" id="sylius.settings.manager" />
             <argument type="service" id="hittracker.repository.vest" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player"/>
         </service>
-        <service id="hittracker_game.form.type.player_collection" class="HitTracker\GameBundle\Form\Type\PlayerCollectionType">
+        <service id="hittracker_game.form.type.player_collection" class="LazerBall\HitTracker\GameBundle\Form\Type\PlayerCollectionType">
             <argument type="service" id="sylius.settings.manager" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player_collection"/>
         </service>
         <!-- vest -->
-        <service id="hittracker_game.form.type.vest" class="HitTracker\GameBundle\Form\Type\VestType">
+        <service id="hittracker_game.form.type.vest" class="LazerBall\HitTracker\GameBundle\Form\Type\VestType">
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_vest"/>
         </service>

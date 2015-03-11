@@ -1,8 +1,8 @@
 <?php
 
-namespace HitTracker\CommonBundle;
+namespace LazerBall\HitTracker\CommonBundle;
 
-use HitTracker\CommonBundle\DependencyInjection\Extension;
+use LazerBall\HitTracker\CommonBundle\DependencyInjection\Extension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class CommonBundle extends Bundle
