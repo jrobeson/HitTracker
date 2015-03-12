@@ -109,18 +109,18 @@ sylius_resource:
             driver: doctrine/orm
             templates: HitTrackerGameBundle:Vest
             classes:
-                model: HitTracker\GameBundle\Entity\Vest
+                model: LazerBall\HitTracker\GameBundle\Entity\Vest
                 #interface: App\Entity\UserInterface
                 controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
-                repository: HitTracker\GameBundle\Entity\VestRepository
+                repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
         hittracker.game:
             driver: doctrine/orm
             templates: HitTrackerGameBundle:Game
             classes:
-                model: HitTracker\GameBundle\Entity\Game
+                model: LazerBall\HitTracker\GameBundle\Entity\Game
                 #interface: App\Entity\UserInterface
-                controller: HitTracker\GameBundle\Controller\GameController
-                repository: HitTracker\GameBundle\Entity\GameRepository
+                controller: LazerBall\HitTracker\GameBundle\Controller\GameController
+                repository: LazerBall\HitTracker\GameBundle\Entity\GameRepository
 
 nelmio_security:
     signed_cookie:
