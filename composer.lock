@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7f0b1d576fcf9a70165e172498a5d85a",
+    "hash": "ea8383029e7b1895a816729b232dfc90",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -1748,16 +1748,16 @@
         },
         {
             "name": "nikic/iter",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/iter.git",
-                "reference": "5eecb6f724705f0cf38f3cb6204573e1886f0c42"
+                "reference": "d1340eb34d414e365c9fa04b819e3114ca00f2b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/iter/zipball/5eecb6f724705f0cf38f3cb6204573e1886f0c42",
-                "reference": "5eecb6f724705f0cf38f3cb6204573e1886f0c42",
+                "url": "https://api.github.com/repos/nikic/iter/zipball/d1340eb34d414e365c9fa04b819e3114ca00f2b9",
+                "reference": "d1340eb34d414e365c9fa04b819e3114ca00f2b9",
                 "shasum": ""
             },
             "require": {
@@ -1785,7 +1785,7 @@
                 "generator",
                 "iterator"
             ],
-            "time": "2014-03-27 15:21:11"
+            "time": "2015-02-26 15:36:30"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -3010,16 +3010,16 @@
         },
         {
             "name": "willdurand/hateoas",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Hateoas.git",
-                "reference": "af959579e410bb9f7179a98bf5ee5863259109cb"
+                "reference": "89fe19ad9ce25f15323d76ac22272282ae8a9f14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/af959579e410bb9f7179a98bf5ee5863259109cb",
-                "reference": "af959579e410bb9f7179a98bf5ee5863259109cb",
+                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/89fe19ad9ce25f15323d76ac22272282ae8a9f14",
+                "reference": "89fe19ad9ce25f15323d76ac22272282ae8a9f14",
                 "shasum": ""
             },
             "require": {
@@ -3047,7 +3047,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -3061,31 +3061,30 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
-                    "email": "william.durand1@gmail.com",
-                    "homepage": "http://www.willdurand.fr"
-                },
-                {
                     "name": "Adrien Brault",
                     "email": "adrien.brault@gmail.com"
+                },
+                {
+                    "name": "William Durand",
+                    "email": "william.durand1@gmail.com"
                 }
             ],
             "description": "A PHP library to support implementing representations for HATEOAS REST web services",
-            "time": "2014-06-03 07:59:14"
+            "time": "2015-02-24 15:28:33"
         },
         {
             "name": "willdurand/hateoas-bundle",
-            "version": "0.4.0",
+            "version": "0.5.0",
             "target-dir": "Bazinga/Bundle/HateoasBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/BazingaHateoasBundle.git",
-                "reference": "38c8307940ac3d23ffe620db733f6e45cccad84c"
+                "reference": "3c86e8080e8a229365a0ce91818da6fe6562376b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/38c8307940ac3d23ffe620db733f6e45cccad84c",
-                "reference": "38c8307940ac3d23ffe620db733f6e45cccad84c",
+                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/3c86e8080e8a229365a0ce91818da6fe6562376b",
+                "reference": "3c86e8080e8a229365a0ce91818da6fe6562376b",
                 "shasum": ""
             },
             "require": {
@@ -3123,7 +3122,7 @@
                 "HATEOAS",
                 "rest"
             ],
-            "time": "2014-10-14 15:29:47"
+            "time": "2015-02-19 16:27:51"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
