@@ -2,7 +2,6 @@
 #    - { resource: security.yml }
 
 framework:
-    #esi: ~
     translator:
         fallback: en
     secret: "%secret%"
@@ -15,7 +14,6 @@ framework:
         enable_annotations: true
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
     default_locale:  en
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -26,7 +24,6 @@ framework:
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
 twig:
     #form_themes:
     #    - bootstrap_3_horizontal_layout.html.twig
@@ -48,7 +45,6 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
-# Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
