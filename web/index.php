@@ -14,13 +14,14 @@ if (file_exists(__DIR__.'/../.env')) {
 }
 $env = $_SERVER['SYMFONY_ENV'];
 $debug = (bool)$_SERVER['SYMFONY_DEBUG'];
+$buildType = $_SERVER['SYMFONY__BUILD_TYPE'];
 
 if ('prod' == $env) {
     require_once __DIR__.'/../var/bootstrap.php.cache';
 }
 require_once __DIR__.'/../app/AppKernel.php';
 
-$kernel = AppKernelFactory::get($buildType, $env, $debug)
+$kernel = AppKernelFactory::get($buildType, $env, $debug);
 
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
