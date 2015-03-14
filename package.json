@@ -2,7 +2,7 @@
   "private": true,
   "devDependencies": {
     "bower": "^1.3.8",
-    "broccoli": "^0.13",
+    "broccoli": "^0.15",
     "broccoli-env": "^0.0.1",
     "broccoli-static-compiler": "^0.2",
     "broccoli-uglify-js": "^0.1",
