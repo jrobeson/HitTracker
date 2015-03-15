@@ -7,5 +7,5 @@ disabled:
     - phpdoc_short_description
     - phpdoc_to_comment
     - short_array_syntax
-    - spaces_before_semicolon
     - multiline_array_trailing_comma
+    - multiline_spaces_before_semicolon
