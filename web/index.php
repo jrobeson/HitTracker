@@ -13,7 +13,7 @@ if (file_exists(__DIR__.'/../.env')) {
     $dotEnv->load(__DIR__.'/../');
 }
 $env = $_SERVER['SYMFONY_ENV'];
-$debug = (bool)$_SERVER['SYMFONY_DEBUG'];
+$debug = (bool) $_SERVER['SYMFONY_DEBUG'];
 $buildType = $_SERVER['SYMFONY__BUILD_TYPE'];
 
 if ('prod' == $env) {
