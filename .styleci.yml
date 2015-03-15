@@ -1,0 +1,9 @@
+preset: recommended
+
+disabled:
+    - align_double_arrow
+    - phpdoc_params
+    - phpdoc_separation
+    - phpdoc_to_comment
+    - short_array_syntax
+    - spaces_before_semicolon
