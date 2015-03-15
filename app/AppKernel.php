@@ -10,6 +10,12 @@ class AppKernel extends Kernel
      */
     public function __construct($environment, $debug)
     {
+
+        /**
+         * Can't add new args to the constructor, due to instantiation
+         * in the cache warmer
+         * @see Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand::warmup()
+         */
         if ('' === $this->getBuildType()) {
             $kernelList = join(',', array_values(AppKernelFactory::BUILD_TYPE_CLASSES));
             throw new \InvalidValueException(
