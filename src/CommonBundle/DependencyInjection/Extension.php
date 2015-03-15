@@ -19,7 +19,7 @@ class Extension extends ConfigurableExtension
     {
         $loader = new Loader\XmlFileLoader($container,
             new FileLocator(__DIR__.'/../Resources/config')
-        )   ;
+        );
         $loader->load('services.xml');
     }
 
