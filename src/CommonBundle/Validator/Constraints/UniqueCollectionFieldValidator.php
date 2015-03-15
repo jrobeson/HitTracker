@@ -5,9 +5,9 @@
 
 namespace LazerBall\HitTracker\CommonBundle\Validator\Constraints;
 
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class UniqueCollectionFieldValidator extends ConstraintValidator
 {

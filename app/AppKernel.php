@@ -1,7 +1,7 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
@@ -17,7 +17,7 @@ class AppKernel extends Kernel
          * @see Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand::warmup()
          */
         if ('' === $this->getBuildType()) {
-            $kernelList = join(',', array_values(AppKernelFactory::BUILD_TYPE_CLASSES));
+            $kernelList = implode(',', array_values(AppKernelFactory::BUILD_TYPE_CLASSES));
             throw new \InvalidValueException(
                 sprintf('AppKernel must be instantiated as one of: %s', $kernelList)
             );
@@ -106,7 +106,7 @@ class AppKernel extends Kernel
         }
 
         $envParameters = $this->getEnvParameters();
-        $loader->load(function($container) use($envParameters) {
+        $loader->load(function ($container) use ($envParameters) {
             $container->getParameterBag()->add($envParameters);
         });
     }
@@ -116,7 +116,9 @@ class AppKernel extends Kernel
      */
     public function enableClassCache($enabled = false)
     {
-        if ($enabled) $this->loadClassCache();
+        if ($enabled) {
+            $this->loadClassCache();
+        }
     }
 
     /**
@@ -124,11 +126,11 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
-        return join('/', [
+        return implode('/', [
             dirname($this->rootDir),
             '/var/cache',
             $this->getBuildType(),
-            $this->environment
+            $this->environment,
         ]);
     }
 
@@ -137,10 +139,10 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
-        return join('/', [
+        return implode('/', [
             dirname($this->rootDir),
             '/var/logs',
-            $this->getBuildType()
+            $this->getBuildType(),
         ]);
     }
 

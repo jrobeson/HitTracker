@@ -3,11 +3,11 @@
 namespace LazerBall\HitTracker\GameBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use LazerBall\HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Game
@@ -170,7 +170,7 @@ class Game
      */
     public function setGameLength($minutes)
     {
-        $this->gameLength = (int)$minutes;
+        $this->gameLength = (int) $minutes;
 
         $start = new \DateTime();
         $this->setCreatedAt($start);
@@ -184,6 +184,7 @@ class Game
     {
         if (empty($this->gameLength) && !empty($this->createdAt)) {
             $parts = $this->timeTotal();
+
             return [
                 'hours' => $parts->h,
                 'minutes' => $parts->i,
@@ -213,6 +214,7 @@ class Game
     public function timeLeft()
     {
         $now = new \DateTime();
+
         return $now->diff($this->endsAt);
     }
 
@@ -240,12 +242,13 @@ class Game
         return $this->players;
     }
 
-   /** @return Player */
+    /** @return Player */
     public function getPlayerByRadioId($radioId)
     {
         $players = $this->getPlayers()->filter(function ($player) use ($radioId) {
             return $player->getVest()->getRadioId() == $radioId;
         });
+
         return $players->first();
     }
 
@@ -289,7 +292,7 @@ class Game
     /** @return number */
     public function getTotalScore()
     {
-        $score = array_sum($this->getPlayers()->map(function($player) {
+        $score = array_sum($this->getPlayers()->map(function ($player) {
             return $player->getLifeCredits();
         })->toArray());
 

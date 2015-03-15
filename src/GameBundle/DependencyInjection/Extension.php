@@ -3,8 +3,8 @@
 namespace LazerBall\HitTracker\GameBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
 /**
@@ -12,7 +12,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
  */
 class Extension extends ConfigurableExtension
 {
-
     /**
      * {@inheritdoc}
      */
@@ -28,10 +27,11 @@ class Extension extends ConfigurableExtension
         $loader->load('services.xml');
     }
 
-    private function flattenKeys(array $array, $prefix = '') {
+    private function flattenKeys(array $array, $prefix = '')
+    {
         $result = array();
-        foreach($array as $key => $value) {
-            if(is_array($value)) {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
                 $result = $result + $this->flattenKeys($value, $prefix.$key.'.');
             } else {
                 $result[$prefix.$key] = $value;

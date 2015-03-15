@@ -33,10 +33,12 @@ class GameFormSubscriber implements EventSubscriberInterface
     {
         $arena = $event->getData()->getArena();
 
-        if ($this->repository->isArenaOpen($arena)) return true;
+        if ($this->repository->isArenaOpen($arena)) {
+            return true;
+        }
 
         $event->getForm()->addError(
-            new FormError('A game is already in progress in arena '. $arena)
+            new FormError('A game is already in progress in arena '.$arena)
         );
     }
 
@@ -49,7 +51,7 @@ class GameFormSubscriber implements EventSubscriberInterface
     {
         $game = $event->getData();
         $game['players'] = array_filter($game['players'],
-            function($player) {
+            function ($player) {
                 return !empty($player['name']);
         });
 
@@ -82,9 +84,9 @@ class GameFormSubscriber implements EventSubscriberInterface
         return [
             FormEvents::PRE_SUBMIT => [
                 ['removeUnusedPlayers'],
-                ['addLifeCredits']
+                ['addLifeCredits'],
             ],
-            FOrmEvents::POST_SUBMIT => ['arenaOpenCheck']
+            FOrmEvents::POST_SUBMIT => ['arenaOpenCheck'],
         ];
     }
 }

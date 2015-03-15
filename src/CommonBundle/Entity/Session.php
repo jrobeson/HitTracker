@@ -67,7 +67,7 @@ class Session
     {
         $dateTime = new \DateTime();
         $dateTime->setTimestamp($timeStamp);
+
         return $dateTime;
     }
-
 }

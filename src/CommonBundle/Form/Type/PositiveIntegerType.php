@@ -28,7 +28,7 @@ class PositiveIntegerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'constraints' => [new Assert\GreaterThan(['value' => 0])]
+            'constraints' => [new Assert\GreaterThan(['value' => 0])],
         ]);
     }
 

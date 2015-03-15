@@ -170,7 +170,8 @@ class Player
      */
     public function hitsInZone($zone)
     {
-        $property = 'zone' . $zone;
+        $property = 'zone'.$zone;
+
         return $this->{$property};
     }
 
@@ -242,9 +243,11 @@ class Player
      */
     public function hit($zone, $lifeCredits)
     {
-        if (0 >= $this->getLifeCredits()) return;
+        if (0 >= $this->getLifeCredits()) {
+            return;
+        }
 
-        $zone = 'zone' . $zone;
+        $zone = 'zone'.$zone;
         $this->{$zone} = $this->{$zone} + 1;
 
         $credits = $this->getLifeCredits() - $lifeCredits;

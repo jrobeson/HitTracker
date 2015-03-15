@@ -2,10 +2,10 @@
 
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use GuzzleHttp\Client;
+use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class GameController extends ResourceController
 {
@@ -163,21 +163,20 @@ class GameController extends ResourceController
     {
         $game = $this->getRepository()->getActiveGame(1);
 
-
         if (!$game) {
             return new JsonResponse(['error' => 'no such game'], 404);
         }
 
         $data = json_decode($request->getContent(), true);
         $radioId = $data['hit']['radioId'];
-        $zone = (int)$data['hit']['zone'];
+        $zone = (int) $data['hit']['zone'];
 
         $player = $game->getPlayerByRadioId($radioId);
 
         $hit = [
             'radioId' => $radioId,
             'player_id' => $player->getId(),
-            'zone' => $zone
+            'zone' => $zone,
         ];
 
         $dead = $player->hit($zone, $game->getLifeCreditsDeducted());

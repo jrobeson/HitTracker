@@ -41,7 +41,7 @@ class GameType extends AbstractType
         $gameList = [];
         foreach ($recentGames as $recentGame) {
             $gameIdFormat = sprintf(' (Game #: %d)', $recentGame->getId());
-            $teams = join(' vs. ', $recentGame->getTeams()) . $gameIdFormat;
+            $teams = implode(' vs. ', $recentGame->getTeams()).$gameIdFormat;
             $gameList[$recentGame->getId()] = $teams;
         }
 
@@ -51,14 +51,14 @@ class GameType extends AbstractType
                 'data' => $gameSettings->get('game_length'),
             ])
             ->add('arena', $arenaFieldType, [
-                'data' => 1
+                'data' => 1,
             ])
             ->add('playerLifeCredits', 'positive_integer', [
                 'label' => 'Life Credits Per Player',
                 'data' => $gameSettings->get('player_life_credits'),
                 'attr' => [
-                    'step' => $gameSettings->get('life_credits_deducted')
-                 ]
+                    'step' => $gameSettings->get('life_credits_deducted'),
+                 ],
             ])
             ->add('lifeCreditsDeducted', 'positive_integer', [
                 'label' => 'Credits Deducted Per Hit',
@@ -67,14 +67,14 @@ class GameType extends AbstractType
             ->add('team1', 'text', [
                 'label' => '',
                 'mapped' => false,
-                'data' => 'Team 1'
+                'data' => 'Team 1',
             ])
             ->add('team2', 'text', [
                 'label' => '',
                 'mapped' => false,
-                'data' => 'Team 2'
+                'data' => 'Team 2',
             ])
-            ->add('reload_players', 'choice' ,[
+            ->add('reload_players', 'choice', [
                 'label' => 'Load Players From Previous Games',
                 'choices' => $gameList,
                 'mapped' => false,
