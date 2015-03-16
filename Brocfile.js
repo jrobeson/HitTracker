@@ -8,6 +8,7 @@ var concat = require('broccoli-concat');
 var mergeTrees = require('broccoli-merge-trees');
 var pickFiles = require('broccoli-static-compiler');
 var uglifyJs = require('broccoli-uglify-js');
+var esTranspiler = require('broccoli-babel-transpiler');
 
 exports.getEnv = getEnv();
 /**
@@ -42,7 +43,7 @@ var scoreCardCssFile = 'style/scorecard.css';
 var sassSources = mergeTrees([
     bowerRoot + '/bootstrap-sass-official/assets/stylesheets',
     bowerRoot + '/fontawesome/scss',
-    'app/Resources/styles',
+    'app/Resources/styles'
 ]);
 
 var sassOptions = {
@@ -101,6 +102,7 @@ appJs = concat(appJs, {
     outputFile: '/js/app.js'
 });
 
+//var scriptTree = esTranspiler(inputTree, options);
 //
 if ('production' == env) {
     appJs = uglifyJs(appJs, {
