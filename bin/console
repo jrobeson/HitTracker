@@ -21,10 +21,12 @@ $debug = (bool)$_SERVER['SYMFONY_DEBUG']
     && $env !== 'prod';
 
 $defaultBuildType = isset($_SERVER['SYMFONY__BUILD_TYPE'])
-    ? $_SERVER['SYMFONY__BUILD_TYPE'] : null;
+    ? $_SERVER['SYMFONY__BUILD_TYPE'] : 'hosted';
 $buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
 
-$kernel = AppKernelFactory::get($buildType, $env, $debug);
+$kernelClass = ucfirst($buildType).'AppKernel';
+$kernel = new $kernelClass($env, $debug);
+
 $application = new Application($kernel);
 $application->getDefinition()->addOptions([
     new InputOption('--build-type', '-b', InputOption::VALUE_REQUIRED, 'Build Type.'),

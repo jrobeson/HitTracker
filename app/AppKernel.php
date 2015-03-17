@@ -10,16 +10,15 @@ class AppKernel extends Kernel
      */
     public function __construct($environment, $debug)
     {
-
         /**
          * Can't add new args to the constructor, due to instantiation
          * in the cache warmer
          * @see Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand::warmup()
          */
         if ('' === $this->getBuildType()) {
-            $kernelList = implode(',', array_values(AppKernelFactory::BUILD_TYPE_CLASSES));
-            throw new \InvalidValueException(
-                sprintf('AppKernel must be instantiated as one of: %s', $kernelList)
+            throw new InvalidArgumentException(
+                'AppKernel can\'t be instantiated directly.
+                You must call one of the subclasses.'
             );
         }
 
@@ -153,43 +152,5 @@ class AppKernel extends Kernel
     }
 }
 
-class AppKernelFactory
-{
-    const BUILD_TYPE_CLASSES = [
-        'hosted' => 'HostedAppKernel',
-        'standalone' => 'StandaloneAppKernel',
-    ];
-
-    private function __construct()
-    {
-    }
-
-    /**
-     * Build an AppKernel from self::BUILD_TYPE_CLASSES
-     *
-     * @param string $buildType
-     * @param string $environment
-     * @param bool   $debug
-     * @see AppKernel::__construct for argument explanations
-     */
-    public static function get($buildType, $environment, $debug = false)
-    {
-        if (!self::has($buildType)) {
-            throw new \InvalidArgumentException('No such buildType exists.');
-        }
-        $kernel = self::BUILD_TYPE_CLASSES[$buildType];
-        $kernelFile = $kernel.'.php';
-        if (!file_exists(__DIR__.'/'.$kernelFile)) {
-            throw new \RuntimeException(sprintf('Kernel "%s" does not exist', $kernelFile));
-        }
-        require_once __DIR__.'/'.$kernel.'.php';
-
-        return new $kernel($environment, $debug);
-    }
-
-    /** @param string $buildType */
-    public static function has($buildType)
-    {
-        return in_array($buildType, array_keys(self::BUILD_TYPE_CLASSES));
-    }
-}
+include 'HostedAppKernel.php';
+include 'StandaloneAppKernel.php';
