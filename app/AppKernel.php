@@ -152,5 +152,5 @@ class AppKernel extends Kernel
     }
 }
 
-include 'HostedAppKernel.php';
-include 'StandaloneAppKernel.php';
+require 'HostedAppKernel.php';
+require 'StandaloneAppKernel.php';
