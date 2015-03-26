@@ -47,7 +47,8 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "fzaninotto/faker": "~1.2",
         "phpspec/phpspec": "~2.0",
-        "matthiasnoback/symfony-config-test": "^1.0"
+        "matthiasnoback/symfony-config-test": "^1.0",
+        "behat/mink-zombie-driver": "^1.2"
     },
     "scripts": {
         "post-install-cmd": [
