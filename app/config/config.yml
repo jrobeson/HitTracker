@@ -20,7 +20,7 @@ framework:
     session:
         handler_id:  session.handler.pdo
         cookie_httponly: true
-        cookie_secure: true
+        cookie_secure: "%session_cookie_secure%"
     fragments:       ~
     http_method_override: true
 
@@ -155,7 +155,7 @@ nelmio_security:
     content_type:
         nosniff: true
     forced_ssl:
-        enabled: true
+        enabled: "%hsts_enabled%"
         hsts_max_age: 10886400
         hsts_subdomains: false
         hsts_preload: true

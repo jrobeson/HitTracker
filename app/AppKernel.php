@@ -72,6 +72,7 @@ class AppKernel extends Kernel
     {
         $configFiles = [
             'parameters_default.yml',
+            sprintf('parameters_%s.yml', $buildType),
             'config.yml',
             sprintf('config_%s.yml', $buildType),
             sprintf('config_%s.yml', $environment),

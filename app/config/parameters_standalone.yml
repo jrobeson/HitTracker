@@ -1,0 +1,5 @@
+parameters:
+    session_cookie_secure: false
+    hsts_enabled: false
+    nginx_push_stream_url: "http://localhost/publish/game"
+    livereload_url: "http://localhost/livereload.js"
