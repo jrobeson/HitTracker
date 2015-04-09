@@ -2,7 +2,6 @@
 /build/
 /bin/*
 !bin/console
-!bin/symfony_requirements
 /node_modules
 /var/bootstrap.php.cache
 /var/cache/*
