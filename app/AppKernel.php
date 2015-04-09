@@ -3,7 +3,7 @@
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
-class AppKernel extends Kernel
+abstract class AppKernel extends Kernel
 {
     /**
      * {@inheritdoc}
@@ -146,11 +146,6 @@ class AppKernel extends Kernel
         ]);
     }
 
-    /** @return string */
-    private function getBuildType()
-    {
-        return strtolower(str_replace('AppKernel', '', get_class($this)));
-    }
 }
 
 require 'HostedAppKernel.php';
