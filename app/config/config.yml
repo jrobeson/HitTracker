@@ -163,4 +163,4 @@ nelmio_security:
 hittracker_game:
     event_handlers:
         nginx_push_stream:
-            url: "https://ht.local.dev/publish/game"
+            url: "%nginx_push_stream_url%"
