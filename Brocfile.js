@@ -57,19 +57,16 @@ var sassOptions = {
 };
 
 var env = getEnv();
-var appCss;
-var scoreBoardCss;
-var scoreCardCss;
-var appJs;
-var appFonts;
-var appAssets;
 
-appCss = compileSass(sassSources, 'app.scss', appCssFile, sassOptions);
-appCss = autoPrefixer(appCss);
-scoreBoardCss = compileSass(sassSources, 'scoreboard.scss', scoreBoardCssFile, sassOptions);
-scoreBoardCss = autoPrefixer(scoreBoardCss);
-scoreCardCss = compileSass(sassSources, 'scorecard.scss', scoreCardCssFile, sassOptions);
-scoreCardCss = autoPrefixer(scoreCardCss);
+var appCss = autoPrefixer(
+    compileSass(sassSources, 'app.scss', appCssFile, sassOptions)
+);
+var scoreBoardCss = autoPrefixer(
+    compileSass(sassSources, 'scoreboard.scss', scoreBoardCssFile, sassOptions)
+);
+var scoreCardCss = autoPrefixer(
+    compileSass(sassSources, 'scorecard.scss', scoreCardCssFile, sassOptions)
+);
 
 var filesMap = {};
 filesMap[bowerRoot + '/jquery/dist'] = ['jquery.js'];
@@ -90,7 +87,7 @@ for(var dir in filesMap) {
     jsTrees.push(tree);
 }
 
-appJs = mergeTrees(jsTrees);
+var appJs = mergeTrees(jsTrees);
 
 // @todo get inputFiles from filesMap
 appJs = concat(appJs, {
@@ -124,12 +121,12 @@ if ('production' == env) {
     scoreCardCss = cleanCss(scoreCardCss);
 }
 
-appFonts = pickFiles(bowerRoot + '/fontawesome/fonts', {
+var appFonts = pickFiles(bowerRoot + '/fontawesome/fonts', {
     srcDir: '/',
     destDir: '/fonts'
 });
 
-appAssets = mergeTrees([appCss, scoreBoardCss, scoreCardCss, appJs, appFonts]);
+var appAssets = mergeTrees([appCss, scoreBoardCss, scoreCardCss, appJs, appFonts]);
 /*if ('production' == env) {
     appAssets = assetRev(appAssets, {
         extensions: ['js', 'css', 'png', 'jpg', 'gif'],
