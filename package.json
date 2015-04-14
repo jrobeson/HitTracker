@@ -9,7 +9,6 @@
     "broccoli-clean-css": "^1.0",
     "broccoli-coffee": "^0.3",
     "broccoli-concat": "^0.0.13",
-    "broccoli-env": "^0.0.1",
     "broccoli-funnel": "^0.2",
     "broccoli-merge-trees": "^0.2",
     "broccoli-ruby-sass": "^0.4",
