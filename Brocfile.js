@@ -11,23 +11,27 @@ var uglifyJs = require('broccoli-uglify-js');
 var esTranspiler = require('broccoli-babel-transpiler');
 
 exports.getEnv = getEnv();
+
 /**
- * Overwrite broccoli-env's getEnv to work with Symfony's environment variable
+ * Get environment name, first by looking at SYMFONY_ENV
+ * and then falling back to BROCCOLI_ENV
  *
- * broccoli-env only supports production and development, so we map
- * everything to those.
+ * @returns {*|string}
  */
 function getEnv () {
-    var env = process.env.SYMFONY_ENV || 'dev';
+    var symfonyEnv = process.env.SYMFONY_ENV || 'dev';
+    var env = process.env.BROCCOLI_ENV || symfonyEnv;
     switch (env) {
-        case 'test': // revisit this once we require more JS for test.
         case 'prod':
+        case 'production':
         case 'staging':
             env = 'production';
-        break;
+            break;
         case 'dev':
+        case 'development':
+        case 'test':
             env = 'development';
-        break;
+            break;
         default:
             throw new Error('Environment ' + env + ' not supported');
     }
