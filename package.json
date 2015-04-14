@@ -13,7 +13,6 @@
     "broccoli-merge-trees": "^0.2",
     "broccoli-ruby-sass": "^0.4",
     "broccoli-sass": "^0.6",
-    "broccoli-static-compiler": "^0.2",
     "broccoli-template": "^0.1",
     "broccoli-uglify-js": "^0.1",
     "coffee-script": "^1.8",

@@ -6,7 +6,7 @@ var compileCoffeeScript = require('broccoli-coffee');
 var compileSass = require('broccoli-ruby-sass');
 var concat = require('broccoli-concat');
 var mergeTrees = require('broccoli-merge-trees');
-var pickFiles = require('broccoli-static-compiler');
+var sieveFiles = require('broccoli-funnel');
 var uglifyJs = require('broccoli-uglify-js');
 var esTranspiler = require('broccoli-babel-transpiler');
 
@@ -78,8 +78,7 @@ filesMap[__dirname + '/src/GameBundle/Resources/coffee'] = ['game.coffee', 'comm
 
 var jsTrees = [];
 for(var dir in filesMap) {
-    var tree = pickFiles(dir, {
-        srcDir: '/',
+    var tree = sieveFiles(dir, {
         files: filesMap[dir],
         destDir: 'js'
     });
@@ -107,7 +106,6 @@ appJs = concat(appJs, {
 //
 if ('production' == env) {
     appJs = uglifyJs(appJs, {
-        //mangle: true,
         compress: true
     });
     /* cleancss options to consider
@@ -121,8 +119,7 @@ if ('production' == env) {
     scoreCardCss = cleanCss(scoreCardCss);
 }
 
-var appFonts = pickFiles(bowerRoot + '/fontawesome/fonts', {
-    srcDir: '/',
+var appFonts = sieveFiles(bowerRoot + '/fontawesome/fonts', {
     destDir: '/fonts'
 });
 
