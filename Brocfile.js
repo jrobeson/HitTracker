@@ -16,7 +16,7 @@ exports.getEnv = getEnv();
  * Get environment name, first by looking at SYMFONY_ENV
  * and then falling back to BROCCOLI_ENV
  *
- * @returns {*|string}
+ * @returns string
  */
 function getEnv () {
     var symfonyEnv = process.env.SYMFONY_ENV || 'dev';
@@ -33,7 +33,7 @@ function getEnv () {
             env = 'development';
             break;
         default:
-            throw new Error('Environment ' + env + ' not supported');
+            throw new Error('Environment "' + env + '" is not supported');
     }
     return env
 }
