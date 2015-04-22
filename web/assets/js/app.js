@@ -12470,11 +12470,11 @@ $(function() {
       }
     });
     return request.done(function(game) {
-      var player, pt, team_players, _i, _len, _ref;
+      var i, len, player, pt, ref, team_players;
       team_players = [];
-      _ref = game.players;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        player = _ref[_i];
+      ref = game.players;
+      for (i = 0, len = ref.length; i < len; i++) {
+        player = ref[i];
         pt = player.team;
         if (team_players[pt] == null) {
           team_players[pt] = [];
