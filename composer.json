@@ -27,7 +27,6 @@
         "elnur/bootstrap-bundle": "~0.1",
         "sylius/resource-bundle": "0.12.*",
         "c33s/static-page-content-bundle": "~2.0",
-        "kunstmaan/live-reload-bundle": "dev-devel",
         "sylius/settings-bundle": "0.12.*",
         "guzzlehttp/guzzle": "~5.0",
         "umpirsky/composer-permissions-handler": "~1.0",
@@ -81,10 +80,6 @@
         ]
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jrobeson/KunstmaanLiveReloadBundle"
-        },
         {
             "type": "vcs",
             "url": "https://github.com/jrobeson/NelmioSecurityBundle"

@@ -29,6 +29,8 @@ twig:
     #    - bootstrap_3_horizontal_layout.html.twig
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        livereload_script_url: "%livereload_http_url%"
 
 doctrine:
     dbal:
