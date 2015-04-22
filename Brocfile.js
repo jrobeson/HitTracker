@@ -6,6 +6,7 @@ var compileCoffeeScript = require('broccoli-coffee');
 var compileSass = require('broccoli-ruby-sass');
 var concat = require('broccoli-concat');
 var mergeTrees = require('broccoli-merge-trees');
+var path = require('path');
 var sieveFiles = require('broccoli-funnel');
 var uglifyJs = require('broccoli-uglify-js');
 var esTranspiler = require('broccoli-babel-transpiler');
@@ -70,27 +71,31 @@ var scoreCardCss = autoPrefixer(
     compileSass(sassSources, 'scorecard.scss', scoreCardCssFile, sassOptions)
 );
 
-var filesMap = {};
-filesMap[bowerRoot + '/jquery/dist'] = ['jquery.js'];
-filesMap[bowerRoot + '/bootstrap-sass-official/assets/javascripts'] = ['bootstrap.js'];
-filesMap[bowerRoot + '/jquery-color'] = ['jquery.color.js'];
-filesMap[bowerRoot + '/jquery.countdown/dist'] = ['jquery.countdown.js'];
-filesMap[__dirname + '/web/bundles/common/js'] = ['jquery-ujs.js'];
-filesMap[__dirname + '/src/GameBundle/Resources/coffee'] = ['game.coffee', 'common.coffee'];
-
-var jsTrees = [];
-for(var dir in filesMap) {
-    var tree = sieveFiles(dir, {
-        files: filesMap[dir],
+var bowerJsTree = sieveFiles(bowerRoot, {
+    files: [
+        'jquery/dist/jquery.js',
+        'bootstrap-sass-official/assets/javascripts/bootstrap.js',
+        'jquery-color/jquery.color.js',
+        'jquery.countdown/dist/jquery.countdown.js',
+        'modernizr/modernizr.js'
+    ],
+    destDir: 'js',
+    getDestinationPath: function(relativePath) {
+        return path.basename(relativePath);
+    }
+});
+var jsTree = sieveFiles(__dirname + '/web/bundles/common/js', {
+        include: ['*.js'],
         destDir: 'js'
     });
-    tree = compileCoffeeScript(tree, {bare: true});
-    jsTrees.push(tree);
-}
+var coffeeTree = sieveFiles(__dirname + '/src/GameBundle/Resources/coffee', {
+        include: ['*.coffee'],
+        destDir: 'js'
+    });
 
-var appJs = mergeTrees(jsTrees);
+coffeeTree = compileCoffeeScript(coffeeTree, {bare: true});
+var appJs = mergeTrees([bowerJsTree, jsTree, coffeeTree]);
 
-// @todo get inputFiles from filesMap
 appJs = concat(appJs, {
     inputFiles: [
         'js/jquery.js',
