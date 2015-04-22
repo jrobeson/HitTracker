@@ -44,6 +44,9 @@ var appCssFile = 'style/app.css';
 var scoreBoardCssFile = 'style/scoreboard.css';
 var scoreCardCssFile = 'style/scorecard.css';
 
+var env = getEnv();
+var buildType = process.env.SYMFONY__BUILD_TYPE || 'hosted';
+
 var sassSources = mergeTrees([
     bowerRoot + '/bootstrap-sass-official/assets/stylesheets',
     bowerRoot + '/fontawesome/scss',
@@ -52,11 +55,10 @@ var sassSources = mergeTrees([
 
 var sassOptions = {
     unixNewlines: true,
-    cacheLocation: 'var/cache/dev/sass-cache',
+    cacheLocation: 'var/cache/' + buildType + '/' + env + '/sass-cache',
     precision: 10
 };
 
-var env = getEnv();
 
 var appCss = autoPrefixer(
     compileSass(sassSources, 'app.scss', appCssFile, sassOptions)
