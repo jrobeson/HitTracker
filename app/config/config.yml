@@ -108,7 +108,6 @@ doctrine_cache:
 sylius_resource:
     resources:
         hittracker.vest:
-            driver: doctrine/orm
             templates: HitTrackerGameBundle:Vest
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Vest
@@ -116,7 +115,6 @@ sylius_resource:
                 controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
                 repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
         hittracker.game:
-            driver: doctrine/orm
             templates: HitTrackerGameBundle:Game
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Game
