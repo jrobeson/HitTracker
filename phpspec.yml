@@ -1,0 +1,4 @@
+suites:
+    default:
+        namespace: LazerBall\HitTracker
+        psr4_prefix: LazerBall\HitTracker
