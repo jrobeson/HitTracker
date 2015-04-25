@@ -2170,12 +2170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "b91f4d550b8d3703656e6f2901f2f264f6c5858f"
+                "reference": "3ff5390905483da17a0d4f31dae6feb80987ca64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/b91f4d550b8d3703656e6f2901f2f264f6c5858f",
-                "reference": "b91f4d550b8d3703656e6f2901f2f264f6c5858f",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/3ff5390905483da17a0d4f31dae6feb80987ca64",
+                "reference": "3ff5390905483da17a0d4f31dae6feb80987ca64",
                 "shasum": ""
             },
             "require": {
@@ -2245,7 +2245,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2015-04-14 13:38:07"
+            "time": "2015-04-22 03:44:47"
         },
         {
             "name": "sylius/settings-bundle",
@@ -2253,12 +2253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusSettingsBundle.git",
-                "reference": "e7e98f82f8ca27e3025e60c322b533b883a8a6e6"
+                "reference": "d92832433635540807ddc6f298f561a61bebd5c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusSettingsBundle/zipball/e7e98f82f8ca27e3025e60c322b533b883a8a6e6",
-                "reference": "e7e98f82f8ca27e3025e60c322b533b883a8a6e6",
+                "url": "https://api.github.com/repos/Sylius/SyliusSettingsBundle/zipball/d92832433635540807ddc6f298f561a61bebd5c4",
+                "reference": "d92832433635540807ddc6f298f561a61bebd5c4",
                 "shasum": ""
             },
             "require": {
@@ -2311,7 +2311,7 @@
                 "shop",
                 "webshop"
             ],
-            "time": "2015-04-12 10:18:42"
+            "time": "2015-04-23 07:19:25"
         },
         {
             "name": "sylius/storage",
