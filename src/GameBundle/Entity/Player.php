@@ -77,6 +77,13 @@ class Player
     private $zone3;
 
     /**
+     * @var integer
+     * @ORM\Column(name="accuracy", type="integer")
+     * @Assert\Type(type="integer")
+     */
+    private $accuracy;
+
+    /**
      * @var \DateTime
      * @ORM\Column(name="created_at", type="datetime")
      */
@@ -115,6 +122,7 @@ class Player
         $this->zone1 = 0;
         $this->zone2 = 0;
         $this->zone3 = 0;
+        $this->accuracy = 100;
     }
 
     public function getId()
@@ -173,6 +181,18 @@ class Player
         $property = 'zone'.$zone;
 
         return $this->{$property};
+    }
+
+    /** @param $accuracy integer */
+    public function setAccuracy($accuracy)
+    {
+        $this->accuracy = $accuracy;
+    }
+
+    /** @return integer */
+    public function getAccuracy()
+    {
+        return $this->accuracy;
     }
 
     public function setCreatedAt(\DateTime $createdAt)
