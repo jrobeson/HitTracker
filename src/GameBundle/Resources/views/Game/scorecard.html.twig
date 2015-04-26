@@ -15,8 +15,6 @@
                     {% block content %}
                     {% if game %}
                         {{ include('@HitTrackerGame/Game/scores.html.twig') }}
-                    {% else %}
-                        <h1 class="text-center">{{ 'There is no active game'|trans }}</h1>
                     {% endif %}
                     {% endblock %}
                 </div>
