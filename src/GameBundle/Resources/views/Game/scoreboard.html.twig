@@ -10,6 +10,10 @@
     </div>
     {% if game %}
         {{ include('@HitTrackerGame/Game/scores.html.twig') }}
+        <div class="row">
+            {{ include('@HitTrackerGame/Game/activity.html.twig') }}
+        </div>
+    </div>
     {% else %}
       <h1 class="text-center">{{ 'There is no active game'|trans }}</h1>
     {% endif %}

@@ -7981,6 +7981,9 @@ button.close {
   padding-left: 1em;
   width: 5em; }
 
+.game-activity ul {
+  list-style: none; }
+
 html, body {
   height: 100%; }
 
