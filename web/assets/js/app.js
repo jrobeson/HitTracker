@@ -12516,11 +12516,11 @@ $(function() {
       event_data = $.parseJSON(e.data);
       hit = event_data.content;
       pushHit("#player-" + hit.player_id + " .zone-" + hit.zone, hit.zone);
-      $("#player-" + hit.player_id + " .player-score").text(hit.life_credits);
+      $("#player-" + hit.player_id + " .player-life-credits").text(hit.life_credits);
       return $('.scores').each(function() {
         var team_total;
         team_total = 0;
-        $(this).find('.player-score').each(function() {
+        $(this).find('.player-life-credits').each(function() {
           return team_total += parseInt($(this).text());
         });
         return $(this).find('.team-total').text(team_total);

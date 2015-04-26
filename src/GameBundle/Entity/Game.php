@@ -292,7 +292,7 @@ class Game
      * @param $team
      * @return number
      */
-    public function getTeamScore($team)
+    public function getTeamLifeCredits($team)
     {
         $team = $this->getPlayersByTeam($team);
         $score = array_sum($team->map(function ($player) {
@@ -303,7 +303,7 @@ class Game
     }
 
     /** @return number */
-    public function getTotalScore()
+    public function getTotalLifeCredits()
     {
         $score = array_sum($this->getPlayers()->map(function ($player) {
             return $player->getLifeCredits();
