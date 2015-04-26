@@ -8,6 +8,7 @@ namespace LazerBall\HitTracker\GameBundle\Settings;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class GameSettingsSchema implements SchemaInterface
 {
@@ -41,26 +42,31 @@ class GameSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
-            ->add('game_length', 'positive_integer', [
-                'label' => 'Game Length'
+            ->add('game_length', 'integer', [
+                'label' => 'Game Length',
+                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
             ])
-            ->add('player_count', 'positive_integer', [
+            ->add('player_count', 'integer', [
                 'label' => 'Players Per Game',
+                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
                 'attr' => [
                     'help' => 'This setting still requires you to have enough active vests.'
                     ]
             ])
-            ->add('team_player_count', 'positive_integer', [
+            ->add('team_player_count', 'integer', [
                 'label' => 'Players Per Team',
+                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
                 'attr' => [
                     'help' => 'This setting still requires you to have enough players.'
                     ]
             ])
-            ->add('player_life_credits', 'positive_integer', [
-                'label' => 'Player Life Credits'
+            ->add('player_life_credits', 'integer', [
+                'label' => 'Player Life Credits',
+                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
             ])
-            ->add('life_credits_deducted', 'positive_integer', [
-                'label' => 'Life Credits Deducted Per Hit'
+            ->add('life_credits_deducted', 'integer', [
+                'label' => 'Life Credits Deducted Per Hit',
+                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
             ])
         ;
     }

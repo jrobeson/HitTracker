@@ -34,7 +34,7 @@ class PlayerType extends AbstractType
                   'choices' => $this->vestRepository->findActiveVests(),
                   'property' => 'id',
             ])
-            ->add('lifeCredits', 'positive_integer', [
+            ->add('lifeCredits', 'integer', [
                   'empty_data' => '',
                   'attr' => [
                     'step' => $gameSettings->get('life_credits_deducted'),

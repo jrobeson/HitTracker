@@ -26,10 +26,14 @@ class Game
     private $id;
 
     /**
+     * @todo cap the upper bound on arenas based on how many there really are.
      * @var integer
      * @ORM\Column(name="arena", type="integer")
      * @Assert\Type("numeric")
-     * @Assert\NotBlank()
+     * @Assert\GreaterThan(
+     *      value=0,
+     *      message="The chosen arena does not exist"
+     * )
      */
     private $arena;
 
@@ -37,7 +41,10 @@ class Game
      * @var integer
      * @ORM\Column(name="player_life_credits", type="integer")
      * @Assert\Type("integer")
-     * @Assert\NotBlank()
+     * @Assert\GreaterThan(
+     *      value=0,
+     *      message="Default life credits must be greater than {{ compared_value }}"
+     * )
      */
     private $playerLifeCredits;
 
@@ -45,7 +52,10 @@ class Game
      * @var integer
      * @ORM\Column(name="life_credits_deducted", type="integer")
      * @Assert\Type("integer")
-     * @Assert\NotBlank()
+     * @Assert\GreaterThan(
+     *      value=0,
+     *      message="Life credits deducted must be greater than {{ compared_value }}"
+     * )
      */
     private $lifeCreditsDeducted;
 
@@ -87,8 +97,11 @@ class Game
 
     /**
      * @var integer
-     * @Assert\Range(min=1)
      * @Assert\Type("integer")
+     * @Assert\GreaterThan(
+     *      value=0,
+     *      message="Game length must be longer than {{ compared_value }} minutes"
+     * )
      */
     protected $gameLength;
 

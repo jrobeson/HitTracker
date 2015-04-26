@@ -46,21 +46,21 @@ class GameType extends AbstractType
         }
 
         $builder
-            ->add('game_length', 'positive_integer', [
+            ->add('game_length', 'integer', [
                 'label' => 'Game Length (in minutes)',
                 'data' => $gameSettings->get('game_length'),
             ])
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
             ])
-            ->add('playerLifeCredits', 'positive_integer', [
+            ->add('playerLifeCredits', 'integer', [
                 'label' => 'Life Credits Per Player',
                 'data' => $gameSettings->get('player_life_credits'),
                 'attr' => [
                     'step' => $gameSettings->get('life_credits_deducted'),
                  ],
             ])
-            ->add('lifeCreditsDeducted', 'positive_integer', [
+            ->add('lifeCreditsDeducted', 'integer', [
                 'label' => 'Credits Deducted Per Hit',
                 'data' => $gameSettings->get('life_credits_deducted'),
             ])

@@ -8,6 +8,7 @@ namespace LazerBall\HitTracker\GameBundle\Settings;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SiteSettingsSchema implements SchemaInterface
 {
@@ -31,8 +32,9 @@ class SiteSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
-            ->add('arenas', 'positive_integer', [
-                'label' => 'Arenas'
+            ->add('arenas', 'integer', [
+                'label' => 'Arenas',
+                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
             ])
         ;
     }

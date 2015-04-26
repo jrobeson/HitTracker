@@ -49,8 +49,10 @@ class Player
     /**
      * @var integer
      * @ORM\Column(name="life_credits", type="integer")
-     * @Assert\NotBlank
      * @Assert\Type(type="integer")
+     * @Assert\GreaterThanOrEqual(
+     *      value=0,
+     *      message="Life credits must be greater than {{ compared_value }}"
      * )
      */
     private $lifeCredits;
