@@ -42,12 +42,12 @@ $ ->
       event_data = $.parseJSON e.data
       hit = event_data.content
       pushHit "#player-#{hit.player_id} .zone-#{hit.zone}", hit.zone
-      $("#player-#{hit.player_id} .player-score").text hit.life_credits
+      $("#player-#{hit.player_id} .player-life-credits").text hit.life_credits
 
       # TODO: convert to event!, use team table names, make a real function
       $('.scores').each ->
         team_total = 0
-        $(this).find('.player-score').each ->
+        $(this).find('.player-life-credits').each ->
           team_total += parseInt($(this).text())
 
         $(this).find('.team-total').text team_total
