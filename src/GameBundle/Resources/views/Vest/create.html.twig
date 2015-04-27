@@ -1,9 +1,9 @@
 {% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
-    <h1>{{ 'Create Vest'|trans }}</h1>
+    <h1>{{ 'hittracker.vest.add'|trans }}</h1>
     {{ form(form, {action: path('hittracker_vest_create'), layout: 'horizontal', }) }}
     <br />
     <a href="{{ path('hittracker_vest_index') }}">
-        {{ 'Back'|trans }}
+        {{ 'hittracker.vest.add'|trans }}
     </a>
 {% endblock %}

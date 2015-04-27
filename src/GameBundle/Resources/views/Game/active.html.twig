@@ -6,8 +6,8 @@
         <strong class="text-center">
             {{ include('@HitTrackerGame/Game/print_scores.html.twig') }}
         </strong>
-        <a class="btn btn-danger" href="{{ path('hittracker_game_stop', {'id': game.id }) }}" {{ link_attr('PATCH') }}">
-            {{ 'Stop Game'|trans }}
+        <a class="btn btn-danger" href="{{ path('hittracker_game_stop', {'id': game.id }) }}" {{ link_attr('PATCH') }}>
+            {{ 'hittracker.game.stop'|trans }}
         </a>
         {# include('@HitTrackerGame/Game/hit_simulator.html.twig') #}
     </div>
@@ -19,11 +19,11 @@
     </div>
 {% else %}
     <div class="row">
-        <h1 class="text-center">{{ 'There is no active game'|trans }}</h1>
+        <h1 class="text-center">{{ 'hittracker.game.none_active'|trans }}</h1>
     </div>
     <div class="row">
         <a href="{{ path('hittracker_game_create') }}" class="btn btn-primary">
-            {{ 'New Game'|trans }}
+            {{ 'hittracker.game.new'|trans }}
         </a>
     </div>
 {% endif %}

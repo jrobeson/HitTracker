@@ -2,17 +2,17 @@
 {% block content %}
     {% from '@Common/Macros/misc.html.twig' import pagination %}
 
-    <h1>Vests</h1>
+    <h1>{{ 'hittracker.vest.list'|trans }}</h1>
 
     {{ pagination(vests) }}
     <table class="table-striped">
         <thead>
             <tr>
-                <th class="col-lg-1">{{ 'ID'|trans }}</th>
-                <th class="col-lg-1">{{ 'Radio Id'|trans }}</th>
-                <th class="col-lg-1">{{ 'Active?'|trans }}</th>
-                <th class="col-lg-1">{{ 'Date Added'|trans }}</th>
-                <th class="col-lg-1">{{ 'Options'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.id'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.vest.radio_id'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.vest.status'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.date_added'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.options'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                 </td>
                 <td class="col-lg-2">
                     <a href="{{ path('hittracker_vest_update', {id: vest.id}) }}">
-                        {{ 'Edit'|trans }}
+                        {{ 'hittracker.edit'|trans }}
                     </a>
                 </td>
             </tr>
@@ -35,6 +35,6 @@
     </table>
     <br />
     <a href="{{ path('hittracker_vest_create') }}" class="btn btn-primary">
-        {{ 'New vest'|trans }}
+        {{ 'hittracker.vest.add'|trans }}
     </a>
 {% endblock %}

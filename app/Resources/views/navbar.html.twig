@@ -14,34 +14,34 @@
             <ul class="nav navbar-nav">
                 <li class="active">
                    <a href="{{ path('home') }}">
-                      {{ 'Home'|trans }}
+                      {{ 'hittracker.home'|trans }}
                    </a>
                 </li>
                 <li>
                     <a href="{{ path('hittracker_game_create') }}">
-                        {{ 'New Game'|trans }}
+                        {{ 'hittracker.game.new'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('hittracker_game_index') }}">
-                        {{ 'Games'|trans }}
+                        {{ 'hittracker.game.list'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('hittracker_vest_index') }}">
-                        {{ 'Vests'|trans }}
+                        {{ 'hittracker.vest.list'|trans }}
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="{{ path('hittracker_game_active') }}">
-                        {{ 'Active Game'|trans }}
+                        {{ 'hittracker.game.active'|trans }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('hittracker_game_scoreboard') }}" target="_blank">
-                        {{ 'Scoreboard'|trans }}
+                        {{ 'hittracker.game.scoreboard'|trans }}
                     </a>
                 </li>
                 <li class="dropdown">
@@ -49,12 +49,12 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{ path('hittracker_game_settings') }}">
-                                {{ 'Game Settings'|trans }}
+                                {{ 'hittracker.settings.game'|trans }}
                             </a>
                         </li>
                         <li>
                             <a href="{{ path('hittracker_site_settings') }}">
-                                {{ 'Site Settings'|trans }}
+                                {{ 'hittracker.settings.site'|trans }}
                             </a>
                         </li>
                     </ul>
@@ -62,7 +62,7 @@
 
                 <li>
                     <a href="{{ path('page', {name: 'help'}) }}">
-                        {{ 'Help'|trans }}
+                        {{ 'hittracker.help'|trans }}
                     </a>
                 </li>
             </ul>

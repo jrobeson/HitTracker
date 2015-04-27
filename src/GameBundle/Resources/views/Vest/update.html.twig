@@ -1,9 +1,9 @@
 {% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
-    <h1>{{ 'Update Vest'|trans }}</h1>
+    <h1>{{ 'hittracker.vest.update'|trans }}</h1>
     {{ form(form, {action: path('hittracker_vest_update', {id: vest.id}), layout: 'horizontal', method: 'PUT'}) }}
     <br />
     <a href="{{ path('hittracker_vest_index') }}">
-        {{ 'Back'|trans }}
+        {{ 'hittracker.back'|trans }}
     </a>
 {% endblock %}

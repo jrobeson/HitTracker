@@ -1,16 +1,15 @@
 <div class="row">
     <div class="col-md-6 col-sm-12">
         <h2 class="text-center">
-            {{ 'Game Length'|trans }}:
-            {{ '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) }}
-            {{ 'Minutes'|trans }}
+            {% set time_total = '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) %}
+            {{ 'hittracker.game.length_total'|trans({'%time%': time_total}) }}
         </h2>
     </div>
 
     <div class="col-md-6 col-sm-12">
         {% if game.active %}
         <h2 class="text-center">
-            {{ 'Time Left'|trans }}:
+            {{ 'hittracker.game.time_left'|trans }}
             <span id="game-time-countdown" data-server-time="{{ 'now'|date('U', 'UTC') * 1000 }}" data-game-end-time="{{ game.endsAt.timeStamp * 1000 }}">
 
             </span>
@@ -31,15 +30,15 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>{{ '#' }}</th>
-                        <th>{{ 'Name'|trans }}</th>
+                        <th>#</th>
+                        <th>{{ 'hittracker.game.player_name'|trans }}</th>
                         {% for zone in 1..3 %}
                             <th>
-                                {{ 'Zone'|trans }} {{ zone }}
+                                {{ 'hittracker.game.zone_no'|trans({'%zone_no%': zone}) }}
                             </th>
                         {% endfor %}
                         <th class="player-total">
-                            {{ 'Life Credits'|trans }}
+                            {{ 'hittracker.game.life_credits'|trans }}
                         </th>
                     </tr>
                 </thead>
@@ -63,7 +62,7 @@
                 </tbody>
                 <tfoot>
                     <td colspan="3"></td>
-                    <td colspan="2"><p class="text-right">{{ 'Team Total'|trans }}</p></td>
+                    <td colspan="2"><p class="text-right">{{ 'hittracker.game.team_total'|trans }}</p></td>
                     <td class="team-total">
                         {{ game.teamLifeCredits(team) }}
                     </td>

@@ -9,10 +9,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  * @UniqueEntity(fields={"game", "vest"},
- *               message="This vest was already used on this game"
+ *               message="hittracker.player.unique_vest_required"
  * )
  * @UniqueEntity(fields={"game", "name"},
- *               message="There is already a player with that name in this game"
+ *               message="hittracker.game.unique_name_required"
  * )
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="game_players",
@@ -52,7 +52,7 @@ class Player
      * @Assert\Type(type="integer")
      * @Assert\GreaterThanOrEqual(
      *      value=0,
-     *      message="Life credits must be greater than {{ compared_value }}"
+     *      message="hittracker.game.not_enough_life_credits"
      * )
      */
     private $lifeCredits;

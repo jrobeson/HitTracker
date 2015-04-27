@@ -32,7 +32,7 @@ class Game
      * @Assert\Type("numeric")
      * @Assert\GreaterThan(
      *      value=0,
-     *      message="The chosen arena does not exist"
+     *      message="hittracker.game.arena_not_exists"
      * )
      */
     private $arena;
@@ -43,7 +43,7 @@ class Game
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
-     *      message="Default life credits must be greater than {{ compared_value }}"
+     *      message="hittracker.game.not_enough_life_credits"
      * )
      */
     private $playerLifeCredits;
@@ -54,7 +54,7 @@ class Game
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
-     *      message="Life credits deducted must be greater than {{ compared_value }}"
+     *      message="hittracker.game.not_enough_deducted_life_credits"
      * )
      */
     private $lifeCreditsDeducted;
@@ -76,17 +76,17 @@ class Game
      *
      * @Assert\Valid()
      * @Assert\Count(min="2",
-     *               minMessage="A Game must have at least two players"
+     *               minMessage="hittracker.game.not_enough_players"
      * )
      * @Assert\All(constraints={
      *     @CommonAssert\UniqueCollectionField(
      *         propertyPath="vest",
-     *         message="You can't use the same vest twice in a game.")
+     *         message="hittracker.game.unique_vests_required")
      * })
      * @Assert\All(constraints={
      *     @CommonAssert\UniqueCollectionField(
      *         propertyPath="name",
-     *         message="You can't add a player with the same name to a game."
+     *         message="hittracker.game.unique_names_required"
      *     )
      * })
      * @ORM\OneToMany(targetEntity="Player", mappedBy="game",
@@ -100,7 +100,7 @@ class Game
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
-     *      message="Game length must be longer than {{ compared_value }} minutes"
+     *      message="hittracker.game.not_long_enough"
      * )
      */
     protected $gameLength;

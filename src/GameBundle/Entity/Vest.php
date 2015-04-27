@@ -27,7 +27,7 @@ class Vest
      * @ORM\Column(name="radio_id", type="string", length=8, unique=true)
      * @Assert\Length(min="8", max="8")
      * @Assert\Type(type="xdigit",
-     *              message="The Radio Id is not formatted correctly"
+     *              message="hittracker.vest.bad_radio_id"
      * )
      */
     private $radioId;

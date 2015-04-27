@@ -1,17 +1,17 @@
 {% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
     {% from '@Common/Macros/misc.html.twig' import pagination %}
-    <h1>Games</h1>
+    <h1>{{ 'hittracker.game.list'|trans }}</h1>
 
     {{ pagination(games) }}
     <table class="table-striped">
         <thead>
         <tr>
-            <th>{{ 'ID'|trans }}</th>
-            <th>{{ 'Game Started'|trans }}</th>
-            <th>{{ 'Game Length'|trans }}</th>
-            <th>{{ 'Total Score'|trans }}</th>
-            <th>{{ 'Players'|trans }}</th>
+            <th>{{ 'hittracker.id'|trans }}</th>
+            <th>{{ 'hittracker.game.start_date'|trans }}</th>
+            <th>{{ 'hittracker.game.length'|trans }}</th>
+            <th>{{ 'hittracker.game.total_life_credits'|trans }}</th>
+            <th>{{ 'hittracker.game.player_count'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -36,6 +36,6 @@
     </table>
     <br/>
     <a href="{{ path('hittracker_game_create') }}" class="btn btn-primary">
-        {{ 'New game'|trans }}
+        {{ 'hittracker.game.new'|trans }}
     </a>
 {% endblock %}

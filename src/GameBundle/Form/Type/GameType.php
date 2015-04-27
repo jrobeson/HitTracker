@@ -47,21 +47,21 @@ class GameType extends AbstractType
 
         $builder
             ->add('game_length', 'integer', [
-                'label' => 'Game Length (in minutes)',
+                'label' => 'hittracker.game.length_in_minutes',
                 'data' => $gameSettings->get('game_length'),
             ])
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
             ])
             ->add('playerLifeCredits', 'integer', [
-                'label' => 'Life Credits Per Player',
+                'label' => 'hittracker.game.life_credits_per_player',
                 'data' => $gameSettings->get('player_life_credits'),
                 'attr' => [
                     'step' => $gameSettings->get('life_credits_deducted'),
                  ],
             ])
             ->add('lifeCreditsDeducted', 'integer', [
-                'label' => 'Credits Deducted Per Hit',
+                'label' => 'hittracker.game.live_credits_deducted_per_hit',
                 'data' => $gameSettings->get('life_credits_deducted'),
             ])
             ->add('team1', 'text', [
@@ -75,13 +75,13 @@ class GameType extends AbstractType
                 'data' => 'Team 2',
             ])
             ->add('reload_players', 'choice', [
-                'label' => 'Load Players From Previous Games',
+                'label' => 'hittracker.game.load_players_from_previous_games',
                 'choices' => $gameList,
                 'mapped' => false,
             ])
             ->add('players', 'hittracker_player_collection')
             ->add('start', 'submit', [
-                'label' => 'Start Game',
+                'label' => 'hittracker.game.start',
             ])
             ->add('reset', 'reset')
             ->addEventSubscriber($this->eventSubscriber)

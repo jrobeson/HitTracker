@@ -14,9 +14,14 @@ class VestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('radioId', 'text', ['label' => 'Radio Id (8 character radio ID)'])
+            ->add('radioId', 'text', [
+                'label' => 'hittracker.vest.radio_id',
+                'attr' => [
+                    'help' => 'hittracker.vest.radio_id.help'
+                ]
+            ])
             ->add('active', 'checkbox', [
-                    'label' => 'Active?',
+                    'label' => 'hittracker.vest.enabled',
                     'required' => false,
                     'data' => true
                 ]
