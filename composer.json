@@ -32,7 +32,8 @@
         "umpirsky/composer-permissions-handler": "~1.0",
         "nesbot/Carbon": "~1.12",
         "vlucas/phpdotenv": "2.*@dev",
-        "nelmio/security-bundle": "dev-force-wdt-profiler-whitelist"
+        "nelmio/security-bundle": "dev-force-wdt-profiler-whitelist",
+        "psy/psysh": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.4",
