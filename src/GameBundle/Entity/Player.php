@@ -27,7 +27,7 @@ class Player
 {
     /**
      * @var integer
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -35,20 +35,20 @@ class Player
 
     /**
      * @var string
-     * @ORM\Column(name="team", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $team;
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @var integer
-     * @ORM\Column(name="life_credits", type="integer")
+     * @ORM\Column(type="integer")
      * @Assert\Type(type="integer")
      * @Assert\GreaterThanOrEqual(
      *      value=0,
@@ -87,20 +87,20 @@ class Player
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
      * @var Game
      * @ORM\ManyToOne(targetEntity="Game", inversedBy="players")
-     * @ORM\JoinColumn(name="game_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $game;
 

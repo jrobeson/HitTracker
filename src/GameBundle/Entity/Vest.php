@@ -16,7 +16,7 @@ class Vest
 {
     /**
      * @var integer
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,7 +24,7 @@ class Vest
 
     /**
      * @var string
-     * @ORM\Column(name="radio_id", type="string", length=8, unique=true)
+     * @ORM\Column(type="string", length=8, unique=true)
      * @Assert\Length(min="8", max="8")
      * @Assert\Type(type="xdigit",
      *              message="hittracker.vest.bad_radio_id"
@@ -34,19 +34,19 @@ class Vest
 
     /**
      * @var bool
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(type="boolean")
      */
     private $active;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 

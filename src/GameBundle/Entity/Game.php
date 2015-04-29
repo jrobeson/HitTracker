@@ -19,7 +19,7 @@ class Game
 {
     /**
      * @var integer
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -28,7 +28,7 @@ class Game
     /**
      * @todo cap the upper bound on arenas based on how many there really are.
      * @var integer
-     * @ORM\Column(name="arena", type="integer")
+     * @ORM\Column(type="integer")
      * @Assert\Type("numeric")
      * @Assert\GreaterThan(
      *      value=0,
@@ -39,7 +39,7 @@ class Game
 
     /**
      * @var integer
-     * @ORM\Column(name="player_life_credits", type="integer")
+     * @ORM\Column(type="integer")
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
@@ -50,7 +50,7 @@ class Game
 
     /**
      * @var integer
-     * @ORM\Column(name="life_credits_deducted", type="integer")
+     * @ORM\Column(type="integer")
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
@@ -61,13 +61,13 @@ class Game
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="ends_at", type="datetime")
+     * @ORM\Column(type="datetime")
      */
     private $endsAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
