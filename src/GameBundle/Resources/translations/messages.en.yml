@@ -38,6 +38,7 @@ hittracker.game.scoreboard: 'Scoreboard'
 hittracker.game.life_credits_per_player: 'Life Credits Per Player'
 hittracker.game.live_credits_deducted_per_hit: 'Life Credits Deducted Per Hit'
 hittracker.game.load_players_from_previous_games: 'Load Players From Previous Games'
+hittracker.game.choose: 'Choose a Game'
 
 hittracker.vest.add: 'Add Vest'
 hittracker.vest.radio_id: 'Radio Id'

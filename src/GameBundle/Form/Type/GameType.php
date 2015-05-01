@@ -78,6 +78,8 @@ class GameType extends AbstractType
                 'label' => 'hittracker.game.load_players_from_previous_games',
                 'choices' => $gameList,
                 'mapped' => false,
+                'placeholder' => 'hittracker.game.choose',
+                'required' => false,
             ])
             ->add('players', 'hittracker_player_collection')
             ->add('start', 'submit', [
