@@ -14,14 +14,14 @@ $ ->
       team_players = []
       for player in game.players
         pt = player.team
-        team_players[pt] = [] if not team_players[pt]?
-        team_players[pt].push(player.name)
+        team_players[pt] = {} if not team_players[pt]?
+        team_players[pt][player.vest.id] = player.name
       $('.new-game-teams').each ->
         team = teams.shift()
         $(this).find('.team-no input').val(team)
-        players = team_players[team]
-        $(this).find('input[id$="_name"]').each ->
-          $(this).val(players.shift())
+        for vest, name of team_players[team]
+          $("select[id$='_vest'] option:selected[value=#{vest}]").
+          parent().parent().parent().parent().find("input[id$='_name']").val("#{name}")
 
   $('form[name="hittracker_game"]').submit ->
     $('.new-game-teams').each ->

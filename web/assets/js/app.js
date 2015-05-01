@@ -12477,18 +12477,21 @@ $(function() {
         player = ref[i];
         pt = player.team;
         if (team_players[pt] == null) {
-          team_players[pt] = [];
+          team_players[pt] = {};
         }
-        team_players[pt].push(player.name);
+        team_players[pt][player.vest.id] = player.name;
       }
       return $('.new-game-teams').each(function() {
-        var players, team;
+        var name, ref1, results, team, vest;
         team = teams.shift();
         $(this).find('.team-no input').val(team);
-        players = team_players[team];
-        return $(this).find('input[id$="_name"]').each(function() {
-          return $(this).val(players.shift());
-        });
+        ref1 = team_players[team];
+        results = [];
+        for (vest in ref1) {
+          name = ref1[vest];
+          results.push($("select[id$='_vest'] option:selected[value=" + vest + "]").parent().parent().parent().parent().find("input[id$='_name']").val("" + name));
+        }
+        return results;
       });
     });
   });
