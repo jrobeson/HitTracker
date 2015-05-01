@@ -2,6 +2,7 @@ preset: recommended
 
 disabled:
     - align_double_arrow
+    - blankline_after_open_tag
     - phpdoc_params
     - phpdoc_separation
     - phpdoc_short_description
