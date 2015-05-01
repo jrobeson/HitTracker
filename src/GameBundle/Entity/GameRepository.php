@@ -11,7 +11,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 class GameRepository extends EntityRepository
 {
     /**
-     * @param integer $arena
+     * @param int $arena
      * @return bool
      */
     public function isArenaOpen($arena)
@@ -31,7 +31,7 @@ class GameRepository extends EntityRepository
     }
 
     /**
-     * @param integer $arena
+     * @param int $arena
      * @return Game
      */
     public function getActiveGame($arena)

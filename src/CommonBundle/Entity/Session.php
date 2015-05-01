@@ -25,13 +25,13 @@ class Session
     private $data;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="session_time", type="integer", nullable=false)
      */
     private $time;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="session_lifetime", type="integer", nullable=false)
      */
     private $lifetime;
@@ -60,7 +60,7 @@ class Session
     }
 
     /**
-     * @param integer
+     * @param int
      * @return \DateTime
      */
     private function convertToDateTime($timeStamp)

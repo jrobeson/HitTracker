@@ -144,7 +144,6 @@ abstract class AppKernel extends Kernel
             $this->getBuildType(),
         ]);
     }
-
 }
 
 require 'HostedAppKernel.php';

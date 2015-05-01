@@ -34,7 +34,7 @@ class SiteSettingsSchema implements SchemaInterface
         $builder
             ->add('arenas', 'integer', [
                 'label' => 'Arenas',
-                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
         ;
     }

@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Game
 {
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -27,7 +27,7 @@ class Game
 
     /**
      * @todo cap the upper bound on arenas based on how many there really are.
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @Assert\Type("numeric")
      * @Assert\GreaterThan(
@@ -38,7 +38,7 @@ class Game
     private $arena;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
@@ -49,7 +49,7 @@ class Game
     private $playerLifeCredits;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
@@ -96,7 +96,7 @@ class Game
     protected $players;
 
     /**
-     * @var integer
+     * @var int
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
@@ -179,7 +179,7 @@ class Game
     /**
      * Set the length of a game in minutes
      *
-     * @param integer $minutes time in minutes
+     * @param int $minutes time in minutes
      */
     public function setGameLength($minutes)
     {

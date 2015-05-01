@@ -44,29 +44,29 @@ class GameSettingsSchema implements SchemaInterface
         $builder
             ->add('game_length', 'integer', [
                 'label' => 'Game Length',
-                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
             ->add('player_count', 'integer', [
                 'label' => 'Players Per Game',
-                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'help' => 'This setting still requires you to have enough active vests.'
                     ]
             ])
             ->add('team_player_count', 'integer', [
                 'label' => 'Players Per Team',
-                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'help' => 'This setting still requires you to have enough players.'
                     ]
             ])
             ->add('player_life_credits', 'integer', [
                 'label' => 'Player Life Credits',
-                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
             ->add('life_credits_deducted', 'integer', [
                 'label' => 'Life Credits Deducted Per Hit',
-                'constraints' => [new Assert\GreaterThan(['value'=> 0])],
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
         ;
     }

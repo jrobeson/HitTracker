@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Vest
 {
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")

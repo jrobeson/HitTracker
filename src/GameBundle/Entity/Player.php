@@ -26,7 +26,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Player
 {
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -47,7 +47,7 @@ class Player
     private $name;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(type="integer")
      * @Assert\Type(type="integer")
      * @Assert\GreaterThanOrEqual(
@@ -58,21 +58,21 @@ class Player
     private $lifeCredits;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="zone_1", type="integer")
      * @Assert\Type(type="integer")
      */
     private $zone1;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="zone_2", type="integer")
      * @Assert\Type(type="integer")
      */
     private $zone2;
 
     /**
-     * @var integer
+     * @var int
      * @ORM\Column(name="zone_3", type="integer")
      * @Assert\Type(type="integer")
      */
@@ -154,21 +154,21 @@ class Player
         return $this->name;
     }
 
-    /** @param integer $lifeCredits */
+    /** @param int $lifeCredits */
     public function setLifeCredits($lifeCredits)
     {
         $this->lifeCredits = $lifeCredits;
     }
 
-    /** @return integer */
+    /** @return int */
     public function getLifeCredits()
     {
         return $this->lifeCredits;
     }
 
     /**
-     * @param integer $zone
-     * @return integer
+     * @param int $zone
+     * @return int
      */
     public function hitsInZone($zone)
     {
@@ -240,8 +240,8 @@ class Player
     /**
      * Hit a zone
      *
-     * @param integer $zone
-     * @param integer $lifeCredits
+     * @param int $zone
+     * @param int $lifeCredits
      */
     public function hit($zone, $lifeCredits)
     {
