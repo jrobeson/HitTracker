@@ -40,7 +40,7 @@ hittracker_game_index:
         _sylius:
             paginate: 20
             sorting:
-                id: asc
+                id: desc
 
 hittracker_game_create:
     path: /games/new
