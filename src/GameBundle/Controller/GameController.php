@@ -173,6 +173,10 @@ class GameController extends ResourceController
 
         $player = $game->getPlayerByRadioId($radioId);
 
+        if (!$player) {
+            return new JsonResponse(['error' => 'no such player'], 404);
+        }
+
         $hit = [
             'radioId' => $radioId,
             'player_id' => $player->getId(),
