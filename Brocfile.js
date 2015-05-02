@@ -94,7 +94,18 @@ var coffeeTree = sieveFiles(__dirname + '/src/GameBundle/Resources/coffee', {
     destDir: 'js'
 });
 coffeeTree = compileCoffeeScript(coffeeTree, {bare: true});
-var appJs = mergeTrees([bowerJsTree, jsTree, coffeeTree]);
+
+var scriptTree = sieveFiles(__dirname + '/app/Resources/js', {
+    include: ['*.js'],
+    destDir: 'js'
+});
+
+scriptTree = esTranspiler(scriptTree, {
+    filterExtensions:['js', 'es6'],
+    compact: false
+});
+
+var appJs = mergeTrees([bowerJsTree, jsTree, scriptTree, coffeeTree]);
 
 appJs = concat(appJs, {
     inputFiles: [
