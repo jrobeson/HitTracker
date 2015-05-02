@@ -12606,32 +12606,28 @@ printScores = function(url, copies) {
   return frame.contentDocument.location.href = url;
 };
 
-var alertDismiss, port, scheme_host;
+'use strict';
 
 if (!window.location.origin) {
-  scheme_host = window.location.protocol + '//' + window.location.hostname;
-  port = '';
-  if (window.location.port) {
-    port = ':' + window.location.port;
-  }
-  window.location.origin = scheme_host + port;
+    var schemeHost = '' + window.location.protocol + '//' + window.location.hostname;
+    var port = window.location.port ? ':' + window.location.port : '';
+    window.location.origin = '' + schemeHost + '' + port;
 }
 
-alertDismiss = function() {
-  var target, timeout;
-  target = $('.alert');
-  timeout = target.data('auto-dismiss');
-  if (!timeout) {
-    return;
-  }
-  timeout = parseInt(timeout) * 1000;
-  return setTimeout(function() {
-    return target.fadeTo(500, 0).slideUp(500, function() {
-      return $(this).remove();
-    });
-  }, timeout);
-};
+alertDismiss = function () {
+    var target = $('.alert');
+    var timeout = target.data('auto-dismiss');
 
-$(document).ready(function() {
-  return alertDismiss();
+    if (!timeout) {
+        return;
+    }
+    timeout = parseInt(timeout) * 1000;
+    setTimeout(function () {
+        return target.fadeTo(500, 0).slideUp(500, function () {
+            return $(undefined).remove();
+        });
+    }, timeout);
+};
+$(document).ready(function () {
+    return alertDismiss();
 });
