@@ -85,14 +85,14 @@ var bowerJsTree = sieveFiles(bowerRoot, {
     }
 });
 var jsTree = sieveFiles(__dirname + '/web/bundles/common/js', {
-        include: ['*.js'],
-        destDir: 'js'
-    });
-var coffeeTree = sieveFiles(__dirname + '/src/GameBundle/Resources/coffee', {
-        include: ['*.coffee'],
-        destDir: 'js'
-    });
+    include: ['*.js'],
+    destDir: 'js'
+});
 
+var coffeeTree = sieveFiles(__dirname + '/src/GameBundle/Resources/coffee', {
+    include: ['*.coffee'],
+    destDir: 'js'
+});
 coffeeTree = compileCoffeeScript(coffeeTree, {bare: true});
 var appJs = mergeTrees([bowerJsTree, jsTree, coffeeTree]);
 
@@ -109,8 +109,6 @@ appJs = concat(appJs, {
     outputFile: '/js/app.js'
 });
 
-//var scriptTree = esTranspiler(inputTree, options);
-//
 if ('production' == env) {
     appJs = uglifyJs(appJs, {
         compress: true
