@@ -12453,159 +12453,209 @@ colors = jQuery.Color.names = {
     });
 })( jQuery );
 
-var printScores, pushHit;
+/**
+ * This file is part of HitTracker.
+ *
+ * HitTracker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @copyright 2014 <johnny@localmomentum.net>
+ * @license AGPL-3
+ */
+'use strict';
 
-$(function() {
-  var client_time, countdown_ref, game_end, offset, server_time, source;
-  $('select[name="hittracker_game[reload_players]"]').change(function() {
-    var game_id, request, teams, text;
-    game_id = $(this).val();
-    text = $(this).children(':selected').text();
-    text = text.replace(/[ ]\(Game #: .+?\)/, '');
-    teams = text.replace(' vs. ', '|').split('|');
-    request = $.ajax({
-      url: window.location.origin + '/games/' + game_id,
-      headers: {
-        Accept: "application/json"
-      }
-    });
-    return request.done(function(game) {
-      var i, len, player, pt, ref, team_players;
-      team_players = [];
-      ref = game.players;
-      for (i = 0, len = ref.length; i < len; i++) {
-        player = ref[i];
-        pt = player.team;
-        if (team_players[pt] == null) {
-          team_players[pt] = {};
-        }
-        team_players[pt][player.vest.id] = player.name;
-      }
-      return $('.new-game-teams').each(function() {
-        var name, ref1, results, team, vest;
-        team = teams.shift();
-        $(this).find('.team-no input').val(team);
-        ref1 = team_players[team];
-        results = [];
-        for (vest in ref1) {
-          name = ref1[vest];
-          results.push($("select[id$='_vest'] option:selected[value=" + vest + "]").parent().parent().parent().parent().find("input[id$='_name']").val("" + name));
-        }
-        return results;
-      });
-    });
-  });
-  $('form[name="hittracker_game"]').submit(function() {
-    return $('.new-game-teams').each(function() {
-      var team;
-      team = $(this).find('.team-no input').val().trim();
-      return $(this).find('input[id$="_team"]').each(function() {
-        return $(this).val(team);
-      });
-    });
-  });
-  if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
-    source = new EventSource('/events/game');
-    $(window).on('unload', function(source) {
-      return source.close;
-    });
-    if ($('body').hasClass('hittracker-game-scoreboard')) {
-      source.addEventListener('game.start', function(e) {
-        return window.location.reload(true);
-      });
-    }
-    source.addEventListener('game.hit', function(e) {
-      var event_data, hit;
-      event_data = $.parseJSON(e.data);
-      hit = event_data.content;
-      pushHit("#player-" + hit.player_id + " .zone-" + hit.zone, hit.zone);
-      $("#player-" + hit.player_id + " .player-life-credits").text(hit.life_credits);
-      return $('.scores').each(function() {
-        var team_total;
-        team_total = 0;
-        $(this).find('.player-life-credits').each(function() {
-          return team_total += parseInt($(this).text());
+$(document).ready(function () {
+    $('select[name="hittracker_game[reload_players]"]').change(function () {
+        var gameId = $(this).val();
+        var text = $(this).children(':selected').text();
+        text = text.replace(/[ ]\(Game #: .+?\)/, '');
+        var teams = text.replace(' vs. ', '|').split('|');
+        var request = $.ajax({
+            url: '' + window.location.origin + '/games/' + gameId,
+            headers: {
+                Accept: 'application/json'
+            }
         });
-        return $(this).find('.team-total').text(team_total);
-      });
+        request.done(function (game) {
+            var teamPlayers = [];
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = game.players[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var player = _step.value;
+
+                    var pt = player.team;
+                    if (!teamPlayers[pt]) {
+                        teamPlayers[pt] = {};
+                    }
+                    teamPlayers[pt][player.vest.id] = player.name;
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator['return']) {
+                        _iterator['return']();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            $('.new-game-teams').each(function () {
+                var team = teams.shift();
+                $(this).find('.team-no input').val(team);
+                var players = teamPlayers[team];
+                for (var vestId in players) {
+                    console.log([players[vestId], vestId]);
+                    $('select[id$=\'_vest\'] option:selected[value=' + vestId + ']').parent().parent().parent().parent().find('input[id$=\'_name\']').val(players[vestId]);
+                }
+            });
+        });
     });
-    countdown_ref = $('#game-time-countdown');
-    game_end = countdown_ref.data('game-end-time');
-    client_time = (new Date()).getTime();
-    server_time = new Date(parseInt(countdown_ref.data('server-time'))).getTime();
-    offset = server_time - client_time;
-    game_end = game_end - offset;
-    return countdown_ref.countdown(game_end).on('update.countdown', function(event) {
-      var format;
-      format = '%M:%S';
-      if (event.offset.hours > 0) {
-        format = '%-H:' + format;
-      }
-      return $(this).text(event.strftime(format));
-    }).on('finish.countdown', function(event) {
-      var format;
-      format = '%M:%S';
-      if (event.offset.hours > 0) {
-        format = '%-H:' + format;
-      }
-      return $(this).text(event.strftime(format));
+
+    $('form[name="hittracker_game"]').submit(function () {
+        $('.new-game-teams').each(function () {
+            var team = $(this).find('.team-no input').val().trim();
+            $(this).find('input[id$="_team"]').each(function () {
+                $(this).val(team);
+            });
+        });
     });
-  }
+
+    if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
+        var source = new EventSource('/events/game');
+        $(window).on('unload', function (source) {
+            source.close();
+        });
+
+        if ($('body').hasClass('hittracker-game-scoreboard')) {
+            source.addEventListener('game.start', function (e) {
+                window.location.reload(true);
+            });
+        }
+
+        source.addEventListener('game.hit', function (e) {
+            var eventData = $.parseJSON(e.data);
+            var hit = eventData.content;
+
+            if ($('.game-activity ul li').size() > 10) {
+                $('.game-activity ul li:first').remove();
+            }
+            //$('.game-activity ul').append(`<li>${hit.player_name} hit Player 2 in Zone ${hit.zone}</li>`);
+            pushHit('#player-' + hit.player_id + ' .zone-' + hit.zone, hit.zone);
+            $('#player-' + hit.player_id + ' .player-life-credits').text(hit.life_credits);
+
+            //TODO: convert to event!, use team table names, make a real function
+            $('.scores').each(function () {
+                var teamTotal = 0;
+                $(this).find('.player-life-credits').each(function () {
+                    teamTotal += parseInt($(this).text());
+                });
+                $(this).find('.team-total').text(teamTotal);
+            });
+        });
+
+        var countdownRef = $('#game-time-countdown');
+        var gameEnd = countdownRef.data('game-end-time');
+        var clientTime = new Date().getTime();
+        var serverTime = new Date(parseInt(countdownRef.data('server-time'))).getTime();
+        var offset = serverTime - clientTime;
+        gameEnd = gameEnd - offset;
+        countdownRef.countdown(gameEnd).on('update.countdown', function (event) {
+            var format = '%M:%S';
+            if (event.offset.hours > 0) {
+                format = '%-H:' + format;
+            }
+            $(this).text(event.strftime(format));
+        }).on('finish.countdown', function (event) {
+            var format = '%M:%S';
+            if (event.offset.hours > 0) {
+                format = '%-H:' + format;
+            }
+            $(this).text(event.strftime(format));
+        });
+    }
+
+    $('#print-scores').click(function (event) {
+        event.preventDefault();
+        printScores($(this).attr('href'), $('tr[id^="player-"]').length);
+    });
+
+    $('#hit-simulator select[name="radioId"]').change(function () {
+        $(this).trigger('focusout');
+    });
 });
 
-$('#print-scores').click(function(event) {
-  var copies, url;
-  event.preventDefault();
-  url = $(this).attr('href');
-  copies = $('tr[id^="player-"]').length;
-  return printScores(url, copies);
-});
-
-$('#hit-simulator select[name="radioId"]').change(function() {
-  return $(this).trigger('focusout');
-});
-
-pushHit = function(selector, zone) {
-  var value;
-  value = parseInt($(selector).text()) + 1;
-  return $(selector).animate({
-    color: '#a50b00'
-  }, 500, function() {
-    return $(this).text(value);
-  }).animate({
-    color: '#000'
-  }, 500);
+pushHit = function (selector, zone) {
+    var value = parseInt($(selector).text()) + 1;
+    $(selector).animate({ color: '#a50b00' }, 500, function () {
+        $(this).text(value);
+    }).animate({ color: '#000' }, 500);
 };
 
-printScores = function(url, copies) {
-  var frame;
-  frame = document.createElement('iframe');
-  frame.setAttribute('id', 'print-frame');
-  frame.setAttribute('name', 'print-frame');
-  frame.setAttribute('type', 'content');
-  frame.setAttribute('collapsed', 'true');
-  document.documentElement.appendChild(frame);
-  frame.addEventListener('load', function(event) {
-    var doc;
-    doc = event.originalTarget;
-    jsPrintSetup.clearSilentPrint();
-    jsPrintSetup.setOption('numCopies', copies);
-    jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
-    jsPrintSetup.setOption('headerStrLeft', '');
-    jsPrintSetup.setOption('headerStrCenter', '');
-    jsPrintSetup.setOption('headerStrRight', '');
-    jsPrintSetup.setOption('footerStrLeft', '');
-    jsPrintSetup.setOption('footerStrCenter', '');
-    jsPrintSetup.setOption('footerStrRight', '');
-    jsPrintSetup.printWindow(frame.contentWindow);
-    return setTimeout(function() {
-      frame = document.getElementById('print-frame');
-      return frame.destroy();
-    }, 10);
-  }, true);
-  return frame.contentDocument.location.href = url;
-};
+printScores = function (url, copies) {
+    var frame = document.createElement('iframe');
+    frame.setAttribute('id', 'print-frame');
+    frame.setAttribute('name', 'print-frame');
+    frame.setAttribute('type', 'content');
+    frame.setAttribute('collapsed', 'true');
+    document.documentElement.appendChild(frame);
 
+    frame.addEventListener('load', function (event) {
+        jsPrintSetup.clearSilentPrint();
+        jsPrintSetup.setOption('numCopies', copies);
+        jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
+        jsPrintSetup.setOption('headerStrLeft', '');
+        jsPrintSetup.setOption('headerStrCenter', '');
+        jsPrintSetup.setOption('headerStrRight', '');
+        jsPrintSetup.setOption('footerStrLeft', '');
+        jsPrintSetup.setOption('footerStrCenter', '');
+        jsPrintSetup.setOption('footerStrRight', '');
+        jsPrintSetup.printWindow(frame.contentWindow);
+
+        setTimeout(function () {
+            var frame = document.getElementById('print-frame');
+            frame.destroy();
+        }, 10);
+    }, true);
+
+    frame.contentDocument.location.href = url;
+};
+/**
+ * This file is part of HitTracker.
+ *
+ * HitTracker is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @copyright 2014 <johnny@localmomentum.net>
+ * @license AGPL-3
+ */
 'use strict';
 
 if (!window.location.origin) {
@@ -12623,8 +12673,8 @@ alertDismiss = function () {
     }
     timeout = parseInt(timeout) * 1000;
     setTimeout(function () {
-        return target.fadeTo(500, 0).slideUp(500, function () {
-            return $(undefined).remove();
+        target.fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
         });
     }, timeout);
 };
