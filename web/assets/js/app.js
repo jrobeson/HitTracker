@@ -12558,7 +12558,7 @@ $(document).ready(function () {
                 $('.game-activity ul li:first').remove();
             }
             //$('.game-activity ul').append(`<li>${hit.player_name} hit Player 2 in Zone ${hit.zone}</li>`);
-            pushHit('#player-' + hit.player_id + ' .zone-' + hit.zone, hit.zone);
+            pushHit('#player-' + hit.player_id + ' .zone-' + hit.zone, hit.zone_hits);
             $('#player-' + hit.player_id + ' .player-life-credits').text(hit.life_credits);
 
             //TODO: convert to event!, use team table names, make a real function
@@ -12602,10 +12602,10 @@ $(document).ready(function () {
     });
 });
 
-pushHit = function (selector, zone) {
-    var value = parseInt($(selector).text()) + 1;
+pushHit = function (selector, zoneHits) {
+    var value = $(selector).text();
     $(selector).animate({ color: '#a50b00' }, 500, function () {
-        $(this).text(value);
+        $(this).text(zoneHits);
     }).animate({ color: '#000' }, 500);
 };
 
