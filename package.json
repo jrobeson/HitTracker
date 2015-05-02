@@ -7,7 +7,6 @@
     "broccoli-autoprefixer": "^2.0",
     "broccoli-babel-transpiler": "^5.0",
     "broccoli-clean-css": "^1.0",
-    "broccoli-coffee": "^0.4",
     "broccoli-concat": "^0.0.13",
     "broccoli-funnel": "^0.2",
     "broccoli-merge-trees": "^0.2",

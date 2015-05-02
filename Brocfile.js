@@ -2,7 +2,6 @@ var _ = require('lodash');
 var assetRev = require('broccoli-asset-rev');
 var autoPrefixer = require('broccoli-autoprefixer');
 var cleanCss = require('broccoli-clean-css');
-var compileCoffeeScript = require('broccoli-coffee');
 var compileSass = require('broccoli-ruby-sass');
 var concat = require('broccoli-concat');
 var mergeTrees = require('broccoli-merge-trees');
@@ -89,12 +88,6 @@ var jsTree = sieveFiles(__dirname + '/web/bundles/common/js', {
     destDir: 'js'
 });
 
-var coffeeTree = sieveFiles(__dirname + '/src/GameBundle/Resources/coffee', {
-    include: ['*.coffee'],
-    destDir: 'js'
-});
-coffeeTree = compileCoffeeScript(coffeeTree, {bare: true});
-
 var scriptTree = sieveFiles(__dirname + '/app/Resources/js', {
     include: ['*.js'],
     destDir: 'js'
@@ -105,7 +98,7 @@ scriptTree = esTranspiler(scriptTree, {
     compact: false
 });
 
-var appJs = mergeTrees([bowerJsTree, jsTree, scriptTree, coffeeTree]);
+var appJs = mergeTrees([bowerJsTree, jsTree, scriptTree]);
 
 appJs = concat(appJs, {
     inputFiles: [
