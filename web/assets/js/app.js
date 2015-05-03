@@ -12381,8 +12381,10 @@ colors = jQuery.Color.names = {
         });
     };
 });
-(function($, undefined) {
-    function confirmDeletion (event) {
+'use strict';
+
+(function ($, undefined) {
+    function confirmDeletion(event) {
         var needConfirmation = !event.currentTarget.hasAttribute('data-no-confirm');
 
         if (needConfirmation && !confirm($(event.currentTarget).data('confirm') || 'Are you sure?')) {
@@ -12393,23 +12395,23 @@ colors = jQuery.Color.names = {
     }
 
     function buildForm(action, method, csrfToken, params) {
-        var form      = document.createElement('form');
+        var form = document.createElement('form');
 
-        form.method   = 'POST';
-        form.action   = action;
+        form.method = 'POST';
+        form.action = action;
 
-        var input     = document.createElement('input');
+        var input = document.createElement('input');
 
-        input.type    = 'hidden';
-        input.name    = '_method';
-        input.value   = method;
+        input.type = 'hidden';
+        input.name = '_method';
+        input.value = method;
 
         form.appendChild(input);
 
         if (csrfToken) {
             var csrfInput = document.createElement('input');
-            csrfInput.type  = 'hidden';
-            csrfInput.name  = '_link_token';
+            csrfInput.type = 'hidden';
+            csrfInput.name = '_link_token';
             csrfInput.value = csrfToken;
             form.appendChild(csrfInput);
         }
@@ -12433,7 +12435,7 @@ colors = jQuery.Color.names = {
         return form;
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('body').delegate('a[data-method]', 'click', function (event) {
             event.preventDefault();
 
@@ -12442,17 +12444,16 @@ colors = jQuery.Color.names = {
             }
 
             var csrfToken = $(event.currentTarget).data('csrf-token');
-            var action   = event.currentTarget.href;
-            var method   = $(event.currentTarget).data('method');
-            var params   = $(event.currentTarget).data('params');
+            var action = event.currentTarget.href;
+            var method = $(event.currentTarget).data('method');
+            var params = $(event.currentTarget).data('params');
 
             var form = buildForm(action, method, csrfToken, params);
             document.body.appendChild(form);
             form.submit();
         });
     });
-})( jQuery );
-
+})(jQuery);
 /**
  * This file is part of HitTracker.
  *
