@@ -83,22 +83,18 @@ var bowerJsTree = sieveFiles(bowerRoot, {
         return path.basename(relativePath);
     }
 });
-var jsTree = sieveFiles(__dirname + '/web/bundles/common/js', {
+
+var jsTree = sieveFiles(__dirname + '/app/Resources/js', {
     include: ['*.js'],
     destDir: 'js'
 });
 
-var scriptTree = sieveFiles(__dirname + '/app/Resources/js', {
-    include: ['*.js'],
-    destDir: 'js'
-});
-
-scriptTree = esTranspiler(scriptTree, {
+jsTree = esTranspiler(jsTree, {
     filterExtensions:['js', 'es6'],
     compact: false
 });
 
-var appJs = mergeTrees([bowerJsTree, jsTree, scriptTree]);
+var appJs = mergeTrees([bowerJsTree, jsTree]);
 
 appJs = concat(appJs, {
     inputFiles: [
