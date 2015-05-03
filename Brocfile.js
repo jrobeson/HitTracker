@@ -2,7 +2,7 @@ var _ = require('lodash');
 var assetRev = require('broccoli-asset-rev');
 var autoPrefixer = require('broccoli-autoprefixer');
 var cleanCss = require('broccoli-clean-css');
-var compileSass = require('broccoli-ruby-sass');
+var compileSass = require('broccoli-sass');
 var concat = require('broccoli-concat');
 var mergeTrees = require('broccoli-merge-trees');
 var path = require('path');
@@ -54,20 +54,18 @@ var sassSources = mergeTrees([
 ]);
 
 var sassOptions = {
-    unixNewlines: true,
-    cacheLocation: 'var/cache/' + buildType + '/' + env + '/sass-cache',
     precision: 10
 };
 
 
 var appCss = autoPrefixer(
-    compileSass(sassSources, 'app.scss', appCssFile, sassOptions)
+    compileSass([sassSources], 'app.scss', appCssFile, sassOptions)
 );
 var scoreBoardCss = autoPrefixer(
-    compileSass(sassSources, 'scoreboard.scss', scoreBoardCssFile, sassOptions)
+    compileSass([sassSources], 'scoreboard.scss', scoreBoardCssFile, sassOptions)
 );
 var scoreCardCss = autoPrefixer(
-    compileSass(sassSources, 'scorecard.scss', scoreCardCssFile, sassOptions)
+    compileSass([sassSources], 'scorecard.scss', scoreCardCssFile, sassOptions)
 );
 
 var bowerJsTree = sieveFiles(bowerRoot, {
