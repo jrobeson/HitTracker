@@ -119,36 +119,31 @@ class Player
         $this->zone3 = 0;
     }
 
+    /** @return int */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set team
-     *
-     * @param string $team
-     */
+     /** @param string $team */
     public function setTeam($team)
     {
         $this->team = $team;
     }
 
-    /**
-     * Get team
-     *
-     * @return string
-     */
+     /** @return string */
     public function getTeam()
     {
         return $this->team;
     }
 
+    /** @param string $name */
     public function setName($name)
     {
         $this->name = $name;
     }
 
+    /** @return string */
     public function getName()
     {
         return $this->name;
