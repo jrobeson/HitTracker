@@ -56,6 +56,7 @@ abstract class AppKernel extends Kernel
             new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
             new Elnur\Bundle\BootstrapBundle\ElnurBootstrapBundle(),
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
