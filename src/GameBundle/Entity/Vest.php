@@ -10,7 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @UniqueEntity("radioId")
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="vests")
+ * @ORM\Table(name="vests",
+ *            uniqueConstraints={
+ *                @ORM\UniqueConstraint(name="idx_vest_radio_id",
+ *                                      columns={"radio_id"}
+ *                )
+ *            }
+ * )
  */
 class Vest
 {

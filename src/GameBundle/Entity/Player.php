@@ -20,6 +20,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                @ORM\UniqueConstraint(name="idx_player_game_vest",
  *                                      columns={"game_id", "vest_id"}
  *                )
+ *            },
+ *            indexes={
+ *                @ORM\Index(name="idx_player_game_id", columns={"game_id"}),
+ *                @ORM\Index(name="idx_player_vest_id", columns={"vest_id"})
  *            }
  * )
  */
