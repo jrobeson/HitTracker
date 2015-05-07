@@ -2522,12 +2522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "3ff5390905483da17a0d4f31dae6feb80987ca64"
+                "reference": "72cc3a7cb55149ad8c46786a05b7e9e42115ebf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/3ff5390905483da17a0d4f31dae6feb80987ca64",
-                "reference": "3ff5390905483da17a0d4f31dae6feb80987ca64",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/72cc3a7cb55149ad8c46786a05b7e9e42115ebf4",
+                "reference": "72cc3a7cb55149ad8c46786a05b7e9e42115ebf4",
                 "shasum": ""
             },
             "require": {
@@ -2597,7 +2597,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2015-04-22 03:44:47"
+            "time": "2015-05-05 04:23:43"
         },
         {
             "name": "sylius/settings-bundle",
@@ -2605,12 +2605,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusSettingsBundle.git",
-                "reference": "d92832433635540807ddc6f298f561a61bebd5c4"
+                "reference": "a52c33abb2f8a65b21fdbd5ac459b785c169ac39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusSettingsBundle/zipball/d92832433635540807ddc6f298f561a61bebd5c4",
-                "reference": "d92832433635540807ddc6f298f561a61bebd5c4",
+                "url": "https://api.github.com/repos/Sylius/SyliusSettingsBundle/zipball/a52c33abb2f8a65b21fdbd5ac459b785c169ac39",
+                "reference": "a52c33abb2f8a65b21fdbd5ac459b785c169ac39",
                 "shasum": ""
             },
             "require": {
@@ -2663,7 +2663,7 @@
                 "shop",
                 "webshop"
             ],
-            "time": "2015-04-23 07:19:25"
+            "time": "2015-04-24 13:39:31"
         },
         {
             "name": "sylius/storage",
@@ -3424,16 +3424,16 @@
         },
         {
             "name": "winzou/state-machine",
-            "version": "0.2.1",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/winzou/state-machine.git",
-                "reference": "cfc791b8f1dbb68e0aebbe279b680664d525b8c5"
+                "reference": "aa54434dac9e0e41f3d1bead53f7e45b5df8a86d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/winzou/state-machine/zipball/cfc791b8f1dbb68e0aebbe279b680664d525b8c5",
-                "reference": "cfc791b8f1dbb68e0aebbe279b680664d525b8c5",
+                "url": "https://api.github.com/repos/winzou/state-machine/zipball/aa54434dac9e0e41f3d1bead53f7e45b5df8a86d",
+                "reference": "aa54434dac9e0e41f3d1bead53f7e45b5df8a86d",
                 "shasum": ""
             },
             "require": {
@@ -3470,7 +3470,7 @@
                 "state",
                 "statemachine"
             ],
-            "time": "2014-11-27 07:10:26"
+            "time": "2014-12-05 02:14:37"
         }
     ],
     "packages-dev": [
