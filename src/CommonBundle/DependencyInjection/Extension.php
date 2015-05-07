@@ -5,17 +5,11 @@ namespace LazerBall\HitTracker\CommonBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension as BaseExtension;
 
-/**
- * {@inheritdoc}
- */
-class Extension extends ConfigurableExtension
+class Extension extends BaseExtension
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container)
     {
         $loader = new Loader\XmlFileLoader($container,
             new FileLocator(__DIR__.'/../Resources/config')
@@ -23,9 +17,6 @@ class Extension extends ConfigurableExtension
         $loader->load('services.xml');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAlias()
     {
         return 'hittracker_common';
