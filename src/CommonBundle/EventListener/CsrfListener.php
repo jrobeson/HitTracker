@@ -7,18 +7,19 @@
 
 namespace LazerBall\HitTracker\CommonBundle\EventListener;
 
-use Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfProviderInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class CsrfListener
 {
-    private $csrfProvider;
-    private $intention;
+    private $csrfTokenManager;
+    private $csrfTokenId;
 
-    public function __construct(CsrfProviderInterface $csrfProvider, $intention = 'link')
+    public function __construct(CsrfTokenManagerInterface $csrfTokenManager, $csrfTokenId = 'link')
     {
-        $this->csrfProvider = $csrfProvider;
-        $this->intention    = $intention;
+        $this->csrfTokenManager = $csrfTokenManager;
+        $this->csrfTokenId    = $csrfTokenId;
     }
 
     public function onKernelRequest(GetResponseEvent $event)
@@ -35,7 +36,7 @@ class CsrfListener
 
         $token = $request->request->get('_link_token');
 
-        if (!$this->csrfProvider->isCsrfTokenValid($this->intention, $token)) {
+        if (!$this->csrfTokenManager->isTokenValid(new CsrfToken($this->csrfTokenId, $token))) {
             throw new \InvalidArgumentException(
                 'The CSRF token is invalid. Please submit a request with a valid csrf token.'
             );

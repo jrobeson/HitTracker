@@ -7,17 +7,17 @@
 
 namespace LazerBall\HitTracker\CommonBundle\Twig;
 
-use Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfProviderInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class LinkAttributesExtension extends \Twig_Extension
 {
-    private $csrfProvider;
-    private $intention;
+    private $csrfTokenManager;
+    private $csrfTokenId;
 
-    public function __construct(CsrfProviderInterface $csrfProvider, $intention = 'link')
+    public function __construct(CsrfTokenManagerInterface $csrfTokenManager, $csrfTokenId = 'link')
     {
-        $this->csrfProvider = $csrfProvider;
-        $this->intention    = $intention;
+        $this->csrfTokenManager = $csrfTokenManager;
+        $this->csrfTokenId    = $csrfTokenId;
     }
 
     public function getName()
@@ -48,6 +48,6 @@ class LinkAttributesExtension extends \Twig_Extension
 
     public function getCsrf()
     {
-        return $this->csrfProvider->generateCsrfToken($this->intention);
+        return $this->csrfTokenManager->getToken($this->csrfTokenId);
     }
 }

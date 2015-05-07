@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="knp_rad.csrf_link.intention">link</parameter>
+        <parameter key="knp_rad.csrf_link.token_id">link</parameter>
     </parameters>
 
     <services>
@@ -30,14 +30,14 @@
             <tag name="twig.extension"/>
         </service>
         <service id="knp_rad.twig.link_attributes_extension" class="LazerBall\HitTracker\CommonBundle\Twig\LinkAttributesExtension">
-            <argument type="service" id="form.csrf_provider"/>
-            <argument type="string">%knp_rad.csrf_link.intention%</argument>
+            <argument type="service" id="security.csrf.token_manager"/>
+            <argument type="string">%knp_rad.csrf_link.token_id%</argument>
             <tag name="twig.extension"/>
             <tag name="remove-when-missing" service="form.csrf_provider"/>
         </service>
         <service id="knp_rad.csrf.listener" class="LazerBall\HitTracker\CommonBundle\EventListener\CsrfListener">
-            <argument type="service" id="form.csrf_provider"/>
-            <argument type="string">%knp_rad.csrf_link.intention%</argument>
+            <argument type="service" id="security.csrf.token_manager"/>
+            <argument type="string">%knp_rad.csrf_link.token_id%</argument>
             <tag name="kernel.event_listener" event="kernel.request"/>
             <tag name="remove-when-missing" service="form.csrf_provider"/>
         </service>
