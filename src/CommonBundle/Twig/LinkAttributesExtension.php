@@ -17,7 +17,7 @@ class LinkAttributesExtension extends \Twig_Extension
     public function __construct(CsrfTokenManagerInterface $csrfTokenManager, $csrfTokenId = 'link')
     {
         $this->csrfTokenManager = $csrfTokenManager;
-        $this->csrfTokenId    = $csrfTokenId;
+        $this->csrfTokenId = $csrfTokenId;
     }
 
     public function getName()

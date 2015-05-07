@@ -125,13 +125,13 @@ class Player
         return $this->id;
     }
 
-     /** @param string $team */
+    /** @param string $team */
     public function setTeam($team)
     {
         $this->team = $team;
     }
 
-     /** @return string */
+    /** @return string */
     public function getTeam()
     {
         return $this->team;
