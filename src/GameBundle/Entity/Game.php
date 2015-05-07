@@ -258,7 +258,7 @@ class Game
     /** @return Player */
     public function getPlayerByRadioId($radioId)
     {
-        $players = $this->getPlayers()->filter(function ($player) use ($radioId) {
+        $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
             return $player->getVest()->getRadioId() == $radioId;
         });
 
@@ -281,7 +281,7 @@ class Game
     public function getTeams()
     {
         $teams = array_unique(
-            $this->getPlayers()->map(function ($player) {
+            $this->getPlayers()->map(function (Player $player) {
             return $player->getTeam();
         })->toArray());
 
@@ -295,7 +295,7 @@ class Game
     public function getTeamLifeCredits($team)
     {
         $team = $this->getPlayersByTeam($team);
-        $score = array_sum($team->map(function ($player) {
+        $score = array_sum($team->map(function (Player $player) {
                 return $player->getLifeCredits();
             })->toArray());
 
@@ -305,7 +305,7 @@ class Game
     /** @return number */
     public function getTotalLifeCredits()
     {
-        $score = array_sum($this->getPlayers()->map(function ($player) {
+        $score = array_sum($this->getPlayers()->map(function (Player $player) {
             return $player->getLifeCredits();
         })->toArray());
 
