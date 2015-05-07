@@ -1,8 +1,6 @@
 <?php
 /**
  * Symfony App Front Controller
- *
- * @todo consider using the ApcClassLoader
  */
 use Symfony\Component\HttpFoundation\Request;
 
