@@ -116,18 +116,16 @@ class GameController extends ResourceController
     {
         $url = $this->container->getParameter('hittracker_game.event_handlers.nginx_push_stream.url');
         $client = new Client();
-        $response = $client->post($url, [
+        $client->post($url, [
             'headers' => ['Event-Type' => $event],
             'json'    => $data,
         ]);
-
-        //echo $response->getBody();
     }
 
     /**
      * Stop the game
-     * @param $id
      *
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function stopAction($id)
