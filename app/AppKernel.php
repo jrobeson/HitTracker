@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
 abstract class AppKernel extends Kernel
@@ -106,7 +107,7 @@ abstract class AppKernel extends Kernel
         }
 
         $envParameters = $this->getEnvParameters();
-        $loader->load(function ($container) use ($envParameters) {
+        $loader->load(function (ContainerInterface $container) use ($envParameters) {
             $container->getParameterBag()->add($envParameters);
         });
     }
