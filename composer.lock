@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab04dd96abaed7853c2611f10756fd56",
+    "hash": "abc4182dd0640580d85a9b6e9236bcad",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -2126,7 +2126,7 @@
         },
         {
             "name": "psy/psysh",
-            "version": "dev-master",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
@@ -5288,8 +5288,7 @@
         "sylius/resource-bundle": 20,
         "sylius/settings-bundle": 20,
         "vlucas/phpdotenv": 20,
-        "nelmio/security-bundle": 20,
-        "psy/psysh": 20
+        "nelmio/security-bundle": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
