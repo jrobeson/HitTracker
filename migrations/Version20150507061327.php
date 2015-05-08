@@ -26,6 +26,8 @@ use Doctrine\DBAL\Schema\Schema;
 
 class Version20150507061327 extends AbstractMigration
 {
+    use Helpers;
+
     public function up(Schema $schema)
     {
         $stmts = [];
@@ -87,9 +89,7 @@ class Version20150507061327 extends AbstractMigration
                   FOREIGN KEY (vest_id) REFERENCES vests (id)
                   NOT DEFERRABLE INITIALLY IMMEDIATE';
 
-        foreach ($stmts as $stmt) {
-            $this->addSql($stmt);
-        }
+        $this->addStmts($stmts);
     }
 
     public function down(Schema $schema)
@@ -105,8 +105,6 @@ class Version20150507061327 extends AbstractMigration
         $stmts[] = 'DROP TABLE games';
         $stmts[] = 'DROP TABLE sylius_settings_parameter';
 
-        foreach ($stmts as $stmt) {
-            $this->addSql($stmt);
-        }
+        $this->addStmts($stmts);
     }
 }
