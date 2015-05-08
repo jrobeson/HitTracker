@@ -43,29 +43,29 @@ class GameSettingsSchema implements SchemaInterface
     {
         $builder
             ->add('game_length', 'integer', [
-                'label' => 'Game Length',
+                'label' => 'hittracker.game.length',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
             ->add('player_count', 'integer', [
-                'label' => 'Players Per Game',
+                'label' => 'hittracker.settings.game.players_per_game',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
-                    'help' => 'This setting still requires you to have enough active vests.'
+                    'help' => 'hittracker.settings.game.help.players_per_game'
                     ]
             ])
             ->add('team_player_count', 'integer', [
-                'label' => 'Players Per Team',
+                'label' => 'hittracker.settings.game.players_per_team',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
-                    'help' => 'This setting still requires you to have enough players.'
+                    'help' => 'hittracker.settings.game.help.players_per_team'
                     ]
             ])
             ->add('player_life_credits', 'integer', [
-                'label' => 'Player Life Credits',
+                'label' => 'hittracker.game.life_credits_per_player',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
             ->add('life_credits_deducted', 'integer', [
-                'label' => 'Life Credits Deducted Per Hit',
+                'label' => 'hittracker.game.live_credits_deducted_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
         ;

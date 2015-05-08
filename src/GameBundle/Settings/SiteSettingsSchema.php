@@ -33,7 +33,7 @@ class SiteSettingsSchema implements SchemaInterface
     {
         $builder
             ->add('arenas', 'integer', [
-                'label' => 'Arenas',
+                'label' => 'hittracker.settings.site.arenas',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
         ;

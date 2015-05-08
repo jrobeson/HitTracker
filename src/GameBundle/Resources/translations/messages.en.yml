@@ -8,6 +8,11 @@ hittracker.help: 'Help'
 
 hittracker.settings.game: 'Game Settings'
 hittracker.settings.site: 'Site Settings'
+hittracker.settings.site.arenas: 'Arenas'
+hittracker.settings.game.players_per_game: 'Players Per Game'
+hittracker.settings.game.help.players_per_game: 'This setting still requires you to have enough active vests.'
+hittracker.settings.game.players_per_team: 'Players Per Team'
+hittracker.settings.game.help.players_per_team: 'This setting still requires you to have enough players.'
 
 hittracker.game.print_scores: 'Print Scores'
 hittracker.game.none_active: 'There is no active game'
