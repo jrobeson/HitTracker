@@ -135,14 +135,14 @@ function initCountdown(selector) {
         });
 }
 
-pushHit = function (selector, zoneHits) {
+function pushHit(selector, zoneHits) {
     let value = $(selector).text();
     $(selector).animate({color: '#a50b00'}, 500, function () {
         $(this).text(zoneHits)
     }).animate({color: '#000'}, 500);
 };
 
-printScores = function (url, copies) {
+function printScores(url, copies) {
     let frame = document.createElement('iframe');
     frame.setAttribute('id', 'print-frame');
     frame.setAttribute('name', 'print-frame');
