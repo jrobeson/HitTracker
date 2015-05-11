@@ -44,7 +44,7 @@
                 </thead>
                 <tbody>
                     {% for player in game.playersByTeam(team) %}
-                        <tr id="player-{{ player.id }}">
+                        <tr id="player-{{ player.id }}" data-game-radio-id="{{ player.radioId }}">
                             <td class="player-id">
                                 {{ loop.index }}
                             </td>
