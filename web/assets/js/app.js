@@ -12578,14 +12578,8 @@ $(document).ready(function () {
             pushHit('#player-' + hit.player_id + ' .zone-' + hit.zone, hit.zone_hits);
             $('#player-' + hit.player_id + ' .player-life-credits').text(hit.life_credits);
 
-            //TODO: convert to event!, use team table names, make a real function
-            $('.scores').each(function () {
-                var teamTotal = 0;
-                $(this).find('.player-life-credits').each(function () {
-                    teamTotal += parseInt($(this).text());
-                });
-                $(this).find('.team-total').text(teamTotal);
-            });
+            var team = hit.team.replace(' ', '-').toLowerCase();
+            $('.' + team + ' .team-total').text(hit.team_life_credits);
         });
 
         initCountdown($('#game-time-countdown'));

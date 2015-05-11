@@ -183,6 +183,8 @@ class GameController extends ResourceController
             'zone' => $zone,
             'zone_hits' => $player->hitsInZone($zone),
             'life_credits' => $player->getLifeCredits(),
+            'team' => $player->getTeam(),
+            'team_life_credits' => $game->getTeamLifeCredits($player->getTeam()),
         ];
 
         $this->publish('game.hit', $hit);
