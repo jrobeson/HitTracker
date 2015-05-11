@@ -12588,25 +12588,7 @@ $(document).ready(function () {
             });
         });
 
-        var countdownRef = $('#game-time-countdown');
-        var gameEnd = countdownRef.data('game-end-time');
-        var clientTime = new Date().getTime();
-        var serverTime = new Date(parseInt(countdownRef.data('server-time'))).getTime();
-        var offset = serverTime - clientTime;
-        gameEnd = gameEnd - offset;
-        countdownRef.countdown(gameEnd).on('update.countdown', function (event) {
-            var format = '%M:%S';
-            if (event.offset.hours > 0) {
-                format = '%-H:' + format;
-            }
-            $(this).text(event.strftime(format));
-        }).on('finish.countdown', function (event) {
-            var format = '%M:%S';
-            if (event.offset.hours > 0) {
-                format = '%-H:' + format;
-            }
-            $(this).text(event.strftime(format));
-        });
+        initCountdown($('#game-time-countdown'));
     }
 
     $('#print-scores').click(function (event) {
@@ -12618,6 +12600,35 @@ $(document).ready(function () {
         $(this).trigger('focusout');
     });
 });
+
+/**
+ * Setup the game timer countdown
+ *
+ * The target selector must have game-end-time, and server-time
+ * data attributes to initialize the countdown.
+ *
+ * @param Object selector a jquery selector for the target element
+ */
+function initCountdown(selector) {
+    var gameEnd = selector.data('game-end-time');
+    var clientTime = new Date().getTime();
+    var serverTime = new Date(parseInt(selector.data('server-time'))).getTime();
+    var offset = serverTime - clientTime;
+    gameEnd = gameEnd - offset;
+
+    formatDate = function (event) {
+        var format = '%M:%S';
+        if (event.offset.hours > 0) {
+            format = '%-H:' + format;
+        }
+        return event.strftime(format);
+    };
+    selector.countdown(gameEnd).on('update.countdown', function (event) {
+        $(this).text(formatDate(event));
+    }).on('finish.countdown', function (event) {
+        $(this).text(formatDate(event));
+    });
+}
 
 pushHit = function (selector, zoneHits) {
     var value = $(selector).text();
