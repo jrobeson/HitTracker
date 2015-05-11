@@ -178,7 +178,6 @@ class GameController extends ResourceController
         $player->hit($zone, $game->getLifeCreditsDeducted());
 
         $hit = [
-            'radioId' => $radioId,
             'player_id' => $player->getId(),
             'zone' => $zone,
             'zone_hits' => $player->hitsInZone($zone),
