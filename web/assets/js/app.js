@@ -12570,16 +12570,17 @@ $(document).ready(function () {
         source.addEventListener('game.hit', function (e) {
             var eventData = $.parseJSON(e.data);
             var hit = eventData.content;
+            var targetPlayer = hit.target_player;
 
             if ($('.game-activity ul li').size() > 10) {
                 $('.game-activity ul li:first').remove();
             }
-            //$('.game-activity ul').append(`<li>${hit.player_name} hit Player 2 in Zone ${hit.zone}</li>`);
-            pushHit('#player-' + hit.player_id + ' .zone-' + hit.zone, hit.zone_hits);
-            $('#player-' + hit.player_id + ' .player-life-credits').text(hit.life_credits);
+            //$('.game-activity ul').append(`<li>${hit.player_name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
+            pushHit('#player-' + targetPlayer.id + ' .zone-' + targetPlayer.zone, targetPlayer.zone_hits);
+            $('#player-' + targetPlayer.id + ' .player-life-credits').text(targetPlayer.life_credits);
 
-            var team = hit.team.replace(' ', '-').toLowerCase();
-            $('.' + team + ' .team-total').text(hit.team_life_credits);
+            var team = targetPlayer.team.replace(' ', '-').toLowerCase();
+            $('.' + team + ' .team-total').text(hit.target_team_life_credits);
         });
 
         initCountdown($('#game-time-countdown'));
