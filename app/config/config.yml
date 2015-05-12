@@ -49,7 +49,7 @@ doctrine:
         auto_mapping: true
 
 doctrine_migrations:
-    dir_name: "%kernel.root_dir/../migrations"
+    dir_name: "%kernel.root_dir%/../migrations"
     namespace: "LazerBall\HitTracker\Migrations"
 
 swiftmailer:
