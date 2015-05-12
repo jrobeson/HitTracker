@@ -10,7 +10,7 @@
             <th>{{ 'hittracker.id'|trans }}</th>
             <th>{{ 'hittracker.game.start_date'|trans }}</th>
             <th>{{ 'hittracker.game.length'|trans }}</th>
-            <th>{{ 'hittracker.game.total_life_credits'|trans }}</th>
+            <th>{{ 'hittracker.game.total_hit_points'|trans }}</th>
             <th>{{ 'hittracker.game.player_count'|trans }}</th>
         </tr>
         </thead>
@@ -28,7 +28,7 @@
                 <td class="col-lg-2">
                     {{ '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) }}
                 </td>
-                <td class="col-lg-2">{{ game.totalLifeCredits }}</td>
+                <td class="col-lg-2">{{ game.totalHitPoints }}</td>
                 <td class="col-lg-2">{{ game.players.count }}</td>
             </tr>
         {% endfor %}

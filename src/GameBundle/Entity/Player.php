@@ -56,10 +56,10 @@ class Player
      * @Assert\Type(type="integer")
      * @Assert\GreaterThanOrEqual(
      *      value=0,
-     *      message="hittracker.game.not_enough_life_credits"
+     *      message="hittracker.game.not_enough_hit_points"
      * )
      */
-    private $lifeCredits;
+    private $hitPoints;
 
     /**
      * @var int
@@ -110,13 +110,13 @@ class Player
     /**
      * @param string      $name
      * @param Vest|null   $vest
-     * @param int         $lifeCredits
+     * @param int         $hitPoints
      */
-    public function __construct($name = '', Vest $vest = null, $lifeCredits = 0)
+    public function __construct($name = '', Vest $vest = null, $hitPoints = 0)
     {
         $this->name = $name;
         $this->vest = $vest;
-        $this->lifeCredits = $lifeCredits;
+        $this->hitPoints = $hitPoints;
 
         $this->zone1 = 0;
         $this->zone2 = 0;
@@ -153,16 +153,16 @@ class Player
         return $this->name;
     }
 
-    /** @param int $lifeCredits */
-    public function setLifeCredits($lifeCredits)
+    /** @param int $hitPoints */
+    public function setHitPoints($hitPoints)
     {
-        $this->lifeCredits = $lifeCredits;
+        $this->hitPoints = $hitPoints;
     }
 
     /** @return int */
-    public function getLifeCredits()
+    public function getHitPoints()
     {
-        return $this->lifeCredits;
+        return $this->hitPoints;
     }
 
     /**
@@ -240,18 +240,18 @@ class Player
      * Hit a zone
      *
      * @param int $zone
-     * @param int $lifeCredits
+     * @param int $hitPoints
      */
-    public function hit($zone, $lifeCredits)
+    public function hit($zone, $hitPoints)
     {
-        if (0 >= $this->getLifeCredits()) {
+        if (0 >= $this->getHitPoints()) {
             return;
         }
 
         $zone = 'zone'.$zone;
         $this->{$zone} = $this->{$zone} + 1;
 
-        $credits = $this->getLifeCredits() - $lifeCredits;
-        $this->setLifeCredits($credits);
+        $hitPoints = $this->getHitPoints() - $hitPoints;
+        $this->setHitPoints($hitPoints);
     }
 }

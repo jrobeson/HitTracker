@@ -53,16 +53,16 @@ class GameType extends AbstractType
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
             ])
-            ->add('playerLifeCredits', 'integer', [
-                'label' => 'hittracker.game.life_credits_per_player',
-                'data' => $gameSettings->get('player_life_credits'),
+            ->add('playerHitPoints', 'integer', [
+                'label' => 'hittracker.game.hit_points_per_player',
+                'data' => $gameSettings->get('player_hit_points'),
                 'attr' => [
-                    'step' => $gameSettings->get('life_credits_deducted'),
+                    'step' => $gameSettings->get('player_hit_points_deducted'),
                  ],
             ])
-            ->add('lifeCreditsDeducted', 'integer', [
-                'label' => 'hittracker.game.live_credits_deducted_per_hit',
-                'data' => $gameSettings->get('life_credits_deducted'),
+            ->add('playerHitPointsDeducted', 'integer', [
+                'label' => 'hittracker.game.hit_points_deducted_per_hit',
+                'data' => $gameSettings->get('player_hit_points_deducted'),
             ])
             ->add('team1', 'text', [
                 'label' => '',

@@ -22,15 +22,15 @@ class GameSettingsSchema implements SchemaInterface
                 'game_length'  => 10,
                 'player_count' => 20,
                 'team_player_count' => 10,
-                'player_life_credits' => 500,
-                'life_credits_deducted' => 10,
+                'player_hit_points' => 500,
+                'player_hit_points_deducted' => 10,
             ])
             ->setAllowedTypes([
                 'game_length'  => ['int'],
                 'player_count' => ['int'],
                 'team_player_count' => ['int'],
-                'player_life_credits' => ['int'],
-                'life_credits_deducted' => ['int'],
+                'player_hit_points' => ['int'],
+                'player_hit_points_deducted' => ['int'],
             ]);
     }
 
@@ -60,12 +60,12 @@ class GameSettingsSchema implements SchemaInterface
                     'help' => 'hittracker.settings.game.help.players_per_team'
                     ]
             ])
-            ->add('player_life_credits', 'integer', [
-                'label' => 'hittracker.game.life_credits_per_player',
+            ->add('player_hit_points', 'integer', [
+                'label' => 'hittracker.game.hit_points_per_player',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
-            ->add('life_credits_deducted', 'integer', [
-                'label' => 'hittracker.game.live_credits_deducted_per_hit',
+            ->add('player_hit_points_deducted', 'integer', [
+                'label' => 'hittracker.game.hit_points_deducted_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
             ])
         ;

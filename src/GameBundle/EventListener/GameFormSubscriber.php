@@ -59,18 +59,18 @@ class GameFormSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * Use the game default life credits if none were
+     * Use the game default hit points if none were
      * specified for the player
      *
      * @param FormEvent $event
      */
-    public function addLifeCredits(FormEvent $event)
+    public function addHitPoints(FormEvent $event)
     {
         $game = $event->getData();
 
         foreach ($game['players'] as $k => $v) {
-            if (empty($v['lifeCredits'])) {
-                $game['players'][$k]['lifeCredits'] = $game['playerLifeCredits'];
+            if (empty($v['hitPoints'])) {
+                $game['players'][$k]['hitPoints'] = $game['playerHitPoints'];
             }
         }
         $event->setData($game);
@@ -84,7 +84,7 @@ class GameFormSubscriber implements EventSubscriberInterface
         return [
             FormEvents::PRE_SUBMIT => [
                 ['removeUnusedPlayers'],
-                ['addLifeCredits'],
+                ['addHitPoints'],
             ],
             FOrmEvents::POST_SUBMIT => ['arenaOpenCheck'],
         ];

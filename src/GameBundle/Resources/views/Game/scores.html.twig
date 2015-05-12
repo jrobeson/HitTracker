@@ -38,7 +38,7 @@
                             </th>
                         {% endfor %}
                         <th class="player-total">
-                            {{ 'hittracker.game.life_credits'|trans }}
+                            {{ 'hittracker.game.hit_points'|trans }}
                         </th>
                     </tr>
                 </thead>
@@ -54,8 +54,8 @@
                                     {{ player.hitsInZone(zone) }}
                                 </td>
                             {% endfor %}
-                            <td class="player-life-credits">
-                                {{ player.lifeCredits }}
+                            <td class="player-hit-points">
+                                {{ player.hitPoints }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -64,7 +64,7 @@
                     <td colspan="3"></td>
                     <td colspan="2"><p class="text-right">{{ 'hittracker.game.team_total'|trans }}</p></td>
                     <td class="team-total">
-                        {{ game.teamLifeCredits(team) }}
+                        {{ game.teamHitPoints(team) }}
                     </td>
                 </tfoot>
             </table>

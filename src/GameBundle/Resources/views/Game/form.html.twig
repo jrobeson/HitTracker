@@ -10,10 +10,10 @@
     {{ form_row(form.game_length) }}
     </div>
     <div class="col-md-3">
-        {{ form_row(form.playerLifeCredits) }}
+        {{ form_row(form.playerHitPoints) }}
     </div>
     <div class="col-md-3">
-        {{ form_row(form.lifeCreditsDeducted) }}
+        {{ form_row(form.playerHitPointsDeducted) }}
     </div>
 </div>
 <div class="row">
@@ -38,8 +38,8 @@
                     {{ 'hittracker.game.vest'|trans }}
                 </div>
                 <div class="form-control-static col-lg-3">
-                    {% if not 'hidden' == team|first.children.lifeCredits.vars.attr.class %}
-                    {{ 'hittracker.game.life_credits'|trans }}
+                    {% if not 'hidden' == team|first.children.hitPoints.vars.attr.class %}
+                    {{ 'hittracker.game.hit_points'|trans }}
                     {% endif %}
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         {{ form_row(player.vest, {'labels_to_placeholders': true}) }}
                     </div>
                     <div class="col-lg-2">
-                        {{ form_row(player.lifeCredits, {'labels_to_placeholders': true}) }}
+                        {{ form_row(player.hitPoints, {'labels_to_placeholders': true}) }}
                     </div>
                 </div>
             {% endfor %}

@@ -43,10 +43,10 @@ class Game
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
-     *      message="hittracker.game.not_enough_life_credits"
+     *      message="hittracker.game.not_enough_hit_points"
      * )
      */
-    private $playerLifeCredits;
+    private $playerHitPoints;
 
     /**
      * @var int
@@ -54,10 +54,10 @@ class Game
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
-     *      message="hittracker.game.not_enough_deducted_life_credits"
+     *      message="hittracker.game.not_enough_deducted_hit_points"
      * )
      */
-    private $lifeCreditsDeducted;
+    private $playerHitPointsDeducted;
 
     /**
      * @var \DateTime
@@ -129,28 +129,28 @@ class Game
         return $this->arena;
     }
 
-    /** @param int $playerLifeCredits */
-    public function setPlayerLifeCredits($playerLifeCredits)
+    /** @param int $playerHitPoints */
+    public function setPlayerHitPoints($playerHitPoints)
     {
-        $this->playerLifeCredits = $playerLifeCredits;
+        $this->playerHitPoints = $playerHitPoints;
     }
 
     /** @return int */
-    public function getPlayerLifeCredits()
+    public function getPlayerHitPoints()
     {
-        return $this->playerLifeCredits;
+        return $this->playerHitPoints;
     }
 
-    /** @param int $lifeCreditsDeducted */
-    public function setLifeCreditsDeducted($lifeCreditsDeducted)
+    /** @param int $playerHitPointsDeducted */
+    public function setPlayerHitPointsDeducted($playerHitPointsDeducted)
     {
-        $this->lifeCreditsDeducted = $lifeCreditsDeducted;
+        $this->playerHitPointsDeducted = $playerHitPointsDeducted;
     }
 
-    /** @return number */
-    public function getLifeCreditsDeducted()
+    /** @return int */
+    public function getPlayerHitPointsDeducted()
     {
-        return $this->lifeCreditsDeducted;
+        return $this->playerHitPointsDeducted;
     }
 
     /** @param \DateTime $endsAt */
@@ -292,21 +292,21 @@ class Game
      * @param $team
      * @return number
      */
-    public function getTeamLifeCredits($team)
+    public function getTeamHitPoints($team)
     {
         $team = $this->getPlayersByTeam($team);
         $score = array_sum($team->map(function (Player $player) {
-                return $player->getLifeCredits();
+                return $player->getHitPoints();
             })->toArray());
 
         return $score;
     }
 
     /** @return number */
-    public function getTotalLifeCredits()
+    public function getTotalHitPoints()
     {
         $score = array_sum($this->getPlayers()->map(function (Player $player) {
-            return $player->getLifeCredits();
+            return $player->getHitPoints();
         })->toArray());
 
         return $score;

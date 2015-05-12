@@ -175,18 +175,18 @@ class GameController extends ResourceController
             return new JsonResponse(['error' => 'no such player'], 404);
         }
 
-        $player->hit($zone, $game->getLifeCreditsDeducted());
+        $player->hit($zone, $game->getPlayerHitPointsDeducted());
 
         $hit = [
             'target_player' => [
                 'id' => $player->getId(),
                 'name' => $player->getName(),
-                'life_credits' => $player->getLifeCredits(),
+                'hit_points' => $player->getHitPoints(),
                 'team' => $player->getTeam(),
                 'zone' => $zone,
                 'zone_hits' => $player->hitsInZone($zone),
             ],
-            'target_team_life_credits' => $game->getTeamLifeCredits($player->getTeam()),
+            'target_team_hit_points' => $game->getTeamHitPoints($player->getTeam()),
         ];
 
         $this->publish('game.hit', $hit);

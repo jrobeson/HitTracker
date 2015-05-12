@@ -85,10 +85,10 @@ $(document).ready(function () {
             }
             //$('.game-activity ul').append(`<li>${hit.player_name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
             pushHit(`#player-${targetPlayer.id} .zone-${targetPlayer.zone}`, targetPlayer.zone_hits);
-            $(`#player-${targetPlayer.id} .player-life-credits`).text(targetPlayer.life_credits);
+            $(`#player-${targetPlayer.id} .player-hit-points`).text(targetPlayer.hit_points);
 
             let team = targetPlayer.team.replace(' ', '-').toLowerCase();
-            $(`.${team} .team-total`).text(hit.target_team_life_credits);
+            $(`.${team} .team-total`).text(hit.target_team_hit_points);
         });
 
         initCountdown($('#game-time-countdown'));
