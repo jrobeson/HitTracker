@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "abc4182dd0640580d85a9b6e9236bcad",
+    "hash": "b15a705cf59e6547d252cc0ec330cbd2",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -2522,12 +2522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "72cc3a7cb55149ad8c46786a05b7e9e42115ebf4"
+                "reference": "5f8a591c4d24c6b2c773adc2df60aa3f0439f02b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/72cc3a7cb55149ad8c46786a05b7e9e42115ebf4",
-                "reference": "72cc3a7cb55149ad8c46786a05b7e9e42115ebf4",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/5f8a591c4d24c6b2c773adc2df60aa3f0439f02b",
+                "reference": "5f8a591c4d24c6b2c773adc2df60aa3f0439f02b",
                 "shasum": ""
             },
             "require": {
@@ -2597,7 +2597,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2015-05-05 04:23:43"
+            "time": "2015-05-07 15:12:38"
         },
         {
             "name": "sylius/settings-bundle",
@@ -4165,16 +4165,16 @@
         },
         {
             "name": "instaclick/php-webdriver",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/php-webdriver.git",
-                "reference": "a57b2bcd9467e217134a2248b261b8b3a90ccea0"
+                "reference": "6aa16bbc02a5897200ab70316e0d2a01664afc51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/a57b2bcd9467e217134a2248b261b8b3a90ccea0",
-                "reference": "a57b2bcd9467e217134a2248b261b8b3a90ccea0",
+                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/6aa16bbc02a5897200ab70316e0d2a01664afc51",
+                "reference": "6aa16bbc02a5897200ab70316e0d2a01664afc51",
                 "shasum": ""
             },
             "require": {
@@ -4219,7 +4219,125 @@
                 "webdriver",
                 "webtest"
             ],
-            "time": "2014-05-12 21:03:05"
+            "time": "2015-04-05 19:52:55"
+        },
+        {
+            "name": "league/factory-muffin",
+            "version": "v3.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/factory-muffin.git",
+                "reference": "ecb1f5da41f676b9f75b1f5d4d54c80a269cf56c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/factory-muffin/zipball/ecb1f5da41f676b9f75b1f5d4d54c80a269cf56c",
+                "reference": "ecb1f5da41f676b9f75b1f5d4d54c80a269cf56c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "replace": {
+                "zizaco/factory-muff": "self.version"
+            },
+            "require-dev": {
+                "illuminate/database": "~4.1",
+                "league/factory-muffin-faker": "~1.0@dev",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "illuminate/database": "Factory Muffin works well with eloquent models.",
+                "league/factory-muffin-faker": "Factory Muffin works well with faker."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\FactoryMuffin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@mineuk.com"
+                },
+                {
+                    "name": "Scott Robertson",
+                    "email": "scottymeuk@gmail.com"
+                }
+            ],
+            "description": "The goal of this package is to enable the rapid creation of objects for the purpose of testing.",
+            "homepage": "http://factory-muffin.thephpleague.com/",
+            "keywords": [
+                "factory",
+                "laravel",
+                "testing"
+            ],
+            "time": "2014-12-22 20:59:05"
+        },
+        {
+            "name": "league/factory-muffin-faker",
+            "version": "v1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/factory-muffin-faker.git",
+                "reference": "891974631fb0a67947156a9fd86db5ec36d7e4fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/factory-muffin-faker/zipball/891974631fb0a67947156a9fd86db5ec36d7e4fb",
+                "reference": "891974631fb0a67947156a9fd86db5ec36d7e4fb",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "1.4.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\FactoryMuffin\\Faker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@mineuk.com"
+                },
+                {
+                    "name": "Scott Robertson",
+                    "email": "scottymeuk@gmail.com"
+                }
+            ],
+            "description": "The goal of this package is to wrap faker to make it super easy to use with factory muffin.",
+            "homepage": "http://factory-muffin.thephpleague.com/",
+            "keywords": [
+                "factory",
+                "faker",
+                "testing"
+            ],
+            "time": "2014-12-22 20:14:26"
         },
         {
             "name": "matthiasnoback/symfony-config-test",
@@ -5288,7 +5406,9 @@
         "sylius/resource-bundle": 20,
         "sylius/settings-bundle": 20,
         "vlucas/phpdotenv": 20,
-        "nelmio/security-bundle": 20
+        "nelmio/security-bundle": 20,
+        "league/factory-muffin": 10,
+        "league/factory-muffin-faker": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,

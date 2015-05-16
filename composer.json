@@ -50,7 +50,9 @@
         "fzaninotto/faker": "^1.2",
         "phpspec/phpspec": "^2.2",
         "matthiasnoback/symfony-config-test": "^1.0",
-        "behat/mink-zombie-driver": "^1.2"
+        "behat/mink-zombie-driver": "^1.2",
+        "league/factory-muffin": "~3.0@beta",
+        "league/factory-muffin-faker": "~1.0@beta"
     },
     "scripts": {
         "post-install-cmd": [
