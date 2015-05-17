@@ -12567,15 +12567,16 @@ $(document).ready(function () {
             });
         }
 
+        source.addEventListener('game.end', function (e) {
+            queueActivity('<li>Game Ends</li>');
+        });
+
         source.addEventListener('game.hit', function (e) {
             var eventData = $.parseJSON(e.data);
             var hit = eventData.content;
             var targetPlayer = hit.target_player;
 
-            if ($('.game-activity ul li').size() > 10) {
-                $('.game-activity ul li:first').remove();
-            }
-            //$('.game-activity ul').append(`<li>${hit.player_name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
+            //queueActivity(`<li>${player.name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
             pushHit('#player-' + targetPlayer.id + ' .zone-' + targetPlayer.zone, targetPlayer.zone_hits);
             $('#player-' + targetPlayer.id + ' .player-hit-points').text(targetPlayer.hit_points);
 
@@ -12595,6 +12596,13 @@ $(document).ready(function () {
         $(this).trigger('focusout');
     });
 });
+
+function queueActivity(content) {
+    if ($('.game-activity ul li').size() > 10) {
+        $('.game-activity ul li:first').remove();
+    }
+    $('.game-activity ul').append(content);
+}
 
 /**
  * Setup the game timer countdown
