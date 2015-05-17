@@ -63,11 +63,11 @@ $(document).ready(function () {
         });
     });
 
-     if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
-         let source = new EventSource('/events/game');
-         $(window).on('unload', (source) => {
-             source.close();
-         });
+    if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
+        let source = new EventSource('/events/game');
+        $(window).on('unload', (source) => {
+            source.close();
+        });
 
         if ($('body').hasClass('hittracker-game-scoreboard')) {
             source.addEventListener('game.start', (e) => {
