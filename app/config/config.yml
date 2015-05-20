@@ -153,6 +153,9 @@ nelmio_security:
             style-src:
                 - 'unsafe-inline'
                 - 'self'
+            frame-src:
+                - 'blackfire.io'
+                - 'self'
         enforce:
             report-uri: [/csp/report]
             script-src:
