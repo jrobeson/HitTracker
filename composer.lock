@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1894ded7f4a752976095365e9e568d68",
+    "hash": "edef92def7549f63c9435ec3e9b0b925",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -2607,7 +2607,7 @@
         },
         {
             "name": "sylius/settings-bundle",
-            "version": "dev-master",
+            "version": "v0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusSettingsBundle.git",
@@ -5409,7 +5409,6 @@
     "stability-flags": {
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "sylius/settings-bundle": 20,
         "vlucas/phpdotenv": 20,
         "nelmio/security-bundle": 20,
         "league/factory-muffin": 10,

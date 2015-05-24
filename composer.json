@@ -29,7 +29,7 @@
         "elnur/bootstrap-bundle": "~0.1",
         "sylius/resource-bundle": "^0.14",
         "c33s/static-page-content-bundle": "^2.0",
-        "sylius/settings-bundle": "dev-master",
+        "sylius/settings-bundle": "^0.14",
         "guzzlehttp/guzzle": "^5.0",
         "umpirsky/composer-permissions-handler": "^1.3",
         "nesbot/Carbon": "^1.18",
