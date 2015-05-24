@@ -3,8 +3,7 @@
     "license": "AGPL-3.0",
     "type": "project",
     "description": "",
-    "prefer-stable": true,
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "LazerBall\\HitTracker\\": "src/"
