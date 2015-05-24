@@ -27,7 +27,7 @@
         "friendsofsymfony/rest-bundle": "^1.5",
         "jms/serializer-bundle": "0.13.*",
         "elnur/bootstrap-bundle": "~0.1",
-        "sylius/resource-bundle": "dev-master",
+        "sylius/resource-bundle": "^0.14",
         "c33s/static-page-content-bundle": "^2.0",
         "sylius/settings-bundle": "dev-master",
         "guzzlehttp/guzzle": "^5.0",
@@ -35,7 +35,7 @@
         "nesbot/Carbon": "^1.18",
         "vlucas/phpdotenv": "2.*@dev",
         "nelmio/security-bundle": "dev-force-wdt-profiler-whitelist",
-        "psy/psysh": "^0.4.4"
+        "psy/psysh": "^0.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.4",
