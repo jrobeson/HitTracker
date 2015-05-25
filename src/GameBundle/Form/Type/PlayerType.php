@@ -27,15 +27,19 @@ class PlayerType extends AbstractType
         $gameSettings = $this->settingsManager->loadSettings('game');
 
         $builder
-            ->add('name', 'text')
+            ->add('name', 'text', [
+                  'label' => 'hittracker.game.player_name'
+            ])
             ->add('team', 'hidden')
             ->add('vest', 'entity', [
+                  'label' => 'hittracker.game.vest',
                   'class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
                   'choices' => $this->vestRepository->findActiveVests(),
                   'property' => 'id',
             ])
             ->add('hitPoints', 'integer', [
                   'empty_data' => '',
+                  'label' => 'hittracker.game.hit_points',
                   'attr' => [
                     'step' => $gameSettings->get('player_hit_points_deducted'),
                     'class' => 'hidden'

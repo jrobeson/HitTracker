@@ -26,7 +26,10 @@ class VestType extends AbstractType
                     'data' => true
                 ]
             )
-            ->add('save', 'submit')
+            ->add('save', 'submit', [
+                    'label'  => 'hittracker.save',
+                ]
+            )
         ;
     }
 

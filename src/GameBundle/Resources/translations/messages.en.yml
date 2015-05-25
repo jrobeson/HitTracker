@@ -5,6 +5,8 @@ hittracker.edit: 'Edit'
 hittracker.options: 'Options'
 hittracker.home: 'Home'
 hittracker.help: 'Help'
+hittracker.save: 'Save'
+hittracker.reset: 'Reset'
 
 hittracker.settings.game: 'Game Settings'
 hittracker.settings.site: 'Site Settings'

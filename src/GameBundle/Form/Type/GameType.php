@@ -85,7 +85,9 @@ class GameType extends AbstractType
             ->add('start', 'submit', [
                 'label' => 'hittracker.game.start',
             ])
-            ->add('reset', 'reset')
+            ->add('reset', 'reset', [
+                'label' => 'hittracker.reset',
+            ])
             ->addEventSubscriber($this->eventSubscriber)
         ;
     }
