@@ -20,9 +20,6 @@
 $(document).ready(function () {
     $('select[name="hittracker_game[reload_players]"]').change(function () {
         let gameId = $(this).val();
-        let text = $(this).children(':selected').text();
-        text = text.replace(/[ ]\(Game #: .+?\)/, '');
-        let teams = text.replace(' vs. ', '|').split('|');
         let request = $.ajax({
             url: `${window.location.origin}/games/${gameId}`,
             headers: {
@@ -39,12 +36,13 @@ $(document).ready(function () {
                 teamPlayers[pt][player.vest.id] = player.name;
             }
 
+            let teams = Object.keys(teamPlayers);
+
             $('.new-game-teams').each(function () {
                 let team = teams.shift();
                 $(this).find('.team-no input').val(team);
                 let players = teamPlayers[team];
                 for (let vestId in players) {
-                    console.log([players[vestId], vestId]);
                     $(`select[id$='_vest'] option:selected[value=${vestId}]`).
                         parent().parent().parent().parent().find("input[id$='_name']").
                         val(players[vestId]);

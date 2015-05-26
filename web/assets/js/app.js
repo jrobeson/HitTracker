@@ -12494,9 +12494,6 @@ colors = jQuery.Color.names = {
 $(document).ready(function () {
     $('select[name="hittracker_game[reload_players]"]').change(function () {
         var gameId = $(this).val();
-        var text = $(this).children(':selected').text();
-        text = text.replace(/[ ]\(Game #: .+?\)/, '');
-        var teams = text.replace(' vs. ', '|').split('|');
         var request = $.ajax({
             url: '' + window.location.origin + '/games/' + gameId,
             headers: {
@@ -12534,12 +12531,13 @@ $(document).ready(function () {
                 }
             }
 
+            var teams = Object.keys(teamPlayers);
+
             $('.new-game-teams').each(function () {
                 var team = teams.shift();
                 $(this).find('.team-no input').val(team);
                 var players = teamPlayers[team];
                 for (var vestId in players) {
-                    console.log([players[vestId], vestId]);
                     $('select[id$=\'_vest\'] option:selected[value=' + vestId + ']').parent().parent().parent().parent().find('input[id$=\'_name\']').val(players[vestId]);
                 }
             });
