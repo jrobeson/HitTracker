@@ -55,7 +55,6 @@ abstract class AppKernel extends Kernel
             new LazerBall\HitTracker\CommonBundle\CommonBundle(),
             new LazerBall\HitTracker\GameBundle\HitTrackerGameBundle(),
             new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
-            new Elnur\Bundle\BootstrapBundle\ElnurBootstrapBundle(),
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         ];

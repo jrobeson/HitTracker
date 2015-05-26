@@ -25,7 +25,6 @@
         "nikic/iter": "^1.2",
         "friendsofsymfony/rest-bundle": "^1.5",
         "jms/serializer-bundle": "0.13.*",
-        "elnur/bootstrap-bundle": "~0.1",
         "sylius/resource-bundle": "^0.14",
         "c33s/static-page-content-bundle": "^2.0",
         "sylius/settings-bundle": "^0.14",
