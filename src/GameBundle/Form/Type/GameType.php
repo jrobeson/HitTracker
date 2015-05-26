@@ -6,7 +6,7 @@ use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GameType extends AbstractType
 {
@@ -77,6 +77,7 @@ class GameType extends AbstractType
             ->add('reload_players', 'choice', [
                 'label' => 'hittracker.game.load_players_from_previous_games',
                 'choices' => $gameList,
+                'choices_as_values' => false,
                 'mapped' => false,
                 'placeholder' => 'hittracker.game.choose',
                 'required' => false,
@@ -95,7 +96,7 @@ class GameType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Game',

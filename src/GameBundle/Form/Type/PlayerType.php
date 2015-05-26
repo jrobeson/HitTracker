@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PlayerType extends AbstractType
 {
@@ -35,7 +35,7 @@ class PlayerType extends AbstractType
                   'label' => 'hittracker.game.vest',
                   'class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
                   'choices' => $this->vestRepository->findActiveVests(),
-                  'property' => 'id',
+                  'choice_label' => 'id',
             ])
             ->add('hitPoints', 'integer', [
                   'empty_data' => '',
@@ -51,7 +51,7 @@ class PlayerType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Player',

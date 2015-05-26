@@ -21,9 +21,7 @@ class SiteSettingsSchema implements SchemaInterface
             ->setDefaults([
                 'arenas' => 1,
             ])
-            ->setAllowedTypes([
-                'arenas' => ['int'],
-            ]);
+            ->setAllowedTypes('arenas', ['int']);
     }
 
     /**

@@ -25,13 +25,11 @@ class GameSettingsSchema implements SchemaInterface
                 'player_hit_points' => 500,
                 'player_hit_points_deducted' => 10,
             ])
-            ->setAllowedTypes([
-                'game_length'  => ['int'],
-                'player_count' => ['int'],
-                'team_player_count' => ['int'],
-                'player_hit_points' => ['int'],
-                'player_hit_points_deducted' => ['int'],
-            ]);
+            ->setAllowedTypes('game_length', ['int'])
+            ->setAllowedTypes('player_count', ['int'])
+            ->setAllowedTypes('team_player_count', ['int'])
+            ->setAllowedTypes('player_hit_points', ['int'])
+            ->setAllowedTypes('player_hit_points_deducted', ['int']);
     }
 
     /**
