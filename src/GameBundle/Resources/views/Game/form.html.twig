@@ -1,7 +1,8 @@
 {% set game_settings = sylius_settings_all('game') %}
+{% form_theme form '@HitTrackerGame/Game/game_form_theme.html.twig' %}
+
 {% if form.players is not empty %}
 {{ form_start(form, {'action': path('hittracker_game_create'),
-'layout': 'horizontal',
 'attr': {'role': 'form', 'novalidate': 'novalidate'}}) }}
 {{  form_errors(form) }}
 
@@ -46,18 +47,18 @@
             {% for player in team %}
                 <div class="row">
                     {% set team_no = 'hittracker.game.team_no'|trans({'%team_no%': loop.parent.loop.index}) %}
-                    {{ form_row(player.team, {'value': team_no, 'labels_to_placeholders': true}) }}
+                    {{ form_row(player.team, {'value': team_no}) }}
                     <div class="col-lg-2">
                         {{ '%02d'|format(loop.index) }}
                     </div>
                     <div class="col-lg-5">
-                        {{ form_row(player.name, {'labels_to_placeholders': true}) }}
+                        {{ form_row(player.name, {'label': false}) }}
                     </div>
                     <div class="col-lg-2">
-                        {{ form_row(player.vest, {'labels_to_placeholders': true}) }}
+                        {{ form_row(player.vest, {'label': false}) }}
                     </div>
                     <div class="col-lg-2">
-                        {{ form_row(player.hitPoints, {'labels_to_placeholders': true}) }}
+                        {{ form_row(player.hitPoints, {'label': false}) }}
                     </div>
                 </div>
             {% endfor %}
@@ -66,8 +67,12 @@
 </div>
 <br />
 <div class="row">
-    {{ form_row(form.start, {'attr': {class: 'btn btn-primary'}}) }}
-    {{ form_row(form.reset, {'attr': {class: 'btn btn-danger'}}) }}
+    <div class="col-lg-2">
+        {{ form_row(form.start, {'attr': {class: 'btn btn-primary'}}) }}
+    </div>
+    <div class="col-lg-1">
+        {{ form_row(form.reset, {'attr': {class: 'btn btn-danger'}}) }}
+    </div>
 </div>
 {{ form_end(form) }}
 {% else %}

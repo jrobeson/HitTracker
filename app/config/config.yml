@@ -27,8 +27,8 @@ framework:
     http_method_override: true
 
 twig:
-    #form_themes:
-    #    - bootstrap_3_horizontal_layout.html.twig
+    form_themes:
+        - bootstrap_3_horizontal_layout.html.twig
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:

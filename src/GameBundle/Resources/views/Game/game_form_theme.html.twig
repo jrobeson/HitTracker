@@ -1,0 +1,12 @@
+{% block form_row -%}
+    {% spaceless %}
+        <div class="form-group{% if (not compound|default(false) or force_error|default(false)) and not valid|default(true) %} has-error{% endif %}">
+            {{ form_label(form) }}
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>
+    {% endspaceless %}
+{%- endblock form_row %}
+
+{% block form_label_class -%}
+{%- endblock form_label_class %}
