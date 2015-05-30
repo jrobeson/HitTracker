@@ -40,6 +40,17 @@ class GameRepository extends EntityRepository
     }
 
     /**
+     * @param int $howMany
+     * @return array|null
+     */
+    public function getMostRecentGame($arena)
+    {
+        $game = $this->getRecentGames(1, $arena);
+
+        return $game ? $game[0]: null;
+    }
+
+    /**
      * @param int $arena
      * @return Game
      */

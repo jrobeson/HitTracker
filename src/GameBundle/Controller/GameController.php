@@ -78,7 +78,7 @@ class GameController extends ResourceController
     {
         $arena = $request->attributes->get('arena');
 
-        $game = $this->getRepository()->getActiveGame($arena);
+        $game = $this->getRepository()->getMostRecentGame($arena);
 
         $view = $this
             ->view()
