@@ -21,13 +21,22 @@ class GameRepository extends EntityRepository
 
     /**
      * @param int $howMany
+     * @param int|null $arena
      * @return array
      */
-    public function getRecentGames($howMany)
+    public function getRecentGames($howMany, $arena = null)
     {
-        return $this->_em->createQuery('SELECT g from HitTrackerGameBundle:Game g ORDER BY g.id DESC')
-            ->setMaxResults($howMany)
-            ->getResult();
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('g')
+            ->from('HitTrackerGameBundle:Game', 'g')
+            ->orderBy('g.createdAt', 'DESC')
+            ->setMaxResults($howMany);
+        if ($arena) {
+            $qb->where('g.arena = :arena');
+            $qb->setParameter('arena', $arena);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     /**
