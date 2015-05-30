@@ -31,7 +31,7 @@
         "guzzlehttp/guzzle": "^5.0",
         "umpirsky/composer-permissions-handler": "^1.3",
         "nesbot/Carbon": "^1.18",
-        "vlucas/phpdotenv": "2.*@dev",
+        "vlucas/phpdotenv": "^2.0",
         "nelmio/security-bundle": "dev-force-wdt-profiler-whitelist",
         "psy/psysh": "^0.4"
     },

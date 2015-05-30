@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "12cd0e0f95cd6d25d22f35bfcb3f9582",
+    "hash": "7be0b79846955ecc61b1900c6144384f",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -3080,16 +3080,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "dev-master",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "b50459562c36d9c0ea4b3c10fae33d1d4867f5f6"
+                "reference": "91064290f5b53a09bdff1b939d7f69fb0e7531b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/b50459562c36d9c0ea4b3c10fae33d1d4867f5f6",
-                "reference": "b50459562c36d9c0ea4b3c10fae33d1d4867f5f6",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/91064290f5b53a09bdff1b939d7f69fb0e7531b5",
+                "reference": "91064290f5b53a09bdff1b939d7f69fb0e7531b5",
                 "shasum": ""
             },
             "require": {
@@ -3099,11 +3099,6 @@
                 "phpunit/phpunit": "~4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Dotenv\\": "src/"
@@ -3127,7 +3122,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2015-05-30 16:16:06"
+            "time": "2015-05-30 16:15:01"
         },
         {
             "name": "white-october/pagerfanta-bundle",
@@ -5370,7 +5365,6 @@
     "stability-flags": {
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "vlucas/phpdotenv": 20,
         "nelmio/security-bundle": 20,
         "league/factory-muffin": 10,
         "league/factory-muffin-faker": 10
