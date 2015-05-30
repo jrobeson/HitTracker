@@ -37,7 +37,7 @@ class GameType extends AbstractType
         $arenas = $siteSettings->get('arenas');
         $arenaFieldType = ($arenas > 1) ? 'choice' : 'hidden';
 
-        $recentGames = $this->gameRepository->getRecentGames(10);
+        $recentGames = $this->gameRepository->getRecentGames(10, 1);
         $gameList = [];
         foreach ($recentGames as $recentGame) {
             $gameIdFormat = sprintf(' (Game #: %d)', $recentGame->getId());
