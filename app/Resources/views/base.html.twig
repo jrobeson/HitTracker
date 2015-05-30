@@ -18,7 +18,7 @@
             {% block nav %}
                 {{ include('navbar.html.twig') }}
             {% endblock %}
-            <main role="main" class="container">
+            <main role="main" class="container-fluid">
                 <div class="col-md-12">
                     {% block messages %}
                         {{ include('messages.html.twig') }}
@@ -27,7 +27,7 @@
                 </div>
             </main>
         </div>
-        <footer class="container">
+        <footer class="container-fluid">
             {% block footer %}
                 <div class="col-md-12">
                     {{ include('footer.html.twig') }}

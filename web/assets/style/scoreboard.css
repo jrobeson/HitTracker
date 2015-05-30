@@ -8174,7 +8174,7 @@ html, body {
   height: auto !important;
   height: 100%;
   margin: 0 auto -90px;
-  padding: 0 0 90px; }
+  padding: 0 0 90px 60px; }
 
 footer {
   height: 90px; }
