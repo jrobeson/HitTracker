@@ -290,7 +290,7 @@ class Game
 
     /**
      * @param $team
-     * @return number
+     * @return int
      */
     public function getTeamHitPoints($team)
     {
@@ -302,7 +302,7 @@ class Game
         return $score;
     }
 
-    /** @return number */
+    /** @return int */
     public function getTotalHitPoints()
     {
         $score = array_sum($this->getPlayers()->map(function (Player $player) {
