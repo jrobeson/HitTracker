@@ -39,7 +39,7 @@ function getEnv () {
 }
 
 // paths
-var bowerRoot = 'vendor/bower';
+var bowerRoot = 'bower_components';
 var appCssFile = 'style/app.css';
 var scoreBoardCssFile = 'style/scoreboard.css';
 var scoreCardCssFile = 'style/scorecard.css';
