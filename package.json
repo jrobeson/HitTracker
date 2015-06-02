@@ -10,11 +10,9 @@
     "broccoli-concat": "^0.0.13",
     "broccoli-funnel": "^0.2",
     "broccoli-merge-trees": "^0.2",
-    "broccoli-ruby-sass": "^0.4",
     "broccoli-sass": "^0.6",
     "broccoli-template": "^0.1",
     "broccoli-uglify-js": "^0.1",
-    "coffee-script": "^1.8",
     "ember-cli": "^0.2",
     "lodash": "^3.8",
     "zombie": "^4.0"
