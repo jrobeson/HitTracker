@@ -5,6 +5,11 @@ php:
     - hhvm
     - hhvm-nightly
 
+sudo: false
+cache:
+    directories:
+        - vendor
+        - $HOME/.composer/cache
 env:
     global:
         - SYMFONY_DEBUG=1
