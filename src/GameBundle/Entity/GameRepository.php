@@ -47,7 +47,7 @@ class GameRepository extends EntityRepository
     {
         $game = $this->getRecentGames(1, $arena);
 
-        return $game ? $game[0]: null;
+        return $game ? $game[0] : null;
     }
 
     /**

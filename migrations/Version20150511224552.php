@@ -49,7 +49,7 @@ class Version20150511224552 extends AbstractMigration
         $this->connection->update('sylius_settings_parameter',
             ['name' => 'player_life_credits'], ['name' => 'player_hit_points']);
         $this->connection->update('sylius_settings_parameter',
-            ['name' => 'life_credits_deducted'],['name' => 'player_hit_points_deducted']);
+            ['name' => 'life_credits_deducted'], ['name' => 'player_hit_points_deducted']);
 
         $stmts = [];
         $stmts[] = 'ALTER TABLE games RENAME COLUMN player_hit_points TO player_life_credits';
