@@ -2,9 +2,12 @@ imports:
 #    - { resource: security.yml }
     - { resource: services.yml }
 
+parameters:
+    locale: en
+
 framework:
     translator:
-        fallback: en
+        fallback: "%locale%"
     secret: "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -17,7 +20,7 @@ framework:
         enable_annotations: true
     templating:
         engines: ['twig']
-    default_locale:  en
+    default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
