@@ -7,7 +7,12 @@
     "autoload": {
         "psr-4": {
             "LazerBall\\HitTracker\\": "src/"
-        }
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/HostedAppKernel.php",
+            "app/StandaloneAppKernel.php"
+        ]
     },
     "require": {
         "php": ">=5.6",

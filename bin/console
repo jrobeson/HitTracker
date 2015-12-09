@@ -7,7 +7,6 @@ use Symfony\Component\Console\Input\InputOption;
 set_time_limit(0);
 
 require_once __DIR__.'/../var/bootstrap.php.cache';
-require_once __DIR__.'/../app/AppKernel.php';
 
 if (file_exists(__DIR__.'/../.env')) {
     $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');

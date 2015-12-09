@@ -146,6 +146,3 @@ abstract class AppKernel extends Kernel
         ]);
     }
 }
-
-require 'HostedAppKernel.php';
-require 'StandaloneAppKernel.php';
