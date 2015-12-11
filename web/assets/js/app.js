@@ -12495,7 +12495,7 @@ $(document).ready(function () {
     $('select[name="hittracker_game[reload_players]"]').change(function () {
         var gameId = $(this).val();
         var request = $.ajax({
-            url: '' + window.location.origin + '/games/' + gameId,
+            url: window.location.origin + '/games/' + gameId,
             headers: {
                 Accept: 'application/json'
             }
@@ -12538,7 +12538,7 @@ $(document).ready(function () {
                 $(this).find('.team-no input').val(team);
                 var players = teamPlayers[team];
                 for (var vestId in players) {
-                    $('select[id$=\'_vest\'] option:selected[value=' + vestId + ']').parent().parent().parent().parent().find('input[id$=\'_name\']').val(players[vestId]);
+                    $('select[id$=\'_vest\'] option:selected[value=' + vestId + ']').parent().parent().parent().parent().find("input[id$='_name']").val(players[vestId]);
                 }
             });
         });
@@ -12688,9 +12688,9 @@ function printScores(url, copies) {
 'use strict';
 
 if (!window.location.origin) {
-    var schemeHost = '' + window.location.protocol + '//' + window.location.hostname;
+    var schemeHost = window.location.protocol + '//' + window.location.hostname;
     var port = window.location.port ? ':' + window.location.port : '';
-    window.location.origin = '' + schemeHost + '' + port;
+    window.location.origin = '' + schemeHost + port;
 }
 
 alertDismiss = function () {
