@@ -1,14 +1,11 @@
 function traceToggle(id, clazz) {
-    var el = document.getElementById(id),
-        current = el.style.display,
-        i;
+    var el = document.getElementById(id);
+    var current = el.style.display;
 
     if (clazz) {
-        var tags = document.getElementsByTagName('*');
-        for (i = tags.length - 1; i >= 0 ; i--) {
-            if (tags[i].className === clazz) {
-                tags[i].style.display = 'none';
-            }
+        var tags = document.getElementsByClassName(clazz);
+        for (var i = tags.length - 1; i >= 0 ; i--) {
+            tags[i].style.display = 'none';
         }
     }
 
