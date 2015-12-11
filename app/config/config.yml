@@ -29,6 +29,8 @@ framework:
         cookie_secure: "%session_cookie_secure%"
     fragments:       ~
     http_method_override: true
+    assets:
+        #version: SomeVersionScheme
 
 twig:
     form_themes:

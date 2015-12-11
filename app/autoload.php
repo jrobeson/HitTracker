@@ -2,6 +2,8 @@
 use Composer\Autoload\ClassLoader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
+error_reporting(error_reporting() & ~E_USER_DEPRECATED);
+
 /**
  * @var ClassLoader
  */
