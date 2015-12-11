@@ -49,7 +49,7 @@ class GameType extends AbstractType
         foreach ($recentGames as $recentGame) {
             $gameIdFormat = sprintf(' (Game #: %d)', $recentGame->getId());
             $teams = implode(' vs. ', $recentGame->getTeams()).$gameIdFormat;
-            $gameList[$recentGame->getId()] = $teams;
+            $gameList[$teams] = $recentGame->getId();
         }
 
         $builder
@@ -84,7 +84,7 @@ class GameType extends AbstractType
             ->add('reload_players', ChoiceType::class, [
                 'label' => 'hittracker.game.load_players_from_previous_games',
                 'choices' => $gameList,
-                'choices_as_values' => false,
+                'choices_as_values' => true,
                 'mapped' => false,
                 'placeholder' => 'hittracker.game.choose',
                 'required' => false,
