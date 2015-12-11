@@ -8,6 +8,8 @@ namespace LazerBall\HitTracker\GameBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use LazerBall\HitTracker\GameBundle\Form\Type\PlayerType;
+
 class PlayerCollectionType extends AbstractType
 {
     /**
@@ -30,7 +32,7 @@ class PlayerCollectionType extends AbstractType
             'cascade_validation' => true,
             'delete_empty' => true,
             'error_bubbling' => false,
-            'type' => 'hittracker_player',
+            'type' => PlayerType::class,
         ]);
     }
 

@@ -3,6 +3,9 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,19 +17,19 @@ class VestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('radioId', 'text', [
+            ->add('radioId', TextType::class, [
                 'label' => 'hittracker.vest.radio_id',
                 'attr' => [
                     'help' => 'hittracker.vest.radio_id.help'
                 ]
             ])
-            ->add('active', 'checkbox', [
+            ->add('active', CheckboxType::class, [
                     'label' => 'hittracker.vest.enabled',
                     'required' => false,
                     'data' => true
                 ]
             )
-            ->add('save', 'submit', [
+            ->add('save', SubmitType::class, [
                     'label'  => 'hittracker.save',
                 ]
             )

@@ -5,8 +5,15 @@ namespace LazerBall\HitTracker\GameBundle\Form\Type;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use LazerBall\HitTracker\GameBundle\Form\Type\PlayerCollectionType;
 
 class GameType extends AbstractType
 {
@@ -35,7 +42,7 @@ class GameType extends AbstractType
         $siteSettings = $this->settingsManager->loadSettings('site');
 
         $arenas = $siteSettings->get('arenas');
-        $arenaFieldType = ($arenas > 1) ? 'choice' : 'hidden';
+        $arenaFieldType = ($arenas > 1) ? ChoiceType::class : HiddenType::class;
 
         $recentGames = $this->gameRepository->getRecentGames(10, 1);
         $gameList = [];
@@ -46,35 +53,35 @@ class GameType extends AbstractType
         }
 
         $builder
-            ->add('game_length', 'integer', [
+            ->add('game_length', IntegerType::class, [
                 'label' => 'hittracker.game.length_in_minutes',
                 'data' => $gameSettings->get('game_length'),
             ])
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
             ])
-            ->add('playerHitPoints', 'integer', [
+            ->add('playerHitPoints', IntegerType::class, [
                 'label' => 'hittracker.game.hit_points_per_player',
                 'data' => $gameSettings->get('player_hit_points'),
                 'attr' => [
                     'step' => $gameSettings->get('player_hit_points_deducted'),
                  ],
             ])
-            ->add('playerHitPointsDeducted', 'integer', [
+            ->add('playerHitPointsDeducted', IntegerType::class, [
                 'label' => 'hittracker.game.hit_points_deducted_per_hit',
                 'data' => $gameSettings->get('player_hit_points_deducted'),
             ])
-            ->add('team1', 'text', [
+            ->add('team1', TextType::class, [
                 'label' => '',
                 'mapped' => false,
                 'data' => 'Team 1',
             ])
-            ->add('team2', 'text', [
+            ->add('team2', TextType::class, [
                 'label' => '',
                 'mapped' => false,
                 'data' => 'Team 2',
             ])
-            ->add('reload_players', 'choice', [
+            ->add('reload_players', ChoiceType::class, [
                 'label' => 'hittracker.game.load_players_from_previous_games',
                 'choices' => $gameList,
                 'choices_as_values' => false,
@@ -82,11 +89,11 @@ class GameType extends AbstractType
                 'placeholder' => 'hittracker.game.choose',
                 'required' => false,
             ])
-            ->add('players', 'hittracker_player_collection')
-            ->add('start', 'submit', [
+            ->add('players', PlayerCollectionType::class)
+            ->add('start', SubmitType::class, [
                 'label' => 'hittracker.game.start',
             ])
-            ->add('reset', 'reset', [
+            ->add('reset', ResetType::class, [
                 'label' => 'hittracker.reset',
             ])
             ->addEventSubscriber($this->eventSubscriber)

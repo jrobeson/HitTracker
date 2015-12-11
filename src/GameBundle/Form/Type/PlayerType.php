@@ -5,6 +5,10 @@ namespace LazerBall\HitTracker\GameBundle\Form\Type;
 use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,17 +31,17 @@ class PlayerType extends AbstractType
         $gameSettings = $this->settingsManager->loadSettings('game');
 
         $builder
-            ->add('name', 'text', [
+            ->add('name', TextType::class, [
                   'label' => 'hittracker.game.player_name'
             ])
-            ->add('team', 'hidden')
-            ->add('vest', 'entity', [
+            ->add('team', HiddenType::class)
+            ->add('vest', EntityType::class, [
                   'label' => 'hittracker.game.vest',
                   'class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
                   'choices' => $this->vestRepository->findActiveVests(),
                   'choice_label' => 'id',
             ])
-            ->add('hitPoints', 'integer', [
+            ->add('hitPoints', IntegerType::class, [
                   'empty_data' => '',
                   'label' => 'hittracker.game.hit_points',
                   'attr' => [
