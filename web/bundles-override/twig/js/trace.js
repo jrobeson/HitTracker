@@ -26,22 +26,17 @@ function traceSwitchIcons(id1, id2) {
 }
 
 window.addEventListener('load', function () {
-    var els = document.querySelectorAll('.traces-toggle');
+    var els = document.querySelectorAll('a.traces-toggle');
     for (var i = 0;; i++) {
         if (els[i] == undefined) {
             break;
         }
         els[i].onclick = function (e) {
-            var t = e.path[1].classList[1];
-            var allowReturn = false;
-            if (e.path[1].classList[2] && e.path[1].classList[2] == 'traces-return') {
-                allowReturn = true;
-            }
-            traceToggle(t);
-            traceSwitchIcons('icon-' + t + '-open', 'icon-' + t + '-close');
-            if (allowReturn) {
-                return false;
-            }
+            var traceId = this.classList[1]; // icon-trace-$position-{open|close}
+            traceToggle(traceId);
+            traceSwitchIcons('icon-' + traceId + '-open', 'icon-' + traceId + '-close');
+
+            return false;
         };
     }
 });

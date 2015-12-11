@@ -22,7 +22,7 @@
                     <ul>
                         {% for i, previous in exception.allPrevious %}
                             <li>
-                                {{ previous.class|abbr_class }} <a href="#traces-link-{{ i + 1 }}" class="traces-toggle traces-{{ i + 1 }} traces-return">&#187;</a>
+                                    {{ previous.class|abbr_class }} <a href="#traces-link-{{ i + 1 }}" class="traces-toggle traces-{{ i + 1 }}">&#187;</a>
                             </li>
                         {% endfor %}
                     </ul>
