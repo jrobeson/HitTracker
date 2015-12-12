@@ -28,8 +28,8 @@ class LinkAttributesExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'link_attr' => new \Twig_Function_Method($this, 'getLinkAttributes', array('is_safe' => array('html'))),
-            'link_csrf' => new \Twig_Function_Method($this, 'getCsrf'),
+            new \Twig_SimpleFunction('link_attr', [$this, 'getLinkAttributes'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('link_csrf', [$this, 'getCsrf']),
         );
     }
 
