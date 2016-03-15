@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace LazerBall\HitTracker\GameBundle\Entity;
 
@@ -107,14 +107,10 @@ class Player
      */
     protected $vest;
 
-    /**
-     * @param string      $name
-     * @param Vest|null   $vest
-     * @param int         $hitPoints
-     */
-    public function __construct($name = '', Vest $vest = null, $hitPoints = 0)
+    public function __construct(string $name = '', Vest $vest = null, int $hitPoints = 0)
     {
         $this->name = $name;
+        $this->team = '';
         $this->vest = $vest;
         $this->hitPoints = $hitPoints;
 
@@ -123,53 +119,42 @@ class Player
         $this->zone3 = 0;
     }
 
-    /** @return int */
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }
 
-    /** @param string $team */
-    public function setTeam($team)
+    public function setTeam(string $team)
     {
         $this->team = $team;
     }
 
-    /** @return string */
-    public function getTeam()
+    public function getTeam() : string
     {
         return $this->team;
     }
 
-    /** @param string $name */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    /** @return string */
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
 
-    /** @param int $hitPoints */
-    public function setHitPoints($hitPoints)
+    public function setHitPoints(int $hitPoints)
     {
         $this->hitPoints = $hitPoints;
     }
 
-    /** @return int */
-    public function getHitPoints()
+    public function getHitPoints() : int
     {
         return $this->hitPoints;
     }
 
-    /**
-     * @param int $zone
-     * @return int
-     */
-    public function hitsInZone($zone)
+    public function hitsInZone(int $zone) :int
     {
         $property = 'zone'.$zone;
 
@@ -181,8 +166,7 @@ class Player
         $this->createdAt = $createdAt;
     }
 
-    /** @return \DateTime */
-    public function getCreatedAt()
+    public function getCreatedAt() : \DateTime
     {
         return $this->createdAt;
     }
@@ -192,8 +176,7 @@ class Player
         $this->updatedAt = $updatedAt;
     }
 
-    /** @return \DateTime */
-    public function getUpdatedAt()
+    public function getUpdatedAt() : \DateTime
     {
         return $this->updatedAt;
     }
@@ -208,8 +191,7 @@ class Player
         $this->vest = $vest;
     }
 
-    /** @return Vest */
-    public function getVest()
+    public function getVest() : Vest
     {
         return $this->vest;
     }
@@ -228,21 +210,16 @@ class Player
 
     /**
      * Get Vest Radio Id
-     *
-     * @return int
      */
-    public function getRadioId()
+    public function getRadioId() : int
     {
         $this->getVest()->getRadioId();
     }
 
     /**
      * Hit a zone
-     *
-     * @param int $zone
-     * @param int $hitPoints
      */
-    public function hit($zone, $hitPoints)
+    public function hit(int $zone, int $hitPoints)
     {
         if (0 >= $this->getHitPoints()) {
             return;

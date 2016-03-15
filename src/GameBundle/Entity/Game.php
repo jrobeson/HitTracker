@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace LazerBall\HitTracker\GameBundle\Entity;
 
@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use LazerBall\HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -109,58 +110,52 @@ class Game
     {
         $this->arena = 1;
         $this->players = new ArrayCollection();
+        $this->gameLength = [0, 0];
+        $this->playerHitPoints = 0;
+        $this->playerHitPointsDeducted = 0;
     }
 
-    /** @return int */
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }
 
-    /** @param int $arena */
-    public function setArena($arena)
+    public function setArena(int $arena)
     {
         $this->arena = $arena;
     }
 
-    /** @return int */
-    public function getArena()
+    public function getArena() : int
     {
         return $this->arena;
     }
 
-    /** @param int $playerHitPoints */
-    public function setPlayerHitPoints($playerHitPoints)
+    public function setPlayerHitPoints(int $playerHitPoints)
     {
         $this->playerHitPoints = $playerHitPoints;
     }
 
-    /** @return int */
-    public function getPlayerHitPoints()
+    public function getPlayerHitPoints() : int
     {
         return $this->playerHitPoints;
     }
 
-    /** @param int $playerHitPointsDeducted */
-    public function setPlayerHitPointsDeducted($playerHitPointsDeducted)
+    public function setPlayerHitPointsDeducted(int $playerHitPointsDeducted)
     {
         $this->playerHitPointsDeducted = $playerHitPointsDeducted;
     }
 
-    /** @return int */
-    public function getPlayerHitPointsDeducted()
+    public function getPlayerHitPointsDeducted() : int
     {
         return $this->playerHitPointsDeducted;
     }
 
-    /** @param \DateTime $endsAt */
     public function setEndsAt(\DateTime $endsAt)
     {
         $this->endsAt = $endsAt;
     }
 
-    /** @return \DateTime */
-    public function getEndsAt()
+    public function getEndsAt() : \DateTime
     {
         return $this->endsAt;
     }
@@ -170,18 +165,15 @@ class Game
         $this->createdAt = $createdAt;
     }
 
-    /** @return \DateTime */
-    public function getCreatedAt()
+    public function getCreatedAt() : \DateTime
     {
         return $this->createdAt;
     }
 
     /**
      * Set the length of a game in minutes
-     *
-     * @param int $minutes time in minutes
      */
-    public function setGameLength($minutes)
+    public function setGameLength(int $minutes)
     {
         $this->gameLength = (int) $minutes;
 
@@ -193,7 +185,7 @@ class Game
     }
 
     /** @return array the length of the game in minutes and seconds */
-    public function getGameLength()
+    public function getGameLength() : array
     {
         if (empty($this->gameLength) && !empty($this->createdAt)) {
             $parts = $this->timeTotal();
@@ -207,8 +199,7 @@ class Game
         return $this->gameLength;
     }
 
-    /** @return bool */
-    public function isActive()
+    public function isActive() : bool
     {
         return $this->endsAt > new \DateTime();
     }
@@ -223,16 +214,14 @@ class Game
         $this->endsAt = new \DateTime();
     }
 
-    /** @return \DateInterval */
-    public function timeLeft()
+    public function timeLeft() : \DateInterval
     {
         $now = new \DateTime();
 
         return $now->diff($this->endsAt);
     }
 
-    /** @return \DateInterval */
-    public function timeTotal()
+    public function timeTotal() : \DateInterval
     {
         return $this->endsAt->diff($this->createdAt);
     }
@@ -243,20 +232,17 @@ class Game
         $player->setGame($this);
     }
 
-    /** @param Collection $players */
     public function setPlayers(Collection $players)
     {
         $this->players = $players;
     }
 
-    /** @return Collection */
-    public function getPlayers()
+    public function getPlayers() : Collection
     {
         return $this->players;
     }
 
-    /** @return Player */
-    public function getPlayerByRadioId($radioId)
+    public function getPlayerByRadioId($radioId) : Player
     {
         $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
             return $player->getVest()->getRadioId() == $radioId;
@@ -265,20 +251,14 @@ class Game
         return $players->first();
     }
 
-    /**
-     * @param string $team
-     *
-     * @return Collection
-     */
-    public function getPlayersByTeam($team)
+    public function getPlayersByTeam(string $team) : Collection
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq('team', $team));
 
         return $this->getPlayers()->matching($criteria);
     }
 
-    /** @return array */
-    public function getTeams()
+    public function getTeams() : array
     {
         $teams = array_unique(
             $this->getPlayers()->map(function (Player $player) {
@@ -288,11 +268,7 @@ class Game
         return $teams;
     }
 
-    /**
-     * @param $team
-     * @return int
-     */
-    public function getTeamHitPoints($team)
+    public function getTeamHitPoints(string $team) : int
     {
         $team = $this->getPlayersByTeam($team);
         $score = array_sum($team->map(function (Player $player) {
@@ -302,8 +278,7 @@ class Game
         return $score;
     }
 
-    /** @return int */
-    public function getTotalHitPoints()
+    public function getTotalHitPoints() : int
     {
         $score = array_sum($this->getPlayers()->map(function (Player $player) {
             return $player->getHitPoints();

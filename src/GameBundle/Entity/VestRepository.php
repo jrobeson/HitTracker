@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
@@ -9,8 +10,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class VestRepository extends EntityRepository
 {
-    /** @return array */
-    public function findActiveVests()
+    public function findActiveVests() : array
     {
         return $this->findBy(['active' => true], ['id' => 'ASC']);
     }

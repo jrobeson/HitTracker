@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace LazerBall\HitTracker\GameBundle\Entity;
 
@@ -56,31 +56,33 @@ class Vest
      */
     private $updatedAt;
 
+    public function __construct()
+    {
+        $this->radioId = '';
+        $this->active = true;
+    }
+
     public function getId()
     {
         return $this->id;
     }
 
-    /** @param string $radioId */
-    public function setRadioId($radioId)
+    public function setRadioId(string $radioId)
     {
         $this->radioId = strtolower($radioId);
     }
 
-    /** @return string */
-    public function getRadioId()
+    public function getRadioId() : string
     {
         return $this->radioId;
     }
 
-    /** @param bool $active */
-    public function setActive($active = true)
+    public function setActive(bool $active = true)
     {
         $this->active = $active;
     }
 
-    /** @return bool */
-    public function isActive()
+    public function isActive() : bool
     {
         return $this->active;
     }
@@ -90,8 +92,7 @@ class Vest
         $this->createdAt = $createdAt;
     }
 
-    /** @return \DateTime */
-    public function getCreatedAt()
+    public function getCreatedAt() : \DateTime
     {
         return $this->createdAt;
     }
@@ -101,8 +102,7 @@ class Vest
         $this->updatedAt = $updatedAt;
     }
 
-    /** @return \DateTime */
-    public function getUpdatedAt()
+    public function getUpdatedAt() : \DateTime
     {
         return $this->updatedAt;
     }
