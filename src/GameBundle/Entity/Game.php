@@ -74,7 +74,7 @@ class Game
     /**
      * @var Collection
      *
-     * @Assert\Valid()
+     * @Assert\Valid(traverse=true)
      * @Assert\Count(min="2",
      *               minMessage="hittracker.game.not_enough_players"
      * )
