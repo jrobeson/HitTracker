@@ -6,8 +6,8 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 use LazerBall\HitTracker\GameBundle\Form\Type\PlayerType;
 
 class PlayerCollectionType extends AbstractType
@@ -17,7 +17,7 @@ class PlayerCollectionType extends AbstractType
      */
     public function getParent()
     {
-        return 'collection';
+        return CollectionType::class;
     }
 
     /**
@@ -29,18 +29,9 @@ class PlayerCollectionType extends AbstractType
             'allow_add' => true,
             'allow_delete' => true,
             'by_reference' => false,
-            'cascade_validation' => true,
             'delete_empty' => true,
             'error_bubbling' => false,
-            'type' => PlayerType::class,
+            'entry_type' => PlayerType::class,
         ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'hittracker_player_collection';
     }
 }

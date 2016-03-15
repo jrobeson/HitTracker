@@ -61,12 +61,4 @@ class PlayerType extends AbstractType
             'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Player',
         ]);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'hittracker_player';
-    }
 }
