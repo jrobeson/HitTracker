@@ -2,13 +2,11 @@
 /**
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
-
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use LazerBall\HitTracker\GameBundle\Form\Type\PlayerType;
 
 class PlayerCollectionType extends AbstractType
 {

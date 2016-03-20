@@ -2,7 +2,6 @@
 /**
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
-
 namespace LazerBall\HitTracker\GameBundle\Settings;
 
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;

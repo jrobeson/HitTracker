@@ -4,7 +4,6 @@
  * @license MIT
  * @see https://github.com/KnpLabs/KnpRadBundle/
  */
-
 namespace LazerBall\HitTracker\CommonBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
