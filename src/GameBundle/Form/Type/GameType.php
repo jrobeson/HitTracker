@@ -110,9 +110,6 @@ class GameType extends AbstractType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'hittracker_game';
