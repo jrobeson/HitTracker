@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01a155260a1318ec30518cf03b0aa9ee",
-    "content-hash": "40b946c0755551e5f7058374508069ad",
+    "hash": "97d564bdab188d1c24eadcb09a1866cf",
+    "content-hash": "264f21837f24c833c1facee574d164e9",
     "packages": [
         {
             "name": "c33s/static-page-content-bundle",
@@ -57,6 +57,61 @@
                 "static"
             ],
             "time": "2014-08-01 22:37:11"
+        },
+        {
+            "name": "cekurte/environment",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cekurte/environment.git",
+                "reference": "c8352292ac75eba154805aa67b214c4b180d5e8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cekurte/environment/zipball/c8352292ac75eba154805aa67b214c4b180d5e8c",
+                "reference": "c8352292ac75eba154805aa67b214c4b180d5e8c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "cekurte/tdd": "^1.0.1",
+                "phpunit/phpunit": "^4.8",
+                "sensiolabs/security-checker": "^3.0",
+                "sjparkinson/static-review": "^5.1",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cekurte\\Environment\\": "src/"
+                },
+                "files": [
+                    "src/env.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Paulo Cercal",
+                    "email": "jpcercal@gmail.com"
+                }
+            ],
+            "description": "A library to get the values from environment variables and process to php data types",
+            "keywords": [
+                "config",
+                "data",
+                "env",
+                "environment",
+                "process",
+                "types",
+                "variables"
+            ],
+            "time": "2015-12-07 13:10:10"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -6524,7 +6579,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }

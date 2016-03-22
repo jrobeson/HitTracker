@@ -16,7 +16,7 @@ Requirements
 
 To install this program you will need:
 
- * [PHP](http://php.net) >= 5.5
+ * [PHP](http://php.net) >= 7.0
  * Various PHP extensions (checked below)
  * [Composer](http://getcomposer.org)
  * [PostgreSQL](http://postgresql.org) >= 9.3
