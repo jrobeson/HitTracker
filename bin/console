@@ -1,5 +1,7 @@
 #!/usr/bin/env php
 <?php
+
+use function Cekurte\Environment\env;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputOption;
@@ -15,13 +17,12 @@ if (file_exists(__DIR__.'/../.env')) {
 }
 
 $input = new ArgvInput();
-$env = $input->getParameterOption(['--env', '-e'], $_SERVER['SYMFONY_ENV'] ?: 'dev');
-$debug = (bool)$_SERVER['SYMFONY_DEBUG']
+$env = $input->getParameterOption(['--env', '-e'], env('SYMFONY_ENV', 'dev'));
+$debug = env($_SERVER['SYMFONY_DEBUG'], true)
     && !$input->hasParameterOption(['--no-debug', ''])
     && $env !== 'prod';
 
-$defaultBuildType = isset($_SERVER['SYMFONY__BUILD_TYPE'])
-    ? $_SERVER['SYMFONY__BUILD_TYPE'] : 'hosted';
+$defaultBuildType = env('SYMFONY__BUILD_TYPE', 'hosted');
 $buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
 
 $kernelClass = ucfirst($buildType).'AppKernel';

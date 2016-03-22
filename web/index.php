@@ -2,6 +2,7 @@
 /**
  * Symfony App Front Controller
  */
+use function Cekurte\Environment\env;
 use Symfony\Component\HttpFoundation\Request;
 
 require_once __DIR__.'/../app/autoload.php';
@@ -10,9 +11,9 @@ if (file_exists(__DIR__.'/../.env')) {
     $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');
     $dotEnv->load();
 }
-$env = $_SERVER['SYMFONY_ENV'];
-$debug = (bool) $_SERVER['SYMFONY_DEBUG'];
-$buildType = $_SERVER['SYMFONY__BUILD_TYPE'];
+$env = env('SYMFONY_ENV', 'prod');
+$debug = env('SYMFONY_DEBUG', false);
+$buildType = env('SYMFONY__BUILD_TYPE', 'hosted');
 
 if ('prod' == $env) {
     require_once __DIR__.'/../var/bootstrap.php.cache';

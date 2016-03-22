@@ -12,7 +12,7 @@ cache:
         - $HOME/.composer/cache
 env:
     global:
-        - SYMFONY_DEBUG=1
+        - SYMFONY_DEBUG=true
         - SYMFONY_ENV=test
         - SYMFONY__DATABASE_NAME=ht
         - SYMFONY__DATABASE_USER=postgres
