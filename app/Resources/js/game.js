@@ -172,7 +172,7 @@ function printScores(url, copies) {
 
         setTimeout(function () {
             let frame = document.getElementById('print-frame');
-            frame.destroy();
+            frame.remove();
         }, 10);
     }, true);
 
