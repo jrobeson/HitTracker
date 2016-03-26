@@ -40,9 +40,9 @@ monolog:
 #swiftmailer:
 #    delivery_address: me@example.com
 
-nelmio_security:
-    csp:
-        report:
-            connect-src:
-                - "%livereload_ws_url%"
-                - 'self'
+#nelmio_security:
+#    csp:
+#        report:
+#            connect-src:
+#                - "%livereload_ws_url%"
+#                - 'self'

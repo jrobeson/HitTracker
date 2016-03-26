@@ -148,26 +148,26 @@ nelmio_security:
     external_redirects:
         abort: true
         log: true
-    csp:
-        report_logger_service: monolog.logger.security
-        report:
-            report-uri: [/csp/report]
-            default-src: [ 'self' ]
-            img-src:
-                - 'data:'
-                - 'self'
-            object-src:
-                - 'none'
-            style-src:
-                - 'unsafe-inline'
-                - 'self'
-            frame-src:
-                - 'blackfire.io'
-                - 'self'
-        enforce:
-            report-uri: [/csp/report]
-            script-src:
-                - 'self'
+    #csp:
+    #    report_logger_service: monolog.logger.security
+    #    report:
+    #        report-uri: [/csp/report]
+    #        default-src: [ 'self' ]
+    #        img-src:
+    #            - 'data:'
+    #            - 'self'
+    #        object-src:
+    #            - 'none'
+    #        style-src:
+    #            - 'unsafe-inline'
+    #            - 'self'
+    #        frame-src:
+    #            - 'blackfire.io'
+    #            - 'self'
+    #    enforce:
+    #        report-uri: [/csp/report]
+    #        script-src:
+    #            - 'self'
     content_type:
         nosniff: true
     forced_ssl:
