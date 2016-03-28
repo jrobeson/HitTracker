@@ -148,7 +148,7 @@ function pushHit(selector, zoneHits) {
     $(selector).animate({color: '#a50b00'}, 500, function () {
         $(this).text(zoneHits)
     }).animate({color: '#000'}, 500);
-};
+}
 
 function printScores(url, copies) {
     let frame = document.createElement('iframe');
