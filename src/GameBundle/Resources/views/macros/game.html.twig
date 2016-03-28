@@ -1,0 +1,50 @@
+{% macro team_players_table(game, team) %}
+    <table class="scores team {{ team|lower|replace({' ': '-'}) }}">
+        <thead>
+        <tr>
+            <th colspan="6">
+                <strong class="text-center">
+                    {{ team }}
+                </strong>
+            </th>
+        </tr>
+        <tr>
+            <th>#</th>
+            <th>{{ 'hittracker.game.player_name'|trans }}</th>
+            {% for zone in 1..3 %}
+                <th>
+                    {{ 'hittracker.game.zone_no'|trans({'%zone_no%': zone}) }}
+                </th>
+            {% endfor %}
+            <th class="player-total">
+                {{ 'hittracker.game.hit_points'|trans }}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in game.playersByTeam(team) %}
+            <tr id="player-{{ player.id }}" data-game-radio-id="{{ player.radioId }}">
+                <td class="player-id">
+                    {{ loop.index }}
+                </td>
+                <td>{{ player.name }}</td>
+                {% for zone in 1..3 %}
+                    <td class="zone-{{ zone }}">
+                        {{ player.hitsInZone(zone) }}
+                    </td>
+                {% endfor %}
+                <td class="player-hit-points">
+                    {{ player.hitPoints }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <td colspan="3"></td>
+        <td colspan="2"><p class="text-right">{{ 'hittracker.game.team_total'|trans }}</p></td>
+        <td class="team-total">
+            {{ game.teamHitPoints(team) }}
+        </td>
+        </tfoot>
+    </table>
+{% endmacro %}
