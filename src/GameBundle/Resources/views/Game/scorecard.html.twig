@@ -5,21 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('assets/style/scorecard.css') }}" type="text/css"/>
+            <link rel="stylesheet" media="print" href="{{ asset('assets/style/scorecard.css') }}" type="text/css"/>
         {% endblock %}
     </head>
     <body class="{{ app.request.get('_route')|replace({'_': '-'}) }}">
-        <div id="content-wrapper">
-            <main role="main" class="container-fluid">
-                <div class="col-md-12">
-                    {% block content %}
+        <main role="main" class="container-fluid">
+            <div class="col-md-12">
+                {% block content %}
                     {% if game %}
                         {{ include('@HitTrackerGame/Game/scores.html.twig') }}
                     {% endif %}
-                    {% endblock %}
-                </div>
-            </main>
-        </div>
+                {% endblock %}
+            </div>
+        </main>
         {% block javascripts %}
             <script src="{{ asset('assets/js/app.js') }}"></script>
         {% endblock %}
