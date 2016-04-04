@@ -1,6 +1,8 @@
 $navbar-height: 60px;
 $footer-height: 60px;
 
+$navbar-inverse-link-color: #fff;
+$navbar-inverse-link-hover-color: lighten(#777, 15%);
 $fa-font-path: '/assets/fonts' !default;
 @import 'common';
 
