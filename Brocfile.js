@@ -74,7 +74,7 @@ var bowerJsTree = sieveFiles(bowerRoot, {
         'bootstrap-sass-official/assets/javascripts/bootstrap.js',
         'jquery-color/jquery.color.js',
         'jquery.countdown/dist/jquery.countdown.js',
-        'modernizr/modernizr.js'
+        //'modernizr/modernizr.js'
     ],
     destDir: 'js',
     getDestinationPath: function(relativePath) {
