@@ -13196,6 +13196,7 @@ colors = jQuery.Color.names = {
 'use strict';
 
 $(document).ready(function () {
+    'use strict';
     $('select[name="hittracker_game[reload_players]"]').change(function () {
         var gameId = $(this).val();
         var request = $.ajax({
@@ -13281,11 +13282,21 @@ $(document).ready(function () {
             var targetPlayer = hit.target_player;
 
             //queueActivity(`<li>${player.name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
-            pushHit('#player-' + targetPlayer.id + ' .zone-' + targetPlayer.zone, targetPlayer.zone_hits);
-            $('#player-' + targetPlayer.id + ' .player-hit-points').text(targetPlayer.hit_points);
+            if (targetPlayer.zone_hits) {
+                pushHit('.player-' + targetPlayer.id + ' .zone-' + targetPlayer.zone, targetPlayer.zone_hits);
+            }
+            if (targetPlayer.hit_points) {
+                $('.player-' + targetPlayer.id + ' .player-hit-points').text(targetPlayer.hit_points);
+                var team = targetPlayer.team.replace(' ', '-').toLowerCase();
+                $('.' + team + ' .team-total').text(hit.target_team_hit_points);
+            }
 
-            var team = targetPlayer.team.replace(' ', '-').toLowerCase();
-            $('.' + team + ' .team-total').text(hit.target_team_hit_points);
+            if (hit.event == 'held') {
+                markPlayerHold(targetPlayer.id);
+            }
+            if (hit.event == 'unheld') {
+                markPlayerRelease(targetPlayer.id);
+            }
         });
 
         initCountdown($('#game-time-countdown'));
@@ -13293,7 +13304,7 @@ $(document).ready(function () {
 
     $('#print-scores').click(function (event) {
         event.preventDefault();
-        printScores($(this).attr('href'), $('tr[id^="player-"]').length);
+        printScores($(this).attr('href'));
     });
 
     $('#hit-simulator select[name="radioId"]').change(function () {
@@ -13337,14 +13348,22 @@ function initCountdown(selector) {
     });
 }
 
+function markPlayerHold(playerId) {
+    $('.player-' + playerId).css('outline', 'thin solid red');
+}
+
+function markPlayerRelease(playerId) {
+    $('.player-' + playerId).css('outline', '');
+}
+
 function pushHit(selector, zoneHits) {
     var value = $(selector).text();
     $(selector).animate({ color: '#a50b00' }, 500, function () {
         $(this).text(zoneHits);
     }).animate({ color: '#000' }, 500);
-};
+}
 
-function printScores(url, copies) {
+function printScores(url) {
     var frame = document.createElement('iframe');
     frame.setAttribute('id', 'print-frame');
     frame.setAttribute('name', 'print-frame');
@@ -13354,8 +13373,17 @@ function printScores(url, copies) {
 
     frame.addEventListener('load', function (event) {
         jsPrintSetup.clearSilentPrint();
-        jsPrintSetup.setOption('numCopies', copies);
-        jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
+        jsPrintSetup.setPaperSizeUnit(jsPrintSetup.kPaperSizeInches);
+        var paperSizeId = 200;
+        jsPrintSetup.definePaperSize(paperSizeId, paperSizeId, 'lazerball_scorecard', 'lazerball_scorecard_8.5x5.5in', 'LazerBall Scorecard', 8.5, 5.5, jsPrintSetup.kPaperSizeInches);
+        jsPrintSetup.setPaperSizeData(1);
+
+        jsPrintSetup.setOption('orientation', jsPrintSetup.kPortraitOrientation);
+        jsPrintSetup.setOption('shrinkToFit', true);
+        jsPrintSetup.setOption('marginTop', 0);
+        jsPrintSetup.setOption('marginBottom', 0);
+        jsPrintSetup.setOption('marginLeft', 0);
+        jsPrintSetup.setOption('marginRight', 0);
         jsPrintSetup.setOption('headerStrLeft', '');
         jsPrintSetup.setOption('headerStrCenter', '');
         jsPrintSetup.setOption('headerStrRight', '');
