@@ -12,5 +12,6 @@ bower_components
 /tmp
 /vendor/
 /web/bundles/
+/web/uploads
 /composer.phar
 /.env
