@@ -23,7 +23,7 @@
                     </a>
                 </td>
                 <td class="col-lg-2">
-                    {{ game.createdAt|localizeddate('short', 'short') }}
+                    {{ game.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
                 </td>
                 <td class="col-lg-2">
                     {{ '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) }}
