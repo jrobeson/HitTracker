@@ -19,8 +19,17 @@ class SiteSettingsSchema implements SchemaInterface
         $builder
             ->setDefaults([
                 'arenas' => 1,
+                'business_name' => 'Your LazerBall Arena',
+                'business_address' => "123 Anywhere St\nSuite 206",
+                'business_phone' => '123-555-1234',
+                'business_email' => 'lazerball@example.com'
             ])
-            ->setAllowedTypes('arenas', ['int']);
+            ->setAllowedTypes('arenas', ['int'])
+            ->setAllowedTypes('business_name', ['string'])
+            ->setAllowedTypes('business_address', ['string'])
+            ->setAllowedTypes('business_phone', ['string'])
+            ->setAllowedTypes('business_email', ['string'])
+        ;
     }
 
     /**
@@ -32,6 +41,18 @@ class SiteSettingsSchema implements SchemaInterface
             ->add('arenas', 'integer', [
                 'label' => 'hittracker.settings.site.arenas',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
+            ])
+            ->add('business_name', 'text', [
+                'label' => 'hittracker.settings.site.business_name',
+            ])
+            ->add('business_address', 'textarea', [
+                'label' => 'hittracker.settings.site.business_address',
+            ])
+            ->add('business_phone', 'text', [
+                'label' => 'hittracker.settings.site.business_phone',
+            ])
+            ->add('business_email', 'text', [
+                'label' => 'hittracker.settings.site.business_email',
             ])
         ;
     }
