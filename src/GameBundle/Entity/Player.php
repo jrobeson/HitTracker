@@ -255,6 +255,6 @@ class Player
     public function hold(int $penalty = 0)
     {
         $this->setHolding(true);
-        $this-> setHitPoints($this->getHitPoints() - $penalty);
+        $this->setHitPoints($this->getHitPoints() - $penalty);
     }
 }

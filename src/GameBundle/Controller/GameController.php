@@ -226,7 +226,7 @@ class GameController extends ResourceController
             $data['target_team_hit_points'] = $game->getTeamHitPoints($player->getTeam());
         }
         if ($zone) {
-           $data['target_player']['zone_hits'] = $player->hitsInZone($zone);
+            $data['target_player']['zone_hits'] = $player->hitsInZone($zone);
         }
         $this->publish('game.hit', $data);
     }

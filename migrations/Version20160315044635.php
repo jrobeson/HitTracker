@@ -18,7 +18,6 @@
  * @copyright 2016 <johnny@localmomentum.net>
  * @license AGPL-3
  */
-
 namespace LazerBall\HitTracker\Migrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
