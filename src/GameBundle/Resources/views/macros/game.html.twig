@@ -40,11 +40,13 @@
         {% endfor %}
         </tbody>
         <tfoot>
-        <td colspan="3"></td>
-        <td colspan="2"><p class="text-right">{{ 'hittracker.game.team_total'|trans }}</p></td>
-        <td class="team-total">
-            {{ game.teamHitPoints(team) }}
-        </td>
+            <tr>
+                <td colspan="3"></td>
+                <td colspan="2"><p class="text-right">{{ 'hittracker.game.team_total'|trans }}</p></td>
+                <td class="team-total">
+                    {{ game.teamHitPoints(team) }}
+                </td>
+            </tr>
         </tfoot>
     </table>
 {% endmacro %}
