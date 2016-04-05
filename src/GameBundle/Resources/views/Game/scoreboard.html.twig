@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
+{% set site_settings = sylius_settings_all('site') %}
+{% set logo = site_settings.get('scoreboard_logo') %}
+{% set banner_1 = site_settings.get('scoreboard_banner_1') %}
+{% set banner_2 = site_settings.get('scoreboard_banner_2') %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/style/scoreboard.css') }}" type="text/css"/>
 {% endblock %}
 {% block nav %}{% endblock %}
 {% block messages %}{% endblock %}
 {% block content %}
-    <div class="col-md-12 logo">
-        <img class="center-block img-responsive" src="{{ asset('bundles/hittrackergame/images/scoreboard/logo.jpg') }}" />
-    </div>
+    {% if logo %}
+        <div class="col-md-12 logo">
+            <img class="center-block img-responsive" src="{{ asset(logo|url_encode) }}" />
+        </div>
+    {% endif %}
     {% if game %}
         {{ include('@HitTrackerGame/Game/scores.html.twig') }}
         <div class="row">
@@ -19,10 +25,14 @@
     {% endif %}
 {% endblock %}
 {% block footer %}
+        <div class="col-md-6">
+            {% if banner_1 %}
+                <img class="center-block img-responsive" src="{{ asset(banner_1|url_encode) }}"/>
+            {% endif %}
+        </div>
     <div class="col-md-6">
-        <img class="center-block img-responsive" src="{{ asset('bundles/hittrackergame/images/scoreboard/banner-left.jpg') }}"/>
-    </div>
-    <div class="col-md-6">
-        <img class="center-block img-responsive" src="{{ asset('bundles/hittrackergame/images/scoreboard/banner-right.jpg') }}"/>
+        {% if banner_2 %}
+            <img class="center-block img-responsive" src="{{ asset(banner_2|url_encode) }}"/>
+        {% endif %}
     </div>
 {% endblock %}

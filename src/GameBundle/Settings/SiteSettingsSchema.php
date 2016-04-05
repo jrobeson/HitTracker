@@ -22,13 +22,19 @@ class SiteSettingsSchema implements SchemaInterface
                 'business_name' => 'Your LazerBall Arena',
                 'business_address' => "123 Anywhere St\nSuite 206",
                 'business_phone' => '123-555-1234',
-                'business_email' => 'lazerball@example.com'
+                'business_email' => 'lazerball@example.com',
+                'scoreboard_logo' => 'uploads/scoreboard_logo.jpg',
+                'scoreboard_banner_1' => 'uploads/scoreboard_banner_1.jpg',
+                'scoreboard_banner_2' => 'uploads/scoreboard_banner_2.jpg',
             ])
             ->setAllowedTypes('arenas', ['int'])
             ->setAllowedTypes('business_name', ['string'])
             ->setAllowedTypes('business_address', ['string'])
             ->setAllowedTypes('business_phone', ['string'])
             ->setAllowedTypes('business_email', ['string'])
+            ->setAllowedTypes('scoreboard_logo', ['string'])
+            ->setAllowedTypes('scoreboard_banner_1', ['string'])
+            ->setAllowedTypes('scoreboard_banner_2', ['string'])
         ;
     }
 
@@ -53,6 +59,15 @@ class SiteSettingsSchema implements SchemaInterface
             ])
             ->add('business_email', 'text', [
                 'label' => 'hittracker.settings.site.business_email',
+            ])
+            ->add('scoreboard_logo', 'text', [
+                'label' => 'hittracker.settings.site.scoreboard_logo',
+            ])
+            ->add('scoreboard_banner_1', 'text', [
+                'label' => 'hittracker.settings.site.scoreboard_banner_1',
+            ])
+            ->add('scoreboard_banner_2', 'text', [
+                'label' => 'hittracker.settings.site.scoreboard_banner_2',
             ])
         ;
     }
