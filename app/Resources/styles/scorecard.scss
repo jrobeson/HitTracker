@@ -29,3 +29,8 @@ $font-size-base: 12px;
 .banners img {
   margin: 0 auto;
 }
+
+.printed-page {
+    height: 5in;
+    page-break-after: always;
+}

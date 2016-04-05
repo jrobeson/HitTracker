@@ -18,6 +18,7 @@
  * @license AGPL-3
  */
 $(document).ready(function () {
+    'use strict';
     $('select[name="hittracker_game[reload_players]"]').change(function () {
         let gameId = $(this).val();
         let request = $.ajax({
@@ -108,7 +109,7 @@ $(document).ready(function () {
 
     $('#print-scores').click(function (event) {
         event.preventDefault();
-        printScores($(this).attr('href'), $('tr[id^="player-"]').length);
+        printScores($(this).attr('href'));
     });
 
     $('#hit-simulator select[name="radioId"]').change(function () {
@@ -168,7 +169,7 @@ function pushHit(selector, zoneHits) {
     }).animate({color: '#000'}, 500);
 }
 
-function printScores(url, copies) {
+function printScores(url) {
     let frame = document.createElement('iframe');
     frame.setAttribute('id', 'print-frame');
     frame.setAttribute('name', 'print-frame');
@@ -178,8 +179,26 @@ function printScores(url, copies) {
 
     frame.addEventListener('load', function (event) {
         jsPrintSetup.clearSilentPrint();
-        jsPrintSetup.setOption('numCopies', copies);
-        jsPrintSetup.setOption('orientation', jsPrintSetup.kLandscapeOrientation);
+        jsPrintSetup.setPaperSizeUnit(jsPrintSetup.kPaperSizeInches);
+        const paperSizeId = 200;
+        jsPrintSetup.definePaperSize(
+            paperSizeId,
+            paperSizeId,
+            'lazerball_scorecard',
+            'lazerball_scorecard_8.5x5.5in',
+            'LazerBall Scorecard',
+            8.5,
+            5.5,
+            jsPrintSetup.kPaperSizeInches
+        );
+        jsPrintSetup.setPaperSizeData(1);
+
+        jsPrintSetup.setOption('orientation', jsPrintSetup.kPortraitOrientation);
+        jsPrintSetup.setOption('shrinkToFit', true);
+        jsPrintSetup.setOption('marginTop', 0);
+        jsPrintSetup.setOption('marginBottom', 0);
+        jsPrintSetup.setOption('marginLeft', 0);
+        jsPrintSetup.setOption('marginRight', 0);
         jsPrintSetup.setOption('headerStrLeft', '');
         jsPrintSetup.setOption('headerStrCenter', '');
         jsPrintSetup.setOption('headerStrRight', '');

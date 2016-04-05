@@ -1,22 +1,61 @@
 <!DOCTYPE html>
+{% import '@HitTrackerGame/macros/game.html.twig' as game_macros %}
+{% set siteSettings = sylius_settings_all('site') %}
 <html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title></title>
         {% block stylesheets %}
             <link rel="stylesheet" media="print" href="{{ asset('assets/style/scorecard.css') }}" type="text/css"/>
+            <style>
+               @page {
+                    size: 8.5in 11in;
+                    margin: 10px;
+                }
+            </style>
         {% endblock %}
     </head>
     <body class="{{ app.request.get('_route')|replace({'_': '-'}) }}">
         <main role="main" class="container-fluid">
-            <div class="col-md-12">
-                {% block content %}
-                    {% if game %}
-                        {{ include('@HitTrackerGame/Game/scores.html.twig') }}
-                    {% endif %}
-                {% endblock %}
+        {% for player in game.players %}
+            <div class="printed-page">
+                <div class="score-sheet row">
+                    <div class="row col-lg-12">
+                        <div class="col-sm-6">
+                            <h2>{{ siteSettings.business_name }}</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            {% set time_total = game.timeTotal|date('%H:%I') %}
+                            <h3>
+                                {{ 'hittracker.game.length_total'|trans({'%time%': time_total}) }}
+                                <br />
+                                Game Date:&nbsp;
+                                {{ game.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {% for team in game.teams %}
+                                <div class="col-md-6 col-sm-6">
+                                   {{ game_macros.team_players_table(game, team) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row col-lg-12">
+                        <div class="col-sm-6">
+                            {{ siteSettings.business_address }}
+                        </div>
+                        <div class="col-sm-6">
+                            {{ siteSettings.business_phone }} {{ siteSettings.business_email }}
+                        </div>
+                    </div>
+                </div>
             </div>
+        {% endfor %}
         </main>
         {% block javascripts %}
             <script src="{{ asset('assets/js/app.js') }}"></script>
