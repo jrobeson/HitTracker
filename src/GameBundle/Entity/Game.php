@@ -241,7 +241,8 @@ class Game
         return $this->players;
     }
 
-    public function getPlayerByRadioId($radioId) : Player
+    /** @return Player|null */
+    public function getPlayerByRadioId(string $radioId)
     {
         $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
             return $player->getVest()->getRadioId() == $radioId;

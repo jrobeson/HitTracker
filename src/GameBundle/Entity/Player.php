@@ -218,8 +218,10 @@ class Player
 
     /**
      * Get Vest Radio Id
+     *
+     * @return string
      */
-    public function getRadioId() : int
+    public function getRadioId()
     {
         $this->getVest()->getRadioId();
     }
