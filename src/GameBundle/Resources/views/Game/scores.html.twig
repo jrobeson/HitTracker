@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-6 col-sm-12">
         <h2 class="text-center">
-            {% set time_total = '%d:%02d'|format(game.gameLength['hours'], game.gameLength['minutes']) %}
+            {% set time_total = game.timeTotal|date('%H:%I') %}
             {{ 'hittracker.game.length_total'|trans({'%time%': time_total}) }}
         </h2>
     </div>
