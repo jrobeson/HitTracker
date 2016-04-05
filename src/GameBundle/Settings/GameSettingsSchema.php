@@ -49,14 +49,14 @@ class GameSettingsSchema implements SchemaInterface
                 'label' => 'hittracker.settings.game.players_per_game',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
-                    'help' => 'hittracker.settings.game.help.players_per_game'
+                    'data-help' => 'hittracker.settings.game.players_per_game.help'
                     ]
             ])
             ->add('team_player_count', 'integer', [
                 'label' => 'hittracker.settings.game.players_per_team',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
-                    'help' => 'hittracker.settings.game.help.players_per_team'
+                    'data-help' => 'hittracker.settings.game.players_per_team.help'
                     ]
             ])
             ->add('player_hit_points', 'integer', [
