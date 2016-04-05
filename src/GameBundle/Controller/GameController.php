@@ -159,41 +159,75 @@ class GameController extends ResourceController
      */
     public function hitAction(Request $request)
     {
+        ini_set('html_errors', 0);
         $game = $this->getRepository()->getActiveGame(1);
 
         if (!$game) {
             return new JsonResponse(['error' => 'no such game'], 404);
         }
 
+        $gameSettings = $this->get('sylius.settings.manager')->loadSettings('game');
+
+        $vestHoldPenalty = $gameSettings->get('player_vest_hold_penalty');
         $data = json_decode($request->getContent(), true);
-        $radioId = $data['hit']['radioId'];
-        $zone = (int) $data['hit']['zone'];
 
-        $player = $game->getPlayerByRadioId($radioId);
+        foreach ($data['events'] as $data) {
+            $event = $data['event'];
 
-        if (!$player) {
-            return new JsonResponse(['error' => 'no such player'], 404);
+            if (!empty($data['radioId'])) {
+                // @todo check valid radio ids
+                $player = $game->getPlayerByRadioId($data['radioId']);
+            }
+            if (!isset($player) || !$player) {
+                continue;
+            }
+            switch ($event) {
+                case 'hit':
+                    // @todo return an error if zone isn't set
+                    if (isset($data['zone'])) {
+                        $zone = $data['zone'];
+                    }
+                    $player->hit($zone, $game->getPlayerHitPointsDeducted());
+                    $this->notify('hit', $game, $player, $zone);
+                    break;
+                case 'held':
+                    $player->hold($vestHoldPenalty);
+                    $this->notify('held', $game, $player);
+                    break;
+                case 'unheld':
+                    $player->setHolding(false);
+                    $this->notify('unheld', $game, $player);
+                    break;
+            }
+
+            $this->getDoctrine()->getManager()->persist($player);
         }
-
-        $player->hit($zone, $game->getPlayerHitPointsDeducted());
-
-        $hit = [
-            'target_player' => [
-                'id' => $player->getId(),
-                'name' => $player->getName(),
-                'hit_points' => $player->getHitPoints(),
-                'team' => $player->getTeam(),
-                'zone' => $zone,
-                'zone_hits' => $player->hitsInZone($zone),
-            ],
-            'target_team_hit_points' => $game->getTeamHitPoints($player->getTeam()),
-        ];
-
-        $this->publish('game.hit', $hit);
-
-        $this->getDoctrine()->getManager()->persist($player);
         $this->getDoctrine()->getManager()->flush();
 
         return new JsonResponse([], 200);
+    }
+
+    public function notify(string $event, $game, $player, $zone = null)
+    {
+        $gameSettings = $this->get('sylius.settings.manager')->loadSettings('game');
+
+        $data = [
+            'event' => $event,
+            'target_player' => [
+                'id' => $player->getId(),
+                'name' => $player->getName(),
+                'team' => $player->getTeam(),
+                'zone' => $zone,
+            ],
+        ];
+
+        if ('hit' == $event || ('held' == $event && ($gameSettings->get('player_vest_hold_penalty') > 0))) {
+            $data['target_player']['hit_points'] = $player->getHitPoints();
+            $data['target_team_hit_points'] = $game->getTeamHitPoints($player->getTeam());
+        }
+        if ($zone) {
+           $data['target_player']['zone_hits'] = $player->hitsInZone($zone);
+        }
+        $this->publish('game.hit', $data);
     }
 }

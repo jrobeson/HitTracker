@@ -23,12 +23,14 @@ class GameSettingsSchema implements SchemaInterface
                 'team_player_count' => 10,
                 'player_hit_points' => 500,
                 'player_hit_points_deducted' => 10,
+                'player_vest_hold_penalty' => 0,
             ])
             ->setAllowedTypes('game_length', ['int'])
             ->setAllowedTypes('player_count', ['int'])
             ->setAllowedTypes('team_player_count', ['int'])
             ->setAllowedTypes('player_hit_points', ['int'])
-            ->setAllowedTypes('player_hit_points_deducted', ['int']);
+            ->setAllowedTypes('player_hit_points_deducted', ['int'])
+            ->setAllowedTypes('player_vest_hold_penalty', ['int']);
     }
 
     /**
@@ -64,6 +66,10 @@ class GameSettingsSchema implements SchemaInterface
             ->add('player_hit_points_deducted', 'integer', [
                 'label' => 'hittracker.game.hit_points_deducted_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
+            ])
+            ->add('player_vest_hold_penalty', 'integer', [
+                'label' => 'hittracker.game.vest_hold_penalty',
+                'constraints' => [new Assert\GreaterThanOrEqual(['value' => 0])],
             ])
         ;
     }

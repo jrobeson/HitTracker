@@ -85,15 +85,25 @@ $(document).ready(function () {
             let targetPlayer = hit.target_player;
 
             //queueActivity(`<li>${player.name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
-            pushHit(`#player-${targetPlayer.id} .zone-${targetPlayer.zone}`, targetPlayer.zone_hits);
-            $(`#player-${targetPlayer.id} .player-hit-points`).text(targetPlayer.hit_points);
+            if (targetPlayer.zone_hits) {
+                pushHit(`.player-${targetPlayer.id} .zone-${targetPlayer.zone}`, targetPlayer.zone_hits);
+            }
+            if (targetPlayer.hit_points) {
+                $(`.player-${targetPlayer.id} .player-hit-points`).text(targetPlayer.hit_points);
+                let team = targetPlayer.team.replace(' ', '-').toLowerCase();
+                $(`.${team} .team-total`).text(hit.target_team_hit_points);
+            }
 
-            let team = targetPlayer.team.replace(' ', '-').toLowerCase();
-            $(`.${team} .team-total`).text(hit.target_team_hit_points);
+
+            if (hit.event == 'held') {
+                markPlayerHold(targetPlayer.id);
+            }
+            if (hit.event == 'unheld') {
+                markPlayerRelease(targetPlayer.id);
+            }
         });
 
         initCountdown($('#game-time-countdown'));
-
     }
 
     $('#print-scores').click(function (event) {
@@ -141,6 +151,14 @@ function initCountdown(selector) {
         }).on('finish.countdown', function(event) {
             $(this).text(formatDate(event));
         });
+}
+
+function markPlayerHold(playerId) {
+    $(`.player-${playerId}`).css('outline', 'thin solid red');
+}
+
+function markPlayerRelease(playerId) {
+    $(`.player-${playerId}`).css('outline', '');
 }
 
 function pushHit(selector, zoneHits) {
