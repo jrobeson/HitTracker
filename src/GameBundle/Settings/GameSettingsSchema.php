@@ -42,34 +42,46 @@ class GameSettingsSchema implements SchemaInterface
     {
         $builder
             ->add('game_length', 'integer', [
-                'label' => 'hittracker.game.length',
+                'label' => 'hittracker.settings.game.length',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.length.help'
+                ],
             ])
             ->add('player_count', 'integer', [
                 'label' => 'hittracker.settings.game.players_per_game',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.players_per_game.help'
-                    ]
+                 ],
             ])
             ->add('team_player_count', 'integer', [
                 'label' => 'hittracker.settings.game.players_per_team',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.players_per_team.help'
-                    ]
+                ],
             ])
             ->add('player_hit_points', 'integer', [
-                'label' => 'hittracker.game.hit_points_per_player',
+                'label' => 'hittracker.settings.game.hit_points_per_player',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.hit_points_per_player.help'
+                ],
             ])
             ->add('player_hit_points_deducted', 'integer', [
-                'label' => 'hittracker.game.hit_points_deducted_per_hit',
+                'label' => 'hittracker.settings.game.hit_points_deducted_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.hit_points_deducted_per_hit.help'
+                ],
             ])
             ->add('player_vest_hold_penalty', 'integer', [
-                'label' => 'hittracker.game.vest_hold_penalty',
+                'label' => 'hittracker.settings.game.vest_hold_penalty',
                 'constraints' => [new Assert\GreaterThanOrEqual(['value' => 0])],
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.vest_hold_penalty.help'
+                ],
             ])
         ;
     }
