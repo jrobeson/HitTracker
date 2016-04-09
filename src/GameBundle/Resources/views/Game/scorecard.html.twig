@@ -20,20 +20,21 @@
     <body class="{{ app.request.get('_route')|replace({'_': '-'}) }}">
         <main role="main" class="container-fluid">
         {% for player in game.players %}
-            <div class="printed-page">
+            <div class="scorecard-page">
+                <div class="row col-sm-12">
+                    <h2 class="scorecard-brand">{{ siteSettings.business_name }}</h2>
+                </div>
                 <div class="score-sheet row">
                     <div class="row col-lg-12">
                         <div class="col-sm-6">
-                            <h2>{{ siteSettings.business_name }}</h2>
+                            <strong>Player:</strong>&nbsp;{{ player.name }}
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 scorecard-game-meta">
                             {% set time_total = game.timeTotal|date('%H:%I') %}
-                            <h3>
-                                {{ 'hittracker.game.length_total'|trans({'%time%': time_total}) }}
-                                <br />
-                                Game Date:&nbsp;
-                                {{ game.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
-                            </h3>
+                            <strong>{{ 'hittracker.game.length'|trans }}:</strong> {{ time_total }}
+                            &nbsp;
+                            <strong>{{ 'hittracker.game.date'|trans }}:</strong>&nbsp;
+                            {{ game.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
                         </div>
                     </div>
                     <div class="row">
