@@ -8393,6 +8393,12 @@ footer {
 .banners img {
   margin: 0 auto; }
 
-.printed-page {
+.scorecard-page {
   height: 5in;
   page-break-after: always; }
+
+.scorecard-brand {
+  text-align: center; }
+
+.scorecard-game-meta {
+  text-align: right; }
