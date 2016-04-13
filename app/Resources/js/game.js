@@ -94,14 +94,6 @@ $(document).ready(function () {
                 let team = targetPlayer.team.replace(' ', '-').toLowerCase();
                 $(`.${team} .team-total`).text(hit.target_team_hit_points);
             }
-
-
-            if (hit.event == 'held') {
-                markPlayerHold(targetPlayer.id);
-            }
-            if (hit.event == 'unheld') {
-                markPlayerRelease(targetPlayer.id);
-            }
         });
 
         initCountdown($('#game-time-countdown'));
@@ -152,14 +144,6 @@ function initCountdown(selector) {
         }).on('finish.countdown', function(event) {
             $(this).text(formatDate(event));
         });
-}
-
-function markPlayerHold(playerId) {
-    $(`.player-${playerId}`).css('outline', 'thin solid red');
-}
-
-function markPlayerRelease(playerId) {
-    $(`.player-${playerId}`).css('outline', '');
 }
 
 function pushHit(selector, zoneHits) {

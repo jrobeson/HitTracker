@@ -166,9 +166,6 @@ class GameController extends ResourceController
             return new JsonResponse(['error' => 'no such game'], 404);
         }
 
-        $gameSettings = $this->get('sylius.settings.manager')->loadSettings('game');
-
-        $vestHoldPenalty = $gameSettings->get('player_vest_hold_penalty');
         $data = json_decode($request->getContent(), true);
 
         foreach ($data['events'] as $data) {
@@ -190,14 +187,6 @@ class GameController extends ResourceController
                     $player->hit($zone, $game->getPlayerHitPointsDeducted());
                     $this->notify('hit', $game, $player, $zone);
                     break;
-                case 'held':
-                    $player->hold($vestHoldPenalty);
-                    $this->notify('held', $game, $player);
-                    break;
-                case 'unheld':
-                    $player->setHolding(false);
-                    $this->notify('unheld', $game, $player);
-                    break;
             }
 
             $this->getDoctrine()->getManager()->persist($player);
@@ -209,8 +198,6 @@ class GameController extends ResourceController
 
     public function notify(string $event, $game, $player, $zone = null)
     {
-        $gameSettings = $this->get('sylius.settings.manager')->loadSettings('game');
-
         $data = [
             'event' => $event,
             'target_player' => [
@@ -221,7 +208,7 @@ class GameController extends ResourceController
             ],
         ];
 
-        if ('hit' == $event || ('held' == $event && ($gameSettings->get('player_vest_hold_penalty') > 0))) {
+        if ('hit' == $event) {
             $data['target_player']['hit_points'] = $player->getHitPoints();
             $data['target_team_hit_points'] = $game->getTeamHitPoints($player->getTeam());
         }

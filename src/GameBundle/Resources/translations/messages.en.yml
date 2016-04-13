@@ -42,8 +42,6 @@ hittracker.settings.game.hit_points_per_player: 'Hit Points Per Player'
 hittracker.settings.game.hit_points_per_player.help: 'Default Hit Points per player when creating a new game'
 hittracker.settings.game.hit_points_deducted_per_hit: 'Hit Points Deducted Per Hit'
 hittracker.settings.game.hit_points_deducted_per_hit.help: 'Default Hit Points deducted per hit when creating a new game'
-hittracker.settings.game.vest_hold_penalty: 'Vest Hold Penalty'
-hittracker.settings.game.vest_hold_penalty.help: 'A penalty to apply when players hold their vests. If the value is 0, then no penalty is applied.'
 
 hittracker.game.print_scores: 'Print Scores'
 hittracker.game.none_active: 'There is no active game'
