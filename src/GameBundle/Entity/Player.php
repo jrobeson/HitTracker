@@ -83,13 +83,6 @@ class Player
     private $zone3;
 
     /**
-     * @var bool
-     * @ORM\Column(name="holding", type="boolean")
-     * @Assert\Type(type="boolean")
-     */
-    private $holding;
-
-    /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
@@ -240,21 +233,5 @@ class Player
 
         $hitPoints = $this->getHitPoints() - $hitPoints;
         $this->setHitPoints($hitPoints);
-    }
-
-    public function isHolding() : bool
-    {
-        return $this->holding;
-    }
-
-    public function setHolding(bool $holding)
-    {
-        $this->holding = $holding;
-    }
-
-    public function hold(int $penalty = 0)
-    {
-        $this->setHolding(true);
-        $this->setHitPoints($this->getHitPoints() - $penalty);
     }
 }
