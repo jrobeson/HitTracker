@@ -29,12 +29,12 @@ class SiteSettingsSchema implements SchemaInterface
             ])
             ->setAllowedTypes('arenas', ['int'])
             ->setAllowedTypes('business_name', ['string'])
-            ->setAllowedTypes('business_address', ['string'])
-            ->setAllowedTypes('business_phone', ['string'])
-            ->setAllowedTypes('business_email', ['string'])
-            ->setAllowedTypes('scoreboard_logo', ['string'])
-            ->setAllowedTypes('scoreboard_banner_1', ['string'])
-            ->setAllowedTypes('scoreboard_banner_2', ['string'])
+            ->setAllowedTypes('business_address', ['string', 'null'])
+            ->setAllowedTypes('business_phone', ['string', 'null'])
+            ->setAllowedTypes('business_email', ['string', 'null'])
+            ->setAllowedTypes('scoreboard_logo', ['string', 'null'])
+            ->setAllowedTypes('scoreboard_banner_1', ['string', 'null'])
+            ->setAllowedTypes('scoreboard_banner_2', ['string', 'null'])
         ;
     }
 
@@ -52,42 +52,56 @@ class SiteSettingsSchema implements SchemaInterface
                 ],
             ])
             ->add('business_name', 'text', [
+                'required' => false,
+                'empty_data' => '',
+                'constraints' => [new Assert\NotBlank()],
                 'label' => 'hittracker.settings.site.business_name',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.business_name.help',
                 ],
             ])
             ->add('business_address', 'textarea', [
+                'required' => false,
+                'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_address',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.business_address.help',
                 ],
             ])
             ->add('business_phone', 'text', [
+                'required' => false,
+                'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_phone',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.business_phone.help',
                 ],
             ])
             ->add('business_email', 'text', [
+                'required' => false,
+                'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_email',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.business_email.help',
                 ],
             ])
             ->add('scoreboard_logo', 'text', [
+                'required' => false,
+                'empty_data' => '',
                 'label' => 'hittracker.settings.site.scoreboard_logo',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.scoreboard_logo.help',
                 ],
             ])
             ->add('scoreboard_banner_1', 'text', [
+                'required' => false,
+                'empty_data' => '',
                 'label' => 'hittracker.settings.site.scoreboard_banner_1',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.scoreboard_banner_1.help',
                 ],
             ])
             ->add('scoreboard_banner_2', 'text', [
+                'required' => false,
                 'label' => 'hittracker.settings.site.scoreboard_banner_2',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.scoreboard_banner_2.help',
