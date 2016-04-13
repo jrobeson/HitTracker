@@ -29,7 +29,7 @@ class GameSettingsSchema implements SchemaInterface
             ->setAllowedTypes('team_player_count', ['int'])
             ->setAllowedTypes('player_hit_points', ['int'])
             ->setAllowedTypes('player_hit_points_deducted', ['int'])
-        ;    
+        ;
     }
 
     /**
