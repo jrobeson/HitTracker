@@ -3,10 +3,12 @@
 namespace LazerBall\HitTracker\GameBundle\Tests\DependencyInjection;
 
 use LazerBall\HitTracker\GameBundle\DependencyInjection\Configuration;
-use Matthias\SymfonyConfigTest\PhpUnit\AbstractConfigurationTestCase;
+use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 
-class ConfigurationTest extends AbstractConfigurationTestCase
+class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
+    use ConfigurationTestCaseTrait;
+
     protected function getConfiguration()
     {
         return new Configuration();
