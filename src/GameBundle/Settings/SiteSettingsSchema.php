@@ -23,9 +23,9 @@ class SiteSettingsSchema implements SchemaInterface
                 'business_address' => "123 Anywhere St\nSuite 206",
                 'business_phone' => '123-555-1234',
                 'business_email' => 'lazerball@example.com',
-                'business_facebook_account' => '',
+                /*'business_facebook_account' => '',
                 'business_facebook_page' => '',
-                'business_twitter_account' => '',
+                'business_twitter_account' => '',*/
                 'scoreboard_logo' => 'uploads/scoreboard_logo.jpg',
                 'scoreboard_banner_1' => 'uploads/scoreboard_banner_1.jpg',
                 'scoreboard_banner_2' => 'uploads/scoreboard_banner_2.jpg',
@@ -35,9 +35,9 @@ class SiteSettingsSchema implements SchemaInterface
             ->setAllowedTypes('business_address', ['string', 'null'])
             ->setAllowedTypes('business_phone', ['string', 'null'])
             ->setAllowedTypes('business_email', ['string', 'null'])
-            ->setAllowedTypes('business_facebook_account', ['string', 'null'])
+            /*->setAllowedTypes('business_facebook_account', ['string', 'null'])
             ->setAllowedTypes('business_facebook_page', ['string', 'null'])
-            ->setAllowedTypes('business_twitter_account', ['string', 'null'])
+            ->setAllowedTypes('business_twitter_account', ['string', 'null'])*/
             ->setAllowedTypes('scoreboard_logo', ['string', 'null'])
             ->setAllowedTypes('scoreboard_banner_1', ['string', 'null'])
             ->setAllowedTypes('scoreboard_banner_2', ['string', 'null'])
@@ -90,7 +90,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_email.help',
                 ],
             ])
-            ->add('business_facebook_account', 'text', [
+            /*->add('business_facebook_account', '', [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_facebook_account',
@@ -113,7 +113,7 @@ class SiteSettingsSchema implements SchemaInterface
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.business_twitter_account.help',
                 ],
-            ])
+            ])*/
             ->add('scoreboard_logo', 'text', [
                 'required' => false,
                 'empty_data' => '',
