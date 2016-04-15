@@ -122,11 +122,13 @@ if ('production' == env) {
     scoreCardCss = cleanCss(scoreCardCss);
 }
 
-var appFonts = sieveFiles(bowerRoot + '/fontawesome/fonts', {
+var fontAwesomeFonts = sieveFiles(bowerRoot + '/fontawesome/fonts', {
     destDir: '/fonts'
 });
-
-var appAssets = mergeTrees([appCss, scoreBoardCss, scoreCardCss, appJs, appFonts]);
+var glyphiconsFonts = sieveFiles(bowerRoot + '/bootstrap-sass-official/assets/fonts/', {
+    destDir: '/fonts'
+});
+var appAssets = mergeTrees([appCss, scoreBoardCss, scoreCardCss, appJs, fontAwesomeFonts, glyphiconsFonts]);
 /*if ('production' == env) {
     appAssets = assetRev(appAssets, {
         extensions: ['js', 'css', 'png', 'jpg', 'gif'],
