@@ -23,7 +23,7 @@
         </thead>
         <tbody>
         {% for player in game.playersByTeam(team) %}
-            <tr class="player-{{ player.id }}" data-game-radio-id="{{ player.radioId }}">
+            <tr class="player-{{ player.id }} scores-player"  data-game-radio-id="{{ player.radioId }}">
                 <td class="player-id">
                     {{ loop.index }}
                 </td>
@@ -42,7 +42,11 @@
         <tfoot>
             <tr>
                 <td colspan="3"></td>
-                <td colspan="2"><p class="text-right">{{ 'hittracker.game.team_total'|trans }}</p></td>
+                <td colspan="2">
+                    <p class="text-right">
+                        <strong>{{ 'hittracker.game.team_total'|trans }}</strong>
+                    </p>
+                </td>
                 <td class="team-total">
                     {{ game.teamHitPoints(team) }}
                 </td>
