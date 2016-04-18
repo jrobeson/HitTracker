@@ -27,13 +27,16 @@ $font-size-base: 12px;
   margin: 0 auto;
   padding-bottom: 10px;
 }
+
 .banners img {
   margin: 0 auto;
 }
 
 .scorecard-scores {
     height: 3in;
+    font-size: 14px;
 }
+
 .scorecard-page {
     height: 5in;
     page-break-after: always;
@@ -45,4 +48,12 @@ $font-size-base: 12px;
 
 .scorecard-game-meta {
     text-align: right;
+}
+
+.scores-player {
+    height: 36px;
+}
+
+.scores-player td {
+    vertical-align: middle;
 }
