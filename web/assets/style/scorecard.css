@@ -8394,7 +8394,8 @@ footer {
   margin: 0 auto; }
 
 .scorecard-scores {
-  height: 3in; }
+  height: 3in;
+  font-size: 14px; }
 
 .scorecard-page {
   height: 5in;
@@ -8405,3 +8406,9 @@ footer {
 
 .scorecard-game-meta {
   text-align: right; }
+
+.scores-player {
+  height: 36px; }
+
+.scores-player td {
+  vertical-align: middle; }
