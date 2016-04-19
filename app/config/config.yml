@@ -3,7 +3,8 @@ imports:
     - { resource: services.yml }
 
 parameters:
-    locale: en
+    locale: en_US
+    icu_time_date_format: 'MM/dd/y hh:mm a'
 
 framework:
     translator:
@@ -39,6 +40,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         livereload_script_url: "%livereload_http_url%"
+        icu_time_date_format: "%icu_time_date_format%"
 
 doctrine:
     dbal:

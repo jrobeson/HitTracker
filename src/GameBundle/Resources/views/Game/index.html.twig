@@ -23,7 +23,7 @@
                     </a>
                 </td>
                 <td class="col-lg-2">
-                    {{ game.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
+                    {{ game.createdAt|localizeddate(format=icu_time_date_format) }}
                 </td>
                 <td class="col-lg-2">
                     {{ game.timeTotal|date('%H:%I') }}

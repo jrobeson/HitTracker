@@ -41,7 +41,7 @@
                             <strong>{{ 'hittracker.game.length'|trans }}:</strong> {{ time_total }}
                             &nbsp;
                             <strong>{{ 'hittracker.game.date'|trans }}:</strong>&nbsp;
-                            {{ game.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
+                            {{ game.createdAt|localizeddate(format=icu_time_date_format) }}
                         </div>
                     </div>
                     <div class="row">

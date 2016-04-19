@@ -22,7 +22,7 @@
                 <td class="col-lg-1">{{ vest.radioId }}</td>
                 <td class="col-lg-1">{{ vest.active }}</td>
                 <td class="col-lg-1">
-                    {{ vest.createdAt|localizeddate(format='dd/MM/y HH:mm') }}
+                    {{ vest.createdAt|localizeddate(format=icu_time_date_format) }}
                 </td>
                 <td class="col-lg-2">
                     <a href="{{ path('hittracker_vest_update', {id: vest.id}) }}">
