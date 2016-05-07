@@ -129,14 +129,12 @@ sylius_resource:
             templates: HitTrackerGameBundle:Vest
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Vest
-                #interface: App\Entity\UserInterface
-                controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
                 repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
+
         hittracker.game:
             templates: HitTrackerGameBundle:Game
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Game
-                #interface: App\Entity\UserInterface
                 controller: LazerBall\HitTracker\GameBundle\Controller\GameController
                 repository: LazerBall\HitTracker\GameBundle\Entity\GameRepository
 
