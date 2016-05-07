@@ -5,6 +5,9 @@ imports:
 parameters:
     locale: en_US
     icu_time_date_format: 'MM/dd/y hh:mm a'
+    # todo: waiting for a fix for https://github.com/Sylius/Sylius/issues/4959
+    sylius.resource_controller.request_configuration.class: LazerBall\HitTracker\CommonBundle\Controller\RequestConfiguration
+
 
 framework:
     translator:
