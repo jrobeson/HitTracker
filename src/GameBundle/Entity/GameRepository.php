@@ -51,7 +51,7 @@ class GameRepository extends EntityRepository
 
     /**
      * @param int $arena
-     * @return Game
+     * @return Game|null
      */
     public function getActiveGame($arena)
     {
@@ -62,4 +62,15 @@ class GameRepository extends EntityRepository
 
         return $this->matching($criteria)->first();
     }
+
+    /** @return Game|null */
+    public function getActiveGames()
+    {
+        $criteria = new Criteria();
+
+        $criteria->andWhere($criteria->expr()->gte('endsAt', new \DateTime()));
+
+        return $this->matching($criteria)->toArray();
+    }
+
 }
