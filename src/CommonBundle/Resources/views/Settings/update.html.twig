@@ -1,0 +1,14 @@
+{% extends '@HitTrackerGame/layout.html.twig' %}
+{% import '@SyliusResource/Macros/actions.html.twig' as actions %}
+{% form_theme form 'bootstrap_3_horizontal_form_help.html.twig' %}
+{% block content %}
+    <h1>Settings <small>Use this form to update settings</small></h1>
+    <hr />
+
+    {% set ns = app.request.attributes.get('namespace') %}
+    <form action="{{ path('hittracker_' ~ ns ~ '_settings') }}" method="post" class="form-horizontal form-settings form-settings-{{ ns }}">
+        {{ form_widget(form) }}
+        <input type="hidden" name="namespace" value="" />
+        {{ actions.update() }}
+    </form>
+{% endblock %}
