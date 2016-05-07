@@ -1,3 +1,10 @@
+hittracker_vest:
+    resource: |
+        alias: hittracker.vest
+        except: ['delete']
+        redirect: index
+    type: sylius.resource
+
 hittracker_vest_index:
     path: /vests
     methods: [GET]
@@ -5,27 +12,10 @@ hittracker_vest_index:
         _controller: hittracker.controller.vest:indexAction
         _sylius:
             paginate: 20
+            sortable: true
             sorting:
                 id: asc
-hittracker_vest_create:
-    path: /vests/new
-    methods: [GET, POST]
-    defaults:
-        _controller: hittracker.controller.vest:createAction
-        _sylius:
-            redirect: hittracker_vest_index
-hittracker_vest_update:
-    path: /vests/{id}/edit
-    methods: [GET, PUT]
-    defaults:
-        _controller: hittracker.controller.vest:updateAction
-        _sylius:
-            redirect: hittracker_vest_index
-hittracker_vest_delete:
-    path: /vests/{id}
-    methods: [DELETE]
-    defaults:
-        _controller: hittracker.controller.vest:deleteAction
+
 
 hittracker_game_hit:
     path: /games/hit
