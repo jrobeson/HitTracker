@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use LazerBall\HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
 use Symfony\Component\Validator\Constraints as Assert;
+use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * Game
@@ -15,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="games")
  */
-class Game
+class Game implements ResourceInterface
 {
     /**
      * @var int
