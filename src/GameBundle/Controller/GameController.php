@@ -3,7 +3,9 @@
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
 use GuzzleHttp\Client;
+use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,100 +16,105 @@ class GameController extends ResourceController
      */
     public function createAction(Request $request)
     {
-        $resource = $this->createNew();
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $this->isGrantedOr403($configuration, ResourceActions::CREATE);
+        $newResource = $this->newResourceFactory->create($configuration, $this->factory);
 
         $vests = $this->get('hittracker.repository.vest')->findActiveVests();
 
         foreach ($vests as $vest) {
             $player = new \LazerBall\HitTracker\GameBundle\Entity\Player('', $vest);
-            $resource->addPlayer($player);
+            $newResource->addPlayer($player);
         }
 
-        $form = $this->getForm($resource);
+        $form = $this->resourceFormFactory->create($configuration, $newResource);
 
-        if ($form->handleRequest($request)->isValid()) {
-            $resource = $this->domainManager->create($resource);
+        if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
+            $newResource = $form->getData();
 
-            if (null === $resource) {
-                return $this->redirectHandler->redirectToIndex();
+            $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::CREATE, $configuration, $newResource);
+
+            if ($event->isStopped() && !$configuration->isHtmlRequest()) {
+                throw new HttpException($event->getErrorCode(), $event->getMessage());
+            }
+            if ($event->isStopped()) {
+                $this->flashHelper->addFlashFromEvent($configuration, $event);
+
+                return $this->redirectHandler->redirectToIndex($configuration, $newResource);
             }
 
+            $this->repository->add($newResource);
+            $this->eventDispatcher->dispatchPostEvent(ResourceActions::CREATE, $configuration, $newResource);
+
+            if (!$configuration->isHtmlRequest()) {
+                return $this->viewHandler->handle($configuration, View::create($newResource, 201));
+            }
+
+            $this->flashHelper->addSuccessFlash($configuration, ResourceActions::CREATE, $newResource);
+
             $data = [
-                'arena' => $resource->getArena(),
-                'created_at' => $resource->getCreatedAt()->getTimestamp(),
-                'ends_at' => $resource->getEndsAt()->getTimestamp(),
+                'arena' => $newResource->getArena(),
+                'created_at' => $newResource->getCreatedAt()->getTimestamp(),
+                'ends_at' => $newResource->getEndsAt()->getTimestamp(),
             ];
             $this->publish('game.start', $data);
 
-            return $this->redirectHandler->redirectTo($resource);
+            return $this->redirectHandler->redirectToResource($configuration, $newResource);
         }
 
-        if ($this->config->isApiRequest()) {
-            return $this->handleView($this->view($form));
+        if (!$configuration->isHtmlRequest()) {
+            return $this->viewHandler->handle($configuration, View::create($form, 400));
         }
 
-        $view = $this
-            ->view()
-            ->setTemplate($this->config->getTemplate('create.html'))
-            ->setData(array(
-                $this->config->getResourceName() => $resource,
-                'form'                           => $form->createView()
-            ))
+        $view = View::create()
+            ->setData([
+                'metadata' => $this->metadata,
+                'resource' => $newResource,
+                $this->metadata->getName() => $newResource,
+                'form' => $form->createView(),
+            ])
+            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE))
         ;
 
-        return $this->handleView($view);
-    }
+        return $this->viewHandler->handle($configuration, $view);
 
-    public function activeAction(Request $request)
-    {
-        $arena = $request->attributes->get('arena');
-
-        $game = $this->getRepository()->getActiveGame($arena);
-
-        $view = $this
-            ->view()
-            ->setTemplate($this->config->getTemplate('show.html'))
-            ->setTemplateVar($this->config->getResourceName())
-            ->setData($game)
-        ;
-
-        return $this->handleView($view);
-    }
-
-    public function scoreBoardAction(Request $request)
-    {
-        $arena = $request->attributes->get('arena');
-
-        $game = $this->getRepository()->getMostRecentGame($arena);
-
-        $view = $this
-            ->view()
-            ->setTemplate($this->config->getTemplate('show.html'))
-            ->setTemplateVar($this->config->getResourceName())
-            ->setData($game)
-        ;
-
-        return $this->handleView($view);
     }
 
     /**
-     * Show a printable score card
-     * @param Request $request
-     *
-     * @return Response
+     * Another version of showAction that allows showing a blank page instead of 404ing
+     * Needs to be kept in sync until we can discuss this issue with the Sylius folks
      */
-    public function scoreCardAction(Request $request)
+    public function showBlankAction(Request $request)
     {
-        $view = $this
-            ->view()
-            ->setTemplate($this->config->getTemplate('scorecard.html'))
-            ->setTemplateVar($this->config->getResourceName())
-            ->setData($this->findOr404($request))
-        ;
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
-        return $this->handleView($view);
+        $this->isGrantedOr403($configuration, ResourceActions::SHOW);
+
+        // was $resource = $this->findOr404($configuration);
+        $resource = $this->singleResourceProvider->get($configuration, $this->repository);
+
+        if ($resource) {
+            $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $resource);
+        }
+        // took a $resource argument
+        $view = View::create($resource);
+
+        if ($configuration->isHtmlRequest()) {
+            $view
+                ->setTemplate($configuration->getTemplate(ResourceActions::SHOW))
+                ->setTemplateVar($this->metadata->getName())
+                ->setData([
+                    'metadata' => $this->metadata,
+                    'resource' => $resource,
+                    $this->metadata->getName() => $resource,
+                ])
+            ;
+        }
+
+        return $this->viewHandler->handle($configuration, $view);
+
     }
-
     /**
      * @param       $event
      * @param array $data
@@ -128,22 +135,33 @@ class GameController extends ResourceController
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function stopAction($id)
+    public function stopAction(Request $request)
     {
-        $game = $this->getRepository()->find($id);
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
-        if ($game) {
-            $game->stop();
-            $this->getDoctrine()->getManager()->persist($game);
-            $this->getDoctrine()->getManager()->flush();
+        $this->isGrantedOr403($configuration, ResourceActions::UPDATE);
+        $resource = $this->findOr404($configuration);
+
+        $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::UPDATE, $configuration, $resource);
+
+        if ($event->isStopped() && !$configuration->isHtmlRequest()) {
+            throw new HttpException($event->getErrorCode(), $event->getMessage());
+        }
+
+        if ($resource) {
+            $resource->stop();
+            $this->manager->persist($resource);
+            $this->manager->flush();
+            $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
 
             $data = [
-                'id'         => $game->getId(),
-                'arena'      => $game->getArena(),
-                'created_at' => $game->getCreatedAt()->getTimestamp(),
-                'ends_at'    => $game->getEndsAt()->getTimestamp(),
+                'id'         => $resource->getId(),
+                'arena'      => $resource->getArena(),
+                'created_at' => $resource->getCreatedAt()->getTimestamp(),
+                'ends_at'    => $resource->getEndsAt()->getTimestamp(),
             ];
             $this->publish('game.end', $data);
+            $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
         }
 
         return $this->redirect($this->generateUrl('hittracker_game_create'));
@@ -154,26 +172,34 @@ class GameController extends ResourceController
      *
      * @param Request $request
      * @todo make it a real API
-     * @todo does not work with more than one arena
      * @return JsonResponse
      */
     public function hitAction(Request $request)
     {
         ini_set('html_errors', 0);
-        $game = $this->getRepository()->getActiveGame(1);
+        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
-        if (!$game) {
-            return new JsonResponse(['error' => 'no such game'], 404);
+        $this->isGrantedOr403($configuration, ResourceActions::UPDATE);
+
+        $games = $this->repository->getActiveGames();
+
+        if (empty($games)) {
+            return new JsonResponse(['error' => 'no active games'], 404);
         }
-
         $data = json_decode($request->getContent(), true);
 
+        if (!is_array($data) || !array_key_exists('events', $data)) {
+            return new JsonResponse(['error' => 'malformed request'], 400);
+        }
         foreach ($data['events'] as $data) {
             $event = $data['event'];
 
             if (!empty($data['radioId'])) {
-                // @todo check valid radio ids
-                $player = $game->getPlayerByRadioId($data['radioId']);
+                foreach ($games as $g) {
+                    // @todo check valid radio ids
+                    $player = $g->getPlayerByRadioId($data['radioId']);
+                    if ($player) $game = $g;
+                }
             }
             if (!isset($player) || !$player) {
                 continue;

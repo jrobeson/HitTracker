@@ -16,12 +16,74 @@ hittracker_vest_index:
             sorting:
                 id: asc
 
+hittracker_game_create:
+    path: /games/new
+    methods: [GET, POST]
+    defaults:
+        _controller: hittracker.controller.game:createAction
+        _sylius:
+            redirect:
+                route: hittracker_game_active
+                parameters: { arena: resource.arena }
 
 hittracker_game_hit:
     path: /games/hit
     methods: [POST]
     defaults:
         _controller: hittracker.controller.game:hitAction
+
+hittracker_game_active:
+    path: /games/active/{arena}
+    requirements:
+        arena:  \d+
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:showBlankAction
+        arena : 1
+        _sylius:
+            template: '@HitTrackerGame/Game/active.html.twig'
+            repository:
+                method: getActiveGame
+                arguments: [$arena]
+
+hittracker_game_scoreboard:
+    path: /games/scoreboard/{arena}
+    requirements:
+        arena:  \d+
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:showBlankAction
+        arena : 1
+        _sylius:
+            template: '@HitTrackerGame/Game/scoreboard.html.twig'
+            repository:
+                method: getMostRecentGame
+                arguments: [$arena]
+
+hittracker_game_scorecard:
+    path: /games/scorecard/{id}
+    requirements:
+        id:  \d+
+    methods: [GET]
+    defaults:
+        _controller: hittracker.controller.game:showAction
+        _sylius:
+            template: '@HitTrackerGame/Game/scorecard.html.twig'
+
+hittracker_game_stop:
+    path: /games/{id}/stop
+    requirements:
+        id:  \d+
+    methods: [PATCH]
+    defaults:
+        _controller: hittracker.controller.game:stopAction
+
+hittracker_game:
+    resource: |
+        alias: hittracker.game
+        except: ['create']
+    type: sylius.resource
+
 hittracker_game_index:
     path: /games
     methods: [GET]
@@ -32,51 +94,3 @@ hittracker_game_index:
             sorting:
                 id: desc
 
-hittracker_game_create:
-    path: /games/new
-    methods: [GET, POST]
-    defaults:
-        _controller: hittracker.controller.game:createAction
-        _sylius:
-            redirect: hittracker_game_active
-hittracker_game_update:
-    path: /game/{id}/edit
-    methods: [GET, PUT]
-    defaults:
-        _controller: hittracker.controller.game:updateAction
-hittracker_game_active:
-    path: /games/active/{arena}
-    methods: [GET]
-    defaults:
-        _controller: hittracker.controller.game:activeAction
-        arena : 1
-        _sylius:
-            template: 'HitTrackerGameBundle:Game:active.html.twig'
-hittracker_game_scoreboard:
-    path: /games/scoreboard/{arena}
-    methods: [GET]
-    defaults:
-        _controller: hittracker.controller.game:scoreBoardAction
-        arena : 1
-        _sylius:
-            template: 'HitTrackerGameBundle:Game:scoreboard.html.twig'
-hittracker_game_scorecard:
-    path: /games/scorecard/{id}
-    methods: [GET]
-    defaults:
-        _controller: hittracker.controller.game:scoreCardAction
-hittracker_game_show:
-    path: /games/{id}
-    methods: [GET]
-    defaults:
-        _controller: hittracker.controller.game:showAction
-hittracker_game_delete:
-    path: /games/{id}
-    methods: [DELETE]
-    defaults:
-        _controller: hittracker.controller.game:deleteAction
-hittracker_game_stop:
-    path: /games/{id}/stop
-    methods: [PATCH]
-    defaults:
-        _controller: hittracker.controller.game:stopAction
