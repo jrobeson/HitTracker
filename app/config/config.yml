@@ -95,13 +95,13 @@ doctrine_cache:
 sylius_resource:
     resources:
         hittracker.vest:
-            templates: HitTrackerGameBundle:Vest
+            templates: "@HitTrackerGame/Vest"
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Vest
                 repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
 
         hittracker.game:
-            templates: HitTrackerGameBundle:Game
+            templates: "@HitTrackerGame/Game"
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Game
                 controller: LazerBall\HitTracker\GameBundle\Controller\GameController
