@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "91eed6b51dafb72cc4f68be6540b5dff",
-    "content-hash": "e2e80caf74d309b8f1ab53a3fc05cbd9",
+    "hash": "2bb5bb7f4f606971c6cb878e993a1d0b",
+    "content-hash": "e6bfbf048d961e867cdcf74bf975637b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1721,36 +1721,41 @@
         },
         {
             "name": "jms/serializer",
-            "version": "0.16.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "c8a171357ca92b6706e395c757f334902d430ea9"
+                "reference": "fe13a1f993ea3456e195b7820692f2eb2b6bbb48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/c8a171357ca92b6706e395c757f334902d430ea9",
-                "reference": "c8a171357ca92b6706e395c757f334902d430ea9",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/fe13a1f993ea3456e195b7820692f2eb2b6bbb48",
+                "reference": "fe13a1f993ea3456e195b7820692f2eb2b6bbb48",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "1.*",
+                "doctrine/instantiator": "~1.0.3",
                 "jms/metadata": "~1.1",
                 "jms/parser-lib": "1.*",
-                "php": ">=5.3.2",
+                "php": ">=5.4.0",
                 "phpcollection/phpcollection": "~0.1"
+            },
+            "conflict": {
+                "twig/twig": "<1.12"
             },
             "require-dev": {
                 "doctrine/orm": "~2.1",
                 "doctrine/phpcr-odm": "~1.0.1",
                 "jackalope/jackalope-doctrine-dbal": "1.0.*",
+                "phpunit/phpunit": "~4.0",
                 "propel/propel1": "~1.7",
                 "symfony/filesystem": "2.*",
                 "symfony/form": "~2.1",
                 "symfony/translation": "~2.0",
                 "symfony/validator": "~2.0",
                 "symfony/yaml": "2.*",
-                "twig/twig": ">=1.8,<2.0-dev"
+                "twig/twig": "~1.12|~2.0"
             },
             "suggest": {
                 "symfony/yaml": "Required if you'd like to serialize data to YAML format."
@@ -1758,7 +1763,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.15-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -1772,10 +1777,8 @@
             ],
             "authors": [
                 {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Library for (de-)serializing data of any complexity; supports XML, JSON, and YAML.",
@@ -1787,27 +1790,28 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2014-03-18 08:39:00"
+            "time": "2015-10-27 09:24:41"
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "0.13.0",
+            "version": "1.1.0",
             "target-dir": "JMS/SerializerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "bb15db3e661168f4310fad48b86915ff1ca33795"
+                "reference": "3e396c980545350c2efb65a50041d2a9f9d6562e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/bb15db3e661168f4310fad48b86915ff1ca33795",
-                "reference": "bb15db3e661168f4310fad48b86915ff1ca33795",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/3e396c980545350c2efb65a50041d2a9f9d6562e",
+                "reference": "3e396c980545350c2efb65a50041d2a9f9d6562e",
                 "shasum": ""
             },
             "require": {
-                "jms/serializer": "~0.11",
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1"
+                "jms/serializer": "^1.0.0",
+                "php": ">=5.4.0",
+                "phpoption/phpoption": "^1.1.0",
+                "symfony/framework-bundle": "~2.3|~3.0"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "*",
@@ -1818,6 +1822,7 @@
                 "symfony/finder": "*",
                 "symfony/form": "*",
                 "symfony/process": "*",
+                "symfony/stopwatch": "*",
                 "symfony/twig-bundle": "*",
                 "symfony/validator": "*",
                 "symfony/yaml": "*"
@@ -1828,7 +1833,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.13-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -1842,10 +1847,8 @@
             ],
             "authors": [
                 {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
-                    "role": "Developer of wrapped JMSSerializerBundle"
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com"
                 }
             ],
             "description": "Allows you to easily serialize, and deserialize data of any complexity",
@@ -1857,7 +1860,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2013-12-05 14:36:11"
+            "time": "2015-11-10 12:26:42"
         },
         {
             "name": "monolog/monolog",
@@ -2614,16 +2617,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "f942da7b505d1a294284ab343d05df42d02ad6d9"
+                "reference": "8025426794f1944de806618671d4fa476dc7626f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/f942da7b505d1a294284ab343d05df42d02ad6d9",
-                "reference": "f942da7b505d1a294284ab343d05df42d02ad6d9",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/8025426794f1944de806618671d4fa476dc7626f",
+                "reference": "8025426794f1944de806618671d4fa476dc7626f",
                 "shasum": ""
             },
             "require": {
@@ -2654,7 +2657,7 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-03-31 13:10:33"
+            "time": "2016-05-03 17:50:52"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -4367,34 +4370,33 @@
         },
         {
             "name": "willdurand/hateoas",
-            "version": "v2.6.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Hateoas.git",
-                "reference": "fc0869381d6934e5d430084154584761297caa6c"
+                "reference": "1add9a4448793cf40b52544136532b9752e06d7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/fc0869381d6934e5d430084154584761297caa6c",
-                "reference": "fc0869381d6934e5d430084154584761297caa6c",
+                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/1add9a4448793cf40b52544136532b9752e06d7b",
+                "reference": "1add9a4448793cf40b52544136532b9752e06d7b",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "~1.0",
                 "doctrine/common": "~2.0",
                 "jms/metadata": "~1.1",
-                "jms/serializer": "~0.13",
-                "php": ">=5.3",
-                "symfony/expression-language": "~2.4"
+                "jms/serializer": "~1.0",
+                "php": ">=5.4",
+                "phpoption/phpoption": ">=1.1.0,<2.0-dev",
+                "symfony/expression-language": "~2.4 || ~3.0"
             },
             "require-dev": {
-                "atoum/atoum": "*@dev",
-                "hautelook/frankenstein": "~0.1",
                 "pagerfanta/pagerfanta": "~1.0",
-                "phpunit/phpunit": "~3.7",
-                "symfony/dependency-injection": "~2.0",
-                "symfony/routing": "~2.0",
-                "symfony/yaml": "~2.0",
+                "phpunit/phpunit": "~4.5",
+                "symfony/dependency-injection": "~2.4 || ~3.0",
+                "symfony/routing": "~2.4 || ~3.0",
+                "symfony/yaml": "~2.4 || ~3.0",
                 "twig/twig": "~1.12"
             },
             "suggest": {
@@ -4405,7 +4407,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.9-dev"
                 }
             },
             "autoload": {
@@ -4428,36 +4430,37 @@
                 }
             ],
             "description": "A PHP library to support implementing representations for HATEOAS REST web services",
-            "time": "2015-05-21 21:57:34"
+            "time": "2016-01-26 15:39:06"
         },
         {
             "name": "willdurand/hateoas-bundle",
-            "version": "0.4.0",
+            "version": "1.1.1",
             "target-dir": "Bazinga/Bundle/HateoasBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/BazingaHateoasBundle.git",
-                "reference": "38c8307940ac3d23ffe620db733f6e45cccad84c"
+                "reference": "a53f6f1d3d8cda3fa8cdd90773cb48e9647a08c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/38c8307940ac3d23ffe620db733f6e45cccad84c",
-                "reference": "38c8307940ac3d23ffe620db733f6e45cccad84c",
+                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/a53f6f1d3d8cda3fa8cdd90773cb48e9647a08c5",
+                "reference": "a53f6f1d3d8cda3fa8cdd90773cb48e9647a08c5",
                 "shasum": ""
             },
             "require": {
-                "jms/serializer-bundle": "~0.13",
-                "symfony/framework-bundle": "~2.2",
-                "willdurand/hateoas": "~2.0"
+                "jms/serializer-bundle": "~1.0",
+                "symfony/framework-bundle": "~2.2 || ~3.0",
+                "willdurand/hateoas": "~2.9"
             },
             "require-dev": {
-                "symfony/expression-language": "~2.4",
+                "phpunit/phpunit": "~4.5",
+                "symfony/expression-language": "~2.4 || ~3.0",
                 "twig/twig": "~1.12"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -4480,7 +4483,7 @@
                 "HATEOAS",
                 "rest"
             ],
-            "time": "2014-10-14 15:29:47"
+            "time": "2016-02-22 13:12:41"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -6419,16 +6422,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.5",
+            "version": "1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
+                "reference": "2292b116f43c272ff4328083096114f84ea46a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
-                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/2292b116f43c272ff4328083096114f84ea46a56",
+                "reference": "2292b116f43c272ff4328083096114f84ea46a56",
                 "shasum": ""
             },
             "require": {
@@ -6465,7 +6468,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-02-26 18:40:46"
+            "time": "2016-05-04 07:59:13"
         },
         {
             "name": "sebastian/exporter",
