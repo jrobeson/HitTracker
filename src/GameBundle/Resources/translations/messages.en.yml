@@ -75,6 +75,8 @@ hittracker.game.hit_points_deducted_per_hit: 'Hit Points Deducted Per Hit'
 hittracker.game.vest_hold_penalty: 'Vest Hold Penalty'
 hittracker.game.load_players_from_previous_games: 'Load Players From Previous Games'
 hittracker.game.choose: 'Choose a Game'
+hittracker.game.list.vs_teams: '%team1% vs. %team2% (Game #: %id%)'
+
 
 hittracker.vest.add: 'Add Vest'
 hittracker.vest.radio_id: 'Radio Id'
