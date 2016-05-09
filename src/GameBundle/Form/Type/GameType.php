@@ -18,18 +18,15 @@ class GameType extends AbstractType
 {
     private $settingsManager;
     private $eventSubscriber;
-    private $gameRepository;
 
     /**
-     * @param $gameRepository
      * @param SettingsManagerInterface $settingsManager
      * @param EventSubscriberInterface $eventSubscriber
      */
-    public function __construct($gameRepository, /*$settings*/SettingsManagerInterface $settingsManager, EventSubscriberInterface $eventSubscriber)
+    public function __construct(/*$settings*/SettingsManagerInterface $settingsManager, EventSubscriberInterface $eventSubscriber)
     {
         $this->settingsManager = $settingsManager;
         $this->eventSubscriber = $eventSubscriber;
-        $this->gameRepository = $gameRepository;
     }
 
     /**
@@ -42,14 +39,6 @@ class GameType extends AbstractType
 
         $arenas = $siteSettings->get('arenas');
         $arenaFieldType = ($arenas > 1) ? ChoiceType::class : HiddenType::class;
-
-        $recentGames = $this->gameRepository->getRecentGames(10, 1);
-        $gameList = [];
-        foreach ($recentGames as $recentGame) {
-            $gameIdFormat = sprintf(' (Game #: %d)', $recentGame->getId());
-            $teams = implode(' vs. ', $recentGame->getTeams()).$gameIdFormat;
-            $gameList[$teams] = $recentGame->getId();
-        }
 
         $builder
             ->add('game_length', IntegerType::class, [
@@ -80,10 +69,8 @@ class GameType extends AbstractType
                 'mapped' => false,
                 'data' => 'Team 2',
             ])
-            ->add('reload_players', ChoiceType::class, [
+            ->add('reload_players', ListGamesType::class, [
                 'label' => 'hittracker.game.load_players_from_previous_games',
-                'choices' => $gameList,
-                'choices_as_values' => true,
                 'mapped' => false,
                 'placeholder' => 'hittracker.game.choose',
                 'required' => false,
