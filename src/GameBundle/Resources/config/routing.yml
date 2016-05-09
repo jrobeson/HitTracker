@@ -3,7 +3,7 @@ hittracker_vest:
         alias: hittracker.vest
         except: ['delete']
         redirect: index
-    type: sylius.resource
+    type: sylius.resource_api
 
 hittracker_vest_index:
     path: /vests
@@ -82,7 +82,7 @@ hittracker_game:
     resource: |
         alias: hittracker.game
         except: ['create']
-    type: sylius.resource
+    type: sylius.resource_api
 
 hittracker_game_index:
     path: /games
