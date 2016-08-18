@@ -2,12 +2,11 @@
 
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
-use Doctrine\ORM\EntityRepository;
 
 class ListGamesType extends AbstractType
 {

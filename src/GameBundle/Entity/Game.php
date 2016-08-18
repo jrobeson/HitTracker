@@ -7,8 +7,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use LazerBall\HitTracker\CommonBundle\Validator\Constraints as CommonAssert;
-use Symfony\Component\Validator\Constraints as Assert;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Game
@@ -263,8 +263,8 @@ class Game implements ResourceInterface
     {
         $teams = array_unique(
             $this->getPlayers()->map(function (Player $player) {
-            return $player->getTeam();
-        })->toArray());
+                return $player->getTeam();
+            })->toArray());
 
         return $teams;
     }
@@ -273,8 +273,8 @@ class Game implements ResourceInterface
     {
         $team = $this->getPlayersByTeam($team);
         $score = array_sum($team->map(function (Player $player) {
-                return $player->getHitPoints();
-            })->toArray());
+            return $player->getHitPoints();
+        })->toArray());
 
         return $score;
     }

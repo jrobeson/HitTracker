@@ -72,5 +72,4 @@ class GameRepository extends EntityRepository
 
         return $this->matching($criteria)->toArray();
     }
-
 }

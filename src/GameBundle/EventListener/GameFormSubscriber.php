@@ -52,7 +52,7 @@ class GameFormSubscriber implements EventSubscriberInterface
         $game['players'] = array_filter($game['players'],
             function ($player) {
                 return !empty($player['name']);
-        });
+            });
 
         $event->setData($game);
     }

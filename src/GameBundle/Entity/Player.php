@@ -3,9 +3,9 @@
 namespace LazerBall\HitTracker\GameBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * @ORM\Entity

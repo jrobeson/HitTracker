@@ -2,8 +2,8 @@
 /**
  * Symfony App Front Controller
  */
-use function Cekurte\Environment\env;
 use Symfony\Component\HttpFoundation\Request;
+use function Cekurte\Environment\env;
 
 require_once __DIR__.'/../app/autoload.php';
 

@@ -2,8 +2,8 @@
 
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
-use GuzzleHttp\Client;
 use FOS\RestBundle\View\View;
+use GuzzleHttp\Client;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -78,7 +78,6 @@ class GameController extends ResourceController
         ;
 
         return $this->viewHandler->handle($configuration, $view);
-
     }
 
     /**
@@ -113,8 +112,8 @@ class GameController extends ResourceController
         }
 
         return $this->viewHandler->handle($configuration, $view);
-
     }
+
     /**
      * @param       $event
      * @param array $data
@@ -198,7 +197,9 @@ class GameController extends ResourceController
                 foreach ($games as $g) {
                     // @todo check valid radio ids
                     $player = $g->getPlayerByRadioId($data['radioId']);
-                    if ($player) $game = $g;
+                    if ($player) {
+                        $game = $g;
+                    }
                 }
             }
             if (!isset($player) || !$player) {
