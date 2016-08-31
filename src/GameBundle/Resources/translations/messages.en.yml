@@ -79,6 +79,8 @@ hittracker.game.list.vs_teams: '%team1% vs. %team2% (Game #: %id%)'
 
 
 hittracker.vest.add: 'Add Vest'
+hittracker.vest.no: 'Number'
+hittracker.vest.no.help: "Number printed on the vest"
 hittracker.vest.radio_id: 'Radio Id'
 hittracker.vest.radio_id.help: '8 character radio ID'
 hittracker.vest.status: 'Active?'

@@ -8,7 +8,7 @@
     <table class="table-striped">
         <thead>
             <tr>
-                <th class="col-lg-1">{{ 'hittracker.id'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.vest.no'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.vest.radio_id'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.vest.status'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.date_added'|trans }}</th>
@@ -18,7 +18,7 @@
         <tbody>
             {% for vest in vests %}
             <tr>
-                <td class="col-lg-1">{{ vest.id }}</td>
+                <td class="col-lg-1">{{ vest.no }}</td>
                 <td class="col-lg-1">{{ vest.radioId }}</td>
                 <td class="col-lg-1">{{ vest.active }}</td>
                 <td class="col-lg-1">

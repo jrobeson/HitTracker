@@ -39,7 +39,7 @@ class PlayerType extends AbstractType
                   'label' => 'hittracker.game.vest',
                   'class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
                   'choices' => $this->vestRepository->findActiveVests(),
-                  'choice_label' => 'id',
+                  'choice_label' => 'no',
             ])
             ->add('hitPoints', IntegerType::class, [
                   'empty_data' => '',

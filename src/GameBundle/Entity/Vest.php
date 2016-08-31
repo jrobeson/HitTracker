@@ -15,7 +15,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *            uniqueConstraints={
  *                @ORM\UniqueConstraint(name="idx_vest_radio_id",
  *                                      columns={"radio_id"}
- *                )
+ *                ),
+ *               @ORM\UniqueConstraint(name="idx_vest_no",
+ *                                      columns={"no"}
+ *                ),
  *            }
  * )
  */
@@ -28,6 +31,12 @@ class Vest implements ResourceInterface
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $no;
 
     /**
      * @var string
@@ -61,11 +70,22 @@ class Vest implements ResourceInterface
     {
         $this->radioId = '';
         $this->active = true;
+        $this->no = 0;
     }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setNo(int $no)
+    {
+        $this->no = $no;
+    }
+
+    public function getNo()
+    {
+        return $this->no;
     }
 
     public function setRadioId(string $radioId)
