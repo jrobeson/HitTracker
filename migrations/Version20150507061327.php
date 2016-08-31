@@ -52,7 +52,7 @@ class Version20150507061327 extends AbstractMigration
                       vest_id INT DEFAULT NULL,
                       team VARCHAR(255) DEFAULT NULL,
                       name VARCHAR(255) NOT NULL,
-                      life_credits INT NOT NULL,
+                      hit_points INT NOT NULL,
                       zone_1 INT NOT NULL,
                       zone_2 INT NOT NULL,
                       zone_3 INT NOT NULL,
@@ -75,8 +75,8 @@ class Version20150507061327 extends AbstractMigration
         $stmts[] = 'CREATE TABLE games (
                       id SERIAL NOT NULL,
                       arena INT NOT NULL,
-                      player_life_credits INT NOT NULL,
-                      life_credits_deducted INT NOT NULL,
+                      player_hit_points INT NOT NULL,
+                      player_hit_points_deducted INT NOT NULL,
                       ends_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       PRIMARY KEY(id)
