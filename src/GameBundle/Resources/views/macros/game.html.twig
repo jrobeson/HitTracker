@@ -25,7 +25,7 @@
         {% for player in game.playersByTeam(team) %}
             <tr class="player-{{ player.id }} scores-player"  data-game-radio-id="{{ player.radioId }}">
                 <td class="player-id">
-                    {{ loop.index }}
+                    {{ player.vest.no }}
                 </td>
                 <td>{{ player.name }}</td>
                 {% for zone in 1..3 %}
