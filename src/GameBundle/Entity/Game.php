@@ -265,8 +265,8 @@ class Game implements ResourceInterface
             $this->getPlayers()->map(function (Player $player) {
                 return $player->getTeam();
             })->toArray());
-
-        return $teams;
+        // reindex array
+        return array_values($teams);
     }
 
     public function getTeamHitPoints(string $team) : int
