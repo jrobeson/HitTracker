@@ -1,7 +1,7 @@
 nelmio_csp_reporter:
     path: /csp/report
     defaults:
-        _controller: nelmio_security.csp_reporter_controller:indexAction
+        _controller: "nelmio_security.csp_reporter_controller:indexAction"
     methods:  [POST]
 hittracker_game:
     resource: "@HitTrackerGameBundle/Resources/config/routing.yml"
@@ -9,15 +9,15 @@ hittracker_game:
 hittracker_game_settings:
     path: /settings/games
     defaults:
-        _controller: sylius.controller.settings:updateAction
-        template: @Common/Settings/update.html.twig
+        _controller: "sylius.controller.settings:updateAction"
+        template: "@Common/Settings/update.html.twig"
         namespace: game
 
 hittracker_site_settings:
     path: /settings/site
     defaults:
-        _controller: sylius.controller.settings:updateAction
-        template: @Common/Settings/update.html.twig
+        _controller: "sylius.controller.settings:updateAction"
+        template: "@Common/Settings/update.html.twig"
         namespace: site
 
 page:
