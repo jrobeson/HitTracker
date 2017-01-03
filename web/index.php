@@ -15,10 +15,6 @@ $env = env('SYMFONY_ENV', 'prod');
 $debug = env('SYMFONY_DEBUG', false);
 $buildType = env('SYMFONY__BUILD_TYPE', 'hosted');
 
-if ('prod' == $env) {
-    require_once __DIR__.'/../var/bootstrap.php.cache';
-}
-
 $kernelClass = ucfirst($buildType).'AppKernel';
 $kernel = new $kernelClass($env, $debug);
 

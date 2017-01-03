@@ -29,8 +29,6 @@ abstract class AppKernel extends Kernel
         }
 
         parent::__construct($environment, $debug);
-
-        $this->enableClassCache($isProd);
     }
 
     /**
@@ -110,16 +108,6 @@ abstract class AppKernel extends Kernel
         $loader->load(function (ContainerInterface $container) use ($envParameters) {
             $container->getParameterBag()->add($envParameters);
         });
-    }
-
-    /**
-     * @param bool $enabled
-     */
-    public function enableClassCache($enabled = false)
-    {
-        if ($enabled) {
-            $this->loadClassCache();
-        }
     }
 
     /**
