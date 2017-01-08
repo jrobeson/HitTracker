@@ -33,7 +33,7 @@
         "sylius/ui-bundle": "^1.0@beta",
         "sylius/resource-bundle": "^1.0@beta",
         "sylius/resource": "^1.0@beta",
-        "c33s/static-page-content-bundle": "^2.0",
+        "c33s/static-page-content-bundle": "dev-update-symfony-deps",
         "sylius/settings-bundle": "dev-symfony-3.2-compat",
         "sylius/registry": "^1.0@beta",
         "guzzlehttp/guzzle": "^5.0",
@@ -94,6 +94,10 @@
         ]
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jrobeson/StaticPageContentBundle"
+        },
         {
             "type": "vcs",
             "url": "https://github.com/jrobeson/SyliusSettingsBundle"
