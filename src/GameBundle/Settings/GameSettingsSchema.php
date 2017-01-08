@@ -43,35 +43,35 @@ class GameSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
-            ->add('game_length', 'integer', [
+            ->add('game_length', IntegerType::class, [
                 'label' => 'hittracker.settings.game.length',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.length.help'
                 ],
             ])
-            ->add('player_count', 'integer', [
+            ->add('player_count', IntegerType::class, [
                 'label' => 'hittracker.settings.game.players_per_game',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.players_per_game.help'
                  ],
             ])
-            ->add('team_player_count', 'integer', [
+            ->add('team_player_count', IntegerType::class, [
                 'label' => 'hittracker.settings.game.players_per_team',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.players_per_team.help'
                 ],
             ])
-            ->add('player_hit_points', 'integer', [
+            ->add('player_hit_points', IntegerType::class, [
                 'label' => 'hittracker.settings.game.hit_points_per_player',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.hit_points_per_player.help'
                 ],
             ])
-            ->add('player_hit_points_deducted', 'integer', [
+            ->add('player_hit_points_deducted', IntegerType::class, [
                 'label' => 'hittracker.settings.game.hit_points_deducted_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [

@@ -7,6 +7,9 @@ namespace LazerBall\HitTracker\GameBundle\Settings;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class SiteSettingsSchema implements SchemaInterface
@@ -50,14 +53,14 @@ class SiteSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
-            ->add('arenas', 'integer', [
+            ->add('arenas', IntegerType::class, [
                 'label' => 'hittracker.settings.site.arenas',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.arenas.help',
                 ],
             ])
-            ->add('business_name', 'text', [
+            ->add('business_name', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'constraints' => [new Assert\NotBlank()],
@@ -66,7 +69,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_name.help',
                 ],
             ])
-            ->add('business_address', 'textarea', [
+            ->add('business_address', TextareaType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_address',
@@ -74,7 +77,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_address.help',
                 ],
             ])
-            ->add('business_phone', 'text', [
+            ->add('business_phone', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_phone',
@@ -82,7 +85,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_phone.help',
                 ],
             ])
-            ->add('business_email', 'text', [
+            ->add('business_email', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_email',
@@ -90,7 +93,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_email.help',
                 ],
             ])
-            /*->add('business_facebook_account', '', [
+            /*->add('business_facebook_account', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_facebook_account',
@@ -98,7 +101,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_facebook_account.help',
                 ],
             ])
-            ->add('business_facebook_page', 'text', [
+            ->add('business_facebook_page', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_facebook_page',
@@ -106,7 +109,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_facebook_page.help',
                 ],
             ])
-            ->add('business_twitter_account', 'text', [
+            ->add('business_twitter_account', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_twitter_account',
@@ -114,7 +117,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_twitter_account.help',
                 ],
             ])*/
-            ->add('scoreboard_logo', 'text', [
+            ->add('scoreboard_logo', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.scoreboard_logo',
@@ -122,7 +125,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.scoreboard_logo.help',
                 ],
             ])
-            ->add('scoreboard_banner_1', 'text', [
+            ->add('scoreboard_banner_1', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.scoreboard_banner_1',
@@ -130,7 +133,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.scoreboard_banner_1.help',
                 ],
             ])
-            ->add('scoreboard_banner_2', 'text', [
+            ->add('scoreboard_banner_2', TextType::class, [
                 'required' => false,
                 'label' => 'hittracker.settings.site.scoreboard_banner_2',
                 'attr' => [
