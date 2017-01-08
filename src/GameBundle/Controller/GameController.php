@@ -30,7 +30,7 @@ class GameController extends ResourceController
 
         $form = $this->resourceFormFactory->create($configuration, $newResource);
 
-        if ($request->isMethod('POST') && $form->submit($request)->isValid()) {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $newResource = $form->getData();
 
             $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::CREATE, $configuration, $newResource);
@@ -44,11 +44,15 @@ class GameController extends ResourceController
                 return $this->redirectHandler->redirectToIndex($configuration, $newResource);
             }
 
+            if ($configuration->hasStateMachine()) {
+                $this->stateMachine->apply($configuration, $newResource);
+            }
+
             $this->repository->add($newResource);
             $this->eventDispatcher->dispatchPostEvent(ResourceActions::CREATE, $configuration, $newResource);
 
             if (!$configuration->isHtmlRequest()) {
-                return $this->viewHandler->handle($configuration, View::create($newResource, 201));
+                return $this->viewHandler->handle($configuration, View::create($newResource, Response::HTTP_CREATED));
             }
 
             $this->flashHelper->addSuccessFlash($configuration, ResourceActions::CREATE, $newResource);
@@ -64,17 +68,18 @@ class GameController extends ResourceController
         }
 
         if (!$configuration->isHtmlRequest()) {
-            return $this->viewHandler->handle($configuration, View::create($form, 400));
+            return $this->viewHandler->handle($configuration, View::create($form, Response::HTTP_BAD_REQUEST));
         }
 
         $view = View::create()
             ->setData([
+                'configuration' => $configuration,
                 'metadata' => $this->metadata,
                 'resource' => $newResource,
                 $this->metadata->getName() => $newResource,
                 'form' => $form->createView(),
             ])
-            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE))
+            ->setTemplate($configuration->getTemplate(ResourceActions::CREATE . '.html'))
         ;
 
         return $this->viewHandler->handle($configuration, $view);
@@ -101,9 +106,10 @@ class GameController extends ResourceController
 
         if ($configuration->isHtmlRequest()) {
             $view
-                ->setTemplate($configuration->getTemplate(ResourceActions::SHOW))
+                ->setTemplate($configuration->getTemplate(ResourceActions::SHOW . '.html'))
                 ->setTemplateVar($this->metadata->getName())
                 ->setData([
+                    'configuration' => $configuration,
                     'metadata' => $this->metadata,
                     'resource' => $resource,
                     $this->metadata->getName() => $resource,

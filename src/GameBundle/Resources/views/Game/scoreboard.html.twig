@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% set site_settings = sylius_settings_all('site') %}
+{% set site_settings = sylius_settings('site') %}
 {% set logo = site_settings.get('scoreboard_logo') %}
 {% set banner_1 = site_settings.get('scoreboard_banner_1') %}
 {% set banner_2 = site_settings.get('scoreboard_banner_2') %}

@@ -5,9 +5,6 @@ imports:
 parameters:
     locale: en_US
     icu_time_date_format: 'MM/dd/y hh:mm a'
-    # todo: waiting for a fix for https://github.com/Sylius/Sylius/issues/4959
-    sylius.resource_controller.request_configuration.class: LazerBall\HitTracker\CommonBundle\Controller\RequestConfiguration
-
 
 framework:
     translator:
@@ -130,6 +127,7 @@ sylius_resource:
             classes:
                 model: LazerBall\HitTracker\GameBundle\Entity\Vest
                 repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
+                form: LazerBall\HitTracker\GameBundle\Form\Type\VestType
 
         hittracker.game:
             templates: "@HitTrackerGame/Game"
@@ -137,6 +135,7 @@ sylius_resource:
                 model: LazerBall\HitTracker\GameBundle\Entity\Game
                 controller: LazerBall\HitTracker\GameBundle\Controller\GameController
                 repository: LazerBall\HitTracker\GameBundle\Entity\GameRepository
+                form: LazerBall\HitTracker\GameBundle\Form\Type\GameType
 
 nelmio_security:
     signed_cookie:

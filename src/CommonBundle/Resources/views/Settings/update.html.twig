@@ -5,10 +5,9 @@
     <h1>Settings <small>Use this form to update settings</small></h1>
     <hr />
 
-    {% set ns = app.request.attributes.get('namespace') %}
-    <form action="{{ path('hittracker_' ~ ns ~ '_settings') }}" method="post" class="form-horizontal form-settings form-settings-{{ ns }}">
+    {% set schema = app.request.attributes.get('schema') %}
+    <form action="{{ path('hittracker_' ~ schema ~ '_settings') }}" method="post" class="form-horizontal form-settings form-settings-{{ schema }}">
         {{ form_widget(form) }}
-        <input type="hidden" name="namespace" value="" />
         {{ actions.update() }}
     </form>
 {% endblock %}

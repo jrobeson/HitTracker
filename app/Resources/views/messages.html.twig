@@ -2,11 +2,15 @@
 {% if app.session.flashbag.keys is not empty %}
     <div class="row">
         <div class="col-md-12">
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
+            {% for type, flashes in app.session.flashbag.all() %}
+                {% for flash in flashes %}
                     {% set alert_auto_dismiss = type == 'success' ? 'data-auto-dismiss="2"' : '' %}
                     <div class="alert fade in alert-{{ type }}" role="alert" {{ alert_auto_dismiss|raw }}>
-                        {{ message|trans }}
+                        {% if flash is iterable %}
+                            {{ flash.message|trans(flash.parameters, 'flashes') }}
+                        {% else %}
+                            {{ flash|trans({}, 'flashes') }}
+                        {% endif %}
                         <button type="button" class="close" data-dismiss="alert">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>

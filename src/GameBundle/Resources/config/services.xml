@@ -6,10 +6,10 @@
     <services>
         <!-- game -->
         <service id="hittracker_game.settings_schema.game" class="LazerBall\HitTracker\GameBundle\Settings\GameSettingsSchema">
-            <tag name="sylius.settings_schema" namespace="game" />
+            <tag name="sylius.settings_schema" alias="game" />
         </service>
         <service id="hittracker_game.settings_schema.site" class="LazerBall\HitTracker\GameBundle\Settings\SiteSettingsSchema">
-            <tag name="sylius.settings_schema" namespace="site" />
+            <tag name="sylius.settings_schema" alias="site" />
         </service>
         <service id="hittracker_game.manager.game" class="LazerBall\HitTracker\GameBundle\GameManager">
             <argument type="service" id="hittracker.repository.game" />
@@ -20,7 +20,7 @@
             <tag name="form.type" />
         </service>
         <service id="hittracker_game.form.type.game" class="LazerBall\HitTracker\GameBundle\Form\Type\GameType">
-            <argument type="service" id="sylius.settings.manager" />
+            <argument type="service" id="sylius.settings_manager" />
             <argument type="service" id="hittracker_game.form.event_subscriber.game"/>
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game"/>
@@ -30,13 +30,13 @@
         </service>
         <!-- player -->
         <service id="hittracker_game.form.type.player" class="LazerBall\HitTracker\GameBundle\Form\Type\PlayerType">
-            <argument type="service" id="sylius.settings.manager" />
+            <argument type="service" id="sylius.settings_manager" />
             <argument type="service" id="hittracker.repository.vest" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player"/>
         </service>
         <service id="hittracker_game.form.type.player_collection" class="LazerBall\HitTracker\GameBundle\Form\Type\PlayerCollectionType">
-            <argument type="service" id="sylius.settings.manager" />
+            <argument type="service" id="sylius.settings_manager" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player_collection"/>
         </service>

@@ -1,4 +1,4 @@
-{% set game_settings = sylius_settings_all('game') %}
+{% set game_settings = sylius_settings('game') %}
 {% form_theme form '@HitTrackerGame/Game/game_form_theme.html.twig' %}
 
 {% if form.players is not empty %}

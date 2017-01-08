@@ -28,7 +28,7 @@ class PlayerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $gameSettings = $this->settingsManager->loadSettings('game');
+        $gameSettings = $this->settingsManager->load('game');
 
         $builder
             ->add('name', TextType::class, [
