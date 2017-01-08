@@ -67,16 +67,17 @@
         "league/factory-muffin-faker": "~1.0@beta"
     },
     "scripts": {
-        "post-install-cmd": [
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal",
-            "Umpirsky\\PermissionsHandler\\ScriptHandler::setPermissions"
-        ],
-        "post-update-cmd": [
+        "shared-scripts": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
+        ],
+        "post-install-cmd": [
+            "@shared-scripts",
+            "Umpirsky\\PermissionsHandler\\ScriptHandler::setPermissions"
+        ],
+        "post-update-cmd": [
+            "@shared-scripts"
         ]
     },
     "config": {
