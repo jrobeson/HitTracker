@@ -32,6 +32,8 @@ framework:
     http_method_override: true
     assets:
         #version: SomeVersionScheme
+    php_errors:
+        log: true
 
 twig:
     form_themes:
