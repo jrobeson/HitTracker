@@ -62,7 +62,7 @@ doctrine:
 
 doctrine_migrations:
     dir_name: "%kernel.root_dir%/../migrations"
-    namespace: "LazerBall\HitTracker\Migrations"
+    namespace: "LazerBall\\HitTracker\\Migrations"
 
 swiftmailer:
     transport: "%mailer_transport%"
