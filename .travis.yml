@@ -2,8 +2,6 @@ language: php
 
 php:
     - 7.0
-    - hhvm
-    - hhvm-nightly
 
 sudo: false
 cache:
@@ -20,12 +18,6 @@ env:
     matrix:
         - SYMFONY__BUILD_TYPE=hosted
         - SYMFONY__BUILD_TYPE=standalone
-
-matrix:
-    fast_finish: true
-    allow_failures:
-        - php: hhvm
-        - php: hhvm-nightly
 
 addons:
     postgresql: '9.4'
