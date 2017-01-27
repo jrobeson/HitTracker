@@ -31,15 +31,16 @@ class Version20150507061327 extends AbstractMigration
     {
         $stmts = [];
 
-        $stmts[] = 'CREATE SEQUENCE sylius_settings_parameter_id_seq INCREMENT BY 1 MINVALUE 1 START 1';
-        $stmts[] = 'CREATE TABLE sylius_settings_parameter (
-                        id INT NOT NULL, namespace VARCHAR(255) NOT NULL,
-                        name VARCHAR(255) NOT NULL,
-                        value TEXT DEFAULT NULL,
+        $stmts[] = 'CREATE SEQUENCE sylius_settings_id_seq INCREMENT BY 1 MINVALUE 1 START 1';
+        $stmts[] = 'CREATE TABLE sylius_settings (
+                        id INT NOT NULL,
+                        schema_alias VARCHAR(255) NOT NULL,
+                        namespace VARCHAR(255),
+                        parameters JSON NOT NULL,
                         PRIMARY KEY(id)
                    )';
-        $stmts[] = 'CREATE UNIQUE INDEX name_idx ON sylius_settings_parameter (namespace, name)';
-        $stmts[] = 'COMMENT ON COLUMN sylius_settings_parameter.value IS \'(DC2Type:object)\'';
+        $stmts[] = 'CREATE UNIQUE INDEX settings_idx ON sylius_settings (schema_alias, namespace)';
+
         $stmts[] = 'CREATE TABLE sessions (
                         session_id VARCHAR(128) NOT NULL,
                         session_data BYTEA NOT NULL,
