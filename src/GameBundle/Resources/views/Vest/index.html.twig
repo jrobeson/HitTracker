@@ -10,6 +10,8 @@
             <tr>
                 <th class="col-lg-1">{{ 'hittracker.vest.no'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.vest.radio_id'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.vest.unit_type'|trans }}</th>
+                <th class="col-lg-1">{{ 'hittracker.vest.zones'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.vest.status'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.date_added'|trans }}</th>
                 <th class="col-lg-1">{{ 'hittracker.options'|trans }}</th>
@@ -20,6 +22,8 @@
             <tr>
                 <td class="col-lg-1">{{ vest.no }}</td>
                 <td class="col-lg-1">{{ vest.radioId }}</td>
+                <td class="col-lg-1">{{ vest.unitType }}</td>
+                <td class="col-lg-1">{{ vest.zones }}</td>
                 <td class="col-lg-1">{{ vest.active }}</td>
                 <td class="col-lg-1">
                     {{ vest.createdAt|localizeddate(format=icu_time_date_format) }}

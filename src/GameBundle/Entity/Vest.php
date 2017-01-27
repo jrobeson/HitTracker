@@ -49,6 +49,20 @@ class Vest implements ResourceInterface
     private $radioId;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Choice(callback = "getUnitTypes")
+     */
+    private $unitType;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $zones;
+
+    /**
      * @var bool
      * @ORM\Column(type="boolean")
      */
@@ -86,6 +100,31 @@ class Vest implements ResourceInterface
     public function getNo()
     {
         return $this->no;
+    }
+
+    public function setUnitType(string $unitType)
+    {
+        $this->unitType = $unitType;
+    }
+
+    public function getUnitType() : ?string
+    {
+        return $this->unitType;
+    }
+
+    public static function getUnitTypes() : ?array
+    {
+        return ['vest', 'target'];
+    }
+
+    public function setZones(int $zones)
+    {
+        $this->zones = $zones;
+    }
+
+    public function getZones() : ?int
+    {
+        return $this->zones;
     }
 
     public function setRadioId(string $radioId)

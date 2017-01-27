@@ -83,6 +83,10 @@ hittracker.vest.no: 'Number'
 hittracker.vest.no.help: "Number printed on the vest"
 hittracker.vest.radio_id: 'Radio Id'
 hittracker.vest.radio_id.help: '8 character radio ID'
+hittracker.vest.unit_type: 'Unit Type'
+hittracker.vest.zones.help: "Type of Unit"
+hittracker.vest.zones: 'Zones'
+hittracker.vest.zones.help: "Number of zones on the unit"
 hittracker.vest.status: 'Active?'
 hittracker.vest.update: 'Update Vest'
 hittracker.vest.list: 'Vest List'

@@ -4,11 +4,14 @@ namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use LazerBall\HitTracker\GameBundle\Entity\Vest;
 
 class VestType extends AbstractType
 {
@@ -17,11 +20,30 @@ class VestType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $zones = range(1, 6);
+        $unitTypeChoices = array_combine(
+            array_map('ucfirst', Vest::getUnitTypes()),
+            Vest::getUnitTypes()
+            );
         $builder
             ->add('no', IntegerType::class, [
                 'label' => 'hittracker.vest.no',
                 'attr' => [
                     'help' => 'hittracker.vest.no.help'
+                ],
+            ])
+            ->add('unitType', ChoiceType::class, [
+                'choices'  => $unitTypeChoices,
+                'label' => 'hittracker.vest.unit_type',
+                'attr' => [
+                    'help' => 'hittracker.vest.unit_type.help'
+                ],
+            ])
+            ->add('zones', ChoiceType::class, [
+                'choices' => array_combine($zones, $zones),
+                'label' => 'hittracker.vest.zones',
+                'attr' => [
+                    'help' => 'hittracker.vest.zones.help'
                 ],
             ])
             ->add('radioId', TextType::class, [

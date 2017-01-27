@@ -67,6 +67,8 @@ class Version20150507061327 extends AbstractMigration
         $stmts[] = 'CREATE TABLE vests (
                       id SERIAL NOT NULL,
                       radio_id VARCHAR(8) NOT NULL,
+                      unit_type VARCHAR(255) NOT NULL,
+                      zones INT NOT NULL,
                       no INT NOT NULL,
                       active BOOLEAN NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
