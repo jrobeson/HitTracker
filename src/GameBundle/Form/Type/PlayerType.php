@@ -3,6 +3,7 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
+use LazerBall\HitTracker\Model\Vest;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -37,7 +38,7 @@ class PlayerType extends AbstractType
             ->add('team', HiddenType::class)
             ->add('vest', EntityType::class, [
                   'label' => 'hittracker.game.vest',
-                  'class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
+                  'class' => Vest::class,
                   'choices' => $this->vestRepository->findActiveVests(),
                   'choice_label' => 'no',
             ])

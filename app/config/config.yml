@@ -59,6 +59,13 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        mappings:
+                LazerBall\HitTracker\Model:
+                    type: annotation
+                    dir: '%kernel.root_dir%/../src/Model'
+                    is_bundle: false
+                    prefix: LazerBall\HitTracker\Model
+                    alias: HitTracker
 
 doctrine_migrations:
     dir_name: "%kernel.root_dir%/../migrations"
@@ -127,7 +134,7 @@ sylius_resource:
         hittracker.vest:
             templates: "@HitTrackerGame/Vest"
             classes:
-                model: LazerBall\HitTracker\GameBundle\Entity\Vest
+                model: LazerBall\HitTracker\Model\Vest
                 repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
                 form: LazerBall\HitTracker\GameBundle\Form\Type\VestType
 

@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use LazerBall\HitTracker\GameBundle\Entity\Vest;
+use LazerBall\HitTracker\Model\Vest;
 
 class VestType extends AbstractType
 {
@@ -71,7 +71,7 @@ class VestType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Vest',
+            'data_class' => Vest::class,
         ]);
     }
 
