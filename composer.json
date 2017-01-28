@@ -69,8 +69,7 @@
     "scripts": {
         "shared-scripts": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "rm -f bin/doctrine bin/doctrine.php bin/doctrine-dbal"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
         ],
         "post-install-cmd": [
             "@shared-scripts",
@@ -81,7 +80,6 @@
         ]
     },
     "config": {
-        "bin-dir": "bin",
         "preferred-install": "source"
     },
     "extra": {
