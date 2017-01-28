@@ -43,13 +43,13 @@
         "vlucas/phpdotenv": "^2.0",
         "nelmio/security-bundle": "^2.0",
         "psy/psysh": "^0.8",
-        "symfony/psr-http-message-bridge": "^0.2.0",
+        "symfony/psr-http-message-bridge": "^1.0",
         "zendframework/zend-diactoros": "^1.0",
         "vich/uploader-bundle": "^1.0",
-        "cekurte/environment": "^0.1.2"
+        "cekurte/environment": "^0.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.4",
+        "phpunit/phpunit": "^5.0",
         "symfony/phpunit-bridge": "^3.0",
         "phpunit/php-invoker": "^1.1",
         "behat/behat": "^3.0",
@@ -59,12 +59,12 @@
         "behat/mink-selenium2-driver": "^1.2",
         "behat/mink": "^1.6",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
-        "fzaninotto/faker": "^1.2",
-        "phpspec/phpspec": "^2.2",
-        "matthiasnoback/symfony-config-test": "^1.0",
+        "fzaninotto/faker": "^1.6",
+        "phpspec/phpspec": "^3.2",
+        "matthiasnoback/symfony-config-test": "^2.0",
         "behat/mink-zombie-driver": "^1.2",
-        "league/factory-muffin": "~3.0@beta",
-        "league/factory-muffin-faker": "~1.0@beta"
+        "league/factory-muffin": "^3.0",
+        "league/factory-muffin-faker": "^2.0"
     },
     "scripts": {
         "shared-scripts": [
