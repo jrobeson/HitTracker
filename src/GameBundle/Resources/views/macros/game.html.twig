@@ -1,8 +1,14 @@
 {% macro team_players_table(game, team) %}
+    {% set players = game.playersByTeam(team) %}
+
+    {# TODO: get the max number of zones for all players, instead of just the first #}
+    {% set fp = players|first %}
+    {% set zones = range(1, fp.vest.zones) %}
+    {% set column_count = 3 + zones|length %}
     <table class="scores team {{ team|lower|replace({' ': '-'}) }}">
         <thead>
         <tr>
-            <th colspan="6">
+            <th colspan="{{ column_count }}">
                 <strong class="text-center">
                     {{ team }}
                 </strong>
@@ -11,7 +17,7 @@
         <tr>
             <th>#</th>
             <th>{{ 'hittracker.game.player_name'|trans }}</th>
-            {% for zone in 1..3 %}
+            {% for zone in zones %}
                 <th>
                     {{ 'hittracker.game.zone_no'|trans({'%zone_no%': zone}) }}
                 </th>
@@ -22,13 +28,13 @@
         </tr>
         </thead>
         <tbody>
-        {% for player in game.playersByTeam(team) %}
+        {% for player in players%}
             <tr class="player-{{ player.id }} scores-player"  data-game-radio-id="{{ player.radioId }}">
                 <td class="player-id">
                     {{ player.vest.no }}
                 </td>
                 <td>{{ player.name }}</td>
-                {% for zone in 1..3 %}
+                {% for zone in range(1, player.vest.zones) %}
                     <td class="zone-{{ zone }}">
                         {{ player.hitsInZone(zone) }}
                     </td>
@@ -41,7 +47,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3"></td>
+                <td colspan="{{ zones|length }}"></td>
                 <td colspan="2">
                     <p class="text-right">
                         <strong>{{ 'hittracker.game.team_total'|trans }}</strong>
