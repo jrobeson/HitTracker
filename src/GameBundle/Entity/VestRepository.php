@@ -9,8 +9,12 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class VestRepository extends EntityRepository
 {
-    public function findActiveVests() : array
+    public function findActiveVests(?string $unitType = null) : array
     {
-        return $this->findBy(['active' => true], ['id' => 'ASC']);
+        $query = ['active' => true];
+        if (!empty($unitType)) {
+            $query['unitType'] = $unitType;
+        }
+        return $this->findBy($query, ['id' => 'ASC']);
     }
 }
