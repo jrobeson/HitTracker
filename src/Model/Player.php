@@ -64,25 +64,10 @@ class Player implements ResourceInterface
     private $hitPoints;
 
     /**
-     * @var int
-     * @ORM\Column(name="zone_1", type="integer")
-     * @Assert\Type(type="integer")
+     * @var array
+     * @ORM\Column(type="json_array", options={"jsonb": "true"})
      */
-    private $zone1;
-
-    /**
-     * @var int
-     * @ORM\Column(name="zone_2", type="integer")
-     * @Assert\Type(type="integer")
-     */
-    private $zone2;
-
-    /**
-     * @var int
-     * @ORM\Column(name="zone_3", type="integer")
-     * @Assert\Type(type="integer")
-     */
-    private $zone3;
+    private $zoneHits;
 
     /**
      * @var \DateTime
@@ -115,11 +100,9 @@ class Player implements ResourceInterface
         $this->team = '';
         $this->vest = $vest;
         $this->hitPoints = $hitPoints;
+        $this->zoneHits = array_fill(1, $vest->getZones(), 0);
         $this->holding = false;
 
-        $this->zone1 = 0;
-        $this->zone2 = 0;
-        $this->zone3 = 0;
     }
 
     public function getId() : int
@@ -159,9 +142,7 @@ class Player implements ResourceInterface
 
     public function hitsInZone(int $zone) :int
     {
-        $property = 'zone'.$zone;
-
-        return $this->{$property};
+        return $this->zoneHits[$zone];
     }
 
     public function setCreatedAt(\DateTime $createdAt)
@@ -230,8 +211,7 @@ class Player implements ResourceInterface
             return;
         }
 
-        $zone = 'zone'.$zone;
-        $this->{$zone} = $this->{$zone} + 1;
+        $this->zoneHits[$zone]++;
 
         $hitPoints = $this->getHitPoints() - $hitPoints;
         $this->setHitPoints($hitPoints);

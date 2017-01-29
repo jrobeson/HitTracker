@@ -55,9 +55,7 @@ class Version20150507061327 extends AbstractMigration
                       team VARCHAR(255) DEFAULT NULL,
                       name VARCHAR(255) NOT NULL,
                       hit_points INT NOT NULL,
-                      zone_1 INT NOT NULL,
-                      zone_2 INT NOT NULL,
-                      zone_3 INT NOT NULL,
+                      zone_hits JSONB NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL,
                       PRIMARY KEY(id)
