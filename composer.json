@@ -17,7 +17,8 @@
     "require": {
         "php": ">=7.1",
         "symfony/symfony": "^3.2",
-        "doctrine/orm": "^2.5",
+        "doctrine/orm": "2.6.x-dev@dev",
+        "doctrine/dbal": "2.6.x-dev@dev",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/migrations": "^1.4",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0cd2a39ddd488cef596f43ac3bc0b68",
+    "content-hash": "1623d354ac3a1bd92dfc7012098bd3ff",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -479,24 +479,25 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "fc376f7a61498e18520cd6fa083752a4ca08072b"
+                "reference": "91d1eebf5b2de78bf8c430afccad57b7e16e531d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fc376f7a61498e18520cd6fa083752a4ca08072b",
-                "reference": "fc376f7a61498e18520cd6fa083752a4ca08072b",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/91d1eebf5b2de78bf8c430afccad57b7e16e531d",
+                "reference": "91d1eebf5b2de78bf8c430afccad57b7e16e531d",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": ">=2.4,<2.8-dev",
-                "php": ">=5.3.2"
+                "doctrine/common": "^2.7.1",
+                "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*",
+                "phpunit/phpunit": "^5.4.6",
+                "phpunit/phpunit-mock-objects": "!=3.2.4,!=3.2.5",
                 "symfony/console": "2.*||^3.0"
             },
             "suggest": {
@@ -508,7 +509,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5.x-dev"
+                    "dev-master": "2.6.x-dev"
                 }
             },
             "autoload": {
@@ -546,7 +547,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-01-23T23:17:10+00:00"
+            "time": "2017-01-27 23:18:19"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1029,38 +1030,37 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "e6c434196c8ef058239aaa0724b4aadb0107940b"
+                "reference": "e42d0bdda539bab4261b933e6a1e55b4b30872d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e6c434196c8ef058239aaa0724b4aadb0107940b",
-                "reference": "e6c434196c8ef058239aaa0724b4aadb0107940b",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e42d0bdda539bab4261b933e6a1e55b4b30872d9",
+                "reference": "e42d0bdda539bab4261b933e6a1e55b4b30872d9",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "~1.4",
                 "doctrine/collections": "~1.2",
-                "doctrine/common": ">=2.5-dev,<2.8-dev",
-                "doctrine/dbal": ">=2.5-dev,<2.6-dev",
+                "doctrine/common": "^2.7.1",
+                "doctrine/dbal": ">=2.5-dev,<2.7-dev",
                 "doctrine/instantiator": "~1.0.1",
                 "ext-pdo": "*",
-                "php": ">=5.4",
+                "php": "^7.0",
                 "symfony/console": "~2.5|~3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "^5.4",
                 "symfony/yaml": "~2.3|~3.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
             "bin": [
-                "bin/doctrine",
-                "bin/doctrine.php"
+                "bin/doctrine"
             ],
             "type": "library",
             "extra": {
@@ -1069,8 +1069,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\ORM\\": "lib/"
+                "psr-4": {
+                    "Doctrine\\ORM\\": "lib/Doctrine/ORM"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1093,6 +1093,10 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
                 }
             ],
             "description": "Object-Relational-Mapper for PHP",
@@ -1101,7 +1105,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2016-12-18T15:42:34+00:00"
+            "time": "2017-01-27 08:30:38"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -7258,6 +7262,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "doctrine/orm": 20,
+        "doctrine/dbal": 20,
         "sylius/ui-bundle": 10,
         "sylius/resource-bundle": 10,
         "sylius/resource": 10,
