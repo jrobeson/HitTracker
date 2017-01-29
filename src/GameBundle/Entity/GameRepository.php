@@ -27,7 +27,7 @@ class GameRepository extends EntityRepository
     {
         $qb = $this->_em->createQueryBuilder();
         $qb->select('g')
-            ->from('HitTrackerGameBundle:Game', 'g')
+            ->from('HitTracker:Game', 'g')
             ->orderBy('g.createdAt', 'DESC')
             ->setMaxResults($howMany);
         if ($arena) {

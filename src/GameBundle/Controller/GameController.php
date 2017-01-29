@@ -24,7 +24,7 @@ class GameController extends ResourceController
         $vests = $this->get('hittracker.repository.vest')->findActiveVests();
 
         foreach ($vests as $vest) {
-            $player = new \LazerBall\HitTracker\GameBundle\Entity\Player('', $vest);
+            $player = new \LazerBall\HitTracker\Model\Player('', $vest);
             $newResource->addPlayer($player);
         }
 

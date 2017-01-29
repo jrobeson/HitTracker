@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace LazerBall\HitTracker\GameBundle\Entity;
+namespace LazerBall\HitTracker\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

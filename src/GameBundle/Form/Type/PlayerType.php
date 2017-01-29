@@ -3,6 +3,7 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
+use LazerBall\HitTracker\Model\Player;
 use LazerBall\HitTracker\Model\Vest;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -59,7 +60,7 @@ class PlayerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'LazerBall\HitTracker\GameBundle\Entity\Player',
+            'data_class' => Player::class,
         ]);
     }
 }
