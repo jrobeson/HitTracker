@@ -3,7 +3,6 @@
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
 use FOS\RestBundle\View\View;
-use GuzzleHttp\Client;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -120,18 +119,10 @@ class GameController extends ResourceController
         return $this->viewHandler->handle($configuration, $view);
     }
 
-    /**
-     * @param       $event
-     * @param array $data
-     */
-    public function publish($event, array $data)
+    public function publish(string $event, array $data)
     {
-        $url = $this->container->getParameter('hittracker_game.event_handlers.nginx_push_stream.url');
-        $client = new Client();
-        $client->post($url, [
-            'headers' => ['Event-Type' => $event],
-            'json'    => $data,
-        ]);
+        $pubSub = $this->get('hittracker_game.pubsub');
+        $pubSub->publish($event, $data);
     }
 
     /**
