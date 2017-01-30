@@ -38,7 +38,7 @@
         "c33s/static-page-content-bundle": "dev-update-symfony-deps",
         "sylius/settings-bundle": "dev-symfony-3.2-compat",
         "sylius/registry": "^1.0@beta",
-        "guzzlehttp/guzzle": "^5.0",
+        "guzzlehttp/guzzle": "^6.0",
         "umpirsky/composer-permissions-handler": "^1.3",
         "nesbot/Carbon": "^1.18",
         "vlucas/phpdotenv": "^2.0",
