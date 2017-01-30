@@ -56,12 +56,6 @@ class GameController extends ResourceController
 
             $this->flashHelper->addSuccessFlash($configuration, ResourceActions::CREATE, $newResource);
 
-            $data = [
-                'arena' => $newResource->getArena(),
-                'created_at' => $newResource->getCreatedAt()->getTimestamp(),
-                'ends_at' => $newResource->getEndsAt()->getTimestamp(),
-            ];
-            $this->publish('game.start', $data);
 
             return $this->redirectHandler->redirectToResource($configuration, $newResource);
         }
