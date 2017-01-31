@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GameType extends AbstractType
@@ -45,6 +46,12 @@ class GameType extends AbstractType
             ->add('game_length', IntegerType::class, [
                 'label' => 'hittracker.game.length_in_minutes',
                 'data' => $gameSettings->get('game_length'),
+            ])
+            ->add('game_type', ChoiceType::class, [
+                'choices' => array_combine(Game::getHumanGameTypes(), Game::getGameTypes()),
+                'label' => 'hittracker.game.type',
+                'data' => $gameSettings->get('game_type'),
+                'property_path' => 'gameType'
             ])
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
@@ -94,6 +101,9 @@ class GameType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Game::class,
+            'empty_data' => function (FormInterface $form) {
+
+            },
         ]);
     }
 

@@ -106,6 +106,13 @@ class Game implements ResourceInterface
      */
     protected $gameLength;
 
+    /**
+     * @var string
+     * @Assert\Type("string")
+     * @Assert\NotBlank()
+     */
+    protected $gameType;
+
     public function __construct()
     {
         $this->arena = 1;
@@ -197,6 +204,30 @@ class Game implements ResourceInterface
         }
 
         return $this->gameLength;
+    }
+
+    public static function getHumanGameTypes() : array
+    {
+        if (empty(self::getGameTypes())) return [];
+
+        return array_map(function($t) {
+                return ucwords(str_replace('_', ' ', $t));
+        }, self::getGameTypes());
+    }
+
+    public static function getGameTypes() : array
+    {
+        return ['team', 'target'];
+    }
+
+    public function getGameType() : ?string
+    {
+        return $this->gameType;
+    }
+
+    public function setGameType(string $gameType)
+    {
+        $this->gameType = $gameType;
     }
 
     public function isActive() : bool

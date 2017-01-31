@@ -4,10 +4,12 @@
  */
 namespace LazerBall\HitTracker\GameBundle\Settings;
 
+use LazerBall\HitTracker\Model\Game;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -22,12 +24,14 @@ class GameSettingsSchema implements SchemaInterface
         $builder
             ->setDefaults([
                 'game_length'  => 10,
+                'game_type'  => 'team',
                 'player_count' => 20,
                 'team_player_count' => 10,
                 'player_hit_points' => 500,
                 'player_hit_points_deducted' => 10,
             ])
             ->setAllowedTypes('game_length', ['int'])
+            ->setAllowedTypes('game_type', ['string'])
             ->setAllowedTypes('player_count', ['int'])
             ->setAllowedTypes('team_player_count', ['int'])
             ->setAllowedTypes('player_hit_points', ['int'])
@@ -48,6 +52,13 @@ class GameSettingsSchema implements SchemaInterface
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.length.help'
+                ],
+            ])
+            ->add('game_type', ChoiceType::class, [
+                'choices' => array_combine(Game::getHumanGameTypes(), Game::getGameTypes()),
+                'label' => 'hittracker.settings.game.type',
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.type.help'
                 ],
             ])
             ->add('player_count', IntegerType::class, [
