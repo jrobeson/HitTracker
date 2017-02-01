@@ -41,5 +41,9 @@
             <tag name="kernel.event_listener" event="kernel.request"/>
             <tag name="remove-when-missing" service="form.csrf_provider"/>
         </service>
+        <service id="hittracker.common.twig.array_split_extension" class="LazerBall\HitTracker\CommonBundle\Twig\ArraySplitExtension">
+            <tag name="twig.extension"/>
+        </service>
+
     </services>
 </container>
