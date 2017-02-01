@@ -67,16 +67,7 @@ class GameType extends AbstractType
                 'label' => 'hittracker.game.hit_points_deducted_per_hit',
                 'data' => $gameSettings->get('player_hit_points_deducted'),
             ])
-            ->add('team1', TextType::class, [
-                'label' => '',
-                'mapped' => false,
-                'data' => 'Team 1',
-            ])
-            ->add('team2', TextType::class, [
-                'label' => '',
-                'mapped' => false,
-                'data' => 'Team 2',
-            ])
+
             ->add('reload_players', ListGamesType::class, [
                 'label' => 'hittracker.game.load_players_from_previous_games',
                 'mapped' => false,
@@ -92,6 +83,13 @@ class GameType extends AbstractType
             ])
             ->addEventSubscriber($this->eventSubscriber)
         ;
+        foreach (range(1, $gameSettings->get('team_count')) as $teamNo) {
+            $builder->add('team' . $teamNo, TextType::class, [
+                'label' => '',
+                'mapped' => false,
+                'data' => 'Team ' . $teamNo,
+            ]);
+        }
     }
 
     /**

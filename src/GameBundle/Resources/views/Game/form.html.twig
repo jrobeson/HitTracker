@@ -28,8 +28,8 @@
     </div>
 </div>
 <div class="row players" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
-    {% set team_count = form.players.count / 2 %}
-    {% for team in form.players|batch(team_count)%}
+    {% set team_count = game_settings.get('team_count') %}
+    {% for team in form.players|partition(team_count) %}
         <div class="col-lg-6 new-game-teams">
             <div class="row">
                 <div class="col-lg-2">
