@@ -76,7 +76,7 @@ class Game implements ResourceInterface
      * @var Collection
      *
      * @Assert\Valid(traverse=true)
-     * @Assert\Count(min="2",
+     * @Assert\Count(min="1",
      *               minMessage="hittracker.game.not_enough_players"
      * )
      * @Assert\All(constraints={
