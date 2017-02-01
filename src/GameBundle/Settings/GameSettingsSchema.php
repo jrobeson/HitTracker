@@ -26,6 +26,7 @@ class GameSettingsSchema implements SchemaInterface
                 'game_length'  => 10,
                 'game_type'  => 'team',
                 'player_count' => 20,
+                'team_count' => 2,
                 'team_player_count' => 10,
                 'player_hit_points' => 500,
                 'player_hit_points_deducted' => 10,
@@ -33,6 +34,7 @@ class GameSettingsSchema implements SchemaInterface
             ->setAllowedTypes('game_length', ['int'])
             ->setAllowedTypes('game_type', ['string'])
             ->setAllowedTypes('player_count', ['int'])
+            ->setAllowedTypes('team_count', ['int'])
             ->setAllowedTypes('team_player_count', ['int'])
             ->setAllowedTypes('player_hit_points', ['int'])
             ->setAllowedTypes('player_hit_points_deducted', ['int'])
@@ -67,6 +69,13 @@ class GameSettingsSchema implements SchemaInterface
                 'attr' => [
                     'data-help' => 'hittracker.settings.game.players_per_game.help'
                  ],
+            ])
+            ->add('team_count', IntegerType::class, [
+                'label' => 'hittracker.settings.game.team_count',
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.team_count.help'
+                ],
             ])
             ->add('team_player_count', IntegerType::class, [
                 'label' => 'hittracker.settings.game.players_per_team',
