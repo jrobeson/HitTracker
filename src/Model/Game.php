@@ -109,7 +109,7 @@ class Game implements ResourceInterface
     /**
      * @var string
      * @Assert\Type("string")
-     * @Assert\NotBlank()
+     * @Assert\Choice(callback="getGameTypes")
      */
     protected $gameType;
 
