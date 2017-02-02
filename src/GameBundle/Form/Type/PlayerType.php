@@ -37,7 +37,7 @@ class PlayerType extends AbstractType
                   'label' => 'hittracker.game.player_name'
             ])
             ->add('team', HiddenType::class)
-            ->add('vest', EntityType::class, [
+            ->add('unit', EntityType::class, [
                   'label' => 'hittracker.game.vest',
                   'class' => Vest::class,
                   'choices' => $this->vestRepository->findActiveVests(),

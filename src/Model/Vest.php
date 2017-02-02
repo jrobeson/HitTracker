@@ -11,12 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @UniqueEntity("radioId")
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="vests",
+ * @ORM\Table(name="units",
  *            uniqueConstraints={
- *                @ORM\UniqueConstraint(name="idx_vest_radio_id",
+ *                @ORM\UniqueConstraint(name="idx_unit_radio_id",
  *                                      columns={"radio_id"}
  *                ),
- *               @ORM\UniqueConstraint(name="idx_vest_no",
+ *               @ORM\UniqueConstraint(name="idx_unit_no",
  *                                      columns={"no"}
  *                ),
  *            }

@@ -19,13 +19,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="game_players",
  *            uniqueConstraints={
- *                @ORM\UniqueConstraint(name="idx_player_game_vest",
- *                                      columns={"game_id", "vest_id"}
+ *                @ORM\UniqueConstraint(name="idx_player_game_unit",
+ *                                      columns={"game_id", "unit_id"}
  *                )
  *            },
  *            indexes={
  *                @ORM\Index(name="idx_player_game_id", columns={"game_id"}),
- *                @ORM\Index(name="idx_player_vest_id", columns={"vest_id"})
+ *                @ORM\Index(name="idx_player_unit_id", columns={"unit_id"})
  *            }
  * )
  */
@@ -92,15 +92,15 @@ class Player implements ResourceInterface
      * @var Vest
      * @ORM\ManyToOne(targetEntity="LazerBall\HitTracker\Model\Vest")
      */
-    protected $vest;
+    protected $unit;
 
-    public function __construct(string $name = '', Vest $vest = null, int $hitPoints = 0)
+    public function __construct(string $name = '', Vest $unit = null, int $hitPoints = 0)
     {
         $this->name = $name;
         $this->team = '';
-        $this->vest = $vest;
+        $this->unit = $unit;
         $this->hitPoints = $hitPoints;
-        $this->zoneHits = array_fill(1, $vest->getZones(), 0);
+        $this->zoneHits = array_fill(1, $unit->getZones(), 0);
         $this->holding = false;
 
     }
@@ -170,14 +170,14 @@ class Player implements ResourceInterface
         $this->game = $game;
     }
 
-    public function setVest(Vest $vest)
+    public function setUnit(Vest $unit)
     {
-        $this->vest = $vest;
+        $this->unit = $unit;
     }
 
-    public function getVest() : Vest
+    public function getUnit() : Vest
     {
-        return $this->vest;
+        return $this->unit;
     }
 
     /** @ORM\PrePersist */
@@ -199,7 +199,7 @@ class Player implements ResourceInterface
      */
     public function getRadioId()
     {
-        $this->getVest()->getRadioId();
+        $this->getUnit()->getRadioId();
     }
 
     /**

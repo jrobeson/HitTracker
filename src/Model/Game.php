@@ -277,7 +277,7 @@ class Game implements ResourceInterface
     public function getPlayerByRadioId(string $radioId)
     {
         $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
-            return $player->getVest()->getRadioId() == $radioId;
+            return $player->getUnit()->getRadioId() == $radioId;
         });
 
         return $players->first();
