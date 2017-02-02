@@ -30,6 +30,7 @@ class GameSettingsSchema implements SchemaInterface
                 'team_player_count' => 10,
                 'player_hit_points' => 500,
                 'player_hit_points_deducted' => 10,
+                'player_score_per_hit' => 10,
             ])
             ->setAllowedTypes('game_length', ['int'])
             ->setAllowedTypes('game_type', ['string'])
@@ -38,6 +39,7 @@ class GameSettingsSchema implements SchemaInterface
             ->setAllowedTypes('team_player_count', ['int'])
             ->setAllowedTypes('player_hit_points', ['int'])
             ->setAllowedTypes('player_hit_points_deducted', ['int'])
+            ->setAllowedTypes('player_score_per_hit', ['int'])
         ;
     }
 
@@ -98,6 +100,14 @@ class GameSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.game.hit_points_deducted_per_hit.help'
                 ],
             ])
+            ->add('player_score_per_hit', IntegerType::class, [
+                'label' => 'hittracker.settings.game.player_score_per_hit',
+                'constraints' => [new Assert\GreaterThan(['value' => 0])],
+                'attr' => [
+                    'data-help' => 'hittracker.settings.game.player_score_per_hit.help'
+                ],
+            ])
+
         ;
     }
 }
