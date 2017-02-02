@@ -108,7 +108,7 @@ class Game implements ResourceInterface
 
     /**
      * @var string
-     * @Assert\Type("string")
+     * @ORM\Column(type="string")
      * @Assert\Choice(callback="getGameTypes")
      */
     protected $gameType;

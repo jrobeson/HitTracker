@@ -80,6 +80,7 @@ class Version20150507061327 extends AbstractMigration
         $stmts[] = 'CREATE TABLE games (
                       id SERIAL NOT NULL,
                       arena INT NOT NULL,
+                      game_type VARCHAR(255) NOT NULL,
                       player_hit_points INT NOT NULL,
                       player_hit_points_deducted INT NOT NULL,
                       ends_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
