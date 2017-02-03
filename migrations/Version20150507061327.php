@@ -77,7 +77,7 @@ class Version20150507061327 extends AbstractMigration
                       PRIMARY KEY(id)
                   )';
         $stmts[] = 'CREATE UNIQUE INDEX idx_unit_radio_id ON units (radio_id)';
-        $stmts[] = 'CREATE UNIQUE INDEX idx_units_no ON units (no)';
+        $stmts[] = 'CREATE UNIQUE INDEX idx_unit_no ON units (no)';
         $stmts[] = 'CREATE TABLE games (
                       id SERIAL NOT NULL,
                       arena INT NOT NULL,
