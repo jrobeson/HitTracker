@@ -154,8 +154,6 @@ sylius_resource:
 nelmio_security:
     signed_cookie:
         names: ['*']
-    encrypted_cookie:
-        names: ['*']
     clickjacking:
         paths:
             '^/games/active': SAMEORIGIN
