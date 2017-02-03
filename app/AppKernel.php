@@ -58,6 +58,7 @@ abstract class AppKernel extends Kernel
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
