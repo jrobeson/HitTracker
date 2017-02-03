@@ -69,7 +69,7 @@ class GameFormSubscriber implements EventSubscriberInterface
 
         foreach ($game['players'] as $k => $v) {
             if (empty($v['hitPoints'])) {
-                $game['players'][$k]['hitPoints'] = $game['playerHitPoints'];
+                $game['players'][$k]['hitPoints'] = $game['settings']['playerHitPoints'];
             }
         }
         $event->setData($game);

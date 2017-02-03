@@ -3,6 +3,7 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use LazerBall\HitTracker\Model\Game;
+use LazerBall\HitTracker\GameBundle\Form\Type\GameSettingsType;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
@@ -56,20 +57,8 @@ class GameType extends AbstractType
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
             ])
-            ->add('playerHitPoints', IntegerType::class, [
-                'label' => 'hittracker.game.hit_points_per_player',
-                'data' => $gameSettings->get('player_hit_points'),
-                'attr' => [
-                    'step' => $gameSettings->get('player_hit_points_deducted'),
-                 ],
-            ])
-            ->add('playerHitPointsDeducted', IntegerType::class, [
-                'label' => 'hittracker.game.hit_points_deducted_per_hit',
-                'data' => $gameSettings->get('player_hit_points_deducted'),
-            ])
-            ->add('playerScorePerHit', IntegerType::class, [
-                'label' => 'hittracker.game.player_score_per_hit',
-                'data' => $gameSettings->get('player_score_per_hit'),
+            ->add('settings', GameSettingsType::class, [
+                'label' => 'Settings',
             ])
             ->add('reload_players', ListGamesType::class, [
                 'label' => 'hittracker.game.load_players_from_previous_games',

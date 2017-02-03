@@ -25,6 +25,12 @@
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game"/>
         </service>
+        <service id="hittracker_game.form.type.game_settings" class="LazerBall\HitTracker\GameBundle\Form\Type\GameSettingsType">
+            <argument type="service" id="sylius.settings_manager" />
+            <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
+            <tag name="form.type" alias="hittracker_game_settings"/>
+        </service>
+
         <service id="hittracker_game.form.event_subscriber.game" class="LazerBall\HitTracker\GameBundle\EventListener\GameFormSubscriber">
             <argument type="service" id="hittracker.repository.game" />
         </service>

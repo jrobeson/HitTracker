@@ -38,38 +38,8 @@ class Game implements ResourceInterface
      */
     private $arena;
 
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     * @Assert\Type("integer")
-     * @Assert\GreaterThan(
-     *      value=0,
-     *      message="hittracker.game.not_enough_hit_points"
-     * )
-     */
-    private $playerHitPoints;
-
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     * @Assert\Type("integer")
-     * @Assert\GreaterThan(
-     *      value=0,
-     *      message="hittracker.game.not_enough_deducted_hit_points"
-     * )
-     */
-    private $playerHitPointsDeducted;
-
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     * @Assert\Type("integer")
-     * @Assert\GreaterThan(
-     *      value=0,
-     *      message="hittracker.game.score.must_not_be_empty"
-     * )
-     */
-    private $playerScorePerHit;
+    /** @ORM\Column(type="json_document", options={"jsonb": "true"}) */
+    private $settings;
 
     /**
      * @var \DateTime
@@ -129,9 +99,7 @@ class Game implements ResourceInterface
         $this->arena = 1;
         $this->players = new ArrayCollection();
         $this->gameLength = [0, 0];
-        $this->playerHitPoints = 0;
-        $this->playerHitPointsDeducted = 0;
-        $this->playerScorePerHit = 0;
+        $this->settings = new GameSettings();
     }
 
     public function getId() : int
@@ -147,36 +115,6 @@ class Game implements ResourceInterface
     public function getArena() : int
     {
         return $this->arena;
-    }
-
-    public function setPlayerHitPoints(int $playerHitPoints)
-    {
-        $this->playerHitPoints = $playerHitPoints;
-    }
-
-    public function getPlayerHitPoints() : int
-    {
-        return $this->playerHitPoints;
-    }
-
-    public function setPlayerHitPointsDeducted(int $playerHitPointsDeducted)
-    {
-        $this->playerHitPointsDeducted = $playerHitPointsDeducted;
-    }
-
-    public function getPlayerHitPointsDeducted() : int
-    {
-        return $this->playerHitPointsDeducted;
-    }
-
-    public function setPlayerScorePerHit(int $playerScorePerHit)
-    {
-        $this->playerScorePerHit = $playerScorePerHit;
-    }
-
-    public function getPlayerScorePerHit() : int
-    {
-        return $this->playerScorePerHit;
     }
 
     public function setEndsAt(\DateTime $endsAt)
@@ -250,6 +188,16 @@ class Game implements ResourceInterface
     public function setGameType(string $gameType)
     {
         $this->gameType = $gameType;
+    }
+
+    public function getSettings() : GameSettings
+    {
+        return $this->settings;
+    }
+
+    public function setSettings(GameSettings $settings)
+    {
+        $this->settings = $settings;
     }
 
     public function isActive() : bool
