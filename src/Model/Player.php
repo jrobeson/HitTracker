@@ -10,8 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @UniqueEntity(fields={"game", "vest"},
- *               message="hittracker.player.unique_vest_required"
+ * @UniqueEntity(fields={"game", "unit"},
+ *               ignoreNull="true",
+ *               message="hittracker.player.unique_unit_required"
  * )
  * @UniqueEntity(fields={"game", "name"},
  *               message="hittracker.game.unique_name_required"
@@ -48,7 +49,7 @@ class Player implements ResourceInterface
     /**
      * @var string
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -205,7 +206,7 @@ class Player implements ResourceInterface
     }
 
     /**
-     * Get Vest Radio Id
+     * Get Unit Radio Id
      *
      * @return string
      */

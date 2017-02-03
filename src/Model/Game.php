@@ -92,7 +92,7 @@ class Game implements ResourceInterface
      * )
      * @Assert\All(constraints={
      *     @CommonAssert\UniqueCollectionField(
-     *         propertyPath="vest",
+     *         propertyPath="unit",
      *         message="hittracker.game.unique_vests_required")
      * })
      * @Assert\All(constraints={
