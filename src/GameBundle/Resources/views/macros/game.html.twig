@@ -5,6 +5,12 @@
     {% set fp = players|first %}
     {% set zones = range(1, fp.unit.zones) %}
     {% set column_count = 3 + zones|length %}
+    {% set show_hp = false %}
+    {% set show_scores = true %}
+    {% if game.gameType != 'target' %}
+        {% set show_hp = true %}
+        {% set show_scores = false %}
+    {% endif %}
     <table class="scores team {{ team|lower|replace({' ': '-'}) }}">
         <thead>
         <tr>
@@ -22,9 +28,16 @@
                     {{ 'hittracker.game.zone_no'|trans({'%zone_no%': zone}) }}
                 </th>
             {% endfor %}
+            {% if show_hp %}
             <th class="player-total">
                 {{ 'hittracker.game.hit_points'|trans }}
             </th>
+            {% endif %}
+            {% if show_scores %}
+            <th class="player-score">
+                {{ 'hittracker.game.score'|trans }}
+            </th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
@@ -39,9 +52,17 @@
                         {{ player.hitsInZone(zone) }}
                     </td>
                 {% endfor %}
+                {% if show_hp %}
                 <td class="player-hit-points">
                     {{ player.hitPoints }}
                 </td>
+                {%endif %}
+                {% if show_scores %}
+                <td class="player-score">
+                    {{ player.score }}
+                </td>
+                {% endif %}
+
             </tr>
         {% endfor %}
         </tbody>
@@ -53,9 +74,16 @@
                         <strong>{{ 'hittracker.game.team_total'|trans }}</strong>
                     </p>
                 </td>
-                <td class="team-total">
+                {% if show_scores %}
+                <td class="team-total-score">
+                    {{ game.teamScore(team) }}
+                </td>
+                {% endif %}
+                {% if show_hp %}
+                <td class="team-total-hp">
                     {{ game.teamHitPoints(team) }}
                 </td>
+                {% endif %}
             </tr>
         </tfoot>
     </table>

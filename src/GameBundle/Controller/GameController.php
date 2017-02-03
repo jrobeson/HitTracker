@@ -202,7 +202,7 @@ class GameController extends ResourceController
                     if (isset($data['zone'])) {
                         $zone = $data['zone'];
                     }
-                    $player->hit($zone, $game->getPlayerHitPointsDeducted());
+                    $player->hit($zone, $game->getPlayerScorePerHit(), $game->getPlayerHitPointsDeducted());
                     $this->notify('hit', $game, $player, $zone);
                     break;
             }
@@ -228,7 +228,9 @@ class GameController extends ResourceController
 
         if ('hit' == $event) {
             $data['target_player']['hit_points'] = $player->getHitPoints();
+            $data['target_player']['score'] = $player->getScore();
             $data['target_team_hit_points'] = $game->getTeamHitPoints($player->getTeam());
+            $data['target_team_score'] = $game->getTeamScore($player->getTeam());
         }
         if ($zone) {
             $data['target_player']['zone_hits'] = $player->hitsInZone($zone);

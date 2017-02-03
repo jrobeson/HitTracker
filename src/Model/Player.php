@@ -55,11 +55,6 @@ class Player implements ResourceInterface
     /**
      * @var int
      * @ORM\Column(type="integer")
-     * @Assert\Type(type="integer")
-     * @Assert\GreaterThanOrEqual(
-     *      value=0,
-     *      message="hittracker.game.not_enough_hit_points"
-     * )
      */
     private $hitPoints;
 
@@ -68,6 +63,12 @@ class Player implements ResourceInterface
      * @ORM\Column(type="json_array", options={"jsonb": "true"})
      */
     private $zoneHits;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $score;
 
     /**
      * @var \DateTime
@@ -100,6 +101,7 @@ class Player implements ResourceInterface
         $this->team = '';
         $this->unit = $unit;
         $this->hitPoints = $hitPoints;
+        $this->score = 0;
         $this->zoneHits = array_fill(1, $unit->getZones(), 0);
         $this->holding = false;
 
@@ -138,6 +140,16 @@ class Player implements ResourceInterface
     public function getHitPoints() : int
     {
         return $this->hitPoints;
+    }
+
+    public function setScore(int $score)
+    {
+        $this->score = $score;
+    }
+
+    public function getScore() : int
+    {
+        return $this->score;
     }
 
     public function hitsInZone(int $zone) :int
@@ -205,15 +217,24 @@ class Player implements ResourceInterface
     /**
      * Hit a zone
      */
-    public function hit(int $zone, int $hitPoints)
+    public function hit(int $zone, int $score = null, int $hitPoints = null)
     {
-        if (0 >= $this->getHitPoints()) {
-            return;
+        // @todo don't depend on unit type here, it's a game type issue
+        $handleHitPoints = $this->getUnit()->getUnitType() == 'vest';
+        if ($handleHitPoints) {
+            if (0 >= $this->getHitPoints()) {
+                return;
+            }
+            $hitPoints = $this->getHitPoints() - $hitPoints;
+             $this->setHitPoints($hitPoints);
+
+        }
+
+        if ($score) {
+            $score = $this->getScore() + $score;
+            $this->setScore($score);
         }
 
         $this->zoneHits[$zone]++;
-
-        $hitPoints = $this->getHitPoints() - $hitPoints;
-        $this->setHitPoints($hitPoints);
     }
 }

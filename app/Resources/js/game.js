@@ -92,8 +92,14 @@ $(document).ready(function () {
             if (targetPlayer.hit_points) {
                 $(`.player-${targetPlayer.id} .player-hit-points`).text(targetPlayer.hit_points);
                 let team = targetPlayer.team.replace(' ', '-').toLowerCase();
-                $(`.${team} .team-total`).text(hit.target_team_hit_points);
+                $(`.${team} .team-total-hp`).text(hit.target_team_hit_points);
             }
+            if (targetPlayer.score) {
+                $(`.player-${targetPlayer.id} .player-score`).text(targetPlayer.score);
+                let team = targetPlayer.team.replace(' ', '-').toLowerCase();
+                $(`.${team} .team-total-score`).text(hit.target_team_score);
+            }
+
         });
 
         initCountdown($('#game-time-countdown'));

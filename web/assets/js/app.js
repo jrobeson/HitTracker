@@ -12872,17 +12872,17 @@ colors = jQuery.Color.names = {
 /*!
  * The Final Countdown for jQuery v2.0.5 (http://hilios.github.io/jQuery.countdown/)
  * Copyright (c) 2015 Edson Hilios
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
  * the Software, and to permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -13276,20 +13276,26 @@ $(document).ready(function () {
             queueActivity('<li>Game Ends</li>');
         });
 
-        source.addEventListener('game.hit', function (e) {
-            var eventData = $.parseJSON(e.data);
-            var hit = eventData.content;
-            var targetPlayer = hit.target_player;
+        source.addEventListener('game.hit', function(e) {
+            let eventData = $.parseJSON(e.data);
+            let hit = eventData.content;
+            let targetPlayer = hit.target_player;
 
             //queueActivity(`<li>${player.name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
             if (targetPlayer.zone_hits) {
-                pushHit('.player-' + targetPlayer.id + ' .zone-' + targetPlayer.zone, targetPlayer.zone_hits);
+                pushHit(`.player-${targetPlayer.id} .zone-${targetPlayer.zone}`, targetPlayer.zone_hits);
             }
             if (targetPlayer.hit_points) {
-                $('.player-' + targetPlayer.id + ' .player-hit-points').text(targetPlayer.hit_points);
-                var team = targetPlayer.team.replace(' ', '-').toLowerCase();
-                $('.' + team + ' .team-total').text(hit.target_team_hit_points);
+                $(`.player-${targetPlayer.id} .player-hit-points`).text(targetPlayer.hit_points);
+                let team = targetPlayer.team.replace(' ', '-').toLowerCase();
+                $(`.${team} .team-total-hp`).text(hit.target_team_hit_points);
             }
+            if (targetPlayer.score) {
+                $(`.player-${targetPlayer.id} .player-score`).text(targetPlayer.score);
+                let team = targetPlayer.team.replace(' ', '-').toLowerCase();
+                $(`.${team} .team-total-score`).text(hit.target_team_score);
+            }
+
         });
 
         initCountdown($('#game-time-countdown'));

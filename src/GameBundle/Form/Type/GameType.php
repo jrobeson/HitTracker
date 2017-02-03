@@ -67,7 +67,10 @@ class GameType extends AbstractType
                 'label' => 'hittracker.game.hit_points_deducted_per_hit',
                 'data' => $gameSettings->get('player_hit_points_deducted'),
             ])
-
+            ->add('playerScorePerHit', IntegerType::class, [
+                'label' => 'hittracker.game.player_score_per_hit',
+                'data' => $gameSettings->get('player_score_per_hit'),
+            ])
             ->add('reload_players', ListGamesType::class, [
                 'label' => 'hittracker.game.load_players_from_previous_games',
                 'mapped' => false,

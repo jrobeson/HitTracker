@@ -55,6 +55,7 @@ class Version20150507061327 extends AbstractMigration
                       team VARCHAR(255) DEFAULT NULL,
                       name VARCHAR(255) NOT NULL,
                       hit_points INT NOT NULL,
+                      score INT NOT NULL,
                       zone_hits JSONB NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL,
@@ -83,6 +84,7 @@ class Version20150507061327 extends AbstractMigration
                       game_type VARCHAR(255) NOT NULL,
                       player_hit_points INT NOT NULL,
                       player_hit_points_deducted INT NOT NULL,
+                      player_score_per_hit INT NOT NULL,
                       ends_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       PRIMARY KEY(id)

@@ -61,6 +61,17 @@ class Game implements ResourceInterface
     private $playerHitPointsDeducted;
 
     /**
+     * @var int
+     * @ORM\Column(type="integer")
+     * @Assert\Type("integer")
+     * @Assert\GreaterThan(
+     *      value=0,
+     *      message="hittracker.game.score.must_not_be_empty"
+     * )
+     */
+    private $playerScorePerHit;
+
+    /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
@@ -120,6 +131,7 @@ class Game implements ResourceInterface
         $this->gameLength = [0, 0];
         $this->playerHitPoints = 0;
         $this->playerHitPointsDeducted = 0;
+        $this->playerScorePerHit = 0;
     }
 
     public function getId() : int
@@ -155,6 +167,16 @@ class Game implements ResourceInterface
     public function getPlayerHitPointsDeducted() : int
     {
         return $this->playerHitPointsDeducted;
+    }
+
+    public function setPlayerScorePerHit(int $playerScorePerHit)
+    {
+        $this->playerScorePerHit = $playerScorePerHit;
+    }
+
+    public function getPlayerScorePerHit() : int
+    {
+        return $this->playerScorePerHit;
     }
 
     public function setEndsAt(\DateTime $endsAt)
@@ -303,19 +325,38 @@ class Game implements ResourceInterface
     public function getTeamHitPoints(string $team) : int
     {
         $team = $this->getPlayersByTeam($team);
-        $score = array_sum($team->map(function (Player $player) {
+        $teamHP = array_sum($team->map(function (Player $player) {
             return $player->getHitPoints();
         })->toArray());
 
-        return $score;
+        return $teamHP;
     }
 
     public function getTotalHitPoints() : int
     {
-        $score = array_sum($this->getPlayers()->map(function (Player $player) {
+        $totalHP = array_sum($this->getPlayers()->map(function (Player $player) {
             return $player->getHitPoints();
+        })->toArray());
+
+        return $totalHP;
+    }
+    public function getTeamScore(string $team) : int
+    {
+        $team = $this->getPlayersByTeam($team);
+        $score = array_sum($team->map(function (Player $player) {
+            return $player->getScore();
         })->toArray());
 
         return $score;
     }
+
+    public function getTotalScore() : int
+    {
+        $score = array_sum($this->getPlayers()->map(function (Player $player) {
+            return $player->getScore();
+        })->toArray());
+
+        return $score;
+    }
+
 }
