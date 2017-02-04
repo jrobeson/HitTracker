@@ -483,12 +483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "91d1eebf5b2de78bf8c430afccad57b7e16e531d"
+                "reference": "f347a83c948275095d627be793d418dc1ea17c58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/91d1eebf5b2de78bf8c430afccad57b7e16e531d",
-                "reference": "91d1eebf5b2de78bf8c430afccad57b7e16e531d",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/f347a83c948275095d627be793d418dc1ea17c58",
+                "reference": "f347a83c948275095d627be793d418dc1ea17c58",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +547,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-01-27 23:18:19"
+            "time": "2017-02-01 14:08:30"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1034,12 +1034,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "e42d0bdda539bab4261b933e6a1e55b4b30872d9"
+                "reference": "23ae83e351925f0b9ca3c42d8abcabd8da188392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e42d0bdda539bab4261b933e6a1e55b4b30872d9",
-                "reference": "e42d0bdda539bab4261b933e6a1e55b4b30872d9",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/23ae83e351925f0b9ca3c42d8abcabd8da188392",
+                "reference": "23ae83e351925f0b9ca3c42d8abcabd8da188392",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1105,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-01-27 08:30:38"
+            "time": "2017-01-31 11:00:42"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -2289,16 +2289,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "adf44419c0fc014a0f191db6f89d3e55d4211744"
+                "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/adf44419c0fc014a0f191db6f89d3e55d4211744",
-                "reference": "adf44419c0fc014a0f191db6f89d3e55d4211744",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
+                "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
                 "shasum": ""
             },
             "require": {
@@ -2336,7 +2336,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2016-12-06T11:30:35+00:00"
+            "time": "2017-02-03T21:57:31+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2936,16 +2936,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v3.0.19",
+            "version": "v3.0.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "d57c2f297d17ee82baf8cae0b16dae34a9378784"
+                "reference": "ed86f6fb1753e76b39ff8b87f527045ca6b97169"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/d57c2f297d17ee82baf8cae0b16dae34a9378784",
-                "reference": "d57c2f297d17ee82baf8cae0b16dae34a9378784",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/ed86f6fb1753e76b39ff8b87f527045ca6b97169",
+                "reference": "ed86f6fb1753e76b39ff8b87f527045ca6b97169",
                 "shasum": ""
             },
             "require": {
@@ -3000,7 +3000,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2017-01-10T19:42:56+00:00"
+            "time": "2017-02-02T15:31:23+00:00"
         },
         {
             "name": "sensiolabs/security-checker",
@@ -3296,12 +3296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "87b1dd702f674707e7503b9a69a36e84baf66d7f"
+                "reference": "6aaa321202b86da1d92a83eada1b96484d2ee5cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/87b1dd702f674707e7503b9a69a36e84baf66d7f",
-                "reference": "87b1dd702f674707e7503b9a69a36e84baf66d7f",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/6aaa321202b86da1d92a83eada1b96484d2ee5cc",
+                "reference": "6aaa321202b86da1d92a83eada1b96484d2ee5cc",
                 "shasum": ""
             },
             "require": {
@@ -3402,7 +3402,7 @@
             "support": {
                 "source": "https://github.com/Sylius/SyliusResourceBundle/tree/master"
             },
-            "time": "2017-01-30 12:35:40"
+            "time": "2017-02-03 11:20:05"
         },
         {
             "name": "sylius/settings-bundle",
