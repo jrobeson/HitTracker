@@ -1,6 +1,14 @@
 {% extends '@HitTrackerGame/layout.html.twig' %}
 {% block content %}
 {% if game %}
+    {% set game_settings = sylius_settings('game') %}
+    {% set music_file = game_settings.get('active_game_music_file') %}
+    {% if game_settings.get('active_game_music_play') and music_file %}
+     <audio id="active-game-music" autoplay loop>
+        <source src="{{ music_file }}" type="audio/mpeg">
+    </audio>
+    {% endif %}
+
     <div class="row">
         <br />
         <strong class="text-center">

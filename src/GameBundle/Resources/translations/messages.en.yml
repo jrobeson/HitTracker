@@ -49,7 +49,7 @@ hittracker.settings.game.hit_points_deducted_per_hit.help: 'Default Hit Points d
 hittracker.settings.game.player_score_per_hit: 'Score Per Hit'
 hittracker.settings.game.player_score_per_hit.help: 'Default Score added when player is hit when creating a new game'
 hittracker.settings.game.active_music_file: 'Active Game Music'
-hittracker.settings.game.active_music_file.help: 'Music played during game'
+hittracker.settings.game.active_music_file.help: 'Music played during game (must be an MP3 file)'
 hittracker.settings.game.active_music_play: 'Enable Active Game music?'
 hittracker.settings.game.active_music_play.help: 'Enable playing music while game is ongoing'
 
