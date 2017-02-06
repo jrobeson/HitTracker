@@ -1,0 +1,4 @@
+{% block generic_file_widget -%}
+    {{ block('form_widget_compound') -}}
+    {% if upload_file_uri %}Current File: <strong>{{ upload_file_uri }}</strong>{% endif %}
+{%- endblock %}

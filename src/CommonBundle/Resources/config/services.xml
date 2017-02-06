@@ -44,6 +44,14 @@
         <service id="hittracker.common.twig.partition_extension" class="LazerBall\HitTracker\CommonBundle\Twig\PartitionExtension">
             <tag name="twig.extension"/>
         </service>
+        <service id="hittracker.common.file_uploader" class="LazerBall\HitTracker\FileUploader">
+            <argument type="string">%upload_files_dir%</argument>
+            <argument type="string">%upload_uri_base_prefix%</argument>
+        </service>
 
+        <service id="hittracker.common.form.type.generic_file" class="LazerBall\HitTracker\CommonBundle\Form\Type\GenericFileType">
+            <argument type="service" id="hittracker.common.file_uploader"/>
+            <tag name="form.type" />
+        </service>
     </services>
 </container>
