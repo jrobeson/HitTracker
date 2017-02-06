@@ -6,7 +6,7 @@
     <hr />
 
     {% set schema = app.request.attributes.get('schema') %}
-    <form action="{{ path('hittracker_' ~ schema ~ '_settings') }}" method="post" class="form-horizontal form-settings form-settings-{{ schema }}">
+    <form action="{{ path('hittracker_' ~ schema ~ '_settings') }}" method="post" class="form-horizontal form-settings form-settings-{{ schema }}" enctype="multipart/form-data">
         {{ form_widget(form) }}
         {{ actions.update() }}
     </form>

@@ -4,6 +4,7 @@
  */
 namespace LazerBall\HitTracker\GameBundle\Settings;
 
+use LazerBall\HitTracker\CommonBundle\Form\Type\GenericFileType;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -52,6 +53,8 @@ class SiteSettingsSchema implements SchemaInterface
      */
     public function buildForm(FormBuilderInterface $builder)
     {
+        $uploadUriPrefix = '/images';
+
         $builder
             ->add('arenas', IntegerType::class, [
                 'label' => 'hittracker.settings.site.arenas',
@@ -117,15 +120,18 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.business_twitter_account.help',
                 ],
             ])*/
-            ->add('scoreboard_logo', TextType::class, [
-                'required' => false,
-                'empty_data' => '',
+            ->add('scoreboard_logo', GenericFileType::class, [
+                'upload_uri_prefix' => $uploadUriPrefix,
+                'upload_use_provided_file_name' => true,
                 'label' => 'hittracker.settings.site.scoreboard_logo',
                 'attr' => [
                     'data-help' => 'hittracker.settings.site.scoreboard_logo.help',
                 ],
+               'required' => false,
             ])
-            ->add('scoreboard_banner_1', TextType::class, [
+            ->add('scorebard_banner_2', GenericFileType::class, [
+                'upload_uri_prefix' => $uploadUriPrefix,
+                'upload_use_provided_file_name' => true,
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.scoreboard_banner_1',
@@ -133,7 +139,9 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.scoreboard_banner_1.help',
                 ],
             ])
-            ->add('scoreboard_banner_2', TextType::class, [
+            ->add('scoreboard_banner_2', GenericFIleType::class, [
+                'upload_uri_prefix' => $uploadUriPrefix,
+                'upload_use_provided_file_name' => true,
                 'required' => false,
                 'label' => 'hittracker.settings.site.scoreboard_banner_2',
                 'attr' => [
