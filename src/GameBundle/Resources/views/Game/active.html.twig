@@ -3,8 +3,9 @@
 {% if game %}
     {% set game_settings = sylius_settings('game') %}
     {% set music_file = game_settings.get('active_game_music_file') %}
-    {% if game_settings.get('active_game_music_play') and music_file %}
-     <audio id="active-game-music" autoplay loop>
+    {% set music_play = game_settings.get('active_game_music_play') %}
+    {% if music_file %}
+     <audio id="active-game-music" {% if music_play %}autoplay{% endif %} loop>
         <source src="{{ music_file }}" type="audio/mpeg">
     </audio>
     {% endif %}
