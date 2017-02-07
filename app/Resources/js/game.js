@@ -148,8 +148,11 @@ function initCountdown(selector) {
         .on('update.countdown', function (event) {
             $(this).text(formatDate(event));
         }).on('finish.countdown', function(event) {
-            $('#active-game-music').get(0).pause();
             $(this).text(formatDate(event));
+            musicSelector = $('#active-game-music');
+            if (musicSelector.length) {
+			    musicSelector.get(0).pause();
+		    }
         });
 }
 
