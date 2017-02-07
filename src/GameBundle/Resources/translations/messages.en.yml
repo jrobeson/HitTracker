@@ -88,7 +88,7 @@ hittracker.game.player_score_per_hit: 'Score Per Hit'
 hittracker.game.vest_hold_penalty: 'Vest Hold Penalty'
 hittracker.game.load_players_from_previous_games: 'Load Players From Previous Games'
 hittracker.game.choose: 'Choose a Game'
-hittracker.game.list.vs_teams: '%team1% vs. %team2% (Game #: %id%)'
+hittracker.game.list.vs_teams: '%vs_team% (Game #: %id%)'
 
 
 hittracker.vest.add: 'Add Unit'

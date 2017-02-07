@@ -26,10 +26,13 @@ class ListGamesType extends AbstractType
 
         foreach ($games as $game) {
             $teams = $game->getTeams();
+            $transVsTeam =  array_shift($teams);
+            foreach ($teams as $team) {
+                $transVsTeam .= ' vs. ' . $team;
+            }
             $teams = $this->translator->trans('hittracker.game.list.vs_teams', [
                 '%id%' => $game->getId(),
-                '%team1%' => $teams[0],
-                '%team2%' => $teams[1],
+                '%vs_team%' => $transVsTeam,
             ]);
 
             $list[$teams] = $game->getId();
@@ -43,7 +46,6 @@ class ListGamesType extends AbstractType
         $list = $this->getList();
         $resolver->setDefaults([
             'choices' => $list,
-            'choices_as_values' => true,
             'choice_translation_domain' => false,
 
         ]);
