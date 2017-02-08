@@ -52,13 +52,5 @@
             <tag name="form.type" alias="hittracker_vest"/>
         </service>
 
-        <service id="hittracker_game.game_event_listener" class="LazerBall\HitTracker\GameBundle\EventListener\GameEventListener">
-            <argument type="service" id="hittracker_game.pubsub" />
-            <tag name="kernel.event_listener" event="hittracker.game.post_create" method="onPostCreate" />
-        </service>
-
-        <service id="hittracker_game.pubsub" class="LazerBall\HitTracker\PubSub\NginxPushStream">
-            <argument>%hittracker_game.event_handlers.nginx_push_stream.url%</argument>
-        </service>
     </services>
 </container>

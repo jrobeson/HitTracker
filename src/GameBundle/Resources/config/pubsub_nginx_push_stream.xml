@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="hittracker_game.pubsub" class="LazerBall\HitTracker\PubSub\NginxPushStream">
+            <argument>%hittracker_game.event_handlers.nginx_push_stream.url%</argument>
+        </service>
+
+        <service id="hittracker_game.game_event_listener" class="LazerBall\HitTracker\GameBundle\EventListener\GameEventListener">
+            <argument type="service" id="hittracker_game.pubsub" />
+            <tag name="kernel.event_listener" event="hittracker.game.post_create" method="onPostCreate" />
+        </service>
+    </services>
+</container>
+

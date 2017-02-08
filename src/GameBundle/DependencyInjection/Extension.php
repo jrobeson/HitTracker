@@ -27,14 +27,24 @@ class Extension extends ConfigurableExtension
 {
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container)
     {
-        foreach ($this->flattenKeys($mergedConfig, 'hittracker_game.') as $k => $v) {
-            $container->setParameter($k, $v);
-        }
-
         $loader = new Loader\XmlFileLoader($container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
+
         $loader->load('services.xml');
+
+        $eventHandlers = $mergedConfig['event_handlers'];
+        if (array_key_exists('nginx_push_stream', $eventHandlers)) {
+            $nginxPushStreamConfig = $eventHandlers['nginx_push_stream'];
+            if (!empty($nginxPushStreamConfig['url']))  {
+                $prefix = 'hittracker_game.event_handlers.nginx_push_stream.';
+                foreach ($this->flattenKeys($nginxPushStreamConfig, $prefix) as $k => $v) {
+                    $container->setParameter($k, $v);
+                }
+                $loader->load('pubsub_nginx_push_stream.xml');
+            }
+        }
+
     }
 
     private function flattenKeys(array $array, string $prefix = '') : array
