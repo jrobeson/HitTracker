@@ -8,24 +8,6 @@
     </parameters>
 
     <services>
-        <service id="pdo_pgsql" class="PDO">
-            <argument>pgsql:host=%database_host%;dbname=%database_name%</argument>
-            <argument>%database_user%</argument>
-            <argument>%database_password%</argument>
-            <call method="setAttribute">
-                <argument type="constant">PDO::ATTR_ERRMODE</argument>
-                <argument type="constant">PDO::ERRMODE_EXCEPTION</argument>
-            </call>
-        </service>
-        <service id="session.handler.pdo" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler">
-            <argument type="service" id="pdo_pgsql" />
-            <argument type="collection">
-                <argument key="db_id_col">session_id</argument>
-                <argument key="db_data_col">session_data</argument>
-                <argument key="db_time_col">session_time</argument>
-                <argument key="db_lifetime_col">session_lifetime</argument>
-            </argument>
-        </service>
         <service id="twig.extension.intl" class="Twig_Extensions_Extension_Intl">
             <tag name="twig.extension"/>
         </service>

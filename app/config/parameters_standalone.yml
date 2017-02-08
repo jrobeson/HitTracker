@@ -1,6 +1,7 @@
 parameters:
     session_cookie_secure: false
     hsts_enabled: false
+    session_handler: pdo_session_handler.session_handler
     nginx_push_stream_url: "http://localhost/publish/game"
     livereload_http_url: "http://localhost/livereload.js"
     livereload_ws_url: "ws://localhost"

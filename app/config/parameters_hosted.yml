@@ -4,3 +4,5 @@ parameters:
     nginx_push_stream_url: "https://ht.local.dev/publish/game"
     livereload_http_url: "https://ht.local.dev/livereload.js?port=443"
     livereload_ws_url: "wss://ht.local.dev"
+
+    session_handler: pdo_session_handler.session_handler
