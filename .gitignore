@@ -1,7 +1,5 @@
 /app/config/local_*
 /build/
-/bin/*
-!bin/console
 bower_components
 /node_modules
 /var/bootstrap.php.cache
