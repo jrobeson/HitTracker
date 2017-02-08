@@ -2,7 +2,6 @@
 /build/
 bower_components
 /node_modules
-/var/bootstrap.php.cache
 /var/cache/*
 /var/logs/*
 !var/cache/.gitkeep
