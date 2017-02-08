@@ -5,4 +5,11 @@ parameters:
     livereload_http_url: "https://ht.local.dev/livereload.js?port=443"
     livereload_ws_url: "wss://ht.local.dev"
 
+    database_driver: pdo_pgsql
+    database_host: 127.0.0.1
+    database_port: ~
+    database_name: ht
+    database_user: postgres
+    database_password: ~
+
     session_handler: pdo_session_handler.session_handler
