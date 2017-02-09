@@ -11,5 +11,6 @@ parameters:
     database_name: ht
     database_user: postgres
     database_password: ~
+    database_server_version: 9.6
 
     session_handler: pdo_session_handler.session_handler
