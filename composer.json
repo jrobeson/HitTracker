@@ -66,7 +66,8 @@
         "matthiasnoback/symfony-config-test": "^2.0",
         "behat/mink-zombie-driver": "^1.2",
         "league/factory-muffin": "^3.0",
-        "league/factory-muffin-faker": "^2.0"
+        "league/factory-muffin-faker": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.0"
     },
     "scripts": {
         "shared-scripts": [
