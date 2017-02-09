@@ -36,14 +36,13 @@ class FileUploader
         $this->basePrefix = $basePrefix;
     }
 
-    public function getUploadBaseDir() : string
+    public function getUploadBaseDir(): string
     {
         return $this->baseDir;
     }
 
-    public function upload(UploadedFile $file, string $prefix = '') : string
+    public function upload(UploadedFile $file, string $prefix = ''): string
     {
-
         $fileName = md5(uniqid()) . '.' . $this->getFileExtension($file);
 
         $prefix = $this->cleanPrefix($prefix);
@@ -54,9 +53,9 @@ class FileUploader
         return $this->basePrefix . $prefix . $fileName;
     }
 
-    public function uploadFileWithName(UploadedFile $file, string $fileName,  string $prefix = '') : string
+    public function uploadFileWithName(UploadedFile $file, string $fileName, string $prefix = ''): string
     {
-        $prefix =  $this->cleanPrefix($prefix);
+        $prefix = $this->cleanPrefix($prefix);
         $dir = $this->baseDir .  $prefix;
 
         $file->move($dir, $fileName);
@@ -64,7 +63,7 @@ class FileUploader
         return $this->basePrefix . $prefix . $fileName;
     }
 
-    private function getFileExtension(UploadedFile $file) : string
+    private function getFileExtension(UploadedFile $file): string
     {
         $original = $file->getClientOriginalExtension();
         $guessed = $file->guessExtension();
@@ -75,11 +74,12 @@ class FileUploader
         return $guessed;
     }
 
-    public function cleanPrefix(string $prefix) : string
+    public function cleanPrefix(string $prefix): string
     {
         if (empty($prefix)) {
             return '';
         }
+
         return '/' . preg_replace(['|^/|', '|/$|'], '', $prefix) . '/';
     }
 }

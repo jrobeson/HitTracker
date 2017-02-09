@@ -26,7 +26,7 @@ class ListGamesType extends AbstractType
 
         foreach ($games as $game) {
             $teams = $game->getTeams();
-            $transVsTeam =  array_shift($teams);
+            $transVsTeam = array_shift($teams);
             foreach ($teams as $team) {
                 $transVsTeam .= ' vs. ' . $team;
             }
@@ -47,7 +47,6 @@ class ListGamesType extends AbstractType
         $resolver->setDefaults([
             'choices' => $list,
             'choice_translation_domain' => false,
-
         ]);
     }
 

@@ -32,13 +32,13 @@ class NginxPushStream
         $this->httpClient = new Client();
     }
 
-    public function publish(string $event, array $data) : bool
+    public function publish(string $event, array $data): bool
     {
         $this->httpClient->post($this->url, [
             'headers' => ['Event-Type' => $event],
-            'json'    => $data,
+            'json' => $data,
         ]);
+
         return true;
     }
-
 }

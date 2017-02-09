@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- namespace LazerBall\HitTracker\CommonBundle\Form\Type;
+namespace LazerBall\HitTracker\CommonBundle\Form\Type;
 
 use LazerBall\HitTracker\FileUploader;
 use Symfony\Component\Form\AbstractType;
@@ -35,12 +35,12 @@ use Symfony\Component\Form\DataTransformerInterface;
 
 class StringToFileUploadTransformer implements DataTransformerInterface
 {
-    public function transform($value) : array
+    public function transform($value): array
     {
         return ['file_name' => $value, 'file' => null];
     }
 
-    public function reverseTransform($value) : ?string
+    public function reverseTransform($value): ?string
     {
         return $value['file_name'];
     }
@@ -92,7 +92,7 @@ class GenericFileType extends AbstractType
 
             $data['file_name'] = $fileName;
         }
-            $event->setData($data);
+        $event->setData($data);
     }
 
     public function finishView(FormView $view, FormInterface $form, array $options)

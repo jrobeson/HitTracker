@@ -1,9 +1,12 @@
 <?php
 /**
  * This file was "borrowed" from KnpLabs/RadBundle
+ *
  * @license MIT
+ *
  * @see https://github.com/KnpLabs/KnpRadBundle/
  */
+
 namespace LazerBall\HitTracker\CommonBundle\Twig;
 
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
@@ -26,10 +29,10 @@ class LinkAttributesExtension extends \Twig_Extension
 
     public function getFunctions()
     {
-        return array(
+        return [
             new \Twig_SimpleFunction('link_attr', [$this, 'getLinkAttributes'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('link_csrf', [$this, 'getCsrf']),
-        );
+        ];
     }
 
     public function getLinkAttributes($method, $confirm = 'Are you sure?')

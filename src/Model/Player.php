@@ -105,10 +105,9 @@ class Player implements ResourceInterface
         $this->score = 0;
         $this->zoneHits = array_fill(1, $unit->getZones(), 0);
         $this->holding = false;
-
     }
 
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -118,7 +117,7 @@ class Player implements ResourceInterface
         $this->team = $team;
     }
 
-    public function getTeam() : string
+    public function getTeam(): string
     {
         return $this->team;
     }
@@ -128,7 +127,7 @@ class Player implements ResourceInterface
         $this->name = $name;
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -138,7 +137,7 @@ class Player implements ResourceInterface
         $this->hitPoints = $hitPoints;
     }
 
-    public function getHitPoints() : int
+    public function getHitPoints(): int
     {
         return $this->hitPoints;
     }
@@ -148,12 +147,12 @@ class Player implements ResourceInterface
         $this->score = $score;
     }
 
-    public function getScore() : int
+    public function getScore(): int
     {
         return $this->score;
     }
 
-    public function hitsInZone(int $zone) :int
+    public function hitsInZone(int $zone): int
     {
         return $this->zoneHits[$zone];
     }
@@ -163,7 +162,7 @@ class Player implements ResourceInterface
         $this->createdAt = $createdAt;
     }
 
-    public function getCreatedAt() : \DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
@@ -173,7 +172,7 @@ class Player implements ResourceInterface
         $this->updatedAt = $updatedAt;
     }
 
-    public function getUpdatedAt() : \DateTime
+    public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }
@@ -188,7 +187,7 @@ class Player implements ResourceInterface
         $this->unit = $unit;
     }
 
-    public function getUnit() : Vest
+    public function getUnit(): Vest
     {
         return $this->unit;
     }
@@ -221,14 +220,13 @@ class Player implements ResourceInterface
     public function hit(int $zone, int $score = null, int $hitPoints = null)
     {
         // @todo don't depend on unit type here, it's a game type issue
-        $handleHitPoints = $this->getUnit()->getUnitType() == 'vest';
+        $handleHitPoints = $this->getUnit()->getUnitType() === 'vest';
         if ($handleHitPoints) {
             if (0 >= $this->getHitPoints()) {
                 return;
             }
             $hitPoints = $this->getHitPoints() - $hitPoints;
-             $this->setHitPoints($hitPoints);
-
+            $this->setHitPoints($hitPoints);
         }
 
         if ($score) {

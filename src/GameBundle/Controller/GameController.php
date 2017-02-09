@@ -29,7 +29,6 @@ class GameController extends ResourceController
 
         $form = $this->resourceFormFactory->create($configuration, $newResource);
 
-
         $form->handleRequest($request);
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $newResource = $form->getData();
@@ -57,7 +56,6 @@ class GameController extends ResourceController
             }
 
             $this->flashHelper->addSuccessFlash($configuration, ResourceActions::CREATE, $newResource);
-
 
             return $this->redirectHandler->redirectToResource($configuration, $newResource);
         }
@@ -125,6 +123,7 @@ class GameController extends ResourceController
      * Stop the game
      *
      * @param $id
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function stopAction(Request $request)
@@ -147,10 +146,10 @@ class GameController extends ResourceController
             $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
 
             $data = [
-                'id'         => $resource->getId(),
-                'arena'      => $resource->getArena(),
+                'id' => $resource->getId(),
+                'arena' => $resource->getArena(),
                 'created_at' => $resource->getCreatedAt()->getTimestamp(),
-                'ends_at'    => $resource->getEndsAt()->getTimestamp(),
+                'ends_at' => $resource->getEndsAt()->getTimestamp(),
             ];
             $this->publish('game.end', $data);
             $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
@@ -163,7 +162,9 @@ class GameController extends ResourceController
      * Register a hit
      *
      * @param Request $request
+     *
      * @todo make it a real API
+     *
      * @return JsonResponse
      */
     public function hitAction(Request $request)
@@ -229,7 +230,7 @@ class GameController extends ResourceController
             ],
         ];
 
-        if ('hit' == $event) {
+        if ('hit' === $event) {
             $data['target_player']['hit_points'] = $player->getHitPoints();
             $data['target_player']['score'] = $player->getScore();
             $data['target_team_hit_points'] = $game->getTeamHitPoints($player->getTeam());

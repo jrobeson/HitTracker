@@ -34,7 +34,6 @@ class PartitionExtension extends \Twig_Extension
 
     public function partition($items, $size = 2)
     {
-
         if ($items instanceof \Traversable) {
             $items = iterator_to_array($items, false);
         }
@@ -47,9 +46,10 @@ class PartitionExtension extends \Twig_Extension
         $mark = 0;
         for($a = 0; $a < $size; $a++) {
             $incr = ($a < $partLeft) ? $partSize + 1 : $partSize;
-            $partition[$a] = array_slice($items, (int)$mark, $incr);
+            $partition[$a] = array_slice($items, (int) $mark, $incr);
             $mark += $incr;
         }
+
         return $partition;
     }
 }

@@ -20,7 +20,6 @@ namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use LazerBall\HitTracker\Model\GameSettings;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;

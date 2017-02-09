@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class PdoSessionHandlerBundle extends Bundle
 {
-    public function getContainerExtension() : Extension
+    public function getContainerExtension(): Extension
     {
         return new Extension();
     }

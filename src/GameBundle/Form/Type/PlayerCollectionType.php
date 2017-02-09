@@ -2,6 +2,7 @@
 /**
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
+
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;

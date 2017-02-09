@@ -28,6 +28,7 @@ class Game implements ResourceInterface
 
     /**
      * @todo cap the upper bound on arenas based on how many there really are.
+     *
      * @var int
      * @ORM\Column(type="integer")
      * @Assert\Type("numeric")
@@ -102,7 +103,7 @@ class Game implements ResourceInterface
         $this->settings = new GameSettings();
     }
 
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -112,7 +113,7 @@ class Game implements ResourceInterface
         $this->arena = $arena;
     }
 
-    public function getArena() : int
+    public function getArena(): int
     {
         return $this->arena;
     }
@@ -122,7 +123,7 @@ class Game implements ResourceInterface
         $this->endsAt = $endsAt;
     }
 
-    public function getEndsAt() : \DateTime
+    public function getEndsAt(): \DateTime
     {
         return $this->endsAt;
     }
@@ -132,7 +133,7 @@ class Game implements ResourceInterface
         $this->createdAt = $createdAt;
     }
 
-    public function getCreatedAt() : \DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
@@ -152,7 +153,7 @@ class Game implements ResourceInterface
     }
 
     /** @return array the length of the game in minutes and seconds */
-    public function getGameLength() : array
+    public function getGameLength(): array
     {
         if (empty($this->gameLength) && !empty($this->createdAt)) {
             $parts = $this->timeTotal();
@@ -166,21 +167,21 @@ class Game implements ResourceInterface
         return $this->gameLength;
     }
 
-    public static function getHumanGameTypes() : array
+    public static function getHumanGameTypes(): array
     {
         if (empty(self::getGameTypes())) return [];
 
-        return array_map(function($t) {
-                return ucwords(str_replace('_', ' ', $t));
+        return array_map(function ($t) {
+            return ucwords(str_replace('_', ' ', $t));
         }, self::getGameTypes());
     }
 
-    public static function getGameTypes() : array
+    public static function getGameTypes(): array
     {
         return ['team', 'target'];
     }
 
-    public function getGameType() : ?string
+    public function getGameType(): ?string
     {
         return $this->gameType;
     }
@@ -190,7 +191,7 @@ class Game implements ResourceInterface
         $this->gameType = $gameType;
     }
 
-    public function getSettings() : GameSettings
+    public function getSettings(): GameSettings
     {
         return $this->settings;
     }
@@ -200,7 +201,7 @@ class Game implements ResourceInterface
         $this->settings = $settings;
     }
 
-    public function isActive() : bool
+    public function isActive(): bool
     {
         return $this->endsAt > new \DateTime();
     }
@@ -215,14 +216,14 @@ class Game implements ResourceInterface
         $this->endsAt = new \DateTime();
     }
 
-    public function timeLeft() : \DateInterval
+    public function timeLeft(): \DateInterval
     {
         $now = new \DateTime();
 
         return $now->diff($this->endsAt);
     }
 
-    public function timeTotal() : \DateInterval
+    public function timeTotal(): \DateInterval
     {
         return $this->endsAt->diff($this->createdAt);
     }
@@ -238,7 +239,7 @@ class Game implements ResourceInterface
         $this->players = $players;
     }
 
-    public function getPlayers() : Collection
+    public function getPlayers(): Collection
     {
         return $this->players;
     }
@@ -247,20 +248,20 @@ class Game implements ResourceInterface
     public function getPlayerByRadioId(string $radioId)
     {
         $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
-            return $player->getUnit()->getRadioId() == $radioId;
+            return $player->getUnit()->getRadioId() === $radioId;
         });
 
         return $players->first();
     }
 
-    public function getPlayersByTeam(string $team) : Collection
+    public function getPlayersByTeam(string $team): Collection
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq('team', $team));
 
         return $this->getPlayers()->matching($criteria);
     }
 
-    public function getTeams() : array
+    public function getTeams(): array
     {
         $teams = array_unique(
             $this->getPlayers()->map(function (Player $player) {
@@ -270,7 +271,7 @@ class Game implements ResourceInterface
         return array_values($teams);
     }
 
-    public function getTeamHitPoints(string $team) : int
+    public function getTeamHitPoints(string $team): int
     {
         $team = $this->getPlayersByTeam($team);
         $teamHP = array_sum($team->map(function (Player $player) {
@@ -280,7 +281,7 @@ class Game implements ResourceInterface
         return $teamHP;
     }
 
-    public function getTotalHitPoints() : int
+    public function getTotalHitPoints(): int
     {
         $totalHP = array_sum($this->getPlayers()->map(function (Player $player) {
             return $player->getHitPoints();
@@ -288,7 +289,8 @@ class Game implements ResourceInterface
 
         return $totalHP;
     }
-    public function getTeamScore(string $team) : int
+
+    public function getTeamScore(string $team): int
     {
         $team = $this->getPlayersByTeam($team);
         $score = array_sum($team->map(function (Player $player) {
@@ -298,7 +300,7 @@ class Game implements ResourceInterface
         return $score;
     }
 
-    public function getTotalScore() : int
+    public function getTotalScore(): int
     {
         $score = array_sum($this->getPlayers()->map(function (Player $player) {
             return $player->getScore();
@@ -306,5 +308,4 @@ class Game implements ResourceInterface
 
         return $score;
     }
-
 }

@@ -39,6 +39,5 @@ class GameEventListener
             'ends_at' => $resource->getEndsAt()->getTimestamp(),
         ];
         $this->pubSubClient->publish('game.start', $data);
-
     }
 }

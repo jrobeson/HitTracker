@@ -2,17 +2,17 @@
 /**
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
+
 namespace LazerBall\HitTracker\GameBundle\Settings;
 
-use LazerBall\HitTracker\Model\Game;
 use LazerBall\HitTracker\CommonBundle\Form\Type\GenericFileType;
+use LazerBall\HitTracker\Model\Game;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class GameSettingsSchema implements SchemaInterface
@@ -24,8 +24,8 @@ class GameSettingsSchema implements SchemaInterface
     {
         $builder
             ->setDefaults([
-                'game_length'  => 10,
-                'game_type'  => 'team',
+                'game_length' => 10,
+                'game_type' => 'team',
                 'player_count' => 20,
                 'team_count' => 2,
                 'team_player_count' => 10,
@@ -50,6 +50,7 @@ class GameSettingsSchema implements SchemaInterface
 
     /**
      * {@inheritdoc}
+     *
      * @todo players per game should check for enough vests
      * @todo players per team should check for enough players
      */

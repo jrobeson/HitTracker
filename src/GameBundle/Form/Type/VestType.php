@@ -33,7 +33,7 @@ class VestType extends AbstractType
                 ],
             ])
             ->add('unitType', ChoiceType::class, [
-                'choices'  => $unitTypeChoices,
+                'choices' => $unitTypeChoices,
                 'label' => 'hittracker.vest.unit_type',
                 'attr' => [
                     'help' => 'hittracker.vest.unit_type.help'
@@ -59,7 +59,7 @@ class VestType extends AbstractType
                 ]
             )
             ->add('save', SubmitType::class, [
-                    'label'  => 'hittracker.save',
+                    'label' => 'hittracker.save',
                 ]
             )
         ;
@@ -77,6 +77,7 @@ class VestType extends AbstractType
 
     /**
      * {@inheritdoc}
+     *
      * @todo rename once sylius/resource-bundle allows global configuration
      */
     public function getName()

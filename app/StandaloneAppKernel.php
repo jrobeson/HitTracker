@@ -2,15 +2,16 @@
 
 class StandaloneAppKernel extends AppKernel
 {
-    public function registerBundles() : array
+    public function registerBundles(): array
     {
         $bundles = [
             new LazerBall\HitTracker\PdoSessionHandlerBundle\PdoSessionHandlerBundle(),
         ];
+
         return array_merge(parent::registerBundles(), $bundles);
     }
 
-    protected function getBuildType() : string
+    protected function getBuildType(): string
     {
         return 'standalone';
     }

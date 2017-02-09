@@ -107,12 +107,12 @@ class Vest implements ResourceInterface
         $this->unitType = $unitType;
     }
 
-    public function getUnitType() : ?string
+    public function getUnitType(): ?string
     {
         return $this->unitType;
     }
 
-    public static function getUnitTypes() : ?array
+    public static function getUnitTypes(): ?array
     {
         return ['vest', 'target'];
     }
@@ -122,7 +122,7 @@ class Vest implements ResourceInterface
         $this->zones = $zones;
     }
 
-    public function getZones() : ?int
+    public function getZones(): ?int
     {
         return $this->zones;
     }
@@ -132,7 +132,7 @@ class Vest implements ResourceInterface
         $this->radioId = strtolower($radioId);
     }
 
-    public function getRadioId() : string
+    public function getRadioId(): string
     {
         return $this->radioId;
     }
@@ -142,7 +142,7 @@ class Vest implements ResourceInterface
         $this->active = $active;
     }
 
-    public function isActive() : bool
+    public function isActive(): bool
     {
         return $this->active;
     }
@@ -152,7 +152,7 @@ class Vest implements ResourceInterface
         $this->createdAt = $createdAt;
     }
 
-    public function getCreatedAt() : \DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
@@ -162,7 +162,7 @@ class Vest implements ResourceInterface
         $this->updatedAt = $updatedAt;
     }
 
-    public function getUpdatedAt() : \DateTime
+    public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }

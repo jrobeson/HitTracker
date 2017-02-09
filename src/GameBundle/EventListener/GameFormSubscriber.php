@@ -2,6 +2,7 @@
 /**
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
+
 namespace LazerBall\HitTracker\GameBundle\EventListener;
 
 use LazerBall\HitTracker\GameBundle\Entity\GameRepository;
@@ -14,9 +15,6 @@ class GameFormSubscriber implements EventSubscriberInterface
 {
     private $repository;
 
-    /**
-     * @param GameRepository $repository
-     */
     public function __construct(GameRepository $repository)
     {
         $this->repository = $repository;
@@ -25,7 +23,6 @@ class GameFormSubscriber implements EventSubscriberInterface
     /**
      * Check if the game arena is open for playing
      *
-     * @param FormEvent $event
      * @todo translations
      */
     public function arenaOpenCheck(FormEvent $event)
@@ -43,8 +40,6 @@ class GameFormSubscriber implements EventSubscriberInterface
 
     /**
      * Remove players that that were filled out
-     *
-     * @param FormEvent $event
      */
     public function removeUnusedPlayers(FormEvent $event)
     {
@@ -60,8 +55,6 @@ class GameFormSubscriber implements EventSubscriberInterface
     /**
      * Use the game default hit points if none were
      * specified for the player
-     *
-     * @param FormEvent $event
      */
     public function addHitPoints(FormEvent $event)
     {
@@ -75,9 +68,6 @@ class GameFormSubscriber implements EventSubscriberInterface
         $event->setData($game);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         return [

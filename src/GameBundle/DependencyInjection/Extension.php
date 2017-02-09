@@ -36,7 +36,7 @@ class Extension extends ConfigurableExtension
         $eventHandlers = $mergedConfig['event_handlers'];
         if (array_key_exists('nginx_push_stream', $eventHandlers)) {
             $nginxPushStreamConfig = $eventHandlers['nginx_push_stream'];
-            if (!empty($nginxPushStreamConfig['url']))  {
+            if (!empty($nginxPushStreamConfig['url'])) {
                 $prefix = 'hittracker_game.event_handlers.nginx_push_stream.';
                 foreach ($this->flattenKeys($nginxPushStreamConfig, $prefix) as $k => $v) {
                     $container->setParameter($k, $v);
@@ -44,10 +44,9 @@ class Extension extends ConfigurableExtension
                 $loader->load('pubsub_nginx_push_stream.xml');
             }
         }
-
     }
 
-    private function flattenKeys(array $array, string $prefix = '') : array
+    private function flattenKeys(array $array, string $prefix = ''): array
     {
         $result = [];
         foreach ($array as $key => $value) {

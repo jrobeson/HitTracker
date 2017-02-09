@@ -11,7 +11,7 @@ abstract class AppKernel extends Kernel
      */
     public function __construct($environment, $debug)
     {
-        /**
+        /*
          * Can't add new args to the constructor, due to instantiation
          * in the cache warmer
          * @see Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand::warmup()
@@ -23,8 +23,8 @@ abstract class AppKernel extends Kernel
             );
         }
 
-        $isProd = 'prod' == $environment;
-        if (!$isProd && $debug) { /** @todo check this */
+        $isProd = 'prod' === $environment;
+        if (!$isProd && $debug) { /* @todo check this */
             Symfony\Component\Debug\Debug::enable();
         }
 
@@ -80,7 +80,7 @@ abstract class AppKernel extends Kernel
             sprintf('config_%s.yml', $environment),
             sprintf('config_%s_%s.yml', $buildType, $environment),
         ];
-        if ('test' == $environment) { // test requires dev files first
+        if ('test' === $environment) { // test requires dev files first
             array_splice($configFiles, 2, 0, [
                 'config_dev.yml',
                 sprintf('config_%s_dev.yml', $buildType),

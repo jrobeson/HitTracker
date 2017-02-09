@@ -104,7 +104,6 @@ class GameType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Game::class,
             'empty_data' => function (FormInterface $form) {
-
             },
         ]);
     }

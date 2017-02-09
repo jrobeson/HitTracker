@@ -64,7 +64,7 @@ class GameSettings
         $this->playerHitPoints = $playerHitPoints;
     }
 
-    public function getPlayerHitPoints() : int
+    public function getPlayerHitPoints(): int
     {
         return $this->playerHitPoints;
     }
@@ -74,7 +74,7 @@ class GameSettings
         $this->playerHitPointsDeducted = $playerHitPointsDeducted;
     }
 
-    public function getPlayerHitPointsDeducted() : int
+    public function getPlayerHitPointsDeducted(): int
     {
         return $this->playerHitPointsDeducted;
     }
@@ -84,10 +84,8 @@ class GameSettings
         $this->playerScorePerHit = $playerScorePerHit;
     }
 
-    public function getPlayerScorePerHit() : int
+    public function getPlayerScorePerHit(): int
     {
         return $this->playerScorePerHit;
     }
-
-
 }
