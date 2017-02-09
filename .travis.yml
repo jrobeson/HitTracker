@@ -6,8 +6,8 @@ php:
 sudo: false
 cache:
     directories:
-        - vendor
-        - $HOME/.composer/cache
+        - $HOME/.composer/cache/files
+
 env:
     global:
         - SYMFONY_DEBUG=true
