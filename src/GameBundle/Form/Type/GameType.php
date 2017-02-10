@@ -19,7 +19,6 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use LazerBall\HitTracker\Model\Game;
-use LazerBall\HitTracker\GameBundle\Form\Type\GameSettingsType;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;

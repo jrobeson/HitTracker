@@ -3,7 +3,6 @@
 namespace LazerBall\HitTracker\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use LazerBall\HitTracker\Model\Vest;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;

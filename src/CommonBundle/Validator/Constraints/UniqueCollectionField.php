@@ -13,8 +13,8 @@ use Symfony\Component\Validator\Constraint;
  */
 class UniqueCollectionField extends Constraint
 {
-    /** @var string*/
+    /** @var string */
     public $message = '%value% cannot be used more than once';
-    /** @var string*/
+    /** @var string */
     public $propertyPath;
 }

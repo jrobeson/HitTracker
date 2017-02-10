@@ -24,7 +24,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class GameRepository extends EntityRepository
 {
-    public function isArenaOpen(int $arena) : bool
+    public function isArenaOpen(int $arena): bool
     {
         return !$this->getActiveGame($arena);
     }

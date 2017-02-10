@@ -44,7 +44,7 @@ class PartitionExtension extends \Twig_Extension
         $partLeft = $listSize % $size;
         $partition = [];
         $mark = 0;
-        for($a = 0; $a < $size; $a++) {
+        for ($a = 0; $a < $size; $a++) {
             $incr = ($a < $partLeft) ? $partSize + 1 : $partSize;
             $partition[$a] = array_slice($items, $mark, $incr);
             $mark += $incr;

@@ -155,6 +155,7 @@ class Game implements ResourceInterface
     /**
      * @todo We only want to return an int or array, not both.
      *       Need to split the normal object usage from forms.
+     *
      * @return array|int the length of the game in minutes and seconds
      */
     public function getGameLength()
@@ -173,7 +174,9 @@ class Game implements ResourceInterface
 
     public static function getHumanGameTypes(): array
     {
-        if (empty(self::getGameTypes())) return [];
+        if (empty(self::getGameTypes())) {
+            return [];
+        }
 
         return array_map(function ($t) {
             return ucwords(str_replace('_', ' ', $t));
