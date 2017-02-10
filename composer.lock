@@ -483,12 +483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "16be54913f8d05c6d5416f07ae27e3bad414bb62"
+                "reference": "eaafa67e7591db1156fbf93f7e1c2d32f857ff3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/16be54913f8d05c6d5416f07ae27e3bad414bb62",
-                "reference": "16be54913f8d05c6d5416f07ae27e3bad414bb62",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/eaafa67e7591db1156fbf93f7e1c2d32f857ff3d",
+                "reference": "eaafa67e7591db1156fbf93f7e1c2d32f857ff3d",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +547,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-02-07 09:24:07"
+            "time": "2017-02-10 18:28:54"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1034,12 +1034,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "23ae83e351925f0b9ca3c42d8abcabd8da188392"
+                "reference": "10935dd843807d0035122a2ea2d23f19d2ebddb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/23ae83e351925f0b9ca3c42d8abcabd8da188392",
-                "reference": "23ae83e351925f0b9ca3c42d8abcabd8da188392",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/10935dd843807d0035122a2ea2d23f19d2ebddb5",
+                "reference": "10935dd843807d0035122a2ea2d23f19d2ebddb5",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1105,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-01-31 11:00:42"
+            "time": "2017-02-10 17:55:05"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -2289,16 +2289,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a"
+                "reference": "0bf561dfe75ba80441c22adecc0529056671a7d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
-                "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0bf561dfe75ba80441c22adecc0529056671a7d2",
+                "reference": "0bf561dfe75ba80441c22adecc0529056671a7d2",
                 "shasum": ""
             },
             "require": {
@@ -2336,7 +2336,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-02-03T21:57:31+00:00"
+            "time": "2017-02-10T20:20:03+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -3296,12 +3296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "1f12e990205ce79d8bff56db040ca68a70231b8c"
+                "reference": "e6bab9ea20be0e0e06af0ffec817a5d254e44795"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/1f12e990205ce79d8bff56db040ca68a70231b8c",
-                "reference": "1f12e990205ce79d8bff56db040ca68a70231b8c",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/e6bab9ea20be0e0e06af0ffec817a5d254e44795",
+                "reference": "e6bab9ea20be0e0e06af0ffec817a5d254e44795",
                 "shasum": ""
             },
             "require": {
@@ -3402,7 +3402,7 @@
             "support": {
                 "source": "https://github.com/Sylius/SyliusResourceBundle/tree/master"
             },
-            "time": "2017-02-07 10:41:28"
+            "time": "2017-02-10 08:26:18"
         },
         {
             "name": "sylius/settings-bundle",
@@ -3410,12 +3410,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrobeson/SyliusSettingsBundle.git",
-                "reference": "f5af6057a666d98a5d9a6045542d7ff9f77d4f78"
+                "reference": "3e57fb3c81a9fb8b62a0265613898966610b247d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/f5af6057a666d98a5d9a6045542d7ff9f77d4f78",
-                "reference": "f5af6057a666d98a5d9a6045542d7ff9f77d4f78",
+                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/3e57fb3c81a9fb8b62a0265613898966610b247d",
+                "reference": "3e57fb3c81a9fb8b62a0265613898966610b247d",
                 "shasum": ""
             },
             "require": {
@@ -3475,7 +3475,7 @@
             "support": {
                 "source": "https://github.com/jrobeson/SyliusSettingsBundle/tree/symfony-3.2-compat"
             },
-            "time": "2017-02-04 11:24:33"
+            "time": "2017-02-10 09:10:25"
         },
         {
             "name": "sylius/ui-bundle",
@@ -5751,16 +5751,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.0.1",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "863ad254da1e44904c8bf8fbcc9f5624834fc71a"
+                "reference": "2c69f4d424f85062fe40f7689797d6d32c76b711"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/863ad254da1e44904c8bf8fbcc9f5624834fc71a",
-                "reference": "863ad254da1e44904c8bf8fbcc9f5624834fc71a",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/2c69f4d424f85062fe40f7689797d6d32c76b711",
+                "reference": "2c69f4d424f85062fe40f7689797d6d32c76b711",
                 "shasum": ""
             },
             "require": {
@@ -5772,6 +5772,7 @@
                 "symfony/filesystem": "^2.4 || ^3.0",
                 "symfony/finder": "^2.2 || ^3.0",
                 "symfony/polyfill-php54": "^1.0",
+                "symfony/polyfill-php55": "^1.3",
                 "symfony/process": "^2.3 || ^3.0",
                 "symfony/stopwatch": "^2.5 || ^3.0"
             },
@@ -5807,7 +5808,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2017-02-08T22:45:53+00:00"
+            "time": "2017-02-10T15:37:50+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -5914,6 +5915,48 @@
                 "webtest"
             ],
             "time": "2015-06-15T20:19:33+00:00"
+        },
+        {
+            "name": "ircmaxell/password-compat",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ircmaxell/password_compat.git",
+                "reference": "5c5cde8822a69545767f7c7f3058cb15ff84614c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ircmaxell/password_compat/zipball/5c5cde8822a69545767f7c7f3058cb15ff84614c",
+                "reference": "5c5cde8822a69545767f7c7f3058cb15ff84614c",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/password.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Ferrara",
+                    "email": "ircmaxell@php.net",
+                    "homepage": "http://blog.ircmaxell.com"
+                }
+            ],
+            "description": "A compatibility library for the proposed simplified password hashing algorithm: https://wiki.php.net/rfc/password_hash",
+            "homepage": "https://github.com/ircmaxell/password_compat",
+            "keywords": [
+                "hashing",
+                "password"
+            ],
+            "time": "2014-11-20T16:49:30+00:00"
         },
         {
             "name": "league/factory-muffin",
@@ -7314,16 +7357,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.11",
+            "version": "5.7.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab"
+                "reference": "60ebeed87a35ea46fd7f7d8029df2d6f013ebb34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6ad2472daba76b0689042b7709f86d4f06bcaab",
-                "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/60ebeed87a35ea46fd7f7d8029df2d6f013ebb34",
+                "reference": "60ebeed87a35ea46fd7f7d8029df2d6f013ebb34",
                 "shasum": ""
             },
             "require": {
@@ -7392,7 +7435,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-02-05T15:31:31+00:00"
+            "time": "2017-02-10T09:05:10+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -8074,6 +8117,62 @@
                 }
             ],
             "description": "Symfony polyfill backporting some PHP 5.4+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2016-11-14T01:06:16+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php55",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php55.git",
+                "reference": "03e3f0350bca2220e3623a0e340eef194405fc67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/03e3f0350bca2220e3623a0e340eef194405fc67",
+                "reference": "03e3f0350bca2220e3623a0e340eef194405fc67",
+                "shasum": ""
+            },
+            "require": {
+                "ircmaxell/password-compat": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php55\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.5+ features to lower PHP versions",
             "homepage": "https://symfony.com",
             "keywords": [
                 "compatibility",
