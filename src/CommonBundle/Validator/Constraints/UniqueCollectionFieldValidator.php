@@ -29,11 +29,10 @@ class UniqueCollectionFieldValidator extends ConstraintValidator
         if (!empty($value) && in_array($value, $this->collectionValues)) {
             $stringValue = $this->getStringValue($value);
 
-            $this->context->addViolationAt(
-                $constraint->propertyPath,
-                $constraint->message,
-                ['{{ value }}' => $stringValue]
-            );
+            $this->context->buildViolation($constraint->message)
+                ->setParameter('%value%', $stringValue)
+                ->atPath($constraint->propertyPath)
+                ->addViolation();
         }
         $this->collectionValues[] = $value;
     }
