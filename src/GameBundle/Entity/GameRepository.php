@@ -19,6 +19,7 @@
 namespace LazerBall\HitTracker\GameBundle\Entity;
 
 use Doctrine\Common\Collections\Criteria;
+use LazerBall\HitTracker\Model\Game;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class GameRepository extends EntityRepository
@@ -43,7 +44,7 @@ class GameRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function getMostRecentGame(int $arena): ?array
+    public function getMostRecentGame(int $arena): ?Game
     {
         $game = $this->getRecentGames(1, $arena);
 
@@ -57,10 +58,10 @@ class GameRepository extends EntityRepository
         $criteria->where($criteria->expr()->eq('arena', $arena));
         $criteria->andWhere($criteria->expr()->gte('endsAt', new \DateTime()));
 
-        return $this->matching($criteria)->first();
+        return $this->matching($criteria)->first() ?: null;
     }
 
-    public function getActiveGames(): ?Game
+    public function getActiveGames(): ? array
     {
         $criteria = new Criteria();
 

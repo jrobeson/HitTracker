@@ -39,14 +39,14 @@ class PartitionExtension extends \Twig_Extension
         }
 
         $listSize = count($items);
-        $partSize = floor($listSize / $size);
+        $partSize = (int) floor($listSize / $size);
 
         $partLeft = $listSize % $size;
         $partition = [];
         $mark = 0;
         for($a = 0; $a < $size; $a++) {
             $incr = ($a < $partLeft) ? $partSize + 1 : $partSize;
-            $partition[$a] = array_slice($items, (int) $mark, $incr);
+            $partition[$a] = array_slice($items, $mark, $incr);
             $mark += $incr;
         }
 

@@ -38,7 +38,7 @@ class UniqueCollectionFieldValidator extends ConstraintValidator
         $this->collectionValues[] = $value;
     }
 
-    private function getStringValue($value)
+    private function getStringValue($value): string
     {
         if (is_object($value)) {
             $value = array_reverse(

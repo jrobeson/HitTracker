@@ -99,7 +99,7 @@ class Game implements ResourceInterface
     {
         $this->arena = 1;
         $this->players = new ArrayCollection();
-        $this->gameLength = [0, 0];
+        $this->gameLength = 0;
         $this->settings = new GameSettings();
     }
 
@@ -143,7 +143,7 @@ class Game implements ResourceInterface
      */
     public function setGameLength(int $minutes)
     {
-        $this->gameLength = (int) $minutes;
+        $this->gameLength = $minutes;
 
         $start = new \DateTime();
         $this->setCreatedAt($start);
@@ -244,8 +244,7 @@ class Game implements ResourceInterface
         return $this->players;
     }
 
-    /** @return Player|null */
-    public function getPlayerByRadioId(string $radioId)
+    public function getPlayerByRadioId(string $radioId): ?Player
     {
         $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
             return $player->getUnit()->getRadioId() === $radioId;

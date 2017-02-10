@@ -17,9 +17,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class GameSettingsSchema implements SchemaInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildSettings(SettingsBuilderInterface $builder)
     {
         $builder
