@@ -104,7 +104,6 @@ class Player implements ResourceInterface
         $this->hitPoints = $hitPoints;
         $this->score = 0;
         $this->zoneHits = array_fill(1, $unit->getZones(), 0);
-        $this->holding = false;
     }
 
     public function getId(): int

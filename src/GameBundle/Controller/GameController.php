@@ -7,6 +7,8 @@ use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class GameController extends ResourceController
 {
@@ -186,7 +188,8 @@ class GameController extends ResourceController
         }
         foreach ($data['events'] as $data) {
             $event = $data['event'];
-
+            $game = null;
+            $player = null;
             if (!empty($data['radioId'])) {
                 foreach ($games as $g) {
                     // @todo check valid radio ids
@@ -196,16 +199,14 @@ class GameController extends ResourceController
                     }
                 }
             }
-            if (!isset($player) || !$player) {
+            if (!$player || !$game) {
                 continue;
             }
             $gameSettings = $game->getSettings();
             switch ($event) {
                 case 'hit':
                     // @todo return an error if zone isn't set
-                    if (isset($data['zone'])) {
-                        $zone = $data['zone'];
-                    }
+                    $zone = $data['zone'] ?? null;
                     $player->hit($zone, $gameSettings->getPlayerScorePerHit(), $gameSettings->getPlayerHitPointsDeducted());
                     $this->notify('hit', $game, $player, $zone);
                     break;
