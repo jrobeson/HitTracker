@@ -152,8 +152,12 @@ class Game implements ResourceInterface
         $this->setEndsAt($end);
     }
 
-    /** @return array the length of the game in minutes and seconds */
-    public function getGameLength(): array
+    /**
+     * @todo We only want to return an int or array, not both.
+     *       Need to split the normal object usage from forms.
+     * @return array|int the length of the game in minutes and seconds
+     */
+    public function getGameLength()
     {
         if (empty($this->gameLength) && !empty($this->createdAt)) {
             $parts = $this->timeTotal();
