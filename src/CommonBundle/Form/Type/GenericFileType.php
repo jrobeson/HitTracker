@@ -56,12 +56,24 @@ class GenericFileType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $modelTransformer = new class implements DataTransformerInterface  {
+            public function transform($value): array
+            {
+                return ['file_name' => $value, 'file' => null];
+            }
+
+            public function reverseTransform($value): ?string
+            {
+                return $value['file_name'];
+            }
+        };
+
         $builder
             ->add('file_name', HiddenType::class)
             ->add('file', FileType::class, [
                   'label' => false,
             ])
-            ->addModelTransformer(new StringToFileUploadTransformer())
+            ->addModelTransformer($modelTransformer)
             ->addEventListener(FormEvents::PRE_SUBMIT, [$this, 'fileUploadListener'])
         ;
     }
