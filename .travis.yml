@@ -20,7 +20,7 @@ env:
         - SYMFONY__BUILD_TYPE=standalone
 
 addons:
-    postgresql: '9.4'
+    postgresql: '9.6'
 
 before_install:
     - composer self-update
