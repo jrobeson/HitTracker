@@ -94,12 +94,12 @@ class GenericFileType extends AbstractType
                 }
             }
 
-            if ($options['upload_use_provided_file_name']) {
-                $fileName = $fileUploader->upload($data['file'], $prefix);
-            } else {
-                $fileName = $fileUploader->uploadFileWithName($data['file'], $originalName, $prefix);
-            }
 
+            if ($options['upload_use_provided_file_name']) {
+                $fileName = $fileUploader->uploadFileWithName($data['file'], $originalName, $prefix);
+            } else {
+                $fileName = $fileUploader->upload($data['file'], $prefix);
+            }
             $data['file_name'] = $fileName;
         }
         $event->setData($data);
