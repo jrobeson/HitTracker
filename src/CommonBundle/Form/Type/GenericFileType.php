@@ -20,6 +20,7 @@ namespace LazerBall\HitTracker\CommonBundle\Form\Type;
 
 use LazerBall\HitTracker\FileUploader;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,9 +30,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
-// move
-use Symfony\Component\Form\DataTransformerInterface;
 
 class StringToFileUploadTransformer implements DataTransformerInterface
 {
