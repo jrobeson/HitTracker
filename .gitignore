@@ -19,4 +19,5 @@ bower_components
 /web/bundles/
 /web/uploads
 /composer.phar
+/.php_cs.cache
 /.env
