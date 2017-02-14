@@ -31,20 +31,6 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StringToFileUploadTransformer implements DataTransformerInterface
-{
-    public function transform($value): array
-    {
-        return ['file_name' => $value, 'file' => null];
-    }
-
-    public function reverseTransform($value): ?string
-    {
-        return $value['file_name'];
-    }
-}
-// move
-
 class GenericFileType extends AbstractType
 {
     private $fileUploader;
@@ -56,7 +42,7 @@ class GenericFileType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $modelTransformer = new class implements DataTransformerInterface  {
+        $modelTransformer = new class() implements DataTransformerInterface {
             public function transform($value): array
             {
                 return ['file_name' => $value, 'file' => null];
@@ -93,7 +79,6 @@ class GenericFileType extends AbstractType
                     unlink($oldFilePath);
                 }
             }
-
 
             if ($options['upload_use_provided_file_name']) {
                 $fileName = $fileUploader->uploadFileWithName($data['file'], $originalName, $prefix);
