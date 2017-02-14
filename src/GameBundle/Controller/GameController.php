@@ -6,6 +6,7 @@ use FOS\RestBundle\View\View;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -123,12 +124,8 @@ class GameController extends ResourceController
 
     /**
      * Stop the game
-     *
-     * @param $id
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function stopAction(Request $request)
+    public function stopAction(Request $request) : RedirectResponse
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
@@ -162,8 +159,6 @@ class GameController extends ResourceController
 
     /**
      * Register a hit
-     *
-     * @param Request $request
      *
      * @todo make it a real API
      *
