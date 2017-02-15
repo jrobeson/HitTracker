@@ -53,6 +53,7 @@ abstract class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new LazerBall\HitTracker\CommonBundle\CommonBundle(),
+            new LazerBall\HitTracker\PubSubBundle\PubSubBundle(),
             new LazerBall\HitTracker\GameBundle\HitTrackerGameBundle(),
             new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),

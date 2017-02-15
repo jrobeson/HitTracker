@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- handlers -->
+        <service id="hittracker_pubsub.handler.nginx_push_stream" class="LazerBall\HitTracker\PubSub\NginxPushStream">
+        </service>
+        <service id="hittracker_pubsub.handler.null" class="LazerBall\HitTracker\PubSub\NullPubSub">
+        </service>
+        <service id="hittracker_pubsub.handler.apcu" class="LazerBall\HitTracker\PubSub\ApcU">
+        </service>
+        <!-- instance -->
+        <service id="hittracker_pubsub.handler" class="LazerBall\HitTracker\PubSub\NullPubSub">
+        </service>
+    </services>
+</container>
+

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\DependencyInjection;
+namespace LazerBall\HitTracker\PubSubBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -26,14 +26,19 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('hittracker_game');
+        $rootNode = $treeBuilder->root('hittracker_pubsub');
         $rootNode
             ->children()
-                ->arrayNode('event_handlers')
+                ->arrayNode('handlers')
                     ->children()
                         ->arrayNode('nginx_push_stream')
                             ->children()
-                                ->scalarNode('url')->end()
+                                ->scalarNode('url')->defaultValue('')->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('apcu')
+                            ->children()
+                                ->scalarNode('key_prefix')->defaultValue('')->end()
                             ->end()
                         ->end()
                     ->end()

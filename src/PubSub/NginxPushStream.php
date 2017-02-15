@@ -20,7 +20,7 @@ namespace LazerBall\HitTracker\PubSub;
 
 use GuzzleHttp\Client;
 
-class NginxPushStream
+class NginxPushStream implements PubSubInterface
 {
     private $url;
     private $httpClient;

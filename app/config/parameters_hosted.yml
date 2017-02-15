@@ -1,7 +1,7 @@
 parameters:
     session_cookie_secure: true
     hsts_enabled: true
-    nginx_push_stream_url: "https://ht.local.dev/publish/game"
+    pubsub_nginx_push_stream_url: "https://ht.local.dev/publish/game"
     livereload_http_url: "https://ht.local.dev/livereload.js?port=443"
     livereload_ws_url: "wss://ht.local.dev"
 

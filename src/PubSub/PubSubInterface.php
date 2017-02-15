@@ -16,27 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\DependencyInjection;
+namespace LazerBall\HitTracker\Pubsub;
 
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension as BaseExtension;
-
-class Extension extends BaseExtension
+interface PubSubInterface
 {
-    public function load(array $config, ContainerBuilder $container)
-    {
-        $loader = new Loader\XmlFileLoader($container,
-            new FileLocator(__DIR__.'/../Resources/config')
-        );
-
-        $loader->load('services.xml');
-
-    }
-
-    public function getAlias(): string
-    {
-        return 'hittracker_game';
-    }
+    public function publish(string $event, array $data) : bool;
 }

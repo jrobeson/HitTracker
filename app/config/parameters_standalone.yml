@@ -13,4 +13,4 @@ parameters:
     session_cookie_secure: false
     session_handler: pdo_session_handler.session_handler
 
-    nginx_push_stream_url: "http://localhost/publish/game"
+    pubsub_nginx_push_stream_url: "http://localhost/publish/game"

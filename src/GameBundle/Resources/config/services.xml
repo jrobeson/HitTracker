@@ -34,6 +34,11 @@
         <service id="hittracker_game.form.event_subscriber.game" class="LazerBall\HitTracker\GameBundle\EventListener\GameFormSubscriber">
             <argument type="service" id="hittracker.repository.game" />
         </service>
+        <service id="hittracker_game.game_event_listener" class="LazerBall\HitTracker\GameBundle\EventListener\GameEventListener">
+            <argument type="service" id="hittracker_pubsub.handler" />
+            <tag name="kernel.event_listener" event="hittracker.game.post_create" method="onPostCreate" />
+        </service>
+
         <!-- player -->
         <service id="hittracker_game.form.type.player" class="LazerBall\HitTracker\GameBundle\Form\Type\PlayerType">
             <argument type="service" id="sylius.settings_manager" />
@@ -51,6 +56,5 @@
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_vest"/>
         </service>
-
     </services>
 </container>

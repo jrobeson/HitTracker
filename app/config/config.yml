@@ -193,7 +193,9 @@ nelmio_security:
         hsts_subdomains: false
         hsts_preload: true
 
-hittracker_game:
-    event_handlers:
+hittracker_pubsub:
+    handlers:
         nginx_push_stream:
-            url: "%nginx_push_stream_url%"
+            url: "%pubsub_nginx_push_stream_url%"
+        apcu:
+            key_prefix: "%pubsub_apcu_cache_key_prefix%"
