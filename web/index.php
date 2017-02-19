@@ -22,10 +22,4 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 
-if (function_exists('register_postsend_function')) {
-    register_postsend_function(function () use ($kernel, $request, $response) {
-        $kernel->terminate($request, $response);
-    });
-} else {
-    $kernel->terminate($request, $response);
-}
+$kernel->terminate($request, $response);
