@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\Pubsub;
+namespace LazerBall\HitTracker\PubSub;
 
 interface PubSubInterface
 {

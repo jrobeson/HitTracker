@@ -118,7 +118,7 @@ class GameController extends ResourceController
 
     public function publish(string $event, array $data)
     {
-        $pubSub = $this->get('hittracker_game.pubsub');
+        $pubSub = $this->get('hittracker_pubsub.handler');
         $pubSub->publish($event, $data);
     }
 

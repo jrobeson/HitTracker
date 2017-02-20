@@ -18,14 +18,14 @@
 
 namespace LazerBall\HitTracker\GameBundle\EventListener;
 
-use LazerBall\HitTracker\PubSub\NginxPushStream;
+use LazerBall\HitTracker\PubSub\PubSubInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
 class GameEventListener
 {
     private $pubSubClient;
 
-    public function __construct(NginxPushStream $pubSubClient)
+    public function __construct(PubSubInterface $pubSubClient)
     {
         $this->pubSubClient = $pubSubClient;
     }
