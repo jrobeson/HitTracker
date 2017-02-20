@@ -8,7 +8,7 @@ parameters:
     livereload_ws_url: "ws://localhost"
 
     pubsub_nginx_push_stream_url: ~
-    pubsub_apcu_cache_key_prefix: ~
+    pubsub_apcu_cache_key: ~
 
     mailer_transport: ~
     mailer_host: 127.0.0.1

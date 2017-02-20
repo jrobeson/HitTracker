@@ -38,7 +38,7 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->arrayNode('apcu')
                             ->children()
-                                ->scalarNode('key_prefix')->defaultValue('')->end()
+                                ->scalarNode('cache_key')->defaultValue('')->end()
                             ->end()
                         ->end()
                     ->end()
