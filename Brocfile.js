@@ -1,16 +1,13 @@
-var _ = require('lodash');
-var assetRev = require('broccoli-asset-rev');
-var autoPrefixer = require('broccoli-autoprefixer');
-var cleanCss = require('broccoli-clean-css');
-var compileSass = require('broccoli-sass');
-var concat = require('broccoli-concat');
-var mergeTrees = require('broccoli-merge-trees');
-var path = require('path');
-var sieveFiles = require('broccoli-funnel');
-var uglifyJs = require('broccoli-uglify-js');
-var esTranspiler = require('broccoli-babel-transpiler');
+const autoPrefixer = require('broccoli-autoprefixer');
+const cleanCss = require('broccoli-clean-css');
+const compileSass = require('broccoli-sass');
+const concat = require('broccoli-concat');
+const mergeTrees = require('broccoli-merge-trees');
+const path = require('path');
+const sieveFiles = require('broccoli-funnel');
+const uglifyJs = require('broccoli-uglify-js');
+const esTranspiler = require('broccoli-babel-transpiler');
 
-exports.getEnv = getEnv();
 
 /**
  * Get environment name, first by looking at SYMFONY_ENV
@@ -18,9 +15,9 @@ exports.getEnv = getEnv();
  *
  * @returns string
  */
-function getEnv () {
-    var symfonyEnv = process.env.SYMFONY_ENV || 'dev';
-    var env = process.env.BROCCOLI_ENV || symfonyEnv;
+function getEnv() {
+    const symfonyEnv = process.env.SYMFONY_ENV || 'dev';
+    let env = process.env.BROCCOLI_ENV || symfonyEnv;
     switch (env) {
         case 'prod':
         case 'production':
@@ -33,66 +30,64 @@ function getEnv () {
             env = 'development';
             break;
         default:
-            throw new Error('Environment "' + env + '" is not supported');
+            throw new Error(`Environment "${env}" is not supported`);
     }
-    return env
+    return env;
 }
+exports.getEnv = getEnv();
 
 // paths
-var bowerRoot = 'bower_components';
-var appCssFile = 'style/app.css';
-var scoreBoardCssFile = 'style/scoreboard.css';
-var scoreCardCssFile = 'style/scorecard.css';
+const bowerRoot = 'bower_components';
+const appCssFile = 'style/app.css';
+const scoreBoardCssFile = 'style/scoreboard.css';
+const scoreCardCssFile = 'style/scorecard.css';
 
-var env = getEnv();
-var buildType = process.env.SYMFONY__BUILD_TYPE || 'hosted';
+const env = getEnv();
 
-var sassSources = mergeTrees([
-    bowerRoot + '/bootstrap-sass-official/assets/stylesheets',
-    bowerRoot + '/fontawesome/scss',
-    'app/Resources/styles'
+const sassSources = mergeTrees([
+    `${bowerRoot}/bootstrap-sass-official/assets/stylesheets`,
+    `${bowerRoot}/fontawesome/scss`,
+    'app/Resources/styles',
 ]);
 
-var sassOptions = {
-    precision: 10
+const sassOptions = {
+    precision: 10,
 };
 
 
-var appCss = autoPrefixer(
-    compileSass([sassSources], 'app.scss', appCssFile, sassOptions)
+let appCss = autoPrefixer(
+    compileSass([sassSources], 'app.scss', appCssFile, sassOptions),
 );
-var scoreBoardCss = autoPrefixer(
-    compileSass([sassSources], 'scoreboard.scss', scoreBoardCssFile, sassOptions)
+let scoreBoardCss = autoPrefixer(
+    compileSass([sassSources], 'scoreboard.scss', scoreBoardCssFile, sassOptions),
 );
-var scoreCardCss = autoPrefixer(
-    compileSass([sassSources], 'scorecard.scss', scoreCardCssFile, sassOptions)
+let scoreCardCss = autoPrefixer(
+    compileSass([sassSources], 'scorecard.scss', scoreCardCssFile, sassOptions),
 );
 
-var bowerJsTree = sieveFiles(bowerRoot, {
+const bowerJsTree = sieveFiles(bowerRoot, {
     files: [
         'jquery/dist/jquery.js',
         'bootstrap-sass-official/assets/javascripts/bootstrap.js',
         'jquery-color/jquery.color.js',
         'jquery.countdown/dist/jquery.countdown.js',
-        //'modernizr/modernizr.js'
+        // 'modernizr/modernizr.js'
     ],
     destDir: 'js',
-    getDestinationPath: function(relativePath) {
-        return path.basename(relativePath);
-    }
+    getDestinationPath: relativePath => path.basename(relativePath),
 });
 
-var jsTree = sieveFiles(__dirname + '/app/Resources/js', {
+let jsTree = sieveFiles(`${__dirname}/app/Resources/js`, {
     include: ['*.js'],
-    destDir: 'js'
+    destDir: 'js',
 });
 
 jsTree = esTranspiler(jsTree, {
-    filterExtensions:['js', 'es6'],
-    compact: false
+    filterExtensions: ['js', 'es6'],
+    compact: false,
 });
 
-var appJs = mergeTrees([bowerJsTree, jsTree]);
+let appJs = mergeTrees([bowerJsTree, jsTree]);
 
 appJs = concat(appJs, {
     inputFiles: [
@@ -102,14 +97,14 @@ appJs = concat(appJs, {
         'js/jquery.countdown.js',
         'js/jquery-ujs.js',
         'js/game.js',
-        'js/common.js'
+        'js/common.js',
     ],
-    outputFile: '/js/app.js'
+    outputFile: '/js/app.js',
 });
 
-if ('production' == env) {
+if (env === 'production') {
     appJs = uglifyJs(appJs, {
-        compress: true
+        compress: true,
     });
     /* cleancss options to consider
         root - path to resolve absolute @import rules and rebase relative URLs
@@ -122,19 +117,26 @@ if ('production' == env) {
     scoreCardCss = cleanCss(scoreCardCss);
 }
 
-var fontAwesomeFonts = sieveFiles(bowerRoot + '/fontawesome/fonts', {
-    destDir: '/fonts'
+const fontAwesomeFonts = sieveFiles(`${bowerRoot}/fontawesome/fonts`, {
+    destDir: '/fonts',
 });
-var glyphiconsFonts = sieveFiles(bowerRoot + '/bootstrap-sass-official/assets/fonts/', {
-    destDir: '/fonts'
+const glyphiconsFonts = sieveFiles(`${bowerRoot}/bootstrap-sass-official/assets/fonts/`, {
+    destDir: '/fonts',
 });
-var appAssets = mergeTrees([appCss, scoreBoardCss, scoreCardCss, appJs, fontAwesomeFonts, glyphiconsFonts]);
-/*if ('production' == env) {
+const appAssets = mergeTrees([
+    appCss,
+    scoreBoardCss,
+    scoreCardCss,
+    appJs,
+    fontAwesomeFonts,
+    glyphiconsFonts,
+]);
+/* if (env === 'production') {
     appAssets = assetRev(appAssets, {
         extensions: ['js', 'css', 'png', 'jpg', 'gif'],
         //exclude: ['fonts/169929'],
         // prepend: 'https://example.com/',
-        replaceExtensions: ['html', 'js', 'css']
+        replaceExtensions: ['html', 'js', 'css'],
     });
 }*/
 
