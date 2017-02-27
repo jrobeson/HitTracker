@@ -60,6 +60,7 @@ abstract class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
+            new Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {

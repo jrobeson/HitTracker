@@ -49,7 +49,8 @@
         "zendframework/zend-diactoros": "^1.0",
         "vich/uploader-bundle": "^1.0",
         "cekurte/environment": "^0.3",
-        "dunglas/doctrine-json-odm": "dev-master@dev"
+        "dunglas/doctrine-json-odm": "dev-master@dev",
+        "incenteev/hashed-asset-bundle": "dev-master@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0",

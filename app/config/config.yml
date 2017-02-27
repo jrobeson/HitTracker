@@ -32,7 +32,7 @@ framework:
     fragments:       ~
     http_method_override: true
     assets:
-        #version: SomeVersionScheme
+        version_strategy: incenteev_hashed_asset.strategy
     php_errors:
         log: true
 

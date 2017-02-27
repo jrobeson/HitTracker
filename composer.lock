@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4272c2c9330d66bef788bc07ac0d1aa6",
+    "content-hash": "a85df2cbdbd318a1b0de7f65015397ca",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1571,6 +1571,61 @@
                 "hash-map"
             ],
             "time": "2014-12-15T23:03:51+00:00"
+        },
+        {
+            "name": "incenteev/hashed-asset-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Incenteev/hashed-asset-bundle.git",
+                "reference": "192fbcfacb9cdc25bed19bb5fa0ac8896db55b54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Incenteev/hashed-asset-bundle/zipball/192fbcfacb9cdc25bed19bb5fa0ac8896db55b54",
+                "reference": "192fbcfacb9cdc25bed19bb5fa0ac8896db55b54",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/asset": "^2.8 || ^3.0",
+                "symfony/config": "^2.8 || ^3.0",
+                "symfony/dependency-injection": "^2.8 || ^3.0",
+                "symfony/http-kernel": "^2.8 || ^3.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Incenteev\\HashedAssetBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                }
+            ],
+            "description": "Apply an asset version based on a hash of the asset for symfony/asset",
+            "keywords": [
+                "assets",
+                "bundle",
+                "cache-busting",
+                "symfony",
+                "symfony-bundle"
+            ],
+            "time": "2017-02-17 19:09:50"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -8265,7 +8320,8 @@
         "c33s/static-page-content-bundle": 20,
         "sylius/settings-bundle": 20,
         "sylius/registry": 10,
-        "dunglas/doctrine-json-odm": 20
+        "dunglas/doctrine-json-odm": 20,
+        "incenteev/hashed-asset-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
