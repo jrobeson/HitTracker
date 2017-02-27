@@ -125,7 +125,7 @@ class GameController extends ResourceController
     /**
      * Stop the game
      */
-    public function stopAction(Request $request) : RedirectResponse
+    public function stopAction(Request $request): RedirectResponse
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 

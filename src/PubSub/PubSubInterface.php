@@ -20,5 +20,5 @@ namespace LazerBall\HitTracker\PubSub;
 
 interface PubSubInterface
 {
-    public function publish(string $event, array $data) : bool;
+    public function publish(string $event, array $data): bool;
 }
