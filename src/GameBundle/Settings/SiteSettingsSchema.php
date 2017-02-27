@@ -130,7 +130,7 @@ class SiteSettingsSchema implements SchemaInterface
                 ],
                'required' => false,
             ])
-            ->add('scorebard_banner_2', GenericFileType::class, [
+            ->add('scoreboard_banner_1', GenericFileType::class, [
                 'upload_uri_prefix' => $uploadUriPrefix,
                 'upload_use_provided_file_name' => true,
                 'required' => false,
@@ -140,7 +140,7 @@ class SiteSettingsSchema implements SchemaInterface
                     'data-help' => 'hittracker.settings.site.scoreboard_banner_1.help',
                 ],
             ])
-            ->add('scoreboard_banner_2', GenericFIleType::class, [
+            ->add('scoreboard_banner_2', GenericFileType::class, [
                 'upload_uri_prefix' => $uploadUriPrefix,
                 'upload_use_provided_file_name' => true,
                 'required' => false,
