@@ -20,6 +20,8 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Kernel;
 
+use function Cekurte\Environment\env;
+
 abstract class AppKernel extends Kernel
 {
     /**
@@ -129,6 +131,11 @@ abstract class AppKernel extends Kernel
 
     public function getCacheDir(): string
     {
+        $varDir = env('SYMFONY__VAR_DIR');
+        if ($varDir) {
+            return $var . '/cache';
+        }
+
         return implode('/', [
             dirname($this->rootDir),
             '/var/cache',
@@ -139,6 +146,11 @@ abstract class AppKernel extends Kernel
 
     public function getLogDir(): string
     {
+        $varDir = env('SYMFONY__VAR_DIR');
+        if ($varDir) {
+            return $var . '/logs';
+        }
+
         return implode('/', [
             dirname($this->rootDir),
             '/var/logs',
