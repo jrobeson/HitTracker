@@ -6,7 +6,7 @@ php:
 sudo: false
 cache:
     directories:
-        - $HOME/.composer/cache/files
+        - $HOME/.cache/composer
 
 env:
     global:
@@ -22,10 +22,8 @@ env:
 addons:
     postgresql: '9.6'
 
-before_install:
-    - composer self-update
 install:
-    - composer install --prefer-source --no-interaction
+    - composer install --no-interaction
 
 before_script:
     - php bin/console doctrine:database:create --env=test
