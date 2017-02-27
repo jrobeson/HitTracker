@@ -12,7 +12,7 @@
             "app/AppKernel.php",
             "app/HostedAppKernel.php",
             "app/StandaloneAppKernel.php",
-            "app/EmbeddedAppKernel.php"
+            "app/ElectronAppKernel.php"
         ]
     },
     "require": {
@@ -35,7 +35,7 @@
         "jms/serializer-bundle": "^1.0",
         "sylius/ui-bundle": "^1.0@beta",
         "sylius/resource-bundle": "dev-master#87b1dd702f674707e7503b9a69a36e84baf66d7f@dev",
-        "sylius/resource": "^1.0@beta",
+        "sylius/resource": "dev-master@dev",
         "c33s/static-page-content-bundle": "dev-update-symfony-deps",
         "sylius/settings-bundle": "dev-symfony-3.2-compat",
         "sylius/registry": "^1.0@beta",
@@ -52,7 +52,7 @@
         "dunglas/doctrine-json-odm": "dev-master@dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.0",
+        "phpunit/phpunit": "^6.0",
         "symfony/phpunit-bridge": "^3.0",
         "phpunit/php-invoker": "^1.1",
         "behat/behat": "^3.0",
@@ -64,7 +64,7 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "fzaninotto/faker": "^1.6",
         "phpspec/phpspec": "^3.2",
-        "matthiasnoback/symfony-config-test": "^2.0",
+        "matthiasnoback/symfony-config-test": "^3.0",
         "behat/mink-zombie-driver": "^1.2",
         "league/factory-muffin": "^3.0",
         "league/factory-muffin-faker": "^2.0",
@@ -111,6 +111,5 @@
             "type": "vcs",
             "url": "https://github.com/jrobeson/SyliusSettingsBundle"
         }
-
     ]
 }
