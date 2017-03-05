@@ -27,7 +27,7 @@
             <tag name="twig.extension"/>
         </service>
         <service id="hittracker.common.file_uploader" class="LazerBall\HitTracker\FileUploader">
-            <argument type="string">%upload_files_dir%</argument>
+            <argument type="string">%upload_dir%</argument>
             <argument type="string">%upload_uri_base_prefix%</argument>
         </service>
 
