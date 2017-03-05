@@ -1,9 +1,4 @@
 parameters:
-    database_host: ~
-    database_port: ~
-    database_path: ~
-    database_password: ~
-
     locale: en_US
     icu_time_date_format: 'MM/dd/y hh:mm a'
 

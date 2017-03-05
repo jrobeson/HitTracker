@@ -1,3 +1,17 @@
+framework:
+    session:
+        handler_id: pdo_session_handler.session_handler
+        cookie_secure: false
+
+doctrine:
+    dbal:
+        driver:   pdo_pgsql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+
 hittracker_pubsub:
     handlers:
         nginx_push_stream:

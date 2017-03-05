@@ -1,16 +1,9 @@
 parameters:
-
-    database_driver: pdo_pgsql
     database_host: 127.0.0.1
     database_port: ~
     database_name: ht
     database_user: postgres
     database_password: ~
     database_server_version: 9.6
-
-    hsts_enabled: false
-
-    session_cookie_secure: false
-    session_handler: pdo_session_handler.session_handler
 
     pubsub_nginx_push_stream_url: "http://localhost/publish/game"

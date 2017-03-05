@@ -1,3 +1,24 @@
+framework:
+    session:
+        handler_id: pdo_session_handler.session_handler
+        cookie_secure: true
+
+doctrine:
+    dbal:
+        driver:   pdo_pgsql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+
+nelmio_security:
+    forced_ssl:
+        hsts_max_age: 10886400
+        hsts_subdomains: true
+        hsts_preload: true
+
+
 hittracker_pubsub:
     handlers:
         nginx_push_stream:
