@@ -93,16 +93,16 @@ abstract class AppKernel extends Kernel
     {
         $configFiles = [
             'parameters_default.yml',
-            sprintf('parameters_%s.yml', $buildType),
+            sprintf('%s/parameters.yml', $buildType),
             'config.yml',
-            sprintf('config_%s.yml', $buildType),
+            sprintf('%s/config.yml', $buildType),
             sprintf('config_%s.yml', $environment),
-            sprintf('config_%s_%s.yml', $buildType, $environment),
+            sprintf('%s/config_%s.yml', $environment, $buildType),
         ];
         if ('test' === $environment) { // test requires dev files first
             array_splice($configFiles, 2, 0, [
                 'config_dev.yml',
-                sprintf('config_%s_dev.yml', $buildType),
+                sprintf('%s/config_dev.yml', $buildType),
             ]);
         }
 
