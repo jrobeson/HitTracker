@@ -187,10 +187,3 @@ nelmio_security:
         hsts_max_age: 10886400
         hsts_subdomains: false
         hsts_preload: true
-
-hittracker_pubsub:
-    handlers:
-        nginx_push_stream:
-            url: "%pubsub_nginx_push_stream_url%"
-        apcu:
-            cache_key: "%pubsub_apcu_cache_key%"
