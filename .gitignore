@@ -14,10 +14,12 @@ bower_components
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep
+/var/uploads/*
+!var/uploads/.gitkeep
+
 /tmp
 /vendor/
 /web/bundles/
-/web/uploads
 /composer.phar
 /.php_cs.cache
 /.env
