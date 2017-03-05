@@ -2,12 +2,6 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
-parameters:
-    locale: en_US
-    icu_time_date_format: 'MM/dd/y hh:mm a'
-    upload_files_dir: '%kernel.root_dir%/../web/uploads'
-    upload_uri_base_prefix: '/uploads'
-
 framework:
     translator:
         fallback: "%locale%"

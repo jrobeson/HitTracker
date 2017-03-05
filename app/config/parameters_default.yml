@@ -4,6 +4,12 @@ parameters:
     database_path: ~
     database_password: ~
 
+    locale: en_US
+    icu_time_date_format: 'MM/dd/y hh:mm a'
+
+    upload_dir: '%kernel.root_dir%/../var/uploads'
+    upload_uri_base_prefix: '/media' # used by GenericFileType
+
     livereload_http_url: "http://localhost/livereload.js"
     livereload_ws_url: "ws://localhost"
 
