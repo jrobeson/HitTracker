@@ -133,7 +133,7 @@ abstract class AppKernel extends Kernel
     {
         $varDir = env('SYMFONY__VAR_DIR');
         if ($varDir) {
-            return $var . '/cache';
+            return $varDir . '/cache';
         }
 
         return implode('/', [
@@ -148,7 +148,7 @@ abstract class AppKernel extends Kernel
     {
         $varDir = env('SYMFONY__VAR_DIR');
         if ($varDir) {
-            return $var . '/logs';
+            return $varDir . '/logs';
         }
 
         return implode('/', [
