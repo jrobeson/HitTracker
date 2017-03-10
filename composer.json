@@ -15,6 +15,9 @@
             "app/ElectronAppKernel.php"
         ]
     },
+    "autoload-dev": {
+        "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
+    },
     "require": {
         "php": ">=7.1",
         "symfony/symfony": "^3.2",
