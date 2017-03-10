@@ -12,6 +12,7 @@ cache:
 
 env:
     global:
+        - COMPOSER_NO_INTERACTION=1
         - SYMFONY_DEBUG=true
         - SYMFONY_ENV=test
         - SYMFONY__DATABASE_NAME=hittracker
@@ -28,12 +29,12 @@ addons:
     postgresql: '9.6'
 
 install:
-    - composer install --no-interaction
+    - composer install
 
 before_script:
     - php bin/console doctrine:database:create
-    - php bin/console doctrine:migrations:migrate --no-interaction
-#    - php bin/console doctrine:fixtures:load --no-interaction
+    - php bin/console doctrine:migrations:migrate
+#    - php bin/console doctrine:fixtures:load
     - php bin/console cache:warmup
 
 script:
