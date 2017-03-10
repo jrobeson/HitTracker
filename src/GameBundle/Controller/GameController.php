@@ -116,12 +116,6 @@ class GameController extends ResourceController
         return $this->viewHandler->handle($configuration, $view);
     }
 
-    public function publish(string $event, array $data)
-    {
-        $pubSub = $this->get('hittracker_pubsub.handler');
-        $pubSub->publish($event, $data);
-    }
-
     /**
      * Stop the game
      */
@@ -150,7 +144,9 @@ class GameController extends ResourceController
                 'created_at' => $resource->getCreatedAt()->getTimestamp(),
                 'ends_at' => $resource->getEndsAt()->getTimestamp(),
             ];
-            $this->publish('game.end', $data);
+            $pubSub = $this->get('hittracker_pubsub.handler');
+            $pubSub->publish('game.end', $data);
+
             $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
         }
 
@@ -234,6 +230,7 @@ class GameController extends ResourceController
         if ($zone) {
             $data['target_player']['zone_hits'] = $player->hitsInZone($zone);
         }
-        $this->publish('game.hit', $data);
+        $pubSub = $this->get('hittracker_pubsub.handler');
+        $pubSub->publish('game.hit', $data);
     }
 }
