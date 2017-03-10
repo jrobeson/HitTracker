@@ -19,7 +19,6 @@
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Kernel;
-
 use function Cekurte\Environment\env;
 
 abstract class AppKernel extends Kernel

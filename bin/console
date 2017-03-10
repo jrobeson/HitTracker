@@ -17,7 +17,7 @@ if (file_exists(__DIR__.'/../.env')) {
 
 $input = new ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], env('SYMFONY_ENV', 'dev'));
-$debug = env($_SERVER['SYMFONY_DEBUG'], true)
+$debug = env('SYMFONY_DEBUG', true)
     && !$input->hasParameterOption(['--no-debug', ''])
     && $env !== 'prod';
 
