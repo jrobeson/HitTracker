@@ -5,7 +5,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use function Cekurte\Environment\env;
 
-require_once __DIR__.'/../app/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 if (file_exists(__DIR__.'/../.env')) {
     $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');

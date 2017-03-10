@@ -1,0 +1,18 @@
+services:
+    # TODO: remove in symfony 3.3 (https://github.com/symfony/symfony/pull/21837)
+    annotations.register:
+        class: Doctrine\Common\Annotations\AnnotationRegistry
+        public: false
+        calls:
+          - method: registerLoader
+            arguments:
+                - class_exists
+    # TODO: remove in symfony 3.3 (https://github.com/symfony/symfony/pull/21837)
+    annotations.reader:
+        class: Doctrine\Common\Annotations\AnnotationReader
+        public: false
+        calls:
+            - method: addGlobalIgnoredName
+              arguments:
+                  - required
+                  - "@annotations.register"
