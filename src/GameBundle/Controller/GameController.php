@@ -166,7 +166,6 @@ class GameController extends ResourceController
      */
     public function hitAction(Request $request)
     {
-        ini_set('html_errors', 0);
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
         $this->isGrantedOr403($configuration, ResourceActions::UPDATE);
