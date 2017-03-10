@@ -29,7 +29,7 @@ addons:
     postgresql: '9.6'
 
 install:
-    - composer install
+    - composer install --prefer-dist
 
 before_script:
     - php bin/console doctrine:database:create
