@@ -20,6 +20,7 @@ env:
     matrix:
         - SYMFONY__BUILD_TYPE=hosted
         - SYMFONY__BUILD_TYPE=standalone
+        - SYMFONY__BUILD_TYPE=electron
 
 services:
   - postgresql
@@ -30,10 +31,10 @@ install:
     - composer install --no-interaction
 
 before_script:
-    - php bin/console doctrine:database:create --env=test
-    - php bin/console doctrine:schema:create --env=test
-#    - php bin/console doctrine:fixtures:load -n --env=test
-    - php bin/console cache:warmup --env=test
+    - php bin/console doctrine:database:create
+    - php bin/console doctrine:migrations:migrate --no-interaction
+#    - php bin/console doctrine:fixtures:load --no-interaction
+    - php bin/console cache:warmup
 
 script:
   - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
