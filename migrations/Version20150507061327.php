@@ -28,7 +28,7 @@ class Version20150507061327 extends AbstractMigration
 {
     use Helpers;
 
-    public function up(Schema $schema)
+    private function upPostgreSQL(Schema $schema)
     {
         $stmts = [];
 
@@ -98,18 +98,96 @@ class Version20150507061327 extends AbstractMigration
         $this->addStmts($stmts);
     }
 
+    private function upSqlite(Schema $schema)
+    {
+        $stmts = [];
+
+        $stmts[] = 'CREATE TABLE game_players (
+                        id INTEGER NOT NULL,
+                        game_id INTEGER DEFAULT NULL,
+                        unit_id INTEGER DEFAULT NULL,
+                        team VARCHAR(255) DEFAULT NULL,
+                        name VARCHAR(255) NOT NULL,
+                        hit_points INTEGER NOT NULL,
+                        zone_hits CLOB NOT NULL --(DC2Type:json_array)
+                        ,score INTEGER NOT NULL,
+                        created_at DATETIME NOT NULL,
+                        updated_at DATETIME DEFAULT NULL,
+                        PRIMARY KEY(id)
+                   )';
+        $stmts[] = 'CREATE INDEX idx_player_game_id ON game_players (game_id)';
+        $stmts[] = 'CREATE INDEX idx_player_unit_id ON game_players (unit_id)';
+        $smmts[] = 'CREATE UNIQUE INDEX idx_player_game_unit ON game_players (game_id, unit_id)';
+
+        $stmts[] = 'CREATE TABLE games (
+                        id INTEGER NOT NULL,
+                        arena INTEGER NOT NULL,
+                        settings CLOB NOT NULL --(DC2Type:json_document)
+                        ,ends_at DATETIME NOT NULL,
+                        created_at DATETIME NOT NULL,
+                        game_type VARCHAR(255) NOT NULL,
+                        PRIMARY KEY(id)
+                   )';
+
+        $stmts[] = 'CREATE TABLE units (
+                        id INTEGER NOT NULL,
+                        "no" INTEGER NOT NULL,
+                        radio_id VARCHAR(8) NOT NULL,
+                        unit_type VARCHAR(255) NOT NULL,
+                        zones INTEGER NOT NULL,
+                        active BOOLEAN NOT NULL,
+                        created_at DATETIME NOT NULL,
+                        updated_at DATETIME DEFAULT NULL,
+                        PRIMARY KEY(id)
+                   )';
+        $stmts[] = 'CREATE UNIQUE INDEX idx_unit_radio_id ON units (radio_id)';
+        $stmts[] = 'CREATE UNIQUE INDEX idx_unit_no ON units ("no")';
+
+        $stmts[] = 'CREATE TABLE sylius_settings (
+                        id INTEGER NOT NULL,
+                        schema_alias VARCHAR(255) NOT NULL,
+                        namespace VARCHAR(255) DEFAULT NULL,
+                        parameters CLOB NOT NULL --(DC2Type:json_array)
+                        , PRIMARY KEY(id)
+                   )';
+        $stmts[] = 'CREATE UNIQUE INDEX settings_idx ON sylius_settings (schema_alias, namespace)';
+
+        $this->addStmts($stmts);
+    }
+
+    public function up(Schema $schema)
+    {
+        switch ($this->connection->getDatabasePlatform()->getName()) {
+            case 'sqlite':
+                $this->upSqlite($schema);
+                break;
+            default:
+                $this->upPostgreSQL($schema);
+        }
+    }
+
     public function down(Schema $schema)
     {
         $stmts = [];
-        $stmts[] = 'CREATE SCHEMA public';
-        $stmts[] = 'ALTER TABLE game_players DROP CONSTRAINT fk_players_units';
-        $stmts[] = 'ALTER TABLE game_players DROP CONSTRAINT fk_players_games';
-        $stmts[] = 'DROP SEQUENCE sylius_settings_parameter_id_seq CASCADE';
-        $stmts[] = 'DROP TABLE sessions';
-        $stmts[] = 'DROP TABLE game_players';
-        $stmts[] = 'DROP TABLE units';
-        $stmts[] = 'DROP TABLE games';
-        $stmts[] = 'DROP TABLE sylius_settings_parameter';
+
+        switch ($this->connection->getDatabasePlatform()->getName()) {
+            case 'sqlite':
+                $stmts[] = 'DROP TABLE game_players';
+                $stmts[] = 'DROP TABLE games';
+                $stmts[] = 'DROP TABLE units';
+                $stmts[] = 'DROP TABLE sylius_settings';
+                break;
+            default:
+                $stmts[] = 'CREATE SCHEMA public';
+                $stmts[] = 'ALTER TABLE game_players DROP CONSTRAINT fk_players_units';
+                $stmts[] = 'ALTER TABLE game_players DROP CONSTRAINT fk_players_games';
+                $stmts[] = 'DROP SEQUENCE sylius_settings_parameter_id_seq CASCADE';
+                $stmts[] = 'DROP TABLE sessions';
+                $stmts[] = 'DROP TABLE game_players';
+                $stmts[] = 'DROP TABLE units';
+                $stmts[] = 'DROP TABLE games';
+                $stmts[] = 'DROP TABLE sylius_settings_parameter';
+        }
 
         $this->addStmts($stmts);
     }
