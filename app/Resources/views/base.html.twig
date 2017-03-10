@@ -9,9 +9,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/style/app.css') }}" type="text/css" />
         {% endblock %}
-        <!-- @TODO : create a favicon
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        -->
     </head>
     <body class="{{ app.request.get('_route')|replace({'_': '-'}) }}">
         <div id="content-wrapper">
