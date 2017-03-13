@@ -20,6 +20,7 @@ init:
     - SET PHPRC=.\etc\php.ini
     - SET PHP_INI_SCAN_DIR=.\etc\php\win32
     - SET SYMFONY__BUILD_TYPE=electron
+    - SET SYMFONY__SECRET=gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx
     - SET SYMFONY_DEBUG=true
     - SET SYMFONY_ENV=test
     - SET PHP=1 # This var is connected to PHP install cache
