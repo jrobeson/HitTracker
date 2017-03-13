@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a85df2cbdbd318a1b0de7f65015397ca",
+    "content-hash": "716c1cb3a33b794593666c2cfd69ebba",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -483,12 +483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c2bf5fb8cd7e2235a000ed9765f742cf80a46157"
+                "reference": "e0169b2afc0fcbe047484b852699b095aee12b4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c2bf5fb8cd7e2235a000ed9765f742cf80a46157",
-                "reference": "c2bf5fb8cd7e2235a000ed9765f742cf80a46157",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/e0169b2afc0fcbe047484b852699b095aee12b4f",
+                "reference": "e0169b2afc0fcbe047484b852699b095aee12b4f",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +547,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-03-09 15:46:21"
+            "time": "2017-03-11 18:19:08"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1034,12 +1034,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "bd1efaf52847f5feb979244eb305af6019ab71e4"
+                "reference": "1aa02f9afcb374d7d3060f960fa8ce096bf71369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/bd1efaf52847f5feb979244eb305af6019ab71e4",
-                "reference": "bd1efaf52847f5feb979244eb305af6019ab71e4",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/1aa02f9afcb374d7d3060f960fa8ce096bf71369",
+                "reference": "1aa02f9afcb374d7d3060f960fa8ce096bf71369",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1105,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-03-07 17:34:50"
+            "time": "2017-03-12 15:53:13"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -3293,16 +3293,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Resource.git",
-                "reference": "9a4bb3c090520ea511fb0882ade9d2a47eded2a7"
+                "reference": "d0bf0debb3eea3c89ef98b3f2bc3e6ba5c574dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Resource/zipball/9a4bb3c090520ea511fb0882ade9d2a47eded2a7",
-                "reference": "9a4bb3c090520ea511fb0882ade9d2a47eded2a7",
+                "url": "https://api.github.com/repos/Sylius/Resource/zipball/d0bf0debb3eea3c89ef98b3f2bc3e6ba5c574dbd",
+                "reference": "d0bf0debb3eea3c89ef98b3f2bc3e6ba5c574dbd",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "^2.6",
+                "gedmo/doctrine-extensions": "^2.4",
                 "pagerfanta/pagerfanta": "^1.0",
                 "php": "^5.6|^7.0",
                 "symfony/event-dispatcher": "^3.2",
@@ -3355,7 +3356,7 @@
                 "shop",
                 "sylius"
             ],
-            "time": "2017-03-06 16:51:05"
+            "time": "2017-03-09 14:32:35"
         },
         {
             "name": "sylius/resource-bundle",
@@ -3363,12 +3364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "7f27df6917176cc0a4c344f1aeb05b176fb82b56"
+                "reference": "9f2a47bca7a8f6f32a5b09c8b989bdd7d1fafe1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/7f27df6917176cc0a4c344f1aeb05b176fb82b56",
-                "reference": "7f27df6917176cc0a4c344f1aeb05b176fb82b56",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/9f2a47bca7a8f6f32a5b09c8b989bdd7d1fafe1b",
+                "reference": "9f2a47bca7a8f6f32a5b09c8b989bdd7d1fafe1b",
                 "shasum": ""
             },
             "require": {
@@ -3469,7 +3470,7 @@
             "support": {
                 "source": "https://github.com/Sylius/SyliusResourceBundle/tree/master"
             },
-            "time": "2017-03-08 14:50:36"
+            "time": "2017-03-10 10:09:57"
         },
         {
             "name": "sylius/settings-bundle",
@@ -4078,16 +4079,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "463b6558cef064b8472779e79fc49a48af7b94d1"
+                "reference": "b0f8a7fa4b8baadf9db299cb6ac87c96a8977dbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/463b6558cef064b8472779e79fc49a48af7b94d1",
-                "reference": "463b6558cef064b8472779e79fc49a48af7b94d1",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/b0f8a7fa4b8baadf9db299cb6ac87c96a8977dbe",
+                "reference": "b0f8a7fa4b8baadf9db299cb6ac87c96a8977dbe",
                 "shasum": ""
             },
             "require": {
@@ -4218,7 +4219,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-03-09T02:03:55+00:00"
+            "time": "2017-03-10T18:35:48+00:00"
         },
         {
             "name": "twig/extensions",
@@ -7260,52 +7261,6 @@
                 "iterator"
             ],
             "time": "2016-10-03T07:40:28+00:00"
-        },
-        {
-            "name": "phpunit/php-invoker",
-            "version": "1.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/php-invoker.git",
-                "reference": "86074bf0fc2caf02ec8819a93f65a37cd0b44c8e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-invoker/zipball/86074bf0fc2caf02ec8819a93f65a37cd0b44c8e",
-                "reference": "86074bf0fc2caf02ec8819a93f65a37cd0b44c8e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pcntl": "*",
-                "php": ">=5.3.3",
-                "phpunit/php-timer": ">=1.0.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "Utility class for invoking callables with a timeout.",
-            "homepage": "https://github.com/sebastianbergmann/php-invoker/",
-            "keywords": [
-                "process"
-            ],
-            "time": "2015-06-21T13:32:55+00:00"
         },
         {
             "name": "phpunit/php-text-template",

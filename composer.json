@@ -58,7 +58,6 @@
     "require-dev": {
         "phpunit/phpunit": "^6.0",
         "symfony/phpunit-bridge": "^3.0",
-        "phpunit/php-invoker": "^1.1",
         "behat/behat": "^3.0",
         "behat/symfony2-extension": "^2.0",
         "behat/mink-extension": "^2.0",
