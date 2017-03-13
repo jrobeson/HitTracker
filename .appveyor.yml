@@ -35,13 +35,13 @@ install:
     - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
     - cd C:\projects\php-project-workspace
     - appveyor-retry composer install --no-progress --profile --prefer-dist
-    - bin\console doctrine:database:create
-    - bin\console doctrine:migrations:migrate --no-interaction
-    - bin\console cache:clear
+    - php bin\console doctrine:database:create
+    - php bin\console doctrine:migrations:migrate --no-interaction
+    - php bin\console cache:clear
 
 test_script:
     - cd C:\projects\php-project-workspace
-    - vendor\bin\phpunit -c phpunit.xml.dist
+    - php vendor\bin\phpunit -c phpunit.xml.dist
 
 branches:
   except:
