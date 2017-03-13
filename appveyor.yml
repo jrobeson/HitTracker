@@ -18,7 +18,7 @@ init:
     - SET PATH=C:\Program Files\OpenSSL;C:\tools\php;%PATH%
     - SET COMPOSER_NO_INTERACTION=1
     - SET PHPRC=.\etc\php.ini
-    - SET PHP_INI_SCAN_DIR=.\etc\php\all
+    - SET PHP_INI_SCAN_DIR=.\etc\php\win32
     - SET SYMFONY__BUILD_TYPE="electron"
     - SET SYMFONY_DEBUG="true"
     - SET SYMFONY_ENV="test"
