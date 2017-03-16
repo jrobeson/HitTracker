@@ -6,7 +6,7 @@ clone_folder: C:\HitTracker
 
 environment:
     global:
-        - php_ver_target: 7.1
+        php_ver_target: 7.1
 
 cache:
     - '%LOCALAPPDATA%\Composer\files -> composer.lock'
