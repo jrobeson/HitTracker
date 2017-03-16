@@ -47,7 +47,7 @@ test_script:
 before_deploy:
   - cd C:\HitTracker
   - composer install --no-dev --no-scripts
-  - composer dump-autoload --optimize-autoloader --classmap-authoritative
+  - composer dump-autoload --optimize --classmap-authoritative
   - php bin\console cache:clear --no-warmup
   - cd ..
   - 7z a HitTracker-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
