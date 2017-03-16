@@ -45,6 +45,7 @@ test_script:
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
+  - SET SYMFONY_ENV="prod"
   - cd C:\HitTracker
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
