@@ -45,7 +45,7 @@ test_script:
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
-  - cd C:\project
+  - cd C:\HitTracker
   - composer install --no-dev --optimize-autoloader --classmap-authoritative
   - php bin\console cache:clear --no-warmup
   - cd ..
