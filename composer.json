@@ -90,11 +90,7 @@
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
-        "symfony-assets-install": "relative",
-        "writable-dirs": [
-            "var/cache",
-            "var/logs"
-        ]
+        "symfony-assets-install": "relative"
     },
     "repositories": [
         {
