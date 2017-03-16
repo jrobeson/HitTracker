@@ -85,9 +85,6 @@
             "@shared-scripts"
         ]
     },
-    "config": {
-        "preferred-install": "source"
-    },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
