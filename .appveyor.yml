@@ -49,7 +49,7 @@ before_deploy:
   - cd C:\HitTracker
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - ps: "Remove-Item 'var\*\*' -Recurse -Force"
+  - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
   - cd ..
   - 7z a HitTracker-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
 
