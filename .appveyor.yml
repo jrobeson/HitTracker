@@ -2,7 +2,7 @@
 build: false
 platform:
     - x64
-clone_folder: C:\project
+clone_folder: C:\HitTracker
 
 environment:
     global:
@@ -34,21 +34,22 @@ install:
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
     - IF %PHP%==1 echo @php %%~dp0composer.phar %%* > composer.bat
     - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
-    - cd C:\project
+    - cd C:\HitTracker
     - appveyor-retry composer install --no-progress --profile
     - php bin\console doctrine:database:create
     - php bin\console doctrine:migrations:migrate --no-interaction
     - php bin\console cache:clear
 
 test_script:
-    - cd C:\project
+    - cd C:\HitTracker
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
   - cd C:\project
   - composer install --no-dev --optimize-autoloader --classmap-authoritative
   - php bin\console cache:clear --no-warmup
-  - 7z a ../HitTracker-win32-%APPVEYOR_REPO_TAG_NAME%.zip .
+  - cd ..
+  - 7z a HitTracker-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
 
 deploy:
     description: "Release $(APPVEYOR_REPO_TAG_NAME)"
