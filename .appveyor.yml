@@ -45,11 +45,11 @@ test_script:
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
-  - SET SYMFONY_ENV="prod"
+  - SET SYMFONY_ENV=prod
   - cd C:\HitTracker
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - php bin\console cache:clear --no-warmup
+  - -Command "Remove-Item 'var\*\*' -Recurse -Force"
   - cd ..
   - 7z a HitTracker-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
 
