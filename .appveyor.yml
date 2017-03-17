@@ -2,6 +2,7 @@
 build: false
 platform:
     - x64
+    - x32
 clone_folder: C:\HitTracker
 
 environment:
@@ -16,24 +17,27 @@ environment:
         SYMFONY_ENV: test
 
 cache:
-    - '%LOCALAPPDATA%\Composer\files -> composer.lock'
-    - composer.phar
+    - '%LOCALAPPDATA%\Composer -> composer.lock'
+    - C:\php\composer.phar -> composer.lock
     - C:\ProgramData\chocolatey\bin -> .appveyor.yml
     - C:\ProgramData\chocolatey\lib -> .appveyor.yml
     - C:\php -> .appveyor.yml
 
 init:
-    - SET PATH=C:\Program Files\OpenSSL;C:\php;%PATH%
+    - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
     - SET PHP=1 # This var is connected to PHP install cache
+    - SET COMPOSER_NOT_EXISTS=1
     - SET ANSICON=121x90 (121x90)
 
 install:
     - IF EXIST c:\php (SET PHP=0)
+    - IF EXIST c:\composer (SET COMPOSER_NOT_EXISTS=0)
     - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
     - cd c:\php
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
-    - IF %PHP%==1 echo @php %%~dp0composer.phar %%* > composer.bat
-    - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+    - cd C:\composer
+    - IF %COMPOSER_NOT_EXISTS%==1 echo @php %%~dp0composer.phar %%* > composer.bat
+    - IF %COMPOSER_NOT_EXISTS%==1 appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar "C:\composer"
     - cd C:\HitTracker
     - appveyor-retry composer install --no-progress --profile
     - php bin\console doctrine:database:create
@@ -50,10 +54,10 @@ before_deploy:
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
   - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
+  - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
   - cd ..
-  - 7z a HitTracker-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
+  - 7z a HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
   - appveyor PushArtifact HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip
-
 
 deploy:
     description: "Release $(APPVEYOR_REPO_TAG_NAME)"

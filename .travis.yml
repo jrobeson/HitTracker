@@ -15,13 +15,16 @@ env:
         - COMPOSER_NO_INTERACTION=1
         - SYMFONY_DEBUG=true
         - SYMFONY_ENV=test
-        - SYMFONY__DATABASE_NAME=hittracker
-        - SYMFONY__DATABASE_USER=postgres
         - SYMFONY__SECRET=ff3464e484bb524fb4234e893f9cee58
     matrix:
         - SYMFONY__BUILD_TYPE=hosted
+          SYMFONY__DATABASE_NAME=hittracker
+          SYMFONY__DATABASE_USER=postgres
         - SYMFONY__BUILD_TYPE=standalone
+          SYMFONY__DATABASE_NAME=hittracker
+          SYMFONY__DATABASE_USER=postgres
         - SYMFONY__BUILD_TYPE=electron
+          SYMFONY__DATABASE_PATH="var/data/hitttracker.db"
 
 services:
   - postgresql
@@ -38,22 +41,21 @@ before_script:
     - php bin/console cache:warmup
 
 script:
-  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
-  - ./vendor/bin/phpstan analyse -l5 src/ -c phpstan.neon
-  - ./vendor/bin/phpunit
+    - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
+    - ./vendor/bin/phpstan analyse -l5 src/ -c phpstan.neon
+    - ./vendor/bin/phpunit
 
 before_deploy:
-  - export SYMFONY_ENV=prod
-  - composer install --no-dev --no-scripts
-  - composer dump-autoload --optimize --classmap-authoritative
-  - "rm -rf var/*/*"
-  - "tar -cvpf HitTracker-$SYMFONY__BUILD_TYPE-linux-$TRAVIS_TAG.tar.xz --transform 's|^|HitTracker/|' ."
-
+    - export SYMFONY_ENV=prod
+    - composer install --no-dev --no-scripts
+    - composer dump-autoload --optimize --classmap-authoritative
+    - rm -rf var/*/*
+    - "tar -cvpf HitTracker-$SYMFONY__BUILD_TYPE-linux-$TRAVIS_TAG.tar.xz --transform 's|^|HitTracker/|' ."
 
 deploy:
     provider: releases
     api_key:
-        secure: vzvJlYipk9VbIIPS1ZszTFGuiwKbzgGYMCqAnI1+iccf1hAXerNwq99Tg0LpeJmpyWdYMw1jG9KNd3xS2kQsoyXFhq5fYd4pFiLx/ap0YrH7JRk+ukeUEkga2xKtSc736dF7QpLMz9cQEyapQjW2V2L86iUVTaXw9SkbMzS+AqM=
+        secure: "LJ1ZwqBmg6GajDkgtFrgkNttfmBObPAAUPnJr8d53mXEA6+ZwZw/fIXOt7BzOQOow2DWMDf+PAqMkmSQLwdjnRB+jGIa4yJHnOQ1BxgyLuiQ5yiFckkHwBt+1HrKGZ54uxaQBej1/wbBi1GrEhz5BNWjAsHotGVMbiJ6dR4uU24="
     file: "*.tar.xz"
     file_glob: true
     skip_cleanup: true
@@ -61,5 +63,5 @@ deploy:
         tags: true
 
 branches:
-  except:
-    - gh-pages
+    except:
+        - gh-pages
