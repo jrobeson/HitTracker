@@ -26,18 +26,18 @@ cache:
 init:
     - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
     - SET PHP=1 # This var is connected to PHP install cache
-    - SET COMPOSER=1
+    - SET COMPOSER_NOT_EXISTS=1
     - SET ANSICON=121x90 (121x90)
 
 install:
     - IF EXIST c:\php (SET PHP=0)
-    - IF EXIST c:\composer (SET COMPOSER=0)
+    - IF EXIST c:\composer (SET COMPOSER_NOT_EXISTS=0)
     - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
     - cd c:\php
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
     - cd C:\composer
-    - IF %COMPOSER%==1 echo @php %%~dp0composer.phar %%* > composer.bat
-    - appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar "C:\composer"
+    - IF %COMPOSER_NOT_EXISTS%==1 echo @php %%~dp0composer.phar %%* > composer.bat
+    - IF %COMPOSER_NOT_EXISTS%==1 appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar "C:\composer"
     - cd C:\HitTracker
     - appveyor-retry composer install --no-progress --profile
     - php bin\console doctrine:database:create
