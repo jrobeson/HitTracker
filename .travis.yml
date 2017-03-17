@@ -56,7 +56,7 @@ before_deploy:
 deploy:
     provider: releases
     api_key:
-        secure: vzvJlYipk9VbIIPS1ZszTFGuiwKbzgGYMCqAnI1+iccf1hAXerNwq99Tg0LpeJmpyWdYMw1jG9KNd3xS2kQsoyXFhq5fYd4pFiLx/ap0YrH7JRk+ukeUEkga2xKtSc736dF7QpLMz9cQEyapQjW2V2L86iUVTaXw9SkbMzS+AqM=
+        secure: "LJ1ZwqBmg6GajDkgtFrgkNttfmBObPAAUPnJr8d53mXEA6+ZwZw/fIXOt7BzOQOow2DWMDf+PAqMkmSQLwdjnRB+jGIa4yJHnOQ1BxgyLuiQ5yiFckkHwBt+1HrKGZ54uxaQBej1/wbBi1GrEhz5BNWjAsHotGVMbiJ6dR4uU24="
     file: "HitTracker-linux-$SYMFONY__BUILD_TYPE-$TRAVIS_TAG.tar.xz"
     skip_cleanup: true
     on:
