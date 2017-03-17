@@ -8,7 +8,7 @@ php:
 sudo: false
 cache:
     directories:
-        - $HOME/.cache/composer
+        - $HOME/.composer
 
 env:
     global:
@@ -29,7 +29,7 @@ addons:
     postgresql: '9.6'
 
 install:
-    - composer install --prefer-dist
+    - composer install
 
 before_script:
     - php bin/console doctrine:database:create
@@ -42,3 +42,24 @@ script:
   - ./vendor/bin/phpstan analyse -l5 src/ -c phpstan.neon
   - ./vendor/bin/phpunit
 
+before_deploy:
+  - export SYMFONY_ENV=prod
+  - composer install --no-dev --no-scripts
+  - composer dump-autoload --optimize --classmap-authoritative
+  - "rm -rf var/*/*"
+  - "tar -cvpf HitTracker-$SYMFONY__BUILD_TYPE-linux-$TRAVIS_TAG.tar.xz --transform 's|^|HitTracker/|' ."
+
+
+deploy:
+    provider: releases
+    api_key:
+        secure: vzvJlYipk9VbIIPS1ZszTFGuiwKbzgGYMCqAnI1+iccf1hAXerNwq99Tg0LpeJmpyWdYMw1jG9KNd3xS2kQsoyXFhq5fYd4pFiLx/ap0YrH7JRk+ukeUEkga2xKtSc736dF7QpLMz9cQEyapQjW2V2L86iUVTaXw9SkbMzS+AqM=
+    file: "*.tar.xz"
+    file_glob: true
+    skip_cleanup: true
+    on:
+        tags: true
+
+branches:
+  except:
+    - gh-pages
