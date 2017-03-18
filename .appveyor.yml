@@ -47,12 +47,12 @@ install:
     - php bin\console cache:clear
 
 test_script:
-    - cd C:\HitTracker
+    - cd %APPVEYOR_BUILD_FOLDER%
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
   - SET SYMFONY_ENV=prod
-  - cd %APPVEYOR_BUILD_FOLDER
+  - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
   - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
