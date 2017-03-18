@@ -36,7 +36,7 @@ install:
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
     - IF NOT EXIST C:\composer mkdir C:\composer
     - cd C:\composer
-    - IF NOT EXIST C:\composer\composer.bat echo "@php %~dp0composer.phar %*" > composer.bat
+    - IF NOT EXIST C:\composer\composer.bat echo @php "%~dp0composer.phar" %*>composer.bat
     - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
     - composer self-update --stable
     - cd C:\HitTracker
