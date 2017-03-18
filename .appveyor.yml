@@ -17,11 +17,11 @@ environment:
         SYMFONY_ENV: test
 
 cache:
-    - '%LOCALAPPDATA%\Composer -> composer.lock'
-    - C:\php\composer.phar -> composer.lock
     - C:\ProgramData\chocolatey\bin -> .appveyor.yml
     - C:\ProgramData\chocolatey\lib -> .appveyor.yml
     - C:\php -> .appveyor.yml
+    - '%LOCALAPPDATA%\Composer -> composer.lock'
+    - C:\composer\composer.phar -> .appveyor.yml
 
 init:
     - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
@@ -37,7 +37,7 @@ install:
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
     - cd C:\composer
     - IF %COMPOSER_NOT_EXISTS%==1 echo @php %%~dp0composer.phar %%* > composer.bat
-    - IF %COMPOSER_NOT_EXISTS%==1 appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar "C:\composer"
+    - IF %COMPOSER_NOT_EXISTS%==1 appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
     - cd C:\HitTracker
     - appveyor-retry composer install --no-progress --profile
     - php bin\console doctrine:database:create
@@ -53,7 +53,6 @@ before_deploy:
   - cd C:\HitTracker
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
   - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
   - cd ..
   - 7z a HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
