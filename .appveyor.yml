@@ -9,8 +9,6 @@ environment:
     global:
         php_ver_target: 7.1
         COMPOSER_NO_INTERACTION: 1
-        PHPRC: .\etc\php.ini
-        PHP_INI_SCAN_DIR: .\etc\php\win32
         SYMFONY__BUILD_TYPE: electron
         SYMFONY__SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"
         SYMFONY_DEBUG: "true"
@@ -25,6 +23,9 @@ cache:
 
 init:
     - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
+    - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\php.ini
+    - SET PHP_INI_SCAN_DIR=%APPVEYOR_BUILD_FOLDER%\etc\php\win32
+
     - SET PHP=1 # This var is connected to PHP install cache
     - SET COMPOSER_NOT_EXISTS=1
     - SET ANSICON=121x90 (121x90)
@@ -39,7 +40,7 @@ install:
     - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
     - powershell -command "'@php C:\composer\composer.phar ' + $([char]37) + '*' | Out-File C:\composer\composer.bat -Encoding ASCII"
     - composer self-update --stable
-    - cd C:\HitTracker
+    - cd %APPVEYOR_BUILD_FOLDER%
     - appveyor-retry composer install --no-progress --profile
     - php bin\console doctrine:database:create
     - php bin\console doctrine:migrations:migrate --no-interaction
@@ -51,7 +52,7 @@ test_script:
 
 before_deploy:
   - SET SYMFONY_ENV=prod
-  - cd C:\HitTracker
+  - cd %APPVEYOR_BUILD_FOLDER
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
   - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
