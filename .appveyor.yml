@@ -35,6 +35,7 @@ install:
     - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
     - cd c:\php
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
+    - IF %COMPOSER_NOT_EXISTS%==1 md C:\composer
     - cd C:\composer
     - IF %COMPOSER_NOT_EXISTS%==1 echo @php %%~dp0composer.phar %%* > composer.bat
     - IF %COMPOSER_NOT_EXISTS%==1 appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
