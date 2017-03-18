@@ -31,14 +31,14 @@ init:
 
 install:
     - IF EXIST c:\php (SET PHP=0)
-    - IF EXIST c:\composer (SET COMPOSER_NOT_EXISTS=0)
     - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
     - cd c:\php
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
-    - IF %COMPOSER_NOT_EXISTS%==1 md C:\composer
+    - IF NOT EXIST C:\composer mkdir C:\composer
     - cd C:\composer
-    - IF %COMPOSER_NOT_EXISTS%==1 echo @php %%~dp0composer.phar %%* > composer.bat
-    - IF %COMPOSER_NOT_EXISTS%==1 appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+    - IF NOT EXIST C:\composer\composer.bat echo "@php %~dp0composer.phar %*" > composer.bat
+    - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+    - composer self-update --stable
     - cd C:\HitTracker
     - appveyor-retry composer install --no-progress --profile
     - php bin\console doctrine:database:create
