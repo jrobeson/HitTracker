@@ -36,8 +36,8 @@ install:
       #- IF %PHP%==1 echo extension_dir=ext >> php.ini
     - IF NOT EXIST C:\composer mkdir C:\composer
     - cd C:\composer
-    - IF NOT EXIST C:\composer\composer.bat echo @php "%~dp0composer.phar" %*>composer.bat
-    - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar
+    - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
+    - powershell -command "'@php C:\composer\composer.phar ' + $([char]37) + '*' | Out-File C:\composer\composer.bat -Encoding ASCII"
     - composer self-update --stable
     - cd C:\HitTracker
     - appveyor-retry composer install --no-progress --profile
