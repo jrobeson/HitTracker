@@ -1,0 +1,50 @@
+#!/usr/bin/env php
+<?php declare(strict_types=1);
+
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+
+require __DIR__.'/../vendor/autoload.php';
+
+$baseDir = realpath(__DIR__ . '/../vendor');
+
+$fs = new Filesystem();
+
+// Clean up var/
+$finder = new Finder();
+$finder->in(__DIR__ . '/../var/*/*')->files();
+foreach ($finder as $entry) {
+    $fs->remove($entry->getRealPath());
+}
+
+// Clean up vendor/
+$finder = new Finder();
+$finder->ignoreDotFiles(false);
+$finder->ignoreVCS(false);
+$finder->sortByName();
+
+
+
+$finder
+    ->in('vendor')
+    ->name('.git')
+    ->name('doc-template') // ocramius
+    ->name('docs')
+    ->name('examples')
+    ->name('spec')
+    ->name('Tests')
+    ->name('tests')
+    ->name('/^phpunit\.xml/')
+    ->name('/appveyor\.yml$/')
+    ->name('.travis.yml')
+    ->name('/CHANGELOG/i')
+    ->name('UPGRADE*.md')
+    ->name('README*')
+;
+echo('Files for Removal: ' . $finder->count());
+foreach ($finder as $entry) {
+    if ($fs->exists($entry->getRealPath())) {
+        $fs->remove($entry->getRealPath());
+    }
+}
+*/
