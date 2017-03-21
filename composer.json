@@ -16,11 +16,16 @@
         ]
     },
     "autoload-dev": {
-        "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
+        "files": [ "vendor/symfony/var-dumper/Resources/functions/dump.php" ]
     },
     "require": {
         "php": ">=7.1",
-        "symfony/symfony": "^3.2",
+        "symfony/serializer": "^3.2",
+        "symfony/property-info": "^3.2",
+        "symfony/framework-bundle": "^3.2",
+        "symfony/debug-bundle": "^3.2",
+        "symfony/security-bundle": "^3.2",
+        "symfony/web-profiler-bundle": "^3.2",
         "doctrine/orm": "2.6.x-dev@dev",
         "doctrine/dbal": "2.6.x-dev@dev",
         "doctrine/doctrine-bundle": "^1.6",
@@ -46,7 +51,6 @@
         "nesbot/Carbon": "^1.18",
         "vlucas/phpdotenv": "^2.0",
         "nelmio/security-bundle": "^2.0",
-        "psy/psysh": "^0.8",
         "symfony/psr-http-message-bridge": "^1.0",
         "zendframework/zend-diactoros": "^1.0",
         "vich/uploader-bundle": "^1.0",
@@ -55,6 +59,7 @@
         "incenteev/hashed-asset-bundle": "dev-master@dev"
     },
     "require-dev": {
+        "psy/psysh": "^0.8",
         "phpunit/phpunit": "^6.0",
         "symfony/phpunit-bridge": "^3.0",
         "behat/behat": "^3.0",
