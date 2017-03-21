@@ -48,8 +48,8 @@ script:
 before_deploy:
     - export SYMFONY_ENV=prod
     - composer install --no-dev --no-scripts
+    - php bin/clean-files
     - composer dump-autoload --optimize --classmap-authoritative
-    - rm -rf var/*/*
     - "tar -cvpf HitTracker-$SYMFONY__BUILD_TYPE-linux-$TRAVIS_TAG.tar.xz --transform 's|^|HitTracker/|' ."
 
 deploy:

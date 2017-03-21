@@ -59,7 +59,7 @@ before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - ps: "Remove-Item 'var\\*\\*' -Recurse -Force"
+  - php bin\clean-files
   - cd ..
   - 7z a HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
   - appveyor PushArtifact HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip
