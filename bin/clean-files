@@ -47,4 +47,3 @@ foreach ($finder as $entry) {
         $fs->remove($entry->getRealPath());
     }
 }
-*/
