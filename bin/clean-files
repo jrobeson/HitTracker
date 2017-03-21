@@ -43,6 +43,7 @@ $finder
 ;
 echo('Files for Removal: ' . $finder->count());
 foreach ($finder as $entry) {
+    echo('Removing File: ' . $entry->getRealPath() . PHP_EOL);
     if ($fs->exists($entry->getRealPath())) {
         $fs->remove($entry->getRealPath());
     }
