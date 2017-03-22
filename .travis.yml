@@ -32,7 +32,7 @@ addons:
     postgresql: '9.6'
 
 install:
-    - composer install
+    - composer install --prefer-dist
 
 before_script:
     - php bin/console doctrine:database:create
@@ -47,7 +47,7 @@ script:
 
 before_deploy:
     - export SYMFONY_ENV=prod
-    - composer install --no-dev --no-scripts
+    - composer install --no-dev --prefer-dist --no-scripts
     - php bin/clean-files
     - composer dump-autoload --optimize --classmap-authoritative
     - "tar -cvpf HitTracker-$SYMFONY__BUILD_TYPE-linux-$TRAVIS_TAG.tar.xz --transform 's|^|HitTracker/|' ."
