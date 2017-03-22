@@ -49,6 +49,7 @@ install:
     - php bin\console doctrine:database:create
     - php bin\console doctrine:migrations:migrate --no-interaction
     - php bin\console cache:clear
+    - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 test_script:
     - cd %APPVEYOR_BUILD_FOLDER%
@@ -59,6 +60,7 @@ before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
+
   - php bin\clean-files
   - cd ..
   - 7z a HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
