@@ -41,7 +41,7 @@ $finder
     ->name('UPGRADE*.md')
     ->name('README*')
 ;
-echo('Files for Removal: ' . $finder->count());
+echo(sprintf('Files for Removal:%s' . PHP_EOL, $finder->count()));
 foreach ($finder as $entry) {
     echo('Removing File: ' . $entry->getRealPath() . PHP_EOL);
     if ($fs->exists($entry->getRealPath())) {
