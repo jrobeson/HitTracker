@@ -59,17 +59,15 @@ before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --prefer-dist --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - php bin\clean-files
-  - cd ..
-  - 7z a HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip HitTracker
-  - appveyor PushArtifact HitTracker-%SYMFONY__BUILD_TYPE%-win32-%APPVEYOR_REPO_TAG_NAME%.zip
+  - php bin\create_electron_archive win32 %PLATFORM% %APPVEYOR_REPO_TAG_NAME%
+  - appveyor PushArtifact HitTracker-electron-win32-%PLATFORM%-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
 
 deploy:
     description: "Release $(APPVEYOR_REPO_TAG_NAME)"
     provider: GitHub
     auth_token:
       secure: "N7AGr+WKRHnBh8dscxot6kPvACQt1AY5HIQ1UVqAaiV/dPlKPQiCLy8JNiW17KMx"
-    artifact: /.*\.zip/
+    artifact: /.*\.bz2/
     draft: true
     prerelease: false
     on:

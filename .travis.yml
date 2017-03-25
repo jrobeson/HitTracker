@@ -48,15 +48,14 @@ script:
 before_deploy:
     - export SYMFONY_ENV=prod
     - composer install --no-dev --prefer-dist --no-scripts
-    - php bin/clean-files
     - composer dump-autoload --optimize --classmap-authoritative
-    - "tar -cvpf HitTracker-$SYMFONY__BUILD_TYPE-linux-$TRAVIS_TAG.tar.xz --transform 's|^|HitTracker/|' ."
+    - if [ ${SYMFONY__BUILD_TYPE} = "electron" ]; then php bin/create_electron_archive.php linux x64 $TRAVIS_TAG; fi
 
 deploy:
     provider: releases
     api_key:
         secure: "LJ1ZwqBmg6GajDkgtFrgkNttfmBObPAAUPnJr8d53mXEA6+ZwZw/fIXOt7BzOQOow2DWMDf+PAqMkmSQLwdjnRB+jGIa4yJHnOQ1BxgyLuiQ5yiFckkHwBt+1HrKGZ54uxaQBej1/wbBi1GrEhz5BNWjAsHotGVMbiJ6dR4uU24="
-    file: "*.tar.xz"
+    file: "*.tar.bz2"
     file_glob: true
     skip_cleanup: true
     on:
