@@ -7,7 +7,7 @@ use Symfony\Component\Finder\Finder;
 require __DIR__.'/../vendor/autoload.php';
 
 if (!isset($argv[1]) || !isset($argv[2]) || !isset($argv[3])) {
-    echo("Usage: create_archive <platform> <arch> <version>");
+    echo 'Usage: create_archive <platform> <arch> <version>';
     exit(1);
 }
 $arch = $argv[2];
@@ -17,7 +17,6 @@ $version = $argv[3];
 $fileBaseName = __DIR__."/../HitTracker-electron-$platform-$arch-$version.tar";
 
 $fileName = $fileBaseName.'.bz2';
-
 
 $archiveDir = realpath(__DIR__.'/../');
 
@@ -31,12 +30,12 @@ if (file_exists($fileBaseName)) {
     $fs->remove($fileBaseName);
 }
 
-echo("Creating File: $fileName\n");
-echo("Finding Files...\n");
+echo "Creating File: $fileName\n";
+echo "Finding Files...\n";
 // Finder excludes dot files and vcs directories by default
 $appFiles = new Finder();
 
-$appDirs = array_map(function($d) use($archiveDir) {
+$appDirs = array_map(function ($d) use ($archiveDir) {
     return $archiveDir.'/'.$d;
 }, ['app', 'bin', 'etc', 'src', 'web']
 );
@@ -62,14 +61,12 @@ $appFiles->append($vendorFiles);
 
 $archive = new PharData($fileBaseName);
 
-echo("Building Archive...\n");
+echo "Building Archive...\n";
 $archive->buildFromIterator($appFiles, $archiveDir);
 
-echo("Compressing Archive...\n");
+echo "Compressing Archive...\n";
 $archive->compress(Phar::BZ2);
 
 // Phar gets too greedy with the the tokens when creating a .tar.bz2 filename, so we "fix" it.
 $fs->rename(str_replace("-$version.tar.bz2", '-0.tar.bz2', $fileName), $fileName);
-echo("Finished\n");
-
-
+echo "Finished\n";
