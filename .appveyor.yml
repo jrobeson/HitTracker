@@ -2,7 +2,6 @@
 build: false
 platform:
     - x64
-    - x32
 clone_folder: C:\HitTracker
 
 environment:
@@ -59,8 +58,8 @@ before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --prefer-dist --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - php bin\create_electron_archive.php win32 %PLATFORM% %APPVEYOR_REPO_TAG_NAME%
-  - appveyor PushArtifact HitTracker-electron-win32-%PLATFORM%-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
+  - php bin\create_electron_archive.php win32 %APPVEYOR_REPO_TAG_NAME%
+  - appveyor PushArtifact HitTracker-electron-win32-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
 
 deploy:
     description: "Release $(APPVEYOR_REPO_TAG_NAME)"

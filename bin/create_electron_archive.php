@@ -6,15 +6,14 @@ use Symfony\Component\Finder\Finder;
 
 require __DIR__.'/../vendor/autoload.php';
 
-if (!isset($argv[1]) || !isset($argv[2]) || !isset($argv[3])) {
-    echo 'Usage: create_archive <platform> <arch> <version>';
+if (!isset($argv[1]) || !isset($argv[2])) {
+    echo 'Usage: create_archive <platform> <version>';
     exit(1);
 }
-$arch = $argv[2];
 $platform = $argv[1];
-$version = $argv[3];
+$version = $argv[2];
 
-$fileBaseName = __DIR__."/../HitTracker-electron-$platform-$arch-$version.tar";
+$fileBaseName = __DIR__."/../HitTracker-electron-$platform-$version.tar";
 
 $fileName = $fileBaseName.'.bz2';
 
