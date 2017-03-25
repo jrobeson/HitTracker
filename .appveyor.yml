@@ -59,7 +59,7 @@ before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --prefer-dist --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative
-  - php bin\create_electron_archive win32 %PLATFORM% %APPVEYOR_REPO_TAG_NAME%
+  - php bin\create_electron_archive.php win32 %PLATFORM% %APPVEYOR_REPO_TAG_NAME%
   - appveyor PushArtifact HitTracker-electron-win32-%PLATFORM%-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
 
 deploy:
