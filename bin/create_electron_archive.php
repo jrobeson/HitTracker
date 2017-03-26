@@ -41,19 +41,30 @@ $appDirs = array_map(function ($d) use ($archiveDir) {
 $appFiles->in($appDirs)->files();
 
 $vendorFiles = new Finder();
-$vendorFiles->in($archiveDir.'/vendor')->files()
-    ->notName('doc-template') // ocramius
-    ->notName('docs')
-    ->notName('examples')
-    ->notName('features') // behat
-    ->notName('spec')  // phpspec
-    ->notName('Tests')
-    ->notName('tests')
-    ->notName('/^phpunit')
+$vendorFiles->in($archiveDir.'/vendor')
+    ->exclude([
+        'benchmarks',
+        'doc-templates', // ocramius
+        'doc',
+        'docs',
+        'examples',
+        'features', // behat
+        'spec', // phpspec
+        'Tests',
+        'tests'
+    ])
+    ->files()
+    ->notName('build.properties')
+    ->notName('build.properties.dev')
+    ->notName('build.xml')
+    ->notName('humbug.json.dist')
+    ->notName('phpunit.*')
     ->notName('appveyor.yml')  // not everybody uses .appveyor.yml files yet
+    ->notName('/CONTRIBUTING/i')
     ->notName('/CHANGELOG/i')
-    ->notName('UPGRADE*')
-    ->notName('README*')
+    ->notName('/README/i')
+    ->notName('/SECURITY/i')
+    ->notName('/UPGRAD/i') // catches UPGRADING too
 ;
 
 $appFiles->append($vendorFiles);
@@ -66,6 +77,6 @@ $archive->buildFromIterator($appFiles, $archiveDir);
 echo "Compressing Archive...\n";
 $archive->compress(Phar::BZ2);
 
-// Phar gets too greedy with the the tokens when creating a .tar.bz2 filename, so we "fix" it.
+// Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
 $fs->rename(str_replace("-$version.tar.bz2", '-0.tar.bz2', $fileName), $fileName);
 echo "Finished\n";
