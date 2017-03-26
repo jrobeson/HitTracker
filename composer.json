@@ -78,7 +78,8 @@
         "league/factory-muffin": "^3.0",
         "league/factory-muffin-faker": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.0",
-        "phpstan/phpstan-doctrine": "^0.6.1"
+        "phpstan/phpstan-doctrine": "^0.6.1",
+        "willdurand/hateoas-bundle": "dev-use-psr-4-autoloader as 1.2.0"
     },
     "scripts": {
         "shared-scripts": [
@@ -100,6 +101,10 @@
         "symfony-assets-install": "relative"
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jrobeson/BazingaHateoasBundle"
+        },
         {
             "type": "vcs",
             "url": "https://github.com/Sylius/SyliusResourceBundle"

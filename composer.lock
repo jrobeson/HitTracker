@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "96a6b17e434c4288d76aa2d9f111066f",
+    "content-hash": "50d2b534c00ef5e4de2e167acb3537df",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -6850,17 +6850,16 @@
         },
         {
             "name": "willdurand/hateoas-bundle",
-            "version": "1.2.0",
-            "target-dir": "Bazinga/Bundle/HateoasBundle",
+            "version": "dev-use-psr-4-autoloader",
             "source": {
                 "type": "git",
-                "url": "https://github.com/willdurand/BazingaHateoasBundle.git",
-                "reference": "7c73a949c72dc6bc7363f76c11e70e655b19d94b"
+                "url": "https://github.com/jrobeson/BazingaHateoasBundle.git",
+                "reference": "8f902ecd7b57266b4ba81ae9df97ed170104f322"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/BazingaHateoasBundle/zipball/7c73a949c72dc6bc7363f76c11e70e655b19d94b",
-                "reference": "7c73a949c72dc6bc7363f76c11e70e655b19d94b",
+                "url": "https://api.github.com/repos/jrobeson/BazingaHateoasBundle/zipball/8f902ecd7b57266b4ba81ae9df97ed170104f322",
+                "reference": "8f902ecd7b57266b4ba81ae9df97ed170104f322",
                 "shasum": ""
             },
             "require": {
@@ -6881,26 +6880,28 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Bazinga\\Bundle\\HateoasBundle": ""
+                "psr-4": {
+                    "Bazinga\\Bundle\\HateoasBundle\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
             "description": "Integration of Hateoas into Symfony2.",
             "keywords": [
-                "HATEOAS",
+                "hateoas",
                 "rest"
             ],
-            "time": "2016-05-31T13:55:14+00:00"
+            "support": {
+                "source": "https://github.com/jrobeson/BazingaHateoasBundle/tree/use-psr-4-autoloader"
+            },
+            "time": "2017-03-26 06:01:38"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -10724,7 +10725,14 @@
             "time": "2016-11-14T01:06:16+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.2.0",
+            "alias_normalized": "1.2.0.0",
+            "version": "dev-use-psr-4-autoloader",
+            "package": "willdurand/hateoas-bundle"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/orm": 20,
@@ -10736,7 +10744,8 @@
         "sylius/settings-bundle": 20,
         "sylius/registry": 10,
         "dunglas/doctrine-json-odm": 20,
-        "incenteev/hashed-asset-bundle": 20
+        "incenteev/hashed-asset-bundle": 20,
+        "willdurand/hateoas-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
