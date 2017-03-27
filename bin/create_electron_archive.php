@@ -36,7 +36,7 @@ $appFiles = new Finder();
 
 $appDirs = array_map(function ($d) use ($archiveDir) {
     return $archiveDir.'/'.$d;
-}, ['app', 'bin', 'etc', 'src', 'web']
+}, ['app', 'bin', 'etc', 'migrations', 'src', 'web']
 );
 $appFiles->in($appDirs)->files();
 
