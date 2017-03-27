@@ -61,10 +61,11 @@ $vendorFiles->in($archiveDir.'/vendor')
     ->notName('phpunit.*')
     ->notName('appveyor.yml')  // not everybody uses .appveyor.yml files yet
     ->notName('/CONTRIBUTING/i')
-    ->notName('/CHANGELOG/i')
-    ->notName('/README/i')
-    ->notName('/SECURITY/i')
-    ->notName('/UPGRAD/i') // catches UPGRADING too
+    ->notName('/CHANGELOG/i$')
+    ->notName('/CHANGELOG\.(md|txt)$/i')
+    ->notName('/CHANGES$/i')
+    ->notName('/README$/i')
+    ->notName('/README\.(md|markdown|rst|txt)$/i')
 ;
 
 $appFiles->append($vendorFiles);
