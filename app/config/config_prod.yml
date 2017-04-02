@@ -1,6 +1,7 @@
 framework:
     cache:
         system: cache.adapter.apcu
+        app: cache.adapter.apcu
 
 doctrine:
     orm:
