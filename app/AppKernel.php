@@ -42,7 +42,7 @@ abstract class AppKernel extends Kernel
             );
         }
 
-        $isProd = 'prod' === $environment;
+        $isProd = 'production' === $environment;
         if (!$isProd && $debug) { /* @todo check this */
             Symfony\Component\Debug\Debug::enable();
         }
@@ -79,7 +79,7 @@ abstract class AppKernel extends Kernel
             new Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
         ];
 
-        if (in_array($this->getEnvironment(), ['dev', 'test'])) {
+        if (in_array($this->getEnvironment(), ['development', 'test'])) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
@@ -100,8 +100,8 @@ abstract class AppKernel extends Kernel
         ];
         if ('test' === $environment) { // test requires dev files first
             array_splice($configFiles, 2, 0, [
-                'config_dev.yml',
-                sprintf('%s/config_dev.yml', $buildType),
+                'config_development.yml',
+                sprintf('%s/config_development.yml', $buildType),
             ]);
         }
 

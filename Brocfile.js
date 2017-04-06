@@ -16,23 +16,8 @@ const esTranspiler = require('broccoli-babel-transpiler');
  * @returns string
  */
 function getEnv() {
-    const symfonyEnv = process.env.SYMFONY_ENV || 'dev';
-    let env = process.env.BROCCOLI_ENV || symfonyEnv;
-    switch (env) {
-        case 'prod':
-        case 'production':
-        case 'staging':
-            env = 'production';
-            break;
-        case 'dev':
-        case 'development':
-        case 'test':
-            env = 'development';
-            break;
-        default:
-            throw new Error(`Environment "${env}" is not supported`);
-    }
-    return env;
+    const symfonyEnv = process.env.SYMFONY_ENV || 'development';
+    return = process.env.BROCCOLI_ENV || symfonyEnv;
 }
 exports.getEnv = getEnv();
 

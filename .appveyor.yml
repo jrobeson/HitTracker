@@ -54,7 +54,7 @@ test_script:
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
-  - SET SYMFONY_ENV=prod
+  - SET SYMFONY_ENV=production
   - cd %APPVEYOR_BUILD_FOLDER%
   - composer install --prefer-dist --no-dev --no-scripts
   - composer dump-autoload --optimize --classmap-authoritative

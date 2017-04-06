@@ -48,7 +48,7 @@ script:
     - ./vendor/bin/phpunit
 
 before_deploy:
-    - export SYMFONY_ENV=prod
+    - export SYMFONY_ENV=production
     - composer install --no-dev --prefer-dist --no-scripts
     - composer dump-autoload --optimize --classmap-authoritative
     - if [ ${SYMFONY__BUILD_TYPE} = "electron" ]; then php bin/create_electron_archive.php linux $TRAVIS_TAG; fi

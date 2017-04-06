@@ -11,7 +11,7 @@ if (file_exists(__DIR__.'/../.env')) {
     $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');
     $dotEnv->load();
 }
-$env = env('SYMFONY_ENV', 'prod');
+$env = env('SYMFONY_ENV', 'production');
 $debug = env('SYMFONY_DEBUG', false);
 $buildType = env('SYMFONY__BUILD_TYPE', 'hosted');
 
