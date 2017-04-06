@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "50d2b534c00ef5e4de2e167acb3537df",
+    "content-hash": "8b23a0277ff04b31ed99a5331a02f5d0",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1140,7 +1140,7 @@
         },
         {
             "name": "dunglas/doctrine-json-odm",
-            "version": "dev-master",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dunglas/doctrine-json-odm.git",
@@ -1203,7 +1203,7 @@
                 "postgresql",
                 "rdbms"
             ],
-            "time": "2017-04-03 14:43:03"
+            "time": "2017-04-03T14:43:03+00:00"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -10822,7 +10822,6 @@
         "c33s/static-page-content-bundle": 20,
         "sylius/settings-bundle": 20,
         "sylius/registry": 10,
-        "dunglas/doctrine-json-odm": 20,
         "incenteev/hashed-asset-bundle": 20,
         "willdurand/hateoas-bundle": 20
     },
