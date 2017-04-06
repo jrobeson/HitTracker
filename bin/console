@@ -21,7 +21,7 @@ $debug = env('SYMFONY_DEBUG', true)
     && !$input->hasParameterOption(['--no-debug', ''])
     && $env !== 'prod';
 
-$defaultBuildType = env('SYMFONY__BUILD_TYPE', 'hosted');
+$defaultBuildType = env('HITTRACKER_BUILD_TYPE', 'standalone');
 $buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
 
 $kernelClass = ucfirst($buildType).'AppKernel';

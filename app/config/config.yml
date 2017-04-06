@@ -36,7 +36,7 @@ twig:
     globals:
         livereload_script_url: "%livereload_http_url%"
         icu_time_date_format: "%icu_time_date_format%"
-        build_type: "%build_type%"
+        build_type: "%hittracker_build_type%"
 
 doctrine:
     dbal:

@@ -17,7 +17,6 @@
  */
 
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use function Cekurte\Environment\env;
 
@@ -121,11 +120,6 @@ abstract class AppKernel extends Kernel
                 $loader->load($configFile);
             }
         }
-
-        $envParameters = $this->getEnvParameters();
-        $loader->load(function (ContainerInterface $container) use ($envParameters) {
-            $container->getParameterBag()->add($envParameters);
-        });
     }
 
     public function getCacheDir(): string

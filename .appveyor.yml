@@ -8,8 +8,8 @@ environment:
     global:
         php_ver_target: 7.1
         COMPOSER_NO_INTERACTION: 1
-        SYMFONY__BUILD_TYPE: electron
-        SYMFONY__SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"
+        HITTRACKER_BUILD_TYPE: electron
+        HITTRACKER_SESSION_SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"
         SYMFONY_DEBUG: "true"
         SYMFONY_ENV: test
 

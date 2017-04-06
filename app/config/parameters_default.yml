@@ -1,8 +1,11 @@
 parameters:
+    env(HITTRACKER_BUILD_TYPE): standalone
+    env(HITTRACKER_UPLOAD_DIR): "%kernel.root_dir%/../var/uploads"
+    secret: "%env(HITTRACKER_SESSION_SECRET)"
     locale: en_US
     icu_time_date_format: 'MM/dd/y hh:mm a'
 
-    upload_dir: '%kernel.root_dir%/../var/uploads'
+    upload_dir: "%env(HITTRACKER_UPLOAD_DIR)%"
     upload_uri_base_prefix: '/media' # used by GenericFileType
 
     livereload_http_url: "http://localhost/livereload.js"
@@ -13,3 +16,4 @@ parameters:
     mailer_user: ~
     mailer_password: ~
 
+    hittracker_build_type: "%env(HITTRACKER_BUILD_TYPE)%"

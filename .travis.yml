@@ -15,16 +15,16 @@ env:
         - COMPOSER_NO_INTERACTION=1
         - SYMFONY_DEBUG=true
         - SYMFONY_ENV=test
-        - SYMFONY__SECRET=ff3464e484bb524fb4234e893f9cee58
+        - HITTRACKER_SESSION_SECRET=ff3464e484bb524fb4234e893f9cee58
     matrix:
-        - SYMFONY__BUILD_TYPE=hosted
-          SYMFONY__DATABASE_NAME=hittracker
-          SYMFONY__DATABASE_USER=postgres
-        - SYMFONY__BUILD_TYPE=standalone
-          SYMFONY__DATABASE_NAME=hittracker
-          SYMFONY__DATABASE_USER=postgres
-        - SYMFONY__BUILD_TYPE=electron
-          SYMFONY__DATABASE_PATH="var/data/hitttracker.db"
+        - HITTRACKER_BUILD_TYPE=hosted
+          HITTRACKER_DATABASE_NAME=hittracker
+          HITTRACKER_DATABASE_USER=postgres
+        - HITTRACKER_BUILD_TYPE=standalone
+          HITTRACKER_DATABASE_NAME=hittracker
+          HITTRACKER_DATABASE_USER=postgres
+        - HITTRACKER_BUILD_TYPE=electron
+          HITTRACKER_DATABASE_PATH="var/data/hitttracker.db"
 
 services:
   - postgresql
