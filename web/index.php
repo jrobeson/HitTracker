@@ -13,7 +13,7 @@ if (file_exists(__DIR__.'/../.env')) {
 }
 $env = env('SYMFONY_ENV', 'production');
 $debug = env('SYMFONY_DEBUG', false);
-$buildType = env('SYMFONY__BUILD_TYPE', 'hosted');
+$buildType = env('HITTRACKER_BUILD_TYPE');
 
 $kernelClass = ucfirst($buildType).'AppKernel';
 $kernel = new $kernelClass($env, $debug);
