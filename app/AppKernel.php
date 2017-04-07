@@ -20,7 +20,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use function Cekurte\Environment\env;
 
-
 abstract class AppKernel extends Kernel
 {
     private $projectDir; // @todo: remove for symfony 3.3
@@ -174,6 +173,4 @@ abstract class AppKernel extends Kernel
     {
         return $this->projectDir;
     }
-
-
 }
