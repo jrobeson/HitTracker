@@ -20,8 +20,16 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use function Cekurte\Environment\env;
 
+
+/**
+ * {@inheritdoc}
+
+ * @todo remove projectDir for symfony 3.3
+ */
 abstract class AppKernel extends Kernel
 {
+    private $projectDir;
+
     /**
      * {@inheritdoc}
      *
@@ -29,6 +37,8 @@ abstract class AppKernel extends Kernel
      */
     public function __construct($environment, $debug)
     {
+        $this->projectDir = dirname(__DIR__);
+
         /*
          * Can't add new args to the constructor, due to instantiation
          * in the cache warmer
@@ -122,6 +132,22 @@ abstract class AppKernel extends Kernel
         }
     }
 
+    /**
+     * @todo remove project_dir and this whole method for symfony 3.3
+     */
+    protected function getKernelParameters(): array
+    {
+        $kernelParameters = parent::getKernelParameters();
+        $kernelParameters['kernel.project_dir'] = realpath($this->projectDir) ?: $this->projectDir;
+
+        return $kernelParameters;
+    }
+
+    public function getProjectDir(): string
+    {
+        return $this->projectDir;
+    }
+
     public function getCacheDir(): string
     {
         $varDir = env('SYMFONY__VAR_DIR');
@@ -130,7 +156,7 @@ abstract class AppKernel extends Kernel
         }
 
         return implode('/', [
-            dirname($this->rootDir),
+            $this->projectDir,
             '/var/cache',
             $this->getBuildType(),
             $this->environment,
@@ -145,7 +171,7 @@ abstract class AppKernel extends Kernel
         }
 
         return implode('/', [
-            dirname($this->rootDir),
+            $this->projectDir,
             '/var/logs',
             $this->getBuildType(),
         ]);

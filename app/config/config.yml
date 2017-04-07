@@ -50,12 +50,13 @@ doctrine:
         mappings:
                 LazerBall\HitTracker\Model:
                     type: annotation
-                    dir: '%kernel.root_dir%/../src/Model'
+                    dir: '%kernel.project_dir%/src/Model'
                     is_bundle: false
                     prefix: LazerBall\HitTracker\Model
                     alias: HitTracker
 
 doctrine_migrations:
+    # can't use project_dir here yet due to migration bundle's Doctrine command
     dir_name: "%kernel.root_dir%/../migrations"
     namespace: "LazerBall\\HitTracker\\Migrations"
 

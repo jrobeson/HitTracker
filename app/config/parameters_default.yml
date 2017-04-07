@@ -1,6 +1,6 @@
 parameters:
     env(HITTRACKER_BUILD_TYPE): standalone
-    env(HITTRACKER_UPLOAD_DIR): "%kernel.root_dir%/../var/uploads"
+    env(HITTRACKER_UPLOAD_DIR): "%kernel.project_dir%/var/uploads"
     secret: "%env(HITTRACKER_SESSION_SECRET)"
     locale: en_US
     icu_time_date_format: 'MM/dd/y hh:mm a'
