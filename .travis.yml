@@ -51,7 +51,7 @@ before_deploy:
     - export SYMFONY_ENV=production
     - composer install --no-dev --prefer-dist --no-scripts
     - composer dump-autoload --optimize --classmap-authoritative
-    - if [ ${SYMFONY__BUILD_TYPE} = "electron" ]; then php bin/create_electron_archive.php linux $TRAVIS_TAG; fi
+    - if [ ${HITTRACKER_BUILD_TYPE} != "standalone" ]; then php bin/create_archive.php $HITTRACKER_BUILD_TYPE linux $TRAVIS_TAG; fi
 
 deploy:
     provider: releases
