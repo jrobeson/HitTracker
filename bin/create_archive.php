@@ -15,67 +15,82 @@ $buildType = $argv[1];
 $platform = $argv[2];
 $version = $argv[3];
 
-$fileBaseName = __DIR__."/../HitTracker-electron-$buildType-$platform-$version.tar";
-
-$fileName = $fileBaseName.'.bz2';
-
 $archiveDir = realpath(__DIR__.'/../');
+$fileBaseName = "$archiveDir/hittracker-$buildType-$platform-$version.tar";
+$fileName = $fileBaseName.'.bz2';
+$tmpDir = "/tmp/hittracker-$buildType-$version";
 
 ini_set('memory_limit', '-1');
+
 $fs = new Filesystem();
 
-if (file_exists($fileName)) {
-    $fs->remove($fileName);
+// PharData will try to reuse an existing file
+foreach([$fileName, $fileBaseName, $tmpDir] as $oldPath) {
+    if ($fs->exists($oldPath)) {
+        $fs->remove($oldPath);
+    }
 }
-if (file_exists($fileBaseName)) {
-    $fs->remove($fileBaseName);
+
+$fs->mkdir($tmpDir);
+
+$appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'web'];
+if ('hosted' === $buildType) {
+    $appDirs[] = 'config';
 }
+
+echo "Copying Files...\n";
+foreach($appDirs as $appDir) {
+    echo sprintf("Copying %s\n", $appDir);
+    $fs->mirror($archiveDir.'/'.$appDir, $tmpDir.'/'.$appDir);
+}
+
+foreach(['composer.json', 'composer.lock'] as $appFile) {
+    echo sprintf("Copying %s\n", $appFile);
+    $fs->copy("$archiveDir/$appFile", $tmpDir.'/'.$appFile);
+}
+
+}
+
+echo "Removing Unused files and directories...\n";
+$vendorDir = $tmpDir.'/vendor';
+// Finder excludes dot files and vcs directories by default
+$vendorDirs = Finder::create()->in($vendorDir)
+        ->directories()
+        ->name('benchmarks')
+        ->name('doc-templates') // ocramius
+        ->name('doc')
+        ->name('docs')
+        ->name('examples')
+        ->name('features') // behat
+        ->name('spec') // phpspec
+        ->name('Tests')
+        ->name('tests')
+;
+$fs->remove($vendorDirs);
+
+$vendorFiles = Finder::create()->in($vendorDir)
+    ->files()
+    ->name('build.properties')
+    ->name('build.properties.dev')
+    ->name('build.xml')
+    ->name('humbug.json.dist')
+    ->name('phpunit.*')
+    ->name('appveyor.yml')  // not everybody uses .appveyor.yml files yet
+    ->name('/CONTRIBUTING/i')
+    ->name('/CHANGELOG/i$')
+    ->name('/CHANGELOG\.(md|txt)$/i')
+    ->name('/CHANGES$/i')
+    ->name('/README$/i')
+    ->name('/README\.(md|markdown|rst|txt)$/i')
+;
+$fs->remove($vendorFiles);
+
 
 echo "Creating File: $fileName\n";
-echo "Finding Files...\n";
-// Finder excludes dot files and vcs directories by default
-$appFiles = new Finder();
-
-$appDirs = array_map(function ($d) use ($archiveDir) {
-    return $archiveDir.'/'.$d;
-}, ['app', 'bin', 'etc', 'migrations', 'src', 'web']
-);
-$appFiles->in($appDirs)->files();
-
-$vendorFiles = new Finder();
-$vendorFiles->in($archiveDir.'/vendor')
-    ->exclude([
-        'benchmarks',
-        'doc-templates', // ocramius
-        'doc',
-        'docs',
-        'examples',
-        'features', // behat
-        'spec', // phpspec
-        'Tests',
-        'tests'
-    ])
-    ->files()
-    ->notName('build.properties')
-    ->notName('build.properties.dev')
-    ->notName('build.xml')
-    ->notName('humbug.json.dist')
-    ->notName('phpunit.*')
-    ->notName('appveyor.yml')  // not everybody uses .appveyor.yml files yet
-    ->notName('/CONTRIBUTING/i')
-    ->notName('/CHANGELOG/i$')
-    ->notName('/CHANGELOG\.(md|txt)$/i')
-    ->notName('/CHANGES$/i')
-    ->notName('/README$/i')
-    ->notName('/README\.(md|markdown|rst|txt)$/i')
-;
-
-$appFiles->append($vendorFiles);
-
 $archive = new PharData($fileBaseName);
 
 echo "Building Archive...\n";
-$archive->buildFromIterator($appFiles, $archiveDir);
+$archive->buildFromDirectory($tmpDir);
 
 echo "Compressing Archive...\n";
 $archive->compress(Phar::BZ2);
