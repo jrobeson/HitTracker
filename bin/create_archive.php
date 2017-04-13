@@ -3,6 +3,8 @@
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -49,6 +51,16 @@ foreach(['composer.json', 'composer.lock'] as $appFile) {
     $fs->copy("$archiveDir/$appFile", $tmpDir.'/'.$appFile);
 }
 
+echo "Installing (composer)...\n";
+
+try {
+    $composerInstallCmd = "composer install --working-dir=$tmpDir --no-dev --prefer-dist --no-scripts --optimize-autoloader --classmap-authoritative --no-suggest";
+    $composerInstall = new Process($composerInstallCmd);
+    $composerInstall->mustRun();
+    echo $composerInstall->getOutput();
+} catch (ProcessFailedException $e) {
+    echo $e->getMessage();
+    exit(1);
 }
 
 echo "Removing Unused files and directories...\n";
@@ -112,6 +124,7 @@ $archive->buildFromDirectory($tmpDir);
 echo "Compressing Archive...\n";
 $archive->compress(Phar::BZ2);
 
+$fs->remove($tmpDir);
 // Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
 $fs->rename(str_replace("-$version.tar.bz2", '-0.tar.bz2', $fileName), $fileName);
 echo "Finished\n";
