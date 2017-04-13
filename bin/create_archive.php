@@ -85,6 +85,23 @@ $vendorFiles = Finder::create()->in($vendorDir)
 ;
 $fs->remove($vendorFiles);
 
+echo "Moving licenses...\n";
+$licenseDir = "$tmpDir/licenses";
+$fs->mkdir($licenseDir);
+$vendorLicenseFiles = Finder::create()->in($vendorDir)
+    ->files()
+    ->name('COPYING*')
+    ->name('LICENSE*')
+;
+foreach($vendorLicenseFiles as $vendorLicenseFile) {
+    $path = $vendorLicenseFile->getRealPath();
+    list($vendorName, $vendorPackageName) = explode('/', str_replace($vendorDir.'/', '', $path));
+    $licenseFileName = $vendorLicenseFile->getBaseName();
+    $licensePath = "$licenseDir/$vendorName-$vendorPackageName-$licenseFileName";
+
+    $fs->rename($vendorLicenseFile->getRealPath(), $licensePath, true);
+}
+
 
 echo "Creating File: $fileName\n";
 $archive = new PharData($fileBaseName);
