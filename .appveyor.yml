@@ -54,11 +54,8 @@ test_script:
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
 before_deploy:
-  - SET SYMFONY_ENV=production
   - cd %APPVEYOR_BUILD_FOLDER%
-  - composer install --prefer-dist --no-dev --no-scripts
-  - composer dump-autoload --optimize --classmap-authoritative
-  - php bin\create_electron_archive.php win32 %APPVEYOR_REPO_TAG_NAME%
+  - php bin\create_archive.php electron win32 %APPVEYOR_REPO_TAG_NAME%
   - appveyor PushArtifact HitTracker-electron-win32-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
 
 deploy:
