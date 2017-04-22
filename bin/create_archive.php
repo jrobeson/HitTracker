@@ -3,8 +3,8 @@
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -27,7 +27,7 @@ ini_set('memory_limit', '-1');
 $fs = new Filesystem();
 
 // PharData will try to reuse an existing file
-foreach([$fileName, $fileBaseName, $tmpDir] as $oldPath) {
+foreach ([$fileName, $fileBaseName, $tmpDir] as $oldPath) {
     if ($fs->exists($oldPath)) {
         $fs->remove($oldPath);
     }
@@ -41,12 +41,12 @@ if ('hosted' === $buildType) {
 }
 
 echo "Copying Files...\n";
-foreach($appDirs as $appDir) {
+foreach ($appDirs as $appDir) {
     echo sprintf("Copying %s\n", $appDir);
     $fs->mirror($archiveDir.'/'.$appDir, $tmpDir.'/'.$appDir);
 }
 
-foreach(['composer.json', 'composer.lock', 'LICENSE'] as $appFile) {
+foreach (['composer.json', 'composer.lock', 'LICENSE'] as $appFile) {
     echo sprintf("Copying %s\n", $appFile);
     $fs->copy("$archiveDir/$appFile", $tmpDir.'/'.$appFile);
 }
@@ -105,7 +105,7 @@ $vendorLicenseFiles = Finder::create()->in($vendorDir)
     ->name('COPYING*')
     ->name('LICENSE*')
 ;
-foreach($vendorLicenseFiles as $vendorLicenseFile) {
+foreach ($vendorLicenseFiles as $vendorLicenseFile) {
     $path = $vendorLicenseFile->getRealPath();
     list($vendorName, $vendorPackageName) = explode('/', str_replace($vendorDir.'/', '', $path));
     $licenseFileName = $vendorLicenseFile->getBaseName();
