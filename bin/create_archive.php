@@ -37,7 +37,7 @@ $fs->mkdir($tmpDir);
 
 $appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'web'];
 if ('hosted' === $buildType) {
-    $appDirs[] = 'config';
+    $appDirs[] = 'systemcfg';
 }
 
 echo "Copying Files...\n";
