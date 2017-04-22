@@ -22,8 +22,8 @@ cache:
 
 init:
     - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
-    - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\php.ini
-    - SET PHP_INI_SCAN_DIR=%APPVEYOR_BUILD_FOLDER%\etc\php\win32
+    - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\%HITTRACKER_BUILD_TYPE%\php-win32-development.ini
+    - SET PHP_INI_SCAN_DIR=
 
     - SET PHP=1 # This var is connected to PHP install cache
     - SET COMPOSER_NOT_EXISTS=1
