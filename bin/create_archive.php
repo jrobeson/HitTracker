@@ -114,7 +114,6 @@ foreach ($vendorLicenseFiles as $vendorLicenseFile) {
     $fs->rename($vendorLicenseFile->getRealPath(), $licensePath, true);
 }
 
-
 echo "Creating File: $fileName\n";
 $archive = new PharData($fileBaseName);
 
@@ -126,5 +125,6 @@ $archive->compress(Phar::BZ2);
 
 $fs->remove($tmpDir);
 // Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
+// @todo remove when upgrading to php 7.2 fixed in php #74196
 $fs->rename(str_replace("-$version.tar.bz2", '-0.tar.bz2', $fileName), $fileName);
 echo "Finished\n";
