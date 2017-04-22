@@ -1,0 +1,25 @@
+[Unit]
+Description=HitTracker PHP-FPM (production)
+After=syslog.target network.target
+
+[Service]
+User=hittracker
+Group=hittracker
+Type=notify
+ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/share/hittracker/etc/hosted/php-unix-development.ini --fpm-config=/usr/share/hittracker/etc/hosted/php-fpm-development.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+WatchdogSec=30
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+PrivateDevices=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target
