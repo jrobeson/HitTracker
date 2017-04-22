@@ -98,7 +98,7 @@ $vendorFiles = Finder::create()->in($vendorDir)
 $fs->remove($vendorFiles);
 
 echo "Moving licenses...\n";
-$licenseDir = "$tmpDir/licenses";
+$licenseDir = "$tmpDir/third-party-licenses";
 $fs->mkdir($licenseDir);
 $vendorLicenseFiles = Finder::create()->in($vendorDir)
     ->files()
