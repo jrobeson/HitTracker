@@ -32,7 +32,6 @@ addons:
     postgresql: '9.6'
 
 install:
-    - pecl install ast
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$HITTRACKER_BUILD_TYPE/php-unix-development.ini
     - export PHP_INI_SCAN_DIR=""
     - composer install --prefer-dist
