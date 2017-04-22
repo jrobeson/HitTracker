@@ -46,7 +46,7 @@ foreach($appDirs as $appDir) {
     $fs->mirror($archiveDir.'/'.$appDir, $tmpDir.'/'.$appDir);
 }
 
-foreach(['composer.json', 'composer.lock'] as $appFile) {
+foreach(['composer.json', 'composer.lock', 'LICENSE'] as $appFile) {
     echo sprintf("Copying %s\n", $appFile);
     $fs->copy("$archiveDir/$appFile", $tmpDir.'/'.$appFile);
 }
