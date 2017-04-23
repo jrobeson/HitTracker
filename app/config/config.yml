@@ -6,6 +6,8 @@ framework:
     translator:
         fallback: "%locale%"
     secret: "%secret%"
+    session:
+      name: SESSIONID
     router:
         resource: "%kernel.config_dir%/routing.yml"
         strict_requirements: "%kernel.debug%"
