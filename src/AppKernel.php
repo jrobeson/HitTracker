@@ -108,7 +108,7 @@ abstract class AppKernel extends Kernel
         }
 
         $configFiles = array_map(function ($fileName) {
-            return sprintf('%s/app/config/%s', $this->projectDir, $fileName);
+            return sprintf('%s/etc/%s', $this->projectDir, $fileName);
         }, $configFiles);
 
         return $configFiles;
@@ -175,7 +175,7 @@ abstract class AppKernel extends Kernel
     protected function getKernelParameters(): array
     {
         $kernelParameters = parent::getKernelParameters();
-        $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->projectDir), 'app', 'config']);
+        $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->projectDir), 'etc']);
         $kernelParameters['kernel.project_dir'] = realpath($this->projectDir) ?: $this->projectDir;
 
         return $kernelParameters;
