@@ -7,19 +7,13 @@
     "autoload": {
         "psr-4": {
             "LazerBall\\HitTracker\\": "src/"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/HostedAppKernel.php",
-            "app/StandaloneAppKernel.php",
-            "app/ElectronAppKernel.php"
-        ]
+        }
     },
     "autoload-dev": {
         "files": [ "vendor/symfony/var-dumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.1.3",
         "symfony/serializer": "^3.2",
         "symfony/property-access": "^3.2",
         "symfony/property-info": "^3.2",

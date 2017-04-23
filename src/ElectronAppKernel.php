@@ -16,6 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace LazerBall\HitTracker;
+
 class ElectronAppKernel extends AppKernel
 {
     protected function getBuildType(): string

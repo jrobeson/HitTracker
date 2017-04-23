@@ -1,7 +1,8 @@
-<?php
-/**
+<?php declare(strict_types=1);
+/*
  * Symfony App Front Controller
  */
+use LazerBall\HitTracker\{ElectronAppKernel, HostedAppKernel, StandaloneAppKernel};
 use Symfony\Component\HttpFoundation\Request;
 use function Cekurte\Environment\env;
 
@@ -15,8 +16,17 @@ $env = env('SYMFONY_ENV', 'production');
 $debug = env('SYMFONY_DEBUG', false);
 $buildType = env('HITTRACKER_BUILD_TYPE');
 
-$kernelClass = ucfirst($buildType).'AppKernel';
-$kernel = new $kernelClass($env, $debug);
+switch ($buildType) {
+   case 'electron':
+        $kernel = new ElectronAppKernel($env, $debug);
+        break;
+   case 'hosted':
+        $kernel = new HostedAppKernel($env, $debug);
+        break;
+   case 'standalone':
+        $kernel = new StandaloneAppKernel($env, $debug);
+        break;
+}
 
 $request = Request::createFromGlobals();
 

@@ -16,6 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+namespace LazerBall\HitTracker;
+
+use BadMethodCallException;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use function Cekurte\Environment\env;
@@ -33,21 +36,9 @@ abstract class AppKernel extends Kernel
     {
         $this->projectDir = dirname(__DIR__);
 
-        /*
-         * Can't add new args to the constructor, due to instantiation
-         * in the cache warmer
-         * @see Symfony\Bundle\FrameworkBundle\Command\CacheClearCommand::warmup()
-         */
-        if ('' === $this->getBuildType()) {
-            throw new InvalidArgumentException(
-                'AppKernel can\'t be instantiated directly.
-                You must call one of the subclasses.'
-            );
-        }
-
         $isProd = 'production' === $environment;
         if (!$isProd && $debug) { /* @todo check this */
-            Symfony\Component\Debug\Debug::enable();
+            \Symfony\Component\Debug\Debug::enable();
         }
 
         parent::__construct($environment, $debug);
@@ -56,39 +47,47 @@ abstract class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new \Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new \Symfony\Bundle\TwigBundle\TwigBundle(),
+            new \Symfony\Bundle\MonologBundle\MonologBundle(),
+            new \Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new Sylius\Bundle\UiBundle\SyliusUiBundle(),
-            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-            new Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new LazerBall\HitTracker\CommonBundle\CommonBundle(),
-            new LazerBall\HitTracker\PubSubBundle\PubSubBundle(),
-            new LazerBall\HitTracker\GameBundle\HitTrackerGameBundle(),
-            new C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
-            new Nelmio\SecurityBundle\NelmioSecurityBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
-            new Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
-            new Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
+            new \Sylius\Bundle\UiBundle\SyliusUiBundle(),
+            new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new \Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
+            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new \FOS\RestBundle\FOSRestBundle(),
+            new \JMS\SerializerBundle\JMSSerializerBundle(),
+            new \LazerBall\HitTracker\CommonBundle\CommonBundle(),
+            new \LazerBall\HitTracker\PubSubBundle\PubSubBundle(),
+            new \LazerBall\HitTracker\GameBundle\HitTrackerGameBundle(),
+            new \C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
+            new \Nelmio\SecurityBundle\NelmioSecurityBundle(),
+            new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new \Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
+            new \Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['development', 'test'])) {
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
+            $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new \Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
         }
 
         return $bundles;
+    }
+
+    protected function getBuildType(): string
+    {
+        throw new BadMethodCallException(
+            'AppKernel can\'t be instantiated directly.
+            You must call one of the subclasses.'
+        );
     }
 
     private function getConfigFiles($environment, $buildType): array
@@ -109,7 +108,7 @@ abstract class AppKernel extends Kernel
         }
 
         $configFiles = array_map(function ($fileName) {
-            return sprintf('%s/config/%s', __DIR__, $fileName);
+            return sprintf('%s/app/config/%s', $this->projectDir, $fileName);
         }, $configFiles);
 
         return $configFiles;
