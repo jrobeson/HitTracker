@@ -7,7 +7,7 @@ framework:
         fallback: "%locale%"
     secret: "%secret%"
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: "%kernel.config_dir%/routing.yml"
         strict_requirements: "%kernel.debug%"
     form:            ~
     csrf_protection: ~

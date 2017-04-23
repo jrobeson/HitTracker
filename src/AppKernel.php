@@ -160,6 +160,7 @@ abstract class AppKernel extends Kernel
     protected function getKernelParameters(): array
     {
         $kernelParameters = parent::getKernelParameters();
+        $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->projectDir), 'app', 'config']);
         $kernelParameters['kernel.project_dir'] = realpath($this->projectDir) ?: $this->projectDir;
 
         return $kernelParameters;
