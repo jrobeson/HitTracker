@@ -125,6 +125,21 @@ abstract class AppKernel extends Kernel
         }
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * Force root directory to be %kernel.project_dir/app, so templates and translations
+     * can still be found.
+     */
+    public function getRootDir()
+    {
+        if (null === $this->rootDir) {
+            $this->rootDir = implode(DIRECTORY_SEPARATOR, [realpath(dirname(__DIR__)), 'app']);
+        }
+
+        return $this->rootDir;
+    }
+
     public function getCacheDir(): string
     {
         $varDir = env('SYMFONY__VAR_DIR');
