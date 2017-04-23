@@ -93,17 +93,17 @@ abstract class AppKernel extends Kernel
     private function getConfigFiles($environment, $buildType): array
     {
         $configFiles = [
-            'parameters_default.yml',
-            sprintf('%s/parameters.yml', $buildType),
-            'config.yml',
-            sprintf('%s/config.yml', $buildType),
-            sprintf('config_%s.yml', $environment),
-            sprintf('%s/config_%s.yml', $environment, $buildType),
+            'parameters_default.yaml',
+            sprintf('%s/parameters.yaml', $buildType),
+            'config.yaml',
+            sprintf('%s/config.yaml', $buildType),
+            sprintf('config_%s.yaml', $environment),
+            sprintf('%s/config_%s.yaml', $environment, $buildType),
         ];
         if ('test' === $environment) { // test requires dev files first
             array_splice($configFiles, 2, 0, [
-                'config_development.yml',
-                sprintf('%s/config_development.yml', $buildType),
+                'config_development.yaml',
+                sprintf('%s/config_development.yaml', $buildType),
             ]);
         }
 
