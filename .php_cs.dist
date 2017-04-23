@@ -25,7 +25,8 @@ return PhpCsFixer\Config::create()
         'concat_space' => false,
         'phpdoc_summary' => false,
         'trailing_comma_in_multiline_array' => false,
-        'pre_increment' => false
+        'pre_increment' => false,
+        'single_import_per_statement' => false,
         // end symfony overrides
     ])
     ->setFinder($finder)
