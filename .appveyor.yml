@@ -40,7 +40,7 @@ install:
     - IF %PHP%==1 appveyor DownloadFile http://windows.php.net/downloads/pecl/snaps/ast/20170126/php_ast-20170126-7.1-nts-vc14-%PLATFORM%.zip
     - IF %PHP%==1 7z x php_ast-*-%PLATFORM%.zip -y >nul
     - IF %PHP%==1 del /Q *.zip
-    - IF %PHP%==1 appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.5.3-7.1-vc14-nts-x86_64.dll
+    - IF %PHP%==1 appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.5.3-7.1-vc14-nts-x86_64.dll -FileName php_xdebug.dll
     - IF NOT EXIST C:\composer mkdir C:\composer
     - cd C:\composer
     - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
