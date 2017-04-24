@@ -77,8 +77,8 @@
     },
     "scripts": {
         "shared-scripts": [
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets"
+            "php bin/console cache:clear --no-warmup",
+            "php bin/console assets:install"
         ],
         "post-install-cmd": [
             "@shared-scripts"
@@ -86,13 +86,6 @@
         "post-update-cmd": [
             "@shared-scripts"
         ]
-    },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-assets-install": "relative"
     },
     "repositories": [
         {
