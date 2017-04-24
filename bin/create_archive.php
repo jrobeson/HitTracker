@@ -45,12 +45,12 @@ if ('hosted' === $buildType) {
 echo "Copying Files...\n";
 foreach ($appDirs as $appDir) {
     echo sprintf("Copying %s\n", $appDir);
-    $fs->mirror($archiveDir.'/'.$appDir, $tmpDir.'/'.$appDir);
+    $fs->mirror(implode(DS, [$archiveDir, $appDir]), implode(DS, [$tmpDir, $appDir]));
 }
 
 foreach (['composer.json', 'composer.lock', 'LICENSE'] as $appFile) {
     echo sprintf("Copying %s\n", $appFile);
-    $fs->copy("$archiveDir/$appFile", $tmpDir.'/'.$appFile);
+    $fs->copy(implode(DS, [$archiveDir, $appFile]), implode(DS, [$tmpDir, $appFile]));
 }
 
 echo "Installing (composer)...\n";
@@ -66,7 +66,7 @@ try {
 }
 
 echo "Removing Unused files and directories...\n";
-$vendorDir = $tmpDir.'/vendor';
+$vendorDir = implode(DS, [$tmpDir, 'vendor']);
 // Finder excludes dot files and vcs directories by default
 $vendorDirs = Finder::create()->in($vendorDir)
         ->directories()
@@ -100,7 +100,7 @@ $vendorFiles = Finder::create()->in($vendorDir)
 $fs->remove($vendorFiles);
 
 echo "Moving licenses...\n";
-$licenseDir = "$tmpDir/third-party-licenses";
+$licenseDir = implode(DS, [$tmpDir, 'third-party-licenses']);
 $fs->mkdir($licenseDir);
 $vendorLicenseFiles = Finder::create()->in($vendorDir)
     ->files()
