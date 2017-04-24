@@ -6,6 +6,8 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
+define('DS', DIRECTORY_SEPARATOR);
+
 require __DIR__.'/../vendor/autoload.php';
 
 if (!isset($argv[1]) || !isset($argv[2]) || !isset($argv[3])) {
@@ -107,9 +109,9 @@ $vendorLicenseFiles = Finder::create()->in($vendorDir)
 ;
 foreach ($vendorLicenseFiles as $vendorLicenseFile) {
     $path = $vendorLicenseFile->getRealPath();
-    list($vendorName, $vendorPackageName) = explode('/', str_replace($vendorDir.'/', '', $path));
+    list($vendorName, $vendorPackageName) = explode(DS, str_replace($vendorDir.DS, '', $path));
     $licenseFileName = $vendorLicenseFile->getBaseName();
-    $licensePath = "$licenseDir/$vendorName-$vendorPackageName-$licenseFileName";
+    $licensePath = $licenseDir.DS.$vendorName.'-'.$vendorPackageName.'-'.$licenseFileName;
 
     $fs->rename($vendorLicenseFile->getRealPath(), $licensePath, true);
 }
