@@ -19,10 +19,10 @@ $buildType = $argv[1];
 $platform = $argv[2];
 $version = $argv[3];
 
-$archiveDir = realpath(__DIR__.'/../');
+$archiveDir = realpath(dirname(__DIR__));
 $fileBaseName = "$archiveDir/hittracker-$buildType-$platform-$version.tar";
 $fileName = $fileBaseName.'.bz2';
-$tmpDir = "/tmp/hittracker-$buildType-$version";
+$tmpDir = implode(DS, [sys_get_temp_dir(), "hittracker-$buildType-$version"]);
 
 ini_set('memory_limit', '-1');
 
