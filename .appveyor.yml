@@ -7,9 +7,6 @@ clone_folder: C:\HitTracker
 environment:
     global:
         php_ver_target: 7.1
-        # the default TEMP/TMP paths might be too long
-        TEMP: C:\T
-        TMP: C:\T
         COMPOSER_NO_INTERACTION: 1
         HITTRACKER_BUILD_TYPE: electron
         HITTRACKER_SESSION_SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"
@@ -24,7 +21,10 @@ cache:
     - C:\composer\composer.phar -> .appveyor.yml
 
 init:
+    # the default TEMP/TMP paths might be too long
     - IF NOT EXIST C:\T mkdir C:\T
+    - SET TEMP=C:\T
+    - SET TMP=C:\T
     - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
     - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\%HITTRACKER_BUILD_TYPE%\php-win32-development.ini
     - SET PHP_INI_SCAN_DIR=
