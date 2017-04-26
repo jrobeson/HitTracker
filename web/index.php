@@ -28,6 +28,11 @@ switch ($buildType) {
         break;
 }
 
+if ('development' !== $env) {
+    $kernel = new AppCache($kernel);
+}
+
+Request::enableHttpMethodParameterOverride();
 $request = Request::createFromGlobals();
 
 // @todo: remove this when we have other exception handling than html
