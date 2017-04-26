@@ -31,7 +31,7 @@ switch ($buildType) {
 $request = Request::createFromGlobals();
 
 // @todo: remove this when we have other exception handling than html
-if (in_array($request->getContentType(), ['text/html', ''])) {
+if (!in_array($request->getContentType(), ['text/html', ''])) {
     ini_set('html_errors', 'Off');
 }
 
