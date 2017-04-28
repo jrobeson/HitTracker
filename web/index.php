@@ -2,7 +2,7 @@
 /*
  * Symfony App Front Controller
  */
-use LazerBall\HitTracker\{ElectronAppKernel, HostedAppKernel, StandaloneAppKernel};
+use LazerBall\HitTracker\AppKernel;
 use Symfony\Component\HttpFoundation\Request;
 use function Cekurte\Environment\env;
 
@@ -13,20 +13,10 @@ if (file_exists(__DIR__.'/../.env')) {
     $dotEnv->load();
 }
 $env = env('SYMFONY_ENV', 'production');
-$debug = env('SYMFONY_DEBUG', false);
+$debug = (bool) env('SYMFONY_DEBUG', false);
 $buildType = env('HITTRACKER_BUILD_TYPE');
 
-switch ($buildType) {
-   case 'electron':
-        $kernel = new ElectronAppKernel($env, $debug);
-        break;
-   case 'hosted':
-        $kernel = new HostedAppKernel($env, $debug);
-        break;
-   case 'standalone':
-        $kernel = new StandaloneAppKernel($env, $debug);
-        break;
-}
+$kernel = new AppKernel($env, $debug, $buildType);
 
 if ('development' !== $env) {
     $kernel = new AppCache($kernel);

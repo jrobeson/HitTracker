@@ -2,7 +2,7 @@
 <?php
 
 use function Cekurte\Environment\env;
-use LazerBall\HitTracker\{ElectronAppKernel, HostedAppKernel, StandaloneAppKernel};
+use LazerBall\HitTracker\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputOption;
@@ -20,24 +20,14 @@ if (file_exists(__DIR__.'/../.env')) {
 
 $input = new ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], env('SYMFONY_ENV', 'development'));
-$debug = env('SYMFONY_DEBUG', true)
+$debug = (bool) env('SYMFONY_DEBUG', true)
     && !$input->hasParameterOption(['--no-debug', ''])
     && $env !== 'prod';
 
 $defaultBuildType = env('HITTRACKER_BUILD_TYPE', 'standalone');
 $buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
 
-switch ($buildType) {
-   case 'electron':
-        $kernel = new ElectronAppKernel($env, $debug);
-        break;
-   case 'hosted':
-        $kernel = new HostedAppKernel($env, $debug);
-        break;
-   case 'standalone':
-        $kernel = new StandaloneAppKernel($env, $debug);
-        break;
-};
+$kernel = new AppKernel($env, $debug, $buildType);
 
 $application = new Application($kernel);
 $application->getDefinition()->addOptions([

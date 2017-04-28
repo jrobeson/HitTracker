@@ -18,22 +18,26 @@
 
 namespace LazerBall\HitTracker;
 
-use BadMethodCallException;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use UnexpectedValueException;
 use function Cekurte\Environment\env;
 
-abstract class AppKernel extends Kernel
+class AppKernel extends Kernel
 {
+    /** @var string */
     private $projectDir; // @todo: remove for symfony 3.3
+    /** @var string */
+    private $buildType;
 
     /**
      * {@inheritdoc}
      *
      * @throw InvalidArgumentException if not in a subclass of AppKernel
      */
-    public function __construct($environment, $debug)
+    public function __construct(string $environment, bool $debug, string $buildType)
     {
+        $this->buildType = $buildType;
         $this->projectDir = dirname(__DIR__);
 
         $isProd = 'production' === $environment;
@@ -73,6 +77,10 @@ abstract class AppKernel extends Kernel
             new \Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
         ];
 
+        if ('electron' !== $this->buildType) {
+            $bundles[] = new \LazerBall\HitTracker\PdoSessionHandlerBundle\PdoSessionHandlerBundle();
+        }
+
         if (in_array($this->getEnvironment(), ['development', 'test'])) {
             $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
@@ -83,10 +91,7 @@ abstract class AppKernel extends Kernel
 
     protected function getBuildType(): string
     {
-        throw new BadMethodCallException(
-            'AppKernel can\'t be instantiated directly.
-            You must call one of the subclasses.'
-        );
+        return $this->buildType;
     }
 
     private function getConfigFiles($environment, $buildType): array
@@ -141,31 +146,51 @@ abstract class AppKernel extends Kernel
 
     public function getCacheDir(): string
     {
-        $varDir = env('SYMFONY__VAR_DIR');
-        if ($varDir) {
-            return $varDir . '/cache';
+        switch ($this->buildType) {
+            case 'electron':
+                $varDir = env('SYMFONY__VAR_DIR');
+                if (!$varDir) {
+                    throw new UnexpectedValueException('"SYMFONY__VAR_DIR" env var must be set for Electron.');
+                }
+                $cacheDir = implode(DIRECTORY_SEPARATOR, [$varDir, 'cache']);
+                break;
+            case 'hosted':
+                $cacheDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'lib', 'hittracker', $this->environment]);
+                break;
+            default:
+                $cacheDir = implode(DIRECTORY_SEPARATOR, [
+                    $this->projectDir,
+                    'var', 'cache',
+                    $this->getBuildType(),
+                    $this->environment,
+                ]);
         }
 
-        return implode('/', [
-            $this->projectDir,
-            '/var/cache',
-            $this->getBuildType(),
-            $this->environment,
-        ]);
+        return $cacheDir;
     }
 
     public function getLogDir(): string
     {
-        $varDir = env('SYMFONY__VAR_DIR');
-        if ($varDir) {
-            return $varDir . '/logs';
+        switch ($this->buildType) {
+            case 'electron':
+                $varDir = env('SYMFONY__VAR_DIR');
+                if (!$varDir) {
+                    throw new UnexpectedValueException('"SYMFONY__VAR_DIR" env var must be set for Electron.');
+                }
+                $logDir = implode(DIRECTORY_SEPARATOR, [$varDir, 'log']);
+                break;
+            case 'hosted':
+                $logDir = implode('/', ['', 'var', 'log', 'hittracker']);
+                break;
+            default:
+                $logDir = implode(DIRECTORY_SEPARATOR, [
+                    $this->projectDir,
+                    'var', 'logs',
+                    $this->getBuildType(),
+                ]);
         }
 
-        return implode('/', [
-            $this->projectDir,
-            '/var/logs',
-            $this->getBuildType(),
-        ]);
+        return $logDir;
     }
 
     /**
