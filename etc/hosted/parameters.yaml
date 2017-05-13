@@ -15,5 +15,3 @@ parameters:
     database_name: "%env(HITTRACKER_DATABASE_NAME)%"
     database_user: "%env(HITTRACKER_DATABASE_USER)%"
     database_password: "%env(HITTRACKER_DATABASE_PASSWORD)%"
-
-    database_server_version: 9.6
