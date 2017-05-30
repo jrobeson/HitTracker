@@ -32,8 +32,6 @@ class AppKernel extends Kernel
 
     /**
      * {@inheritdoc}
-     *
-     * @throw InvalidArgumentException if not in a subclass of AppKernel
      */
     public function __construct(string $environment, bool $debug, string $buildType)
     {
