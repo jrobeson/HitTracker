@@ -89,7 +89,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/jrobeson/BazingaHateoasBundle"
+            "url": "https://github.com/willdurand/BazingaHateoasBundle"
         },
         {
             "type": "vcs",
