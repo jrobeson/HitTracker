@@ -28,7 +28,7 @@
         "doctrine/migrations": "^1.4",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "twig/extensions": "^1.0",
-        "symfony/swiftmailer-bundle": "^2.3",
+        "symfony/swiftmailer-bundle": "^3.0",
         "symfony/monolog-bundle": "^3.0",
         "sensio/framework-extra-bundle": "^3.0",
         "igorw/get-in": "^1.0",
@@ -71,7 +71,7 @@
         "league/factory-muffin": "^3.0",
         "league/factory-muffin-faker": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.0",
-        "phpstan/phpstan-doctrine": "^0.6.1",
+        "phpstan/phpstan-doctrine": "^0.7",
         "willdurand/hateoas-bundle": "dev-use-psr-4-autoloader as 1.2.0"
     },
     "scripts": {
