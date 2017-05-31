@@ -66,7 +66,7 @@ class FileUploader
     private function getFileExtension(UploadedFile $file): string
     {
         $original = $file->getClientOriginalExtension();
-        $guessed = $file->guessExtension();
+        $guessed = $file->guessExtension() ?: '';
         if (array_key_exists($guessed, self::EXTENSION_MAP)) {
             return self::EXTENSION_MAP[$guessed];
         }

@@ -43,13 +43,13 @@ class Extension extends ConfigurableExtension
         $nginxPushStreamConfig = $handlers['nginx_push_stream'] ?? [];
         if (!empty($nginxPushStreamConfig['url'])) {
             $definition = $container->findDefinition('hittracker_pubsub.handler.nginx_push_stream');
-            $handlerDefinition->setClass($definition->getClass());
+            $handlerDefinition->setClass((string) $definition->getClass());
             $handlerDefinition->addArgument($nginxPushStreamConfig['url']);
         }
         $apcuConfig = $handlers['apcu'] ?? [];
         if (!empty($apcuConfig['cache_key'])) {
             $definition = $container->findDefinition('hittracker_pubsub.handler.apcu');
-            $handlerDefinition->setClass($definition->getClass());
+            $handlerDefinition->setClass((string) $definition->getClass());
             $handlerDefinition->addArgument($apcuConfig['cache_key']);
         }
     }

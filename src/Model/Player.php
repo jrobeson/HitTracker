@@ -95,7 +95,7 @@ class Player implements ResourceInterface
      */
     protected $unit;
 
-    public function __construct(string $name = '', Vest $unit = null, int $hitPoints = 0)
+    public function __construct(string $name = '', Vest $unit, int $hitPoints = 0)
     {
         $this->name = $name;
         $this->team = '';
