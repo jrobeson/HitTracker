@@ -26,8 +26,6 @@ use function Cekurte\Environment\env;
 class AppKernel extends Kernel
 {
     /** @var string */
-    private $projectDir; // @todo: remove for symfony 3.3
-    /** @var string */
     private $buildType;
 
     /**
@@ -36,7 +34,6 @@ class AppKernel extends Kernel
     public function __construct(string $environment, bool $debug, string $buildType)
     {
         $this->buildType = $buildType;
-        $this->projectDir = dirname(__DIR__);
 
         $isProd = 'production' === $environment;
         if (!$isProd && $debug) { /* @todo check this */
@@ -191,23 +188,11 @@ class AppKernel extends Kernel
         return $logDir;
     }
 
-    /**
-     * @todo remove project_dir for symfony 3.3
-     */
     protected function getKernelParameters(): array
     {
         $kernelParameters = parent::getKernelParameters();
         $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->projectDir), 'etc']);
-        $kernelParameters['kernel.project_dir'] = realpath($this->projectDir) ?: $this->projectDir;
 
         return $kernelParameters;
-    }
-
-    /**
-     * @todo remove getProjectDir for symfony 3.3
-     */
-    public function getProjectDir(): string
-    {
-        return $this->projectDir;
     }
 }
