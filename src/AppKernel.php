@@ -107,7 +107,7 @@ class AppKernel extends Kernel
         }
 
         $configFiles = array_map(function ($fileName) {
-            return sprintf('%s/etc/%s', $this->projectDir, $fileName);
+            return sprintf('%s/etc/%s', $this->getProjectDir(), $fileName);
         }, $configFiles);
 
         return $configFiles;
@@ -154,7 +154,7 @@ class AppKernel extends Kernel
                 break;
             default:
                 $cacheDir = implode(DIRECTORY_SEPARATOR, [
-                    $this->projectDir,
+                    $this->getProjectDir(),
                     'var', 'cache',
                     $this->getBuildType(),
                     $this->environment,
@@ -179,7 +179,7 @@ class AppKernel extends Kernel
                 break;
             default:
                 $logDir = implode(DIRECTORY_SEPARATOR, [
-                    $this->projectDir,
+                    $this->getProjectDir(),
                     'var', 'logs',
                     $this->getBuildType(),
                 ]);
@@ -191,7 +191,7 @@ class AppKernel extends Kernel
     protected function getKernelParameters(): array
     {
         $kernelParameters = parent::getKernelParameters();
-        $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->projectDir), 'etc']);
+        $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->getProjectDir()), 'etc']);
 
         return $kernelParameters;
     }
