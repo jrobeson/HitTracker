@@ -4,7 +4,7 @@
  *
  * @license MIT
  *
- * @see https://github.com/KnpLabs/KnpRadBundle/
+ * @link https://github.com/KnpLabs/KnpRadBundle
  */
 
 namespace LazerBall\HitTracker\CommonBundle\Twig;
