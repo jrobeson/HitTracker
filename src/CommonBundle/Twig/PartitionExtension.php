@@ -18,7 +18,10 @@
 
 namespace LazerBall\HitTracker\CommonBundle\Twig;
 
-class PartitionExtension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
+class PartitionExtension extends AbstractExtension
 {
     public function getName()
     {
@@ -28,7 +31,7 @@ class PartitionExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('partition', [$this, 'partition']),
+            new TwigFilter('partition', [$this, 'partition']),
         ];
     }
 
