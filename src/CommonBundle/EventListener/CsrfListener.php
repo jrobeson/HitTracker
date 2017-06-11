@@ -16,9 +16,10 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 class CsrfListener
 {
     private $csrfTokenManager;
+    /** @type string */
     private $csrfTokenId;
 
-    public function __construct(CsrfTokenManagerInterface $csrfTokenManager, $csrfTokenId = 'link')
+    public function __construct(CsrfTokenManagerInterface $csrfTokenManager, string $csrfTokenId)
     {
         $this->csrfTokenManager = $csrfTokenManager;
         $this->csrfTokenId = $csrfTokenId;

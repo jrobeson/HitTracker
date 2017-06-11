@@ -13,24 +13,24 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-
 class LinkAttributesExtension extends AbstractExtension
 {
     private $csrfTokenManager;
+    /** @var $string */
     private $csrfTokenId;
 
-    public function __construct(CsrfTokenManagerInterface $csrfTokenManager, $csrfTokenId = 'link')
+    public function __construct(CsrfTokenManagerInterface $csrfTokenManager, string $csrfTokenId)
     {
         $this->csrfTokenManager = $csrfTokenManager;
         $this->csrfTokenId = $csrfTokenId;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'link_attributes';
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('link_attr', [$this, 'getLinkAttributes'], ['is_safe' => ['html']]),
@@ -38,7 +38,7 @@ class LinkAttributesExtension extends AbstractExtension
         ];
     }
 
-    public function getLinkAttributes($method, $confirm = 'Are you sure?')
+    public function getLinkAttributes($method, $confirm = 'Are you sure?'): string
     {
         $html = sprintf('data-method="%s"', $method);
 
@@ -51,7 +51,7 @@ class LinkAttributesExtension extends AbstractExtension
         return sprintf('%s data-csrf-token="%s"', $html, $this->getCsrf());
     }
 
-    public function getCsrf()
+    public function getCsrf(): string
     {
         return $this->csrfTokenManager->getToken($this->csrfTokenId);
     }
