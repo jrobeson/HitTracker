@@ -2,9 +2,9 @@
 /**
  * This file was "borrowed" from KnpLabs/RadBundle
  *
- * @license MIT
+ * {@link https://github.com/KnpLabs/KnpRadBundle}
  *
- * @link https://github.com/KnpLabs/KnpRadBundle/
+ * @license MIT
  */
 
 namespace LazerBall\HitTracker\CommonBundle\EventListener;
@@ -16,7 +16,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 class CsrfListener
 {
     private $csrfTokenManager;
-    /** @type string */
+    /** @var string */
     private $csrfTokenId;
 
     public function __construct(CsrfTokenManagerInterface $csrfTokenManager, string $csrfTokenId)

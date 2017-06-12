@@ -2,9 +2,9 @@
 /**
  * This file was "borrowed" from KnpLabs/RadBundle
  *
- * @license MIT
+ * {@link https://github.com/KnpLabs/KnpRadBundle}
  *
- * @link https://github.com/KnpLabs/KnpRadBundle
+ * @license MIT
  */
 
 namespace LazerBall\HitTracker\CommonBundle\Twig;

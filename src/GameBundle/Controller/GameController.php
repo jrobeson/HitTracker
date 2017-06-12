@@ -94,7 +94,7 @@ class GameController extends ResourceController
         // was $resource = $this->findOr404($configuration);
         $resource = $this->singleResourceProvider->get($configuration, $this->repository);
 
-        if (!is_null($resource)) {
+        if (null !== $resource) {
             $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $resource);
         }
         // took a $resource argument
