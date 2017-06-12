@@ -8,32 +8,19 @@
     </parameters>
 
     <services>
-        <service id="twig.extension.intl" class="Twig_Extensions_Extension_Intl">
-            <tag name="twig.extension"/>
+        <defaults autowire="true" autoconfigure="true" public="false" />
+        <prototype namespace="LazerBall\HitTracker\CommonBundle\" resource="../../*" exclude="../../{Entity,Repository}" />
+        <service id="Twig\Extensions\IntlExtension" />
+
+        <service id="LazerBall\HitTracker\CommonBundle\Twig\LinkAttributesExtension">
+            <argument key="$csrfTokenId" type="string">%knp_rad.csrf_link.token_id%</argument>
         </service>
-        <service id="knp_rad.twig.link_attributes_extension" class="LazerBall\HitTracker\CommonBundle\Twig\LinkAttributesExtension">
-            <argument type="service" id="security.csrf.token_manager"/>
-            <argument type="string">%knp_rad.csrf_link.token_id%</argument>
-            <tag name="twig.extension"/>
-            <tag name="remove-when-missing" service="form.csrf_provider"/>
+        <service id="LazerBall\HitTracker\CommonBundle\EventListener\CsrfListener">
+            <argument key="$csrfTokenId" type="string">%knp_rad.csrf_link.token_id%</argument>
         </service>
-        <service id="knp_rad.csrf.listener" class="LazerBall\HitTracker\CommonBundle\EventListener\CsrfListener">
-            <argument type="service" id="security.csrf.token_manager"/>
-            <argument type="string">%knp_rad.csrf_link.token_id%</argument>
-            <tag name="kernel.event_listener" event="kernel.request"/>
-            <tag name="remove-when-missing" service="form.csrf_provider"/>
-        </service>
-        <service id="hittracker.common.twig.partition_extension" class="LazerBall\HitTracker\CommonBundle\Twig\PartitionExtension">
-            <tag name="twig.extension"/>
-        </service>
-        <service id="hittracker.common.file_uploader" class="LazerBall\HitTracker\FileUploader">
+        <service id="LazerBall\HitTracker\FileUploader">
             <argument type="string">%upload_dir%</argument>
             <argument type="string">%upload_uri_base_prefix%</argument>
-        </service>
-
-        <service id="hittracker.common.form.type.generic_file" class="LazerBall\HitTracker\CommonBundle\Form\Type\GenericFileType">
-            <argument type="service" id="hittracker.common.file_uploader"/>
-            <tag name="form.type" />
         </service>
     </services>
 </container>
