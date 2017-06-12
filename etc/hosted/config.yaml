@@ -1,6 +1,9 @@
+imports:
+    - { resource: ../pdo_session_handler.yaml }
+
 framework:
     session:
-        handler_id: pdo_session_handler.session_handler
+        handler_id: pdo_session_handler
         cookie_secure: true
 
 doctrine:

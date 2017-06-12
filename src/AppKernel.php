@@ -72,10 +72,6 @@ class AppKernel extends Kernel
             new \Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
         ];
 
-        if ('electron' !== $this->buildType) {
-            $bundles[] = new \LazerBall\HitTracker\PdoSessionHandlerBundle\PdoSessionHandlerBundle();
-        }
-
         if (in_array($this->getEnvironment(), ['development', 'test'])) {
             $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
