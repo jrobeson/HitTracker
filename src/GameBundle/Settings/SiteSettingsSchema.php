@@ -5,7 +5,7 @@
 
 namespace LazerBall\HitTracker\GameBundle\Settings;
 
-use LazerBall\HitTracker\CommonBundle\Form\Type\GenericFileType;
+use LazerBall\HitTracker\Form\Type\GenericFileType;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;

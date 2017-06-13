@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\CommonBundle\Form\Type;
+namespace LazerBall\HitTracker\Form\Type;
 
 use LazerBall\HitTracker\FileUploader;
 use Symfony\Component\Form\AbstractType;

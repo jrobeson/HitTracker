@@ -20,6 +20,10 @@ services:
 
     LazerBall\HitTracker\Twig\:
         resource: '../src/Twig/*'
+    LazerBall\HitTracker\Form\:
+        resource: '../src/Form/*'
+    LazerBall\HitTracker\Validator\:
+        resource: '../src/Validator/*'
 
     # CSRF link extension
     LazerBall\HitTracker\Twig\LinkAttributesExtension:
