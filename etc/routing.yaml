@@ -10,14 +10,14 @@ hittracker_game_settings:
     path: /settings/games
     defaults:
         _controller: "sylius.controller.settings:updateAction"
-        template: "@Common/Settings/update.html.twig"
+        template: "Settings/update.html.twig"
         schema: game
 
 hittracker_site_settings:
     path: /settings/site
     defaults:
         _controller: "sylius.controller.settings:updateAction"
-        template: "@Common/Settings/update.html.twig"
+        template: "Settings/update.html.twig"
         schema: site
 
 page:
