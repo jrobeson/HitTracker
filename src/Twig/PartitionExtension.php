@@ -16,26 +16,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\CommonBundle\Twig;
+namespace LazerBall\HitTracker\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class PartitionExtension extends AbstractExtension
 {
-    public function getName()
+    public function getName(): string
     {
         return 'partition';
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('partition', [$this, 'partition']),
         ];
     }
 
-    public function partition($items, $size = 2)
+    public function partition($items, $size = 2): array
     {
         if ($items instanceof \Traversable) {
             $items = iterator_to_array($items, false);

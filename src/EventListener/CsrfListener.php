@@ -7,7 +7,7 @@
  * @license MIT
  */
 
-namespace LazerBall\HitTracker\CommonBundle\EventListener;
+namespace LazerBall\HitTracker\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Csrf\CsrfToken;

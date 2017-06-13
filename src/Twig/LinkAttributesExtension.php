@@ -7,7 +7,7 @@
  * @license MIT
  */
 
-namespace LazerBall\HitTracker\CommonBundle\Twig;
+namespace LazerBall\HitTracker\Twig;
 
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Twig\Extension\AbstractExtension;

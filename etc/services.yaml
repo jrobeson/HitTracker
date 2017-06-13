@@ -7,3 +7,22 @@ services:
         public: false
 
     Twig\Extensions\IntlExtension: ~
+
+    # CSRF link extension
+    LazerBall\HitTracker\EventListener\CsrfListener:
+        arguments:
+            $csrfTokenId: "%csrf_link_token_id%"
+
+    LazerBall\HitTracker\FileUploader:
+        arguments:
+            - "%upload_dir%"
+            - "%upload_uri_base_prefix%"
+
+    LazerBall\HitTracker\Twig\:
+        resource: '../src/Twig/*'
+
+    # CSRF link extension
+    LazerBall\HitTracker\Twig\LinkAttributesExtension:
+        arguments:
+            $csrfTokenId: "%csrf_link_token_id%"
+
