@@ -10,7 +10,6 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false" />
         <prototype namespace="LazerBall\HitTracker\CommonBundle\" resource="../../*" exclude="../../{Entity,Repository}" />
-        <service id="Twig\Extensions\IntlExtension" />
 
         <service id="LazerBall\HitTracker\CommonBundle\Twig\LinkAttributesExtension">
             <argument key="$csrfTokenId" type="string">%knp_rad.csrf_link.token_id%</argument>

@@ -1,1 +1,9 @@
 services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        public: false
+
+    Twig\Extensions\IntlExtension: ~
