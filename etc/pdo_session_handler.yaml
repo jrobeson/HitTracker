@@ -1,4 +1,6 @@
 services:
+    _defaults:
+        public: false
     pdo_session_handler.pdo_connection:
         class: PDO
         arguments:
