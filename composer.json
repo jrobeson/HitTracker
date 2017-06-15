@@ -78,7 +78,6 @@
     "scripts": {
         "shared-scripts": [
             "php bin/console cache:clear --no-warmup",
-            "php bin/console assets:install"
         ],
         "post-install-cmd": [
             "@shared-scripts"
