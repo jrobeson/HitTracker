@@ -6,7 +6,7 @@
     {% set music_play = game_settings.get('active_game_music_play') %}
     {% if music_file %}
      <audio id="active-game-music" {% if music_play %}autoplay{% endif %} loop>
-        <source src="{{ music_file }}" type="audio/mpeg">
+        <source src="{{ asset(music_file, 'uploads') }}" type="audio/mpeg">
     </audio>
     {% endif %}
 

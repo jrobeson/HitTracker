@@ -25,6 +25,8 @@ framework:
     http_method_override: true
     assets:
         packages:
+            uploads:
+              version_strategy: incenteev_hashed_asset.strategy
             built:
               json_manifest_path: "%kernel.project_dir%/web/build/manifest.json"
         version_strategy: incenteev_hashed_asset.strategy
