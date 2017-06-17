@@ -518,12 +518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "7bac69133b1b0a483a9ecf957e34536cdf758290"
+                "reference": "899c62bb579027c146b73f6b580c871eb669d310"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/7bac69133b1b0a483a9ecf957e34536cdf758290",
-                "reference": "7bac69133b1b0a483a9ecf957e34536cdf758290",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/899c62bb579027c146b73f6b580c871eb669d310",
+                "reference": "899c62bb579027c146b73f6b580c871eb669d310",
                 "shasum": ""
             },
             "require": {
@@ -583,7 +583,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-06-08 11:36:36"
+            "time": "2017-06-13 11:58:27"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1070,12 +1070,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "c0c08d92baf8d8b3152b6f08bb5d1c1db1690882"
+                "reference": "fc67b398a1efd3d61837778e2cda2d05a395778c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c0c08d92baf8d8b3152b6f08bb5d1c1db1690882",
-                "reference": "c0c08d92baf8d8b3152b6f08bb5d1c1db1690882",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/fc67b398a1efd3d61837778e2cda2d05a395778c",
+                "reference": "fc67b398a1efd3d61837778e2cda2d05a395778c",
                 "shasum": ""
             },
             "require": {
@@ -1142,7 +1142,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-06-11 09:14:30"
+            "time": "2017-06-12 22:20:57"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -8429,16 +8429,16 @@
         },
         {
             "name": "etsy/phan",
-            "version": "0.9.1",
+            "version": "0.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/etsy/phan.git",
-                "reference": "eadb20b627f97a7ce5bf3353e86f9820e34fa61c"
+                "reference": "6757938c1f18e245fec5ebdf629fe8b0f3d1e41d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/etsy/phan/zipball/eadb20b627f97a7ce5bf3353e86f9820e34fa61c",
-                "reference": "eadb20b627f97a7ce5bf3353e86f9820e34fa61c",
+                "url": "https://api.github.com/repos/etsy/phan/zipball/6757938c1f18e245fec5ebdf629fe8b0f3d1e41d",
+                "reference": "6757938c1f18e245fec5ebdf629fe8b0f3d1e41d",
                 "shasum": ""
             },
             "require": {
@@ -8447,10 +8447,11 @@
                 "symfony/console": "~2.3|~3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.2"
+                "phpunit/phpunit": "^6.2.1"
             },
             "bin": [
                 "phan",
+                "phan_client",
                 "tocheckstyle"
             ],
             "type": "project",
@@ -8477,7 +8478,7 @@
                 "php",
                 "static"
             ],
-            "time": "2017-03-15T16:35:25+00:00"
+            "time": "2017-06-13T15:53:37+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -10174,16 +10175,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.2.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "16999a1e9a8a25d68f0ab8cc8ab818b043ad5374"
+                "reference": "f2786490399836d2a544a34785c4a8d3ab32cf0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/16999a1e9a8a25d68f0ab8cc8ab818b043ad5374",
-                "reference": "16999a1e9a8a25d68f0ab8cc8ab818b043ad5374",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f2786490399836d2a544a34785c4a8d3ab32cf0e",
+                "reference": "f2786490399836d2a544a34785c4a8d3ab32cf0e",
                 "shasum": ""
             },
             "require": {
@@ -10254,7 +10255,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-06-02T12:24:37+00:00"
+            "time": "2017-06-13T14:07:07+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
