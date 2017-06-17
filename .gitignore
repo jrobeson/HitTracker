@@ -1,6 +1,5 @@
 /app/config/local_*
 /build/
-bower_components
 /node_modules
 !/var/cache
 /var/cache/*
@@ -19,7 +18,7 @@ bower_components
 
 /tmp
 /vendor/
-/web/bundles/
+/web/build
 /composer.phar
 /.php_cs.cache
 /.env

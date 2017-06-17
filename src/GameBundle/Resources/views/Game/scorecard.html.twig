@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title></title>
         {% block stylesheets %}
-            <link rel="stylesheet" media="print" href="{{ asset('assets/style/scorecard.css') }}" type="text/css"/>
+            <link rel="stylesheet" media="print" href="{{ asset('build/style/scorecard.css', 'built') }}" type="text/css"/>
             <style>
                @page {
                     size: 8.5in 11in;
@@ -59,7 +59,7 @@
         {% endfor %}
         </main>
         {% block javascripts %}
-            <script src="{{ asset('assets/js/app.js') }}"></script>
+            <script src="{{ asset('assets/js/app.js', 'built') }}"></script>
         {% endblock %}
     </body>
 </html>

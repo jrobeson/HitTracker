@@ -24,6 +24,9 @@ framework:
     fragments:       ~
     http_method_override: true
     assets:
+        packages:
+            built:
+              json_manifest_path: "%kernel.project_dir%/web/build/manifest.json"
         version_strategy: incenteev_hashed_asset.strategy
     php_errors:
         log: true

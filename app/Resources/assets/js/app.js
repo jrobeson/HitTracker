@@ -17,8 +17,34 @@
  * @copyright 2014 <johnny@localmomentum.net>
  * @license AGPL-3
  */
+require('jquery-countdown');
+require('./jquery.color.js');
+require('./jquery-ujs.js');
+require('bootstrap-sass');
+
+if (!window.location.origin) {
+    let schemeHost = `${window.location.protocol}//${window.location.hostname}`;
+    let port = (window.location.port) ? `:${window.location.port}` : '';
+    window.location.origin = `${schemeHost}${port}`;
+}
+
+alertDismiss = function () {
+    let target = $('.alert');
+    let timeout = target.data('auto-dismiss');
+
+    if (!timeout) {
+        return;
+    }
+    timeout = parseInt(timeout) * 1000;
+    setTimeout(function() {
+        target.fadeTo(500, 0).slideUp(500, function() { $(this).remove() })
+    }, timeout);
+};
+
 $(document).ready(function () {
     'use strict';
+    alertDismiss();
+
     $('select[name="hittracker_game[reload_players]"]').change(function () {
         let gameId = $(this).val();
         let request = $.ajax({

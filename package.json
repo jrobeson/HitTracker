@@ -1,0 +1,20 @@
+{
+  "name": "HitTracker",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:lazerball/HitTracker.git",
+  "author": "Johnny Robeson",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.7.2",
+    "autoprefixer": "^7.1.1",
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-countdown": "^2.2.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6"
+  },
+  "dependencies": {}
+}
