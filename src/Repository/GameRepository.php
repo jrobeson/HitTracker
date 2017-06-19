@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\Entity;
+namespace LazerBall\HitTracker\Repository;
 
 use Doctrine\Common\Collections\Criteria;
 use LazerBall\HitTracker\Model\Game;

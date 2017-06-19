@@ -133,7 +133,7 @@ sylius_resource:
             templates: "@HitTrackerGame/Vest"
             classes:
                 model: LazerBall\HitTracker\Model\Vest
-                repository: LazerBall\HitTracker\GameBundle\Entity\VestRepository
+                repository: LazerBall\HitTracker\Repository\VestRepository
                 form: LazerBall\HitTracker\GameBundle\Form\Type\VestType
 
         hittracker.game:
@@ -141,7 +141,7 @@ sylius_resource:
             classes:
                 model: LazerBall\HitTracker\Model\Game
                 controller: LazerBall\HitTracker\GameBundle\Controller\GameController
-                repository: LazerBall\HitTracker\GameBundle\Entity\GameRepository
+                repository: LazerBall\HitTracker\Repository\GameRepository
                 form: LazerBall\HitTracker\GameBundle\Form\Type\GameType
 
 nelmio_security:

@@ -5,7 +5,7 @@
 
 namespace LazerBall\HitTracker\GameBundle\EventListener;
 
-use LazerBall\HitTracker\GameBundle\Entity\GameRepository;
+use LazerBall\HitTracker\Repository\GameRepository;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;

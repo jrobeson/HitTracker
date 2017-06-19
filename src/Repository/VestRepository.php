@@ -4,7 +4,7 @@
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
 
-namespace LazerBall\HitTracker\GameBundle\Entity;
+namespace LazerBall\HitTracker\Repository;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
