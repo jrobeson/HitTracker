@@ -19,11 +19,11 @@
 namespace LazerBall\HitTracker;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use UnexpectedValueException;
 use function Cekurte\Environment\env;
 
-class AppKernel extends Kernel
+final class Kernel extends BaseKernel
 {
     /** @var string */
     private $buildType;

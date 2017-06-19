@@ -2,7 +2,7 @@
 <?php
 
 use function Cekurte\Environment\env;
-use LazerBall\HitTracker\AppKernel;
+use LazerBall\HitTracker\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputOption;
@@ -27,7 +27,7 @@ $debug = (bool) env('SYMFONY_DEBUG', true)
 $defaultBuildType = env('HITTRACKER_BUILD_TYPE', 'standalone');
 $buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
 
-$kernel = new AppKernel($env, $debug, $buildType);
+$kernel = new Kernel($env, $debug, $buildType);
 
 $application = new Application($kernel);
 $application->getDefinition()->addOptions([

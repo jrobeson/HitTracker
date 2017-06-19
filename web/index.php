@@ -2,7 +2,7 @@
 /*
  * Symfony App Front Controller
  */
-use LazerBall\HitTracker\AppKernel;
+use LazerBall\HitTracker\Kernel;
 use Symfony\Component\HttpFoundation\Request;
 use function Cekurte\Environment\env;
 
@@ -16,7 +16,7 @@ $env = env('SYMFONY_ENV', 'production');
 $debug = (bool) env('SYMFONY_DEBUG', false);
 $buildType = env('HITTRACKER_BUILD_TYPE');
 
-$kernel = new AppKernel($env, $debug, $buildType);
+$kernel = new Kernel($env, $debug, $buildType);
 
 if ('development' !== $env) {
     $kernel = new AppCache($kernel);
