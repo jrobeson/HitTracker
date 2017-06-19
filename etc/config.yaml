@@ -34,6 +34,8 @@ framework:
         log: true
 
 twig:
+    paths:
+        - "%kernel.project_dir%/templates"
     form_themes:
         - bootstrap_3_horizontal_layout.html.twig
         - 'form_theme.html.twig'
