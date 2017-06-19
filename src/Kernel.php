@@ -43,40 +43,14 @@ final class Kernel extends BaseKernel
         parent::__construct($environment, $debug);
     }
 
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
-        $bundles = [
-            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new \Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new \Symfony\Bundle\TwigBundle\TwigBundle(),
-            new \Symfony\Bundle\MonologBundle\MonologBundle(),
-            new \Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new \Sylius\Bundle\UiBundle\SyliusUiBundle(),
-            new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-            new \Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
-            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new \FOS\RestBundle\FOSRestBundle(),
-            new \JMS\SerializerBundle\JMSSerializerBundle(),
-            new \LazerBall\HitTracker\PubSubBundle\PubSubBundle(),
-            new \LazerBall\HitTracker\GameBundle\HitTrackerGameBundle(),
-            new \C33s\StaticPageContentBundle\C33sStaticPageContentBundle(),
-            new \Nelmio\SecurityBundle\NelmioSecurityBundle(),
-            new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
-            new \Dunglas\DoctrineJsonOdm\Bundle\DunglasDoctrineJsonOdmBundle(),
-            new \Incenteev\HashedAssetBundle\IncenteevHashedAssetBundle(),
-        ];
-
-        if (in_array($this->getEnvironment(), ['development', 'test'])) {
-            $bundles[] = new \Symfony\Bundle\DebugBundle\DebugBundle();
-            $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+        $contents = require dirname(__DIR__).'/etc/bundles.php';
+        foreach ($contents as $class => $envs) {
+            if (empty($envs) || (isset($envs['all']) || isset($envs[$this->environment]))) {
+                yield new $class();
+            }
         }
-
-        return $bundles;
     }
 
     protected function getBuildType(): string
