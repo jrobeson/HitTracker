@@ -8,6 +8,10 @@ services:
 
     Twig\Extensions\IntlExtension: ~
 
+    LazerBall\HitTracker\:
+        resource: '../src/*'
+        exclude: '../src/{Model,Repository,Tests,GameBundle}'
+
     # CSRF link extension
     LazerBall\HitTracker\EventListener\CsrfListener:
         arguments:
@@ -18,12 +22,6 @@ services:
             - "%upload_dir%"
             - "%upload_uri_base_prefix%"
 
-    LazerBall\HitTracker\Twig\:
-        resource: '../src/Twig/*'
-    LazerBall\HitTracker\Form\:
-        resource: '../src/Form/*'
-    LazerBall\HitTracker\Validator\:
-        resource: '../src/Validator/*'
 
     # CSRF link extension
     LazerBall\HitTracker\Twig\LinkAttributesExtension:
