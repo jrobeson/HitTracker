@@ -11,7 +11,7 @@
 {% block content %}
     {% if logo %}
         <div class="col-md-12 logo">
-            <img class="center-block img-responsive" src="{{ asset(logo, 'upload') }}" />
+            <img class="center-block img-responsive" src="{{ asset(logo, 'uploads') }}" />
         </div>
     {% endif %}
     {% if game %}
@@ -27,12 +27,12 @@
 {% block footer %}
         <div class="col-md-6">
             {% if banner_1 %}
-                <img class="center-block img-responsive" src="{{ asset(banner_1, 'upload') }}"/>
+                <img class="center-block img-responsive" src="{{ asset(banner_1, 'uploads') }}"/>
             {% endif %}
         </div>
     <div class="col-md-6">
         {% if banner_2 %}
-            <img class="center-block img-responsive" src="{{ asset(banner_2, 'upload') }}"/>
+            <img class="center-block img-responsive" src="{{ asset(banner_2, 'uploads') }}"/>
         {% endif %}
     </div>
 {% endblock %}
