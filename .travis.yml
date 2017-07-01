@@ -18,12 +18,15 @@ env:
         - HITTRACKER_SESSION_SECRET=ff3464e484bb524fb4234e893f9cee58
     matrix:
         - HITTRACKER_BUILD_TYPE=hosted
+          HITTRACKER_LOG_DIR="var/logs"
+          HITTRACKER_CACHE_DIR="var/cache"
           HITTRACKER_DATABASE_NAME=hittracker
           HITTRACKER_DATABASE_USER=postgres
         - HITTRACKER_BUILD_TYPE=standalone
           HITTRACKER_DATABASE_NAME=hittracker
           HITTRACKER_DATABASE_USER=postgres
         - HITTRACKER_BUILD_TYPE=electron
+          HITTRACKER_VAR_DIR="var"
           HITTRACKER_DATABASE_PATH="var/data/hitttracker.db"
 
 services:

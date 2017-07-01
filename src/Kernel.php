@@ -96,7 +96,7 @@ final class Kernel extends BaseKernel
     /**
      * {@inheritdoc}
      *
-     * Force root directory to be %kernel.project_dir/app, so templates and translations
+     * Force root directory to be %kernel.project_dir/app, so bundle overrides can be found
      * can still be found.
      */
     public function getRootDir()
@@ -112,14 +112,17 @@ final class Kernel extends BaseKernel
     {
         switch ($this->buildType) {
             case 'electron':
-                $varDir = env('SYMFONY__VAR_DIR');
+                $varDir = env('HITTRACKER_VAR_DIR');
                 if (!$varDir) {
-                    throw new UnexpectedValueException('"SYMFONY__VAR_DIR" env var must be set for Electron.');
+                    throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
                 }
                 $cacheDir = implode(DIRECTORY_SEPARATOR, [$varDir, 'cache']);
                 break;
             case 'hosted':
-                $cacheDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'lib', 'hittracker', $this->environment]);
+                $cacheDir = env('HITTRACKER_CACHE_DIR');
+                if (!$cacheDir) {
+                    $cacheDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'lib', 'hittracker', $this->environment]);
+                }
                 break;
             default:
                 $cacheDir = implode(DIRECTORY_SEPARATOR, [
@@ -137,14 +140,17 @@ final class Kernel extends BaseKernel
     {
         switch ($this->buildType) {
             case 'electron':
-                $varDir = env('SYMFONY__VAR_DIR');
+                $varDir = env('HITTRACKER_VAR_DIR');
                 if (!$varDir) {
-                    throw new UnexpectedValueException('"SYMFONY__VAR_DIR" env var must be set for Electron.');
+                    throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
                 }
                 $logDir = implode(DIRECTORY_SEPARATOR, [$varDir, 'log']);
                 break;
             case 'hosted':
-                $logDir = implode('/', ['', 'var', 'log', 'hittracker']);
+                $logDir = env('HITTRACKER_LOG_DIR');
+                if (!$logDir) {
+                    $logDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'log', 'hittracker']);
+                }
                 break;
             default:
                 $logDir = implode(DIRECTORY_SEPARATOR, [
