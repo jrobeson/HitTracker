@@ -56,12 +56,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrobeson/StaticPageContentBundle.git",
-                "reference": "00837fdd2b38a393a9da3aa581d098be6dc59270"
+                "reference": "97cd79d6f8c9393e4b6a47334d620851e5723d4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/StaticPageContentBundle/zipball/00837fdd2b38a393a9da3aa581d098be6dc59270",
-                "reference": "00837fdd2b38a393a9da3aa581d098be6dc59270",
+                "url": "https://api.github.com/repos/jrobeson/StaticPageContentBundle/zipball/97cd79d6f8c9393e4b6a47334d620851e5723d4c",
+                "reference": "97cd79d6f8c9393e4b6a47334d620851e5723d4c",
                 "shasum": ""
             },
             "require": {
@@ -114,7 +114,7 @@
             "support": {
                 "source": "https://github.com/jrobeson/StaticPageContentBundle/tree/update-symfony-deps"
             },
-            "time": "2016-12-28 09:55:01"
+            "time": "2017-06-19 08:42:53"
         },
         {
             "name": "cekurte/environment",
@@ -518,18 +518,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "899c62bb579027c146b73f6b580c871eb669d310"
+                "reference": "65d74db371f9611918997182f8e594b45619d270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/899c62bb579027c146b73f6b580c871eb669d310",
-                "reference": "899c62bb579027c146b73f6b580c871eb669d310",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/65d74db371f9611918997182f8e594b45619d270",
+                "reference": "65d74db371f9611918997182f8e594b45619d270",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "^2.7.1",
                 "ext-pdo": "*",
-                "php": "^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.4.6",
@@ -583,7 +583,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-06-13 11:58:27"
+            "time": "2017-06-29 19:50:53"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1070,28 +1070,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "fc67b398a1efd3d61837778e2cda2d05a395778c"
+                "reference": "388afb46d0cb3ed0c51332e8df0de9e942c2690b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/fc67b398a1efd3d61837778e2cda2d05a395778c",
-                "reference": "fc67b398a1efd3d61837778e2cda2d05a395778c",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/388afb46d0cb3ed0c51332e8df0de9e942c2690b",
+                "reference": "388afb46d0cb3ed0c51332e8df0de9e942c2690b",
                 "shasum": ""
             },
             "require": {
-                "doctrine/annotations": "~1.2",
-                "doctrine/cache": "~1.5",
+                "doctrine/annotations": "~1.4",
+                "doctrine/cache": "~1.6",
                 "doctrine/collections": "^1.4",
                 "doctrine/common": "^2.7.1",
                 "doctrine/dbal": ">=2.5-dev,<2.7-dev",
                 "doctrine/instantiator": "~1.0.1",
                 "ext-pdo": "*",
-                "php": "^7.0",
-                "symfony/console": "~2.5|~3.0|~4.0"
+                "php": "^7.1",
+                "symfony/console": "~3.0|~4.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.0",
-                "symfony/yaml": "~2.3|~3.0|~4.0"
+                "symfony/yaml": "~3.0|~4.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
@@ -1142,7 +1142,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-06-12 22:20:57"
+            "time": "2017-06-24 07:17:55"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -1449,16 +1449,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.3",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006"
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8d6c6cc55186db87b7dc5009827429ba4e9dc006",
-                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
                 "shasum": ""
             },
             "require": {
@@ -1468,8 +1468,11 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0",
+                "phpunit/phpunit": "^4.0 || ^5.0",
                 "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
@@ -1507,7 +1510,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-02-28T22:50:30+00:00"
+            "time": "2017-06-22T18:50:49+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2140,16 +2143,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.22.1",
+            "version": "1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
                 "shasum": ""
             },
             "require": {
@@ -2170,7 +2173,7 @@
                 "phpunit/phpunit-mock-objects": "2.3.0",
                 "ruflin/elastica": ">=0.90 <3.0",
                 "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "~5.3"
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -2214,20 +2217,20 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-03-13T07:08:03+00:00"
+            "time": "2017-06-19T01:22:40+00:00"
         },
         {
             "name": "nelmio/security-bundle",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioSecurityBundle.git",
-                "reference": "5ac173e187da907c4054c7e6c3408d69980561e4"
+                "reference": "d0d7b151eda5f0ebe80562528f78b56954c1aec7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioSecurityBundle/zipball/5ac173e187da907c4054c7e6c3408d69980561e4",
-                "reference": "5ac173e187da907c4054c7e6c3408d69980561e4",
+                "url": "https://api.github.com/repos/nelmio/NelmioSecurityBundle/zipball/d0d7b151eda5f0ebe80562528f78b56954c1aec7",
+                "reference": "d0d7b151eda5f0ebe80562528f78b56954c1aec7",
                 "shasum": ""
             },
             "require": {
@@ -2249,7 +2252,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3.x-dev"
+                    "dev-master": "2.4.x-dev"
                 }
             },
             "autoload": {
@@ -2275,7 +2278,7 @@
             "keywords": [
                 "security"
             ],
-            "time": "2017-03-17T13:43:27+00:00"
+            "time": "2017-06-22T08:11:46+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3690,12 +3693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "f069330b4a71eda0fb4d368e3c3ac2816a77b3b9"
+                "reference": "4b89e1aa9a4af9176b23703e4580e83c974866e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/f069330b4a71eda0fb4d368e3c3ac2816a77b3b9",
-                "reference": "f069330b4a71eda0fb4d368e3c3ac2816a77b3b9",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/4b89e1aa9a4af9176b23703e4580e83c974866e8",
+                "reference": "4b89e1aa9a4af9176b23703e4580e83c974866e8",
                 "shasum": ""
             },
             "require": {
@@ -3796,7 +3799,7 @@
             "support": {
                 "source": "https://github.com/Sylius/SyliusResourceBundle/tree/master"
             },
-            "time": "2017-05-18 13:38:27"
+            "time": "2017-06-29 15:51:56"
         },
         {
             "name": "sylius/settings-bundle",
@@ -8609,23 +8612,23 @@
         },
         {
             "name": "gecko-packages/gecko-php-unit",
-            "version": "v2.0",
+            "version": "v2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeckoPackages/GeckoPHPUnit.git",
-                "reference": "40a697ec261f3526e8196363b481b24383740c13"
+                "reference": "5b9e9622c7efd3b22655270b80c03f9e52878a6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeckoPackages/GeckoPHPUnit/zipball/40a697ec261f3526e8196363b481b24383740c13",
-                "reference": "40a697ec261f3526e8196363b481b24383740c13",
+                "url": "https://api.github.com/repos/GeckoPackages/GeckoPHPUnit/zipball/5b9e9622c7efd3b22655270b80c03f9e52878a6e",
+                "reference": "5b9e9622c7efd3b22655270b80c03f9e52878a6e",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.3.6 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.0"
+                "phpunit/phpunit": "^4.8.35 || ^5.4.3"
             },
             "type": "library",
             "autoload": {
@@ -8644,20 +8647,20 @@
                 "filesystem",
                 "phpunit"
             ],
-            "time": "2016-11-22T11:01:27+00:00"
+            "time": "2017-06-20T11:22:48+00:00"
         },
         {
             "name": "instaclick/php-webdriver",
-            "version": "1.4.3",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/instaclick/php-webdriver.git",
-                "reference": "0c20707dcf30a32728fd6bdeeab996c887fdb2fb"
+                "reference": "6fa959452e774dcaed543faad3a9d1a37d803327"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/0c20707dcf30a32728fd6bdeeab996c887fdb2fb",
-                "reference": "0c20707dcf30a32728fd6bdeeab996c887fdb2fb",
+                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/6fa959452e774dcaed543faad3a9d1a37d803327",
+                "reference": "6fa959452e774dcaed543faad3a9d1a37d803327",
                 "shasum": ""
             },
             "require": {
@@ -8665,7 +8668,8 @@
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "^1.0||^2.0"
             },
             "type": "library",
             "extra": {
@@ -8702,7 +8706,7 @@
                 "webdriver",
                 "webtest"
             ],
-            "time": "2015-06-15T20:19:33+00:00"
+            "time": "2017-06-30T04:02:48+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -9490,16 +9494,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "2b9e2f71b722f7c53918ab0c25f7646c2013f17d"
+                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2b9e2f71b722f7c53918ab0c25f7646c2013f17d",
-                "reference": "2b9e2f71b722f7c53918ab0c25f7646c2013f17d",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0808939f81c1347a3c8a82a5925385a08074b0f1",
+                "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1",
                 "shasum": ""
             },
             "require": {
@@ -9537,7 +9541,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2017-03-05T18:23:57+00:00"
+            "time": "2017-06-28T20:53:48+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -10259,16 +10263,16 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "eabce450df194817a7d7e27e19013569a903a2bf"
+                "reference": "d8833b396dce9162bb2eb5d59aee5a3ab3cfa5b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/eabce450df194817a7d7e27e19013569a903a2bf",
-                "reference": "eabce450df194817a7d7e27e19013569a903a2bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/d8833b396dce9162bb2eb5d59aee5a3ab3cfa5b4",
+                "reference": "d8833b396dce9162bb2eb5d59aee5a3ab3cfa5b4",
                 "shasum": ""
             },
             "require": {
@@ -10314,20 +10318,20 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-03-03T06:30:20+00:00"
+            "time": "2017-06-30T08:15:21+00:00"
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.6",
+            "version": "v0.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d"
+                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7028d6d525fb183d50b249b7c07598e3d386b27d",
-                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
+                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
                 "shasum": ""
             },
             "require": {
@@ -10387,7 +10391,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-06-04T10:34:20+00:00"
+            "time": "2017-06-24T06:16:19+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -10552,16 +10556,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3"
+                "reference": "74776f8dbc081cab9287c2a601c0c1d842568744"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
-                "reference": "02b6b2c7aefe2cdb1185b8dbf8718b0bcedf3ab3",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/74776f8dbc081cab9287c2a601c0c1d842568744",
+                "reference": "74776f8dbc081cab9287c2a601c0c1d842568744",
                 "shasum": ""
             },
             "require": {
@@ -10598,7 +10602,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2017-05-18T10:10:00+00:00"
+            "time": "2017-06-20T16:25:05+00:00"
         },
         {
             "name": "sebastian/exporter",
