@@ -12,6 +12,7 @@ Encore
 
     // will output as web/build/app.js
     .addEntry('js/app', './app/Resources/assets/js/main.js')
+    .addEntry('js/app', './app/Resources/assets/js/app.js')
 
     // will output as web/build/global.css
     //.addStyleEntry('global', './assets/styles/global.scss')
