@@ -6,7 +6,9 @@ After=syslog.target network.target
 User=hittracker
 Group=hittracker
 Type=notify
-ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/share/hittracker/etc/hosted/php-unix-development.ini --fpm-config=/usr/share/hittracker/etc/hosted/php-fpm-development.conf
+Environment=SYMFONY_ENV=development
+Environment=SYMFONY_DEBUG=1
+ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/local/share/hittracker/etc/hosted/php-unix-development.ini --fpm-config=/usr/local/share/hittracker/etc/hosted/php-fpm-development.conf
 ExecReload=/bin/kill -USR2 $MAINPID
 WatchdogSec=30
 PrivateTmp=true
