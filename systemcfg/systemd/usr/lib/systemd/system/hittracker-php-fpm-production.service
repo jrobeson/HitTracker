@@ -6,6 +6,7 @@ After=syslog.target network.target
 User=hittracker
 Group=hittracker
 Type=notify
+Environment=PHP_INI_SCAN_DIR=""
 Environment=SYMFONY_ENV=production
 Environment=SYMFONY_DEBUG=0
 ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/local/share/hittracker/etc/hosted/php-unix-production.ini --fpm-config=/usr/local/share/hittracker/etc/hosted/php-fpm-production.conf
