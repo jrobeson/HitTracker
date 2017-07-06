@@ -12,6 +12,7 @@ cache:
 
 env:
     global:
+
         - COMPOSER_NO_INTERACTION=1
         - SYMFONY_DEBUG=true
         - SYMFONY_ENV=test
@@ -22,7 +23,9 @@ env:
           HITTRACKER_CACHE_DIR="var/cache"
           HITTRACKER_DATABASE_NAME=hittracker
           HITTRACKER_DATABASE_USER=postgres
-        - HITTRACKER_BUILD_TYPE=standalone
+        - HITTRACKER_BUILD_TYPE=appliance
+          HITTRACKER_LOG_DIR="var/logs"
+          HITTRACKER_CACHE_DIR="var/cache"
           HITTRACKER_DATABASE_NAME=hittracker
           HITTRACKER_DATABASE_USER=postgres
         - HITTRACKER_BUILD_TYPE=electron
@@ -34,6 +37,8 @@ services:
 addons:
     postgresql: '9.6'
 
+before_install:
+  - nvm install 2.1.5
 install:
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$HITTRACKER_BUILD_TYPE/php-unix-development.ini
     - export PHP_INI_SCAN_DIR=""
@@ -51,7 +56,7 @@ script:
     - ./vendor/bin/phpunit
 
 before_deploy:
-    - if [ ${HITTRACKER_BUILD_TYPE} != "standalone" ]; then php bin/create_archive.php $HITTRACKER_BUILD_TYPE linux $TRAVIS_TAG; fi
+    - php bin/create_archive.php $HITTRACKER_BUILD_TYPE linux $TRAVIS_TAG
 
 deploy:
     provider: releases
