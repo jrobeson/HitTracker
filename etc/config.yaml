@@ -28,7 +28,7 @@ framework:
             uploads:
               version_strategy: incenteev_hashed_asset.strategy
             built:
-              json_manifest_path: "%kernel.project_dir%/web/build/manifest.json"
+              json_manifest_path: "%kernel.public_dir%/build/manifest.json"
         version_strategy: incenteev_hashed_asset.strategy
     php_errors:
         log: true

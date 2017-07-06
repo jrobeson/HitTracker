@@ -37,7 +37,7 @@ foreach ([$fileName, $fileBaseName, $tmpDir] as $oldPath) {
 
 $fs->mkdir($tmpDir);
 
-$appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'web'];
+$appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'public'];
 if ('hosted' === $buildType) {
     $appDirs[] = 'systemcfg';
 }

@@ -167,6 +167,7 @@ final class Kernel extends BaseKernel
     {
         $kernelParameters = parent::getKernelParameters();
         $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->getProjectDir()), 'etc']);
+        $kernelParameters['kernel.public_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->getProjectDir()), 'public']);
 
         return $kernelParameters;
     }

@@ -18,7 +18,7 @@
 
 /tmp
 /vendor/
-/web/build
+/public/build
 /composer.phar
 /.php_cs.cache
 /.env

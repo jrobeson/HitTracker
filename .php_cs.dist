@@ -2,10 +2,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__)
-    ->exclude('var')
-    ->exclude('web/bundles')
-    ->exclude('web/assets')
+    ->in(['bin', 'src', 'etc', 'public'])
 ;
 
 return PhpCsFixer\Config::create()
