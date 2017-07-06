@@ -3,8 +3,6 @@ Description=HitTracker PHP-FPM (production)
 After=syslog.target network.target
 
 [Service]
-User=hittracker
-Group=hittracker
 Type=notify
 Environment=PHP_INI_SCAN_DIR=""
 Environment=SYMFONY_ENV=development
