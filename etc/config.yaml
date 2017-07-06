@@ -179,3 +179,6 @@ nelmio_security:
     #            - 'self'
     content_type:
         nosniff: true
+
+incenteev_hashed_asset:
+    web_root: '%kernel.public_dir%'
