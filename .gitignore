@@ -18,7 +18,6 @@
 
 /tmp
 /vendor/
-/public/build
 /composer.phar
 /.php_cs.cache
 /.env
