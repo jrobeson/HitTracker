@@ -37,8 +37,6 @@ services:
 addons:
     postgresql: '9.6'
 
-before_install:
-  - nvm install 2.1.5
 install:
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$HITTRACKER_BUILD_TYPE/php-unix-development.ini
     - export PHP_INI_SCAN_DIR=""
