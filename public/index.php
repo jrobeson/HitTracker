@@ -2,8 +2,8 @@
 /*
  * Symfony App Front Controller
  */
-use LazerBall\HitTracker\Kernel;
 use LazerBall\HitTracker\AppCache;
+use LazerBall\HitTracker\Kernel;
 use Symfony\Component\HttpFoundation\Request;
 use function Cekurte\Environment\env;
 
