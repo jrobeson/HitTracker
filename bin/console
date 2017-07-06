@@ -24,7 +24,7 @@ $debug = (bool) env('SYMFONY_DEBUG', true)
     && !$input->hasParameterOption(['--no-debug', ''])
     && $env !== 'prod';
 
-$defaultBuildType = env('HITTRACKER_BUILD_TYPE', 'standalone');
+$defaultBuildType = env('HITTRACKER_BUILD_TYPE', 'local');
 $buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
 
 $kernel = new Kernel($env, $debug, $buildType);

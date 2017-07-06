@@ -110,16 +110,23 @@ final class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
+        $cacheDir = env('HITTRACKER_CACHE_DIR');
+        if ($cacheDir) {
+            return $cacheDir;
+        }
+
+        $varDir = env('HITTRACKER_VAR_DIR');
+        if ($varDir) {
+            return implode(DIRECTORY_SEPARATOR, [$varDir, 'cache']);
+        }
+
         switch ($this->buildType) {
             case 'electron':
-                $varDir = env('HITTRACKER_VAR_DIR');
                 if (!$varDir) {
                     throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
                 }
-                $cacheDir = implode(DIRECTORY_SEPARATOR, [$varDir, 'cache']);
-                break;
+            case 'appliance':
             case 'hosted':
-                $cacheDir = env('HITTRACKER_CACHE_DIR');
                 if (!$cacheDir) {
                     $cacheDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'lib', 'hittracker', $this->environment]);
                 }
@@ -138,19 +145,25 @@ final class Kernel extends BaseKernel
 
     public function getLogDir(): string
     {
+        $logDir = env('HITTRACKER_LOG_DIR');
+        if ($logDir) {
+            return $logDir;
+        }
+
+        $varDir = env('HITTRACKER_VAR_DIR');
+        if ($varDir) {
+            return implode(DIRECTORY_SEPARATOR, [$varDir, 'log']);
+        }
+
         switch ($this->buildType) {
             case 'electron':
-                $varDir = env('HITTRACKER_VAR_DIR');
                 if (!$varDir) {
                     throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
                 }
-                $logDir = implode(DIRECTORY_SEPARATOR, [$varDir, 'log']);
                 break;
+            case 'appliance':
             case 'hosted':
-                $logDir = env('HITTRACKER_LOG_DIR');
-                if (!$logDir) {
                     $logDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'log', 'hittracker']);
-                }
                 break;
             default:
                 $logDir = implode(DIRECTORY_SEPARATOR, [
