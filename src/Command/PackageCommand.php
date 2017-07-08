@@ -1,0 +1,198 @@
+<?php declare(strict_types=1);
+/**
+ * Copyright (C) 2017 Johnny Robeson <jrobeson@lazerball.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+namespace LazerBall\HitTracker\Command;
+
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
+
+define('DS', DIRECTORY_SEPARATOR);
+
+class PackageCommand extends Command
+{
+    /** @var OutputInterface */
+    private $out;
+
+    protected function configure(): void
+    {
+        $this
+            ->setName('package')
+            ->addArgument('target_dir', InputArgument::OPTIONAL, 'Target directory (defaults to temporary directory.')
+            ->addArgument('version', InputArgument::OPTIONAL, 'Version to append to the target directory.')
+            ->addArgument('platform', InputArgument::OPTIONAL, 'Version to append to the target directory.')
+            ->addOption('compress', null, InputOption::VALUE_NONE, 'Compress the directory?')
+        ;
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output): void
+    {
+        $targetDir = $input->getArgument('target_dir');
+        $doCompress = $input->getOption('compress');
+        if (!$targetDir) {
+            $version = $input->getArgument('version');
+            $platform = $input->getArgument('platform');
+            $targetDir = implode(DS, [sys_get_temp_dir(), "hittracker-$version"]);
+            $this->getFs()->mkdir($targetDir);
+        }
+
+        $sourceDir = realpath(dirname(dirname(__DIR__)));
+
+        $this->out = $output;
+        $output->writeln('Copying files');
+        $this->copyFiles($sourceDir, $targetDir);
+        $output->writeln('Running composer install');
+        $this->composerInstall($targetDir);
+        $output->writeln('Cleaning files');
+        $this->cleanVendor($targetDir);
+
+        $output->writeln('Move licenses');
+        $licenseDir = implode(DS, [$targetDir, 'third-party-licenses']);
+        $this->moveLicenses($sourceDir, $licenseDir);
+
+        if ($doCompress) {
+            $platformS = $platform ? "-$platform" : '';
+            $fileName = "$sourceDir/hittracker$platformS-$version.tar";
+            $output->writeln(sprintf('Creating Compressed File: %', $fileName));
+            $this->compressTargetDir($targetDir);
+            $this->getFs()->remove($targetDir);
+        }
+        $output->writeln('Finished');
+    }
+
+    private function compressTargetDir(string $sourceDir, string $targetFile): void
+    {
+        $fs = $this->getFs();
+        $fileName = $targetFile.'.bz2';
+
+        // PharData will try to reuse an existing file
+        foreach ([$fileName, $fileBaseName, $targetDir] as $oldPath) {
+            if ($fs->exists($oldPath)) {
+                $fs->remove($oldPath);
+            }
+        }
+        $archive = new PharData($targetFile);
+        $archive->buildFromDirectory($sourceDir);
+
+        $this->out->writeln('Compressing Archive');
+
+        $archive->compress(Phar::BZ2);
+
+        // Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
+        // @todo remove when upgrading to php 7.2 fixed in php #74196
+        $fs->rename(preg_replace('/-\d\.\d\.\d\.tar\.bz2$/', '-0.tar.bz2', $fileName), $fileName);
+    }
+
+    private function copyFiles(string $sourceDir, string $targetDir): void
+    {
+        $appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'public'];
+
+        foreach ($appDirs as $appDir) {
+            $this->out->writeln(sprintf("Copying %s", $appDir));
+            $this->getFs()->mirror(implode(DS, [$sourceDir, $appDir]), implode(DS, [$targetDir, $appDir]));
+        }
+        foreach (['composer.json', 'LICENSE'] as $appFile) {
+            $this->out->writeln(sprintf("Copying %s", $appDir));
+            $this->getFs()->copy(implode(DS, [$sourceDir, $appFile]), implode(DS, [$targetDir, $appFile]));
+        }
+
+    }
+
+    private function cleanVendor(string $targetDir): void
+    {
+        $fs = $this->getFs();
+        $vendorDir = implode(DS, [$targetDir, 'vendor']);
+        // Finder excludes dot files and vcs directories by default
+        $vendorDirs = Finder::create()->in($vendorDir)
+                ->directories()
+                ->name('benchmarks')
+                ->name('doc-templates') // ocramius
+                ->name('doc')
+                ->name('docs')
+                ->name('examples')
+                ->name('features') // behat
+                ->name('spec') // phpspec
+                ->name('Tests')
+                ->name('tests')
+        ;
+        $fs->remove($vendorDirs);
+
+        $vendorFiles = Finder::create()->in($vendorDir)
+            ->files()
+            ->name('build.properties')
+            ->name('build.properties.dev')
+            ->name('build.xml')
+            ->name('humbug.json.dist')
+            ->name('phpunit.*')
+            ->name('appveyor.yml')  // not everybody uses .appveyor.yml files yet
+            ->name('/CONTRIBUTING/i')
+            ->name('/CHANGELOG/i$')
+            ->name('/CHANGELOG\.(md|txt)$/i')
+            ->name('/CHANGES$/i')
+            ->name('/README$/i')
+            ->name('/README\.(md|markdown|rst|txt)$/i')
+        ;
+        $fs->remove($vendorFiles);
+    }
+
+    private function moveLicenses(string $sourceDir, string $targetDir): void
+    {
+        $fs = $this->getFs();
+        $fs->mkdir($targetDir);
+        $vendorDir = implode(DS, [$sourceDir, 'vendor']);
+        $vendorLicenseFiles = Finder::create()->in($vendorDir)
+            ->files()
+            ->name('COPYING*')
+            ->name('LICENSE*')
+        ;
+        foreach ($vendorLicenseFiles as $vendorLicenseFile) {
+            $path = $vendorLicenseFile->getRealPath();
+            list($vendorName, $vendorPackageName) = explode(DS, str_replace($vendorDir.DS, '', $path));
+            $licenseFileName = $vendorLicenseFile->getBaseName();
+            $licensePath = $targetDir.DS.$vendorName.'-'.$vendorPackageName.'-'.$licenseFileName;
+
+            $fs->rename($vendorLicenseFile->getRealPath(), $licensePath, true);
+        }
+    }
+
+    private function composerInstall(string $targetDir): void
+    {
+
+        try {
+            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist --no-scripts"
+                                  ." --optimize-autoloader --classmap-authoritative --no-suggest";
+            $composerInstall = new Process($composerInstallCmd);
+            $composerInstall->mustRun();
+            echo $composerInstall->getOutput();
+        } catch (ProcessFailedException $e) {
+            echo $e->getMessage();
+            exit(1);
+        }
+    }
+
+    private function getFs(): FileSystem
+    {
+        return new Filesystem();
+    }
+}
