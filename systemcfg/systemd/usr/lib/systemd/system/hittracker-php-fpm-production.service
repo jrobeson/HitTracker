@@ -7,7 +7,7 @@ Type=notify
 Environment=PHP_INI_SCAN_DIR=""
 Environment=SYMFONY_ENV=production
 Environment=SYMFONY_DEBUG=0
-ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/local/share/hittracker/etc/appliance/php-unix-production.ini --fpm-config=/usr/local/share/hittracker/etc/appliance/php-fpm-production.conf
+ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/share/hittracker/etc/appliance/php-unix-production.ini --fpm-config=/usr/share/hittracker/etc/appliance/php-fpm-production.conf
 ExecReload=/bin/kill -USR2 $MAINPID
 WatchdogSec=30
 PrivateTmp=true
