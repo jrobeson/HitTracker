@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "15ed51dce4c83e0b5e46f78733f3b9fd",
+    "content-hash": "a74cd265054635f38a05aa183f36f940",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -518,12 +518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "8906f736e95aaf035c2a766f103d021d854091d6"
+                "reference": "7baf44892f2cfb83cedf9b05ef409e9ac793b962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/8906f736e95aaf035c2a766f103d021d854091d6",
-                "reference": "8906f736e95aaf035c2a766f103d021d854091d6",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/7baf44892f2cfb83cedf9b05ef409e9ac793b962",
+                "reference": "7baf44892f2cfb83cedf9b05ef409e9ac793b962",
                 "shasum": ""
             },
             "require": {
@@ -583,7 +583,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-07-02 10:10:52"
+            "time": "2017-07-05 22:19:44"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1070,12 +1070,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "388afb46d0cb3ed0c51332e8df0de9e942c2690b"
+                "reference": "c32ba8f5d161835f78cd99507e78119599292611"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/388afb46d0cb3ed0c51332e8df0de9e942c2690b",
-                "reference": "388afb46d0cb3ed0c51332e8df0de9e942c2690b",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c32ba8f5d161835f78cd99507e78119599292611",
+                "reference": "c32ba8f5d161835f78cd99507e78119599292611",
                 "shasum": ""
             },
             "require": {
@@ -1142,7 +1142,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-06-24 07:17:55"
+            "time": "2017-07-07 08:36:08"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -5663,6 +5663,55 @@
             "time": "2017-06-09T08:25:21+00:00"
         },
         {
+            "name": "symfony/process",
+            "version": "v3.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "5ab8949b682b1bf9d4511a228b5e045c96758c30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/5ab8949b682b1bf9d4511a228b5e045c96758c30",
+                "reference": "5ab8949b682b1bf9d4511a228b5e045c96758c30",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2017-07-03T08:12:02+00:00"
+        },
+        {
             "name": "symfony/property-access",
             "version": "v3.3.4",
             "source": {
@@ -7008,16 +7057,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "e7a1118c5f824e3c1cff7b2aea34ee394cc72dfa"
+                "reference": "5a5f27598ba3885104bce447539b5227704f0aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e7a1118c5f824e3c1cff7b2aea34ee394cc72dfa",
-                "reference": "e7a1118c5f824e3c1cff7b2aea34ee394cc72dfa",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/5a5f27598ba3885104bce447539b5227704f0aa5",
+                "reference": "5a5f27598ba3885104bce447539b5227704f0aa5",
                 "shasum": ""
             },
             "require": {
@@ -7089,7 +7138,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2017-07-03T08:32:36+00:00"
+            "time": "2017-07-08T08:10:50+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -10274,16 +10323,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.8",
+            "version": "v0.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e"
+                "reference": "58a31cc4404c8f632d8c557bc72056af2d3a83db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
-                "reference": "fe65c30cbc55c71e61ba3a38b5a581149be31b8e",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/58a31cc4404c8f632d8c557bc72056af2d3a83db",
+                "reference": "58a31cc4404c8f632d8c557bc72056af2d3a83db",
                 "shasum": ""
             },
             "require": {
@@ -10343,7 +10392,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-06-24T06:16:19+00:00"
+            "time": "2017-07-06T14:53:52+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -11234,55 +11283,6 @@
                 "shim"
             ],
             "time": "2017-06-09T08:25:21+00:00"
-        },
-        {
-            "name": "symfony/process",
-            "version": "v3.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "5ab8949b682b1bf9d4511a228b5e045c96758c30"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/5ab8949b682b1bf9d4511a228b5e045c96758c30",
-                "reference": "5ab8949b682b1bf9d4511a228b5e045c96758c30",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Process Component",
-            "homepage": "https://symfony.com",
-            "time": "2017-07-03T08:12:02+00:00"
         },
         {
             "name": "theseer/tokenizer",
