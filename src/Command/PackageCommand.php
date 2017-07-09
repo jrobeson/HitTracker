@@ -87,9 +87,9 @@ class PackageCommand extends Command
 
         if ($doCompress) {
             $platformS = $platform ? "-$platform" : '';
-            $fileName = "$sourceDir/hittracker$platformS-$version.tar";
-            $output->writeln(sprintf('Creating Compressed File: %', $fileName));
-            $this->compressTargetDir($targetDir);
+            $fileBaseName = "$sourceDir/hittracker$platformS-$version.tar";
+            $output->writeln(sprintf('Creating Compressed File: %s', $fileBaseName));
+            $this->compressTargetDir($targetDir, $fileBaseName);
             $this->getFs()->remove($targetDir);
         }
         $output->writeln('Finished');
@@ -101,17 +101,17 @@ class PackageCommand extends Command
         $fileName = $targetFile.'.bz2';
 
         // PharData will try to reuse an existing file
-        foreach ([$fileName, $fileBaseName, $targetDir] as $oldPath) {
+        foreach ([$fileName, $targetFile, $sourceDir] as $oldPath) {
             if ($fs->exists($oldPath)) {
                 $fs->remove($oldPath);
             }
         }
-        $archive = new PharData($targetFile);
+        $archive = new \PharData($targetFile);
         $archive->buildFromDirectory($sourceDir);
 
         $this->out->writeln('Compressing Archive');
 
-        $archive->compress(Phar::BZ2);
+        $archive->compress(\Phar::BZ2);
 
         // Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
         // @todo remove when upgrading to php 7.2 fixed in php #74196
@@ -123,14 +123,13 @@ class PackageCommand extends Command
         $appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'public'];
 
         foreach ($appDirs as $appDir) {
-            $this->out->writeln(sprintf("Copying %s", $appDir));
+            $this->out->writeln(sprintf('Copying %s', $appDir));
             $this->getFs()->mirror(implode(DS, [$sourceDir, $appDir]), implode(DS, [$targetDir, $appDir]));
         }
         foreach (['composer.json', 'LICENSE'] as $appFile) {
-            $this->out->writeln(sprintf("Copying %s", $appDir));
+            $this->out->writeln(sprintf('Copying %s', $appDir));
             $this->getFs()->copy(implode(DS, [$sourceDir, $appFile]), implode(DS, [$targetDir, $appFile]));
         }
-
     }
 
     private function cleanVendor(string $targetDir): void
@@ -192,10 +191,9 @@ class PackageCommand extends Command
 
     private function composerInstall(string $targetDir): void
     {
-
         try {
             $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist --no-scripts"
-                                  ." --optimize-autoloader --classmap-authoritative --no-suggest";
+                                  .' --optimize-autoloader --classmap-authoritative --no-suggest';
             $composerInstall = new Process($composerInstallCmd);
             $composerInstall->mustRun();
             echo $composerInstall->getOutput();
