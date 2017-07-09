@@ -54,7 +54,7 @@ script:
     - ./vendor/bin/phpunit
 
 before_deploy:
-    - php bin/package.php --version=$TRAVIS_TAG --platform=linux --build-type=$HITTRACKER_BUILD_TYPE --compress
+    - php bin/package.php --build-version=$TRAVIS_TAG --build-platform=linux --build-type=$HITTRACKER_BUILD_TYPE --compress
 
 deploy:
     provider: releases

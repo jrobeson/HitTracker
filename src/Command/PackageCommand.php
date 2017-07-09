@@ -39,10 +39,10 @@ class PackageCommand extends Command
     {
         $this
             ->setName('package')
-            ->addArgument('target_dir', InputArgument::OPTIONAL, 'Target directory (defaults to temporary directory.')
-            ->addOption('version', InputArgument::OPTIONAL, 'Version to append to the target directory.')
-            ->addOption('platform', InputArgument::OPTIONAL, 'Platform.')
-            ->addOption('build_type', InputArgument::OPTIONAL, 'Build Type.')
+            ->addArgument('target-dir', InputArgument::OPTIONAL, 'Target directory (defaults to temporary directory.')
+            ->addOption('build-version', null, InputOption::VALUE_REQUIRED, 'Version to append to the target directory.')
+            ->addOption('build-platform', null, InputOption::VALUE_REQUIRED, 'Platform.')
+            ->addOption('build-type', null, InputOption::VALUE_REQUIRED, 'Build Type.')
             ->addOption('compress', null, InputOption::VALUE_NONE, 'Compress the directory?')
         ;
     }
@@ -51,8 +51,8 @@ class PackageCommand extends Command
     {
         $targetDir = $input->getArgument('target-dir');
         $buildType = $input->getOption('build-type');
-        $platform = $input->getOption('platform');
-        $version = $input->getOption('version');
+        $platform = $input->getOption('build-platform');
+        $version = $input->getOption('build-version');
         $doCompress = $input->getOption('compress');
 
         if (!$targetDir) {
