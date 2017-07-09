@@ -62,7 +62,7 @@ test_script:
 
 before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
-  - php bin\create_archive.php electron win32 %APPVEYOR_REPO_TAG_NAME%
+  - php bin\package.php --version=%APPVEYOR_REPO_TAG_NAME% --platform=win32 --build-type=$HITTRACKER_BUILD_TYPE --compress
   - appveyor PushArtifact HitTracker-electron-win32-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
 
 deploy:
