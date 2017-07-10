@@ -89,11 +89,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:jrobeson/StaticPageContentBundle"
+            "url": "https://github.com/jrobeson/StaticPageContentBundle"
         },
         {
             "type": "vcs",
-            "url": "git@github.com:jrobeson/SyliusSettingsBundle"
+            "url": "https://github.com/jrobeson/SyliusSettingsBundle"
         }
     ]
 }
