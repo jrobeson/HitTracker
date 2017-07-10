@@ -208,7 +208,7 @@ class PackageCommand extends Command
 
             $this->out->writeln($composerInstallCmd);
             $composerInstall = new Process($composerInstallCmd, null, null, null, 300);
-            $composerInstall->run();
+            $composerInstall->mustRun();
             $this->out->writeln($composerInstall->getOutput());
         } catch (ProcessFailedException $e) {
             echo $e->getMessage();
