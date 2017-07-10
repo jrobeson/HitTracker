@@ -68,9 +68,12 @@ class PackageCommand extends Command
             }
 
             $targetDir = implode(DS, [sys_get_temp_dir(), $dir]);
-            $this->getFs()->mkdir($targetDir);
         }
 
+        if (!$this->getFs()->exists($targetDir)) {
+            $output->writeln("Creating $targetDir");
+            $this->getFs()->mkdir($targetDir);
+        }
         $sourceDir = realpath(dirname(dirname(__DIR__)));
 
         $this->out = $output;
@@ -87,8 +90,7 @@ class PackageCommand extends Command
         $this->moveLicenses($sourceDir, $licenseDir);
 
         if ($doCompress) {
-            $platformS = $platform ? "-$platform" : '';
-            $fileBaseName = "$sourceDir/hittracker$platformS-$version.tar";
+            $fileBaseName = implode(DS, [$sourceDir, basename($targetDir).'.tar']);
             $output->writeln(sprintf('Creating Compressed File: %s', $fileBaseName));
             $this->compressTargetDir($targetDir, $fileBaseName);
             $this->getFs()->remove($targetDir);
@@ -100,9 +102,9 @@ class PackageCommand extends Command
     {
         $fs = $this->getFs();
         $fileName = $targetFile.'.bz2';
-
+        $badFileName = preg_replace('/-\d\d?\.\d\d?\.\d\d?\.tar\.bz2$/', '-0.tar.bz2', $fileName);
         // PharData will try to reuse an existing file
-        foreach ([$fileName, $targetFile, $sourceDir] as $oldPath) {
+        foreach ([$badFileName, $fileName, $targetFile] as $oldPath) {
             if ($fs->exists($oldPath)) {
                 $fs->remove($oldPath);
             }
@@ -116,7 +118,7 @@ class PackageCommand extends Command
 
         // Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
         // @todo remove when upgrading to php 7.2 fixed in php #74196
-        $fs->rename(preg_replace('/-\d\.\d\.\d\.tar\.bz2$/', '-0.tar.bz2', $fileName), $fileName);
+        $fs->rename($badFileName, $fileName);
     }
 
     private function copyFiles(string $sourceDir, string $targetDir): void
@@ -201,7 +203,7 @@ class PackageCommand extends Command
     private function composerInstall(string $targetDir): void
     {
         try {
-            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-source --no-scripts"
+            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist --no-scripts"
                                   .' --optimize-autoloader --classmap-authoritative --no-suggest';
 
             $this->out->writeln($composerInstallCmd);
