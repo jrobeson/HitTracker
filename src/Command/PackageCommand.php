@@ -139,6 +139,10 @@ class PackageCommand extends Command
         // Finder excludes dot files and vcs directories by default
         $vendorDirs = Finder::create()->in($vendorDir)
                 ->directories()
+                ->ignoreVCS(false)
+                ->ignoreDotFiles(false)
+                ->name('.git')
+                ->name('.hg')
                 ->name('benchmarks')
                 ->name('doc-templates') // ocramius
                 ->name('doc')
@@ -153,6 +157,11 @@ class PackageCommand extends Command
 
         $vendorFiles = Finder::create()->in($vendorDir)
             ->files()
+            ->ignoreVCS(false)
+            ->ignoreDotFiles(false)
+            ->name('.gitattributes')
+            ->name('.gitignore')
+            ->name('.gitmodules')
             ->name('build.properties')
             ->name('build.properties.dev')
             ->name('build.xml')
@@ -192,11 +201,12 @@ class PackageCommand extends Command
     private function composerInstall(string $targetDir): void
     {
         try {
-            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist --no-scripts"
+            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-source --no-scripts"
                                   .' --optimize-autoloader --classmap-authoritative --no-suggest';
-            $composerInstall = new Process($composerInstallCmd);
-            $composerInstall->mustRun();
-            echo $composerInstall->getOutput();
+
+            $composerInstall = new Process($composerInstallCmd, null, null, null, 300);
+            $composerInstall->run();
+            $this->out->writeln($composerInstall->getOutput());
         } catch (ProcessFailedException $e) {
             echo $e->getMessage();
             exit(1);
