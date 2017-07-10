@@ -204,7 +204,7 @@ class PackageCommand extends Command
     {
         try {
             $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist --no-scripts"
-                                  .' --optimize-autoloader --classmap-authoritative --no-suggest';
+                                  .' --optimize-autoloader --classmap-authoritative --no-suggest --no-interaction';
 
             $this->out->writeln($composerInstallCmd);
             $composerInstall = new Process($composerInstallCmd, null, null, null, 300);
