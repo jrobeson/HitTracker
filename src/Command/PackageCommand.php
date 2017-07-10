@@ -79,7 +79,8 @@ class PackageCommand extends Command
         $output->writeln('Running composer install');
         $this->composerInstall($targetDir);
         $output->writeln('Cleaning files');
-        $this->cleanVendor($targetDir);
+        $vendorDir = implode(DS, [$targetDir, 'vendor']);
+        $this->cleanVendor($vendorDir);
 
         $output->writeln('Move licenses');
         $licenseDir = implode(DS, [$targetDir, 'third-party-licenses']);
@@ -132,10 +133,9 @@ class PackageCommand extends Command
         }
     }
 
-    private function cleanVendor(string $targetDir): void
+    private function cleanVendor(string $vendorDir): void
     {
         $fs = $this->getFs();
-        $vendorDir = implode(DS, [$targetDir, 'vendor']);
         // Finder excludes dot files and vcs directories by default
         $vendorDirs = Finder::create()->in($vendorDir)
                 ->directories()
@@ -204,6 +204,7 @@ class PackageCommand extends Command
             $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-source --no-scripts"
                                   .' --optimize-autoloader --classmap-authoritative --no-suggest';
 
+            $this->out->writeln($composerInstallCmd);
             $composerInstall = new Process($composerInstallCmd, null, null, null, 300);
             $composerInstall->run();
             $this->out->writeln($composerInstall->getOutput());
