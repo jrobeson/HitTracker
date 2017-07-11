@@ -43,6 +43,7 @@ class PackageCommand extends Command
             ->addOption('build-version', null, InputOption::VALUE_REQUIRED, 'Version to append to the target directory.')
             ->addOption('build-platform', null, InputOption::VALUE_REQUIRED, 'Platform.')
             ->addOption('build-type', null, InputOption::VALUE_REQUIRED, 'Build Type.')
+            ->addOption('use-existing-vendor', null, InputOption::VALUE_NONE, 'Use existing vendor dir?')
             ->addOption('compress', null, InputOption::VALUE_NONE, 'Compress the directory?')
         ;
     }
@@ -54,6 +55,7 @@ class PackageCommand extends Command
         $platform = $input->getOption('build-platform');
         $version = $input->getOption('build-version');
         $doCompress = $input->getOption('compress');
+        $useExistingVendor = $input->getOption('use-existing-vendor');
 
         if (!$targetDir) {
             $dir = 'hittracker';
@@ -78,7 +80,7 @@ class PackageCommand extends Command
 
         $this->out = $output;
         $output->writeln('Copying files');
-        $this->copyFiles($sourceDir, $targetDir);
+        $this->copyFiles($sourceDir, $targetDir, $useExistingVendor);
         $output->writeln('Running composer install');
         $this->composerInstall($targetDir);
         $output->writeln('Cleaning files');
@@ -121,9 +123,12 @@ class PackageCommand extends Command
         $fs->rename($badFileName, $fileName);
     }
 
-    private function copyFiles(string $sourceDir, string $targetDir): void
+    private function copyFiles(string $sourceDir, string $targetDir, bool $useExistingVendor = false): void
     {
         $appDirs = ['app', 'bin', 'etc', 'migrations', 'src', 'public'];
+        if ($useExistingVendor) {
+            $appDirs[] = 'vendor';
+        }
 
         foreach ($appDirs as $appDir) {
             $this->out->writeln(sprintf('Copying %s', $appDir));
