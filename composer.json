@@ -39,7 +39,7 @@
         "sylius/ui-bundle": "^1.0@beta",
         "sylius/resource-bundle": "dev-master#87b1dd702f674707e7503b9a69a36e84baf66d7f@dev",
         "sylius/resource": "dev-master@dev",
-        "sylius/settings-bundle": "dev-symfony-3.2-compat",
+        "jrobeson/sylius-settings-bundle": "^1.0@dev",
         "sylius/registry": "^1.0@beta",
         "guzzlehttp/guzzle": "^6.0",
         "nesbot/Carbon": "^1.18",
@@ -84,11 +84,5 @@
         "post-update-cmd": [
             "@shared-scripts"
         ]
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jrobeson/SyliusSettingsBundle"
-        }
-    ]
+    }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1a55de387c78e8b625063715b2107fc",
+    "content-hash": "afb9cd92b38e918466614bba1d9189e8",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -452,12 +452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "a55b83eae856b706a5c30e3a578e449046669a05"
+                "reference": "5c5966aae7aee4cfab8753499590c575c173015e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a55b83eae856b706a5c30e3a578e449046669a05",
-                "reference": "a55b83eae856b706a5c30e3a578e449046669a05",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5c5966aae7aee4cfab8753499590c575c173015e",
+                "reference": "5c5966aae7aee4cfab8753499590c575c173015e",
                 "shasum": ""
             },
             "require": {
@@ -517,7 +517,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-07-09 14:23:49"
+            "time": "2017-07-12 06:24:58"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1004,12 +1004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "c32ba8f5d161835f78cd99507e78119599292611"
+                "reference": "e3ecec36ad77525553bfd4e6a2ec86e80d39ac27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c32ba8f5d161835f78cd99507e78119599292611",
-                "reference": "c32ba8f5d161835f78cd99507e78119599292611",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e3ecec36ad77525553bfd4e6a2ec86e80d39ac27",
+                "reference": "e3ecec36ad77525553bfd4e6a2ec86e80d39ac27",
                 "shasum": ""
             },
             "require": {
@@ -1076,7 +1076,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-07-07T08:36:08+00:00"
+            "time": "2017-07-12 06:23:18"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -1803,16 +1803,16 @@
         },
         {
             "name": "jms/serializer",
-            "version": "1.7.1",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "4fad8bbbe76e05de3b79ffa3db027058ed3813ff"
+                "reference": "020f2a221880fba6485ca428f405846279a0470f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/4fad8bbbe76e05de3b79ffa3db027058ed3813ff",
-                "reference": "4fad8bbbe76e05de3b79ffa3db027058ed3813ff",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/020f2a221880fba6485ca428f405846279a0470f",
+                "reference": "020f2a221880fba6485ca428f405846279a0470f",
                 "shasum": ""
             },
             "require": {
@@ -1855,8 +1855,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "JMS\\Serializer": "src/"
+                "psr-4": {
+                    "JMS\\Serializer\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1864,6 +1864,10 @@
                 "Apache-2.0"
             ],
             "authors": [
+                {
+                    "name": "Asmir Mustafic",
+                    "email": "goetas@gmail.com"
+                },
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com"
@@ -1878,7 +1882,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2017-05-15T08:35:42+00:00"
+            "time": "2017-07-12T06:03:24+00:00"
         },
         {
             "name": "jms/serializer-bundle",
@@ -1953,6 +1957,69 @@
             "time": "2017-05-10T10:17:17+00:00"
         },
         {
+            "name": "jrobeson/sylius-settings-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jrobeson/SyliusSettingsBundle.git",
+                "reference": "7224dac80d7d9841ffe0e805daca9ef6cf98c8bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/7224dac80d7d9841ffe0e805daca9ef6cf98c8bd",
+                "reference": "7224dac80d7d9841ffe0e805daca9ef6cf98c8bd",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "sylius/registry": "^1.0",
+                "sylius/resource-bundle": "^1.0",
+                "symfony/framework-bundle": "^3.3"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^3.1",
+                "symfony/form": "^3.3",
+                "symfony/validator": "^3.3"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sylius\\Bundle\\SettingsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sylius project",
+                    "homepage": "http://sylius.org"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "http://github.com/Sylius/Sylius/contributors"
+                },
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "http://pjedrzejewski.com"
+                }
+            ],
+            "description": "Settings system for Symfony2 applications, editable via web user interface.",
+            "homepage": "http://sylius.org",
+            "keywords": [
+                "Settings",
+                "config",
+                "configuration"
+            ],
+            "time": "2017-07-12 08:56:14"
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "2.2.0",
             "source": {
@@ -2002,7 +2069,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -3627,12 +3694,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "c0ffb4552699c1814e057e69e1e7a19e2981a72b"
+                "reference": "cb319b3149de7413de59869ca4a2bd412ce5baa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/c0ffb4552699c1814e057e69e1e7a19e2981a72b",
-                "reference": "c0ffb4552699c1814e057e69e1e7a19e2981a72b",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/cb319b3149de7413de59869ca4a2bd412ce5baa6",
+                "reference": "cb319b3149de7413de59869ca4a2bd412ce5baa6",
                 "shasum": ""
             },
             "require": {
@@ -3691,28 +3758,11 @@
                     "Sylius\\Bundle\\ResourceBundle\\": ""
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Sylius\\Bundle\\ResourceBundle\\spec\\": "spec/",
-                    "AppBundle\\": "test/src/AppBundle/"
-                }
-            },
-            "scripts": {
-                "post-install-cmd": [
-                    "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-                ],
-                "post-update-cmd": [
-                    "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Paweł Jędrzejewski",
-                    "homepage": "http://pjedrzejewski.com"
-                },
                 {
                     "name": "Sylius project",
                     "homepage": "http://sylius.org"
@@ -3720,6 +3770,10 @@
                 {
                     "name": "Community contributions",
                     "homepage": "http://github.com/Sylius/Sylius/contributors"
+                },
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "http://pjedrzejewski.com"
                 }
             ],
             "description": "Resource component for Sylius.",
@@ -3730,83 +3784,7 @@
                 "storage",
                 "sylius"
             ],
-            "support": {
-                "source": "https://github.com/Sylius/SyliusResourceBundle/tree/master"
-            },
-            "time": "2017-07-04 16:11:48"
-        },
-        {
-            "name": "sylius/settings-bundle",
-            "version": "dev-symfony-3.2-compat",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jrobeson/SyliusSettingsBundle.git",
-                "reference": "3e57fb3c81a9fb8b62a0265613898966610b247d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/3e57fb3c81a9fb8b62a0265613898966610b247d",
-                "reference": "3e57fb3c81a9fb8b62a0265613898966610b247d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6|^7.0",
-                "sylius/registry": "^1.0",
-                "sylius/resource-bundle": "^1.0",
-                "symfony/framework-bundle": "^3.2"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "^3.1",
-                "symfony/form": "^3.2",
-                "symfony/validator": "^3.2"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sylius\\Bundle\\SettingsBundle\\": ""
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Sylius\\Bundle\\SettingsBundle\\spec\\": "spec/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paweł Jędrzejewski",
-                    "homepage": "http://pjedrzejewski.com"
-                },
-                {
-                    "name": "Sylius project",
-                    "homepage": "http://sylius.org"
-                },
-                {
-                    "name": "Community contributions",
-                    "homepage": "http://github.com/Sylius/Sylius/contributors"
-                }
-            ],
-            "description": "Settings system for Symfony2 applications, editable via web user interface.",
-            "homepage": "http://sylius.org",
-            "keywords": [
-                "config",
-                "configuration",
-                "ecommerce",
-                "settings",
-                "shop",
-                "webshop"
-            ],
-            "support": {
-                "source": "https://github.com/jrobeson/SyliusSettingsBundle/tree/symfony-3.2-compat"
-            },
-            "time": "2017-02-10 09:10:25"
+            "time": "2017-07-11 04:05:05"
         },
         {
             "name": "sylius/ui-bundle",
@@ -7642,16 +7620,16 @@
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-eventmanager.git",
-                "reference": "c3bce7b7d47c54040b9ae51bc55491c72513b75d"
+                "reference": "9d72db10ceb6e42fb92350c0cb54460da61bd79c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/c3bce7b7d47c54040b9ae51bc55491c72513b75d",
-                "reference": "c3bce7b7d47c54040b9ae51bc55491c72513b75d",
+                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/9d72db10ceb6e42fb92350c0cb54460da61bd79c",
+                "reference": "9d72db10ceb6e42fb92350c0cb54460da61bd79c",
                 "shasum": ""
             },
             "require": {
@@ -7660,7 +7638,7 @@
             "require-dev": {
                 "athletic/athletic": "^0.1",
                 "container-interop/container-interop": "^1.1.0",
-                "phpunit/phpunit": "^5.6",
+                "phpunit/phpunit": "^6.0.7 || ^5.7.14",
                 "zendframework/zend-coding-standard": "~1.0.0",
                 "zendframework/zend-stdlib": "^2.7.3 || ^3.0"
             },
@@ -7671,8 +7649,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev",
-                    "dev-develop": "3.2-dev"
+                    "dev-master": "3.2-dev",
+                    "dev-develop": "3.3-dev"
                 }
             },
             "autoload": {
@@ -7692,7 +7670,7 @@
                 "events",
                 "zf2"
             ],
-            "time": "2016-12-19T21:47:12+00:00"
+            "time": "2017-07-11T19:17:22+00:00"
         },
         {
             "name": "zendframework/zend-stdlib",
@@ -11267,7 +11245,7 @@
         "sylius/ui-bundle": 10,
         "sylius/resource-bundle": 20,
         "sylius/resource": 20,
-        "sylius/settings-bundle": 20,
+        "jrobeson/sylius-settings-bundle": 20,
         "sylius/registry": 10
     },
     "prefer-stable": false,
