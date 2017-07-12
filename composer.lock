@@ -1962,12 +1962,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrobeson/SyliusSettingsBundle.git",
-                "reference": "7224dac80d7d9841ffe0e805daca9ef6cf98c8bd"
+                "reference": "7965b58252d168e7bd3d33b64c09e72c83e7d1e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/7224dac80d7d9841ffe0e805daca9ef6cf98c8bd",
-                "reference": "7224dac80d7d9841ffe0e805daca9ef6cf98c8bd",
+                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/7965b58252d168e7bd3d33b64c09e72c83e7d1e3",
+                "reference": "7965b58252d168e7bd3d33b64c09e72c83e7d1e3",
                 "shasum": ""
             },
             "require": {
@@ -2017,7 +2017,7 @@
                 "config",
                 "configuration"
             ],
-            "time": "2017-07-12 08:56:14"
+            "time": "2017-07-12 09:37:40"
         },
         {
             "name": "knplabs/knp-menu",
