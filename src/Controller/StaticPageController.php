@@ -22,7 +22,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class StaticPageController extends AbstractController
 {
     /** @var string */
@@ -61,11 +60,11 @@ class StaticPageController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        return $this->render($this->wrapperTemplate, array(
+        return $this->render($this->wrapperTemplate, [
                 'baseTemplate' => $this->baseTemplate,
                 'templatePath' => $templatePath,
                 'pageName' => $name,
-            )
+            ]
         );
     }
 }
