@@ -40,7 +40,7 @@ addons:
 install:
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$HITTRACKER_BUILD_TYPE/php-unix-development.ini
     - export PHP_INI_SCAN_DIR=""
-    - composer install --prefer-dist
+    - composer install --prefer-dist --no-suggest
 
 before_script:
     - php bin/console doctrine:database:create

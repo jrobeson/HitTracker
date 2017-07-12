@@ -51,7 +51,7 @@ install:
     - IF NOT EXIST C:\composer\composer.bat powershell -command "'@php C:\composer\composer.phar ' + $([char]37) + '*' | Out-File C:\composer\composer.bat -Encoding ASCII"
     - composer self-update --stable
     - cd %APPVEYOR_BUILD_FOLDER%
-    - appveyor-retry composer install --prefer-dist --no-progress --profile
+    - appveyor-retry composer install --prefer-dist --no-progress --profile --no-suggest
     - php bin\console doctrine:database:create
     - php bin\console doctrine:migrations:migrate --no-interaction
     - php bin\console cache:clear
