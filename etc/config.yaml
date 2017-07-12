@@ -35,7 +35,8 @@ framework:
 
 twig:
     paths:
-        - "%kernel.project_dir%/templates"
+        "%kernel.project_dir%/templates":
+        "%kernel.project_dir%/templates/Pages": Pages
     form_themes:
         - bootstrap_3_horizontal_layout.html.twig
         - 'form_theme.html.twig'
@@ -116,10 +117,6 @@ fos_rest:
     access_denied_listener:
         json: true
     body_listener: true
-
-c33s_static_page_content:
-    content_bundle: HitTrackerGameBundle
-    content_dir: Pages
 
 sylius_settings:
     driver: doctrine/orm

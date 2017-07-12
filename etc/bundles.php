@@ -18,7 +18,6 @@ return [
     \JMS\SerializerBundle\JMSSerializerBundle::class => [],
     \LazerBall\HitTracker\PubSubBundle\PubSubBundle::class => [],
     \LazerBall\HitTracker\GameBundle\HitTrackerGameBundle::class => [],
-    \C33s\StaticPageContentBundle\C33sStaticPageContentBundle::class => [],
     \Nelmio\SecurityBundle\NelmioSecurityBundle::class => [],
     \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => [],
     \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle::class => [],

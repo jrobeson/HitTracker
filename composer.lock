@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d29a2aae6e975989233df02e1dfb3468",
+    "content-hash": "d1a55de387c78e8b625063715b2107fc",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -49,72 +49,6 @@
                 "transliterator"
             ],
             "time": "2017-04-04T11:38:05+00:00"
-        },
-        {
-            "name": "c33s/static-page-content-bundle",
-            "version": "dev-update-symfony-deps",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jrobeson/StaticPageContentBundle.git",
-                "reference": "97cd79d6f8c9393e4b6a47334d620851e5723d4c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/StaticPageContentBundle/zipball/97cd79d6f8c9393e4b6a47334d620851e5723d4c",
-                "reference": "97cd79d6f8c9393e4b6a47334d620851e5723d4c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "^2.7 | ^3.0"
-            },
-            "require-dev": {
-                "matthiasnoback/symfony-dependency-injection-test": "0.*",
-                "phpunit/phpunit": "~4.1"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "C33s\\StaticPageContentBundle\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Julian",
-                    "email": "office@consistency.at",
-                    "homepage": "http://consistency.at/"
-                },
-                {
-                    "name": "David Herrmann",
-                    "homepage": "https://github.com/vworldat"
-                },
-                {
-                    "name": "Johnny Robeson",
-                    "email": "johnny@localmomentum.net",
-                    "homepage": "https://github.com/jrobeson"
-                },
-                {
-                    "name": "Community",
-                    "homepage": "https://github.com/c33s/StaticPageContentBundle/contributors"
-                }
-            ],
-            "description": "Easy serving of Static Page Content with Symfony using Twig Templates",
-            "homepage": "https://github.com/c33s/StaticPageContentBundle",
-            "keywords": [
-                "bundle",
-                "c33s",
-                "consistency",
-                "content",
-                "page",
-                "static"
-            ],
-            "support": {
-                "source": "https://github.com/jrobeson/StaticPageContentBundle/tree/update-symfony-deps"
-            },
-            "time": "2017-06-19T08:42:53+00:00"
         },
         {
             "name": "cekurte/environment",
@@ -11333,7 +11267,6 @@
         "sylius/ui-bundle": 10,
         "sylius/resource-bundle": 20,
         "sylius/resource": 20,
-        "c33s/static-page-content-bundle": 20,
         "sylius/settings-bundle": 20,
         "sylius/registry": 10
     },

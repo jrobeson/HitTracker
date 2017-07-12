@@ -23,9 +23,9 @@ hittracker_site_settings:
 page:
     path:  /pages/{name}
     defaults:
-        _controller: "C33sStaticPageContentBundle:BaseStaticPage:show"
+        _controller: "LazerBall\\HitTracker\\Controller\\StaticPageController::showAction"
 home:
     path: /
     defaults:
-        _controller: "C33sStaticPageContentBundle:BaseStaticPage:show"
+        _controller: "LazerBall\\HitTracker\\Controller\\StaticPageController::showAction"
         name: help

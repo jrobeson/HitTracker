@@ -1,0 +1,5 @@
+{% extends baseTemplate ?: '@Pages/empty.html.twig' %}
+{% block page_title templatePath|split('/')[2]|split('.')[0]|humanize %}
+{% block content %}
+    {{ include(templatePath) }}
+{% endblock %}

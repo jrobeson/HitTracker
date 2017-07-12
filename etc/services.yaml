@@ -10,7 +10,12 @@ services:
 
     LazerBall\HitTracker\:
         resource: '../src/*'
-        exclude: '../src/{Model,Repository,Tests,GameBundle}'
+        exclude: '../src/{Model,Repository,Tests,GameBundle,Controller}'
+
+    LazerBall\HitTracker\Controller\:
+        resource: '../src/Controller'
+        public: true
+        tags: ['controller.service_arguments']
 
     # CSRF link extension
     LazerBall\HitTracker\EventListener\CsrfListener:
@@ -27,4 +32,3 @@ services:
     LazerBall\HitTracker\Twig\LinkAttributesExtension:
         arguments:
             $csrfTokenId: "%csrf_link_token_id%"
-
