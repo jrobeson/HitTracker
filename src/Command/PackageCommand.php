@@ -89,7 +89,7 @@ class PackageCommand extends Command
 
         $output->writeln('Move licenses');
         $licenseDir = implode(DS, [$targetDir, 'third-party-licenses']);
-        $this->moveLicenses($sourceDir, $licenseDir);
+        $this->moveLicenses($targetDir, $licenseDir);
 
         if ($doCompress) {
             $fileBaseName = implode(DS, [$sourceDir, basename($targetDir).'.tar']);
