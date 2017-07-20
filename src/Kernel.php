@@ -125,6 +125,7 @@ final class Kernel extends BaseKernel
                 if (!$varDir) {
                     throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
                 }
+                break;
             case 'appliance':
             case 'hosted':
                 if (!$cacheDir) {
