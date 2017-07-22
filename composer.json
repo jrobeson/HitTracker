@@ -57,8 +57,8 @@
     "require-dev": {
         "behat/behat": "^3.0",
         "behat/mink": "^1.6",
-        "behat/mink-extension": "^2.0",
         "behat/mink-browserkit-driver": "^1.2",
+        "behat/mink-extension": "^2.0",
         "behat/mink-selenium2-driver": "^1.2",
         "behat/mink-zombie-driver": "^1.2",
         "behat/symfony2-extension": "^2.0",
@@ -68,11 +68,14 @@
         "league/factory-muffin": "^3.0",
         "league/factory-muffin-faker": "^2.0",
         "matthiasnoback/symfony-config-test": "^3.0",
-        "phpunit/phpunit": "^6.0",
+        "phpdocumentor/type-resolver": "^0.4.0",
         "phpspec/phpspec": "^3.2",
         "phpstan/phpstan-doctrine": "^0.7",
+        "phpunit/phpunit": "^6.0",
         "psy/psysh": "^0.8",
-        "symfony/phpunit-bridge": "^3.0"
+        "roave/better-reflection": "dev-master@dev",
+        "symfony/phpunit-bridge": "^3.0",
+        "thecodingmachine/phpstan-strict-rules": "^0.7.4@dev"
     },
     "scripts": {
         "shared-scripts": [
