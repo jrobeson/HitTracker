@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "afb9cd92b38e918466614bba1d9189e8",
+    "content-hash": "f10e52c18a8023dfd8109723f253ddf6",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -375,16 +375,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.7.2",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "930297026c8009a567ac051fd545bf6124150347"
+                "reference": "ed349f953d443963c590b008b37b864b8a3c4b21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/930297026c8009a567ac051fd545bf6124150347",
-                "reference": "930297026c8009a567ac051fd545bf6124150347",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/ed349f953d443963c590b008b37b864b8a3c4b21",
+                "reference": "ed349f953d443963c590b008b37b864b8a3c4b21",
                 "shasum": ""
             },
             "require": {
@@ -393,15 +393,15 @@
                 "doctrine/collections": "1.*",
                 "doctrine/inflector": "1.*",
                 "doctrine/lexer": "1.*",
-                "php": "~5.6|~7.0"
+                "php": "~7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.4.6"
+                "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7.x-dev"
+                    "dev-master": "2.8.x-dev"
                 }
             },
             "autoload": {
@@ -444,7 +444,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2017-01-13T14:02:13+00:00"
+            "time": "2017-07-22T09:01:43+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -452,12 +452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "5c5966aae7aee4cfab8753499590c575c173015e"
+                "reference": "6fb7a4b6fb33f6681571aa0dbd2ae25df96f4bbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/5c5966aae7aee4cfab8753499590c575c173015e",
-                "reference": "5c5966aae7aee4cfab8753499590c575c173015e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6fb7a4b6fb33f6681571aa0dbd2ae25df96f4bbc",
+                "reference": "6fb7a4b6fb33f6681571aa0dbd2ae25df96f4bbc",
                 "shasum": ""
             },
             "require": {
@@ -517,7 +517,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-07-12 06:24:58"
+            "time": "2017-07-22 06:37:32"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1004,12 +1004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "e3ecec36ad77525553bfd4e6a2ec86e80d39ac27"
+                "reference": "668ad4cc292e4ae0edc1421b4b6cb995efe0bc2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e3ecec36ad77525553bfd4e6a2ec86e80d39ac27",
-                "reference": "e3ecec36ad77525553bfd4e6a2ec86e80d39ac27",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/668ad4cc292e4ae0edc1421b4b6cb995efe0bc2d",
+                "reference": "668ad4cc292e4ae0edc1421b4b6cb995efe0bc2d",
                 "shasum": ""
             },
             "require": {
@@ -1076,7 +1076,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-07-12 06:23:18"
+            "time": "2017-07-22 07:26:15"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -3694,12 +3694,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "ccb250d3da958ee34782bd3ee4a3cf4f36c68b6f"
+                "reference": "8b33aa0af5df191c0929444ee09e338ea98eb2b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/ccb250d3da958ee34782bd3ee4a3cf4f36c68b6f",
-                "reference": "ccb250d3da958ee34782bd3ee4a3cf4f36c68b6f",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/8b33aa0af5df191c0929444ee09e338ea98eb2b9",
+                "reference": "8b33aa0af5df191c0929444ee09e338ea98eb2b9",
                 "shasum": ""
             },
             "require": {
@@ -3784,7 +3784,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2017-07-13 04:06:17"
+            "time": "2017-07-20 04:06:10"
         },
         {
             "name": "sylius/ui-bundle",
@@ -11197,13 +11197,13 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "doctrine/orm": 20,
         "doctrine/dbal": 20,
-        "sylius/ui-bundle": 10,
-        "sylius/resource-bundle": 20,
-        "sylius/resource": 20,
+        "doctrine/orm": 20,
         "jrobeson/sylius-settings-bundle": 20,
-        "sylius/registry": 10
+        "sylius/registry": 10,
+        "sylius/resource": 20,
+        "sylius/resource-bundle": 20,
+        "sylius/ui-bundle": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
