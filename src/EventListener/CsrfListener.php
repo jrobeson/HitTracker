@@ -25,7 +25,7 @@ class CsrfListener
         $this->csrfTokenId = $csrfTokenId;
     }
 
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(GetResponseEvent $event): void
     {
         $request = $event->getRequest();
         if (false === $request->attributes->get('_check_csrf', false)) {

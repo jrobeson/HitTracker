@@ -64,7 +64,7 @@ class GenericFileType extends AbstractType
         ;
     }
 
-    public function fileUploadListener(FormEvent $event)
+    public function fileUploadListener(FormEvent $event): void
     {
         $options = $event->getForm()->getConfig()->getOptions();
         $fileUploader = $this->fileUploader;

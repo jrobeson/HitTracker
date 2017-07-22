@@ -37,6 +37,7 @@ class UniqueCollectionFieldValidator extends ConstraintValidator
         $this->collectionValues[] = $value;
     }
 
+    /** @param string|object $value */
     private function getStringValue($value): string
     {
         if (is_object($value)) {

@@ -23,13 +23,17 @@ class ApcU implements PubSubInterface
     const TIME_KEY = 'hittracker.time';
     const QUEUE_KEY = 'hittracker.events';
 
+    /** @var string */
     private $keyPrefix;
 
-    public function __construct($keyPrefix)
+    public function __construct(string $keyPrefix)
     {
         $this->keyPrefix = $keyPrefix;
     }
 
+    /**
+     * @param mixed[] $data
+     */
     public function publish(string $event, array $data): bool
     {
         return true;

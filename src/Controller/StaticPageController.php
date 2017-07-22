@@ -38,7 +38,7 @@ class StaticPageController extends AbstractController
         $this->wrapperTemplate = '@Pages/layout.html.twig';
     }
 
-    protected function getTemplatePath(string $pageName, $locale = 'en'): string
+    protected function getTemplatePath(string $pageName, string $locale = 'en'): string
     {
         return sprintf('@Pages/%s/%s.%s', $locale, $pageName, $this->templateExtension);
     }

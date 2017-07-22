@@ -110,7 +110,7 @@ class Player implements ResourceInterface
         return $this->id;
     }
 
-    public function setTeam(string $team)
+    public function setTeam(string $team): void
     {
         $this->team = $team;
     }
@@ -120,7 +120,7 @@ class Player implements ResourceInterface
         return $this->team;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -130,7 +130,7 @@ class Player implements ResourceInterface
         return $this->name;
     }
 
-    public function setHitPoints(int $hitPoints)
+    public function setHitPoints(int $hitPoints): void
     {
         $this->hitPoints = $hitPoints;
     }
@@ -140,7 +140,7 @@ class Player implements ResourceInterface
         return $this->hitPoints;
     }
 
-    public function setScore(int $score)
+    public function setScore(int $score): void
     {
         $this->score = $score;
     }
@@ -155,7 +155,7 @@ class Player implements ResourceInterface
         return $this->zoneHits[$zone];
     }
 
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -165,7 +165,7 @@ class Player implements ResourceInterface
         return $this->createdAt;
     }
 
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -175,12 +175,12 @@ class Player implements ResourceInterface
         return $this->updatedAt;
     }
 
-    public function setGame(Game $game)
+    public function setGame(Game $game): void
     {
         $this->game = $game;
     }
 
-    public function setUnit(Vest $unit)
+    public function setUnit(Vest $unit): void
     {
         $this->unit = $unit;
     }
@@ -191,23 +191,18 @@ class Player implements ResourceInterface
     }
 
     /** @ORM\PrePersist */
-    public function setCreatedAtValue()
+    public function setCreatedAtValue(): void
     {
         $this->createdAt = new \DateTime();
     }
 
     /** @ORM\PreUpdate */
-    public function setUpdatedAtValue()
+    public function setUpdatedAtValue(): void
     {
         $this->updatedAt = new \DateTime();
     }
 
-    /**
-     * Get Unit Radio Id
-     *
-     * @return string
-     */
-    public function getRadioId()
+    public function getRadioId(): ?string
     {
         $this->getUnit()->getRadioId();
     }
@@ -215,7 +210,7 @@ class Player implements ResourceInterface
     /**
      * Hit a zone
      */
-    public function hit(int $zone, int $score = null, int $hitPoints = null)
+    public function hit(int $zone, int $score = null, int $hitPoints = null): void
     {
         // @todo don't depend on unit type here, it's a game type issue
         $handleHitPoints = $this->getUnit()->getUnitType() === 'vest';

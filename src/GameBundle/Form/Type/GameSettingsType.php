@@ -70,7 +70,7 @@ class GameSettingsType extends AbstractType
         ]);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'hittracker_game_settings';
     }

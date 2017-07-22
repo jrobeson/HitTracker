@@ -25,7 +25,7 @@ class GameFormSubscriber implements EventSubscriberInterface
      *
      * @todo translations
      */
-    public function arenaOpenCheck(FormEvent $event)
+    public function arenaOpenCheck(FormEvent $event): bool
     {
         $arena = $event->getData()->getArena();
 
@@ -36,12 +36,14 @@ class GameFormSubscriber implements EventSubscriberInterface
         $event->getForm()->addError(
             new FormError('A game is already in progress in arena '.$arena)
         );
+
+        return false;
     }
 
     /**
      * Remove players that that were filled out
      */
-    public function removeUnusedPlayers(FormEvent $event)
+    public function removeUnusedPlayers(FormEvent $event): void
     {
         $game = $event->getData();
         $game['players'] = array_filter($game['players'],
@@ -56,7 +58,7 @@ class GameFormSubscriber implements EventSubscriberInterface
      * Use the game default hit points if none were
      * specified for the player
      */
-    public function addHitPoints(FormEvent $event)
+    public function addHitPoints(FormEvent $event): void
     {
         $game = $event->getData();
 

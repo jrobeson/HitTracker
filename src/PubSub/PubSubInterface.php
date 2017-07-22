@@ -20,5 +20,8 @@ namespace LazerBall\HitTracker\PubSub;
 
 interface PubSubInterface
 {
+    /**
+     * @param mixed[] $data
+     */
     public function publish(string $event, array $data): bool;
 }

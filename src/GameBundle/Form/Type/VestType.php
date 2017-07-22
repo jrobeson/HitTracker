@@ -79,7 +79,7 @@ class VestType extends AbstractType
      *
      * @todo rename once sylius/resource-bundle allows global configuration
      */
-    public function getName()
+    public function getName(): string
     {
         return 'hittracker_vest';
     }

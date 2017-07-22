@@ -30,7 +30,7 @@ class GameEventListener
         $this->pubSubClient = $pubSubClient;
     }
 
-    public function onPostCreate(ResourceControllerEvent $event)
+    public function onPostCreate(ResourceControllerEvent $event): void
     {
         $resource = $event->getSubject();
         $data = [

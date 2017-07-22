@@ -87,22 +87,22 @@ class Vest implements ResourceInterface
         $this->no = 0;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setNo(int $no)
+    public function setNo(int $no): void
     {
         $this->no = $no;
     }
 
-    public function getNo()
+    public function getNo(): ?int
     {
         return $this->no;
     }
 
-    public function setUnitType(string $unitType)
+    public function setUnitType(string $unitType): void
     {
         $this->unitType = $unitType;
     }
@@ -112,12 +112,13 @@ class Vest implements ResourceInterface
         return $this->unitType;
     }
 
+    /** @return string[] */
     public static function getUnitTypes(): ?array
     {
         return ['vest', 'target'];
     }
 
-    public function setZones(int $zones)
+    public function setZones(int $zones): void
     {
         $this->zones = $zones;
     }
@@ -127,7 +128,7 @@ class Vest implements ResourceInterface
         return $this->zones;
     }
 
-    public function setRadioId(string $radioId)
+    public function setRadioId(string $radioId): void
     {
         $this->radioId = strtolower($radioId);
     }
@@ -137,7 +138,7 @@ class Vest implements ResourceInterface
         return $this->radioId;
     }
 
-    public function setActive(bool $active = true)
+    public function setActive(bool $active = true): void
     {
         $this->active = $active;
     }
@@ -147,7 +148,7 @@ class Vest implements ResourceInterface
         return $this->active;
     }
 
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -157,7 +158,7 @@ class Vest implements ResourceInterface
         return $this->createdAt;
     }
 
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -168,13 +169,13 @@ class Vest implements ResourceInterface
     }
 
     /** @ORM\PrePersist */
-    public function setCreatedAtValue()
+    public function setCreatedAtValue(): void
     {
         $this->createdAt = new \DateTime();
     }
 
     /** @ORM\PreUpdate */
-    public function setUpdatedAtValue()
+    public function setUpdatedAtValue(): void
     {
         $this->updatedAt = new \DateTime();
     }

@@ -58,7 +58,8 @@ final class Kernel extends BaseKernel
         return $this->buildType;
     }
 
-    private function getConfigFiles($environment, $buildType): array
+    /** @return string[] */
+    private function getConfigFiles(string $environment, string $buildType): array
     {
         $configFiles = [
             'parameters_default.yaml',

@@ -108,7 +108,7 @@ class Game implements ResourceInterface
         return $this->id;
     }
 
-    public function setArena(int $arena)
+    public function setArena(int $arena): void
     {
         $this->arena = $arena;
     }
@@ -118,7 +118,7 @@ class Game implements ResourceInterface
         return $this->arena;
     }
 
-    public function setEndsAt(\DateTime $endsAt)
+    public function setEndsAt(\DateTime $endsAt): void
     {
         $this->endsAt = $endsAt;
     }
@@ -128,7 +128,7 @@ class Game implements ResourceInterface
         return $this->endsAt;
     }
 
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -141,7 +141,7 @@ class Game implements ResourceInterface
     /**
      * Set the length of a game in minutes
      */
-    public function setGameLength(int $minutes)
+    public function setGameLength(int $minutes): void
     {
         $this->gameLength = $minutes;
 
@@ -172,6 +172,7 @@ class Game implements ResourceInterface
         return $this->gameLength;
     }
 
+    /** @return string[] */
     public static function getHumanGameTypes(): array
     {
         if (empty(self::getGameTypes())) {
@@ -183,6 +184,7 @@ class Game implements ResourceInterface
         }, self::getGameTypes());
     }
 
+    /** @return string[] */
     public static function getGameTypes(): array
     {
         return ['team', 'target'];
@@ -193,7 +195,7 @@ class Game implements ResourceInterface
         return $this->gameType;
     }
 
-    public function setGameType(string $gameType)
+    public function setGameType(string $gameType): void
     {
         $this->gameType = $gameType;
     }
@@ -203,7 +205,7 @@ class Game implements ResourceInterface
         return $this->settings;
     }
 
-    public function setSettings(GameSettings $settings)
+    public function setSettings(GameSettings $settings): void
     {
         $this->settings = $settings;
     }
@@ -218,7 +220,7 @@ class Game implements ResourceInterface
      *
      * Sets endsAt to now
      */
-    public function stop()
+    public function stop(): void
     {
         $this->endsAt = new \DateTime();
     }
@@ -235,13 +237,13 @@ class Game implements ResourceInterface
         return $this->endsAt->diff($this->createdAt);
     }
 
-    public function addPlayer(Player $player)
+    public function addPlayer(Player $player): void
     {
         $this->players->add($player);
         $player->setGame($this);
     }
 
-    public function setPlayers(Collection $players)
+    public function setPlayers(Collection $players): void
     {
         $this->players = $players;
     }
@@ -267,6 +269,7 @@ class Game implements ResourceInterface
         return $this->getPlayers()->matching($criteria);
     }
 
+    /** @return string[] */
     public function getTeams(): array
     {
         $teams = array_unique(

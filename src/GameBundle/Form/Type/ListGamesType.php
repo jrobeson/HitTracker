@@ -19,7 +19,8 @@ class ListGamesType extends AbstractType
         $this->translator = $translator;
     }
 
-    private function getList()
+    /** @return string[] */
+    private function getList(): array
     {
         $games = $this->repository->getRecentGames(10, 1);
         $list = [];
