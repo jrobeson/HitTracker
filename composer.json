@@ -15,7 +15,7 @@
     "require": {
         "php": ">=7.1.5",
         "cekurte/environment": "^0.3",
-        "doctrine/dbal": "2.6.x-dev@dev",
+        "doctrine/dbal": "^2.6",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/migrations": "^1.4",
