@@ -70,12 +70,12 @@
         "matthiasnoback/symfony-config-test": "^3.0",
         "phpdocumentor/type-resolver": "^0.4.0",
         "phpspec/phpspec": "^3.2",
-        "phpstan/phpstan-doctrine": "^0.7",
+        "phpstan/phpstan-doctrine": "^0.8",
         "phpunit/phpunit": "^6.0",
         "psy/psysh": "^0.8",
         "roave/better-reflection": "dev-master@dev",
         "symfony/phpunit-bridge": "^3.0",
-        "thecodingmachine/phpstan-strict-rules": "^0.7.4@dev"
+        "thecodingmachine/phpstan-strict-rules": "dev-master@dev"
     },
     "scripts": {
         "shared-scripts": [
