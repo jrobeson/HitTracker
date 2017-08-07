@@ -202,7 +202,8 @@ class Player implements ResourceInterface
         $this->updatedAt = new \DateTime();
     }
 
-    public function getRadioId(): ?string
+    /** @return string|null */
+    public function getRadioId()
     {
         $this->getUnit()->getRadioId();
     }
