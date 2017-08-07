@@ -3,6 +3,7 @@
 namespace LazerBall\HitTracker\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use LazerBall\HitTracker\Validator\Constraints as HitTrackerAssert;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -40,11 +41,9 @@ class Vest implements ResourceInterface
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=8, unique=true)
-     * @Assert\Length(min="8", max="8")
-     * @Assert\Type(type="xdigit",
-     *              message="hittracker.vest.bad_radio_id"
-     * )
+     * @ORM\Column(type="string", length=17, unique=true)
+     * @Assert\NotBlank()
+     * @HitTrackerAssert\MacAddress
      */
     private $radioId;
 
