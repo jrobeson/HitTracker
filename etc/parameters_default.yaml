@@ -1,5 +1,4 @@
 parameters:
-    env(HITTRACKER_BUILD_TYPE): local
     env(HITTRACKER_UPLOAD_DIR): "%kernel.project_dir%/var/uploads"
     secret: "%env(HITTRACKER_SESSION_SECRET)"
     locale: en_US
