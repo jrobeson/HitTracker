@@ -85,7 +85,6 @@ class GameController extends ResourceController
     /**
      * Another version of showAction that allows showing a blank page instead of 404ing
      * Needs to be kept in sync until we can discuss this issue with the Sylius folks
-     *
      */
     public function showBlankAction(Request $request): Response
     {
