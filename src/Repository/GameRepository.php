@@ -29,6 +29,9 @@ class GameRepository extends EntityRepository
         return !$this->getActiveGame($arena);
     }
 
+    /**
+     * @return Game[]|null
+     */
     public function getRecentGames(int $howMany, int $arena = null): ?array
     {
         $qb = $this->_em->createQueryBuilder();

@@ -32,6 +32,9 @@ class NginxPushStream implements PubSubInterface
         $this->httpClient = new Client();
     }
 
+    /**
+     * @param mixed[] $data
+     */
     public function publish(string $event, array $data): bool
     {
         $this->httpClient->post($this->url, [
