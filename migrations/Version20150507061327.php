@@ -132,7 +132,7 @@ class Version20150507061327 extends AbstractMigration
         $stmts[] = 'CREATE TABLE units (
                         id INTEGER NOT NULL,
                         "no" INTEGER NOT NULL,
-                        radio_id VARCHAR(8) NOT NULL,
+                        radio_id VARCHAR(17) NOT NULL,
                         unit_type VARCHAR(255) NOT NULL,
                         zones INTEGER NOT NULL,
                         active BOOLEAN NOT NULL,
