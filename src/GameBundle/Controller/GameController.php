@@ -150,6 +150,7 @@ class GameController extends ResourceController
 
             $url = 'http://localhost:3000/stop';
             $httpClient = new Client();
+            $radioIds = [];
             foreach ($resource->getPlayers() as $player) {
                 $radioIds[] = $player->getUnit()->getRadioId();
             }
