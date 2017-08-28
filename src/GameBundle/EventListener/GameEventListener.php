@@ -48,13 +48,14 @@ class GameEventListener
         foreach ($resource->getPlayers() as $player) {
             $radioIds[] = $player->getUnit()->getRadioId();
         }
-        $gameConfiguration = ['radioIds' => $radioIds,
-                              'hitUrl' => 'http://localhost/games/hit'
+        $gameConfiguration = [
+            'radioIds' => $radioIds,
+            'hitUrl' => 'http://localhost/games/hit',
+            'gameLength' => $data['ends_at'] - $data['created_at']
         ];
         $httpClient->post($url, [
             'headers' => ['Content-Type' => 'application/json'],
             'json' => $gameConfiguration,
         ]);
-
     }
 }
