@@ -3,6 +3,7 @@
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
 use FOS\RestBundle\View\View;
+use GuzzleHttp\Client;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -146,6 +147,23 @@ class GameController extends ResourceController
             ];
             $pubSub = $this->get('hittracker_pubsub.handler');
             $pubSub->publish('game.end', $data);
+
+            $url = 'http://localhost:3000/stop';
+            $httpClient = new Client();
+            foreach ($resource->getPlayers() as $player) {
+                $radioIds[] = $player->getUnit()->getRadioId();
+            }
+            $gameConfiguration = [
+                'radioIds' => $radioIds,
+                'hitUrl' => $this->generateUrl('hittracker_game_hit')
+            ];
+
+            $httpClient->post($url, [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => $gameConfiguration,
+            ]);
+
+
 
             $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
         }

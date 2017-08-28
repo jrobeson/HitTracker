@@ -18,6 +18,7 @@
 
 namespace LazerBall\HitTracker\GameBundle\EventListener;
 
+use GuzzleHttp\Client;
 use LazerBall\HitTracker\PubSub\PubSubInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
@@ -39,5 +40,21 @@ class GameEventListener
             'ends_at' => $resource->getEndsAt()->getTimestamp(),
         ];
         $this->pubSubClient->publish('game.start', $data);
+
+        $url = 'http://localhost:3000/start';
+        $httpClient = new Client();
+
+        $radioIds = [];
+        foreach ($resource->getPlayers() as $player) {
+            $radioIds[] = $player->getUnit()->getRadioId();
+        }
+        $gameConfiguration = ['radioIds' => $radioIds,
+                              'hitUrl' => 'http://localhost/games/hit'
+        ];
+        $httpClient->post($url, [
+            'headers' => ['Content-Type' => 'application/json'],
+            'json' => $gameConfiguration,
+        ]);
+
     }
 }
