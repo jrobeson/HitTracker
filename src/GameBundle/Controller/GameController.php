@@ -163,8 +163,6 @@ class GameController extends ResourceController
                 'json' => $gameConfiguration,
             ]);
 
-
-
             $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
         }
 
