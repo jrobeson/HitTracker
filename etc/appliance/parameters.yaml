@@ -13,3 +13,5 @@ parameters:
     database_name: "%env(HITTRACKER_DATABASE_NAME)%"
     database_user: "%env(HITTRACKER_DATABASE_USER)%"
     database_password: "%env(HITTRACKER_DATABASE_PASSWORD)%"
+
+    upload_dir: /var/lib/hittracker/uploads
