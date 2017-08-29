@@ -45,7 +45,7 @@ $(document).ready(function () {
     'use strict';
     alertDismiss();
 
-    $('select[name="hittracker_game[reload_players]"]').change(function () {
+    $('select[name="game[reload_players]"]').change(function () {
         let gameId = $(this).val();
         let request = $.ajax({
             url: `${window.location.origin}/games/${gameId}`,
@@ -60,7 +60,7 @@ $(document).ready(function () {
                 if (!teamPlayers[pt]) {
                     teamPlayers[pt] = {};
                 }
-                teamPlayers[pt][player.vest.id] = player.name;
+                teamPlayers[pt][player.unit.id] = player.name;
             }
 
             let teams = Object.keys(teamPlayers);
@@ -69,17 +69,17 @@ $(document).ready(function () {
                 let team = teams.shift();
                 $(this).find('.team-no input').val(team);
                 let players = teamPlayers[team];
-                for (let vestId in players) {
-                    $(`select[id$='_vest'] option:selected[value=${vestId}]`).
+                for (let unitId in players) {
+                    $(`select[id$='_unit'] option:selected[value=${unitId}]`).
                         parent().parent().parent().parent().find("input[id$='_name']").
-                        val(players[vestId]);
+                        val(players[unitId]);
                 }
 
             });
         });
     });
 
-    $('form[name="hittracker_game"]').submit(function () {
+    $('form[name="game"]').submit(function () {
         $('.new-game-teams').each(function () {
             let team = $(this).find('.team-no input').val().trim();
             $(this).find('input[id$="_team"]').each(function () {
