@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use UnexpectedValueException;
 use function Cekurte\Environment\env;
 
-final class Kernel extends BaseKernel
+class Kernel extends BaseKernel
 {
     /** @var string */
     private $buildType;
