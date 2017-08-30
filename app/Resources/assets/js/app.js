@@ -17,11 +17,10 @@
  * @copyright 2014 <johnny@localmomentum.net>
  * @license AGPL-3
  */
-require('jquery-countdown');
-require('./jquery.color.js');
-require('./jquery-ujs.js');
-require('bootstrap-sass');
-
+import 'bootstrap-sass';
+import 'jquery-countdown';
+import './jquery.color.js';
+import './jquery-ujs.js';
 import { alertDismiss } from './ui-util'
 
 $(document).ready(function () {
