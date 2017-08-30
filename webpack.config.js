@@ -12,7 +12,9 @@ Encore
     .addStyleEntry('style/scoreboard', ['./app/Resources/assets/style/scoreboard.scss'])
     .addStyleEntry('style/scorecard', ['./app/Resources/assets/style/scorecard.scss'])
 
-    .enableSassLoader({
+    .enableSassLoader((sassOptions) => {
+        sassOptions.precision = 10;
+    }, {
          resolve_url_loader: false
      })
     .enablePostCssLoader()
