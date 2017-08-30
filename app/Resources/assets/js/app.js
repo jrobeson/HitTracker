@@ -22,12 +22,6 @@ require('./jquery.color.js');
 require('./jquery-ujs.js');
 require('bootstrap-sass');
 
-if (!window.location.origin) {
-    let schemeHost = `${window.location.protocol}//${window.location.hostname}`;
-    let port = (window.location.port) ? `:${window.location.port}` : '';
-    window.location.origin = `${schemeHost}${port}`;
-}
-
 alertDismiss = function () {
     let target = $('.alert');
     let timeout = target.data('auto-dismiss');
