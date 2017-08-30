@@ -18,7 +18,6 @@
         <a class="btn btn-danger" href="{{ path('hittracker_game_stop', {'id': game.id }) }}" {{ link_attr('PATCH') }}>
             {{ 'hittracker.game.stop'|trans }}
         </a>
-        {# include('@HitTrackerGame/Game/hit_simulator.html.twig') #}
     </div>
     <div class="row">
         {{ include('@HitTrackerGame/Game/scores.html.twig') }}

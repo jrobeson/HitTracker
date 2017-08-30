@@ -117,10 +117,6 @@ $(document).ready(function () {
         event.preventDefault();
         printScores($(this).attr('href'));
     });
-
-    $('#hit-simulator select[name="radioId"]').change(function () {
-        $(this).trigger('focusout');
-    });
 });
 
 function queueActivity(content) {
