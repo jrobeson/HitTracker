@@ -20,7 +20,7 @@
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/migrations": "^1.4",
         "doctrine/doctrine-migrations-bundle": "^1.2",
-        "doctrine/orm": "dev-remove-symfony-yaml-conflict as 2.6.x-dev",
+        "doctrine/orm": "dev-master",
         "dunglas/doctrine-json-odm": "^0.1",
         "friendsofsymfony/rest-bundle": "^2.1",
         "igorw/get-in": "^1.0",
@@ -90,11 +90,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/jrobeson/doctrine2.git"
-        }
-    ]
+    }
 }

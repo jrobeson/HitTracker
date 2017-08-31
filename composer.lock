@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "73c77621aea96f98d7210c24a4864698",
+    "content-hash": "72dd9830abc78ad9aff810451fa678c6",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1004,25 +1004,17 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "dev-remove-symfony-yaml-conflict",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jrobeson/doctrine2.git",
-                "reference": "90b60880e6f6749cca36216ff1e7a8c85308f52a"
+                "url": "https://github.com/doctrine/doctrine2.git",
+                "reference": "68706034e5d9fa0ad09be61476364470230a3956"
             },
-            "archive": {
-                "exclude": [
-                    "!vendor",
-                    "tests",
-                    "*phpunit.xml",
-                    ".travis.yml",
-                    "build.xml",
-                    "build.properties",
-                    "composer.phar",
-                    "vendor/satooshi",
-                    "lib/vendor",
-                    "*.swp"
-                ]
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/68706034e5d9fa0ad09be61476364470230a3956",
+                "reference": "68706034e5d9fa0ad09be61476364470230a3956",
+                "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "~1.4",
@@ -1037,7 +1029,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.0",
-                "symfony/yaml": "~3.3|~4.0"
+                "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
@@ -1056,20 +1048,11 @@
                     "Doctrine\\ORM\\": "lib/Doctrine/ORM"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Doctrine\\Tests\\": "tests/Doctrine/Tests",
-                    "Doctrine\\Performance\\": "tests/Doctrine/Performance"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
                 {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
@@ -1077,6 +1060,10 @@
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Jonathan Wage",
@@ -1093,7 +1080,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-08-28 11:28:48"
+            "time": "2017-08-30 20:43:28"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -2733,20 +2720,20 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.2.0",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "46f7e8bb075036c92695b15a1ddb6971c751e585"
+                "reference": "86e24012a3139b42a7b71155cfaa325389f00f1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/46f7e8bb075036c92695b15a1ddb6971c751e585",
-                "reference": "46f7e8bb075036c92695b15a1ddb6971c751e585",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/86e24012a3139b42a7b71155cfaa325389f00f1f",
+                "reference": "86e24012a3139b42a7b71155cfaa325389f00f1f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
+                "php": "^7.0",
                 "phpdocumentor/reflection-common": "^1.0@dev",
                 "phpdocumentor/type-resolver": "^0.4.0",
                 "webmozart/assert": "^1.0"
@@ -2774,7 +2761,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-07-15T11:38:20+00:00"
+            "time": "2017-08-29T19:37:41+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -5709,30 +5696,30 @@
         },
         {
             "name": "symfony/property-info",
-            "version": "v3.3.4",
+            "version": "v3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/property-info.git",
-                "reference": "15ddbee5ca52a5a8f92b14d6a8da085dbb8fc819"
+                "reference": "a97683267ec5f27fdb7f27217eefa82da35c761a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-info/zipball/15ddbee5ca52a5a8f92b14d6a8da085dbb8fc819",
-                "reference": "15ddbee5ca52a5a8f92b14d6a8da085dbb8fc819",
+                "url": "https://api.github.com/repos/symfony/property-info/zipball/a97683267ec5f27fdb7f27217eefa82da35c761a",
+                "reference": "a97683267ec5f27fdb7f27217eefa82da35c761a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9",
+                "php": "^5.5.9|>=7.0.8",
                 "symfony/inflector": "~3.1"
             },
             "conflict": {
-                "phpdocumentor/reflection-docblock": "<3.0",
+                "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
                 "phpdocumentor/type-resolver": "<0.2.0",
                 "symfony/dependency-injection": "<3.3"
             },
             "require-dev": {
                 "doctrine/annotations": "~1.0",
-                "phpdocumentor/reflection-docblock": "^3.0",
+                "phpdocumentor/reflection-docblock": "^3.0|^4.0",
                 "symfony/cache": "~3.1",
                 "symfony/dependency-injection": "~3.3",
                 "symfony/serializer": "~2.8|~3.0"
@@ -5781,7 +5768,7 @@
                 "type",
                 "validator"
             ],
-            "time": "2017-04-19T20:25:39+00:00"
+            "time": "2017-08-15T13:32:50+00:00"
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -7820,16 +7807,16 @@
         },
         {
             "name": "behat/gherkin",
-            "version": "v4.4.5",
+            "version": "v4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "5c14cff4f955b17d20d088dec1bde61c0539ec74"
+                "reference": "74ac03d52c5e23ad8abd5c5cce4ab0e8dc1b530a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/5c14cff4f955b17d20d088dec1bde61c0539ec74",
-                "reference": "5c14cff4f955b17d20d088dec1bde61c0539ec74",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/74ac03d52c5e23ad8abd5c5cce4ab0e8dc1b530a",
+                "reference": "74ac03d52c5e23ad8abd5c5cce4ab0e8dc1b530a",
                 "shasum": ""
             },
             "require": {
@@ -7875,7 +7862,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2016-10-30T11:50:56+00:00"
+            "time": "2017-08-30T11:04:43+00:00"
         },
         {
             "name": "behat/mink",
@@ -8981,16 +8968,16 @@
         },
         {
             "name": "nette/bootstrap",
-            "version": "v2.4.4",
+            "version": "v2.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "1b3ec25e9f9f98fe1051bde7b736509a1755a726"
+                "reference": "804925787764d708a7782ea0d9382a310bb21968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/1b3ec25e9f9f98fe1051bde7b736509a1755a726",
-                "reference": "1b3ec25e9f9f98fe1051bde7b736509a1755a726",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/804925787764d708a7782ea0d9382a310bb21968",
+                "reference": "804925787764d708a7782ea0d9382a310bb21968",
                 "shasum": ""
             },
             "require": {
@@ -9046,9 +9033,14 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Bootstrap",
+            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
-            "time": "2017-07-11T11:45:32+00:00"
+            "keywords": [
+                "bootstrapping",
+                "configurator",
+                "nette"
+            ],
+            "time": "2017-08-20T17:36:59+00:00"
         },
         {
             "name": "nette/di",
@@ -9349,16 +9341,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v2.4.7",
+            "version": "v2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "2750d3948e255f59715a5e01c7453a1fec610996"
+                "reference": "f1584033b5af945b470533b466b81a789d532034"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/2750d3948e255f59715a5e01c7453a1fec610996",
-                "reference": "2750d3948e255f59715a5e01c7453a1fec610996",
+                "url": "https://api.github.com/repos/nette/utils/zipball/f1584033b5af945b470533b466b81a789d532034",
+                "reference": "f1584033b5af945b470533b466b81a789d532034",
                 "shasum": ""
             },
             "require": {
@@ -9406,9 +9398,25 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Utility Classes",
+            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
             "homepage": "https://nette.org",
-            "time": "2017-07-11T19:25:29+00:00"
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "time": "2017-08-20T17:32:29+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -10317,21 +10325,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "7ce58045db8a2f78f4a665ba9031c9aa47b64892"
+                "reference": "acb7899c623939d6de4cc0148db29bcfd9db487f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/7ce58045db8a2f78f4a665ba9031c9aa47b64892",
-                "reference": "7ce58045db8a2f78f4a665ba9031c9aa47b64892",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/acb7899c623939d6de4cc0148db29bcfd9db487f",
+                "reference": "acb7899c623939d6de4cc0148db29bcfd9db487f",
                 "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^3.1.0",
-                "php": "7.1.*",
+                "php": ">7.1.0,<7.3.0",
                 "phpdocumentor/reflection-docblock": "^3.2.0",
                 "phpdocumentor/type-resolver": "^0.4.0",
-                "roave/signature": "^1.0",
-                "zendframework/zend-code": "^3.1"
+                "roave/signature": "^1.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.3.0"
@@ -10350,7 +10357,7 @@
                 "MIT"
             ],
             "description": "Better Reflection - an improved code reflection API",
-            "time": "2017-08-28T22:29:15+00:00"
+            "time": "2017-08-30T22:53:19+00:00"
         },
         {
             "name": "roave/signature",
@@ -11315,14 +11322,7 @@
             "time": "2017-04-07T12:08:54+00:00"
         }
     ],
-    "aliases": [
-        {
-            "alias": "2.6.x-dev",
-            "alias_normalized": "2.6.9999999.9999999-dev",
-            "version": "dev-remove-symfony-yaml-conflict",
-            "package": "doctrine/orm"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/orm": 20,
