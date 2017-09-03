@@ -3,7 +3,7 @@
 
 {% if form.players is not empty %}
 {{ form_start(form, {'action': path('hittracker_game_create'),
-'attr': {'role': 'form', 'novalidate': 'novalidate'}}) }}
+'attr': {'role': 'form', 'novalidate': 'novalidate', 'id': 'game_form'}}) }}
 {{  form_errors(form) }}
 
 <div class="row">

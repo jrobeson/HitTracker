@@ -27,7 +27,7 @@ $(document).ready(function () {
     'use strict';
     alertDismiss();
 
-    $('select[name="game[reload_players]"]').change(function () {
+    $('form[id="game_form"] select[name="game[reload_players]"]').change(function () {
         let gameId = $(this).val();
         let request = $.ajax({
             url: `${window.location.origin}/games/${gameId}`,
