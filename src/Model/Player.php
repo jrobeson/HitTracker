@@ -95,10 +95,10 @@ class Player implements ResourceInterface
      */
     protected $unit;
 
-    public function __construct(string $name = '', Vest $unit, int $hitPoints = 0)
+    public function __construct(string $name = '', Vest $unit, int $hitPoints = 0, string $team = '')
     {
         $this->name = $name;
-        $this->team = '';
+        $this->team = $team;
         $this->unit = $unit;
         $this->hitPoints = $hitPoints;
         $this->score = 0;
@@ -110,19 +110,9 @@ class Player implements ResourceInterface
         return $this->id;
     }
 
-    public function setTeam(string $team): void
-    {
-        $this->team = $team;
-    }
-
     public function getTeam(): string
     {
         return $this->team;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     public function getName(): string
@@ -178,11 +168,6 @@ class Player implements ResourceInterface
     public function setGame(Game $game): void
     {
         $this->game = $game;
-    }
-
-    public function setUnit(Vest $unit): void
-    {
-        $this->unit = $unit;
     }
 
     public function getUnit(): Vest

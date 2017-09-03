@@ -19,6 +19,7 @@
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
 use LazerBall\HitTracker\Model\Game;
+use LazerBall\HitTracker\Model\NewGameData;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\AbstractType;
@@ -58,6 +59,7 @@ class GameType extends AbstractType
             ->add('game_length', IntegerType::class, [
                 'label' => 'hittracker.game.length_in_minutes',
                 'data' => $gameSettings->get('game_length'),
+                'property_path' => 'gameLength',
             ])
             ->add('game_type', ChoiceType::class, [
                 'choices' => array_combine(Game::getHumanGameTypes(), Game::getGameTypes()),
@@ -101,7 +103,7 @@ class GameType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Game::class,
+            'data_class' => NewGameData::class,
             'empty_data' => function (FormInterface $form) {
             },
         ]);

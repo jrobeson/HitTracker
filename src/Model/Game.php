@@ -27,11 +27,8 @@ class Game implements ResourceInterface
     private $id;
 
     /**
-     * @todo cap the upper bound on arenas based on how many there really are.
-     *
      * @var int
      * @ORM\Column(type="integer")
-     * @Assert\Type("numeric")
      * @Assert\GreaterThan(
      *      value=0,
      *      message="hittracker.game.arena_not_exists"
@@ -95,12 +92,13 @@ class Game implements ResourceInterface
      */
     protected $gameType;
 
-    public function __construct()
+    public function __construct(string $gameType, int $gameLength, GameSettings $settings, int $arena = 1, ?\DateTime $createdAt = null)
     {
-        $this->arena = 1;
+        $this->arena = $arena;
+        $this->gameType = $gameType;
         $this->players = new ArrayCollection();
-        $this->gameLength = 0;
-        $this->settings = new GameSettings();
+        $this->setGameLength($gameLength);
+        $this->settings = $settings;
     }
 
     public function getId(): int
@@ -108,29 +106,15 @@ class Game implements ResourceInterface
         return $this->id;
     }
 
-    public function setArena(int $arena): void
-    {
-        $this->arena = $arena;
-    }
-
     public function getArena(): int
     {
         return $this->arena;
     }
 
-    public function setEndsAt(\DateTime $endsAt): void
-    {
-        $this->endsAt = $endsAt;
-    }
 
     public function getEndsAt(): \DateTime
     {
         return $this->endsAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
     }
 
     public function getCreatedAt(): \DateTime
@@ -141,15 +125,18 @@ class Game implements ResourceInterface
     /**
      * Set the length of a game in minutes
      */
-    public function setGameLength(int $minutes): void
+    private function setGameLength(int $minutes): void
     {
         $this->gameLength = $minutes;
 
         $start = new \DateTime();
-        $this->setCreatedAt($start);
+
+        if (is_null($this->createdAt)) {
+            $start = $this->createdAt = new \DateTime();
+        }
         $end = clone $start;
         $end->add(new \DateInterval('PT'.$this->gameLength.'M'));
-        $this->setEndsAt($end);
+        $this->endsAt = $end;
     }
 
     /**
@@ -175,10 +162,6 @@ class Game implements ResourceInterface
     /** @return string[] */
     public static function getHumanGameTypes(): array
     {
-        if (empty(self::getGameTypes())) {
-            return [];
-        }
-
         return array_map(function ($t) {
             return ucwords(str_replace('_', ' ', $t));
         }, self::getGameTypes());
@@ -195,19 +178,9 @@ class Game implements ResourceInterface
         return $this->gameType;
     }
 
-    public function setGameType(string $gameType): void
-    {
-        $this->gameType = $gameType;
-    }
-
     public function getSettings(): GameSettings
     {
         return $this->settings;
-    }
-
-    public function setSettings(GameSettings $settings): void
-    {
-        $this->settings = $settings;
     }
 
     public function isActive(): bool
@@ -243,17 +216,15 @@ class Game implements ResourceInterface
         $player->setGame($this);
     }
 
-    public function setPlayers(Collection $players): void
-    {
-        $this->players = $players;
-    }
-
     public function getPlayers(): Collection
     {
         return $this->players;
     }
 
-    public function getPlayerByRadioId(string $radioId): ?Player
+    /**
+     * @return Player|mixed
+     */
+    public function getPlayerByRadioId(string $radioId)
     {
         $players = $this->getPlayers()->filter(function (Player $player) use ($radioId) {
             return $player->getUnit()->getRadioId() === $radioId;

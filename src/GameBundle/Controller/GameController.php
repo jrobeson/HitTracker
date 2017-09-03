@@ -2,8 +2,12 @@
 
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\RestBundle\View\View;
 use GuzzleHttp\Client;
+use LazerBall\HitTracker\Model\Game;
+use LazerBall\HitTracker\Model\Player;
+use LazerBall\HitTracker\Model\NewGameData;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,20 +26,28 @@ class GameController extends ResourceController
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
-        $newResource = $this->newResourceFactory->create($configuration, $this->factory);
 
         $vests = $this->get('hittracker.repository.vest')->findActiveVests();
 
+        $newGameData = new NewGameData();
+        $players = new ArrayCollection();
         foreach ($vests as $vest) {
-            $player = new \LazerBall\HitTracker\Model\Player('', $vest);
-            $newResource->addPlayer($player);
+            $playerData = new \LazerBall\HitTracker\Model\PlayerData();
+            $playerData->name = '';
+            $playerData->setUnit($vest);
+            $newGameData->addPlayer($playerData);
         }
-
-        $form = $this->resourceFormFactory->create($configuration, $newResource);
+        $formFactory = new DtoFormFactory($this->container->get('form.factory'));
+        $form = $formFactory->create($configuration, $newGameData);
 
         $form->handleRequest($request);
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
-            $newResource = $form->getData();
+            $formData = $form->getData();
+
+            $newResource = new Game($newGameData->gameType, $newGameData->gameLength, $newGameData->settings, $newGameData->arena);
+            foreach ($newGameData->players as $player) {
+                $newResource->addPlayer(new Player($player->name, $player->unit, $player->hitPoints, $player->team));
+            }
 
             $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::CREATE, $configuration, $newResource);
 
@@ -68,6 +80,9 @@ class GameController extends ResourceController
             return $this->viewHandler->handle($configuration, View::create($form, Response::HTTP_BAD_REQUEST));
         }
 
+        if (!isset($newResource)) {
+            $newResource = null;
+        }
         $view = View::create()
             ->setData([
                 'configuration' => $configuration,
