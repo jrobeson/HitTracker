@@ -34,7 +34,6 @@ class GameController extends ResourceController
         foreach ($vests as $vest) {
             $playerData = new \LazerBall\HitTracker\Model\PlayerData();
             $playerData->name = '';
-            $playerData->setUnit($vest);
             $newGameData->addPlayer($playerData);
         }
         $formFactory = new DtoFormFactory($this->container->get('form.factory'));

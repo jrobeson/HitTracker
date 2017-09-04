@@ -32,6 +32,7 @@ class PlayerType extends AbstractType
     {
         $gameSettings = $this->settingsManager->load('game');
 
+        $vests = $this->vestRepository->findActiveVests();
         $builder
             ->add('name', TextType::class, [
                   'label' => 'hittracker.game.player_name'
@@ -40,8 +41,14 @@ class PlayerType extends AbstractType
             ->add('unit', EntityType::class, [
                   'label' => 'hittracker.game.vest',
                   'class' => Vest::class,
-                  'choices' => $this->vestRepository->findActiveVests(),
-                  'choice_label' => 'no',
+                  'choices' => $vests,
+                  'choice_label' => 'id',
+                  'placeholder'  => 'Choose',
+                  'choice_attr' => function (Vest $unit) {
+                      return [
+                        'data-unit-address' => $unit->getRadioId(),
+                      ];
+                  }
             ])
             ->add('hitPoints', IntegerType::class, [
                   'empty_data' => '',
