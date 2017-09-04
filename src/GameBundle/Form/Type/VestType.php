@@ -25,10 +25,10 @@ class VestType extends AbstractType
             Vest::getUnitTypes()
             );
         $builder
-            ->add('no', IntegerType::class, [
-                'label' => 'hittracker.vest.no',
+            ->add('id', IntegerType::class, [
+                'label' => 'hittracker.vest.id',
                 'attr' => [
-                    'help' => 'hittracker.vest.no.help'
+                    'help' => 'hittracker.vest.id.help'
                 ],
             ])
             ->add('unitType', ChoiceType::class, [

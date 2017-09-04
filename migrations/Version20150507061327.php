@@ -67,18 +67,16 @@ class Version20150507061327 extends AbstractMigration
         $stmts[] = 'CREATE UNIQUE INDEX idx_player_game_unit ON game_players (game_id, unit_id)';
 
         $stmts[] = 'CREATE TABLE units (
-                      id SERIAL NOT NULL,
+                      id INT NOT NULL,
                       radio_id VARCHAR(17) NOT NULL,
                       unit_type VARCHAR(255) NOT NULL,
                       zones INT NOT NULL,
-                      no INT NOT NULL,
                       active BOOLEAN NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL,
                       PRIMARY KEY(id)
                   )';
         $stmts[] = 'CREATE UNIQUE INDEX idx_unit_radio_id ON units (radio_id)';
-        $stmts[] = 'CREATE UNIQUE INDEX idx_unit_no ON units (no)';
         $stmts[] = 'CREATE TABLE games (
                       id SERIAL NOT NULL,
                       arena INT NOT NULL,
@@ -131,7 +129,6 @@ class Version20150507061327 extends AbstractMigration
 
         $stmts[] = 'CREATE TABLE units (
                         id INTEGER NOT NULL,
-                        "no" INTEGER NOT NULL,
                         radio_id VARCHAR(17) NOT NULL,
                         unit_type VARCHAR(255) NOT NULL,
                         zones INTEGER NOT NULL,
@@ -141,7 +138,6 @@ class Version20150507061327 extends AbstractMigration
                         PRIMARY KEY(id)
                    )';
         $stmts[] = 'CREATE UNIQUE INDEX idx_unit_radio_id ON units (radio_id)';
-        $stmts[] = 'CREATE UNIQUE INDEX idx_unit_no ON units ("no")';
 
         $stmts[] = 'CREATE TABLE sylius_settings (
                         id INTEGER NOT NULL,
