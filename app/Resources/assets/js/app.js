@@ -23,10 +23,36 @@ import './jquery.color.js';
 import './jquery-ujs.js';
 import { alertDismiss } from './ui-util'
 
+const toggleVest = (address, value) => {
+    let request = $.ajax({
+        url: `http://localhost:3000/games/${address}/${value}`,
+        headers: {
+            Accept: 'application/json'
+        }
+    });
+    request.done((result) => {
+    });
+};
+
 $(document).ready(function () {
     'use strict';
     alertDismiss();
 
+    $('.unit-turn-on').click(function (e) {
+        const address = $(this).data('unit-address');
+        toggleVest(address, 1);
+        e.preventDefault();
+    });
+    $('.unit-turn-off').click(function (e) {
+        const address = $(this).data('unit-address');
+        toggleVest(address, 0);
+        e.preventDefault();
+    });
+
+    $('form[id="game_form"] select[id$="_unit"]').focusout(function (e) {
+        const address = $(this).children('option:selected').data('unit-address');
+        toggleVest(address, 1);
+    });
     $('form[id="game_form"] select[name="game[reload_players]"]').change(function () {
         let gameId = $(this).val();
         let request = $.ajax({
@@ -51,8 +77,8 @@ $(document).ready(function () {
                 let team = teams.shift();
                 $(this).find('.team-no input').val(team);
                 let players = teamPlayers[team];
-                for (let unitId in players) {
-                    $(`select[id$='_unit'] option:selected[value=${unitId}]`).
+                for (const unitId in players) {
+                    $(`select[id$='_unit'] option:selected[value='${unitId}']`).
                         parent().parent().parent().parent().find("input[id$='_name']").
                         val(players[unitId]);
                 }

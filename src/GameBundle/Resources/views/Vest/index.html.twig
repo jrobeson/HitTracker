@@ -32,6 +32,14 @@
                     <a href="{{ path('hittracker_vest_update', {id: vest.id}) }}">
                         {{ 'hittracker.edit'|trans }}
                     </a>
+                    |
+                    <a class="unit-turn-on" href="#" data-unit-address="{{ vest.radioId|e }}">
+                        Turn On
+                    </a>
+                    |
+                    <a class="unit-turn-off" href="#" data-unit-address="{{ vest.radioId|e }}">
+                        Turn Off
+                    </a>
                 </td>
             </tr>
             {% endfor %}
