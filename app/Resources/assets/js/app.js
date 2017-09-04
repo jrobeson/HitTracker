@@ -25,7 +25,7 @@ import { alertDismiss } from './ui-util'
 
 const toggleVest = (address, value) => {
     let request = $.ajax({
-        url: `http://localhost:3000/games/${address}/${value}`,
+        url: `http://localhost:3000/unit/${address}/${value}`,
         headers: {
             Accept: 'application/json'
         }
