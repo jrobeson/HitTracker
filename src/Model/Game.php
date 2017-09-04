@@ -97,7 +97,7 @@ class Game implements ResourceInterface
         $this->arena = $arena;
         $this->gameType = $gameType;
         $this->players = new ArrayCollection();
-        $this->createdAt = $createdAt;
+        $this->createdAt = $createdAt ?? new \DateTime();
         $this->setGameLength($gameLength);
         $this->settings = $settings;
     }
@@ -129,12 +129,7 @@ class Game implements ResourceInterface
     {
         $this->gameLength = $minutes;
 
-        $start = new \DateTime();
-
-        if (null === $this->createdAt) {
-            $start = $this->createdAt = new \DateTime();
-        }
-        $end = clone $start;
+        $end = clone $this->createdAt;
         $end->add(new \DateInterval('PT'.$this->gameLength.'M'));
         $this->endsAt = $end;
     }

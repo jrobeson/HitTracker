@@ -43,9 +43,9 @@ final class DtoFormFactory
         $formOptions = $requestConfiguration->getFormOptions();
 
         if ($requestConfiguration->isHtmlRequest()) {
-            return $this->formFactory->create($formType, $dto, $formOptions);
+            return $this->formFactory->create((string) $formType, $dto, $formOptions);
         }
 
-        return $this->formFactory->createNamed('', $formType, $dto, array_merge($formOptions, ['csrf_protection' => false]));
+        return $this->formFactory->createNamed('', (string) $formType, $dto, array_merge($formOptions, ['csrf_protection' => false]));
     }
 }
