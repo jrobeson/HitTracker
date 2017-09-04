@@ -97,6 +97,7 @@ class Game implements ResourceInterface
         $this->arena = $arena;
         $this->gameType = $gameType;
         $this->players = new ArrayCollection();
+        $this->createdAt = $createdAt;
         $this->setGameLength($gameLength);
         $this->settings = $settings;
     }
