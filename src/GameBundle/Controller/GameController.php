@@ -162,7 +162,7 @@ class GameController extends ResourceController
             $pubSub = $this->get('hittracker_pubsub.handler');
             $pubSub->publish('game.end', $data);
 
-            $url = 'http://localhost:3000/stop';
+            $url = 'http://localhost/blegateway/stop';
             $httpClient = new Client();
             $radioIds = [];
             foreach ($resource->getPlayers() as $player) {

@@ -41,7 +41,7 @@ class GameEventListener
         ];
         $this->pubSubClient->publish('game.start', $data);
 
-        $url = 'http://localhost:3000/start';
+        $url = 'http://localhost/blegateway/start';
         $httpClient = new Client();
 
         $radioIds = [];
