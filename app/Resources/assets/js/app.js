@@ -25,7 +25,7 @@ import { alertDismiss } from './ui-util'
 
 const toggleVest = (address, value) => {
     let request = $.ajax({
-        url: `http://localhost/blegateway/unit/${address}/${value}`,
+        url: `${window.location.origin}/blegateway/unit/${address}/${value}`,
         type: 'POST',
         headers: {
             Accept: 'application/json'
