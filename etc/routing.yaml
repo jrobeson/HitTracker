@@ -10,7 +10,7 @@ hittracker_vest_index:
     defaults:
         _controller: hittracker.controller.vest:indexAction
         _sylius:
-            paginate: 20
+            paginate: 40
             sortable: true
             sorting:
                 id: asc
