@@ -111,7 +111,6 @@ class Game implements ResourceInterface
         return $this->arena;
     }
 
-
     public function getEndsAt(): \DateTime
     {
         return $this->endsAt;
@@ -131,7 +130,7 @@ class Game implements ResourceInterface
 
         $start = new \DateTime();
 
-        if (is_null($this->createdAt)) {
+        if (null === $this->createdAt) {
             $start = $this->createdAt = new \DateTime();
         }
         $end = clone $start;

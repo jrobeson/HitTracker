@@ -45,7 +45,6 @@ class PlayerData
      */
     public $unit;
 
-
     public function setUnit(Vest $unit): void
     {
         $this->unit = $unit;

@@ -43,7 +43,7 @@ class PlayerType extends AbstractType
                   'class' => Vest::class,
                   'choices' => $vests,
                   'choice_label' => 'id',
-                  'placeholder'  => 'Choose',
+                  'placeholder' => 'Choose',
                   'choice_attr' => function (Vest $unit) {
                       return [
                         'data-unit-address' => $unit->getRadioId(),

@@ -25,7 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class NewGameData
 {
-   /**
+    /**
      * @todo cap the upper bound on arenas based on how many there really are.
      *
      * @var int
@@ -84,6 +84,7 @@ class NewGameData
     {
         $this->players = new ArrayCollection();
     }
+
     public function addPlayer(PlayerData $player): void
     {
         $this->players->add($player);

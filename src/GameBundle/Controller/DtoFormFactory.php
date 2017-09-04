@@ -18,8 +18,6 @@
 
 namespace LazerBall\HitTracker\GameBundle\Controller;
 
-
-use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
@@ -39,9 +37,6 @@ final class DtoFormFactory
         $this->formFactory = $formFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(RequestConfiguration $requestConfiguration, $dto): FormInterface
     {
         $formType = $requestConfiguration->getFormType();
