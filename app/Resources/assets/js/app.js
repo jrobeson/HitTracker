@@ -52,7 +52,9 @@ $(document).ready(function () {
 
     $('form[id="game_form"] select[id$="_unit"]').focusout(function (e) {
         const address = $(this).children('option:selected').data('unit-address');
-        toggleVest(address, 1);
+        if (address) {
+            toggleVest(address, 1);
+        }
     });
     $('form[id="game_form"] select[name="game[reload_players]"]').change(function () {
         let gameId = $(this).val();
