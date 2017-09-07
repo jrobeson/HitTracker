@@ -245,7 +245,7 @@ $(document).ready(function () {
 
     $('#print-scores').click(function (event) {
         event.preventDefault();
-        printScores($(this).attr('href'));
+        Object(__WEBPACK_IMPORTED_MODULE_4__ui_util__["b" /* printScores */])($(this).attr('href'));
     });
 });
 
@@ -295,44 +295,6 @@ function pushHit(selector, zoneHits) {
         $(this).text(zoneHits);
     }).animate({ color: '#000' }, 500);
 }
-
-function printScores(url) {
-    var frame = document.createElement('iframe');
-    frame.setAttribute('id', 'print-frame');
-    frame.setAttribute('name', 'print-frame');
-    frame.setAttribute('type', 'content');
-    frame.setAttribute('collapsed', 'true');
-    document.documentElement.appendChild(frame);
-
-    frame.addEventListener('load', function (event) {
-        jsPrintSetup.clearSilentPrint();
-        jsPrintSetup.setPaperSizeUnit(jsPrintSetup.kPaperSizeInches);
-        var paperSizeId = 200;
-        jsPrintSetup.definePaperSize(paperSizeId, paperSizeId, 'lazerball_scorecard', 'lazerball_scorecard_8.5x5.5in', 'LazerBall Scorecard', 8.5, 5.5, jsPrintSetup.kPaperSizeInches);
-        jsPrintSetup.setPaperSizeData(1);
-
-        jsPrintSetup.setOption('orientation', jsPrintSetup.kPortraitOrientation);
-        jsPrintSetup.setOption('shrinkToFit', true);
-        jsPrintSetup.setOption('marginTop', 0);
-        jsPrintSetup.setOption('marginBottom', 0);
-        jsPrintSetup.setOption('marginLeft', 0);
-        jsPrintSetup.setOption('marginRight', 0);
-        jsPrintSetup.setOption('headerStrLeft', '');
-        jsPrintSetup.setOption('headerStrCenter', '');
-        jsPrintSetup.setOption('headerStrRight', '');
-        jsPrintSetup.setOption('footerStrLeft', '');
-        jsPrintSetup.setOption('footerStrCenter', '');
-        jsPrintSetup.setOption('footerStrRight', '');
-        jsPrintSetup.printWindow(frame.contentWindow);
-
-        setTimeout(function () {
-            var frame = document.getElementById('print-frame');
-            frame.remove();
-        }, 10);
-    }, true);
-
-    frame.contentDocument.location.href = url;
-};
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
@@ -1069,12 +1031,13 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*!********************************************!*\
   !*** ./app/Resources/assets/js/ui-util.js ***!
   \********************************************/
-/*! exports provided: alertDismiss */
-/*! exports used: alertDismiss */
+/*! exports provided: alertDismiss, printScores */
+/*! exports used: alertDismiss, printScores */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return alertDismiss; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return printScores; });
 var alertDismiss = function alertDismiss() {
     var target = $('.alert');
     var timeout = target.data('auto-dismiss');
@@ -1088,6 +1051,44 @@ var alertDismiss = function alertDismiss() {
             $(this).remove();
         });
     }, timeout);
+};
+
+var printScores = function printScores(url) {
+    var frame = document.createElement('iframe');
+    frame.setAttribute('id', 'print-frame');
+    frame.setAttribute('name', 'print-frame');
+    frame.setAttribute('type', 'content');
+    frame.setAttribute('collapsed', 'true');
+    document.documentElement.appendChild(frame);
+
+    frame.addEventListener('load', function (event) {
+        jsPrintSetup.clearSilentPrint();
+        jsPrintSetup.setPaperSizeUnit(jsPrintSetup.kPaperSizeInches);
+        var paperSizeId = 200;
+        jsPrintSetup.definePaperSize(paperSizeId, paperSizeId, 'lazerball_scorecard', 'lazerball_scorecard_8.5x5.5in', 'LazerBall Scorecard', 8.5, 5.5, jsPrintSetup.kPaperSizeInches);
+        jsPrintSetup.setPaperSizeData(1);
+
+        jsPrintSetup.setOption('orientation', jsPrintSetup.kPortraitOrientation);
+        jsPrintSetup.setOption('shrinkToFit', true);
+        jsPrintSetup.setOption('marginTop', 0);
+        jsPrintSetup.setOption('marginBottom', 0);
+        jsPrintSetup.setOption('marginLeft', 0);
+        jsPrintSetup.setOption('marginRight', 0);
+        jsPrintSetup.setOption('headerStrLeft', '');
+        jsPrintSetup.setOption('headerStrCenter', '');
+        jsPrintSetup.setOption('headerStrRight', '');
+        jsPrintSetup.setOption('footerStrLeft', '');
+        jsPrintSetup.setOption('footerStrCenter', '');
+        jsPrintSetup.setOption('footerStrRight', '');
+        jsPrintSetup.printWindow(frame.contentWindow);
+
+        setTimeout(function () {
+            var frame = document.getElementById('print-frame');
+            frame.remove();
+        }, 10);
+    }, true);
+
+    frame.contentDocument.location.href = url;
 };
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
