@@ -271,7 +271,7 @@ function initCountdown(selector) {
     var offset = serverTime - clientTime;
     gameEnd = gameEnd - offset;
 
-    formatDate = function formatDate(event) {
+    var formatDate = function formatDate(event) {
         var format = '%M:%S';
         if (event.offset.hours > 0) {
             format = '%-H:' + format;
@@ -282,7 +282,7 @@ function initCountdown(selector) {
         $(this).text(formatDate(event));
     }).on('finish.countdown', function (event) {
         $(this).text(formatDate(event));
-        musicSelector = $('#active-game-music');
+        var musicSelector = $('#active-game-music');
         if (musicSelector.length) {
             musicSelector.get(0).pause();
         }
