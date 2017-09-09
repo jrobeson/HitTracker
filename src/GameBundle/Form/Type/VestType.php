@@ -24,6 +24,11 @@ class VestType extends AbstractType
             array_map('ucfirst', Vest::getUnitTypes()),
             Vest::getUnitTypes()
             );
+        $colorChoices = array_combine(
+            array_map('ucfirst', Vest::getColors()),
+            Vest::getColors()
+            );
+
         $builder
             ->add('id', IntegerType::class, [
                 'label' => 'hittracker.vest.id',
@@ -36,6 +41,13 @@ class VestType extends AbstractType
                 'label' => 'hittracker.vest.unit_type',
                 'attr' => [
                     'help' => 'hittracker.vest.unit_type.help'
+                ],
+            ])
+            ->add('color', ChoiceType::class, [
+                'choices' => $colorChoices,
+                'label' => 'hittracker.vest.color',
+                'attr' => [
+                    'help' => 'hittracker.vest.color.help'
                 ],
             ])
             ->add('zones', ChoiceType::class, [

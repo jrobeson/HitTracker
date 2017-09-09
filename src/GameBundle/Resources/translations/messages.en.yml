@@ -96,6 +96,8 @@ hittracker.vest.id.help: "Number printed on the unit"
 hittracker.vest.radio_id: 'Radio Id'
 hittracker.vest.radio_id.help: '8 character radio ID'
 hittracker.vest.unit_type: 'Unit Type'
+hittracker.vest.color: 'Color'
+hittracker.vest.color.help: 'Color on the vest'
 hittracker.vest.zones.help: "Type of Unit"
 hittracker.vest.zones: 'Zones'
 hittracker.vest.zones.help: "Number of zones on the unit"

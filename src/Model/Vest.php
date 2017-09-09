@@ -47,6 +47,14 @@ class Vest implements ResourceInterface
     private $unitType;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Choice(callback = "getColors")
+     */
+    private $color;
+
+    /**
      * @var int
      * @ORM\Column(type="integer")
      */
@@ -90,6 +98,22 @@ class Vest implements ResourceInterface
     public function getNumber(): ?int
     {
         return $this->id;
+    }
+
+    public function setColor(string $color): void
+    {
+        $this->color = $color;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    /** @return string[] */
+    public static function getColors(): array
+    {
+        return ['orange', 'green'];
     }
 
     public function setUnitType(string $unitType): void
