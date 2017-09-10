@@ -1,6 +1,8 @@
 HitTracker
 ========================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lazerball/HitTracker.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/lazerball/HitTracker.svg?branch=master)](https://travis-ci.org/lazerball/HitTracker)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c98aecd9-b933-486b-b586-26387eca5474/mini.png)](https://insight.sensiolabs.com/projects/c98aecd9-b933-486b-b586-26387eca5474)
