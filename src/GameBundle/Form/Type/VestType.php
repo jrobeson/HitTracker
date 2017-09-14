@@ -23,11 +23,11 @@ class VestType extends AbstractType
         $unitTypeChoices = array_combine(
             array_map('ucfirst', Vest::getUnitTypes()),
             Vest::getUnitTypes()
-            );
+        );
         $colorChoices = array_combine(
             array_map('ucfirst', Vest::getColors()),
             Vest::getColors()
-            );
+        );
 
         $builder
             ->add('id', IntegerType::class, [
