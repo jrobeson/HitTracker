@@ -6,15 +6,26 @@
   "author": "Johnny Robeson",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.7.2",
+    "@symfony/webpack-encore": "^0.14",
+    "@types/jquery": "^3.2.5",
     "autoprefixer": "^7.1.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-es2017": "^6.24.1",
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "jquery-countdown": "^2.2.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "ts-loader": "^2.3.6",
+    "tslint": "^5.4.3",
+    "tslint-config-prettier": "^1.5.0",
+    "tslint-config-standard": "^6.0.1",
+    "typescript": "^2.5.0"
   },
   "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "tslib": "^1.7.1"
 }

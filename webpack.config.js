@@ -5,7 +5,7 @@ Encore
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
 
-    .addEntry('js/app', './app/Resources/assets/js/app.js')
+    .addEntry('js/app', './app/Resources/assets/js/app.ts')
 
     //.addStyleEntry('global', './assets/styles/global.scss')
     .addStyleEntry('style/app', ['./app/Resources/assets/style/app.scss'])
@@ -16,7 +16,9 @@ Encore
         sassOptions.precision = 10;
     }, {
          resolve_url_loader: false
-     })
+    })
+    .enableTypeScriptLoader((tsConfig) => {
+    })
     .enablePostCssLoader()
 
     .autoProvideVariables({

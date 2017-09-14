@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "allowJs": true,
+    "lib": ["es2016", "dom"],
+    //"outDir": "dist",
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "pretty": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./types/*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": [
+    "node_modules",
+    "public",
+    "dist",
+    "out",
+    "vendor"
+  ]
+}

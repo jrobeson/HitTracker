@@ -1,0 +1,14 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-config-standard",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-var-requires": true,
+    "no-require-imports": false,
+    "object-literal-sort-keys": false,
+    "semicolon": [true, "always"]
+  }
+}

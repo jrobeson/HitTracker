@@ -5,15 +5,15 @@ export const alertDismiss = () => {
     if (!timeout) {
         return;
     }
-    timeout = parseInt(timeout) * 1000;
+    timeout = parseInt(timeout, 10) * 1000;
     setTimeout(function() {
         target.fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove()
-        })
+            $(this).remove();
+        });
     }, timeout);
 };
 
-export const printScores = (url) => {
+export const printScores = (url: string) => {
     const frame = document.createElement('iframe');
     frame.setAttribute('id', 'print-frame');
     frame.setAttribute('name', 'print-frame');
@@ -21,7 +21,7 @@ export const printScores = (url) => {
     frame.setAttribute('collapsed', 'true');
     document.documentElement.appendChild(frame);
 
-    frame.addEventListener('load', function (event) {
+    frame.addEventListener('load', (event) => {
         jsPrintSetup.clearSilentPrint();
         jsPrintSetup.setPaperSizeUnit(jsPrintSetup.kPaperSizeInches);
         const paperSizeId = 200;
@@ -51,9 +51,10 @@ export const printScores = (url) => {
         jsPrintSetup.setOption('footerStrRight', '');
         jsPrintSetup.printWindow(frame.contentWindow);
 
-        setTimeout(function () {
-            let frame = document.getElementById('print-frame');
-            frame.remove();
+        setTimeout(() => {
+            if (frame) {
+                frame.remove();
+            }
         }, 10);
     }, true);
 
