@@ -28,4 +28,9 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "tslib": "^1.7.1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ios >= 8"
+  ]
 }
