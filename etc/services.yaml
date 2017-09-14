@@ -17,6 +17,13 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    LazerBall\HitTracker\GameBundle\Controller\:
+        resource: '../src/GameBundle/Controller'
+        autowire: false
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: false
+
+
     # CSRF link extension
     LazerBall\HitTracker\EventListener\CsrfListener:
         arguments:
