@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6046d3d62e1071de14c0a98a3bc25740",
+    "content-hash": "5027daf4e1d70bc54048967f62e53810",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1972,12 +1972,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrobeson/SyliusSettingsBundle.git",
-                "reference": "3f8692731bc3bf6127d80efbe2defc8ffdd961a4"
+                "reference": "dcc0f4e4f5a9f24889f19a09c91d588e6e3fb58d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/3f8692731bc3bf6127d80efbe2defc8ffdd961a4",
-                "reference": "3f8692731bc3bf6127d80efbe2defc8ffdd961a4",
+                "url": "https://api.github.com/repos/jrobeson/SyliusSettingsBundle/zipball/dcc0f4e4f5a9f24889f19a09c91d588e6e3fb58d",
+                "reference": "dcc0f4e4f5a9f24889f19a09c91d588e6e3fb58d",
                 "shasum": ""
             },
             "require": {
@@ -2027,7 +2027,7 @@
                 "config",
                 "configuration"
             ],
-            "time": "2017-08-28 12:01:19"
+            "time": "2017-09-15 13:04:14"
         },
         {
             "name": "knplabs/knp-menu",
@@ -3570,25 +3570,25 @@
         },
         {
             "name": "sylius/registry",
-            "version": "v1.0.0-beta.3",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Registry.git",
-                "reference": "860f16eb830c1ea22a1bbd112a8227b6494eb8a6"
+                "reference": "a4b2ab6506d2d9416e8e6a9848d3425e5930b028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Registry/zipball/860f16eb830c1ea22a1bbd112a8227b6494eb8a6",
-                "reference": "860f16eb830c1ea22a1bbd112a8227b6494eb8a6",
+                "url": "https://api.github.com/repos/Sylius/Registry/zipball/a4b2ab6506d2d9416e8e6a9848d3425e5930b028",
+                "reference": "a4b2ab6506d2d9416e8e6a9848d3425e5930b028",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.6|^7.0",
+                "php": "^7.1",
                 "webmozart/assert": "^1.0",
                 "zendframework/zend-stdlib": "^3.1"
             },
             "require-dev": {
-                "phpspec/phpspec": "^3.2"
+                "phpspec/phpspec": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -3625,11 +3625,11 @@
                 "registry",
                 "services"
             ],
-            "time": "2017-01-26T10:58:45+00:00"
+            "time": "2017-09-12T16:15:56+00:00"
         },
         {
             "name": "sylius/resource",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Resource.git",
@@ -3697,11 +3697,11 @@
                 "shop",
                 "sylius"
             ],
-            "time": "2017-09-12 16:15:56"
+            "time": "2017-09-12T16:15:56+00:00"
         },
         {
             "name": "sylius/resource-bundle",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
@@ -3795,35 +3795,35 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2017-09-13 07:13:52"
+            "time": "2017-09-13T07:13:52+00:00"
         },
         {
             "name": "sylius/ui-bundle",
-            "version": "v1.0.0-beta.3",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusUiBundle.git",
-                "reference": "76ba688b4c19ff85f80913c0abdadd360ac2d490"
+                "reference": "46c572bf504f5bb4b82d179c8848c1a39bcaa56f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/76ba688b4c19ff85f80913c0abdadd360ac2d490",
-                "reference": "76ba688b4c19ff85f80913c0abdadd360ac2d490",
+                "url": "https://api.github.com/repos/Sylius/SyliusUiBundle/zipball/46c572bf504f5bb4b82d179c8848c1a39bcaa56f",
+                "reference": "46c572bf504f5bb4b82d179c8848c1a39bcaa56f",
                 "shasum": ""
             },
             "require": {
                 "doctrine/collections": "^1.3",
                 "knplabs/knp-menu-bundle": "^2.1",
-                "php": "^5.6|^7.0",
+                "php": "^7.1",
                 "sonata-project/block-bundle": "^3.3",
                 "symfony/framework-bundle": "^3.2",
                 "symfony/security": "^3.2",
                 "symfony/templating": "^3.2"
             },
             "require-dev": {
-                "phpspec/phpspec": "^3.2",
+                "phpspec/phpspec": "^4.0",
                 "symfony/form": "^3.2",
-                "twig/twig": "^1.28"
+                "twig/twig": "^2.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -3865,7 +3865,7 @@
                 "user interface",
                 "webshop"
             ],
-            "time": "2017-07-24T14:11:17+00:00"
+            "time": "2017-09-14T04:06:12+00:00"
         },
         {
             "name": "symfony/asset",
@@ -11483,10 +11483,6 @@
     "stability-flags": {
         "doctrine/orm": 20,
         "jrobeson/sylius-settings-bundle": 20,
-        "sylius/registry": 10,
-        "sylius/resource": 20,
-        "sylius/resource-bundle": 20,
-        "sylius/ui-bundle": 10,
         "roave/better-reflection": 20,
         "thecodingmachine/phpstan-strict-rules": 20
     },
