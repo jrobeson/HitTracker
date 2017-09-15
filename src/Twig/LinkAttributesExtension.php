@@ -42,7 +42,7 @@ class LinkAttributesExtension extends AbstractExtension
     {
         $html = sprintf('data-method="%s"', $method);
 
-        if ($confirm !== false) {
+        if (false !== $confirm) {
             $html .= sprintf(' data-confirm="%s"', $confirm);
         } else {
             $html .= ' data-no-confirm';

@@ -199,7 +199,7 @@ class Player implements ResourceInterface
     public function hit(int $zone, int $score = null, int $hitPoints = null): void
     {
         // @todo don't depend on unit type here, it's a game type issue
-        $handleHitPoints = $this->getUnit()->getUnitType() === 'vest';
+        $handleHitPoints = 'vest' === $this->getUnit()->getUnitType();
         if ($handleHitPoints) {
             if (0 >= $this->getHitPoints()) {
                 return;

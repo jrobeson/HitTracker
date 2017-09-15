@@ -72,6 +72,5 @@ class PlayerType extends AbstractType
         $resolver->setRequired([
             'teamColor',
         ]);
-
     }
 }

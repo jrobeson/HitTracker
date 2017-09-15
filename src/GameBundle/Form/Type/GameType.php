@@ -28,7 +28,6 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -89,7 +88,7 @@ class GameType extends AbstractType
         ;
         foreach (range(1, $gameSettings->get('team_count')) as $teamNo) {
             $teamColor = 'green';
-            if ($teamNo == 2) {
+            if (2 === $teamNo) {
                 $teamColor = 'orange';
             }
             $builder->add('team'.$teamNo, TeamPlayersType::class, [
