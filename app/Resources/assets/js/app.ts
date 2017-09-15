@@ -35,8 +35,7 @@ const toggleVest = (address: string, value: number) => {
     request.done(() => true);
 };
 
-$(document).ready(function () {
-    'use strict';
+$(document).ready(() => {
     alertDismiss();
 
     $('.unit-turn-on').click(function (e) {
@@ -64,7 +63,7 @@ $(document).ready(function () {
                 Accept: 'application/json'
             }
         });
-        request.done(function (game) {
+        request.done((game) => {
             const teamPlayers = {} as any;
             for (const player of game.players) {
                 const pt = player.team;

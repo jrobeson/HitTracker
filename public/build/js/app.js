@@ -95,8 +95,6 @@ var toggleVest = function toggleVest(address, value) {
     });
 };
 $(document).ready(function () {
-    'use strict';
-
     ui_util_1.alertDismiss();
     $('.unit-turn-on').click(function (e) {
         var address = $(this).data('unit-address');

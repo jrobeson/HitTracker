@@ -6,7 +6,7 @@ export const alertDismiss = () => {
         return;
     }
     timeout = parseInt(timeout, 10) * 1000;
-    setTimeout(function() {
+    setTimeout(() => {
         target.fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();
         });
