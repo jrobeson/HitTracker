@@ -6,6 +6,7 @@
     "tslint-config-prettier"
   ],
   "rules": {
+    "only-arrow-functions": false,
     "no-var-requires": true,
     "no-require-imports": false,
     "object-literal-sort-keys": false,
