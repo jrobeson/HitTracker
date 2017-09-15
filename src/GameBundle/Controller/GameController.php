@@ -33,8 +33,13 @@ class GameController extends ResourceController
         $players = new ArrayCollection();
         foreach ($vests as $vest) {
             $playerData = new \LazerBall\HitTracker\Model\PlayerData();
+            $team = 1;
+            if ('orange' === $vest->getColor()) {
+                $team = 2;
+            }
             $playerData->name = '';
-            $newGameData->addPlayer($playerData);
+            $playerData->team = 'Team '. $team;
+            $newGameData->addPlayer($playerData, $team);
         }
         $formFactory = new DtoFormFactory($this->container->get('form.factory'));
         $form = $formFactory->create($configuration, $newGameData);
@@ -44,8 +49,10 @@ class GameController extends ResourceController
             $formData = $form->getData();
 
             $newResource = new Game($newGameData->gameType, $newGameData->gameLength, $newGameData->settings, $newGameData->arena);
-            foreach ($newGameData->players as $player) {
-                $newResource->addPlayer(new Player($player->name, $player->unit, $player->hitPoints, $player->team));
+            foreach ([$newGameData->team1, $newGameData->team2] as $team) {
+                foreach ($team['players'] as $player) {
+                    $newResource->addPlayer(new Player($player->name, $player->unit, $player->hitPoints, $player->team));
+                }
             }
 
             $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::CREATE, $configuration, $newResource);

@@ -32,7 +32,7 @@ class PlayerType extends AbstractType
     {
         $gameSettings = $this->settingsManager->load('game');
 
-        $vests = $this->vestRepository->findActiveVests();
+        $vests = $this->vestRepository->findActiveVestsByColor($options['teamColor']);
         $builder
             ->add('name', TextType::class, [
                   'label' => 'hittracker.game.player_name'
@@ -69,5 +69,9 @@ class PlayerType extends AbstractType
         $resolver->setDefaults([
             'data_class' => PlayerData::class,
         ]);
+        $resolver->setRequired([
+            'teamColor',
+        ]);
+
     }
 }

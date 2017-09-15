@@ -79,7 +79,6 @@ class GameType extends AbstractType
                 'placeholder' => 'hittracker.game.choose',
                 'required' => false,
             ])
-            ->add('players', PlayerCollectionType::class)
             ->add('start', SubmitType::class, [
                 'label' => 'hittracker.game.start',
             ])
@@ -89,10 +88,14 @@ class GameType extends AbstractType
             ->addEventSubscriber($this->eventSubscriber)
         ;
         foreach (range(1, $gameSettings->get('team_count')) as $teamNo) {
-            $builder->add('team' . $teamNo, TextType::class, [
-                'label' => '',
-                'mapped' => false,
-                'data' => 'Team ' . $teamNo,
+            $teamColor = 'green';
+            if ($teamNo == 2) {
+                $teamColor = 'orange';
+            }
+            $builder->add('team'.$teamNo, TeamPlayersType::class, [
+                'label' => false,
+                'teamNo' => $teamNo,
+                'teamColor' => $teamColor,
             ]);
         }
     }

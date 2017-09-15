@@ -51,19 +51,57 @@ class NewGameData
      * @Assert\Count(min="1",
      *               minMessage="hittracker.game.not_enough_players"
      * )
-     * @Assert\All(constraints={
-     *     @CommonAssert\UniqueCollectionField(
-     *         propertyPath="unit",
-     *         message="hittracker.game.unique_vests_required")
-     * })
-     * @Assert\All(constraints={
-     *     @CommonAssert\UniqueCollectionField(
-     *         propertyPath="name",
-     *         message="hittracker.game.unique_names_required"
-     *     )
-     * })
+     *
+     * @Assert\Collection(
+     *    allowExtraFields=true,
+     *    fields={
+     *      "players"={
+     *          @Assert\All(constraints={
+     *              @CommonAssert\UniqueCollectionField(
+     *                  propertyPath="unit",
+     *                  message="hittracker.game.unique_vests_required"
+     *              )
+     *          }),
+     *          @Assert\All(constraints={
+     *              @CommonAssert\UniqueCollectionField(
+     *                  propertyPath="name",
+     *                  message="hittracker.game.unique_names_required"
+     *              )
+     *          })
+     *      }
+     *    }
+     * )
      */
-    public $players;
+    public $team1;
+
+    /**
+     * @var Collection
+     *
+     * @Assert\Valid(traverse=true)
+     * @Assert\Count(min="1",
+     *               minMessage="hittracker.game.not_enough_players"
+     * )
+     * @Assert\Collection(
+     *    allowExtraFields=true,
+     *    fields={
+     *      "players"={
+     *          @Assert\All(constraints={
+     *              @CommonAssert\UniqueCollectionField(
+     *                  propertyPath="unit",
+     *                  message="hittracker.game.unique_vests_required"
+     *              )
+     *          }),
+     *          @Assert\All(constraints={
+     *              @CommonAssert\UniqueCollectionField(
+     *                  propertyPath="name",
+     *                  message="hittracker.game.unique_names_required"
+     *              )
+     *          })
+     *      }
+     *    }
+     * )
+     */
+    public $team2;
 
     /**
      * @var int
@@ -82,12 +120,13 @@ class NewGameData
 
     public function __construct()
     {
-        $this->players = new ArrayCollection();
+        $this->team1 = ['name' => 'Team 1', 'players' => new ArrayCollection()];
+        $this->team2 = ['name' => 'Team 2', 'players' => new ArrayCollection()];
     }
 
-    public function addPlayer(PlayerData $player): void
+    public function addPlayer(PlayerData $player, $team): void
     {
-        $this->players->add($player);
+        $this->{'team'.$team}['players']->add($player);
     }
 
     public function getArena()

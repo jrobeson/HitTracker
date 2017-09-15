@@ -71,7 +71,7 @@ $(document).ready(() => {
                     teamPlayers[pt] = {};
                 }
 
-                teamPlayers[pt][player.unit.id] = player.name;
+                teamPlayers[pt][player.unit.id] = player;
             }
 
             const teams = Object.keys(teamPlayers);
@@ -80,12 +80,20 @@ $(document).ready(() => {
                 const team = teams.shift() || '';
                 $(this).find('.team-no input').val(team);
                 const players = teamPlayers[team];
-                for (const unitId in players) {
-                    $(`select[id$='_unit'] option:selected[value='${unitId}']`).
-                        parent().parent().parent().parent().find("input[id$='_name']").
-                        val(players[unitId]);
-                }
-
+                const playerList = Object.values(players) as any[];
+                $(this).find('.player').each(function() {
+                    const thisPlayer = playerList.shift() as any;
+                    let name = '';
+                    let unitId = '';
+                    if (thisPlayer) {
+                        name = thisPlayer.name;
+                        unitId = thisPlayer.unit.id;
+                    }
+                    $(this).find('input[id$="_name"]').val(name);
+                    const unitSelector = $(this).find('select[id$="_unit"]');
+                    unitSelector.val(unitId);
+                    unitSelector.trigger('focusout');
+                });
             });
         });
     });

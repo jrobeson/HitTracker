@@ -1,7 +1,7 @@
 {% set game_settings = sylius_settings('game') %}
 {% form_theme form '@HitTrackerGame/Game/game_form_theme.html.twig' %}
 
-{% if form.players is not empty %}
+{% if form.team1 is not empty %}
 {{ form_start(form, {'action': path('hittracker_game_create'),
 'attr': {'role': 'form', 'novalidate': 'novalidate', 'id': 'game_form'}}) }}
 {{  form_errors(form) }}
@@ -31,14 +31,13 @@
     {{ form_row(form.reload_players) }}
     </div>
 </div>
-<div class="row players" data-prototype="{{ form_widget(form.players.vars.prototype)|e }}">
-    {% set team_count = game_settings.get('team_count') %}
-    {% for team in form.players|partition(team_count) %}
+<div class="row players">
+    {% for team in [form.team1, form.team2] %}
         <div class="col-lg-6 new-game-teams">
             <div class="row">
                 <div class="col-lg-2">
                     <div class="form-group team-no">
-                        {{  form_widget(attribute(form, 'team' ~ loop.index)) }}
+                        {{  form_widget(team.name) }}
                     </div>
                 </div>
                 <div class="form-control-static col-lg-5">
@@ -48,13 +47,13 @@
                     {{ 'hittracker.game.vest'|trans }}
                 </div>
                 <div class="form-control-static col-lg-3">
-                    {% if not 'hidden' == team|first.children.hitPoints.vars.attr.class %}
+                    {% if not 'hidden' == team.players|first.children.hitPoints.vars.attr.class %}
                     {{ 'hittracker.game.hit_points'|trans }}
                     {% endif %}
                 </div>
             </div>
-            {% for player in team %}
-                <div class="row">
+            {% for player in team.players %}
+                <div class="row player player-{{ loop.index }}">
                     {% set team_no = 'hittracker.game.team_no'|trans({'%team_no%': loop.parent.loop.index}) %}
                     {{ form_row(player.team, {'value': team_no}) }}
                     <div class="col-lg-2">
