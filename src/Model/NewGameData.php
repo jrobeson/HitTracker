@@ -45,7 +45,7 @@ class NewGameData
     public $startAt;
 
     /**
-     * @var Collection
+     * @var mixed[]
      *
      * @Assert\Valid(traverse=true)
      * @Assert\Count(min="1",
@@ -75,7 +75,7 @@ class NewGameData
     public $team1;
 
     /**
-     * @var Collection
+     * @var mixed[]
      *
      * @Assert\Valid(traverse=true)
      * @Assert\Count(min="1",
