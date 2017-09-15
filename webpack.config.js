@@ -4,6 +4,9 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
+    .configureBabel((babelConfig) => {
+        babelConfig.presets.push('es2017');
+    })
 
     .addEntry('js/app', './app/Resources/assets/js/app.ts')
 
