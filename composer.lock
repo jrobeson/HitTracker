@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5027daf4e1d70bc54048967f62e53810",
+    "content-hash": "c5382e988394020d65ec8b88e8f1d535",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1008,12 +1008,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "6a861756176a6bfcfe5c4ecb699e3b08c7582cfb"
+                "reference": "0c4f9a886682441628f895bda38bdbb3c1703900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/6a861756176a6bfcfe5c4ecb699e3b08c7582cfb",
-                "reference": "6a861756176a6bfcfe5c4ecb699e3b08c7582cfb",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/0c4f9a886682441628f895bda38bdbb3c1703900",
+                "reference": "0c4f9a886682441628f895bda38bdbb3c1703900",
                 "shasum": ""
             },
             "require": {
@@ -1080,7 +1080,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-09-11 18:58:11"
+            "time": "2017-09-16 15:15:08"
         },
         {
             "name": "dunglas/doctrine-json-odm",
@@ -3179,33 +3179,38 @@
         },
         {
             "name": "sonata-project/block-bundle",
-            "version": "3.3.2",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "7cdf6e5620696cdd962eb4c404beeedaf20c3570"
+                "reference": "052f1eb4b84951eb6c25acaf52787346845fc6d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/7cdf6e5620696cdd962eb4c404beeedaf20c3570",
-                "reference": "7cdf6e5620696cdd962eb4c404beeedaf20c3570",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/052f1eb4b84951eb6c25acaf52787346845fc6d3",
+                "reference": "052f1eb4b84951eb6c25acaf52787346845fc6d3",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "^2.3",
                 "php": "^5.3 || ^7.0",
                 "sonata-project/cache": "^1.0",
-                "sonata-project/core-bundle": "^3.0",
+                "sonata-project/core-bundle": "^3.4",
                 "symfony/form": "^2.3 || ^3.0",
                 "symfony/http-kernel": "^2.3 || ^3.0"
             },
+            "conflict": {
+                "jms/di-extra-bundle": "<1.7.0"
+            },
             "require-dev": {
+                "jms/di-extra-bundle": "^1.7",
                 "knplabs/knp-menu-bundle": "^2.0",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
-                "sonata-project/admin-bundle": "^3.0",
+                "sonata-project/admin-bundle": "^3.22",
                 "symfony/phpunit-bridge": "^2.7 || ^3.0"
             },
             "suggest": {
+                "jms/di-extra-bundle": "Annotations for Block definition",
                 "knplabs/knp-menu-bundle": "^2.0",
                 "sonata-project/cache-bundle": "^3.0"
             },
@@ -3247,7 +3252,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2017-03-23T12:54:15+00:00"
+            "time": "2017-09-19T15:14:45+00:00"
         },
         {
             "name": "sonata-project/cache",
@@ -3314,16 +3319,16 @@
         },
         {
             "name": "sonata-project/core-bundle",
-            "version": "3.4.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "a1b837101262af856c45b22e8f0887553edf0fb0"
+                "reference": "a8cc1731d832e6bde3fdad2334cfd158d1d45fbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/a1b837101262af856c45b22e8f0887553edf0fb0",
-                "reference": "a1b837101262af856c45b22e8f0887553edf0fb0",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/a8cc1731d832e6bde3fdad2334cfd158d1d45fbb",
+                "reference": "a8cc1731d832e6bde3fdad2334cfd158d1d45fbb",
                 "shasum": ""
             },
             "require": {
@@ -3389,7 +3394,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2017-05-09T15:05:32+00:00"
+            "time": "2017-09-20T14:14:38+00:00"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -7783,16 +7788,16 @@
     "packages-dev": [
         {
             "name": "behat/behat",
-            "version": "v3.4.0",
+            "version": "v3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "7de1a2207735fe7e2c06373dea3fd64c27c367fc"
+                "reference": "cb51d4b0b11ea6d3897f3589a871a63a33632692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/7de1a2207735fe7e2c06373dea3fd64c27c367fc",
-                "reference": "7de1a2207735fe7e2c06373dea3fd64c27c367fc",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/cb51d4b0b11ea6d3897f3589a871a63a33632692",
+                "reference": "cb51d4b0b11ea6d3897f3589a871a63a33632692",
                 "shasum": ""
             },
             "require": {
@@ -7862,7 +7867,7 @@
                 "symfony",
                 "testing"
             ],
-            "time": "2017-09-10T11:21:07+00:00"
+            "time": "2017-09-18T11:10:28+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -10455,16 +10460,16 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "dev-master",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "1854fbd79e6a7aefba6e3fa22d2bbccffeeac657"
+                "reference": "619be9a2cef239245d8f1f466bcddc037949b788"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/1854fbd79e6a7aefba6e3fa22d2bbccffeeac657",
-                "reference": "1854fbd79e6a7aefba6e3fa22d2bbccffeeac657",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/619be9a2cef239245d8f1f466bcddc037949b788",
+                "reference": "619be9a2cef239245d8f1f466bcddc037949b788",
                 "shasum": ""
             },
             "require": {
@@ -10513,7 +10518,7 @@
                 }
             ],
             "description": "Better Reflection - an improved code reflection API",
-            "time": "2017-09-11 13:04:09"
+            "time": "2017-09-16T20:30:16+00:00"
         },
         {
             "name": "roave/signature",
@@ -11396,18 +11401,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/phpstan-strict-rules.git",
-                "reference": "8a36ec5033438a0277c5ec01e65b41d412e306ab"
+                "reference": "bfdea4ff6c22b4dac5b7bd330a4fc65f9db06f6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/phpstan-strict-rules/zipball/8a36ec5033438a0277c5ec01e65b41d412e306ab",
-                "reference": "8a36ec5033438a0277c5ec01e65b41d412e306ab",
+                "url": "https://api.github.com/repos/thecodingmachine/phpstan-strict-rules/zipball/bfdea4ff6c22b4dac5b7bd330a4fc65f9db06f6b",
+                "reference": "bfdea4ff6c22b4dac5b7bd330a4fc65f9db06f6b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "phpstan/phpstan": "^0.8.0",
-                "roave/better-reflection": "dev-master as 2.0.0"
+                "roave/better-reflection": "^2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.2",
@@ -11435,7 +11440,7 @@
                 }
             ],
             "description": "A set of additional rules for PHPStan based on best practices followed at TheCodingMachine",
-            "time": "2017-09-11 12:27:35"
+            "time": "2017-09-20T15:49:34+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -11483,7 +11488,6 @@
     "stability-flags": {
         "doctrine/orm": 20,
         "jrobeson/sylius-settings-bundle": 20,
-        "roave/better-reflection": 20,
         "thecodingmachine/phpstan-strict-rules": 20
     },
     "prefer-stable": false,
