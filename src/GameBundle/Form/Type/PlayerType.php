@@ -35,7 +35,10 @@ class PlayerType extends AbstractType
         $vests = $this->vestRepository->findActiveVestsByColor($options['teamColor']);
         $builder
             ->add('name', TextType::class, [
-                  'label' => 'hittracker.game.player_name'
+                  'label' => 'hittracker.game.player_name',
+                  'attr' => [
+                      'placeholder' => 'hittracker.game.player_name'
+                  ]
             ])
             ->add('team', HiddenType::class)
             ->add('unit', EntityType::class, [
@@ -43,7 +46,7 @@ class PlayerType extends AbstractType
                   'class' => Vest::class,
                   'choices' => $vests,
                   'choice_label' => 'id',
-                  'placeholder' => 'Choose',
+                  'placeholder' => 'hittracker.game.vest',
                   'choice_attr' => function (Vest $unit) {
                       return [
                         'data-unit-address' => $unit->getRadioId(),
