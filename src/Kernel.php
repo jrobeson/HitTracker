@@ -130,7 +130,9 @@ class Kernel extends BaseKernel
             case 'appliance':
             case 'hosted':
                 if (!$cacheDir) {
-                    $cacheDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'lib', 'hittracker', $this->environment]);
+                    $cacheDir = implode(DIRECTORY_SEPARATOR,
+                        ['', 'var', 'lib', 'hittracker', 'cache', $this->environment]
+                    );
                 }
                 break;
             default:
