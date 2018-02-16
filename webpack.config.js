@@ -4,10 +4,7 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
-    .configureBabel((babelConfig) => {
-        babelConfig.presets.push('es2017');
-    })
-
+    .enableBuildNotifications()
     .addEntry('js/app', './app/Resources/assets/js/app.ts')
 
     //.addStyleEntry('global', './assets/styles/global.scss')
@@ -15,10 +12,13 @@ Encore
     .addStyleEntry('style/scoreboard', ['./app/Resources/assets/style/scoreboard.scss'])
     .addStyleEntry('style/scorecard', ['./app/Resources/assets/style/scorecard.scss'])
 
+    .configureBabel((babelConfig) => {
+        babelConfig.presets.push('es2017');
+    })
     .enableSassLoader((sassOptions) => {
         sassOptions.precision = 10;
     }, {
-         resolve_url_loader: false
+        resolveUrlLoader: false
     })
     .enableTypeScriptLoader((tsConfig) => {
     })
