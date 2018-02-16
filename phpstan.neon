@@ -4,6 +4,6 @@ parameters:
         - '#Access to an undefined property Symfony\\Component\\Validator\\Constraint::\$message#'
         - '#Call to an undefined method Sylius\\Component\\Resource\\Model\\ResourceInterface::#'
         - '#Call to an undefined method Sylius\\Component\\Resource\\Repository\\RepositoryInterface::#'
-
+        - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children#'
 includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon

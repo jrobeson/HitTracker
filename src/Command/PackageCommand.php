@@ -135,7 +135,7 @@ class PackageCommand extends Command
             $this->getFs()->mirror(implode(DS, [$sourceDir, $appDir]), implode(DS, [$targetDir, $appDir]));
         }
         foreach (['composer.json', 'LICENSE'] as $appFile) {
-            $this->out->writeln(sprintf('Copying %s', $appDir));
+            $this->out->writeln(sprintf('Copying %s', $appFile));
             $this->getFs()->copy(implode(DS, [$sourceDir, $appFile]), implode(DS, [$targetDir, $appFile]));
         }
     }

@@ -7,11 +7,12 @@
 namespace LazerBall\HitTracker\Repository;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use LazerBall\HitTracker\Model\Vest;
 
 class VestRepository extends EntityRepository
 {
     /** @return Vest[]|null */
-    public function findActiveVests(?string $unitType = null): array
+    public function findActiveVests(?string $unitType = null)
     {
         $query = ['active' => true];
         if (!empty($unitType)) {
@@ -22,7 +23,7 @@ class VestRepository extends EntityRepository
     }
 
     /** @return Vest[]|null */
-    public function findActiveVestsByColor($color): array
+    public function findActiveVestsByColor($color)
     {
         $query = ['active' => true];
         $query['color'] = $color;

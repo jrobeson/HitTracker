@@ -16,7 +16,7 @@ use Twig\TwigFunction;
 class LinkAttributesExtension extends AbstractExtension
 {
     private $csrfTokenManager;
-    /** @var $string */
+    /** @var string */
     private $csrfTokenId;
 
     public function __construct(CsrfTokenManagerInterface $csrfTokenManager, string $csrfTokenId)

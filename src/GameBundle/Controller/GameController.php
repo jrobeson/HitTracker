@@ -23,6 +23,7 @@ class GameController extends ResourceController
      */
     public function createAction(Request $request): Response
     {
+        $newResource = null;
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
@@ -86,9 +87,6 @@ class GameController extends ResourceController
             return $this->viewHandler->handle($configuration, View::create($form, Response::HTTP_BAD_REQUEST));
         }
 
-        if (!isset($newResource)) {
-            $newResource = null;
-        }
         $view = View::create()
             ->setData([
                 'configuration' => $configuration,
