@@ -14,7 +14,7 @@ html, body {
   height: auto !important;
   height: 100%;
   margin: 0 auto -#{$footer-height};
-  padding: $navbar-height 0 $footer-height 60px;
+  padding: $navbar-height .5em $footer-height .5em;
 }
 
 footer {
