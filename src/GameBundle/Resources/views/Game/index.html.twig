@@ -17,19 +17,19 @@
         <tbody>
         {% for game in games %}
             <tr>
-                <td class="col-lg-1">
+                <td class="col-xs-1">
                     <a href="{{ path('hittracker_game_show', {id: game.id}) }}">
                         {{ game.id }}
                     </a>
                 </td>
-                <td class="col-lg-2">
+                <td class="col-xs-2">
                     {{ game.createdAt|localizeddate(format=icu_time_date_format) }}
                 </td>
-                <td class="col-lg-2">
+                <td class="col-xs-2">
                     {{ game.timeTotal|date('%H:%I') }}
                 </td>
-                <td class="col-lg-2">{{ game.totalHitPoints }}</td>
-                <td class="col-lg-2">{{ game.players.count }}</td>
+                <td class="col-xs-2">{{ game.totalHitPoints }}</td>
+                <td class="col-xs-2">{{ game.players.count }}</td>
             </tr>
         {% endfor %}
         </tbody>
