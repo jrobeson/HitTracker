@@ -6,8 +6,8 @@
 
 namespace LazerBall\HitTracker\Repository;
 
-use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use LazerBall\HitTracker\Model\Vest;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class VestRepository extends EntityRepository
 {
