@@ -1,16 +1,17 @@
 const Encore = require('@symfony/webpack-encore');
 
+
 Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .addEntry('js/app', './app/Resources/assets/js/app.ts')
+    .addEntry('js/app', './assets/js/app.ts')
 
     //.addStyleEntry('global', './assets/styles/global.scss')
-    .addStyleEntry('style/app', ['./app/Resources/assets/style/app.scss'])
-    .addStyleEntry('style/scoreboard', ['./app/Resources/assets/style/scoreboard.scss'])
-    .addStyleEntry('style/scorecard', ['./app/Resources/assets/style/scorecard.scss'])
+    .addStyleEntry('style/app', ['./assets/style/app.scss'])
+    .addStyleEntry('style/scoreboard', ['./assets/style/scoreboard.scss'])
+    .addStyleEntry('style/scorecard', ['./assets/style/scorecard.scss'])
 
     .configureBabel((babelConfig) => {
         babelConfig.presets.push('es2017');
