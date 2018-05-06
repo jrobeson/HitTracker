@@ -1,3 +1,4 @@
+declare var jsPrintSetup: any;
 export const alertDismiss = () => {
   const target = $('.alert');
   let timeout = target.data('auto-dismiss');
@@ -62,5 +63,5 @@ export const printScores = (url: string) => {
     true
   );
 
-  frame.contentDocument.location.href = url;
+  frame.contentDocument!.location.href = url;
 };
