@@ -37,6 +37,12 @@
     "lodash": "^4.17.5",
     "tslib": "^1.9.0"
   },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "es5"
+  },
   "browserslist": [
     "last 2 versions",
     "ios >= 8"
