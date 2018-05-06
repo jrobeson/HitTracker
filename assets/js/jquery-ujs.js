@@ -1,3 +1,4 @@
+/* tslint:disable */
 (function($, undefined) {
     function confirmDeletion (event) {
         var needConfirmation = !event.currentTarget.hasAttribute('data-no-confirm');
