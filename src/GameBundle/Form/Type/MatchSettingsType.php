@@ -18,14 +18,14 @@
 
 namespace LazerBall\HitTracker\GameBundle\Form\Type;
 
-use LazerBall\HitTracker\Model\GameSettings;
+use LazerBall\HitTracker\Model\MatchSettings;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class GameSettingsType extends AbstractType
+class MatchSettingsType extends AbstractType
 {
     private $settingsManager;
 
@@ -39,23 +39,23 @@ class GameSettingsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $gameSettings = $this->settingsManager->load('game');
+        $globalMatchSettings = $this->settingsManager->load('game');
 
         $builder
             ->add('playerHitPoints', IntegerType::class, [
                 'label' => 'hittracker.game.hit_points_per_player',
-                'data' => $gameSettings->get('player_hit_points'),
+                'data' => $globalMatchSettings->get('player_hit_points'),
                 'attr' => [
-                    'step' => $gameSettings->get('player_hit_points_deducted'),
+                    'step' => $globalMatchSettings->get('player_hit_points_deducted'),
                  ],
             ])
             ->add('playerHitPointsDeducted', IntegerType::class, [
                 'label' => 'hittracker.game.hit_points_deducted_per_hit',
-                'data' => $gameSettings->get('player_hit_points_deducted'),
+                'data' => $globalMatchSettings->get('player_hit_points_deducted'),
             ])
             ->add('playerScorePerHit', IntegerType::class, [
                 'label' => 'hittracker.game.player_score_per_hit',
-                'data' => $gameSettings->get('player_score_per_hit'),
+                'data' => $globalMatchSettings->get('player_score_per_hit'),
             ])
         ;
     }
@@ -66,7 +66,7 @@ class GameSettingsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => GameSettings::class,
+            'data_class' => MatchSettings::class,
         ]);
     }
 

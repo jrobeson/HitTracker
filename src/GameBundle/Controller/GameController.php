@@ -228,12 +228,12 @@ class GameController extends ResourceController
             if (!$player || !$game) {
                 continue;
             }
-            $gameSettings = $game->getSettings();
+            $matchSettings = $game->getSettings();
             switch ($event) {
                 case 'hit':
                     // @todo return an error if zone isn't set
                     $zone = $data['zone'] ?? null;
-                    $player->hit($zone, $gameSettings->getPlayerScorePerHit(), $gameSettings->getPlayerHitPointsDeducted());
+                    $player->hit($zone, $matchSettings->getPlayerScorePerHit(), $matchSettings->getPlayerHitPointsDeducted());
                     $this->notify('hit', $game, $player, $zone);
                     break;
             }

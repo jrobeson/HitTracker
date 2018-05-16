@@ -48,7 +48,7 @@ class GameType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $gameSettings = $this->settingsManager->load('game');
+        $globalMatchSettings = $this->settingsManager->load('game');
         $siteSettings = $this->settingsManager->load('site');
 
         $arenas = $siteSettings->get('arenas');
@@ -57,19 +57,19 @@ class GameType extends AbstractType
         $builder
             ->add('game_length', IntegerType::class, [
                 'label' => 'hittracker.game.length_in_minutes',
-                'data' => $gameSettings->get('game_length'),
+                'data' => $globalMatchSettings->get('game_length'),
                 'property_path' => 'gameLength',
             ])
             ->add('game_type', ChoiceType::class, [
                 'choices' => array_combine(Game::getHumanGameTypes(), Game::getGameTypes()),
                 'label' => 'hittracker.game.type',
-                'data' => $gameSettings->get('game_type'),
+                'data' => $globalMatchSettings->get('game_type'),
                 'property_path' => 'gameType'
             ])
             ->add('arena', $arenaFieldType, [
                 'data' => 1,
             ])
-            ->add('settings', GameSettingsType::class, [
+            ->add('settings', MatchSettingsType::class, [
                 'label' => 'Settings',
             ])
             ->add('reload_players', ListGamesType::class, [
@@ -86,7 +86,7 @@ class GameType extends AbstractType
             ])
             ->addEventSubscriber($this->eventSubscriber)
         ;
-        foreach (range(1, $gameSettings->get('team_count')) as $teamNo) {
+        foreach (range(1, $globalMatchSettings->get('team_count')) as $teamNo) {
             $teamColor = 'green';
             if (2 === $teamNo) {
                 $teamColor = 'orange';

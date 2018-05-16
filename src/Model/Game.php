@@ -92,7 +92,7 @@ class Game implements ResourceInterface
      */
     protected $gameType;
 
-    public function __construct(string $gameType, int $gameLength, GameSettings $settings, int $arena = 1, ?\DateTime $createdAt = null)
+    public function __construct(string $gameType, int $gameLength, MatchSettings $settings, int $arena = 1, ?\DateTime $createdAt = null)
     {
         $this->arena = $arena;
         $this->gameType = $gameType;
@@ -173,7 +173,7 @@ class Game implements ResourceInterface
         return $this->gameType;
     }
 
-    public function getSettings(): GameSettings
+    public function getSettings(): MatchSettings
     {
         return $this->settings;
     }

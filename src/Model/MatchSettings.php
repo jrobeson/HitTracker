@@ -20,7 +20,7 @@ namespace LazerBall\HitTracker\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class GameSettings
+class MatchSettings
 {
     /**
      * @var int
