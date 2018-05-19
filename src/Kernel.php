@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-/*
+/**
  * Copyright (C) 2017 Johnny Robeson <johnny@localmomentum.net>
  *
  * This program is free software: you can redistribute it and/or modify
