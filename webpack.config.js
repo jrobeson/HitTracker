@@ -1,3 +1,4 @@
+const path = require('path');
 const Encore = require('@symfony/webpack-encore');
 
 
@@ -23,7 +24,12 @@ Encore
     })
     .enableTypeScriptLoader((tsConfig) => {
     })
+    .enableForkedTypeScriptTypesChecking((tsForkedConfig) => {
+        tsForkedConfig.vue = true;
+        tsForkedConfig.tslint = true;
+    })
     .enablePostCssLoader()
+    .enableVueLoader()
 
     .autoProvideVariables({
         '$': 'jquery',
@@ -35,4 +41,11 @@ Encore
     .enableVersioning(Encore.isProduction())
 ;
 
-module.exports = Encore.getWebpackConfig();
+const config = Encore.getWebpackConfig();
+config.resolve.alias = {
+    ...config.resolve.alias,
+    '@': path.resolve(__dirname, './assets/js'),
+    'style': path.resolve(__dirname, './assets/style'),
+};
+
+module.exports = config;
