@@ -14,7 +14,10 @@
       "*": ["./types/*"]
     },
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "plugins": [
+        { "name": "tslint-language-service"}
+    ]
   },
   "exclude": [
     "node_modules",

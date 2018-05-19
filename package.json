@@ -42,6 +42,7 @@
     "lodash": "^4.17",
     "ts-node": "^6.0",
     "tslib": "^1.9",
+    "tslint-language-service": "^0.9.9",
   },
   "prettier": {
     "semi": true,
