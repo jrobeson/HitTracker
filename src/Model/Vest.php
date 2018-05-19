@@ -73,7 +73,7 @@ class Vest implements ResourceInterface
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
@@ -182,7 +182,7 @@ class Vest implements ResourceInterface
         $this->updatedAt = $updatedAt;
     }
 
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
