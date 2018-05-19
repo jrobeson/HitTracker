@@ -17,6 +17,7 @@
     "babel-preset-env": "^1.6",
     "babel-preset-es2017": "^6.24",
     "download": "github:jrobeson/download#master",
+    "fork-ts-checker-webpack-plugin": "^0.4.1",
     "gulp": "^3.9.1",
     "node-sass": "^4.9",
     "postcss-loader": "^2.1",
@@ -28,6 +29,7 @@
     "tslint-config-prettier": "^1.12",
     "tslint-config-standard": "^7.0",
     "typescript": "^2.8",
+    "webpack-notifier": "^1.6"
   },
   "dependencies": {
     "axios": "^0.18",
