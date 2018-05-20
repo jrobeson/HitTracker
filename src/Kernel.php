@@ -18,13 +18,20 @@
 
 namespace LazerBall\HitTracker;
 
+use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+use Symfony\Component\Routing\RouteCollectionBuilder;
 use UnexpectedValueException;
 use function Cekurte\Environment\env;
 
 class Kernel extends BaseKernel
 {
+    use MicroKernelTrait;
+    const CONFIG_EXTS = '.{php,xml,yaml,yml}';
+
     /** @var string */
     private $buildType;
 
@@ -45,7 +52,7 @@ class Kernel extends BaseKernel
 
     public function registerBundles(): iterable
     {
-        $contents = require dirname(__DIR__).'/etc/bundles.php';
+        $contents = require $this->getProjectDir().'/etc/bundles.php';
         foreach ($contents as $class => $envs) {
             if (empty($envs) || (isset($envs['all']) || isset($envs[$this->environment]))) {
                 yield new $class();
@@ -83,8 +90,12 @@ class Kernel extends BaseKernel
         return $configFiles;
     }
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
+        $container->addResource(new FileResource($this->getProjectDir().'/etc/bundles.php'));
+
+        $container->setParameter('container.dumper.inline_class_loader', true);
+
         $configFiles = $this->getConfigFiles($this->getEnvironment(), $this->getBuildType());
 
         foreach ($configFiles as $configFile) {
@@ -92,6 +103,15 @@ class Kernel extends BaseKernel
                 $loader->load($configFile);
             }
         }
+    }
+
+    protected function configureRoutes(RouteCollectionBuilder $routes)
+    {
+        $confDir = $this->getProjectDir().'/etc';
+
+        $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, '/', 'glob');
+        $routes->import($confDir.'/{routes}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, '/', 'glob');
+        $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
     }
 
     /**

@@ -9,7 +9,6 @@ framework:
     session:
       name: SESSIONID
     router:
-        resource: "%kernel.config_dir%/routing.yaml"
         strict_requirements: "%kernel.debug%"
     form:            ~
     csrf_protection: ~

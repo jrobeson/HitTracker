@@ -1,6 +1,4 @@
 framework:
-    router:
-        resource: "%kernel.config_dir%/routing_development.yaml"
     profiler: { only_exceptions: false }
 
 web_profiler:
