@@ -1,6 +1,5 @@
 imports:
     - { resource: security.yaml }
-    - { resource: services.yaml }
 
 framework:
     translator:
@@ -27,7 +26,7 @@ framework:
             uploads:
               version_strategy: incenteev_hashed_asset.strategy
             built:
-              json_manifest_path: "%kernel.public_dir%/build/manifest.json"
+              json_manifest_path: "%kernel.project_dir%/public/build/manifest.json"
         version_strategy: incenteev_hashed_asset.strategy
     php_errors:
         log: true
@@ -180,4 +179,4 @@ nelmio_security:
         nosniff: true
 
 incenteev_hashed_asset:
-    web_root: '%kernel.public_dir%'
+    web_root: '%kernel.project_dir%/public'

@@ -114,21 +114,6 @@ class Kernel extends BaseKernel
         $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * Force root directory to be %kernel.project_dir/app, so bundle overrides can be found
-     * can still be found.
-     */
-    public function getRootDir()
-    {
-        if (null === $this->rootDir) {
-            $this->rootDir = implode(DIRECTORY_SEPARATOR, [realpath(dirname(__DIR__)), 'app']);
-        }
-
-        return $this->rootDir;
-    }
-
     public function getCacheDir(): string
     {
         $cacheDir = env('HITTRACKER_CACHE_DIR');
@@ -200,12 +185,4 @@ class Kernel extends BaseKernel
         return $logDir;
     }
 
-    protected function getKernelParameters(): array
-    {
-        $kernelParameters = parent::getKernelParameters();
-        $kernelParameters['kernel.config_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->getProjectDir()), 'etc']);
-        $kernelParameters['kernel.public_dir'] = implode(DIRECTORY_SEPARATOR, [realpath($this->getProjectDir()), 'public']);
-
-        return $kernelParameters;
-    }
 }
