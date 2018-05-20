@@ -104,7 +104,6 @@ class PackageCommand extends Command
     {
         $fs = $this->getFs();
         $fileName = $targetFile.'.bz2';
-        $badFileName = preg_replace('/-\d\d?\.\d\d?\.\d\d?\.tar\.bz2$/', '-0.tar.bz2', $fileName);
         // PharData will try to reuse an existing file
         foreach ([$badFileName, $fileName, $targetFile] as $oldPath) {
             if ($fs->exists($oldPath)) {
@@ -117,10 +116,6 @@ class PackageCommand extends Command
         $this->out->writeln('Compressing Archive');
 
         $archive->compress(\Phar::BZ2);
-
-        // Phar gets too greedy with the the '.' tokens when creating a .tar.bz2 filename, so we "fix" it.
-        // @todo remove when upgrading to php 7.2 fixed in php #74196
-        $fs->rename($badFileName, $fileName);
     }
 
     private function copyFiles(string $sourceDir, string $targetDir, bool $useExistingVendor = false): void
