@@ -10,8 +10,8 @@ environment:
         COMPOSER_NO_INTERACTION: 1
         HITTRACKER_BUILD_TYPE: electron
         HITTRACKER_SESSION_SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"
-        SYMFONY_DEBUG: "true"
-        SYMFONY_ENV: test
+        APP_DEBUG: 1
+        APP_ENV: test
 
 cache:
     - C:\ProgramData\chocolatey\bin -> .appveyor.yml

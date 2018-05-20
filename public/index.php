@@ -13,8 +13,8 @@ if (file_exists(__DIR__.'/../.env')) {
     $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');
     $dotEnv->load();
 }
-$env = env('SYMFONY_ENV', 'production');
-$debug = (bool) env('SYMFONY_DEBUG', false);
+$env = env('APP_ENV', 'production');
+$debug = (bool) env('APP_DEBUG', false);
 $buildType = env('HITTRACKER_BUILD_TYPE');
 
 $kernel = new Kernel($env, $debug, $buildType);
