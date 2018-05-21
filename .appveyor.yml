@@ -6,7 +6,7 @@ clone_folder: C:\HitTracker
 
 environment:
     global:
-        php_ver_target: 7.1
+        php_ver_target: 7.2
         COMPOSER_NO_INTERACTION: 1
         HITTRACKER_BUILD_TYPE: electron
         HITTRACKER_SESSION_SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"

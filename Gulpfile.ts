@@ -5,7 +5,8 @@ import * as download from 'download';
 import * as tmp from 'tmp';
 import * as util from 'util';
 
-const phpVersion = '7.1.6';
+// @todo get the php version from composer.json
+const phpVersion = '7.2.5';
 
 const fetchPhp = async (unpackDir: string, platform: string, arch: string) => {
     /*if (platform !== 'win32') {

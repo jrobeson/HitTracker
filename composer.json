@@ -13,7 +13,7 @@
         "files": [ "vendor/symfony/var-dumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": ">=7.1.5",
+        "php": ">=7.2",
         "cekurte/environment": "^0.3",
         "doctrine/dbal": "^2.7",
         "doctrine/doctrine-bundle": "^1.6",
