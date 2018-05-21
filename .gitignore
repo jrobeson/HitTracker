@@ -1,6 +1,7 @@
-/app/config/local_*
 /build/
 /node_modules
+/public/bundles/
+/tmp
 !/var/cache
 /var/cache/*
 !var/cache/.gitkeep
@@ -15,9 +16,11 @@
 !var/sessions/.gitkeep
 /var/uploads/*
 !var/uploads/.gitkeep
-
-/tmp
-/vendor/
+/vendor
 /composer.phar
+/.php_cs
 /.php_cs.cache
 /.env
+behat.yml
+.phpunit
+/phpunit.xml
