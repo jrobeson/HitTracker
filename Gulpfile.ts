@@ -40,12 +40,12 @@ const fetchCaddy = async (unpackDir: string, platform: string, arch: string) => 
 
     const caddyOs = platform === 'win32' ? 'windows' : platform;
 
-    const caddyArchMap = <any> {
+    const caddyArchMap = {
         ia32: '386',
         x64: 'amd64',
         arm: 'arm',
         arm64: 'arm64',
-    };
+    } as object;
     let caddyArch = caddyArchMap[arch];
     let caddyArm = '';
     if (caddyArch === 'arm') {
