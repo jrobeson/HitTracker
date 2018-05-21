@@ -10,10 +10,10 @@
 namespace LazerBall\HitTracker\Twig;
 
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
+use Twig_Extension;
+use Twig_Function;
 
-class LinkAttributesExtension extends AbstractExtension
+class LinkAttributesExtension extends Twig_Extension
 {
     private $csrfTokenManager;
     /** @var string */
@@ -33,8 +33,8 @@ class LinkAttributesExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('link_attr', [$this, 'getLinkAttributes'], ['is_safe' => ['html']]),
-            new TwigFunction('link_csrf', [$this, 'getCsrf']),
+            new Twig_Function('link_attr', [$this, 'getLinkAttributes'], ['is_safe' => ['html']]),
+            new Twig_Function('link_csrf', [$this, 'getCsrf']),
         ];
     }
 
