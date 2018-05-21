@@ -30,6 +30,9 @@ class LinkAttributesExtension extends Twig_Extension
         return 'link_attributes';
     }
 
+    /**
+     * @return Twig_Function[]
+     */
     public function getFunctions(): array
     {
         return [
@@ -38,11 +41,11 @@ class LinkAttributesExtension extends Twig_Extension
         ];
     }
 
-    public function getLinkAttributes($method, $confirm = 'Are you sure?'): string
+    public function getLinkAttributes(string $method, string $confirm = 'Are you sure?'): string
     {
         $html = sprintf('data-method="%s"', $method);
 
-        if (false !== $confirm) {
+        if ('' !== $confirm) {
             $html .= sprintf(' data-confirm="%s"', $confirm);
         } else {
             $html .= ' data-no-confirm';

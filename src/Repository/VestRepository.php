@@ -12,7 +12,7 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 class VestRepository extends EntityRepository
 {
     /** @return Vest[]|null */
-    public function findActiveVests(?string $unitType = null)
+    public function findActiveVests(?string $unitType = null): ?array
     {
         $query = ['active' => true];
         if (!empty($unitType)) {
@@ -23,7 +23,7 @@ class VestRepository extends EntityRepository
     }
 
     /** @return Vest[]|null */
-    public function findActiveVestsByColor($color)
+    public function findActiveVestsByColor(string $color): ?array
     {
         $query = ['active' => true];
         $query['color'] = $color;

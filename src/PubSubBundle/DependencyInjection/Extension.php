@@ -36,7 +36,10 @@ class Extension extends ConfigurableExtension
         $this->registerPubSubServices($container, $handlers);
     }
 
-    private function registerPubSubServices(ContainerBuilder $container, array $handlers)
+    /**
+     * @param mixed[] $handlers
+     */
+    private function registerPubSubServices(ContainerBuilder $container, array $handlers): void
     {
         $handlerDefinition = $container->findDefinition('hittracker_pubsub.handler');
 

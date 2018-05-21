@@ -64,7 +64,10 @@ class GameRepository extends EntityRepository
         return $this->matching($criteria)->first() ?: null;
     }
 
-    public function getActiveGames(): ? array
+    /**
+     * @return Game[]|null
+     */
+    public function getActiveGames(): ?array
     {
         $criteria = new Criteria();
 

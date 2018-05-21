@@ -90,7 +90,7 @@ class Kernel extends BaseKernel
         return $configFiles;
     }
 
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->addResource(new FileResource($this->getProjectDir().'/etc/bundles.php'));
 
@@ -105,7 +105,7 @@ class Kernel extends BaseKernel
         }
     }
 
-    protected function configureRoutes(RouteCollectionBuilder $routes)
+    protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
         $confDir = $this->getProjectDir().'/etc';
 
@@ -184,5 +184,4 @@ class Kernel extends BaseKernel
 
         return $logDir;
     }
-
 }

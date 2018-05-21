@@ -123,12 +123,12 @@ class NewGameData
         $this->team2 = ['name' => 'Team 2', 'players' => new ArrayCollection()];
     }
 
-    public function addPlayer(PlayerData $player, $team): void
+    public function addPlayer(PlayerData $player, string $team): void
     {
         $this->{'team'.$team}['players']->add($player);
     }
 
-    public function getArena()
+    public function getArena(): int
     {
         return $this->arena;
     }

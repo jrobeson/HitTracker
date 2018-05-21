@@ -35,7 +35,10 @@ class PartitionExtension extends Twig_Extension
         ];
     }
 
-    public function partition($items, $size = 2): array
+    /**
+     * @return mixed[]
+     */
+    public function partition(iterable $items, int $size = 2): array
     {
         if ($items instanceof \Traversable) {
             $items = iterator_to_array($items, false);

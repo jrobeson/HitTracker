@@ -105,7 +105,7 @@ class PackageCommand extends Command
         $fs = $this->getFs();
         $fileName = $targetFile.'.bz2';
         // PharData will try to reuse an existing file
-        foreach ([$badFileName, $fileName, $targetFile] as $oldPath) {
+        foreach ([$fileName, $targetFile] as $oldPath) {
             if ($fs->exists($oldPath)) {
                 $fs->remove($oldPath);
             }

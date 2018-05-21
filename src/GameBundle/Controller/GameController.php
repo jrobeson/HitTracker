@@ -40,7 +40,7 @@ class GameController extends ResourceController
             }
             $playerData->name = '';
             $playerData->team = 'Team '. $team;
-            $newGameData->addPlayer($playerData, $team);
+            $newGameData->addPlayer($playerData, (string) $team);
         }
         $formFactory = new DtoFormFactory($this->container->get('form.factory'));
         $form = $formFactory->create($configuration, $newGameData);
@@ -193,10 +193,8 @@ class GameController extends ResourceController
      * Register a hit
      *
      * @todo make it a real API
-     *
-     * @return JsonResponse
      */
-    public function hitAction(Request $request)
+    public function hitAction(Request $request): JsonResponse
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
@@ -245,7 +243,7 @@ class GameController extends ResourceController
         return new JsonResponse([], 200);
     }
 
-    public function notify(string $event, $game, $player, $zone = null)
+    public function notify(string $event, Game $game, Player $player, ?int $zone = null): void
     {
         $data = [
             'event' => $event,

@@ -37,7 +37,7 @@ final class DtoFormFactory
         $this->formFactory = $formFactory;
     }
 
-    public function create(RequestConfiguration $requestConfiguration, $dto): FormInterface
+    public function create(RequestConfiguration $requestConfiguration, object $dto): FormInterface
     {
         $formType = $requestConfiguration->getFormType();
         $formOptions = $requestConfiguration->getFormOptions();
