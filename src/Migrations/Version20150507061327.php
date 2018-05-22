@@ -19,15 +19,13 @@
  * @license AGPL-3
  */
 
-namespace LazerBall\HitTracker\Migrations;
+namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
 
 class Version20150507061327 extends AbstractMigration
 {
-    use Helpers;
-
     private function upPostgreSQL(Schema $schema)
     {
         $stmts = [];
@@ -94,7 +92,10 @@ class Version20150507061327 extends AbstractMigration
                   FOREIGN KEY (unit_id) REFERENCES units (id)
                   NOT DEFERRABLE INITIALLY IMMEDIATE';
 
-        $this->addStmts($stmts);
+
+        foreach ($stmts as $stmt) {
+            $this->addSql($stmt);
+        }
     }
 
     private function upSqlite(Schema $schema)
@@ -150,7 +151,9 @@ class Version20150507061327 extends AbstractMigration
                    )';
         $stmts[] = 'CREATE UNIQUE INDEX settings_idx ON sylius_settings (schema_alias, namespace)';
 
-        $this->addStmts($stmts);
+        foreach ($stmts as $stmt) {
+            $this->addSql($stmt);
+        }
     }
 
     public function up(Schema $schema)
@@ -187,6 +190,8 @@ class Version20150507061327 extends AbstractMigration
                 $stmts[] = 'DROP TABLE sylius_settings_parameter';
         }
 
-        $this->addStmts($stmts);
+        foreach ($stmts as $stmt) {
+            $this->addSql($stmt);
+        }
     }
 }

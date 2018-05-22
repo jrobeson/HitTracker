@@ -49,8 +49,8 @@ doctrine:
 
 doctrine_migrations:
     # can't use project_dir here yet due to migration bundle's Doctrine command
-    dir_name: "%kernel.root_dir%/../migrations"
-    namespace: "LazerBall\\HitTracker\\Migrations"
+    dir_name: "%kernel.project_dir%/src/Migrations"
+    namespace: "DoctrineMigrations"
 
 swiftmailer:
     transport: "%mailer_transport%"
