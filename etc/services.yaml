@@ -6,8 +6,6 @@ services:
         autoconfigure: true
         public: false
 
-    Twig\Extensions\IntlExtension: ~
-
     LazerBall\HitTracker\:
         resource: '../src/*'
         exclude: '../src/{Model,Repository,Tests,GameBundle,Controller}'
