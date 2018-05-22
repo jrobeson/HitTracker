@@ -1,22 +1,10 @@
 services:
     _defaults:
         public: false
-    pdo_session_handler.pdo_connection:
-        class: PDO
-        arguments:
-            - "pgsql:host=%database_host%;dbname=%database_name%"
-            - "%database_user%"
-            - "%database_password%"
-        calls:
-            - method: setAttribute
-              arguments:
-                  - 3 # PDO::ATTR_ERRMODE
-                  - 2 # PDO::ERRMODE_EXCEPTION
-
     pdo_session_handler:
         class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
         arguments:
-            - "@pdo_session_handler.pdo_connection"
+            - '%database_url%'
             - db_id_col: session_id
               db_data_col:  session_data
               db_time_col: session_time

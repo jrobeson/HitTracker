@@ -6,7 +6,6 @@ framework:
 doctrine:
     dbal:
         driver: pdo_sqlite
-        path: "%database_path%"
 
 hittracker_pubsub:
     handlers:

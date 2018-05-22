@@ -21,16 +21,13 @@ env:
         - HITTRACKER_BUILD_TYPE=hosted
           HITTRACKER_LOG_DIR="var/logs"
           HITTRACKER_CACHE_DIR="var/cache"
-          HITTRACKER_DATABASE_NAME=hittracker
-          HITTRACKER_DATABASE_USER=postgres
+          DATABASE_URL=pgsql://postgres@localhost/hittracker
         - HITTRACKER_BUILD_TYPE=appliance
           HITTRACKER_LOG_DIR="var/logs"
           HITTRACKER_CACHE_DIR="var/cache"
-          HITTRACKER_DATABASE_NAME=hittracker
-          HITTRACKER_DATABASE_USER=postgres
         - HITTRACKER_BUILD_TYPE=electron
           HITTRACKER_VAR_DIR="var"
-          HITTRACKER_DATABASE_PATH="var/data/hitttracker.db"
+          DATABASE_URL="sqlite:///var/data/hitttracker.db"
 
 services:
   - postgresql
