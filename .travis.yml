@@ -16,7 +16,7 @@ env:
         - COMPOSER_NO_INTERACTION=1
         - APP_DEBUG=1
         - APP_ENV=test
-        - HITTRACKER_SESSION_SECRET=ff3464e484bb524fb4234e893f9cee58
+        - APP_SECRET=ff3464e484bb524fb4234e893f9cee58
     matrix:
         - HITTRACKER_BUILD_TYPE=hosted
           HITTRACKER_LOG_DIR="var/logs"

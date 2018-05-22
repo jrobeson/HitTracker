@@ -1,7 +1,7 @@
 parameters:
     env(HITTRACKER_UPLOAD_DIR): "%kernel.project_dir%/var/uploads"
     database_url: '%env(resolve:DATABASE_URL)%'
-    secret: "%env(HITTRACKER_SESSION_SECRET)"
+    secret: "%env(APP_SECRET)"
     locale: en_US
     icu_time_date_format: 'MM/dd/y hh:mm a'
 
