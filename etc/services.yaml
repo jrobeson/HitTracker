@@ -27,7 +27,7 @@ services:
     # CSRF link extension
     LazerBall\HitTracker\EventListener\CsrfListener:
         arguments:
-            $csrfTokenId: "%csrf_link_token_id%"
+            $csrfTokenId: 'link'
 
     LazerBall\HitTracker\FileUploader:
         arguments:
@@ -38,4 +38,4 @@ services:
     # CSRF link extension
     LazerBall\HitTracker\Twig\LinkAttributesExtension:
         arguments:
-            $csrfTokenId: "%csrf_link_token_id%"
+            $csrfTokenId: 'link'
