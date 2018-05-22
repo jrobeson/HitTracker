@@ -7,8 +7,6 @@ framework:
     secret: "%secret%"
     session:
       name: SESSIONID
-    router:
-        strict_requirements: "%kernel.debug%"
     form:            ~
     csrf_protection: ~
     validation:
@@ -31,27 +29,10 @@ framework:
     php_errors:
         log: true
 
-twig:
-    paths:
-        "%kernel.project_dir%/templates":
-        "%kernel.project_dir%/templates/Pages": Pages
-    form_themes:
-        - bootstrap_3_horizontal_layout.html.twig
-        - 'form_theme.html.twig'
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-    globals:
-        livereload_script_url: "%livereload_http_url%"
-        icu_time_date_format: "%icu_time_date_format%"
-        build_type: "%hittracker_build_type%"
-        asset_path: "build"
-
 doctrine:
     dbal:
         driver:   pdo_pgsql
         charset:  UTF8
-        types:
-            uuid: Ramsey\Uuid\Doctrine\UuidType
         url: '%database_url%'
         server_version: 10
     orm:
