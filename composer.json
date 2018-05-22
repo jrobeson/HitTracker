@@ -40,6 +40,7 @@
         "sylius/resource-bundle": "dev-master@dev",
         "sylius/ui-bundle": "dev-master@dev",
         "symfony/debug-bundle": "^4.0",
+        "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/monolog-bundle": "^3.0",
         "symfony/process": "^4.0",
@@ -94,17 +95,23 @@
             }
     ],
     "scripts": {
-        "shared-scripts": [
-            "php bin/console cache:clear --no-warmup"
-        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
+        },
         "post-install-cmd": [
-            "@shared-scripts"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
-            "@shared-scripts"
+            "@auto-scripts"
         ]
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true
+        }
     }
 }

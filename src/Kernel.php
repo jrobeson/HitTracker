@@ -98,6 +98,13 @@ class Kernel extends BaseKernel
 
         $configFiles = $this->getConfigFiles($this->getEnvironment(), $this->getBuildType());
 
+        $confDir = $this->getProjectDir().'/etc';
+
+        $loader->load($confDir.'/{packages}/*'.self::CONFIG_EXTS, 'glob');
+        $loader->load($confDir.'/{packages}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
+        $loader->load($confDir.'/{services}'.self::CONFIG_EXTS, 'glob');
+        $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
+
         foreach ($configFiles as $configFile) {
             if (file_exists($configFile)) {
                 $loader->load($configFile);
