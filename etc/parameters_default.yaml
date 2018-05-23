@@ -1,9 +1,11 @@
 parameters:
     env(HITTRACKER_UPLOAD_DIR): "%kernel.project_dir%/var/uploads"
     env(MAILER_URL): 'null://localhost'
+    env(CORS_ALLOW_ORIGIN): '*'
     database_url: '%env(resolve:DATABASE_URL)%'
     mailer_url: '%env(MAILER_URL)%'
     secret: "%env(APP_SECRET)"
+    cors_allow_origin: '%env(CORS_ALLOW_ORIGIN)%'
     locale: en_US
     secure_cookies: true
     session_handler: pdo_session_handler

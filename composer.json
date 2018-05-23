@@ -31,6 +31,7 @@
         "incenteev/hashed-asset-bundle": "^1.0",
         "jms/serializer-bundle": "^2.0",
         "jrobeson/sylius-settings-bundle": "^1.0@dev",
+        "nelmio/cors-bundle": "^1.5",
         "nelmio/security-bundle": "^2.0",
         "nesbot/Carbon": "^1.18",
         "nikic/iter": "^1.2",
