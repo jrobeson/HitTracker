@@ -1,11 +1,3 @@
-imports:
-    - { resource: ../pdo_session_handler.yaml }
-
-framework:
-    session:
-        handler_id: pdo_session_handler
-        cookie_secure: true
-
 hittracker_pubsub:
     handlers:
         nginx_push_stream:

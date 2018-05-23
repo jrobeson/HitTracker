@@ -1,8 +1,13 @@
 parameters:
     env(HITTRACKER_UPLOAD_DIR): "%kernel.project_dir%/var/uploads"
+    env(MAILER_URL): 'null://localhost'
     database_url: '%env(resolve:DATABASE_URL)%'
+    mailer_url: '%env(MAILER_URL)%'
     secret: "%env(APP_SECRET)"
     locale: en_US
+    secure_cookies: true
+    session_handler: pdo_session_handler
+    database_driver: pdo_pgsql
     icu_time_date_format: 'MM/dd/y hh:mm a'
 
     upload_dir: "%env(HITTRACKER_UPLOAD_DIR)%"
@@ -10,10 +15,5 @@ parameters:
 
     livereload_http_url: "http://localhost/livereload.js"
     livereload_ws_url: "ws://localhost"
-
-    mailer_transport: ~
-    mailer_host: 127.0.0.1
-    mailer_user: ~
-    mailer_password: ~
 
     hittracker_build_type: "%env(HITTRACKER_BUILD_TYPE)%"

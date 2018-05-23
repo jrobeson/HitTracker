@@ -1,0 +1,53 @@
+nelmio_security:
+    signed_cookie:
+        names: ['*']
+    clickjacking:
+        paths:
+            '^/games/active': SAMEORIGIN
+            '^/games/scorecard': SAMEORIGIN
+            '^/.*': DENY
+    external_redirects:
+        abort: true
+        log: true
+    #csp:
+    #    report_logger_service: monolog.logger.security
+    #    report:
+    #        report-uri: [/csp/report]
+    #        default-src: [ 'self' ]
+    #        img-src:
+    #            - 'data:'
+    #            - 'self'
+    #        object-src:
+    #            - 'none'
+    #        style-src:
+    #            - 'unsafe-inline'
+    #            - 'self'
+    #        frame-src:
+    #            - 'blackfire.io'
+    #            - 'self'
+    #    enforce:
+    #        report-uri: [/csp/report]
+    #        script-src:
+    #            - 'self'
+
+    # Send a full URL in the `Referer` header when performing a same-origin request,
+    # only send the origin of the document to secure destination (HTTPS->HTTPS),
+    # and send no header to a less secure destination (HTTPS->HTTP).
+    # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
+    # no referrer information is sent along with requests.
+    #referrer_policy:
+    #    enabled: true
+    #    policies:
+    #        - 'no-referrer'
+    #        - 'strict-origin-when-cross-origin'
+
+    content_type:
+        nosniff: true
+
+    # forces Microsoft's XSS-Protection with
+    # its block mode
+    xss_protection:
+        enabled: true
+        mode_block: true
+
+
