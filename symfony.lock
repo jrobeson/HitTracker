@@ -524,6 +524,9 @@
     "symfony/dom-crawler": {
         "version": "v4.0.9"
     },
+    "symfony/dotenv": {
+        "version": "v4.0.10"
+    },
     "symfony/event-dispatcher": {
         "version": "v4.0.9"
     },
@@ -584,6 +587,9 @@
     "symfony/options-resolver": {
         "version": "v4.0.9"
     },
+    "symfony/orm-pack": {
+        "version": "v1.0.5"
+    },
     "symfony/phpunit-bridge": {
         "version": "3.3",
         "recipe": {
@@ -598,6 +604,9 @@
     },
     "symfony/process": {
         "version": "v4.0.9"
+    },
+    "symfony/profiler-pack": {
+        "version": "v1.0.3"
     },
     "symfony/property-access": {
         "version": "v4.0.9"
