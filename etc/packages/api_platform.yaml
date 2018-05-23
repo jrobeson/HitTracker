@@ -1,0 +1,15 @@
+api_platform:
+    title: 'LazerBall HitTracker'
+
+    # The description of the API.
+    description: 'API to manage LazerBall HitTracker Games'
+
+    # The version of the API.
+    version: '0.0.1'
+    collection:
+        pagination:
+            client_enabled: true
+            client_items_per_page: true
+            items_per_page: 10
+    mapping:
+        paths: ['%kernel.project_dir%/src/Model']

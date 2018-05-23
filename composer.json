@@ -17,6 +17,7 @@
     },
     "require": {
         "php": ">=7.2",
+        "api-platform/core": "^2.2",
         "cekurte/environment": "^0.3",
         "doctrine/dbal": "^2.7",
         "doctrine/doctrine-bundle": "^1.6",
