@@ -7,7 +7,10 @@
     "autoload": {
         "psr-4": {
             "LazerBall\\HitTracker\\": "src/"
-        }
+        },
+        "exclude-from-classmap": [
+            "src/Migrations/"
+        ]
     },
     "autoload-dev": {
         "files": [ "vendor/symfony/var-dumper/Resources/functions/dump.php" ]
