@@ -120,7 +120,7 @@ class PackageCommand extends Command
 
     private function copyFiles(string $sourceDir, string $targetDir, bool $useExistingVendor = false): void
     {
-        $appDirs = ['bin', 'etc', 'migrations', 'src', 'public', 'translations', 'templates'];
+        $appDirs = ['bin', 'etc', 'src', 'public', 'translations', 'templates'];
         if ($useExistingVendor) {
             $appDirs[] = 'vendor';
         }
