@@ -18,4 +18,4 @@ parameters:
     livereload_http_url: "http://localhost/livereload.js"
     livereload_ws_url: "ws://localhost"
 
-    hittracker_build_type: "%env(HITTRACKER_BUILD_TYPE)%"
+    hittracker_build_type: "%env(APP_BUILD_TYPE)%"
