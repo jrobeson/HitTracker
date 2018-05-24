@@ -1,11 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-use function Cekurte\Environment\env;
 use LazerBall\HitTracker\Kernel;
+
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Dotenv\Dotenv;
 
 set_time_limit(0);
 ini_set('memory_limit', -1);
@@ -13,19 +14,17 @@ ini_set('display_errors', 'On');
 
 require __DIR__.'/../vendor/autoload.php';
 
-if (file_exists(__DIR__.'/../.env')) {
-    $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');
-    $dotEnv->load();
+if (!isset($_SERVER['APP_ENV']) && file_exists(__DIR__.'/../.env')) {
+    (new Dotenv())->load(__DIR__.'/../.env');
 }
 
+$envVars = Kernel::getVarsFromEnv();
 $input = new ArgvInput();
-$env = $input->getParameterOption(['--env', '-e'], env('APP_ENV', 'development'));
-$debug = (bool) env('APP_DEBUG', true)
-    && !$input->hasParameterOption(['--no-debug', ''])
-    && $env !== 'prod';
+$env = $input->getParameterOption(['--env', '-e'], $envVars['APP_ENV'], true);
 
-$defaultBuildType = env('HITTRACKER_BUILD_TYPE', 'local');
-$buildType = $input->getParameterOption(['--build-type', '-b'], $defaultBuildType);
+$debug = (bool) ($envVars['APP_DEBUG'] ?? ('production' !== $env)) && !$input->hasParameterOption('--no-debug', true);
+
+$buildType = $input->getParameterOption(['--build-type', '-b'], $envVars['APP_BUILD_TYPE']);
 
 $kernel = new Kernel($env, $debug, $buildType);
 

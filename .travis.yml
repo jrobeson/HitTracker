@@ -18,15 +18,15 @@ env:
         - APP_ENV=test
         - APP_SECRET=ff3464e484bb524fb4234e893f9cee58
     matrix:
-        - HITTRACKER_BUILD_TYPE=hosted
-          HITTRACKER_LOG_DIR="var/logs"
-          HITTRACKER_CACHE_DIR="var/cache"
+        - APP_BUILD_TYPE=hosted
+          APP_LOG_DIR="var/logs"
+          APP_CACHE_DIR="var/cache"
           DATABASE_URL=pgsql://postgres@localhost/hittracker
-        - HITTRACKER_BUILD_TYPE=appliance
-          HITTRACKER_LOG_DIR="var/logs"
-          HITTRACKER_CACHE_DIR="var/cache"
-        - HITTRACKER_BUILD_TYPE=electron
-          HITTRACKER_VAR_DIR="var"
+        - APP_BUILD_TYPE=appliance
+          APP_LOG_DIR="var/logs"
+          APP_CACHE_DIR="var/cache"
+        - APP_BUILD_TYPE=electron
+          APP_VAR_DIR="var"
           DATABASE_URL="sqlite:///var/data/hitttracker.db"
 
 services:
@@ -35,7 +35,7 @@ addons:
     postgresql: '9.6'
 
 install:
-    - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$HITTRACKER_BUILD_TYPE/php-unix-development.ini
+    - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$APP_BUILD_TYPE/php-unix-development.ini
     - export PHP_INI_SCAN_DIR=""
     - composer install --prefer-dist --no-suggest
 
@@ -51,7 +51,7 @@ script:
     - ./vendor/bin/phpunit
 
 before_deploy:
-    - php bin/package.php --build-version=$TRAVIS_TAG --build-platform=linux --build-type=$HITTRACKER_BUILD_TYPE --compress --use-existing-vendor
+    - php bin/package.php --build-version=$TRAVIS_TAG --build-platform=linux --build-type=$APP_BUILD_TYPE --compress --use-existing-vendor
 
 deploy:
     provider: releases

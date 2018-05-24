@@ -50,6 +50,17 @@ class Kernel extends BaseKernel
         parent::__construct($environment, $debug);
     }
 
+    public static function getVarsFromEnv()
+    {
+        return [
+            'APP_ENV' => $_SERVER['APP_ENV'] ?? 'production',
+            'APP_DEBUG' => $_SERVER['APP_DEBUG'] ?? 0,
+            'APP_LOG_DIR' => $_SERVER['APP_LOG_DIR'] ?? null,
+            'APP_CACHE_DIR' => $_SERVER['APP_CACHE_DIR'] ?? null,
+            'APP_VAR_DIR' => $_SERVER['APP_VAR_DIR'] ?? null,
+            'APP_BUILD_TYPE' => $_SERVER['APP_BUILD_TYPE'] ?? 'local',
+        ];
+    }
     public function registerBundles(): iterable
     {
         $contents = require $this->getProjectDir().'/etc/bundles.php';
@@ -121,12 +132,12 @@ class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
-        $cacheDir = env('HITTRACKER_CACHE_DIR');
+        $cacheDir = self::getVarsFromEnv()['APP_CACHE_DIR'];
         if ($cacheDir) {
             return $cacheDir;
         }
 
-        $varDir = env('HITTRACKER_VAR_DIR');
+        $varDir = self::getVarsFromEnv()['APP_VAR_DIR'];
         if ($varDir) {
             return implode(DIRECTORY_SEPARATOR, [$varDir, 'cache']);
         }
@@ -134,7 +145,7 @@ class Kernel extends BaseKernel
         switch ($this->buildType) {
             case 'electron':
                 if (!$varDir) {
-                    throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
+                    throw new UnexpectedValueException('"APP_VAR_DIR" env var must be set for Electron.');
                 }
                 break;
             case 'appliance':
@@ -159,12 +170,12 @@ class Kernel extends BaseKernel
 
     public function getLogDir(): string
     {
-        $logDir = env('HITTRACKER_LOG_DIR');
+        $logDir = self::getVarsFromEnv()['APP_LOG_DIR'];
         if ($logDir) {
             return $logDir;
         }
 
-        $varDir = env('HITTRACKER_VAR_DIR');
+        $varDir = self::getVarsFromEnv()['APP_VAR_DIR'];
         if ($varDir) {
             return implode(DIRECTORY_SEPARATOR, [$varDir, 'log']);
         }
@@ -172,7 +183,7 @@ class Kernel extends BaseKernel
         switch ($this->buildType) {
             case 'electron':
                 if (!$varDir) {
-                    throw new UnexpectedValueException('"HITTRACKER_VAR_DIR" env var must be set for Electron.');
+                    throw new UnexpectedValueException('"APP_VAR_DIR" env var must be set for Electron.');
                 }
                 break;
             case 'appliance':

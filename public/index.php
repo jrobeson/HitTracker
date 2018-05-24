@@ -4,20 +4,21 @@
  */
 use LazerBall\HitTracker\AppCache;
 use LazerBall\HitTracker\Kernel;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
-use function Cekurte\Environment\env;
 
 require __DIR__.'/../vendor/autoload.php';
 
-if (file_exists(__DIR__.'/../.env')) {
-    $dotEnv = new \Dotenv\Dotenv(__DIR__.'/../');
-    $dotEnv->load();
-}
-$env = env('APP_ENV', 'production');
-$debug = (bool) env('APP_DEBUG', false);
-$buildType = env('HITTRACKER_BUILD_TYPE');
 
-$kernel = new Kernel($env, $debug, $buildType);
+if (!isset($_SERVER['APP_ENV']) && file_exists(__DIR__.'/../.env')) {
+    (new Dotenv())->load(__DIR__.'/../.env');
+}
+
+$envVars = Kernel::getVarsFromEnv();
+$env = $envVars['APP_ENV'];
+$debug = (bool) ($envVars['APP_DEBUG'] ?? ('production' !== $env));
+
+$kernel = new Kernel($env, $debug, $envVars['APP_BUILD_TYPE']);
 
 if ('development' !== $env) {
     $kernel = new AppCache($kernel);
