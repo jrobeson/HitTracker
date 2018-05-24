@@ -189,7 +189,7 @@ class Player implements ResourceInterface
 
     public function getRadioId(): ?string
     {
-        $this->getUnit()->getRadioId();
+        return $this->getUnit()->getRadioId();
     }
 
     /**
