@@ -49,7 +49,7 @@ class GameController extends ResourceController
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
 
-            $newResource = new Game($newGameData->gameType, $newGameData->gameLength, $newGameData->settings, $newGameData->arena);
+            $newResource = new Game($newGameData->gameType, $newGameData->gameLength, $newGameData->settings, $newGameData->getArena());
             foreach ([$newGameData->team1, $newGameData->team2] as $team) {
                 foreach ($team['players'] as $player) {
                     $newResource->addPlayer(new Player($player->name, $player->unit, $player->hitPoints, $player->team));

@@ -34,7 +34,7 @@ class NewGameData
      *      message="hittracker.game.arena_not_exists"
      * )
      */
-    public $arena;
+    private $arena = 1;
 
     public $settings;
 
@@ -128,6 +128,15 @@ class NewGameData
         $this->{'team'.$team}['players']->add($player);
     }
 
+    /**
+     * A workaround for the conditional hidden arena form field
+     *
+     * @param int|string $arena
+     */
+    public function setArena($arena): void
+    {
+        $this->arena = (int) $arena;
+    }
     public function getArena(): int
     {
         return $this->arena;
