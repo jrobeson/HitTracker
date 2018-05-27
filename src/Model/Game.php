@@ -77,13 +77,14 @@ class Game implements ResourceInterface
 
     /**
      * @var int
+     * @ORM\Column(type="integer")
      * @Assert\Type("integer")
      * @Assert\GreaterThan(
      *      value=0,
      *      message="hittracker.game.not_long_enough"
      * )
      */
-    protected $gameLength;
+    protected $length;
 
     /**
      * @var string
@@ -92,13 +93,13 @@ class Game implements ResourceInterface
      */
     protected $gameType;
 
-    public function __construct(string $gameType, int $gameLength, MatchSettings $settings, int $arena = 1, ?\DateTime $createdAt = null)
+    public function __construct(string $gameType, int $length, MatchSettings $settings, int $arena = 1, ?\DateTime $createdAt = null)
     {
         $this->arena = $arena;
         $this->gameType = $gameType;
         $this->players = new ArrayCollection();
         $this->createdAt = $createdAt ?? new \DateTime();
-        $this->setGameLength($gameLength);
+        $this->setGameLength($length);
         $this->settings = $settings;
     }
 
@@ -127,31 +128,19 @@ class Game implements ResourceInterface
      */
     private function setGameLength(int $minutes): void
     {
-        $this->gameLength = $minutes;
+        $this->length = $minutes;
 
         $end = clone $this->createdAt;
-        $end->add(new \DateInterval('PT'.$this->gameLength.'M'));
+        $end->add(new \DateInterval('PT'.$this->length.'M'));
         $this->endsAt = $end;
     }
 
     /**
-     * @todo We only want to return an int or array, not both.
-     *       Need to split the normal object usage from forms.
-     *
-     * @return array|int the length of the game in minutes and seconds
+     * @return int the length of the game in minutes
      */
-    public function getGameLength()
+    public function getGameLength(): int
     {
-        if (empty($this->gameLength) && !empty($this->createdAt)) {
-            $parts = $this->timeTotal();
-
-            return [
-                'hours' => $parts->h,
-                'minutes' => $parts->i,
-            ];
-        }
-
-        return $this->gameLength;
+        return $this->length;
     }
 
     /** @return string[] */
