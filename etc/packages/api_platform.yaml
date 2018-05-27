@@ -13,3 +13,8 @@ api_platform:
             items_per_page: 10
     mapping:
         paths: ['%kernel.project_dir%/src/Model']
+services:
+    _defaults:
+        public: false
+    name_converter_snake_case:
+        class: Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
