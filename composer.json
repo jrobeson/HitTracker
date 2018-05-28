@@ -30,7 +30,7 @@
         "igorw/get-in": "^1.0",
         "incenteev/hashed-asset-bundle": "^1.0",
         "jms/serializer-bundle": "^2.0",
-        "jrobeson/sylius-settings-bundle": "^1.0@dev",
+        "jrobeson/sylius-settings-bundle": "^1.0",
         "nelmio/cors-bundle": "^1.5",
         "nelmio/security-bundle": "^2.0",
         "nesbot/Carbon": "^1.18",
