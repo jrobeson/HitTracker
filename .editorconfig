@@ -9,7 +9,5 @@ insert_final_newline = true
 trim_trailing_whitespace = true
  [*.{diff,md}]
 trim_trailing_whitespace = false
-[*.coffee]
-indent_size = 2
-[package.json]
+[*.{coffee,js,json,jsx,ts,tsx,vue}]
 indent_size = 2
