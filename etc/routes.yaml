@@ -1,14 +1,14 @@
 nelmio_csp_reporter:
     path: /csp/report
     defaults:
-        _controller: "nelmio_security.csp_reporter_controller:indexAction"
+        _controller: "nelmio_security.csp_reporter_controller::indexAction"
     methods:  [POST]
 
 hittracker_vest_index:
     path: /vests
     methods: [GET]
     defaults:
-        _controller: hittracker.controller.vest:indexAction
+        _controller: hittracker.controller.vest::indexAction
         _sylius:
             paginate: 40
             sortable: true
@@ -18,7 +18,7 @@ hittracker_vest_create:
     path: /vests/new
     methods: [GET, POST]
     defaults:
-        _controller: hittracker.controller.vest:createAction
+        _controller: hittracker.controller.vest::createAction
         _sylius:
             redirect: hittracker_vest_index
 
@@ -26,7 +26,7 @@ hittracker_vest_update:
     path: /vests/{id}/edit
     methods: [GET, PUT]
     defaults:
-        _controller: hittracker.controller.vest:updateAction
+        _controller: hittracker.controller.vest::updateAction
         _sylius:
             redirect: hittracker_vest_index
 
@@ -34,13 +34,13 @@ hittracker_vest_delete:
     path: /vests/{id}
     methods: [DELETE]
     defaults:
-        _controller: hittracker.controller.vest:deleteAction
+        _controller: hittracker.controller.vest::deleteAction
 
 hittracker_game_create:
     path: /games/new
     methods: [GET, POST]
     defaults:
-        _controller: hittracker.controller.game:createAction
+        _controller: hittracker.controller.game::createAction
         _sylius:
             redirect:
                 route: hittracker_game_active
@@ -50,7 +50,7 @@ hittracker_game_hit:
     path: /games/hit
     methods: [POST]
     defaults:
-        _controller: hittracker.controller.game:hitAction
+        _controller: hittracker.controller.game::hitAction
 
 hittracker_game_active:
     path: /games/active/{arena}
@@ -58,7 +58,7 @@ hittracker_game_active:
         arena:  \d+
     methods: [GET]
     defaults:
-        _controller: hittracker.controller.game:showBlankAction
+        _controller: hittracker.controller.game::showBlankAction
         arena : 1
         _sylius:
             template: '@HitTrackerGame/Game/active.html.twig'
@@ -72,7 +72,7 @@ hittracker_game_scoreboard:
         arena:  \d+
     methods: [GET]
     defaults:
-        _controller: hittracker.controller.game:showBlankAction
+        _controller: hittracker.controller.game::showBlankAction
         arena : 1
         _sylius:
             template: '@HitTrackerGame/Game/scoreboard.html.twig'
@@ -86,7 +86,7 @@ hittracker_game_scorecard:
         id:  \d+
     methods: [GET]
     defaults:
-        _controller: hittracker.controller.game:showAction
+        _controller: hittracker.controller.game::showAction
         _sylius:
             template: '@HitTrackerGame/Game/scorecard.html.twig'
 
@@ -96,7 +96,7 @@ hittracker_game_stop:
         id:  \d+
     methods: [PATCH]
     defaults:
-        _controller: hittracker.controller.game:stopAction
+        _controller: hittracker.controller.game::stopAction
 
 hittracker_game:
     resource: |
@@ -108,7 +108,7 @@ hittracker_game_index:
     path: /games
     methods: [GET]
     defaults:
-        _controller: hittracker.controller.game:indexAction
+        _controller: hittracker.controller.game::indexAction
         _sylius:
             paginate: 20
             sorting:
@@ -118,14 +118,14 @@ hittracker_game_index:
 hittracker_game_settings:
     path: /settings/games
     defaults:
-        _controller: "sylius.controller.settings:updateAction"
+        _controller: "sylius.controller.settings::updateAction"
         template: "Settings/update.html.twig"
         schema: game
 
 hittracker_site_settings:
     path: /settings/site
     defaults:
-        _controller: "sylius.controller.settings:updateAction"
+        _controller: "sylius.controller.settings::updateAction"
         template: "Settings/update.html.twig"
         schema: site
 
