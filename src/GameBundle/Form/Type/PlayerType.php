@@ -58,7 +58,7 @@ class PlayerType extends AbstractType
                   'label' => 'hittracker.game.hit_points',
                   'attr' => [
                     'step' => $gameSettings->get('player_hit_points_deducted'),
-                    'class' => 'hidden'
+                    'class' => 'd-none'
                   ]
             ])
         ;

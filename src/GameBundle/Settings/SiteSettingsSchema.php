@@ -60,74 +60,56 @@ class SiteSettingsSchema implements SchemaInterface
             ->add('arenas', IntegerType::class, [
                 'label' => 'hittracker.settings.site.arenas',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.arenas.help',
-                ],
+                'help' => 'hittracker.settings.site.arenas.help',
             ])
             ->add('business_name', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'constraints' => [new Assert\NotBlank()],
                 'label' => 'hittracker.settings.site.business_name',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_name.help',
-                ],
+                'help' => 'hittracker.settings.site.business_name.help',
             ])
             ->add('business_address', TextareaType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_address',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_address.help',
-                ],
+                'help' => 'hittracker.settings.site.business_address.help',
             ])
             ->add('business_phone', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
+                'help' => 'hittracker.settings.site.business_phone.help',
                 'label' => 'hittracker.settings.site.business_phone',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_phone.help',
-                ],
             ])
             ->add('business_email', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_email',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_email.help',
-                ],
+                'help' => 'hittracker.settings.site.business_email.help',
             ])
             /*->add('business_facebook_account', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_facebook_account',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_facebook_account.help',
-                ],
+                'help' => 'hittracker.settings.site.business_facebook_account.help',
             ])
             ->add('business_facebook_page', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_facebook_page',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_facebook_page.help',
-                ],
+                'help' => 'hittracker.settings.site.business_facebook_page.help',
             ])
             ->add('business_twitter_account', TextType::class, [
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.business_twitter_account',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.business_twitter_account.help',
-                ],
+                'help' => 'hittracker.settings.site.business_twitter_account.help',
             ])*/
             ->add('scoreboard_logo', GenericFileType::class, [
                 'upload_uri_prefix' => $uploadUriPrefix,
                 'upload_use_provided_file_name' => true,
                 'label' => 'hittracker.settings.site.scoreboard_logo',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.scoreboard_logo.help',
-                ],
+                'help' => 'hittracker.settings.site.scoreboard_logo.help',
                'required' => false,
             ])
             ->add('scoreboard_banner_1', GenericFileType::class, [
@@ -136,18 +118,14 @@ class SiteSettingsSchema implements SchemaInterface
                 'required' => false,
                 'empty_data' => '',
                 'label' => 'hittracker.settings.site.scoreboard_banner_1',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.scoreboard_banner_1.help',
-                ],
+                'help' => 'hittracker.settings.site.scoreboard_banner_1.help',
             ])
             ->add('scoreboard_banner_2', GenericFileType::class, [
                 'upload_uri_prefix' => $uploadUriPrefix,
                 'upload_use_provided_file_name' => true,
                 'required' => false,
                 'label' => 'hittracker.settings.site.scoreboard_banner_2',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.site.scoreboard_banner_2.help',
-                ],
+                'help' => 'hittracker.settings.site.scoreboard_banner_2.help',
             ])
         ;
     }

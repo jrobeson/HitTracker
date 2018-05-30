@@ -5,32 +5,32 @@
     <h1>{{ 'hittracker.vest.list'|trans }}</h1>
 
     {{ pagination(vests) }}
-    <table class="table-striped">
+    <table class="table table-responsive table-sm table-striped">
         <thead>
             <tr>
-                <th class="col-lg-1">{{ 'hittracker.vest.id'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.vest.radio_id'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.vest.unit_type'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.vest.color'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.vest.zones'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.vest.status'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.date_added'|trans }}</th>
-                <th class="col-lg-1">{{ 'hittracker.options'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.vest.id'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.vest.radio_id'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.vest.unit_type'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.vest.color'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.vest.zones'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.vest.status'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.date_added'|trans }}</th>
+                <th class="col-xl-1">{{ 'hittracker.options'|trans }}</th>
             </tr>
         </thead>
         <tbody>
             {% for vest in vests %}
             <tr>
-                <td class="col-lg-1">{{ vest.id }}</td>
-                <td class="col-lg-1">{{ vest.radioId }}</td>
-                <td class="col-lg-1">{{ vest.unitType }}</td>
-                <td class="col-lg-1">{{ vest.color }}</td>
-                <td class="col-lg-1">{{ vest.zones }}</td>
-                <td class="col-lg-1">{{ vest.active }}</td>
-                <td class="col-lg-1">
+                <td class="col-xl-1">{{ vest.id }}</td>
+                <td class="col-xl-1">{{ vest.radioId }}</td>
+                <td class="col-xl-1">{{ vest.unitType }}</td>
+                <td class="col-xl-1">{{ vest.color }}</td>
+                <td class="col-xl-1">{{ vest.zones }}</td>
+                <td class="col-xl-1">{{ vest.active }}</td>
+                <td class="col-xl-1">
                     {{ vest.createdAt|localizeddate(format=icu_time_date_format) }}
                 </td>
-                <td class="col-lg-2">
+                <td class="col-lx-2">
                     <a href="{{ path('hittracker_vest_update', {id: vest.id}) }}">
                         {{ 'hittracker.edit'|trans }}
                     </a>

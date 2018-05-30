@@ -17,7 +17,7 @@
  * @copyright 2014 <johnny@localmomentum.net>
  * @license AGPL-3
  */
-import 'bootstrap-sass';
+import 'bootstrap';
 import 'jquery-countdown';
 import './jquery-ujs.js';
 import './jquery.color.js';

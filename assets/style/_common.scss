@@ -1,22 +1,20 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $fa-font-path: '~font-awesome/fonts' !default;
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/theme";
 @import "~font-awesome/scss/font-awesome";
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
 @import 'games';
 
-html, body {
-  height: 100%;
+html {
+  font-size: .9rem;
 }
 
-#content-wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -#{$footer-height};
-  padding: $navbar-height .5em $footer-height .5em;
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1rem;
+  }
 }
 
-footer {
-  height: $footer-height;
+body {
+  min-height: 100vh;
+  padding-top: $navbar-height;
 }

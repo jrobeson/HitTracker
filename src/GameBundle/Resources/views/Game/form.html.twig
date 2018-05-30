@@ -7,46 +7,46 @@
 {{  form_errors(form) }}
 
 <div class="row">
-    <div class="col-xs-6 col-md-2">
+    <div class="col-6 col-lg-2">
     {{ form_row(form.game_type) }}
     </div>
-    <div class="col-xs-6 col-md-2">
+    <div class="col-6 col-lg-2">
     {{ form_row(form.game_length) }}
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-6 col-md-3">
+    <div class="col-6 col-lg-3">
         {{ form_row(form.settings.playerHitPoints) }}
     </div>
-    <div class="col-xs-6 col-md-3">
+    <div class="col-6 col-lg-3">
         {{ form_row(form.settings.playerHitPointsDeducted) }}
     </div>
-    <div class="col-xs-6 col-md-3">
+    <div class="col-6 col-lg-3">
         {{ form_row(form.settings.playerScorePerHit) }}
     </div>
 
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-lg-4">
     {{ form_row(form.reload_players) }}
     </div>
 </div>
 <div class="row players">
     {% for team in [form.team1, form.team2] %}
-        <div class="col-lg-6 new-game-teams">
+        <div class="col-xl-6 new-game-teams">
             <div class="row">
-                <div class="col-xs-2">
+                <div class="col-12 col-md-2">
                     <div class="form-group team-no">
                         {{  form_widget(team.name) }}
                     </div>
                 </div>
-                <div class="form-control-static col-xs-6">
+                <div class="form-control-static col-6">
                     {{ 'hittracker.game.player_name'|trans }}
                 </div>
-                <div class="form-control-static col-xs-3">
+                <div class="form-control-static col-3">
                     {{ 'hittracker.game.vest'|trans }}
                 </div>
-                    {% if not 'hidden' == team.players|first.children.hitPoints.vars.attr.class %}
+                    {% if not 'd-none' == team.players|first.children.hitPoints.vars.attr.class %}
                     {{ 'hittracker.game.hit_points'|trans }}
                     {% endif %}
             </div>
@@ -54,13 +54,13 @@
                 <div class="row player player-{{ loop.index }}">
                     {% set team_no = 'hittracker.game.team_no'|trans({'%team_no%': loop.parent.loop.index}) %}
                     {{ form_row(player.team, {'value': team_no}) }}
-                    <div class="col-xs-2">
+                    <div class="col-2">
                         {{ '%02d'|format(loop.index) }}
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-6">
                         {{ form_row(player.name, {'label': false}) }}
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-3">
                         {{ form_row(player.unit, {'label': false}) }}
                     </div>
                         {{ form_row(player.hitPoints, {'label': false}) }}
@@ -71,10 +71,10 @@
 </div>
 <br />
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-3">
         {{ form_row(form.start, {'attr': {class: 'btn btn-primary'}}) }}
     </div>
-    <div class="col-lg-1">
+    <div class="col-3">
         {{ form_row(form.reset, {'attr': {class: 'btn btn-danger'}}) }}
     </div>
 </div>

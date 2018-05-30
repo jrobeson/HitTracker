@@ -1,8 +1,8 @@
-$navbar-height: 40px;
-$footer-height: 60px;
+$navbar-height: 4.5rem;
 
-$navbar-inverse-link-color: #fff;
-$navbar-inverse-link-hover-color: lighten(#777, 15%);
+$navbar-dark-color: #fff;
+$navbar-dark-hover-color: lighten(#777, 15%);
+
 @import 'common';
 
 table {

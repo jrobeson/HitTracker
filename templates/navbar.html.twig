@@ -1,71 +1,67 @@
-<nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ path('home') }}">
-                Hit Tracker
-            </a>
-        </div>
-        <div class="navbar-collapse collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                   <a href="{{ path('home') }}">
-                      {{ 'hittracker.home'|trans }}
-                   </a>
-                </li>
-                <li>
-                    <a href="{{ path('hittracker_game_create') }}">
-                        {{ 'hittracker.game.new'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('hittracker_game_index') }}">
-                        {{ 'hittracker.game.list'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('hittracker_vest_index') }}">
-                        {{ 'hittracker.vest.list'|trans }}
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{{ path('hittracker_game_active') }}">
-                        {{ 'hittracker.game.active'|trans }}
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ path('hittracker_game_scoreboard') }}" target="_blank">
-                        {{ 'hittracker.game.scoreboard'|trans }}
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ path('hittracker_game_settings') }}">
-                                {{ 'hittracker.settings.game'|trans }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ path('hittracker_site_settings') }}">
-                                {{ 'hittracker.settings.site'|trans }}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+<nav role="navigation" class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-ex1-collapse" aria-controls="navbar-ex1-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{{ path('home') }}">
+            Hit Tracker
+        </a>
+    </div>
+    <div class="navbar-collapse collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active nav-item">
+                <a href="{{ path('home') }}" class="nav-link">
+                    {{ 'hittracker.home'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('hittracker_game_create') }}" class="nav-link">
+                    {{ 'hittracker.game.new'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('hittracker_game_index') }}" class="nav-link">
+                    {{ 'hittracker.game.list'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('hittracker_vest_index') }}" class="nav-link">
+                    {{ 'hittracker.vest.list'|trans }}
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="{{ path('hittracker_game_active') }}" class="nav-link">
+                    {{ 'hittracker.game.active'|trans }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('hittracker_game_scoreboard') }}" class="nav-link" target="_blank">
+                    {{ 'hittracker.game.scoreboard'|trans }}
+                </a>
+            </li>
+            <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Settings<span class="caret"></span></a>
+                <ul class="dropdown-menu bg-dark" role="menu">
+                    <li class="dropdown-item">
+                        <a href="{{ path('hittracker_game_settings') }}" class="nav-link">
+                            {{ 'hittracker.settings.game'|trans }}
+                        </a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href="{{ path('hittracker_site_settings') }}" class="nav-link">
+                            {{ 'hittracker.settings.site'|trans }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li>
-                    <a href="{{ path('page', {name: 'help'}) }}">
-                        {{ 'hittracker.help'|trans }}
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <li class="nav-item">
+                <a href="{{ path('page', {name: 'help'}) }}" class="nav-link">
+                    {{ 'hittracker.help'|trans }}
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>

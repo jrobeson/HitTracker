@@ -1,7 +1,7 @@
 <div id="flashes">
 {% if app.session.flashbag.keys is not empty %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             {% for type, flashes in app.session.flashbag.all() %}
                 {% for flash in flashes %}
                     {% set alert_auto_dismiss = type == 'success' ? 'data-auto-dismiss="2"' : '' %}

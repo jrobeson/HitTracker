@@ -57,76 +57,55 @@ class GameSettingsSchema implements SchemaInterface
             ->add('game_length', IntegerType::class, [
                 'label' => 'hittracker.settings.game.length',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.length.help'
-                ],
+                'help' => 'hittracker.settings.game.length.help',
             ])
             ->add('game_type', ChoiceType::class, [
                 'choices' => array_combine(Game::getHumanGameTypes(), Game::getGameTypes()),
                 'label' => 'hittracker.settings.game.type',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.type.help'
-                ],
+                'help' => 'hittracker.settings.game.type.help',
             ])
             ->add('player_count', IntegerType::class, [
                 'label' => 'hittracker.settings.game.players_per_game',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.players_per_game.help'
-                 ],
+                'help' => 'hittracker.settings.game.players_per_game.help',
             ])
             ->add('team_count', IntegerType::class, [
                 'label' => 'hittracker.settings.game.team_count',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.team_count.help'
-                ],
+                'help' => 'hittracker.settings.game.team_count.help',
             ])
             ->add('team_player_count', IntegerType::class, [
                 'label' => 'hittracker.settings.game.players_per_team',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.players_per_team.help'
-                ],
+                'help' => 'hittracker.settings.game.players_per_team.help',
             ])
             ->add('player_hit_points', IntegerType::class, [
                 'label' => 'hittracker.settings.game.hit_points_per_player',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.hit_points_per_player.help'
-                ],
+                'help' => 'hittracker.settings.game.hit_points_per_player.help',
             ])
             ->add('player_hit_points_deducted', IntegerType::class, [
                 'label' => 'hittracker.settings.game.hit_points_deducted_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.hit_points_deducted_per_hit.help'
-                ],
+                'help' => 'hittracker.settings.game.hit_points_deducted_per_hit.help',
             ])
             ->add('player_score_per_hit', IntegerType::class, [
                 'label' => 'hittracker.settings.game.player_score_per_hit',
                 'constraints' => [new Assert\GreaterThan(['value' => 0])],
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.player_score_per_hit.help'
-                ],
+                'help' => 'hittracker.settings.game.player_score_per_hit.help',
             ])
             ->add('active_game_music_file', GenericFileType::class, [
                 'upload_uri_prefix' => '/music',
                 'upload_use_provided_file_name' => true,
                 'required' => false,
                 'label' => 'hittracker.settings.game.active_music_file',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.active_music_file.help',
-                ],
+                'help' => 'hittracker.settings.game.active_music_file.help',
             ])
             ->add('active_game_music_play', CheckboxType::class, [
                 'required' => false,
                 'label' => 'hittracker.settings.game.active_music_play',
-                'attr' => [
-                    'data-help' => 'hittracker.settings.game.active_music_play.help',
-                ],
+                'help' => 'hittracker.settings.game.active_music_play.help',
             ])
-
         ;
     }
 }

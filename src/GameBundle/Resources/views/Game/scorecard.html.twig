@@ -22,21 +22,21 @@
         {% for player in game.players %}
             <div class="scorecard-page">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-6">
                         <h2 class="scorecard-brand">{{ siteSettings.business_name }}</h2>
                     </div>
-                    <div class="col-sm-6 scorecard-location-info">
+                    <div class="col-6 scorecard-location-info">
                         {{ siteSettings.business_address|nl2br }}
                         <br />
                         {{ siteSettings.business_phone }} {{ siteSettings.business_email }}
                     </div>
                 </div>
                 <div class="score-sheet row">
-                    <div class="row col-lg-12">
-                        <div class="col-sm-6 scorecard-game-player">
+                    <div class="row col-xl-12">
+                        <div class="col-6 scorecard-game-player">
                             <strong>Player:</strong>&nbsp;{{ player.name }}
                         </div>
-                        <div class="col-sm-6 scorecard-game-meta">
+                        <div class="col-6 scorecard-game-meta">
                             {% set time_total = game.timeTotal|date('%H:%I') %}
                             <strong>{{ 'hittracker.game.length'|trans }}:</strong> {{ time_total }}
                             &nbsp;
@@ -45,9 +45,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-xl-12">
                             {% for team in game.teams %}
-                                <div class="scorecard-scores col-md-6 col-sm-6">
+                                <div class="scorecard-scores col-lg-6 col-6">
                                    {{ game_macros.team_players_table(game, team) }}
                                 </div>
                             {% endfor %}
