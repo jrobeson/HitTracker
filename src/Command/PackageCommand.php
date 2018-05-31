@@ -126,7 +126,7 @@ class PackageCommand extends Command
 
     private function copyFiles(string $sourceDir, string $targetDir, bool $useExistingVendor = false, bool $useExistingNodeModules): void
     {
-        $appDirs = ['assets', 'bin', 'etc', 'src', 'public', 'translations', 'templates'];
+        $appDirs = ['assets', 'bin', 'etc', 'src', 'public', 'translations', 'templates', 'types'];
         if ($useExistingVendor) {
             $appDirs[] = 'vendor';
         }
@@ -135,14 +135,13 @@ class PackageCommand extends Command
             $appDirs[] = 'node_modules';
         }
 
-
         foreach ($appDirs as $appDir) {
             $this->out->writeln(sprintf('Copying %s', $appDir));
             $this->getFs()->mirror(implode(DS, [$sourceDir, $appDir]), implode(DS, [$targetDir, $appDir]));
         }
         $appFiles = Finder::create()->in($sourceDir)->files()->depth('== 0');
         foreach ($appFiles as $file) {
-            $appFile = $file->getBaseName();
+            $appFile = $file->getBasename();
             $this->out->writeln(sprintf('Copying %s', $appFile));
             $this->getFs()->copy(implode(DS, [$sourceDir, $appFile]), implode(DS, [$targetDir, $appFile]));
         }
@@ -216,7 +215,7 @@ class PackageCommand extends Command
     private function buildAssets(string $targetDir): void
     {
         try {
-            $cmd = "npm run build";
+            $cmd = 'npm run build';
 
             $this->out->writeln($cmd);
             $process = new Process($cmd, $targetDir, null, null, 300);
@@ -227,12 +226,11 @@ class PackageCommand extends Command
             exit(1);
         }
     }
-
 
     private function npmInstall(string $targetDir): void
     {
         try {
-            $cmd = "npm install";
+            $cmd = 'npm install';
 
             $this->out->writeln($cmd);
             $process = new Process($cmd, $targetDir, null, null, 300);
@@ -243,7 +241,6 @@ class PackageCommand extends Command
             exit(1);
         }
     }
-
 
     private function composerInstall(string $targetDir): void
     {
