@@ -5,6 +5,8 @@ parameters:
         - '#Call to an undefined method Sylius\\Component\\Resource\\Model\\ResourceInterface::#'
         - '#Call to an undefined method Sylius\\Component\\Resource\\Repository\\RepositoryInterface::#'
         - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children#'
+    autoload_directories:
+        - %rootDir%/../../../src/Migrations
 includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
