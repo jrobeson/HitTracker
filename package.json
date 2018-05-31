@@ -6,6 +6,8 @@
   "author": "Johnny Robeson",
   "license": "AGPL-3.0",
   "scripts": {
+    "encore-watch": "encore dev --watch",
+    "build": "encore production",
     "bundle-third-party": "gulp bundle-third-party"
   },
   "devDependencies": {
