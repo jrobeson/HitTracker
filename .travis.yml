@@ -12,7 +12,7 @@ cache:
 
 env:
     global:
-
+        - PGPORT=5433
         - COMPOSER_NO_INTERACTION=1
         - APP_DEBUG=1
         - APP_ENV=test
@@ -29,10 +29,14 @@ env:
           APP_VAR_DIR="var"
           DATABASE_URL="sqlite:///var/data/hitttracker.db"
 
-services:
-  - postgresql
+#-services:
+#  - postgresql
 addons:
-    postgresql: '9.6'
+  postgresql: 10
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
 
 install:
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$APP_BUILD_TYPE/php-unix-development.ini
