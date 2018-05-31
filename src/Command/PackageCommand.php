@@ -56,7 +56,6 @@ class PackageCommand extends Command
         $platform = $input->getOption('build-platform');
         $version = $input->getOption('build-version');
         $doCompress = $input->getOption('compress');
-        die($doCompress);
         $useExistingVendor = $input->getOption('use-existing-vendor');
         $useExistingNodeModules = $input->getOption('use-existing-node-modules');
 
