@@ -21,7 +21,7 @@ env:
         - APP_BUILD_TYPE=hosted
           APP_LOG_DIR="var/logs"
           APP_CACHE_DIR="var/cache"
-          DATABASE_URL=pgsql://postgres@localhost/hittracker
+          DATABASE_URL=pgsql://travis:travis@localhost:5433/hittracker
         - APP_BUILD_TYPE=appliance
           APP_LOG_DIR="var/logs"
           APP_CACHE_DIR="var/cache"
@@ -44,6 +44,7 @@ install:
     - composer install --prefer-dist --no-suggest
 
 before_script:
+    - psql -c "ALTER USER travis WITH PASSWORD 'travis';"
     - php bin/console doctrine:database:create
     - php bin/console doctrine:migrations:migrate --no-interaction
 #    - php bin/console doctrine:fixtures:load --no-interaction
