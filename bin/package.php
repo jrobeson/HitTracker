@@ -6,6 +6,7 @@ use Symfony\Component\Console\Application;
 
 require __DIR__.'/../vendor/autoload.php';
 
+ini_set('memory_limit', -1);
 $application = new Application();
 
 $packageCommand = new PackageCommand();

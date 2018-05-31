@@ -44,6 +44,7 @@ class PackageCommand extends Command
             ->addOption('build-platform', null, InputOption::VALUE_REQUIRED, 'Platform.')
             ->addOption('build-type', null, InputOption::VALUE_REQUIRED, 'Build Type.')
             ->addOption('use-existing-vendor', null, InputOption::VALUE_NONE, 'Use existing vendor dir?')
+            ->addOption('use-existing-node-modules', null, InputOption::VALUE_NONE, 'Use existing node_modules dir?')
             ->addOption('compress', null, InputOption::VALUE_NONE, 'Compress the directory?')
         ;
     }
@@ -55,7 +56,9 @@ class PackageCommand extends Command
         $platform = $input->getOption('build-platform');
         $version = $input->getOption('build-version');
         $doCompress = $input->getOption('compress');
+        die($doCompress);
         $useExistingVendor = $input->getOption('use-existing-vendor');
+        $useExistingNodeModules = $input->getOption('use-existing-node-modules');
 
         if (!$targetDir) {
             $dir = 'hittracker';
@@ -80,9 +83,13 @@ class PackageCommand extends Command
 
         $this->out = $output;
         $output->writeln('Copying files');
-        $this->copyFiles($sourceDir, $targetDir, $useExistingVendor);
+        $this->copyFiles($sourceDir, $targetDir, $useExistingVendor, $useExistingNodeModules);
         $output->writeln('Running composer install');
         $this->composerInstall($targetDir);
+        $output->writeln('Running npm install');
+        $this->npmInstall($targetDir);
+        $output->writeln('Building assets');
+        $this->buildAssets($targetDir);
         $output->writeln('Cleaning files');
         $vendorDir = implode(DS, [$targetDir, 'vendor']);
         $this->cleanVendor($vendorDir);
@@ -118,18 +125,25 @@ class PackageCommand extends Command
         $archive->compress(\Phar::BZ2);
     }
 
-    private function copyFiles(string $sourceDir, string $targetDir, bool $useExistingVendor = false): void
+    private function copyFiles(string $sourceDir, string $targetDir, bool $useExistingVendor = false, bool $useExistingNodeModules): void
     {
-        $appDirs = ['bin', 'etc', 'src', 'public', 'translations', 'templates'];
+        $appDirs = ['assets', 'bin', 'etc', 'src', 'public', 'translations', 'templates'];
         if ($useExistingVendor) {
             $appDirs[] = 'vendor';
         }
+
+        if ($useExistingNodeModules) {
+            $appDirs[] = 'node_modules';
+        }
+
 
         foreach ($appDirs as $appDir) {
             $this->out->writeln(sprintf('Copying %s', $appDir));
             $this->getFs()->mirror(implode(DS, [$sourceDir, $appDir]), implode(DS, [$targetDir, $appDir]));
         }
-        foreach (['composer.json', 'LICENSE'] as $appFile) {
+        $appFiles = Finder::create()->in($sourceDir)->files()->depth('== 0');
+        foreach ($appFiles as $file) {
+            $appFile = $file->getBaseName();
             $this->out->writeln(sprintf('Copying %s', $appFile));
             $this->getFs()->copy(implode(DS, [$sourceDir, $appFile]), implode(DS, [$targetDir, $appFile]));
         }
@@ -199,6 +213,38 @@ class PackageCommand extends Command
             $fs->rename($vendorLicenseFile->getRealPath(), $licensePath, true);
         }
     }
+
+    private function buildAssets(string $targetDir): void
+    {
+        try {
+            $cmd = "npm run build";
+
+            $this->out->writeln($cmd);
+            $process = new Process($cmd, $targetDir, null, null, 300);
+            $process->mustRun();
+            $this->out->writeln($process->getOutput());
+        } catch (ProcessFailedException $e) {
+            echo $e->getMessage();
+            exit(1);
+        }
+    }
+
+
+    private function npmInstall(string $targetDir): void
+    {
+        try {
+            $cmd = "npm install";
+
+            $this->out->writeln($cmd);
+            $process = new Process($cmd, $targetDir, null, null, 300);
+            $process->mustRun();
+            $this->out->writeln($process->getOutput());
+        } catch (ProcessFailedException $e) {
+            echo $e->getMessage();
+            exit(1);
+        }
+    }
+
 
     private function composerInstall(string $targetDir): void
     {
