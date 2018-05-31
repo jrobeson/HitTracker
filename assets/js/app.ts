@@ -84,10 +84,12 @@ $(document).ready(() => {
           .find('.team-no input')
           .val(team);
         const players = teamPlayers[team];
+        // tslint:disable-next-line: no-unnecessary-type-assertion
         const playerList = Object.values(players) as any[];
         $(this)
           .find('.player')
           .each(function() {
+            // tslint:disable-next-line: no-unnecessary-type-assertion
             const thisPlayer = playerList.shift() as any;
             let name = '';
             let unitId = '';
