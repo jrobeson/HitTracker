@@ -213,7 +213,7 @@ function initCountdown(selector: any) {
 }
 
 function pushHit(selector: any, zoneHits: number) {
-  const value = $(selector).text();
+  // const value = $(selector).text();
   $(selector)
     .animate({ color: '#a50b00' }, 500, function() {
       $(this).text(zoneHits);
