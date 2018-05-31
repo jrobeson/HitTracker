@@ -1,6 +1,7 @@
 /build/
 /node_modules
 /public/bundles/
+/public/build
 /tmp
 !/var/cache
 /var/cache/*
