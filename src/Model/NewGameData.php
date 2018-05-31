@@ -137,6 +137,7 @@ class NewGameData
     {
         $this->arena = (int) $arena;
     }
+
     public function getArena(): int
     {
         return $this->arena;

@@ -25,7 +25,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use UnexpectedValueException;
-use function Cekurte\Environment\env;
 
 class Kernel extends BaseKernel
 {
@@ -50,7 +49,8 @@ class Kernel extends BaseKernel
         parent::__construct($environment, $debug);
     }
 
-    public static function getVarsFromEnv()
+    /** @return string[] */
+    public static function getVarsFromEnv(): array
     {
         return [
             'APP_ENV' => $_SERVER['APP_ENV'] ?? 'production',
@@ -61,6 +61,7 @@ class Kernel extends BaseKernel
             'APP_BUILD_TYPE' => $_SERVER['APP_BUILD_TYPE'] ?? 'local',
         ];
     }
+
     public function registerBundles(): iterable
     {
         $contents = require $this->getProjectDir().'/etc/bundles.php';

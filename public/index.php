@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__.'/../vendor/autoload.php';
 
-
 if (!isset($_SERVER['APP_ENV']) && file_exists(__DIR__.'/../.env')) {
     (new Dotenv())->load(__DIR__.'/../.env');
 }

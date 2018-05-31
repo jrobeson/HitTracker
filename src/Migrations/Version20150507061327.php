@@ -26,7 +26,7 @@ use Doctrine\DBAL\Schema\Schema;
 
 class Version20150507061327 extends AbstractMigration
 {
-    private function upPostgreSQL(Schema $schema)
+    private function upPostgreSQL(Schema $schema): void
     {
         $stmts = [];
 
@@ -92,13 +92,12 @@ class Version20150507061327 extends AbstractMigration
                   FOREIGN KEY (unit_id) REFERENCES units (id)
                   NOT DEFERRABLE INITIALLY IMMEDIATE';
 
-
         foreach ($stmts as $stmt) {
             $this->addSql($stmt);
         }
     }
 
-    private function upSqlite(Schema $schema)
+    private function upSqlite(Schema $schema): void
     {
         $stmts = [];
 

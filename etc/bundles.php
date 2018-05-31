@@ -30,5 +30,4 @@ return [
     // @todo remove these
     LazerBall\HitTracker\PubSubBundle\PubSubBundle::class => ['all' => true],
     LazerBall\HitTracker\GameBundle\HitTrackerGameBundle::class => ['all' => true],
-
 ];
