@@ -3,7 +3,7 @@
     "license": "AGPL-3.0",
     "type": "project",
     "description": "",
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "LazerBall\\HitTracker\\": "src/"
@@ -40,9 +40,10 @@
         "ramsey/uuid-console": "^1.1",
         "ramsey/uuid-doctrine": "^1.4",
         "sensio/framework-extra-bundle": "^5.0",
-        "sylius/resource": "dev-master@dev",
-        "sylius/resource-bundle": "dev-master@dev",
-        "sylius/ui-bundle": "dev-master@dev",
+        "sylius/registry": "^1.2@beta",
+        "sylius/resource": "^1.2@beta",
+        "sylius/resource-bundle": "^1.2@beta",
+        "sylius/ui-bundle": "^1.2@beta",
         "symfony/asset": "^4.1",
         "symfony/debug-bundle": "^4.1",
         "symfony/flex": "^1.0",
