@@ -5,14 +5,14 @@
 
     <services>
         <!-- handlers -->
-        <service id="hittracker_pubsub.handler.nginx_push_stream" class="LazerBall\HitTracker\PubSub\NginxPushStream">
+        <service id="hittracker_pubsub.handler.nginx_push_stream" class="LazerBall\HitTracker\PubSub\NginxPushStream" public="true">
         </service>
-        <service id="hittracker_pubsub.handler.null" class="LazerBall\HitTracker\PubSub\NullPubSub">
+        <service id="hittracker_pubsub.handler.null" class="LazerBall\HitTracker\PubSub\NullPubSub" public="true">
         </service>
-        <service id="hittracker_pubsub.handler.apcu" class="LazerBall\HitTracker\PubSub\ApcU">
+        <service id="hittracker_pubsub.handler.apcu" class="LazerBall\HitTracker\PubSub\ApcU" public="true">
         </service>
         <!-- instance -->
-        <service id="hittracker_pubsub.handler" class="LazerBall\HitTracker\PubSub\NullPubSub">
+        <service id="hittracker_pubsub.handler" class="LazerBall\HitTracker\PubSub\NullPubSub" public="true">
         </service>
     </services>
 </container>
