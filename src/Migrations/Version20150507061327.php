@@ -185,7 +185,7 @@ class Version20150507061327 extends AbstractMigration
                 $stmts[] = 'DROP TABLE game_players';
                 $stmts[] = 'DROP TABLE units';
                 $stmts[] = 'DROP TABLE games';
-                $stmts[] = 'DROP TABLE sylius_settings_parameter';
+                $stmts[] = 'DROP TABLE sylius_settings';
         }
 
         foreach ($stmts as $stmt) {
