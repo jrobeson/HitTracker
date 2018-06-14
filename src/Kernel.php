@@ -140,7 +140,7 @@ class Kernel extends BaseKernel
 
         $varDir = self::getVarsFromEnv()['APP_VAR_DIR'];
         if ($varDir) {
-            return implode(DIRECTORY_SEPARATOR, [$varDir, 'cache']);
+            return implode(\DIRECTORY_SEPARATOR, [$varDir, 'cache']);
         }
 
         switch ($this->buildType) {
@@ -152,13 +152,13 @@ class Kernel extends BaseKernel
             case 'appliance':
             case 'hosted':
                 if (!$cacheDir) {
-                    $cacheDir = implode(DIRECTORY_SEPARATOR,
+                    $cacheDir = implode(\DIRECTORY_SEPARATOR,
                         ['', 'var', 'lib', 'hittracker', 'cache', $this->environment]
                     );
                 }
                 break;
             default:
-                $cacheDir = implode(DIRECTORY_SEPARATOR, [
+                $cacheDir = implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
                     'var', 'cache',
                     $this->getBuildType(),
@@ -178,7 +178,7 @@ class Kernel extends BaseKernel
 
         $varDir = self::getVarsFromEnv()['APP_VAR_DIR'];
         if ($varDir) {
-            return implode(DIRECTORY_SEPARATOR, [$varDir, 'log']);
+            return implode(\DIRECTORY_SEPARATOR, [$varDir, 'log']);
         }
 
         switch ($this->buildType) {
@@ -189,10 +189,10 @@ class Kernel extends BaseKernel
                 break;
             case 'appliance':
             case 'hosted':
-                    $logDir = implode(DIRECTORY_SEPARATOR, ['', 'var', 'log', 'hittracker']);
+                    $logDir = implode(\DIRECTORY_SEPARATOR, ['', 'var', 'log', 'hittracker']);
                 break;
             default:
-                $logDir = implode(DIRECTORY_SEPARATOR, [
+                $logDir = implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
                     'var', 'logs',
                     $this->getBuildType(),

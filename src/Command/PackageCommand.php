@@ -28,7 +28,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
-define('DS', DIRECTORY_SEPARATOR);
+define('DS', \DIRECTORY_SEPARATOR);
 
 class PackageCommand extends Command
 {
