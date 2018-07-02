@@ -21,8 +21,17 @@ import 'bootstrap';
 import 'jquery-countdown';
 import './jquery-ujs.js';
 import './jquery.color.js';
+import './vue-setup';
 
 import { alertDismiss, printScores } from './ui-util';
+
+window.translations = {
+    'hittracker.game.player_name': 'Name',
+    'hittracker.game.zone_no': 'Zone %zone_no%',
+    'hittracker.game.hit_points': 'Hit Points',
+    'hittracker.game.score': 'Score',
+    'hittracker.game.team_total': 'Team Total',
+};
 
 const toggleVest = (address: string, value: number) => {
   const request = $.ajax({
@@ -35,21 +44,21 @@ const toggleVest = (address: string, value: number) => {
   request.done(() => true);
 };
 
-$(document).ready(() => {
+$(() => {
   alertDismiss();
 
-  $('.unit-turn-on').click(function(e) {
+  $('.unit-turn-on').on('click', function(e) {
     const address = $(this).data('unit-address');
     toggleVest(address, 1);
     e.preventDefault();
   });
-  $('.unit-turn-off').click(function(e) {
+  $('.unit-turn-off').on('click', function(e) {
     const address = $(this).data('unit-address');
     toggleVest(address, 0);
     e.preventDefault();
   });
 
-  $('form[id="game_form"] select[id$="_unit"]').focusout(function(e) {
+  $('form[id="game_form"] select[id$="_unit"]').on('focusout', function(e) {
     const address = $(this)
       .children('option:selected')
       .data('unit-address');
@@ -57,7 +66,7 @@ $(document).ready(() => {
       toggleVest(address, 1);
     }
   });
-  $('form[id="game_form"] select[id="game_reload_players"]').change(function() {
+  $('form[id="game_form"] select[id="game_reload_players"]').on('change', function() {
     const gameId = $(this).val();
     const request = $.ajax({
       url: `${window.location.origin}/games/${gameId}`,
@@ -108,7 +117,7 @@ $(document).ready(() => {
     });
   });
 
-  $('form[name="game"]').submit(function() {
+  $('form[name="game"]').on('submit', function() {
     $('.new-game-teams').each(function() {
       const team = $(this)
         .find('.team-no input')
@@ -138,7 +147,7 @@ $(document).ready(() => {
     });
 
     source.addEventListener('game.hit', (e: any) => {
-      const eventData = $.parseJSON(e.data);
+      const eventData = JSON.parse(e.data);
       const hit = eventData.content;
       const targetPlayer = hit.target_player;
 
@@ -161,7 +170,7 @@ $(document).ready(() => {
     initCountdown($('#game-time-countdown'));
   }
 
-  $('#print-scores').click(function(event) {
+  $('#print-scores').on('click', function(event) {
     event.preventDefault();
     const scoreElement = $(this) as any;
     printScores(scoreElement.attr('href'));
