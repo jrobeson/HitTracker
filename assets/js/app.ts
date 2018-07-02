@@ -21,17 +21,8 @@ import 'bootstrap';
 import 'jquery-countdown';
 import './jquery-ujs.js';
 import './jquery.color.js';
-import './vue-setup';
 
 import { alertDismiss, printScores } from './ui-util';
-
-window.translations = {
-    'hittracker.game.player_name': 'Name',
-    'hittracker.game.zone_no': 'Zone %zone_no%',
-    'hittracker.game.hit_points': 'Hit Points',
-    'hittracker.game.score': 'Score',
-    'hittracker.game.team_total': 'Team Total',
-};
 
 const toggleVest = (address: string, value: number) => {
   const request = $.ajax({
