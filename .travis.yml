@@ -27,7 +27,6 @@ env:
           APP_CACHE_DIR="var/cache"
         - APP_BUILD_TYPE=electron
           APP_VAR_DIR="var"
-          DATABASE_URL="sqlite:///var/data/hitttracker.db"
 
 #-services:
 #  - postgresql
