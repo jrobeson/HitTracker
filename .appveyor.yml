@@ -31,7 +31,7 @@ init:
     - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
     - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\%APP_BUILD_TYPE%\php-win32-development.ini
     - SET DATABASE_URL=pgsql://postgres:Password12!@localhost/hittracker
-    - SET APP_VAR_DIR="%APPVEYOR_BUILD_FOLDER%\var"
+    - SET APP_VAR_DIR=%APPVEYOR_BUILD_FOLDER%\var
     - SET PHP_INI_SCAN_DIR=
 
     - SET PHP=1 # This var is connected to PHP install cache
