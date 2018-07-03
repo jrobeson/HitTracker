@@ -14,7 +14,7 @@ environment:
         APP_ENV: test
 
 services:
-  - postgresql101
+    - postgresql101
 
 cache:
     - C:\ProgramData\chocolatey\bin -> .appveyor.yml
@@ -54,11 +54,11 @@ install:
     - composer self-update --stable
     - cd %APPVEYOR_BUILD_FOLDER%
     - appveyor-retry composer install --prefer-dist --no-progress --profile --no-suggest
+
+test_script:
     - php bin\console doctrine:database:create
     - php bin\console doctrine:migrations:migrate --no-interaction
     - php bin\console cache:clear
-
-test_script:
     - cd %APPVEYOR_BUILD_FOLDER%
     - php vendor\bin\phpunit -c phpunit.xml.dist
 
