@@ -43,7 +43,7 @@ install:
     - IF %PHP%==1 cd c:\php
     - IF %PHP%==1 cd C:\php\ext
     - IF %PHP%==1 appveyor DownloadFile https://windows.php.net/downloads/pecl/releases/apcu/5.1.9/php_apcu-5.1.9-7.2-nts-vc15-x64.zip
-    - IF %PHP%==1 7z x php_apcu-5.1.9-7.2-nts-vc15-x64.zip -y >nul
+    - IF %PHP%==1 7z x php_apcu-5.1.9-7.2-nts-vc15-x64.zip -y
     - IF %PHP%==1 del /Q *.zip
     - IF %PHP%==1 appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.6.0-7.2-vc15-nts-x86_64.dll -FileName php_xdebug.dll
     - IF NOT EXIST C:\composer mkdir C:\composer
