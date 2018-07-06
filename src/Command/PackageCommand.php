@@ -90,6 +90,8 @@ class PackageCommand extends Command
         $output->writeln('Building assets');
         $this->buildAssets($targetDir);
         $output->writeln('Cleaning files');
+        $nodeModulesDir = implode(DS, [$targetDir, 'node_modules']);
+        $this->deleteNodeModules($nodeModulesDir);
         $vendorDir = implode(DS, [$targetDir, 'vendor']);
         $this->cleanVendor($vendorDir);
 
@@ -145,6 +147,11 @@ class PackageCommand extends Command
             $this->out->writeln(sprintf('Copying %s', $appFile));
             $this->getFs()->copy(implode(DS, [$sourceDir, $appFile]), implode(DS, [$targetDir, $appFile]));
         }
+    }
+
+    private function deleteNodeModules(string $nodeModulesDir): void
+    {
+        $this->getFs()->remove($nodeModulesDir);
     }
 
     private function cleanVendor(string $vendorDir): void
