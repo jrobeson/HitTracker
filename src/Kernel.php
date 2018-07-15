@@ -41,10 +41,7 @@ class Kernel extends BaseKernel
     {
         $this->buildType = $buildType;
 
-        $isProd = 'production' === $environment;
-        if (!$isProd && $debug) { /* @todo check this */
-            \Symfony\Component\Debug\Debug::enable();
-        }
+        if ($debug) \Symfony\Component\Debug\Debug::enable();
 
         parent::__construct($environment, $debug);
     }
