@@ -252,11 +252,14 @@ class PackageCommand extends Command
     private function composerInstall(string $targetDir): void
     {
         try {
-            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist --no-scripts"
+            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist"
                                   .' --optimize-autoloader --classmap-authoritative --no-suggest --no-interaction';
 
             $this->out->writeln($composerInstallCmd);
-            $composerInstall = new Process($composerInstallCmd, null, null, null, 300);
+            $envVars = ['APP_ENV' => 'production',
+                        'APP_DEBUG' => '0',
+            ];
+            $composerInstall = new Process($composerInstallCmd, null, $envVars, null, 300);
             $composerInstall->mustRun();
             $this->out->writeln($composerInstall->getOutput());
         } catch (ProcessFailedException $e) {

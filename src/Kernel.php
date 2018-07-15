@@ -130,40 +130,13 @@ class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
-        $cacheDir = self::getVarsFromEnv()['APP_CACHE_DIR'];
-        if ($cacheDir) {
-            return $cacheDir;
-        }
 
-        $varDir = self::getVarsFromEnv()['APP_VAR_DIR'];
-        if ($varDir) {
-            return implode(\DIRECTORY_SEPARATOR, [$varDir, 'cache']);
-        }
-
-        switch ($this->buildType) {
-            case 'electron':
-                if (!$varDir) {
-                    throw new UnexpectedValueException('"APP_VAR_DIR" env var must be set for Electron.');
-                }
-                break;
-            case 'appliance':
-            case 'hosted':
-                if (!$cacheDir) {
-                    $cacheDir = implode(\DIRECTORY_SEPARATOR,
-                        ['', 'var', 'lib', 'hittracker', 'cache', $this->environment]
-                    );
-                }
-                break;
-            default:
-                $cacheDir = implode(\DIRECTORY_SEPARATOR, [
+        return implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
                     'var', 'cache',
                     $this->getBuildType(),
                     $this->environment,
                 ]);
-        }
-
-        return $cacheDir;
     }
 
     public function getLogDir(): string
@@ -173,20 +146,13 @@ class Kernel extends BaseKernel
             return $logDir;
         }
 
-        $varDir = self::getVarsFromEnv()['APP_VAR_DIR'];
-        if ($varDir) {
-            return implode(\DIRECTORY_SEPARATOR, [$varDir, 'log']);
-        }
-
         switch ($this->buildType) {
-            case 'electron':
-                if (!$varDir) {
-                    throw new UnexpectedValueException('"APP_VAR_DIR" env var must be set for Electron.');
-                }
-                break;
             case 'appliance':
             case 'hosted':
                     $logDir = implode(\DIRECTORY_SEPARATOR, ['', 'var', 'log', 'hittracker']);
+                break;
+            case 'electron':
+                throw new UnexpectedValueException('"APP_LOG_DIR" env var must be set for Electron.');
                 break;
             default:
                 $logDir = implode(\DIRECTORY_SEPARATOR, [
@@ -197,5 +163,44 @@ class Kernel extends BaseKernel
         }
 
         return $logDir;
+    }
+
+    public function getTmpDir()
+    {
+        $tmpDir = self::getVarsFromEnv()['APP_TMP_DIR'];
+        if ($tmpDir) {
+            return $tmpDir;
+        }
+
+        switch ($this->buildType) {
+            case 'electron':
+                throw new UnexpectedValueException('"APP_TMP_DIR" env var must be set for Electron.');
+                break;
+            case 'appliance':
+            case 'hosted':
+                if (!$tmpDir) {
+                    $tmpDir = implode(\DIRECTORY_SEPARATOR,
+                        ['', 'var', 'lib', 'hittracker', 'tmp', $this->environment]
+                    );
+                }
+                break;
+            default:
+                $tmpDir = implode(\DIRECTORY_SEPARATOR, [
+                    $this->getProjectDir(),
+                    'var', 'tmp',
+                    $this->getBuildType(),
+                    $this->environment,
+                ]);
+        }
+
+        return $tmpDir;
+    }
+
+    protected function getKernelParameters()
+    {
+        $parameters = parent::GetKernelParameters();
+        $parameters['kernel.tmp_dir'] = $this->getTmpDir();
+
+        return $parameters;
     }
 }

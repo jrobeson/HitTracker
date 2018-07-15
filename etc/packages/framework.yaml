@@ -20,11 +20,13 @@ framework:
             built:
               json_manifest_path: "%kernel.project_dir%/public/build/manifest.json"
         version_strategy: incenteev_hashed_asset.strategy
-
-
     cache:
+        directory: "%kernel.tmp_dir%/pools"
         prefix_seed: lazerball/hittracker
+        system: cache.adapter.filesystem
         app: cache.adapter.apcu
+    profiler:
+        dsn: "file:%kernel.tmp_dir%/profiler"
 
 services:
     _defaults:

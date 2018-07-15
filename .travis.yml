@@ -21,12 +21,13 @@ env:
     matrix:
         - APP_BUILD_TYPE=hosted
           APP_LOG_DIR="var/logs"
-          APP_CACHE_DIR="var/cache"
+          APP_TMP_DIR="var/tmp"
         - APP_BUILD_TYPE=appliance
           APP_LOG_DIR="var/logs"
-          APP_CACHE_DIR="var/cache"
+          APP_TMP_DIR="var/tmp"
         - APP_BUILD_TYPE=electron
-          APP_VAR_DIR="var"
+          APP_TMP_DIR="var/tmp"
+          APP_LOG_DIR="var/logs"
 
 #-services:
 #  - postgresql
