@@ -53,7 +53,7 @@ class Kernel extends BaseKernel
             'APP_ENV' => $_SERVER['APP_ENV'] ?? 'production',
             'APP_DEBUG' => $_SERVER['APP_DEBUG'] ?? 0,
             'APP_LOG_DIR' => $_SERVER['APP_LOG_DIR'] ?? null,
-            'APP_CACHE_DIR' => $_SERVER['APP_CACHE_DIR'] ?? null,
+            'APP_TMP_DIR' => $_SERVER['APP_CACHE_DIR'] ?? null,
             'APP_VAR_DIR' => $_SERVER['APP_VAR_DIR'] ?? null,
             'APP_BUILD_TYPE' => $_SERVER['APP_BUILD_TYPE'] ?? 'local',
         ];
