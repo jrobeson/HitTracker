@@ -7,6 +7,10 @@ parameters:
         - '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children#'
     autoload_directories:
         - %rootDir%/../../../src/Migrations
+    symfony:
+        container_xml_path: %rootDir%/../../../var/cache/development/srcDevelopmentDebugProjectContainer.xml
 includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+

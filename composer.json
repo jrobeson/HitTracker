@@ -81,11 +81,12 @@
         "matthiasnoback/symfony-config-test": "^4.0",
         "phpdocumentor/type-resolver": "^0.4.0",
         "phpspec/phpspec": "^4.3",
-        "phpstan/phpstan-doctrine": "^0.9",
+        "phpstan/phpstan-doctrine": "^0.10",
+        "phpstan/phpstan-symfony": "^0.10.0",
         "phpunit/phpunit": "^7.0",
         "psy/psysh": "^0.9",
         "symfony/phpunit-bridge": "^4.0",
-        "thecodingmachine/phpstan-strict-rules": "^0.9"
+        "thecodingmachine/phpstan-strict-rules": "^0.10"
     },
     "replace": {
         "symfony/polyfill-mbstring": "*",
