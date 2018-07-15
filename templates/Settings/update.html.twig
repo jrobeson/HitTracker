@@ -1,5 +1,4 @@
 {% extends '@HitTrackerGame/layout.html.twig' %}
-{% import '@SyliusResource/Macros/actions.html.twig' as actions %}
 {% block content %}
     <h1>Settings <small>Use this form to update settings</small></h1>
     <hr />
@@ -10,7 +9,10 @@
         {{ form_widget(form) }}
     </div>
     <div class="row">
-        {{ actions.update() }}
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-save"></i> {{ 'sylius.save_changes'|trans }}</button>
+        <a href="{{ app.request.headers.get('referer', url) }}" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i> {{ 'sylius.cancel'|trans }}</a>
+    </div>
     </div>
     </form>
 {% endblock %}
