@@ -217,6 +217,17 @@ class Game implements ResourceInterface
         return $players->first();
     }
 
+    /** @return string[] */
+    public function getTeamPlayers(): array
+    {
+        $players = [];
+        foreach ($this->getTeams() as $team) {
+            $players[$team][] = $this->getPlayersByTeam($team);
+        }
+
+        return $players;
+    }
+
     public function getPlayersByTeam(string $team): Collection
     {
         $criteria = Criteria::create()->where(Criteria::expr()->eq('team', $team));
