@@ -134,7 +134,6 @@ class Kernel extends BaseKernel
         return implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
                     'var', 'cache',
-                    $this->getBuildType(),
                     $this->environment,
                 ]);
     }
@@ -157,8 +156,7 @@ class Kernel extends BaseKernel
             default:
                 $logDir = implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
-                    'var', 'logs',
-                    $this->getBuildType(),
+                    'var', 'logs'
                 ]);
         }
 
@@ -188,7 +186,6 @@ class Kernel extends BaseKernel
                 $tmpDir = implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
                     'var', 'tmp',
-                    $this->getBuildType(),
                     $this->environment,
                 ]);
         }
