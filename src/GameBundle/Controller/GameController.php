@@ -32,10 +32,10 @@ class GameController extends ResourceController
 
         $newGameData = new NewGameData();
         $players = new ArrayCollection();
-        foreach ($vests as $vest) {
+        foreach ((array) $vests as $vest) {
             $playerData = new \App\Model\PlayerData();
             $team = 1;
-            if ('orange' === $vest->getColor()) {
+            if (null !== $vest && 'orange' === $vest->getColor()) {
                 $team = 2;
             }
             $playerData->name = '';
@@ -152,7 +152,7 @@ class GameController extends ResourceController
             throw new HttpException($event->getErrorCode(), $event->getMessage());
         }
 
-        if ($resource) {
+        if (null !== $resource) {
             $resource->stop();
             $this->manager->persist($resource);
             $this->manager->flush();

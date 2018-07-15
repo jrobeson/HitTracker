@@ -78,7 +78,7 @@ class PackageCommand extends Command
             $output->writeln("Creating $targetDir");
             $this->getFs()->mkdir($targetDir);
         }
-        $sourceDir = realpath(dirname(dirname(__DIR__)));
+        $sourceDir = (string) realpath(dirname(dirname(__DIR__)));
 
         $this->out = $output;
         $output->writeln('Copying files');

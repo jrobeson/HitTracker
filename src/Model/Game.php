@@ -253,7 +253,7 @@ class Game implements ResourceInterface
             return $player->getHitPoints();
         })->toArray());
 
-        return $teamHP;
+        return (int) $teamHP;
     }
 
     public function getTotalHitPoints(): int
@@ -262,7 +262,7 @@ class Game implements ResourceInterface
             return $player->getHitPoints();
         })->toArray());
 
-        return $totalHP;
+        return (int) $totalHP;
     }
 
     public function getTeamScore(string $team): int
@@ -272,7 +272,7 @@ class Game implements ResourceInterface
             return $player->getScore();
         })->toArray());
 
-        return $score;
+        return (int) $score;
     }
 
     public function getTotalScore(): int
@@ -281,6 +281,6 @@ class Game implements ResourceInterface
             return $player->getScore();
         })->toArray());
 
-        return $score;
+        return (int) $score;
     }
 }

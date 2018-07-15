@@ -83,6 +83,7 @@ class Vest implements ResourceInterface
         $this->id = 0;
         $this->radioId = '';
         $this->active = true;
+        $this->zones = 0;
     }
 
     public function setId(int $id): void
@@ -132,7 +133,7 @@ class Vest implements ResourceInterface
     }
 
     /** @return string[] */
-    public static function getUnitTypes(): ?array
+    public static function getUnitTypes(): array
     {
         return ['vest', 'target'];
     }

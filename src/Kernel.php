@@ -164,7 +164,7 @@ class Kernel extends BaseKernel
         return $logDir;
     }
 
-    public function getTmpDir()
+    public function getTmpDir(): string
     {
         $tmpDir = self::getVarsFromEnv()['APP_TMP_DIR'];
         if ($tmpDir) {

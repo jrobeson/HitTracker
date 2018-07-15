@@ -32,7 +32,7 @@ class FileUploader
 
     public function __construct(string $baseDir, string $basePrefix = '')
     {
-        $this->baseDir = realpath($baseDir);
+        $this->baseDir = (string) realpath($baseDir);
         $this->basePrefix = $basePrefix;
     }
 

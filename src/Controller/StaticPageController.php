@@ -43,9 +43,6 @@ class StaticPageController extends AbstractController
         return sprintf('@Pages/%s/%s.%s', $locale, $pageName, $this->templateExtension);
     }
 
-    /**
-     * @throws Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
     public function showAction(Request $request, string $name): Response
     {
         $locale = $request->getLocale();
