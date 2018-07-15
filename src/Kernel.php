@@ -41,7 +41,9 @@ class Kernel extends BaseKernel
     {
         $this->buildType = $buildType;
 
-        if ($debug) \Symfony\Component\Debug\Debug::enable();
+        if ($debug) {
+            \Symfony\Component\Debug\Debug::enable();
+        }
 
         parent::__construct($environment, $debug);
     }
@@ -130,7 +132,6 @@ class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
-
         return implode(\DIRECTORY_SEPARATOR, [
                     $this->getProjectDir(),
                     'var', 'cache',

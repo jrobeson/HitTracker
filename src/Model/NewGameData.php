@@ -18,8 +18,8 @@
 
 namespace App\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use App\Validator\Constraints as CommonAssert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class NewGameData

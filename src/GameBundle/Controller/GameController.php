@@ -2,12 +2,12 @@
 
 namespace App\GameBundle\Controller;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use FOS\RestBundle\View\View;
-use GuzzleHttp\Client;
 use App\Model\Game;
 use App\Model\NewGameData;
 use App\Model\Player;
+use Doctrine\Common\Collections\ArrayCollection;
+use FOS\RestBundle\View\View;
+use GuzzleHttp\Client;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;

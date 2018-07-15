@@ -18,8 +18,8 @@
 
 namespace App\GameBundle\EventListener;
 
-use GuzzleHttp\Client;
 use App\PubSub\PubSubInterface;
+use GuzzleHttp\Client;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
 class GameEventListener

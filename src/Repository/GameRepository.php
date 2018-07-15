@@ -18,8 +18,8 @@
 
 namespace App\Repository;
 
-use Doctrine\Common\Collections\Criteria;
 use App\Model\Game;
+use Doctrine\Common\Collections\Criteria;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class GameRepository extends EntityRepository
