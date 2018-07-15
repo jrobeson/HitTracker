@@ -132,9 +132,9 @@ hittracker_site_settings:
 page:
     path:  /pages/{name}
     defaults:
-        _controller: "LazerBall\\HitTracker\\Controller\\StaticPageController::showAction"
+        _controller: "App\\Controller\\StaticPageController::showAction"
 home:
     path: /
     defaults:
-        _controller: "LazerBall\\HitTracker\\Controller\\StaticPageController::showAction"
+        _controller: "App\\Controller\\StaticPageController::showAction"
         name: help

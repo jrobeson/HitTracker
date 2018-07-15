@@ -1,6 +1,6 @@
 <?php
 
-namespace LazerBall\HitTracker\GameBundle\Form\Type;
+namespace App\GameBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;

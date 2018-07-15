@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\Form\Type;
+namespace App\GameBundle\Form\Type;
 
-use LazerBall\HitTracker\Model\MatchSettings;
+use App\Model\MatchSettings;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;

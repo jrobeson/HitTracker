@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\Controller;
+namespace App\GameBundle\Controller;
 
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Symfony\Component\Form\FormFactoryInterface;

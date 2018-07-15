@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\EventListener;
+namespace App\GameBundle\EventListener;
 
 use GuzzleHttp\Client;
-use LazerBall\HitTracker\PubSub\PubSubInterface;
+use App\PubSub\PubSubInterface;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
 class GameEventListener

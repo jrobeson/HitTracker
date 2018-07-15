@@ -2,8 +2,8 @@
 /*
  * Symfony App Front Controller
  */
-use LazerBall\HitTracker\AppCache;
-use LazerBall\HitTracker\Kernel;
+use App\AppCache;
+use App\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 

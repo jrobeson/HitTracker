@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\GameBundle\Form\Type;
+namespace App\GameBundle\Form\Type;
 
-use LazerBall\HitTracker\Model\Vest;
+use App\Model\Vest;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

@@ -1,13 +1,13 @@
 <?php
 
-namespace LazerBall\HitTracker\GameBundle\Controller;
+namespace App\GameBundle\Controller;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\RestBundle\View\View;
 use GuzzleHttp\Client;
-use LazerBall\HitTracker\Model\Game;
-use LazerBall\HitTracker\Model\NewGameData;
-use LazerBall\HitTracker\Model\Player;
+use App\Model\Game;
+use App\Model\NewGameData;
+use App\Model\Player;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -33,7 +33,7 @@ class GameController extends ResourceController
         $newGameData = new NewGameData();
         $players = new ArrayCollection();
         foreach ($vests as $vest) {
-            $playerData = new \LazerBall\HitTracker\Model\PlayerData();
+            $playerData = new \App\Model\PlayerData();
             $team = 1;
             if ('orange' === $vest->getColor()) {
                 $team = 2;

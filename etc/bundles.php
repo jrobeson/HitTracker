@@ -27,6 +27,6 @@ return [
     Sylius\Bundle\SettingsBundle\SyliusSettingsBundle::class => ['all' => true],
     WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle::class => ['all' => true],
     // @todo remove these
-    LazerBall\HitTracker\PubSubBundle\PubSubBundle::class => ['all' => true],
-    LazerBall\HitTracker\GameBundle\HitTrackerGameBundle::class => ['all' => true],
+    App\PubSubBundle\PubSubBundle::class => ['all' => true],
+    App\GameBundle\HitTrackerGameBundle::class => ['all' => true],
 ];

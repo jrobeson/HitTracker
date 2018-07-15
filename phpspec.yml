@@ -1,4 +1,4 @@
 suites:
     default:
-        namespace: LazerBall\HitTracker
-        psr4_prefix: LazerBall\HitTracker
+        namespace: App
+        psr4_prefix: App

@@ -7,7 +7,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "LazerBall\\HitTracker\\": "src/"
+            "App\\": "src/"
         },
         "exclude-from-classmap": [
             "src/Migrations/"

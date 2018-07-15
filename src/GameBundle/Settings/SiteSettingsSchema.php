@@ -3,9 +3,9 @@
  * @copyright 2014 Johnny Robeson <johnny@localmomentum.net>
  */
 
-namespace LazerBall\HitTracker\GameBundle\Settings;
+namespace App\GameBundle\Settings;
 
-use LazerBall\HitTracker\Form\Type\GenericFileType;
+use App\Form\Type\GenericFileType;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;

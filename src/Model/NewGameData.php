@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\Model;
+namespace App\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use LazerBall\HitTracker\Validator\Constraints as CommonAssert;
+use App\Validator\Constraints as CommonAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class NewGameData

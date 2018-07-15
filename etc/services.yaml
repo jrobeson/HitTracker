@@ -6,16 +6,16 @@ services:
         autoconfigure: true
         public: false
 
-    LazerBall\HitTracker\:
+    App\:
         resource: '../src/*'
         exclude: '../src/{Model,Repository,Migrations,Tests,GameBundle,Controller}'
 
-    LazerBall\HitTracker\Controller\:
+    App\Controller\:
         resource: '../src/Controller'
         public: true
         tags: ['controller.service_arguments']
 
-    LazerBall\HitTracker\GameBundle\Controller\:
+    App\GameBundle\Controller\:
         resource: '../src/GameBundle/Controller'
         autowire: false
         # automatically registers your services as commands, event subscribers, etc.
@@ -23,17 +23,17 @@ services:
 
 
     # CSRF link extension
-    LazerBall\HitTracker\EventListener\CsrfListener:
+    App\EventListener\CsrfListener:
         arguments:
             $csrfTokenId: 'link'
 
-    LazerBall\HitTracker\FileUploader:
+    App\FileUploader:
         arguments:
             - "%upload_dir%"
             - "%upload_uri_base_prefix%"
 
 
     # CSRF link extension
-    LazerBall\HitTracker\Twig\LinkAttributesExtension:
+    App\Twig\LinkAttributesExtension:
         arguments:
             $csrfTokenId: 'link'

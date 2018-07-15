@@ -1,10 +1,10 @@
 <?php
 
-namespace LazerBall\HitTracker\GameBundle\Form\Type;
+namespace App\GameBundle\Form\Type;
 
 use Doctrine\ORM\EntityRepository;
-use LazerBall\HitTracker\Model\PlayerData;
-use LazerBall\HitTracker\Model\Vest;
+use App\Model\PlayerData;
+use App\Model\Vest;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

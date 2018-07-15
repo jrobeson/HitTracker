@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\Model;
+namespace App\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

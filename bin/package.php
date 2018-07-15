@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-use LazerBall\HitTracker\Command\PackageCommand;
+use App\Command\PackageCommand;
 use Symfony\Component\Console\Application;
 
 require __DIR__.'/../vendor/autoload.php';

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace LazerBall\HitTracker\Model;
+namespace App\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use LazerBall\HitTracker\Validator\Constraints as HitTrackerAssert;
+use App\Validator\Constraints as HitTrackerAssert;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;

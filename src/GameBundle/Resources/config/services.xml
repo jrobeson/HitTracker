@@ -5,51 +5,51 @@
 
     <services>
         <defaults autowire="true" autoconfigure="true" public="false" />
-        <prototype namespace="LazerBall\HitTracker\GameBundle\" resource="../../*" exclude="../../{Entity,Repository}" />
+        <prototype namespace="App\GameBundle\" resource="../../*" exclude="../../{Entity,Repository}" />
 
         <!-- game -->
-        <service id="LazerBall\HitTracker\GameBundle\Settings\GameSettingsSchema">
+        <service id="App\GameBundle\Settings\GameSettingsSchema">
             <tag name="sylius.settings_schema" alias="game" />
         </service>
-        <service id="LazerBall\HitTracker\GameBundle\Settings\SiteSettingsSchema">
+        <service id="App\GameBundle\Settings\SiteSettingsSchema">
             <tag name="sylius.settings_schema" alias="site" />
         </service>
-        <service id="hittracker_game.manager.game" class="LazerBall\HitTracker\GameBundle\GameManager">
+        <service id="hittracker_game.manager.game" class="App\GameBundle\GameManager">
             <argument type="service" id="hittracker.repository.game" />
         </service>
-        <service id="LazerBall\HitTracker\GameBundle\Form\Type\ListGamesType">
+        <service id="App\GameBundle\Form\Type\ListGamesType">
             <argument type="service" id="hittracker.repository.game" />
             <argument type="service" id="translator" />
             <tag name="form.type" />
         </service>
-        <service id="LazerBall\HitTracker\GameBundle\Form\Type\GameType">
+        <service id="App\GameBundle\Form\Type\GameType">
             <argument type="service" id="sylius.settings_manager" />
-            <argument type="service" id="LazerBall\HitTracker\GameBundle\EventListener\GameFormSubscriber"/>
+            <argument type="service" id="App\GameBundle\EventListener\GameFormSubscriber"/>
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game"/>
         </service>
-        <service id="LazerBall\HitTracker\GameBundle\Form\Type\MatchSettingsType">
+        <service id="App\GameBundle\Form\Type\MatchSettingsType">
             <argument type="service" id="sylius.settings_manager" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_game_settings"/>
         </service>
 
-        <service id="LazerBall\HitTracker\GameBundle\EventListener\GameFormSubscriber">
+        <service id="App\GameBundle\EventListener\GameFormSubscriber">
             <argument type="service" id="hittracker.repository.game" />
         </service>
-        <service id="LazerBall\HitTracker\GameBundle\EventListener\GameEventListener">
+        <service id="App\GameBundle\EventListener\GameEventListener">
             <argument type="service" id="hittracker_pubsub.handler" />
             <tag name="kernel.event_listener" event="hittracker.game.post_create" method="onPostCreate" />
         </service>
 
         <!-- player -->
-        <service id="LazerBall\HitTracker\GameBundle\Form\Type\PlayerType">
+        <service id="App\GameBundle\Form\Type\PlayerType">
             <argument type="service" id="sylius.settings_manager" />
             <argument type="service" id="hittracker.repository.vest" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player"/>
         </service>
-        <service id="LazerBall\HitTracker\GameBundle\Form\Type\PlayerCollectionType">
+        <service id="App\GameBundle\Form\Type\PlayerCollectionType">
             <argument type="service" id="sylius.settings_manager" />
             <!-- TODO: rename once sylius/resource-bundle allows global configuration -->
             <tag name="form.type" alias="hittracker_player_collection"/>

@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\PubSubBundle;
+namespace App\PubSubBundle;
 
-use LazerBall\HitTracker\PubSubBundle\DependencyInjection\Extension;
+use App\PubSubBundle\DependencyInjection\Extension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class PubSubBundle extends Bundle

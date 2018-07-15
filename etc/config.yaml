@@ -55,16 +55,16 @@ sylius_resource:
         hittracker.vest:
             templates: "@HitTrackerGame/Vest"
             classes:
-                model: LazerBall\HitTracker\Model\Vest
-                repository: LazerBall\HitTracker\Repository\VestRepository
-                form: LazerBall\HitTracker\GameBundle\Form\Type\VestType
+                model: App\Model\Vest
+                repository: App\Repository\VestRepository
+                form: App\GameBundle\Form\Type\VestType
 
         hittracker.game:
             templates: "@HitTrackerGame/Game"
             classes:
-                model: LazerBall\HitTracker\Model\Game
-                controller: LazerBall\HitTracker\GameBundle\Controller\GameController
-                repository: LazerBall\HitTracker\Repository\GameRepository
-                form: LazerBall\HitTracker\GameBundle\Form\Type\GameType
+                model: App\Model\Game
+                controller: App\GameBundle\Controller\GameController
+                repository: App\Repository\GameRepository
+                form: App\GameBundle\Form\Type\GameType
 
 

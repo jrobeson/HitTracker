@@ -16,10 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\Repository;
+namespace App\Repository;
 
 use Doctrine\Common\Collections\Criteria;
-use LazerBall\HitTracker\Model\Game;
+use App\Model\Game;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 class GameRepository extends EntityRepository

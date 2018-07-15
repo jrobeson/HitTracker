@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LazerBall\HitTracker\Twig;
+namespace App\Twig;
 
 use Twig_Extension;
 use Twig_Filter;

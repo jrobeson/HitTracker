@@ -15,10 +15,10 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
         mappings:
-                LazerBall\HitTracker\Model:
+                App\Model:
                     type: annotation
                     dir: '%kernel.project_dir%/src/Model'
                     is_bundle: false
-                    prefix: LazerBall\HitTracker\Model
+                    prefix: App\Model
                     alias: HitTracker
 
