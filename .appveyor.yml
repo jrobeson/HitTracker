@@ -55,6 +55,7 @@ install:
     - composer self-update --stable
     - cd %APPVEYOR_BUILD_FOLDER%
     - appveyor-retry composer install --prefer-dist --no-progress --profile --no-suggest
+    - php bin\console about
 
 test_script:
     - php bin\console doctrine:database:create
