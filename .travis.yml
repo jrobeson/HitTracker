@@ -16,18 +16,16 @@ env:
         - COMPOSER_NO_INTERACTION=1
         - APP_DEBUG=1
         - APP_ENV=test
+
         - APP_SECRET=ff3464e484bb524fb4234e893f9cee58
         - DATABASE_URL=pgsql://travis:travis@localhost:5433/hittracker
+        - APP_LOG_DIR="var/logs"
+        - APP_TMP_DIR="var/tmp"
+
     matrix:
         - APP_BUILD_TYPE=hosted
-          APP_LOG_DIR="var/logs"
-          APP_TMP_DIR="var/tmp"
         - APP_BUILD_TYPE=appliance
-          APP_LOG_DIR="var/logs"
-          APP_TMP_DIR="var/tmp"
         - APP_BUILD_TYPE=electron
-          APP_TMP_DIR="var/tmp"
-          APP_LOG_DIR="var/logs"
 
 #-services:
 #  - postgresql
