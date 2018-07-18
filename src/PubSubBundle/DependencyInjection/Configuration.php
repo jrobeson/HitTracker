@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->arrayNode('nginx_push_stream')
                             ->children()
-                                ->scalarNode('url')->defaultValue('')->end()
+                                ->scalarNode('publish_url')->defaultValue('')->end()
                             ->end()
                         ->end()
                     ->end()

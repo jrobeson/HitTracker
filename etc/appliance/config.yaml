@@ -1,4 +1,4 @@
 hittracker_pubsub:
     handlers:
         nginx_push_stream:
-            url: "%pubsub_nginx_push_stream_url%"
+            publish_url: "%game_events_publish_url%"

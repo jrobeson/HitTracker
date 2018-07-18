@@ -1,4 +1,4 @@
 parameters:
     secure_cookies: false
-    pubsub_nginx_push_stream_url: "http://localhost/publish/game"
+    game_events_publish_url: "http://localhost/publish/game"
     upload_dir: /var/lib/hittracker/uploads

@@ -44,10 +44,10 @@ class Extension extends ConfigurableExtension
         $handlerDefinition = $container->findDefinition('hittracker_pubsub.handler');
 
         $nginxPushStreamConfig = $handlers['nginx_push_stream'] ?? [];
-        if (!empty($nginxPushStreamConfig['url'])) {
+        if (!empty($nginxPushStreamConfig['publish_url'])) {
             $definition = $container->findDefinition('hittracker_pubsub.handler.nginx_push_stream');
             $handlerDefinition->setClass((string) $definition->getClass());
-            $handlerDefinition->addArgument($nginxPushStreamConfig['url']);
+            $handlerDefinition->addArgument($nginxPushStreamConfig['publish_url']);
         }
     }
 
