@@ -122,7 +122,7 @@ $(() => {
   });
 
   if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
-    const source = new EventSource('/events/game');
+    const source = new EventSource($('body').data('game-events-subscribe-url'));
     $(window).on('unload', () => {
       source.close();
     });
