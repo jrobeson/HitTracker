@@ -49,12 +49,6 @@ class Extension extends ConfigurableExtension
             $handlerDefinition->setClass((string) $definition->getClass());
             $handlerDefinition->addArgument($nginxPushStreamConfig['url']);
         }
-        $apcuConfig = $handlers['apcu'] ?? [];
-        if (!empty($apcuConfig['cache_key'])) {
-            $definition = $container->findDefinition('hittracker_pubsub.handler.apcu');
-            $handlerDefinition->setClass((string) $definition->getClass());
-            $handlerDefinition->addArgument($apcuConfig['cache_key']);
-        }
     }
 
     public function getAlias(): string

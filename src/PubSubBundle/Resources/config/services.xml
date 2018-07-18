@@ -9,7 +9,6 @@
         </service>
         <service id="hittracker_pubsub.handler.null" class="App\PubSub\NullPubSub" public="true">
         </service>
-        <service id="hittracker_pubsub.handler.apcu" class="App\PubSub\ApcU" public="true">
         </service>
         <!-- instance -->
         <service id="hittracker_pubsub.handler" class="App\PubSub\NullPubSub" public="true">
