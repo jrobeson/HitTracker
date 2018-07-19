@@ -1,4 +1,4 @@
 hittracker_pubsub:
     handlers:
         node_sse_pubsub:
-            publsh_url: http://localhost/sse/publish/game
+            publish_url: http://localhost/sse/publish/game
