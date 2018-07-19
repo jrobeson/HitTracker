@@ -7,6 +7,8 @@
         <!-- handlers -->
         <service id="hittracker_pubsub.handler.nginx_push_stream" class="App\PubSub\NginxPushStream" public="true">
         </service>
+        <service id="hittracker_pubsub.handler.node_sse_pubsub" class="App\PubSub\NodeSsePubSub" public="true">
+        </service>
         <service id="hittracker_pubsub.handler.null" class="App\PubSub\NullPubSub" public="true">
         </service>
         <!-- instance -->
