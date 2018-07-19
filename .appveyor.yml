@@ -48,6 +48,7 @@ install:
     - IF %PHP%==1 7z x php_apcu.zip -y
     - IF %PHP%==1 del /Q *.zip
     - IF %PHP%==1 appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.6.0-7.2-vc15-nts-x86_64.dll -FileName php_xdebug.dll
+    - dir
     - IF NOT EXIST C:\composer mkdir C:\composer
     - cd C:\composer
     - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
