@@ -139,7 +139,7 @@ $(() => {
 
     source.addEventListener('game.hit', (e: any) => {
       const eventData = JSON.parse(e.data);
-      const hit = eventData.content;
+      const hit = eventData;
       const targetPlayer = hit.target_player;
 
       // queueActivity(`<li>${player.name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
