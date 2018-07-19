@@ -38,9 +38,6 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
-    "cocur/slugify": {
-        "version": "v3.1"
-    },
     "composer/semver": {
         "version": "1.4.2"
     },
@@ -211,12 +208,6 @@
     },
     "jrobeson/sylius-settings-bundle": {
         "version": "1.0-dev"
-    },
-    "knplabs/knp-menu": {
-        "version": "2.3.0"
-    },
-    "knplabs/knp-menu-bundle": {
-        "version": "v2.2.1"
     },
     "league/factory-muffin": {
         "version": "v3.0.1"
@@ -437,24 +428,6 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
-    "sonata-project/block-bundle": {
-        "version": "3.12.1"
-    },
-    "sonata-project/cache": {
-        "version": "2.0.1"
-    },
-    "sonata-project/core-bundle": {
-        "version": "3.9",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "3.9",
-            "ref": "2f69bd1995730b73a5211a9707622fb25a925df7"
-        }
-    },
-    "sonata-project/datagrid-bundle": {
-        "version": "2.3.1"
-    },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
         "recipe": {
@@ -474,9 +447,6 @@
         "version": "1.2-dev"
     },
     "sylius/resource-bundle": {
-        "version": "1.2-dev"
-    },
-    "sylius/ui-bundle": {
         "version": "1.2-dev"
     },
     "symfony/asset": {
