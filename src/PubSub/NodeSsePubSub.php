@@ -19,16 +19,18 @@
 namespace App\PubSub;
 
 use GuzzleHttp\Client;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class NodeSsePubSub implements PubSubInterface
 {
     private $url;
     private $httpClient;
+    private $requestStack;
 
-    public function __construct(string $url)
+    public function __construct(string $url, RequestStack $requestStack)
     {
         $this->url = $url;
-
+        $this->requestStack = $requestStack;
         $this->httpClient = new Client();
     }
 
@@ -37,7 +39,8 @@ class NodeSsePubSub implements PubSubInterface
      */
     public function publish(string $event, array $data): bool
     {
-        $this->httpClient->post($this->url, [
+        $schemeAndHost = $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost();
+        $this->httpClient->post($schemeAndHost.$this->url, [
             'headers' => ['Content-Type' => 'application/json'],
             'json' => [
                 'event' => $event,

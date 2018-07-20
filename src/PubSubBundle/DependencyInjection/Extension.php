@@ -21,6 +21,7 @@ namespace App\PubSubBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
 class Extension extends ConfigurableExtension
@@ -54,6 +55,7 @@ class Extension extends ConfigurableExtension
             $definition = $container->findDefinition('hittracker_pubsub.handler.node_sse_pubsub');
             $handlerDefinition->setClass((string) $definition->getClass());
             $handlerDefinition->addArgument($nodeSsePubSubConfig['publish_url']);
+            $handlerDefinition->addArgument(new Reference('request_stack'));
         }
     }
 
