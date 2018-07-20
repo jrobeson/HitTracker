@@ -177,7 +177,7 @@ class GameController extends ResourceController
                 'hitUrl' => $this->generateUrl('hittracker_game_hit')
             ];
 
-            $httpClient->post($request->getSchemeAndHost().'/blegateway/stop', [
+            $httpClient->post($request->getSchemeAndHttpHost().'/blegateway/stop', [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => $gameConfiguration,
             ]);

@@ -21,6 +21,7 @@ namespace App\GameBundle\EventListener;
 use App\PubSub\PubSubInterface;
 use GuzzleHttp\Client;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class GameEventListener
 {
@@ -43,7 +44,7 @@ class GameEventListener
         ];
         $this->pubSubClient->publish('game.start', $data);
 
-        $schemeAndHost = $this->requestStack->getCurrentRequest()->getSchemeAndHost();
+        $schemeAndHost = $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost();
         $url = $schemeAndHost.'/blegateway/start';
         $httpClient = new Client();
 
