@@ -39,6 +39,7 @@
         </service>
         <service id="App\GameBundle\EventListener\GameEventListener">
             <argument type="service" id="hittracker_pubsub.handler" />
+            <argument type="service" id="request_stack" />
             <tag name="kernel.event_listener" event="hittracker.game.post_create" method="onPostCreate" />
         </service>
 

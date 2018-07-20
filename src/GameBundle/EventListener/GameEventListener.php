@@ -25,10 +25,12 @@ use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 class GameEventListener
 {
     private $pubSubClient;
+    protected $requestStack;
 
-    public function __construct(PubSubInterface $pubSubClient)
+    public function __construct(PubSubInterface $pubSubClient, RequestStack $requestStack)
     {
         $this->pubSubClient = $pubSubClient;
+        $this->requestStack = $requestStack;
     }
 
     public function onPostCreate(ResourceControllerEvent $event): void
@@ -41,7 +43,8 @@ class GameEventListener
         ];
         $this->pubSubClient->publish('game.start', $data);
 
-        $url = 'http://localhost/blegateway/start';
+        $schemeAndHost = $this->requestStack->getCurrentRequest()->getSchemeAndHost();
+        $url = $schemeAndHost.'/blegateway/start';
         $httpClient = new Client();
 
         $radioIds = [];

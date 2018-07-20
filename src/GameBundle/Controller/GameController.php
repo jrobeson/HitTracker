@@ -167,7 +167,6 @@ class GameController extends ResourceController
             $pubSub = $this->get('hittracker_pubsub.handler');
             $pubSub->publish('game.end', $data);
 
-            $url = 'http://localhost/blegateway/stop';
             $httpClient = new Client();
             $radioIds = [];
             foreach ($resource->getPlayers() as $player) {
@@ -178,7 +177,7 @@ class GameController extends ResourceController
                 'hitUrl' => $this->generateUrl('hittracker_game_hit')
             ];
 
-            $httpClient->post($url, [
+            $httpClient->post($request->getSchemeAndHost().'/blegateway/stop', [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => $gameConfiguration,
             ]);
