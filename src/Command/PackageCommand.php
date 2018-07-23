@@ -211,11 +211,11 @@ class PackageCommand extends Command
         ;
         foreach ($vendorLicenseFiles as $vendorLicenseFile) {
             $path = $vendorLicenseFile->getRealPath();
-            list($vendorName, $vendorPackageName) = explode(DS, str_replace($vendorDir.DS, '', $path));
+            list($vendorName, $vendorPackageName) = explode(DS, str_replace($vendorDir.DS, '', (string) $path));
             $licenseFileName = $vendorLicenseFile->getBasename();
             $licensePath = $targetDir.DS.$vendorName.'-'.$vendorPackageName.'-'.$licenseFileName;
 
-            $fs->rename($vendorLicenseFile->getRealPath(), $licensePath, true);
+            $fs->rename((string) $vendorLicenseFile->getRealPath(), $licensePath, true);
         }
     }
 

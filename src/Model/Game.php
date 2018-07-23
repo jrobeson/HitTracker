@@ -217,12 +217,12 @@ class Game implements ResourceInterface
         return $players->first();
     }
 
-    /** @return string[] */
+    /** @return array<string, array<int, array>> */
     public function getTeamPlayers(): array
     {
         $players = [];
         foreach ($this->getTeams() as $team) {
-            $players[$team][] = $this->getPlayersByTeam($team);
+            $players[$team][] = $this->getPlayersByTeam($team)->toArray();
         }
 
         return $players;
