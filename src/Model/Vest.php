@@ -55,6 +55,12 @@ class Vest implements ResourceInterface
     private $color;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private $illuminationStyle;
+
+    /**
      * @var int
      * @ORM\Column(type="integer")
      */
@@ -84,6 +90,7 @@ class Vest implements ResourceInterface
         $this->radioId = '';
         $this->active = true;
         $this->zones = 0;
+        $this->illuminationStyle = 'none';
     }
 
     public function setId(int $id): void
@@ -136,6 +143,22 @@ class Vest implements ResourceInterface
     public static function getUnitTypes(): array
     {
         return ['vest', 'target'];
+    }
+
+    public function setIlluminationStyle(string $illuminationStyle): void
+    {
+        $this->illuminationStyle = $illuminationStyle;
+    }
+
+    public function getIlluminationStyle(): ?string
+    {
+        return $this->illuminationStyle;
+    }
+
+    /** @return string[] */
+    public static function getIlluminationStyles(): array
+    {
+        return ['rgbw', 'rgb', 'simple_led', 'none'];
     }
 
     public function setZones(int $zones): void

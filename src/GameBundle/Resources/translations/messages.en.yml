@@ -99,8 +99,11 @@ hittracker.vest.radio_id.help: '8 character radio ID'
 hittracker.vest.unit_type: 'Unit Type'
 hittracker.vest.color: 'Color'
 hittracker.vest.color.help: 'Color on the vest'
+hittracker.vest.illumination_style: 'Illumination Style'
+hittracker.vest.illumination.help: "Style of Illumintation used on this unit"
 hittracker.vest.zones: 'Zones'
 hittracker.vest.zones.help: "Number of zones on the unit"
+
 hittracker.vest.status: 'Active?'
 hittracker.vest.update: 'Update Unit'
 hittracker.vest.list: 'Unit List'

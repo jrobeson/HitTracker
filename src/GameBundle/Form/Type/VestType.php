@@ -28,6 +28,10 @@ class VestType extends AbstractType
             array_map('ucfirst', Vest::getColors()),
             Vest::getColors()
         );
+        $illuminationStyleChoices = array_combine(
+            array_map('strtoupper', Vest::getIlluminationStyles()),
+            Vest::getIlluminationStyles()
+        );
 
         $builder
             ->add('id', IntegerType::class, [
@@ -55,6 +59,13 @@ class VestType extends AbstractType
                 'label' => 'hittracker.vest.zones',
                 'attr' => [
                     'help' => 'hittracker.vest.zones.help'
+                ],
+            ])
+            ->add('illuminationStyle', ChoiceType::class, [
+                'choices' => $illuminationStyleChoices,
+                'label' => 'hittracker.vest.illumination_style',
+                'attr' => [
+                    'help' => 'hittracker.vest.illumination_style.help'
                 ],
             ])
             ->add('radioId', TextType::class, [

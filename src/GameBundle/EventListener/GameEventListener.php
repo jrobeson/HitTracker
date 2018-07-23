@@ -48,12 +48,17 @@ class GameEventListener
         $url = $schemeAndHost.'/blegateway/start';
         $httpClient = new Client();
 
-        $radioIds = [];
+        $units = [];
         foreach ($resource->getPlayers() as $player) {
-            $radioIds[] = $player->getUnit()->getRadioId();
+            $unit = [];
+            $thisUnit = $player->getUnit();
+            $unit['radioId'] = $thisUnit->getRadioId();
+            $unit['illuminationStyle'] = $thisUnit->getIlluminationStyle();
+            $unit['zones'] = $thisUnit->getZones();
+            $units[] = $unit;
         }
         $gameConfiguration = [
-            'radioIds' => $radioIds,
+            'units' => $units,
             'hitUrl' => 'http://localhost/games/hit',
             'gameLength' => $data['ends_at'] - $data['created_at']
         ];

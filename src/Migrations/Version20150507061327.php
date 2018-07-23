@@ -69,6 +69,7 @@ class Version20150507061327 extends AbstractMigration
                       unit_type VARCHAR(255) NOT NULL,
                       color VARCHAR(255) DEFAULT NULL,
                       zones INT NOT NULL,
+                      illumination_style VARCHAR(255) DEFAULT NULL,
                       active BOOLEAN NOT NULL,
                       created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
                       updated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL,
