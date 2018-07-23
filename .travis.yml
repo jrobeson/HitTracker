@@ -37,6 +37,7 @@ addons:
     - postgresql-client-10
 
 install:
+    - (echo '' | pecl uninstall apcu) || true
     - (echo '' | pecl install apcu) || true
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$APP_BUILD_TYPE/php-unix-development.ini
     - export PHP_INI_SCAN_DIR=""
