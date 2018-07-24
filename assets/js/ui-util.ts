@@ -1,4 +1,3 @@
-declare var jsPrintSetup: any;
 export const alertDismiss = () => {
   const target = $('.alert');
   let timeout = target.data('auto-dismiss');
@@ -25,35 +24,11 @@ export const printScores = (url: string) => {
   frame.addEventListener(
     'load',
     event => {
-      jsPrintSetup.clearSilentPrint();
-      jsPrintSetup.setPaperSizeUnit(jsPrintSetup.kPaperSizeInches);
-      const paperSizeId = 200;
-      jsPrintSetup.definePaperSize(
-        paperSizeId,
-        paperSizeId,
-        'lazerball_scorecard',
-        'lazerball_scorecard_8.5x5.5in',
-        'LazerBall Scorecard',
-        8.5,
-        5.5,
-        jsPrintSetup.kPaperSizeInches
-      );
-      jsPrintSetup.setPaperSizeData(1);
-
-      jsPrintSetup.setOption('orientation', jsPrintSetup.kPortraitOrientation);
-      jsPrintSetup.setOption('shrinkToFit', true);
-      jsPrintSetup.setOption('marginTop', 0);
-      jsPrintSetup.setOption('marginBottom', 0);
-      jsPrintSetup.setOption('marginLeft', 0);
-      jsPrintSetup.setOption('marginRight', 0);
-      jsPrintSetup.setOption('headerStrLeft', '');
-      jsPrintSetup.setOption('headerStrCenter', '');
-      jsPrintSetup.setOption('headerStrRight', '');
-      jsPrintSetup.setOption('footerStrLeft', '');
-      jsPrintSetup.setOption('footerStrCenter', '');
-      jsPrintSetup.setOption('footerStrRight', '');
-      jsPrintSetup.printWindow(frame.contentWindow);
-
+      if (!frame.contentWindow) {
+        return;
+      }
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
       setTimeout(() => {
         if (frame) {
           frame.remove();
