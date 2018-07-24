@@ -38,7 +38,7 @@ $print-page-size: letter;
 
 .scorecard-page {
     height: 5in;
-    page-break-after: always;
+    break-after: page;
 }
 
 .scorecard-brand {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% import '@HitTrackerGame/macros/game.html.twig' as game_macros %}
 {% set siteSettings = sylius_settings('site') %}
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,8 +16,8 @@
             </style>
         {% endblock %}
     </head>
-    <body class="{{ app.request.get('_route')|replace({'_': '-'}) }}">
-        <main role="main" class="container-fluid">
+    <body class="d-flex flex-column {{ app.request.get('_route')|replace({'_': '-'}) }}">
+        <main role="main" class="flex-grow-1 container-fluid">
         {% for player in game.players %}
             <div class="scorecard-page">
                 <div class="row">
@@ -31,26 +31,22 @@
                     </div>
                 </div>
                 <div class="score-sheet row">
-                    <div class="row col-xl-12">
-                        <div class="col-6 scorecard-game-player">
-                            <strong>Player:</strong>&nbsp;{{ player.name }}
-                        </div>
-                        <div class="col-6 scorecard-game-meta">
-                            {% set time_total = game.timeTotal|date('%H:%I') %}
-                            <strong>{{ 'hittracker.game.length'|trans }}:</strong> {{ time_total }}
-                            &nbsp;
-                            <strong>{{ 'hittracker.game.date'|trans }}:</strong>&nbsp;
-                            {{ game.createdAt|localizeddate(format=icu_time_date_format) }}
-                        </div>
+                    <div class="col-6 scorecard-game-player">
+                        <strong>Player:</strong>&nbsp;{{ player.name }}
                     </div>
-                    <div class="row">
-                        <div class="col-xl-12">
+                    <div class="col-6 scorecard-game-meta">
+                        {% set time_total = game.timeTotal|date('%H:%I') %}
+                        <strong>{{ 'hittracker.game.length'|trans }}:</strong> {{ time_total }}
+                        &nbsp;
+                        <strong>{{ 'hittracker.game.date'|trans }}:</strong>&nbsp;
+                        {{ game.createdAt|localizeddate(format=icu_time_date_format) }}
+                    </div>
+                    <div class="row w-100">
                             {% for team in game.teams %}
-                                <div class="scorecard-scores col-lg-6 col-6">
+                                <div class="scorecard-scores col-md-6 col-6">
                                    {{ game_macros.team_players_table(game, team) }}
                                 </div>
                             {% endfor %}
-                        </div>
                     </div>
 
                 </div>
