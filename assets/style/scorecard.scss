@@ -1,7 +1,6 @@
 $body-bg: #fff;
 $text-color: #000;
 
-$navbar-height: 0;
 $grid-gutter-width: 4px;
 $table-cell-padding: 4px;
 
@@ -10,11 +9,11 @@ $table-bg-accent: #e6e6e6;
 $font-size-base: 1rem;
 
 
-@import 'common';
+@import "~bootstrap/scss/bootstrap";
 
 .scores {
   @extend .table;
-  color: #000;
+  @extend .table-bordered;
 }
 
 .logo {
