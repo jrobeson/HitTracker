@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *            }
  * )
  */
-class Vest implements ResourceInterface
+class Vest implements ResourceInterface, UnitInterface
 {
     /**
      * @var int
