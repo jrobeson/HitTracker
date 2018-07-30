@@ -14,16 +14,18 @@ fos_rest:
             json:
                 - 'application/json'
                 - 'application/json;version=0.1'
-        view_response_listener: 'force'
+        view_response_listener: 'enabled'
         formats:
             json: true
         templating_formats:
             html: true
     format_listener:
         rules:
-            - path: ^/
+            - path: ^/game
               priorities: [html, json]
               fallback_format: html
+            - path: '^/'
+              stop: true
     versioning:
         enabled: true
         resolvers:
