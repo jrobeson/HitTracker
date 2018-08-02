@@ -21,5 +21,6 @@ namespace App\Model;
 interface UnitInterface
 {
     public function getRadioId(): ?string;
+
     public function getZones(): ?int;
 }
