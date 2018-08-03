@@ -14,6 +14,7 @@ env:
     global:
         - PGPORT=5433
         - COMPOSER_NO_INTERACTION=1
+        - TRAVIS_NODE_VERSION="10"
         - APP_DEBUG=1
         - APP_ENV=test
 
@@ -37,6 +38,8 @@ addons:
     - postgresql-client-10
 
 install:
+    - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+    - npm install
     - (echo '' | pecl uninstall apcu) || true
     - (echo '' | pecl install apcu) || true
     - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$APP_BUILD_TYPE/php-unix-development.ini
