@@ -6,6 +6,9 @@
   "author": "Johnny Robeson",
   "license": "AGPL-3.0",
   "scripts": {
+    "lint:php-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --dry-run -v",
+    "lint:php-analyze": "./vendor/bin/phpstan analyse --memory-limit='-1' -l7 -c phpstan.neon etc/ src/ bin/",
+    "lint": "tslint --project . && npm run lint:php-cs-fixer && npm run lint:php-analyze",
     "encore-watch": "encore dev --watch",
     "build": "encore production",
     "bundle-third-party": "gulp bundle-third-party"
@@ -21,6 +24,7 @@
     "download": "^7.0",
     "fork-ts-checker-webpack-plugin": "^0.4.3",
     "gulp": "^3.9.1",
+    "husky": "^1.0.0-rc.13",
     "node-sass": "^4.9.2",
     "postcss-loader": "^2.1.6",
     "prettier": "^1.14.0",
@@ -61,6 +65,11 @@
     "tabWidth": 2,
     "printWidth": 120,
     "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "browserslist": [
     "last 2 versions",
