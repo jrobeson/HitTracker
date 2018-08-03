@@ -8,6 +8,7 @@ namespace App\GameBundle\Settings;
 use App\Form\Type\GenericFileType;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface;
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,6 +32,7 @@ class SiteSettingsSchema implements SchemaInterface
                 /*'business_facebook_account' => '',
                 'business_facebook_page' => '',
                 'business_twitter_account' => '',*/
+                'scorecard_paper_size' => 'letter',
                 'scoreboard_logo' => 'uploads/scoreboard_logo.jpg',
                 'scoreboard_banner_1' => 'uploads/scoreboard_banner_1.jpg',
                 'scoreboard_banner_2' => 'uploads/scoreboard_banner_2.jpg',
@@ -43,6 +45,7 @@ class SiteSettingsSchema implements SchemaInterface
             /*->setAllowedTypes('business_facebook_account', ['string', 'null'])
             ->setAllowedTypes('business_facebook_page', ['string', 'null'])
             ->setAllowedTypes('business_twitter_account', ['string', 'null'])*/
+            ->setAllowedTypes('scorecard_paper_size', ['string', 'null'])
             ->setAllowedTypes('scoreboard_logo', ['string', 'null'])
             ->setAllowedTypes('scoreboard_banner_1', ['string', 'null'])
             ->setAllowedTypes('scoreboard_banner_2', ['string', 'null'])
@@ -55,6 +58,12 @@ class SiteSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $uploadUriPrefix = '/images';
+
+        $paperTypes = ['letter', 'A4'];
+        $paperTypesChoices = array_combine(
+            array_map('ucfirst', $paperTypes),
+            $paperTypes
+        );
 
         $builder
             ->add('arenas', IntegerType::class, [
@@ -105,6 +114,11 @@ class SiteSettingsSchema implements SchemaInterface
                 'label' => 'hittracker.settings.site.business_twitter_account',
                 'help' => 'hittracker.settings.site.business_twitter_account.help',
             ])*/
+            ->add('scorecard_paper_size', ChoiceType::class, [
+                'choices' => $paperTypesChoices,
+                'label' => 'hittracker.settings.site.scorecard_paper_size',
+                'help' => 'hittracker.settings.site.scorecard_paper_size.help',
+            ])
             ->add('scoreboard_logo', GenericFileType::class, [
                 'upload_uri_prefix' => $uploadUriPrefix,
                 'upload_use_provided_file_name' => true,

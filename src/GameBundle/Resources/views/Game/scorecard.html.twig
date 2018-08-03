@@ -11,7 +11,7 @@
             <link rel="stylesheet" media="print" href="{{ asset(asset_path ~ '/style/scorecard.css', 'built') }}" type="text/css"/>
             <style>
                @page {
-                    size: letter;
+                    size: {{ siteSettings.get('scorecard_paper_size') }};
                 }
             </style>
         {% endblock %}
@@ -48,9 +48,9 @@
                                 </div>
                             {% endfor %}
                     </div>
-
                 </div>
             </div>
+            <div class="page-break"></div>
         {% endfor %}
         </main>
         {% block javascripts %}
