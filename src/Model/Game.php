@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Validator\Constraints as CommonAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -13,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Game
  *
+ * @ApiResource
  * @ORM\Entity
  * @ORM\Table(name="games")
  */
