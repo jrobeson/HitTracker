@@ -1,4 +1,4 @@
 hittracker_pubsub:
     handlers:
-        nginx_push_stream:
-            publish_url: "%game_events_publish_url%"
+        node_sse_pubsub:
+            publish_url: /sse/publish/game
