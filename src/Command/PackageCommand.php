@@ -52,12 +52,17 @@ class PackageCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $targetDir = $input->getArgument('target-dir');
+
         $buildType = $input->getOption('build-type');
         $platform = $input->getOption('build-platform');
         $version = $input->getOption('build-version');
         $doCompress = $input->getOption('compress');
-        $useExistingVendor = $input->getOption('use-existing-vendor');
-        $useExistingNodeModules = $input->getOption('use-existing-node-modules');
+        $useExistingVendor = (bool) $input->getOption('use-existing-vendor');
+        $useExistingNodeModules = (bool) $input->getOption('use-existing-node-modules');
+
+        if (!is_string($targetDir) || !is_string($buildType) || !is_string($platform) || !is_string($version)) {
+            throw new \InvalidArgumentException('targetDir, buildType, platform, and version must be strings');
+        }
 
         if (!$targetDir) {
             $dir = 'hittracker';
