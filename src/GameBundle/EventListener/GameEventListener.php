@@ -59,7 +59,7 @@ class GameEventListener
         }
         $gameConfiguration = [
             'units' => $units,
-            'hitUrl' => 'http://localhost/games/hit',
+            'hitUrl' => $schemeAndHost.'/games/hit',
             'gameLength' => $data['ends_at'] - $data['created_at']
         ];
         $httpClient->post($url, [
