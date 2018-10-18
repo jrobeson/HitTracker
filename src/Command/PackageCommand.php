@@ -60,7 +60,7 @@ class PackageCommand extends Command
         $useExistingVendor = (bool) $input->getOption('use-existing-vendor');
         $useExistingNodeModules = (bool) $input->getOption('use-existing-node-modules');
 
-        if (!is_string($targetDir) || !is_string($buildType) || !is_string($platform) || !is_string($version)) {
+        if (!(is_string($targetDir) || null === $targetDir) || !is_string($buildType) || !is_string($platform) || !is_string($version)) {
             throw new \InvalidArgumentException('targetDir, buildType, platform, and version must be strings');
         }
 
