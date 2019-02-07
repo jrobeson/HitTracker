@@ -111,6 +111,8 @@ class PackageCommand extends Command
             $this->getFs()->remove($targetDir);
         }
         $output->writeln('Finished');
+
+        return null;
     }
 
     private function compressTargetDir(string $sourceDir, string $targetFile): void
