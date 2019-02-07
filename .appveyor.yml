@@ -44,10 +44,10 @@ install:
     - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
     - cd c:\php
     - cd C:\php\ext
-    - IF NOT EXIST C:\php\ext\php_apcu.dll curl -fsSL -o php_apcu.zip https://windows.php.net/downloads/pecl/releases/apcu/5.1.9/php_apcu-5.1.9-7.2-nts-vc15-x64.zip
+    - IF NOT EXIST C:\php\ext\php_apcu.dll curl -fsSL -o php_apcu.zip https://windows.php.net/downloads/pecl/releases/apcu/5.1.16/php_apcu-5.1.16-7.3-nts-vc15-x64.zip
     - IF NOT EXIST C:\php\ext\php_apcu.dll 7z x php_apcu.zip -y
     - IF NOT EXIST C:\php\ext\php_apcu.dll del /Q *.zip
-    - IF NOT EXIST C:\php\ext\php_xdebug.dll appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.6.0-7.2-vc15-nts-x86_64.dll -FileName php_xdebug.dll
+    - IF NOT EXIST C:\php\ext\php_xdebug.dll appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.7.0RC1-7.3-vc15-nts-x86_64.dll -FileName php_xdebug.dll
     - IF NOT EXIST C:\composer mkdir C:\composer
     - cd C:\composer
     - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
