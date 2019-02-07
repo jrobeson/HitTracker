@@ -8,7 +8,7 @@ parameters:
     autoload_directories:
         - %rootDir%/../../../src/Migrations
     symfony:
-        container_xml_path: %rootDir%/../../../var/cache/development/srcDevelopmentDebugProjectContainer.xml
+        container_xml_path: %rootDir%/../../../var/cache/development/srcApp_KernelDevelopmentDebugContainer.xml
 includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
