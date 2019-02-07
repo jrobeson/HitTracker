@@ -56,7 +56,7 @@ before_script:
 
 script:
     # replace development with test manually since the container is hardcoded
-    - sed -i 's|development/srcDevelopment|test/srcTest|' phpstan.neon
+    - sed -i 's|development/srcApp_KernelDevelopment|test/srcApp_KernelTest|' phpstan.neon
     - npm run lint
     - ./vendor/bin/phpunit
 
