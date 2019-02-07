@@ -49,7 +49,7 @@ class PackageCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
         $targetDir = $input->getArgument('target-dir');
 
@@ -227,7 +227,7 @@ class PackageCommand extends Command
     private function buildAssets(string $targetDir): void
     {
         try {
-            $cmd = 'npm run build';
+            $cmd = ['npm', 'run', 'build'];
 
             $this->out->writeln($cmd);
             $process = new Process($cmd, $targetDir, null, null, 300);
@@ -242,7 +242,7 @@ class PackageCommand extends Command
     private function npmInstall(string $targetDir): void
     {
         try {
-            $cmd = 'npm install';
+            $cmd = ['npm', 'install'];
 
             $this->out->writeln($cmd);
             $process = new Process($cmd, $targetDir, null, null, 300);
@@ -257,8 +257,8 @@ class PackageCommand extends Command
     private function composerInstall(string $targetDir): void
     {
         try {
-            $composerInstallCmd = "composer install --working-dir=$targetDir --no-dev --prefer-dist"
-                                  .' --optimize-autoloader --classmap-authoritative --no-suggest --no-interaction';
+            $composerInstallCmd = ['composer', 'install', "--working-dir=$targetDir", '--no-dev', '--prefer-dist',
+                                  '--optimize-autoloader', '--classmap-authoritative', '--no-suggest', '--no-interaction'];
 
             $this->out->writeln($composerInstallCmd);
             $envVars = ['APP_ENV' => 'production',
