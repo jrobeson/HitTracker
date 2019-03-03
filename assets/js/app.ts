@@ -129,6 +129,7 @@ $(() => {
 
     if ($('body').hasClass('hittracker-game-scoreboard')) {
       source.addEventListener('game.start', (e: any) => {
+        // tslint:disable-next-line: deprecation
         window.location.reload(true);
       });
     }
