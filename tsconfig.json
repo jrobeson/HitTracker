@@ -5,7 +5,6 @@
     "moduleResolution": "node",
     "allowJs": true,
     "lib": ["es2017", "es2017.object", "dom"],
-    //"outDir": "dist",
     "removeComments": true,
     "sourceMap": true,
     "strict": true,
@@ -13,17 +12,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["assets/js/*"],
-      "*": ["./types/*"],
+      "*": ["./types/*"]
 
     },
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "plugins": [
-        { "name": "tslint-language-service"}
-    ]
+    "emitDecoratorMetadata": true
   },
   "include": [
-    "./assets/**/*",
+    "./assets/**/*"
 
   ],
   "exclude": [
