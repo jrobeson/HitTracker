@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* eslint-disable */
 /*!
  * jQuery Color Animations v@VERSION
  * https://github.com/jquery/jquery-color
