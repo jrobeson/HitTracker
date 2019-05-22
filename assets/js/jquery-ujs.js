@@ -1,72 +1,71 @@
-/* tslint:disable */
 (function($, undefined) {
-    function confirmDeletion (event) {
-        var needConfirmation = !event.currentTarget.hasAttribute('data-no-confirm');
+  function confirmDeletion(event) {
+    var needConfirmation = !event.currentTarget.hasAttribute('data-no-confirm');
 
-        if (needConfirmation && !confirm($(event.currentTarget).data('confirm') || 'Are you sure?')) {
-            return false;
-        }
-
-        return true;
+    if (needConfirmation && !confirm($(event.currentTarget).data('confirm') || 'Are you sure?')) {
+      return false;
     }
 
-    function buildForm(action, method, csrfToken, params) {
-        var form      = document.createElement('form');
+    return true;
+  }
 
-        form.method   = 'POST';
-        form.action   = action;
+  function buildForm(action, method, csrfToken, params) {
+    var form = document.createElement('form');
 
-        var input     = document.createElement('input');
+    form.method = 'POST';
+    form.action = action;
 
-        input.type    = 'hidden';
-        input.name    = '_method';
-        input.value   = method;
+    var input = document.createElement('input');
 
-        form.appendChild(input);
+    input.type = 'hidden';
+    input.name = '_method';
+    input.value = method;
 
-        if (csrfToken) {
-            var csrfInput = document.createElement('input');
-            csrfInput.type  = 'hidden';
-            csrfInput.name  = '_link_token';
-            csrfInput.value = csrfToken;
-            form.appendChild(csrfInput);
-        }
+    form.appendChild(input);
 
-        if (params) {
-            var extraFields = {};
-            var parts = params.split('&');
-            for (var i = 0, len = parts.length; i < len; i++) {
-                var tokens = parts[i].split('=');
-                extraFields[tokens[0]] = decodeURIComponent(tokens[1]);
-            }
-            for (var key in extraFields) {
-                var field = document.createElement('input');
-                field.type = 'hidden';
-                field.name = key;
-                field.value = extraFields[key];
-                form.appendChild(field);
-            }
-        }
-
-        return form;
+    if (csrfToken) {
+      var csrfInput = document.createElement('input');
+      csrfInput.type = 'hidden';
+      csrfInput.name = '_link_token';
+      csrfInput.value = csrfToken;
+      form.appendChild(csrfInput);
     }
 
-    $(document).ready(function() {
-        $('body').delegate('a[data-method]', 'click', function (event) {
-            event.preventDefault();
+    if (params) {
+      var extraFields = {};
+      var parts = params.split('&');
+      for (var i = 0, len = parts.length; i < len; i++) {
+        var tokens = parts[i].split('=');
+        extraFields[tokens[0]] = decodeURIComponent(tokens[1]);
+      }
+      for (var key in extraFields) {
+        var field = document.createElement('input');
+        field.type = 'hidden';
+        field.name = key;
+        field.value = extraFields[key];
+        form.appendChild(field);
+      }
+    }
 
-            if (!confirmDeletion(event)) {
-                return;
-            }
+    return form;
+  }
 
-            var csrfToken = $(event.currentTarget).data('csrf-token');
-            var action   = event.currentTarget.href;
-            var method   = $(event.currentTarget).data('method');
-            var params   = $(event.currentTarget).data('params');
+  $(document).ready(function() {
+    $('body').delegate('a[data-method]', 'click', function(event) {
+      event.preventDefault();
 
-            var form = buildForm(action, method, csrfToken, params);
-            document.body.appendChild(form);
-            form.submit();
-        });
+      if (!confirmDeletion(event)) {
+        return;
+      }
+
+      var csrfToken = $(event.currentTarget).data('csrf-token');
+      var action = event.currentTarget.href;
+      var method = $(event.currentTarget).data('method');
+      var params = $(event.currentTarget).data('params');
+
+      var form = buildForm(action, method, csrfToken, params);
+      document.body.appendChild(form);
+      form.submit();
     });
-})( jQuery );
+  });
+})(jQuery);

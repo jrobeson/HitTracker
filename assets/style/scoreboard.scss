@@ -18,15 +18,17 @@ $font-size-base: 1rem;
   color: #000;
 }
 
-.team-1 thead tr:first-child, .team-1 tfoot {
+.team-1 thead tr:first-child,
+.team-1 tfoot {
   background-color: $score-table-team-1-color;
 }
-.team-2 thead tr:first-child, .team-2 tfoot {
+.team-2 thead tr:first-child,
+.team-2 tfoot {
   background-color: $score-table-team-2-color;
 }
 
 .logo {
-  padding-top:10px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -36,6 +38,4 @@ $font-size-base: 1rem;
 }
 .banners img {
   margin: 0 auto;
-
 }
-

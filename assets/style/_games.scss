@@ -2,12 +2,13 @@
   @extend .table;
   @extend .table-bordered;
   @extend .table-striped;
-  th, td {
+  th,
+  td {
     text-align: center;
     font-style: bold;
   }
 }
 
 .game-activity ul {
-    list-style: none;
+  list-style: none;
 }

@@ -92,19 +92,18 @@ hittracker.game.load_players_from_previous_games: 'Load Players From Previous Ga
 hittracker.game.choose: 'Choose a Game'
 hittracker.game.list.vs_teams: '%vs_team% (Game #: %id%)'
 
-
 hittracker.vest.add: 'Add Unit'
 hittracker.vest.id: 'Number'
-hittracker.vest.id.help: "Number printed on the unit"
+hittracker.vest.id.help: 'Number printed on the unit'
 hittracker.vest.radio_id: 'Radio Id'
 hittracker.vest.radio_id.help: '8 character radio ID'
 hittracker.vest.unit_type: 'Unit Type'
 hittracker.vest.color: 'Color'
 hittracker.vest.color.help: 'Color on the vest'
 hittracker.vest.illumination_style: 'Illumination Style'
-hittracker.vest.illumination.help: "Style of Illumintation used on this unit"
+hittracker.vest.illumination.help: 'Style of Illumintation used on this unit'
 hittracker.vest.zones: 'Zones'
-hittracker.vest.zones.help: "Number of zones on the unit"
+hittracker.vest.zones.help: 'Number of zones on the unit'
 
 hittracker.vest.status: 'Active?'
 hittracker.vest.update: 'Update Unit'

@@ -10,7 +10,7 @@ $font-size-base: 1rem;
 
 $print-page-size: letter;
 
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 
 .scores {
   @extend .table;
@@ -18,7 +18,7 @@ $print-page-size: letter;
 }
 
 .logo {
-  padding-top:10px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -32,27 +32,27 @@ $print-page-size: letter;
 }
 
 .scorecard-scores {
-    height: 3in;
-    font-size: 14px;
+  height: 3in;
+  font-size: 14px;
 }
 
 .scorecard-page {
-    height: 5in;
-    break-after: page;
+  height: 5in;
+  break-after: page;
 }
 
 .scorecard-brand {
-    text-align: center;
+  text-align: center;
 }
 
 .scorecard-game-meta {
-    text-align: right;
+  text-align: right;
 }
 
 .scores-player {
-    height: 36px;
+  height: 36px;
 }
 
 .scores-player td {
-    vertical-align: middle;
+  vertical-align: middle;
 }
