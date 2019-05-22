@@ -137,6 +137,9 @@
     "egulias/email-validator": {
         "version": "2.1.4"
     },
+    "fig/link-util": {
+        "version": "1.0.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "2.2",
         "recipe": {
@@ -269,6 +272,9 @@
     "nette/robot-loader": {
         "version": "v3.0.3"
     },
+    "nette/schema": {
+        "version": "v1.0.0"
+    },
     "nette/utils": {
         "version": "v2.5.2"
     },
@@ -364,6 +370,9 @@
     },
     "psr/http-message": {
         "version": "1.0.1"
+    },
+    "psr/link": {
+        "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.0.2"
@@ -581,8 +590,14 @@
             "ref": "179470cb6492db92dffee208cfdb436f175c93b4"
         }
     },
+    "symfony/polyfill-iconv": {
+        "version": "v1.11.0"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.8.0"
+    },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
     },
     "symfony/process": {
         "version": "v4.0.9"
@@ -667,6 +682,9 @@
     },
     "symfony/var-exporter": {
         "version": "v4.2.2"
+    },
+    "symfony/web-link": {
+        "version": "v4.2.7"
     },
     "symfony/web-profiler-bundle": {
         "version": "3.3",
