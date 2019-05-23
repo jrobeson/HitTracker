@@ -23,13 +23,13 @@ Encore.setOutputPath('public/build/')
       resolveUrlLoader: false,
     }
   )
-  .enableTypeScriptLoader(tsConfig => {})
-  .enableForkedTypeScriptTypesChecking(tsForkedConfig => {
-    tsForkedConfig.vue = true;
-    tsForkedConfig.tslint = true;
-  })
+
+  .enableTypeScriptLoader()
+  .enableForkedTypeScriptTypesChecking()
+
   .enablePostCssLoader()
-  .enableVueLoader()
+
+  .enableReactPreset()
 
   .autoProvideVariables({
     $: 'jquery',
