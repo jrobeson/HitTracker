@@ -12,9 +12,7 @@ Encore.setOutputPath('public/build/')
   .addStyleEntry('style/scoreboard', ['./assets/style/scoreboard.scss'])
   .addStyleEntry('style/scorecard', ['./assets/style/scorecard.scss'])
 
-  .configureBabel(babelConfig => {
-    babelConfig.presets.push('es2017');
-  })
+  .configureBabel(babelConfig => {})
   .enableSassLoader(
     sassOptions => {
       sassOptions.precision = 10;
@@ -24,8 +22,12 @@ Encore.setOutputPath('public/build/')
     }
   )
 
-  .enableTypeScriptLoader()
-  .enableForkedTypeScriptTypesChecking()
+  .enableTypeScriptLoader(function(tsConfig) {
+    tsConfig.configFile = 'tsconfig.web.json';
+  })
+  .enableForkedTypeScriptTypesChecking(typeCheckingConfig => {
+    typeCheckingConfig.tsconfig = 'tsconfig.web.json';
+  })
 
   .enablePostCssLoader()
 
