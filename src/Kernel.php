@@ -147,7 +147,6 @@ class Kernel extends BaseKernel
         }
 
         switch ($this->buildType) {
-            case 'appliance':
             case 'hosted':
                     $logDir = implode(\DIRECTORY_SEPARATOR, ['', 'var', 'log', 'hittracker']);
                 break;
@@ -175,7 +174,6 @@ class Kernel extends BaseKernel
             case 'electron':
                 throw new UnexpectedValueException('"APP_TMP_DIR" env var must be set for Electron.');
                 break;
-            case 'appliance':
             case 'hosted':
                 if (!$tmpDir) {
                     $tmpDir = implode(\DIRECTORY_SEPARATOR,

@@ -25,7 +25,6 @@ env:
 
     matrix:
         - APP_BUILD_TYPE=hosted
-        - APP_BUILD_TYPE=appliance
         - APP_BUILD_TYPE=electron
 
 #-services:

@@ -1,4 +1,0 @@
-hittracker_pubsub:
-    handlers:
-        node_sse_pubsub:
-            publish_url: /sse/publish/game

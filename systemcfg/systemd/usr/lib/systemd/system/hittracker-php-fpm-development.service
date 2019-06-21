@@ -7,7 +7,7 @@ Type=notify
 Environment=PHP_INI_SCAN_DIR=""
 Environment=APP_ENV=development
 Environment=APP_DEBUG=1
-ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/share/hittracker/etc/appliance/php-unix-development.ini --fpm-config=/usr/share/hittracker/etc/appliance/php-fpm-development.conf
+ExecStart=/usr/sbin/php-fpm --nodaemonize -c /usr/share/hittracker/etc/hosted/php-unix-development.ini --fpm-config=/usr/share/hittracker/etc/hosted/php-fpm-development.conf
 ExecReload=/bin/kill -USR2 $MAINPID
 WatchdogSec=30
 PrivateTmp=true
