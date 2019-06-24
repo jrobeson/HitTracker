@@ -1,4 +1,5 @@
-(function($, undefined) {
+export {};
+(function($) {
   function confirmDeletion(event: any) {
     const needConfirmation = !event.currentTarget.hasAttribute('data-no-confirm');
 

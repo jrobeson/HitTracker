@@ -23,7 +23,7 @@ export const printScores = (url: string) => {
 
   frame.addEventListener(
     'load',
-    event => {
+    () => {
       if (!frame.contentWindow) {
         return;
       }

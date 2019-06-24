@@ -12,7 +12,6 @@ Encore.setOutputPath('public/build/')
   .addStyleEntry('style/scoreboard', ['./assets/style/scoreboard.scss'])
   .addStyleEntry('style/scorecard', ['./assets/style/scorecard.scss'])
 
-  .configureBabel(babelConfig => {})
   .enableSassLoader(
     sassOptions => {
       sassOptions.precision = 10;

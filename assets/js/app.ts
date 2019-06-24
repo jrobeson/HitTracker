@@ -19,7 +19,7 @@
  */
 import 'bootstrap';
 import 'jquery-countdown';
-import './jquery-ujs.js';
+import './jquery-ujs.ts';
 import './jquery.color.js';
 
 import { alertDismiss, printScores } from './ui-util';
@@ -49,7 +49,7 @@ $(() => {
     e.preventDefault();
   });
 
-  $('form[id="game_form"] select[id$="_unit"]').on('focusout', function(e) {
+  $('form[id="game_form"] select[id$="_unit"]').on('focusout', function() {
     const address = $(this)
       .children('option:selected')
       .data('unit-address');
@@ -128,13 +128,13 @@ $(() => {
     });
 
     if ($('body').hasClass('hittracker-game-scoreboard')) {
-      source.addEventListener('game.start', (e: any) => {
+      source.addEventListener('game.start', () => {
         // tslint:disable-next-line: deprecation
         window.location.reload(true);
       });
     }
 
-    source.addEventListener('game.end', (e: any) => {
+    source.addEventListener('game.end', () => {
       queueActivity('<li>Game Ends</li>');
     });
 
