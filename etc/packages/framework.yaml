@@ -1,41 +1,41 @@
 framework:
-    secret: '%secret%'
-    default_locale: '%locale%'
-    session:
-      handler_id: '%session_handler%'
-      cookie_secure: '%secure_cookies%'
-      name: SESSIONID
-    csrf_protection: true
-    http_method_override: true
-    templating:
-        engines: ['twig']
-    #esi: true
-    #fragments: true
-    php_errors:
-        log: true
-    assets:
-        packages:
-            uploads:
-              version_strategy: incenteev_hashed_asset.strategy
-            built:
-              json_manifest_path: "%kernel.project_dir%/public/build/manifest.json"
+  secret: '%secret%'
+  default_locale: '%locale%'
+  session:
+    handler_id: '%session_handler%'
+    cookie_secure: '%secure_cookies%'
+    name: SESSIONID
+  csrf_protection: true
+  http_method_override: true
+  templating:
+    engines: ['twig']
+  #esi: true
+  #fragments: true
+  php_errors:
+    log: true
+  assets:
+    packages:
+      uploads:
         version_strategy: incenteev_hashed_asset.strategy
-    cache:
-        directory: "%kernel.tmp_dir%/pools"
-        prefix_seed: lazerball/hittracker
-        system: cache.adapter.filesystem
-        app: cache.adapter.apcu
-    profiler:
-        dsn: "file:%kernel.tmp_dir%/profiler"
+      built:
+        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+    version_strategy: incenteev_hashed_asset.strategy
+  cache:
+    directory: '%kernel.tmp_dir%/pools'
+    prefix_seed: lazerball/hittracker
+    system: cache.adapter.filesystem
+    app: cache.adapter.apcu
+  profiler:
+    dsn: 'file:%kernel.tmp_dir%/profiler'
 
 services:
-    _defaults:
-        public: false
-    pdo_session_handler:
-        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
-        arguments:
-            - '%database_url%'
-            - db_id_col: session_id
-              db_data_col:  session_data
-              db_time_col: session_time
-              db_lifetime_col: session_lifetime
+  _defaults:
+    public: false
+  pdo_session_handler:
+    class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+    arguments:
+      - '%database_url%'
+      - db_id_col: session_id
+        db_data_col: session_data
+        db_time_col: session_time
+        db_lifetime_col: session_lifetime

@@ -1,4 +1,4 @@
 parameters:
-    game_events_publish_url: "http://localhost/publish/game"
-    game_events_subscribe_url: "/events/game"
-    upload_dir: /var/lib/hittracker/uploads
+  game_events_publish_url: 'http://localhost/publish/game'
+  game_events_subscribe_url: '/events/game'
+  upload_dir: /var/lib/hittracker/uploads

@@ -1,20 +1,20 @@
 api_platform:
-    title: 'LazerBall HitTracker'
+  title: 'LazerBall HitTracker'
 
-    # The description of the API.
-    description: 'API to manage LazerBall HitTracker Games'
+  # The description of the API.
+  description: 'API to manage LazerBall HitTracker Games'
 
-    # The version of the API.
-    version: '0.0.1'
-    collection:
-        pagination:
-            client_enabled: true
-            client_items_per_page: true
-            items_per_page: 10
-    mapping:
-        paths: ['%kernel.project_dir%/src/Model']
+  # The version of the API.
+  version: '0.0.1'
+  collection:
+    pagination:
+      client_enabled: true
+      client_items_per_page: true
+      items_per_page: 10
+  mapping:
+    paths: ['%kernel.project_dir%/src/Model']
 services:
-    _defaults:
-        public: false
-    name_converter_snake_case:
-        class: Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter
+  _defaults:
+    public: false
+  name_converter_snake_case:
+    class: Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter

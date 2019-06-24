@@ -1,4 +1,3 @@
 parameters:
-    secure_cookies: false
-    game_events_subscribe_url: "/sse/events/game"
-
+  secure_cookies: false
+  game_events_subscribe_url: '/sse/events/game'

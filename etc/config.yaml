@@ -1,72 +1,70 @@
 sensio_framework_extra:
-    request:
-        converters: true
-    view:
-        annotations: true
-    router:
-        annotations: true
+  request:
+    converters: true
+  view:
+    annotations: true
+  router:
+    annotations: true
 
 fos_rest:
-    #disable_csrf_role: ROLE_API
-    param_fetcher_listener: true
-    view:
-        mime_types:
-            json:
-                - 'application/json'
-                - 'application/json;version=0.1'
-        view_response_listener: 'enabled'
-        formats:
-            json: true
-        templating_formats:
-            html: true
-    format_listener:
-        rules:
-            - path: ^/game
-              priorities: [html, json]
-              fallback_format: html
-            - path: '^/'
-              stop: true
-    versioning:
+  #disable_csrf_role: ROLE_API
+  param_fetcher_listener: true
+  view:
+    mime_types:
+      json:
+        - 'application/json'
+        - 'application/json;version=0.1'
+    view_response_listener: 'enabled'
+    formats:
+      json: true
+    templating_formats:
+      html: true
+  format_listener:
+    rules:
+      - path: ^/game
+        priorities: [html, json]
+        fallback_format: html
+      - path: '^/'
+        stop: true
+  versioning:
+    enabled: true
+    resolvers:
+      media_type:
         enabled: true
-        resolvers:
-            media_type:
-                enabled: true
-                regex: '/(v|version)=(?P<version>[0-9\.]+)/'
+        regex: '/(v|version)=(?P<version>[0-9\.]+)/'
 
-    exception:
-        codes:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
-            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
-        messages:
-            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
-    allowed_methods_listener: true
-    access_denied_listener:
-        json: true
-    body_listener: true
+  exception:
+    codes:
+      'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
+      'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
+    messages:
+      'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
+  allowed_methods_listener: true
+  access_denied_listener:
+    json: true
+  body_listener: true
 
 sylius_settings:
-    driver: doctrine/orm
+  driver: doctrine/orm
 
 doctrine_cache:
-    providers:
-        sylius_settings:
-            type: file_system
+  providers:
+    sylius_settings:
+      type: file_system
 
 sylius_resource:
-    resources:
-        hittracker.vest:
-            templates: "@HitTrackerGame/Vest"
-            classes:
-                model: App\Model\Vest
-                repository: App\Repository\VestRepository
-                form: App\GameBundle\Form\Type\VestType
+  resources:
+    hittracker.vest:
+      templates: '@HitTrackerGame/Vest'
+      classes:
+        model: App\Model\Vest
+        repository: App\Repository\VestRepository
+        form: App\GameBundle\Form\Type\VestType
 
-        hittracker.game:
-            templates: "@HitTrackerGame/Game"
-            classes:
-                model: App\Model\Game
-                controller: App\GameBundle\Controller\GameController
-                repository: App\Repository\GameRepository
-                form: App\GameBundle\Form\Type\GameType
-
-
+    hittracker.game:
+      templates: '@HitTrackerGame/Game'
+      classes:
+        model: App\Model\Game
+        controller: App\GameBundle\Controller\GameController
+        repository: App\Repository\GameRepository
+        form: App\GameBundle\Form\Type\GameType

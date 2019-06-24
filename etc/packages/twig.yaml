@@ -1,15 +1,15 @@
 twig:
-    paths:
-        '%kernel.project_dir%/templates':
-        '%kernel.project_dir%/templates/Pages': Pages
-    form_themes:
-        - bootstrap_4_horizontal_layout.html.twig
-        - 'form_theme.html.twig'
-    debug:            '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
-    globals:
-        game_events_subscribe_url: "%game_events_subscribe_url%"
-        livereload_script_url: '%livereload_http_url%'
-        icu_time_date_format: '%icu_time_date_format%'
-        build_type: '%hittracker_build_type%'
-        asset_path: 'build'
+  paths:
+    '%kernel.project_dir%/templates':
+    '%kernel.project_dir%/templates/Pages': Pages
+  form_themes:
+    - bootstrap_4_horizontal_layout.html.twig
+    - 'form_theme.html.twig'
+  debug: '%kernel.debug%'
+  strict_variables: '%kernel.debug%'
+  globals:
+    game_events_subscribe_url: '%game_events_subscribe_url%'
+    livereload_script_url: '%livereload_http_url%'
+    icu_time_date_format: '%icu_time_date_format%'
+    build_type: '%hittracker_build_type%'
+    asset_path: 'build'

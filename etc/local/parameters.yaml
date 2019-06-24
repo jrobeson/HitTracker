@@ -1,5 +1,5 @@
 parameters:
-    game_events_publish_url: "https://ht.local.dev:8888/sse/publish/game"
-    game_events_subscribe_url: "/sse/events/game"
-    livereload_http_url: "https://ht.local.dev/livereload.js?port=443"
-    livereload_ws_url: "wss://ht.local.dev"
+  game_events_publish_url: 'https://ht.local.dev:8888/sse/publish/game'
+  game_events_subscribe_url: '/sse/events/game'
+  livereload_http_url: 'https://ht.local.dev/livereload.js?port=443'
+  livereload_ws_url: 'wss://ht.local.dev'

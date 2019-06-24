@@ -1,39 +1,37 @@
 services:
-    # default configuration for services in *this* file
-    _defaults:
-        autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
-        autoconfigure: true
-        public: false
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+    # automatically registers your services as commands, event subscribers, etc.
+    autoconfigure: true
+    public: false
 
-    App\:
-        resource: '../src/*'
-        exclude: '../src/{Model,Repository,Migrations,Tests,GameBundle,Controller}'
+  App\:
+    resource: '../src/*'
+    exclude: '../src/{Model,Repository,Migrations,Tests,GameBundle,Controller}'
 
-    App\Controller\:
-        resource: '../src/Controller'
-        public: true
-        tags: ['controller.service_arguments']
+  App\Controller\:
+    resource: '../src/Controller'
+    public: true
+    tags: ['controller.service_arguments']
 
-    App\GameBundle\Controller\:
-        resource: '../src/GameBundle/Controller'
-        autowire: false
-        # automatically registers your services as commands, event subscribers, etc.
-        autoconfigure: false
+  App\GameBundle\Controller\:
+    resource: '../src/GameBundle/Controller'
+    autowire: false
+    # automatically registers your services as commands, event subscribers, etc.
+    autoconfigure: false
 
+  # CSRF link extension
+  App\EventListener\CsrfListener:
+    arguments:
+    $csrfTokenId: 'link'
 
-    # CSRF link extension
-    App\EventListener\CsrfListener:
-        arguments:
-            $csrfTokenId: 'link'
+  App\FileUploader:
+    arguments:
+      - '%upload_dir%'
+      - '%upload_uri_base_prefix%'
 
-    App\FileUploader:
-        arguments:
-            - "%upload_dir%"
-            - "%upload_uri_base_prefix%"
-
-
-    # CSRF link extension
-    App\Twig\LinkAttributesExtension:
-        arguments:
-            $csrfTokenId: 'link'
+  # CSRF link extension
+  App\Twig\LinkAttributesExtension:
+    arguments:
+    $csrfTokenId: 'link'
