@@ -35,3 +35,7 @@ services:
   App\Twig\LinkAttributesExtension:
     arguments:
       $csrfTokenId: 'link'
+
+  app.settings_manager:
+    alias: 'sylius.settings_manager'
+    public: true
