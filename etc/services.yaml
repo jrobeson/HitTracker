@@ -24,7 +24,7 @@ services:
   # CSRF link extension
   App\EventListener\CsrfListener:
     arguments:
-    $csrfTokenId: 'link'
+      $csrfTokenId: 'link'
 
   App\FileUploader:
     arguments:
@@ -34,4 +34,4 @@ services:
   # CSRF link extension
   App\Twig\LinkAttributesExtension:
     arguments:
-    $csrfTokenId: 'link'
+      $csrfTokenId: 'link'
