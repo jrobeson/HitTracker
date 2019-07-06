@@ -38,6 +38,15 @@ const toggleVest = (address: string, value: number) => {
 $(() => {
   alertDismiss();
 
+  $('.new-game-teams').each(function() {
+    const teamColor = $(this)
+      .find('.team-color')
+      .val();
+    $(this)
+      .find('.unit')
+      .find(`option[data-unit-color][data-unit-color!="${teamColor}"]`)
+      .remove();
+  });
   $('.unit-turn-on').on('click', function(e) {
     const address = $(this).data('unit-address');
     toggleVest(address, 1);
@@ -67,22 +76,20 @@ $(() => {
     });
     request.done(game => {
       const teamPlayers = {} as any;
-      for (const player of game.players) {
-        const pt = player.team;
+      for (const team of game.teams) {
+        const pt = team.name;
         if (!teamPlayers.hasOwnProperty(pt)) {
           teamPlayers[pt] = {};
         }
-
-        teamPlayers[pt][player.unit.id] = player;
+        for (const player of team.players) {
+          teamPlayers[pt][player.unit.id] = player;
+        }
       }
 
       const teams = Object.keys(teamPlayers);
 
       $('.new-game-teams').each(function() {
         const team = teams.shift() || '';
-        $(this)
-          .find('.team-no input')
-          .val(team);
         const players = teamPlayers[team];
         // tslint:disable-next-line: no-unnecessary-type-assertion
         const playerList = Object.values(players) as any[];
@@ -105,19 +112,6 @@ $(() => {
             unitSelector.trigger('focusout');
           });
       });
-    });
-  });
-
-  $('form[name="game"]').on('submit', function() {
-    $('.new-game-teams').each(function() {
-      const team = $(this)
-        .find('.team-no input')
-        .val() as string;
-      $(this)
-        .find('input[id$="_team"]')
-        .each(function() {
-          $(this).val(team.trim());
-        });
     });
   });
 

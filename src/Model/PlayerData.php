@@ -26,12 +26,6 @@ class PlayerData
      * @var string
      * @Assert\NotBlank
      */
-    public $team = '';
-
-    /**
-     * @var string
-     * @Assert\NotBlank
-     */
     public $name = '';
 
     /**

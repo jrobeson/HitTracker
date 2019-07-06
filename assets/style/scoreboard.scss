@@ -6,9 +6,6 @@ $navbar-height: 0;
 $table-bg: #fff;
 $table-bg-accent: #e6e6e6;
 
-$score-table-team-1-color: #83f52c;
-$score-table-team-2-color: #ff6700;
-
 $font-size-base: 1rem;
 
 @import 'common';
@@ -18,13 +15,17 @@ $font-size-base: 1rem;
   color: #000;
 }
 
-.team-1 thead tr:first-child,
-.team-1 tfoot {
-  background-color: $score-table-team-1-color;
+.team-color-blue {
+  background-color: blue;
 }
-.team-2 thead tr:first-child,
-.team-2 tfoot {
-  background-color: $score-table-team-2-color;
+.team-color-green {
+  background-color: #83f52c;
+}
+.team-color-orange {
+  background-color: #ff6700;
+}
+.team-color-red {
+  background-color: red;
 }
 
 .logo {

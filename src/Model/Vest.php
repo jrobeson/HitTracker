@@ -120,7 +120,7 @@ class Vest implements ResourceInterface, UnitInterface
         $this->color = $color;
     }
 
-    public function getColor(): ?string
+    public function getColor(): string
     {
         return $this->color;
     }
@@ -128,7 +128,7 @@ class Vest implements ResourceInterface, UnitInterface
     /** @return string[] */
     public static function getColors(): array
     {
-        return ['orange', 'green'];
+        return ['red', 'blue', 'orange', 'green'];
     }
 
     public function setUnitType(string $unitType): void

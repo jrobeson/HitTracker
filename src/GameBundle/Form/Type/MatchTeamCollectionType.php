@@ -1,6 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 /**
- * Copyright (C) 2017 Johnny Robeson <johnny@localmomentum.net>
+ * Copyright (C) 2019 Johnny Robeson <johnny@localmomentum.net>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -18,36 +18,18 @@
 
 namespace App\GameBundle\Form\Type;
 
-use App\Model\Vest;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints as Assert;
 
-class TeamPlayersType extends AbstractType
+class MatchTeamCollectionType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function getParent()
     {
-        $builder
-            ->add('name', TextType::class, [
-                'label' => false,
-            ])
-            ->add('color', HiddenType::class, [
-                'label' => '',
-                'constraints' => [new Assert\Choice(['choices' => Vest::getColors()])],
-                'attr' => [
-                    'class' => 'team-color',
-                ]
-            ])
-            ->add('players', PlayerCollectionType::class, [
-                'label' => '',
-            ])
-        ;
+        return CollectionType::class;
     }
 
     /**
@@ -60,6 +42,8 @@ class TeamPlayersType extends AbstractType
             'allow_delete' => true,
             'by_reference' => false,
             'delete_empty' => true,
+            'error_bubbling' => false,
+            'entry_type' => TeamPlayersType::class,
         ]);
     }
 }

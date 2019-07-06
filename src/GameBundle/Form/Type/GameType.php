@@ -84,19 +84,11 @@ class GameType extends AbstractType
             ->add('reset', ResetType::class, [
                 'label' => 'hittracker.reset',
             ])
+            ->add('teams', MatchTeamCollectionType::class, [
+                'label' => false,
+            ])
             ->addEventSubscriber($this->eventSubscriber)
         ;
-        foreach (range(1, $globalMatchSettings->get('team_count')) as $teamNo) {
-            $teamColor = 'green';
-            if (2 === $teamNo) {
-                $teamColor = 'orange';
-            }
-            $builder->add('team'.$teamNo, TeamPlayersType::class, [
-                'label' => false,
-                'teamNo' => $teamNo,
-                'teamColor' => $teamColor,
-            ]);
-        }
     }
 
     /**

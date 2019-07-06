@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityRepository;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,7 +31,7 @@ class PlayerType extends AbstractType
     {
         $gameSettings = $this->settingsManager->load('game');
 
-        $vests = $this->vestRepository->findActiveVestsByColor($options['teamColor']);
+        $vests = $this->vestRepository->findActiveVests();
         $builder
             ->add('name', TextType::class, [
                   'label' => 'hittracker.game.player_name',
@@ -40,7 +39,6 @@ class PlayerType extends AbstractType
                       'placeholder' => 'hittracker.game.player_name'
                   ]
             ])
-            ->add('team', HiddenType::class)
             ->add('unit', EntityType::class, [
                   'label' => 'hittracker.game.vest',
                   'class' => Vest::class,
@@ -50,8 +48,12 @@ class PlayerType extends AbstractType
                   'choice_attr' => function (Vest $unit) {
                       return [
                         'data-unit-address' => $unit->getRadioId(),
+                        'data-unit-color' => $unit->getColor(),
                       ];
-                  }
+                  },
+                  'attr' => [
+                      'class' => 'unit',
+                  ]
             ])
             ->add('hitPoints', IntegerType::class, [
                   'empty_data' => '',
@@ -71,9 +73,6 @@ class PlayerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => PlayerData::class,
-        ]);
-        $resolver->setRequired([
-            'teamColor',
         ]);
     }
 }

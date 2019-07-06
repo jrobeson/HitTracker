@@ -1,5 +1,5 @@
 {% macro team_players_table(game, team) %}
-    {% set players = game.playersByTeam(team) %}
+    {% set players = team.players %}
 
     {# TODO: get the max number of zones for all players, instead of just the first #}
     {% set fp = players|first %}
@@ -11,12 +11,12 @@
         {% set show_hp = true %}
         {% set show_scores = false %}
     {% endif %}
-    <table class="table scores team {{ team|lower|replace({' ': '-'}) }}">
+    <table class="table scores team">
         <thead>
-        <tr>
+        <tr class="team-color-{{ team.color }}">
             <th colspan="{{ column_count }}">
                 <strong class="text-center">
-                    {{ team }}
+                    {{ team.name }}
                 </strong>
             </th>
         </tr>
@@ -66,7 +66,7 @@
             </tr>
         {% endfor %}
         </tbody>
-        <tfoot>
+        <tfoot class="team-color-{{ team.color }}">
             <tr>
                 <td colspan="{{ zones|length }}"></td>
                 <td colspan="2">
@@ -76,12 +76,12 @@
                 </td>
                 {% if show_scores %}
                 <td class="team-total-score">
-                    {{ game.teamScore(team) }}
+                    {{ team.score }}
                 </td>
                 {% endif %}
                 {% if show_hp %}
                 <td class="team-total-hp">
-                    {{ game.teamHitPoints(team) }}
+                    {{ team.hitPoints }}
                 </td>
                 {% endif %}
             </tr>

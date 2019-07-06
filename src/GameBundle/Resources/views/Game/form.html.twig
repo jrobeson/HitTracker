@@ -1,7 +1,7 @@
 {% set game_settings = sylius_settings('game') %}
 {% form_theme form '@HitTrackerGame/Game/game_form_theme.html.twig' %}
 
-{% if form.team1 is not empty %}
+{% if form.teams is not empty %}
 {{ form_start(form, {'action': path('hittracker_game_create'),
 'attr': {'role': 'form', 'novalidate': 'novalidate', 'id': 'game_form'}}) }}
 {{  form_errors(form) }}
@@ -32,11 +32,11 @@
     </div>
 </div>
 <div class="row players">
-    {% for team in [form.team1, form.team2] %}
+    {% for team in form.teams %}
         <div class="col-xl-6 new-game-teams">
             <div class="row">
                 <div class="col-12 col-md-2">
-                    <div class="form-group team-no">
+                    <div class="form-group">
                         {{  form_widget(team.name) }}
                     </div>
                 </div>
@@ -50,10 +50,9 @@
                     {{ 'hittracker.game.hit_points'|trans }}
                     {% endif %}
             </div>
+            {{  form_row(team.color) }}
             {% for player in team.players %}
                 <div class="row player player-{{ loop.index }}">
-                    {% set team_no = 'hittracker.game.team_no'|trans({'%team_no%': loop.parent.loop.index}) %}
-                    {{ form_row(player.team, {'value': team_no}) }}
                     <div class="col-2">
                         {{ '%02d'|format(loop.index) }}
                     </div>

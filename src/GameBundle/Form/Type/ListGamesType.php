@@ -26,7 +26,7 @@ class ListGamesType extends AbstractType
         $list = [];
 
         foreach ($games as $game) {
-            $teams = $game->getTeams();
+            $teams = $game->getTeamNames();
             $transVsTeam = array_shift($teams);
             foreach ($teams as $team) {
                 $transVsTeam .= ' vs. ' . $team;

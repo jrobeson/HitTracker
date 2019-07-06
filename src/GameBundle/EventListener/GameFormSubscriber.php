@@ -46,8 +46,8 @@ class GameFormSubscriber implements EventSubscriberInterface
     public function removeUnusedPlayers(FormEvent $event): void
     {
         $game = $event->getData();
-        foreach (range(1, 2) as $team) {
-            $game['team'.$team]['players'] = array_filter($game['team'.$team]['players'],
+        foreach (array_keys($game['teams']) as $teamNo) {
+            $game['teams'][$teamNo]['players'] = array_filter($game['teams'][$teamNo]['players'],
                 function ($player) {
                     return !empty($player['name']);
                 }
@@ -63,11 +63,10 @@ class GameFormSubscriber implements EventSubscriberInterface
     public function addHitPoints(FormEvent $event): void
     {
         $game = $event->getData();
-
-        foreach (range(1, 2) as $team) {
-            foreach ($game['team'.$team]['players'] as $k => $v) {
+        foreach (array_keys($game['teams']) as $teamNo) {
+            foreach ($game['teams'][$teamNo]['players'] as $k => $v) {
                 if (empty($v['hitPoints'])) {
-                    $game['team'.$team]['players'][$k]['hitPoints'] = $game['settings']['playerHitPoints'];
+                    $game['teams'][$teamNo]['players'][$k]['hitPoints'] = $game['settings']['playerHitPoints'];
                 }
             }
         }

@@ -6,7 +6,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Validator\Constraints as CommonAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -58,24 +57,23 @@ class Game implements ResourceInterface
      *
      * @Assert\Valid(traverse=true)
      * @Assert\Count(min="1",
-     *               minMessage="hittracker.game.not_enough_players"
+     *               minMessage="hittracker.game.not_enough_teams"
      * )
      * @Assert\All(constraints={
      *     @CommonAssert\UniqueCollectionField(
-     *         propertyPath="unit",
+     *         propertyPath="[0][players][0].unit",
      *         message="hittracker.game.unique_vests_required")
      * })
      * @Assert\All(constraints={
      *     @CommonAssert\UniqueCollectionField(
-     *         propertyPath="name",
+     *         propertyPath="[0][players][0].name",
      *         message="hittracker.game.unique_names_required"
      *     )
      * })
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="game",
+     * @ORM\OneToMany(targetEntity="MatchTeam", mappedBy="game",
      *                cascade={"persist", "remove"})
-     * @ORM\OrderBy({"team" = "ASC", "id" = "ASC"})
      */
-    protected $players;
+    protected $teams;
 
     /**
      * @var int
@@ -99,7 +97,7 @@ class Game implements ResourceInterface
     {
         $this->arena = $arena;
         $this->gameType = $gameType;
-        $this->players = new ArrayCollection();
+        $this->teams = new ArrayCollection();
         $this->createdAt = $createdAt ?? new \DateTime();
         $this->setGameLength($length);
         $this->settings = $settings;
@@ -159,7 +157,7 @@ class Game implements ResourceInterface
         return ['team', 'target'];
     }
 
-    public function getGameType(): ?string
+    public function getGameType(): string
     {
         return $this->gameType;
     }
@@ -196,15 +194,20 @@ class Game implements ResourceInterface
         return $this->endsAt->diff($this->createdAt);
     }
 
-    public function addPlayer(Player $player): void
+    public function addTeam(MatchTeam $team): void
     {
-        $this->players->add($player);
-        $player->setGame($this);
+        $this->teams->add($team);
+        $team->setGame($this);
     }
 
     public function getPlayers(): Collection
     {
-        return $this->players;
+        $players = [];
+        foreach ($this->teams as $team) {
+            $players[] = $team->getPlayers()->toArray();
+        }
+
+        return new ArrayCollection(array_merge(...$players));
     }
 
     /**
@@ -219,43 +222,17 @@ class Game implements ResourceInterface
         return $players->first();
     }
 
-    /** @return array<string, array<int, array>> */
-    public function getTeamPlayers(): array
+    public function getTeams(): Collection
     {
-        $players = [];
-        foreach ($this->getTeams() as $team) {
-            $players[$team][] = $this->getPlayersByTeam($team)->toArray();
-        }
-
-        return $players;
-    }
-
-    public function getPlayersByTeam(string $team): Collection
-    {
-        $criteria = Criteria::create()->where(Criteria::expr()->eq('team', $team));
-
-        return $this->getPlayers()->matching($criteria);
+        return $this->teams;
     }
 
     /** @return string[] */
-    public function getTeams(): array
+    public function getTeamNames(): array
     {
-        $teams = array_unique(
-            $this->getPlayers()->map(function (Player $player) {
-                return $player->getTeam();
-            })->toArray());
-        // reindex array
-        return array_values($teams);
-    }
-
-    public function getTeamHitPoints(string $team): int
-    {
-        $team = $this->getPlayersByTeam($team);
-        $teamHP = array_sum($team->map(function (Player $player) {
-            return $player->getHitPoints();
-        })->toArray());
-
-        return (int) $teamHP;
+        return $this->teams->map(function ($team) {
+            return $team->getName();
+        })->toArray();
     }
 
     public function getTotalHitPoints(): int
@@ -265,16 +242,6 @@ class Game implements ResourceInterface
         })->toArray());
 
         return (int) $totalHP;
-    }
-
-    public function getTeamScore(string $team): int
-    {
-        $team = $this->getPlayersByTeam($team);
-        $score = array_sum($team->map(function (Player $player) {
-            return $player->getScore();
-        })->toArray());
-
-        return (int) $score;
     }
 
     public function getTotalScore(): int

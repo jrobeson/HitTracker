@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *            },
  *            indexes={
  *                @ORM\Index(name="idx_player_game_id", columns={"game_id"}),
+ *                @ORM\Index(name="idx_player_team_id", columns={"match_team_id"}),
  *                @ORM\Index(name="idx_player_unit_id", columns={"unit_id"})
  *            }
  * )
@@ -38,12 +39,6 @@ class Player implements ResourceInterface
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $team;
 
     /**
      * @var string
@@ -62,7 +57,7 @@ class Player implements ResourceInterface
      * @var array
      * @ORM\Column(type="json_array", options={"jsonb": "true"})
      */
-    private $zoneHits;
+    public $zoneHits;
 
     /**
      * @var int
@@ -83,11 +78,16 @@ class Player implements ResourceInterface
     private $updatedAt;
 
     /**
-     * @var Game
-     * @ORM\ManyToOne(targetEntity="Game", inversedBy="players")
+     * @ORM\ManyToOne(targetEntity="Game")
+     */
+    private $game;
+
+    /**
+     * @var MatchTeam
+     * @ORM\ManyToOne(targetEntity="MatchTeam", inversedBy="players")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
-    protected $game;
+    protected $matchTeam;
 
     /**
      * @var Vest
@@ -95,10 +95,9 @@ class Player implements ResourceInterface
      */
     protected $unit;
 
-    public function __construct(string $name = '', Vest $unit, int $hitPoints = 0, string $team = '')
+    public function __construct(string $name = '', Vest $unit, int $hitPoints = 0)
     {
         $this->name = $name;
-        $this->team = $team;
         $this->unit = $unit;
         $this->hitPoints = $hitPoints;
         $this->score = 0;
@@ -113,9 +112,14 @@ class Player implements ResourceInterface
         return $this->id;
     }
 
-    public function getTeam(): string
+    public function setTeam(MatchTeam $team): void
     {
-        return $this->team;
+        $this->matchTeam = $team;
+    }
+
+    public function getTeam(): MatchTeam
+    {
+        return $this->matchTeam;
     }
 
     public function getName(): string
@@ -166,11 +170,6 @@ class Player implements ResourceInterface
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
-    }
-
-    public function setGame(Game $game): void
-    {
-        $this->game = $game;
     }
 
     public function getUnit(): Vest

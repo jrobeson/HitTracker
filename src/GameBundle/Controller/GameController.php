@@ -3,6 +3,7 @@
 namespace App\GameBundle\Controller;
 
 use App\Model\Game;
+use App\Model\MatchTeam;
 use App\Model\NewGameData;
 use App\Model\Player;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -28,19 +29,21 @@ class GameController extends ResourceController
 
         $this->isGrantedOr403($configuration, ResourceActions::CREATE);
 
-        $vests = $this->get('hittracker.repository.vest')->findActiveVests();
-
+        $vests = $this->get('hittracker.repository.vest')->findVestsGroupedByColor();
         $newGameData = new NewGameData();
         $players = new ArrayCollection();
-        foreach ((array) $vests as $vest) {
-            $playerData = new \App\Model\PlayerData();
-            $team = 1;
-            if (null !== $vest && 'orange' === $vest->getColor()) {
-                $team = 2;
+        foreach ($vests as $teamColor => $teamVests) {
+            foreach ((array) $teamVests as $teamVest) {
+                $playerData = new \App\Model\PlayerData();
+                $team = 1;
+                if (null !== $teamVest && (in_array($teamColor, ['orange', 'red']))) {
+                    $team = 2;
+                }
+                $playerData->name = '';
+                $team = 'Team '. $team;
+
+                $newGameData->addPlayer($playerData, (string) $team, $teamVest->getColor());
             }
-            $playerData->name = '';
-            $playerData->team = 'Team '. $team;
-            $newGameData->addPlayer($playerData, (string) $team);
         }
         $formFactory = new DtoFormFactory($this->container->get('form.factory'));
         $form = $formFactory->create($configuration, $newGameData);
@@ -48,14 +51,14 @@ class GameController extends ResourceController
         $form->handleRequest($request);
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-
             $newResource = new Game($newGameData->gameType, $newGameData->gameLength, $newGameData->settings, $newGameData->getArena());
-            foreach ([$newGameData->team1, $newGameData->team2] as $team) {
+            foreach ($newGameData->teams as $teamNo => $team) {
+                $matchTeam = new MatchTeam($team['name'], $team['color']);
                 foreach ($team['players'] as $player) {
-                    $newResource->addPlayer(new Player($player->name, $player->unit, $player->hitPoints, $player->team));
+                    $matchTeam->addPlayer(new Player($player->name, $player->unit, $player->hitPoints));
                 }
+                $newResource->addTeam($matchTeam);
             }
-
             $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::CREATE, $configuration, $newResource);
 
             if ($event->isStopped() && !$configuration->isHtmlRequest()) {
@@ -249,7 +252,7 @@ class GameController extends ResourceController
             'target_player' => [
                 'id' => $player->getId(),
                 'name' => $player->getName(),
-                'team' => $player->getTeam(),
+                'team' => $player->getTeam()->getName(),
                 'zone' => $zone,
             ],
         ];
@@ -257,8 +260,8 @@ class GameController extends ResourceController
         if ('hit' === $event) {
             $data['target_player']['hit_points'] = $player->getHitPoints();
             $data['target_player']['score'] = $player->getScore();
-            $data['target_team_hit_points'] = $game->getTeamHitPoints($player->getTeam());
-            $data['target_team_score'] = $game->getTeamScore($player->getTeam());
+            $data['target_team_hit_points'] = $player->getTeam()->getHitPoints();
+            $data['target_team_score'] = $player->getTeam()->getScore();
         }
         if ($zone) {
             $data['target_player']['zone_hits'] = $player->hitsInZone($zone);

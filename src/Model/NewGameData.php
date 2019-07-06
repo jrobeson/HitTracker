@@ -51,56 +51,24 @@ class NewGameData
      *               minMessage="hittracker.game.not_enough_players"
      * )
      *
+     * @Assert\All({
      * @Assert\Collection(
      *    allowExtraFields=true,
      *    fields={
-     *      "players"={
-     *          @Assert\All(constraints={
-     *              @CommonAssert\UniqueCollectionField(
-     *                  propertyPath="unit",
-     *                  message="hittracker.game.unique_vests_required"
-     *              )
-     *          }),
-     *          @Assert\All(constraints={
-     *              @CommonAssert\UniqueCollectionField(
-     *                  propertyPath="name",
-     *                  message="hittracker.game.unique_names_required"
-     *              )
-     *          })
-     *      }
-     *    }
-     * )
-     */
-    public $team1;
-
-    /**
-     * @var mixed[]
      *
-     * @Assert\Valid(traverse=true)
-     * @Assert\Count(min="1",
-     *               minMessage="hittracker.game.not_enough_players"
-     * )
-     * @Assert\Collection(
-     *    allowExtraFields=true,
-     *    fields={
      *      "players"={
      *          @Assert\All(constraints={
      *              @CommonAssert\UniqueCollectionField(
      *                  propertyPath="unit",
      *                  message="hittracker.game.unique_vests_required"
      *              )
-     *          }),
-     *          @Assert\All(constraints={
-     *              @CommonAssert\UniqueCollectionField(
-     *                  propertyPath="name",
-     *                  message="hittracker.game.unique_names_required"
-     *              )
      *          })
      *      }
      *    }
      * )
+     * })
      */
-    public $team2;
+    public $teams;
 
     /**
      * @var int
@@ -119,13 +87,17 @@ class NewGameData
 
     public function __construct()
     {
-        $this->team1 = ['name' => 'Team 1', 'players' => new ArrayCollection()];
-        $this->team2 = ['name' => 'Team 2', 'players' => new ArrayCollection()];
+        $this->teams = [
+            ['name' => 'Team 1', 'color' => null, 'players' => new ArrayCollection()],
+            ['name' => 'Team 2', 'color' => null, 'players' => new ArrayCollection()]
+        ];
     }
 
-    public function addPlayer(PlayerData $player, string $team): void
+    public function addPlayer(PlayerData $player, string $teamName, string $color): void
     {
-        $this->{'team'.$team}['players']->add($player);
+        $teamKey = key(array_filter($this->teams, function ($team) use ($teamName) { return $teamName === $team['name']; }));
+        $this->teams[$teamKey]['color'] = $color;
+        $this->teams[$teamKey]['players']->add($player);
     }
 
     /**
