@@ -41,8 +41,14 @@
     "composer/ca-bundle": {
         "version": "1.1.4"
     },
+    "composer/composer": {
+        "version": "1.8.6"
+    },
     "composer/semver": {
         "version": "1.4.2"
+    },
+    "composer/spdx-licenses": {
+        "version": "1.5.1"
     },
     "composer/xdebug-handler": {
         "version": "1.1.0"
@@ -214,6 +220,9 @@
     },
     "jrobeson/sylius-settings-bundle": {
         "version": "1.0-dev"
+    },
+    "justinrainbow/json-schema": {
+        "version": "5.2.8"
     },
     "kylekatarnls/update-helper": {
         "version": "1.1.1"
@@ -433,6 +442,12 @@
     },
     "sebastian/version": {
         "version": "2.0.1"
+    },
+    "seld/jsonlint": {
+        "version": "1.7.1"
+    },
+    "seld/phar-utils": {
+        "version": "1.0.1"
     },
     "sensio/framework-extra-bundle": {
         "version": "4.0",
