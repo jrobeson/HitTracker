@@ -7,7 +7,7 @@
   "license": "AGPL-3.0",
   "scripts": {
     "lint:php-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --dry-run -v",
-    "lint:php-analyze": "./vendor/bin/phpstan analyse --memory-limit='-1' -l7 -c phpstan.neon etc/ src/ bin/",
+    "lint:php-analyze": "./vendor/bin/phpstan analyse --memory-limit='-1'",
     "lint": "eslint --ext .js,.ts . && npm run lint:php-cs-fixer && npm run lint:php-analyze",
     "encore-watch": "encore dev --watch",
     "build": "encore production",
