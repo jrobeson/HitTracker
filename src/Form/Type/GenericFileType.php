@@ -81,7 +81,7 @@ class GenericFileType extends AbstractType
             }
 
             if ($options['upload_use_provided_file_name']) {
-                $fileName = $fileUploader->uploadFileWithName($data['file'], $originalName, $prefix);
+                $fileName = $fileUploader->uploadFileWithName($data['file'], (string) $originalName, $prefix);
             } else {
                 $fileName = $fileUploader->upload($data['file'], $prefix);
             }

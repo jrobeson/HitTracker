@@ -4,7 +4,7 @@ namespace App\GameBundle\Form\Type;
 
 use App\Model\PlayerData;
 use App\Model\Vest;
-use Doctrine\ORM\EntityRepository;
+use App\Repository\VestRepository;
 use Sylius\Bundle\SettingsBundle\Manager\SettingsManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -18,7 +18,7 @@ class PlayerType extends AbstractType
     private $settingsManager;
     private $vestRepository;
 
-    public function __construct(SettingsManagerInterface $settingsManager, EntityRepository $vestRepository)
+    public function __construct(SettingsManagerInterface $settingsManager, VestRepository $vestRepository)
     {
         $this->settingsManager = $settingsManager;
         $this->vestRepository = $vestRepository;

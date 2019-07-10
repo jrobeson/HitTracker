@@ -39,7 +39,11 @@ class NodeSsePubSub implements PubSubInterface
      */
     public function publish(string $event, array $data): bool
     {
-        $schemeAndHost = $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost();
+        $currentRequest = $this->requestStack->getCurrentRequest();
+        if (!$currentRequest) {
+            throw new \UnexpectedValueException('$currentRequest is required.');
+        }
+        $schemeAndHost = $currentRequest->getSchemeAndHttpHost();
         $this->httpClient->post($schemeAndHost.$this->url, [
             'headers' => ['Content-Type' => 'application/json'],
             'json' => [
