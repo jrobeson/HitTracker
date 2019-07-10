@@ -98,7 +98,7 @@ class Version20150507061327 extends AbstractMigration
         }
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
         $stmts = [];
 

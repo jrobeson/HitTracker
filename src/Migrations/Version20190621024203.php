@@ -49,7 +49,7 @@ final class Version20190621024203 extends AbstractMigration
         }
     }
 
-    public function postUp(Schema $schema)
+    public function postUp(Schema $schema): void
     {
         foreach ($this->teamGamePlayerMap as $gameId => $teams) {
             foreach ($teams as $name => $players) {
