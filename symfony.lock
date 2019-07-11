@@ -473,9 +473,6 @@
     "sylius/registry": {
         "version": "v1.1.5"
     },
-    "sylius/resource": {
-        "version": "1.2-dev"
-    },
     "symfony/asset": {
         "version": "v4.0.9"
     },

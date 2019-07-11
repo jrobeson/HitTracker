@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a75b7cafbcfb0e7528ec60fae845aae",
+    "content-hash": "c57eaa8102d12480cb02a1c34f7f1d1b",
     "packages": [
         {
             "name": "api-platform/core",
@@ -4041,88 +4041,17 @@
             "time": "2019-03-08T15:04:07+00:00"
         },
         {
-            "name": "sylius/resource",
-            "version": "v1.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Sylius/Resource.git",
-                "reference": "e2fad8afb7a2c81e7492ce48b84154ec9785e507"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Resource/zipball/e2fad8afb7a2c81e7492ce48b84154ec9785e507",
-                "reference": "e2fad8afb7a2c81e7492ce48b84154ec9785e507",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": "^2.6",
-                "gedmo/doctrine-extensions": "^2.4",
-                "pagerfanta/pagerfanta": "^1.0|^2.0",
-                "php": "^7.2",
-                "symfony/event-dispatcher": "^3.4|^4.1.1",
-                "symfony/property-access": "^3.4|^4.1.1",
-                "winzou/state-machine": "^0.3"
-            },
-            "require-dev": {
-                "phpspec/phpspec": "^5.0",
-                "sylius/locale": "^1.0"
-            },
-            "suggest": {
-                "sylius/locale": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sylius\\Component\\Resource\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Community contributions",
-                    "homepage": "http://github.com/Sylius/Sylius/contributors"
-                },
-                {
-                    "name": "Paweł Jędrzejewski",
-                    "homepage": "http://pjedrzejewski.com"
-                },
-                {
-                    "name": "Sylius project",
-                    "homepage": "http://sylius.com"
-                }
-            ],
-            "description": "Basic resource interfaces for PHP applications.",
-            "homepage": "http://sylius.com",
-            "keywords": [
-                "api",
-                "doctrine",
-                "ecommerce",
-                "resource",
-                "shop",
-                "sylius"
-            ],
-            "time": "2019-05-07T07:12:31+00:00"
-        },
-        {
             "name": "sylius/resource-bundle",
-            "version": "v1.4.3",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "14792b2dc32697481ae83b5e1153c2c93a0d65fa"
+                "reference": "1eb55aa25d96e140989464c012f6e1c954f5d223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/14792b2dc32697481ae83b5e1153c2c93a0d65fa",
-                "reference": "14792b2dc32697481ae83b5e1153c2c93a0d65fa",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/1eb55aa25d96e140989464c012f6e1c954f5d223",
+                "reference": "1eb55aa25d96e140989464c012f6e1c954f5d223",
                 "shasum": ""
             },
             "require": {
@@ -4152,16 +4081,20 @@
                 "symfony/dom-crawler": "4.1.8",
                 "symfony/routing": "4.1.8 || 4.1.9"
             },
+            "replace": {
+                "sylius/resource": "self.version"
+            },
             "require-dev": {
                 "akeneo/phpspec-skip-example-extension": "^4.0",
-                "doctrine/mongodb-odm": "^1.0",
                 "doctrine/orm": "^2.5",
-                "doctrine/phpcr-odm": "^1.4",
-                "jackalope/jackalope-doctrine-dbal": "^1.2",
                 "lakion/api-test-case": "^3.1.0",
                 "matthiasnoback/symfony-dependency-injection-test": "^3.0",
                 "phpspec/phpspec": "^5.0",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-shim": "^0.11",
+                "phpstan/phpstan-webmozart-assert": "^0.11",
                 "phpunit/phpunit": "^7.0",
+                "sylius-labs/coding-standard": "^3.0",
                 "sylius/grid-bundle": "^1.2",
                 "sylius/locale": "^1.2",
                 "symfony/dependency-injection": "^3.4|^4.1.1",
@@ -4174,12 +4107,13 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Sylius\\Bundle\\ResourceBundle\\": ""
+                    "Sylius\\Bundle\\ResourceBundle\\": "src/Bundle/",
+                    "Sylius\\Component\\Resource\\": "src/Component/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4208,7 +4142,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2019-03-17T18:33:35+00:00"
+            "time": "2019-05-07T09:20:14+00:00"
         },
         {
             "name": "symfony/asset",
