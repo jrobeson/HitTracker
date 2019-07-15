@@ -25,7 +25,7 @@
             <th>{{ 'hittracker.game.player_name'|trans }}</th>
             {% for zone in zones %}
                 <th>
-                    {{ 'hittracker.game.zone_no'|trans({'%zone_no%': zone}) }}
+                    {{ 'hittracker.game.zone_no'|trans({'{{zone_no}}': zone}) }}
                 </th>
             {% endfor %}
             {% if show_hp %}

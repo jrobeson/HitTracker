@@ -32,8 +32,8 @@ class ListGamesType extends AbstractType
                 $transVsTeam .= ' vs. ' . $team;
             }
             $teams = $this->translator->trans('hittracker.game.list.vs_teams', [
-                '%id%' => $game->getId(),
-                '%vs_team%' => $transVsTeam,
+                '{{id}}' => $game->getId(),
+                '{{vs_team}}' => $transVsTeam,
             ]);
 
             $list[$teams] = $game->getId();

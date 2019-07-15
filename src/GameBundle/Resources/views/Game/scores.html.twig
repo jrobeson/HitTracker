@@ -4,7 +4,7 @@
     <div class="col-lg-6 col-12">
         <h2 class="text-center">
             {% set time_total = game.timeTotal|date('%H:%I') %}
-            {{ 'hittracker.game.length_total'|trans({'%time%': time_total}) }}
+            {{ 'hittracker.game.length_total'|trans({'{{time}}': time_total}) }}
         </h2>
     </div>
 
