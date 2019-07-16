@@ -8,7 +8,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title></title>
         {% block stylesheets %}
-            <link rel="stylesheet" media="print" href="{{ asset(asset_path ~ '/style/scorecard.css', 'built') }}" type="text/css"/>
+            {% for file in encore_entry_css_files('style/scoreboard') %}
+                <link rel="stylesheet" media="print" href="{{ absolute_url(asset(file)) }}" type="text/css"/>
+            {% endfor %}
             <style>
                @page {
                     size: {{ siteSettings.get('scorecard_paper_size') }};
@@ -54,7 +56,7 @@
         {% endfor %}
         </main>
         {% block javascripts %}
-            <script src="{{ asset(asset_path ~ '/js/app.js', 'built') }}"></script>
+            {{ encore_entry_script_tags('js/app') }}
         {% endblock %}
     </body>
 </html>

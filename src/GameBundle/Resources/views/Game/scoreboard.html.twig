@@ -4,7 +4,7 @@
 {% set banner_1 = site_settings.get('scoreboard_banner_1') %}
 {% set banner_2 = site_settings.get('scoreboard_banner_2') %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset(asset_path ~ '/style/scoreboard.css', 'built') }}" type="text/css"/>
+    {{ encore_entry_link_tags('style/scoreboard') }}
 {% endblock %}
 {% block nav %}{% endblock %}
 {% block messages %}{% endblock %}

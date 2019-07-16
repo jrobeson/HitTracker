@@ -3,8 +3,11 @@ const Encore = require('@symfony/webpack-encore');
 
 Encore.setOutputPath('public/build/')
   .setPublicPath('/build')
+  .setManifestKeyPrefix('build/')
   .cleanupOutputBeforeBuild()
   .enableBuildNotifications()
+  .splitEntryChunks()
+  .enableSingleRuntimeChunk()
   .addEntry('js/app', './assets/js/app.ts')
 
   //.addStyleEntry('global', './assets/styles/global.scss')
