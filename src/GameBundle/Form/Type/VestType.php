@@ -37,41 +37,41 @@ class VestType extends AbstractType
             ->add('id', IntegerType::class, [
                 'label' => 'hittracker.vest.id',
                 'attr' => [
-                    'help' => 'hittracker.vest.id.help'
+                    'help' => 'hittracker.vest.id_help'
                 ],
             ])
             ->add('unitType', ChoiceType::class, [
                 'choices' => $unitTypeChoices,
                 'label' => 'hittracker.vest.unit_type',
                 'attr' => [
-                    'help' => 'hittracker.vest.unit_type.help'
+                    'help' => 'hittracker.vest.unit_type_help'
                 ],
             ])
             ->add('color', ChoiceType::class, [
                 'choices' => $colorChoices,
                 'label' => 'hittracker.vest.color',
                 'attr' => [
-                    'help' => 'hittracker.vest.color.help'
+                    'help' => 'hittracker.vest.color_help'
                 ],
             ])
             ->add('zones', ChoiceType::class, [
                 'choices' => array_combine($zones, $zones),
                 'label' => 'hittracker.vest.zones',
                 'attr' => [
-                    'help' => 'hittracker.vest.zones.help'
+                    'help' => 'hittracker.vest.zones_help'
                 ],
             ])
             ->add('illuminationStyle', ChoiceType::class, [
                 'choices' => $illuminationStyleChoices,
                 'label' => 'hittracker.vest.illumination_style',
                 'attr' => [
-                    'help' => 'hittracker.vest.illumination_style.help'
+                    'help' => 'hittracker.vest.illumination_style_help'
                 ],
             ])
             ->add('radioId', TextType::class, [
                 'label' => 'hittracker.vest.radio_id',
                 'attr' => [
-                    'help' => 'hittracker.vest.radio_id.help'
+                    'help' => 'hittracker.vest.radio_id_help'
                 ]
             ])
             ->add('active', CheckboxType::class, [

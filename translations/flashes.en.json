@@ -1,3 +1,7 @@
 {
-  "hittracker.game.already_in_progress": "A game is already in progress in arena {{arena_no}}"
+  "hittracker": {
+    "game": {
+      "already_in_progress": "A game is already in progress in arena {{arena_no}}"
+    }
+  }
 }
