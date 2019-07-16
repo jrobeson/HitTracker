@@ -22,6 +22,7 @@ Encore.setOutputPath('public/build/')
   )
 
   .enableTypeScriptLoader(function(tsConfig) {
+    tsConfig.transpileOnly = true;
     tsConfig.configFile = 'tsconfig.web.json';
   })
   .enableForkedTypeScriptTypesChecking(typeCheckingConfig => {
