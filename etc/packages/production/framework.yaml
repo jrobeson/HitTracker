@@ -1,0 +1,4 @@
+framework:
+  cache:
+    system: cache.adapter.filesystem
+    app: cache.adapter.apcu

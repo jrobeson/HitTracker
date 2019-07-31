@@ -84,14 +84,13 @@ class Kernel extends BaseKernel
             sprintf('%s/parameters.yaml', $buildType),
             'config.yaml',
             sprintf('%s/config.yaml', $buildType),
-            sprintf('%s/config_%s.yaml', $environment, $buildType),
+            sprintf('%s/config_%s.yaml', $buildType, $environment),
         ];
         if ('test' === $environment) { // test requires dev files first
             array_splice($configFiles, 2, 0, [
                 sprintf('%s/config_development.yaml', $buildType),
             ]);
         }
-
         $configFiles = array_map(function ($fileName) {
             return sprintf('%s/etc/%s', $this->getProjectDir(), $fileName);
         }, $configFiles);

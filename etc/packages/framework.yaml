@@ -23,8 +23,8 @@ framework:
   cache:
     directory: '%kernel.tmp_dir%/pools'
     prefix_seed: lazerball/hittracker
-    system: cache.adapter.filesystem
-    app: cache.adapter.apcu
+    system: cache.adapter.array
+    app: cache.adapter.array
   profiler:
     dsn: 'file:%kernel.tmp_dir%/profiler'
 
