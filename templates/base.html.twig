@@ -11,7 +11,8 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body data-game-events-subscribe-url="{{ game_events_subscribe_url }}" class="d-flex flex-column {{ app.request.get('_route')|replace({'_': '-'}) }}">
+    {% set current_route = app.request.get('_route')|replace({'_': '-'}) %}
+    <body data-game-events-subscribe-url="{{ game_events_subscribe_url }}" data-current-page="{{ current_route }}" class="d-flex flex-column {{ current_route }}">
         {% block nav %}
                 {{ include('navbar.html.twig') }}
         {% endblock %}
