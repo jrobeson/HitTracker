@@ -31,7 +31,7 @@ class ListGamesType extends AbstractType
             foreach ($teams as $team) {
                 $transVsTeam .= ' vs. ' . $team;
             }
-            $teams = $this->translator->trans('hittracker.game.list.vs_teams', [
+            $teams = $this->translator->trans('hittracker.game.list_vs_teams', [
                 '{{id}}' => $game->getId(),
                 '{{vs_team}}' => $transVsTeam,
             ]);
