@@ -96,7 +96,7 @@
       "player_score_per_hit": "Score Per Hit",
       "load_players_from_previous_games": "Load Players From Previous Games",
       "choose": "Choose a Game",
-      "list.vs_teams": "{{vs_team}} (Game #: {{id}})"
+      "list_vs_teams": "{{vs_team}} (Game #: {{id}})"
     },
     "vest": {
       "add": "Add Unit",
