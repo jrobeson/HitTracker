@@ -38,6 +38,7 @@ class GameEventListener
     {
         $resource = $event->getSubject();
         $data = [
+            'gameId' => $resource->getId(),
             'arena' => $resource->getArena(),
             'created_at' => $resource->getCreatedAt()->getTimestamp(),
             'ends_at' => $resource->getEndsAt()->getTimestamp(),
