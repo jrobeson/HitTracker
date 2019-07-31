@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 export const alertDismiss = () => {
   const target = $('.alert');
   let timeout = target.data('auto-dismiss');
@@ -39,4 +40,19 @@ export const printScores = (url: string) => {
   );
 
   frame.contentDocument!.location.href = url;
+};
+
+export const formatGameTotalTime = (totalInSeconds: number) => {
+  const duration = moment.duration(totalInSeconds, 'seconds');
+  const hours = Math.floor(duration.asHours());
+  const minutes = Math.floor(duration.asMinutes()) - hours * 60;
+  const seconds = Math.floor(duration.asSeconds()) - hours * 60 * 60 - minutes * 60;
+
+  const hoursDisplay = hours !== 0 ? `${hours.toString(10).padStart(2, '0')}:` : '';
+  const minutesDisplay = minutes.toString(10).padStart(2, '0');
+  const secondsDisplay = seconds.toString(10).padStart(2, '0');
+
+  const result = `${hoursDisplay}${minutesDisplay}:${secondsDisplay}`;
+
+  return result;
 };

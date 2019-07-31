@@ -22,6 +22,9 @@ import 'jquery-countdown';
 import './jquery-ujs.ts';
 import './jquery.color.js';
 
+import './i18n.ts';
+import './transitionary.tsx';
+
 import { alertDismiss, printScores } from './ui-util';
 
 const toggleVest = (address: string, value: number) => {
@@ -115,103 +118,9 @@ $(() => {
     });
   });
 
-  if ($('body').hasClass('hittracker-game-active') || $('body').hasClass('hittracker-game-scoreboard')) {
-    const source = new EventSource($('body').data('game-events-subscribe-url'));
-    $(window).on('unload', () => {
-      source.close();
-    });
-
-    if ($('body').hasClass('hittracker-game-scoreboard')) {
-      source.addEventListener('game.start', () => {
-        // tslint:disable-next-line: deprecation
-        window.location.reload(true);
-      });
-    }
-
-    source.addEventListener('game.end', () => {
-      queueActivity('<li>Game Ends</li>');
-    });
-
-    source.addEventListener('game.hit', (e: any) => {
-      const eventData = JSON.parse(e.data);
-      const hit = eventData;
-      const targetPlayer = hit.target_player;
-
-      // queueActivity(`<li>${player.name} hit $[targetPlayer.name} in Zone ${targetPlayer.zone}</li>`);
-      if (targetPlayer.zone_hits) {
-        pushHit(`.player-${targetPlayer.id} .zone-${targetPlayer.zone}`, parseInt(targetPlayer.zone_hits, 10));
-      }
-      if (targetPlayer.hit_points) {
-        $(`.player-${targetPlayer.id} .player-hit-points`).text(targetPlayer.hit_points);
-        const team = targetPlayer.team.replace(' ', '-').toLowerCase();
-        $(`.${team} .team-total-hp`).text(hit.target_team_hit_points);
-      }
-      if (targetPlayer.score) {
-        $(`.player-${targetPlayer.id} .player-score`).text(targetPlayer.score);
-        const team = targetPlayer.team.replace(' ', '-').toLowerCase();
-        $(`.${team} .team-total-score`).text(hit.target_team_score);
-      }
-    });
-
-    initCountdown($('#game-time-countdown'));
-  }
-
   $('#print-scores').on('click', function(event) {
     event.preventDefault();
     const scoreElement = $(this) as any;
     printScores(scoreElement.attr('href'));
   });
 });
-
-function queueActivity(content: any) {
-  const gameActivitySelector = $('.game-activity ul li') as any;
-  if (gameActivitySelector.size() > 10) {
-    $('.game-activity ul li:first').remove();
-  }
-  $('.game-activity ul').append(content);
-}
-
-/**
- * Setup the game timer countdown
- *
- * The target selector must have game-end-time, and server-time
- * data attributes to initialize the countdown.
- *
- * @param Object selector a jquery selector for the target element
- */
-function initCountdown(selector: any) {
-  let gameEnd = selector.data('game-end-time');
-  const clientTime = new Date().getTime();
-  const serverTime = new Date(parseInt(selector.data('server-time'), 10)).getTime();
-  const offset = serverTime - clientTime;
-  gameEnd = gameEnd - offset;
-
-  const formatDate = (event: any) => {
-    let format = '%M:%S';
-    if (event.offset.hours > 0) {
-      format = `%-H:${format}`;
-    }
-    return event.strftime(format);
-  };
-  selector
-    .countdown(gameEnd)
-    .on('update.countdown', function(event: any) {
-      $(event.target).text(formatDate(event));
-    })
-    .on('finish.countdown', function(event: any) {
-      $(event.target).text(formatDate(event));
-      const musicSelector = $('#active-game-music') as any;
-      if (musicSelector.length) {
-        musicSelector.get(0).pause();
-      }
-    });
-}
-
-function pushHit(selector: any, zoneHits: number) {
-  // const value = $(selector).text();
-  $(selector)
-    .animate({ color: '#a50b00' }, 500, function() {
-      $(this).text(zoneHits);
-    })
-    .animate({ color: '#000' }, 500);
-}

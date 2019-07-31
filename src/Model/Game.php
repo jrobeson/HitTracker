@@ -207,6 +207,14 @@ class Game implements ResourceInterface
         return $now->diff($this->endsAt);
     }
 
+    /**
+     * @Serializer\Groups({"read"})
+     */
+    public function getTimeTotal(): int
+    {
+        return $this->endsAt->getTimestamp() - $this->createdAt->getTimestamp();
+    }
+
     public function timeTotal(): \DateInterval
     {
         return $this->endsAt->diff($this->createdAt);

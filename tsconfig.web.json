@@ -7,7 +7,8 @@
     "jsx": "preserve",
     "isolatedModules": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./assets/js"
   },
-  "include": ["./assets/**/*"]
+  "include": ["./assets/js/**/*", "./translations/**/*"]
 }

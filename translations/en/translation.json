@@ -1,0 +1,13 @@
+{
+  "hittracker": {
+    "game": {
+      "length_total": "Game Length: {{time}} Minutes",
+      "player_name": "Name",
+      "player_no": "Player #",
+      "hit_points": "HP",
+      "team_total": "Team Total",
+      "time_left": "Time Left",
+      "zone_no": "Zone {{zoneNo}}"
+    }
+  }
+}

@@ -249,22 +249,20 @@ class GameController extends ResourceController
     {
         $data = [
             'event' => $event,
-            'target_player' => [
+            'playerData' => [
                 'id' => $player->getId(),
-                'name' => $player->getName(),
-                'team' => $player->getTeam()->getName(),
-                'zone' => $zone,
             ],
         ];
 
         if ('hit' === $event) {
-            $data['target_player']['hit_points'] = $player->getHitPoints();
-            $data['target_player']['score'] = $player->getScore();
-            $data['target_team_hit_points'] = $player->getTeam()->getHitPoints();
-            $data['target_team_score'] = $player->getTeam()->getScore();
+            $data['playerData']['hitPoints'] = $player->getHitPoints();
+            $data['playerData']['score'] = $player->getScore();
+            $data['teamData']['hitPoints'] = $player->getTeam()->getHitPoints();
+            $data['teamData']['id'] = $player->getTeam()->getId();
+            $data['teamData']['score'] = $player->getTeam()->getScore();
         }
         if ($zone) {
-            $data['target_player']['zone_hits'] = $player->hitsInZone($zone);
+            $data['playerData']['zoneHits'] = $player->zoneHits;
         }
         $pubSub = $this->get('hittracker_pubsub.handler');
         $pubSub->publish('game.hit', $data);

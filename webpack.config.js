@@ -42,6 +42,11 @@ Encore.setOutputPath('public/build/')
     'window.jQuery': 'jquery',
   })
 
+  .addLoader({
+    test: /translations/,
+    loader: '@alienfast/i18next-loader',
+    query: { debug: true, basenameAsNamespace: true },
+  })
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction());
 
