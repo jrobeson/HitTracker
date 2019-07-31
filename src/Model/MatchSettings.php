@@ -18,6 +18,7 @@
 
 namespace App\Model;
 
+use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class MatchSettings
@@ -29,6 +30,7 @@ class MatchSettings
      *      value=0,
      *      message="hittracker.game.not_enough_hit_points"
      * )
+     * @Serializer\Groups({"read","write"})
      */
     private $playerHitPoints;
 
@@ -39,6 +41,7 @@ class MatchSettings
      *      value=0,
      *      message="hittracker.game.not_enough_deducted_hit_points"
      * )
+     * @Serializer\Groups({"read","write"})
      */
     private $playerHitPointsDeducted;
 
@@ -49,6 +52,7 @@ class MatchSettings
      *      value=0,
      *      message="hittracker.game.score.must_not_be_empty"
      * )
+     * @Serializer\Groups({"read","write"})
      */
     private $playerScorePerHit;
 

@@ -5,6 +5,7 @@ namespace App\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,6 +38,7 @@ class Player implements ResourceInterface
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Groups({"read"})
      */
     private $id;
 
@@ -44,24 +46,28 @@ class Player implements ResourceInterface
      * @var string
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Serializer\Groups({"read","write"})
      */
     private $name;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"read","write"})
      */
     private $hitPoints;
 
     /**
      * @var array
      * @ORM\Column(type="json_array", options={"jsonb": "true"})
+     * @Serializer\Groups({"read","write"})
      */
     public $zoneHits;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"read","write"})
      */
     private $score;
 
@@ -92,6 +98,7 @@ class Player implements ResourceInterface
     /**
      * @var Vest
      * @ORM\ManyToOne(targetEntity="App\Model\Vest")
+     * @Serializer\Groups({"read","write"})
      */
     protected $unit;
 

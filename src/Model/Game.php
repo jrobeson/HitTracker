@@ -8,12 +8,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Game
  *
- * @ApiResource
+ * @ApiResource(
+ *   normalizationContext={"groups"={"read"}},
+ *   denormalizationContext={"groups"={"write"}},
+ * )
  * @ORM\Entity
  * @ORM\Table(name="games")
  */
@@ -24,6 +28,7 @@ class Game implements ResourceInterface
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Groups({"read"})
      */
     private $id;
 
@@ -34,21 +39,28 @@ class Game implements ResourceInterface
      *      value=0,
      *      message="hittracker.game.arena_not_exists"
      * )
+     * @Serializer\Groups({"read", "write"})
      */
     private $arena;
 
-    /** @ORM\Column(type="json_document", options={"jsonb": "true"}) */
+    /**
+     * @var MatchSettings
+     * @ORM\Column(type="json_document", options={"jsonb": "true"})
+     * @Serializer\Groups({"read", "write"})
+     */
     private $settings;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"read"})
      */
     private $endsAt;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"read"})
      */
     private $createdAt;
 
@@ -72,6 +84,7 @@ class Game implements ResourceInterface
      * })
      * @ORM\OneToMany(targetEntity="MatchTeam", mappedBy="game",
      *                cascade={"persist", "remove"})
+     * @Serializer\Groups({"read", "write"})
      */
     protected $teams;
 
@@ -83,6 +96,7 @@ class Game implements ResourceInterface
      *      value=0,
      *      message="hittracker.game.not_long_enough"
      * )
+     * @Serializer\Groups({"read", "write"})
      */
     protected $length;
 
@@ -90,6 +104,7 @@ class Game implements ResourceInterface
      * @var string
      * @ORM\Column(type="string")
      * @Assert\Choice(callback="getGameTypes")
+     * @Serializer\Groups({"read", "write"})
      */
     protected $gameType;
 
@@ -167,6 +182,9 @@ class Game implements ResourceInterface
         return $this->settings;
     }
 
+    /**
+     * @Serializer\Groups({"read"})
+     */
     public function isActive(): bool
     {
         return $this->endsAt > new \DateTime();
@@ -235,6 +253,9 @@ class Game implements ResourceInterface
         })->toArray();
     }
 
+    /**
+     * @Serializer\Groups({"read"})
+     */
     public function getTotalHitPoints(): int
     {
         $totalHP = array_sum($this->getPlayers()->map(function (Player $player) {
@@ -244,6 +265,9 @@ class Game implements ResourceInterface
         return (int) $totalHP;
     }
 
+    /**
+     * @Serializer\Groups({"read"})
+     */
     public function getTotalScore(): int
     {
         $score = array_sum($this->getPlayers()->map(function (Player $player) {

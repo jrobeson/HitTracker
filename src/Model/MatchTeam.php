@@ -22,6 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -44,18 +45,21 @@ class MatchTeam implements ResourceInterface
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Serializer\Groups({"read"})
      */
     private $id;
 
     /**
      * @var string
      * @ORM\Column(type="string")
+     * @Serializer\Groups({"read","write"})
      */
     private $name;
 
     /**
      * @var string
      * @ORM\Column(type="string")
+     * @Serializer\Groups({"read","write"})
      */
     private $color;
 
@@ -78,6 +82,7 @@ class MatchTeam implements ResourceInterface
      *   orphanRemoval=true,
      *   cascade={"persist", "remove"}
      * )
+     * @Serializer\Groups({"read","write"})
      */
     protected $players;
 
@@ -125,6 +130,9 @@ class MatchTeam implements ResourceInterface
         return $this->color;
     }
 
+    /**
+     * @Serializer\Groups({"read"})
+     */
     public function getScore(): int
     {
         return (int) array_sum($this->players->map(function (Player $player) {
@@ -132,6 +140,9 @@ class MatchTeam implements ResourceInterface
         })->toArray());
     }
 
+    /**
+     * @Serializer\Groups({"read"})
+     */
     public function getHitPoints(): int
     {
         return (int) array_sum($this->players->map(function (Player $player) {

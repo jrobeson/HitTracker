@@ -7,10 +7,14 @@ use App\Validator\Constraints as HitTrackerAssert;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource
+ * @ApiResource(
+ *   normalizationContext={"groups"={"read"}},
+ *   denormalizationContext={"groups"={"write"}},
+ * )
  * @ORM\Entity
  * @UniqueEntity("radioId")
  * @ORM\HasLifecycleCallbacks
@@ -29,6 +33,7 @@ class Vest implements ResourceInterface, UnitInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\Column(name="id", type="integer")
+     * @Serializer\Groups({"read"})
      */
     private $id;
 
@@ -37,6 +42,7 @@ class Vest implements ResourceInterface, UnitInterface
      * @ORM\Column(type="string", length=17, unique=true)
      * @Assert\NotBlank()
      * @HitTrackerAssert\MacAddress
+     * @Serializer\Groups({"read","write"})
      */
     private $radioId;
 
@@ -45,6 +51,7 @@ class Vest implements ResourceInterface, UnitInterface
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      * @Assert\Choice(callback = "getUnitTypes")
+     * @Serializer\Groups({"read","write"})
      */
     private $unitType;
 
@@ -53,30 +60,35 @@ class Vest implements ResourceInterface, UnitInterface
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      * @Assert\Choice(callback = "getColors")
+     * @Serializer\Groups({"read","write"})
      */
     private $color;
 
     /**
      * @var string
      * @ORM\Column(type="string")
+     * @Serializer\Groups({"read","write"})
      */
     private $illuminationStyle;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
+     * @Serializer\Groups({"read","write"})
      */
     private $zones;
 
     /**
      * @var bool
      * @ORM\Column(type="boolean")
+     * @Serializer\Groups({"read","write"})
      */
     private $active;
 
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
+     * @Serializer\Groups({"read"})
      */
     private $createdAt;
 
