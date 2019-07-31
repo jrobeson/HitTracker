@@ -212,14 +212,14 @@ class GameController extends ResourceController
         if (!is_array($data) || !array_key_exists('events', $data)) {
             return new JsonResponse(['error' => 'malformed request'], 400);
         }
-        foreach ($data['events'] as $data) {
-            $event = $data['event'];
+        foreach ($data['events'] as $eventData) {
+            $event = $eventData['event'];
             $game = null;
             $player = null;
-            if (!empty($data['radioId'])) {
+            if (!empty($eventData['radioId'])) {
                 foreach ($games as $g) {
                     // @todo check valid radio ids
-                    $player = $g->getPlayerByRadioId($data['radioId']);
+                    $player = $g->getPlayerByRadioId($eventData['radioId']);
                     if ($player) {
                         $game = $g;
                     }
@@ -232,7 +232,7 @@ class GameController extends ResourceController
             switch ($event) {
                 case 'hit':
                     // @todo return an error if zone isn't set
-                    $zone = $data['zone'] ?? null;
+                    $zone = $eventData['zone'] ?? null;
                     $player->hit($zone, $matchSettings->getPlayerScorePerHit(), $matchSettings->getPlayerHitPointsDeducted());
                     $this->notify('hit', $game, $player, $zone);
                     break;
