@@ -7,6 +7,7 @@ clone_folder: C:\HitTracker
 environment:
   global:
     php_ver_target: 7.3
+    nodejs_version: '12'
     COMPOSER_NO_INTERACTION: 1
     APP_BUILD_TYPE: electron
     APP_SECRET: 'gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx'
@@ -48,6 +49,7 @@ install:
   - IF NOT EXIST C:\php\ext\php_apcu.dll 7z x php_apcu.zip -y
   - IF NOT EXIST C:\php\ext\php_apcu.dll del /Q *.zip
   - IF NOT EXIST C:\php\ext\php_xdebug.dll appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.7.0RC1-7.3-vc15-nts-x86_64.dll -FileName php_xdebug.dll
+  - ps: Install-Product node $env:nodejs_version
   - IF NOT EXIST C:\composer mkdir C:\composer
   - cd C:\composer
   - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
@@ -55,6 +57,7 @@ install:
   - composer self-update --stable
   - cd %APPVEYOR_BUILD_FOLDER%
   - appveyor-retry composer install --prefer-dist --no-progress --profile --no-suggest
+  - npm install
   - php bin\console about
 
 test_script:
