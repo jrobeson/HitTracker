@@ -1,69 +1,69 @@
 # lots from https://blog.wyrihaximus.net/2016/11/running-php-unit-tests-on-windows-using-appveyor-and-chocolatey/
 build: false
 platform:
-    - x64
+  - x64
 clone_folder: C:\HitTracker
 
 environment:
-    global:
-        php_ver_target: 7.3
-        COMPOSER_NO_INTERACTION: 1
-        APP_BUILD_TYPE: electron
-        APP_SECRET: "gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx"
-        APP_DEBUG: 1
-        APP_ENV: test
+  global:
+    php_ver_target: 7.3
+    COMPOSER_NO_INTERACTION: 1
+    APP_BUILD_TYPE: electron
+    APP_SECRET: 'gZSAaVzquHNXkHlk9A6cpLaV0C3UfTibOCN0SaVn1x9lx'
+    APP_DEBUG: 1
+    APP_ENV: test
 
 services:
-    - postgresql101
+  - postgresql101
 
 cache:
-    - C:\ProgramData\chocolatey\bin -> .appveyor.yml
-    - C:\ProgramData\chocolatey\lib -> .appveyor.yml
-    - C:\php -> .appveyor.yml
-    - '%LOCALAPPDATA%\Composer -> composer.lock'
-    - C:\composer\composer.phar -> .appveyor.yml
+  - C:\ProgramData\chocolatey\bin -> .appveyor.yml
+  - C:\ProgramData\chocolatey\lib -> .appveyor.yml
+  - C:\php -> .appveyor.yml
+  - '%LOCALAPPDATA%\Composer -> composer.lock'
+  - C:\composer\composer.phar -> .appveyor.yml
 
 init:
-    # the default TEMP/TMP paths might be too long
-    - IF NOT EXIST C:\T mkdir C:\T
-    - SET TEMP=C:\T
-    - SET TMP=C:\T
-    - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
-    - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\%APP_BUILD_TYPE%\php-win32-development.ini
-    - SET DATABASE_URL=pgsql://postgres:Password12!@localhost/hittracker
-    - SET APP_LOG_DIR=%APPVEYOR_BUILD_FOLDER%\var\logs
-    - SET APP_TMP_DIR=%APPVEYOR_BUILD_FOLDER%\var\tmp
-    - SET PHP_INI_SCAN_DIR=
+  # the default TEMP/TMP paths might be too long
+  - IF NOT EXIST C:\T mkdir C:\T
+  - SET TEMP=C:\T
+  - SET TMP=C:\T
+  - SET PATH=C:\Program Files\OpenSSL;C:\php;C:\composer;%PATH%
+  - SET PHPRC=%APPVEYOR_BUILD_FOLDER%\etc\%APP_BUILD_TYPE%\php-win32-development.ini
+  - SET DATABASE_URL=pgsql://postgres:Password12!@localhost/hittracker
+  - SET APP_LOG_DIR=%APPVEYOR_BUILD_FOLDER%\var\logs
+  - SET APP_TMP_DIR=%APPVEYOR_BUILD_FOLDER%\var\tmp
+  - SET PHP_INI_SCAN_DIR=
 
-    - SET PHP=1 # This var is connected to PHP install cache
-    - SET COMPOSER_NOT_EXISTS=1
-    - SET ANSICON=121x90 (121x90)
+  - SET PHP=1 # This var is connected to PHP install cache
+  - SET COMPOSER_NOT_EXISTS=1
+  - SET ANSICON=121x90 (121x90)
 
 install:
-    - IF EXIST c:\php (SET PHP=0)
-    - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
-    - cd c:\php
-    - cd C:\php\ext
-    - IF NOT EXIST C:\php\ext\php_apcu.dll curl -fsSL -o php_apcu.zip https://windows.php.net/downloads/pecl/releases/apcu/5.1.16/php_apcu-5.1.16-7.3-nts-vc15-x64.zip
-    - IF NOT EXIST C:\php\ext\php_apcu.dll 7z x php_apcu.zip -y
-    - IF NOT EXIST C:\php\ext\php_apcu.dll del /Q *.zip
-    - IF NOT EXIST C:\php\ext\php_xdebug.dll appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.7.0RC1-7.3-vc15-nts-x86_64.dll -FileName php_xdebug.dll
-    - IF NOT EXIST C:\composer mkdir C:\composer
-    - cd C:\composer
-    - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
-    - IF NOT EXIST C:\composer\composer.bat powershell -command "'@php C:\composer\composer.phar ' + $([char]37) + '*' | Out-File C:\composer\composer.bat -Encoding ASCII"
-    - composer self-update --stable
-    - cd %APPVEYOR_BUILD_FOLDER%
-    - appveyor-retry composer install --prefer-dist --no-progress --profile --no-suggest
-    - php bin\console about
+  - IF EXIST c:\php (SET PHP=0)
+  - ps: appveyor-retry cinst --params '""/InstallDir:C:\php""' --ignore-checksums -y php --version ((choco search php --exact --all-versions -r | select-string -pattern $env:php_ver_target | sort { [version]($_ -split '\|' | select -last 1) } -Descending | Select-Object -first 1) -replace '[php|]','')
+  - cd c:\php
+  - cd C:\php\ext
+  - IF NOT EXIST C:\php\ext\php_apcu.dll curl -fsSL -o php_apcu.zip https://windows.php.net/downloads/pecl/releases/apcu/5.1.16/php_apcu-5.1.16-7.3-nts-vc15-x64.zip
+  - IF NOT EXIST C:\php\ext\php_apcu.dll 7z x php_apcu.zip -y
+  - IF NOT EXIST C:\php\ext\php_apcu.dll del /Q *.zip
+  - IF NOT EXIST C:\php\ext\php_xdebug.dll appveyor DownloadFile https://xdebug.org/files/php_xdebug-2.7.0RC1-7.3-vc15-nts-x86_64.dll -FileName php_xdebug.dll
+  - IF NOT EXIST C:\composer mkdir C:\composer
+  - cd C:\composer
+  - IF NOT EXIST C:\composer\composer.phar appveyor-retry appveyor DownloadFile https://getcomposer.org/composer.phar C:\composer
+  - IF NOT EXIST C:\composer\composer.bat powershell -command "'@php C:\composer\composer.phar ' + $([char]37) + '*' | Out-File C:\composer\composer.bat -Encoding ASCII"
+  - composer self-update --stable
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - appveyor-retry composer install --prefer-dist --no-progress --profile --no-suggest
+  - php bin\console about
 
 test_script:
-    - php bin\console doctrine:database:create
-    - php bin\console doctrine:migrations:migrate --no-interaction
-    - php bin\console cache:clear
-    - cd %APPVEYOR_BUILD_FOLDER%
-    - php vendor\bin\phpunit -c phpunit.xml.dist
-    - npm run build
+  - php bin\console doctrine:database:create
+  - php bin\console doctrine:migrations:migrate --no-interaction
+  - php bin\console cache:clear
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - php vendor\bin\phpunit -c phpunit.xml.dist
+  - npm run build
 
 before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
@@ -71,19 +71,17 @@ before_deploy:
   - appveyor PushArtifact HitTracker-electron-win32-%APPVEYOR_REPO_TAG_NAME%.tar.bz2
 
 deploy:
-    description: "Release $(APPVEYOR_REPO_TAG_NAME)"
-    provider: GitHub
-    auth_token:
-      secure: "N7AGr+WKRHnBh8dscxot6kPvACQt1AY5HIQ1UVqAaiV/dPlKPQiCLy8JNiW17KMx"
-    artifact: /.*\.bz2/
-    draft: true
-    prerelease: false
-    on:
-        branch: master
-        appveyor_repo_tag: true
+  description: 'Release $(APPVEYOR_REPO_TAG_NAME)'
+  provider: GitHub
+  auth_token:
+    secure: 'N7AGr+WKRHnBh8dscxot6kPvACQt1AY5HIQ1UVqAaiV/dPlKPQiCLy8JNiW17KMx'
+  artifact: /.*\.bz2/
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+    appveyor_repo_tag: true
 
 branches:
   except:
     - gh-pages
-
-

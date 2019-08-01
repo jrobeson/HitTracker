@@ -3,29 +3,29 @@ sudo: false
 language: php
 
 php:
-    - 7.3
+  - 7.3
 
 sudo: false
 cache:
-    directories:
-        - $HOME/.composer
+  directories:
+    - $HOME/.composer
 
 env:
-    global:
-        - PGPORT=5433
-        - COMPOSER_NO_INTERACTION=1
-        - TRAVIS_NODE_VERSION="10"
-        - APP_DEBUG=1
-        - APP_ENV=test
+  global:
+    - PGPORT=5433
+    - COMPOSER_NO_INTERACTION=1
+    - TRAVIS_NODE_VERSION="10"
+    - APP_DEBUG=1
+    - APP_ENV=test
 
-        - APP_SECRET=ff3464e484bb524fb4234e893f9cee58
-        - DATABASE_URL=pgsql://travis:travis@localhost:5433/hittracker
-        - APP_LOG_DIR="var/logs"
-        - APP_TMP_DIR="var/tmp"
+    - APP_SECRET=ff3464e484bb524fb4234e893f9cee58
+    - DATABASE_URL=pgsql://travis:travis@localhost:5433/hittracker
+    - APP_LOG_DIR="var/logs"
+    - APP_TMP_DIR="var/tmp"
 
-    matrix:
-        - APP_BUILD_TYPE=hosted
-        - APP_BUILD_TYPE=electron
+  matrix:
+    - APP_BUILD_TYPE=hosted
+    - APP_BUILD_TYPE=electron
 
 #-services:
 #  - postgresql
@@ -37,42 +37,42 @@ addons:
     - postgresql-client-10
 
 install:
-    - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-    - npm install
-    - (echo '' | pecl uninstall apcu) || true
-    - (echo '' | pecl install apcu) || true
-    - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$APP_BUILD_TYPE/php-unix-development.ini
-    - export PHP_INI_SCAN_DIR=""
-    - composer install --prefer-dist --no-suggest
-    - php bin/console about
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - npm install
+  - (echo '' | pecl uninstall apcu) || true
+  - (echo '' | pecl install apcu) || true
+  - export PHPRC=$TRAVIS_BUILD_DIR/etc/php/$APP_BUILD_TYPE/php-unix-development.ini
+  - export PHP_INI_SCAN_DIR=""
+  - composer install --prefer-dist --no-suggest
+  - php bin/console about
 
 before_script:
-    - psql -c "ALTER USER travis WITH PASSWORD 'travis';"
-    - php bin/console doctrine:database:create
-    - php bin/console doctrine:migrations:migrate --no-interaction
-#    - php bin/console doctrine:fixtures:load --no-interaction
-    - php bin/console cache:warmup
+  - psql -c "ALTER USER travis WITH PASSWORD 'travis';"
+  - php bin/console doctrine:database:create
+  - php bin/console doctrine:migrations:migrate --no-interaction
+#  - php bin/console doctrine:fixtures:load --no-interaction
+  - php bin/console cache:warmup
 
 script:
-    # replace development with test manually since the container is hardcoded
-    - sed -i 's|development/srcApp_KernelDevelopment|test/srcApp_KernelTest|' phpstan.neon
-    - npm run lint
-    - ./vendor/bin/phpunit
-    - npm run build
+  # replace development with test manually since the container is hardcoded
+  - sed -i 's|development/srcApp_KernelDevelopment|test/srcApp_KernelTest|' phpstan.neon
+  - npm run lint
+  - ./vendor/bin/phpunit
+  - npm run build
 
 before_deploy:
-    - php bin/package.php --build-version=$TRAVIS_TAG --build-platform=linux --build-type=$APP_BUILD_TYPE --compress --use-existing-vendor
+  - php bin/package.php --build-version=$TRAVIS_TAG --build-platform=linux --build-type=$APP_BUILD_TYPE --compress --use-existing-vendor
 
 deploy:
-    provider: releases
-    api_key:
-        secure: "LJ1ZwqBmg6GajDkgtFrgkNttfmBObPAAUPnJr8d53mXEA6+ZwZw/fIXOt7BzOQOow2DWMDf+PAqMkmSQLwdjnRB+jGIa4yJHnOQ1BxgyLuiQ5yiFckkHwBt+1HrKGZ54uxaQBej1/wbBi1GrEhz5BNWjAsHotGVMbiJ6dR4uU24="
-    file: "*.tar.bz2"
-    file_glob: true
-    skip_cleanup: true
-    on:
-        tags: true
+  provider: releases
+  api_key:
+    secure: "LJ1ZwqBmg6GajDkgtFrgkNttfmBObPAAUPnJr8d53mXEA6+ZwZw/fIXOt7BzOQOow2DWMDf+PAqMkmSQLwdjnRB+jGIa4yJHnOQ1BxgyLuiQ5yiFckkHwBt+1HrKGZ54uxaQBej1/wbBi1GrEhz5BNWjAsHotGVMbiJ6dR4uU24="
+  file: "*.tar.bz2"
+  file_glob: true
+  skip_cleanup: true
+  on:
+    tags: true
 
 branches:
-    except:
-        - gh-pages
+  except:
+    - gh-pages
