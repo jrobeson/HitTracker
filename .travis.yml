@@ -14,7 +14,7 @@ env:
   global:
     - PGPORT=5433
     - COMPOSER_NO_INTERACTION=1
-    - TRAVIS_NODE_VERSION="10"
+    - TRAVIS_NODE_VERSION="12"
     - APP_DEBUG=1
     - APP_ENV=test
 
