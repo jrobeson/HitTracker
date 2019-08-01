@@ -62,7 +62,7 @@
     "eventsource-polyfill": "^0.9",
     "font-awesome": "^4.7",
     "fs-jetpack": "^2.2.2",
-    "i18next": "^17.0.7",
+    "i18next": "17.0.6",
     "jquery": "^3.4.1",
     "jquery-countdown": "^2.2",
     "lodash": "^4.17.15",
