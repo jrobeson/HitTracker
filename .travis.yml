@@ -58,6 +58,7 @@ script:
     - sed -i 's|development/srcApp_KernelDevelopment|test/srcApp_KernelTest|' phpstan.neon
     - npm run lint
     - ./vendor/bin/phpunit
+    - npm run build
 
 before_deploy:
     - php bin/package.php --build-version=$TRAVIS_TAG --build-platform=linux --build-type=$APP_BUILD_TYPE --compress --use-existing-vendor

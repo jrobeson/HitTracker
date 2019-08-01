@@ -63,6 +63,7 @@ test_script:
     - php bin\console cache:clear
     - cd %APPVEYOR_BUILD_FOLDER%
     - php vendor\bin\phpunit -c phpunit.xml.dist
+    - npm run build
 
 before_deploy:
   - cd %APPVEYOR_BUILD_FOLDER%
