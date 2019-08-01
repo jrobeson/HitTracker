@@ -79,6 +79,8 @@ deploy:
   artifact: /.*\.bz2/
   draft: true
   prerelease: false
+  auth_token:
+    secure: 'XxdYyvY9A7doQUOpXXa+/QcGiS6LGU0zpz2pkDMDyfGVnrHUPSDPj6tb8zBM57M3'
   on:
     branch: master
     appveyor_repo_tag: true
